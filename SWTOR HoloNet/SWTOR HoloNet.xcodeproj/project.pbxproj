@@ -37,6 +37,10 @@
 		81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */; };
 		81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
 		81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
+		81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */; };
+		81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */; };
+		81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
+		81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,8 @@
 		81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLResponseSerialization.m"; sourceTree = "<group>"; };
 		81AB24C519EFCAC000293D26 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.h"; sourceTree = "<group>"; };
 		81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.m"; sourceTree = "<group>"; };
+		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
+		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,7 @@
 		81AB24A519EFC19100293D26 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 				81AB24A719EFC21100293D26 /* ForumCategory.swift */,
 				81AB24AA19EFC3FD00293D26 /* ForumThread.swift */,
 				81AB24AD19EFC5C400293D26 /* ForumPost.swift */,
+				81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,9 +347,11 @@
 				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
 				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
+				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
@@ -355,11 +365,13 @@
 			files = (
 				81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */,
 				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
+				81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
