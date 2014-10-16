@@ -13,6 +13,12 @@
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81AB248C19EFBD7700293D26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248A19EFBD7700293D26 /* LaunchScreen.xib */; };
 		81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */; };
+		81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
+		81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
+		81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
+		81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
+		81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
+		81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,9 @@
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTOR_HoloNetTests.swift; sourceTree = "<group>"; };
+		81AB24A719EFC21100293D26 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategory.swift; path = Module/Forum/Model/ForumCategory.swift; sourceTree = "<group>"; };
+		81AB24AA19EFC3FD00293D26 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThread.swift; path = Module/Forum/Model/ForumThread.swift; sourceTree = "<group>"; };
+		81AB24AD19EFC5C400293D26 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPost.swift; path = Module/Forum/Model/ForumPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,7 @@
 		81AB247E19EFBD7700293D26 /* SWTOR HoloNet */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24A319EFC18400293D26 /* Module */,
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
 				81AB248319EFBD7700293D26 /* ViewController.swift */,
 				81AB248519EFBD7700293D26 /* Main.storyboard */,
@@ -110,6 +120,40 @@
 				81AB249619EFBD7700293D26 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81AB24A319EFC18400293D26 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24A419EFC18B00293D26 /* Forum */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		81AB24A419EFC18B00293D26 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24A519EFC19100293D26 /* Data */,
+				81AB24A619EFC19C00293D26 /* Model */,
+			);
+			name = Forum;
+			sourceTree = "<group>";
+		};
+		81AB24A519EFC19100293D26 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		81AB24A619EFC19C00293D26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24A719EFC21100293D26 /* ForumCategory.swift */,
+				81AB24AA19EFC3FD00293D26 /* ForumThread.swift */,
+				81AB24AD19EFC5C400293D26 /* ForumPost.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
+				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
+				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */,
+				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
