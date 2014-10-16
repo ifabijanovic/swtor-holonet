@@ -19,6 +19,24 @@
 		81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
 		81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
 		81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
+		81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */; };
+		81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */; };
+		81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */; };
+		81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */; };
+		81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */; };
+		81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */; };
+		81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */; };
+		81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */; };
+		81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */; };
+		81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */; };
+		81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */; };
+		81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */; };
+		81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */; };
+		81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */; };
+		81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */; };
+		81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */; };
+		81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
+		81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +63,27 @@
 		81AB24A719EFC21100293D26 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategory.swift; path = Module/Forum/Model/ForumCategory.swift; sourceTree = "<group>"; };
 		81AB24AA19EFC3FD00293D26 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThread.swift; path = Module/Forum/Model/ForumThread.swift; sourceTree = "<group>"; };
 		81AB24AD19EFC5C400293D26 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPost.swift; path = Module/Forum/Model/ForumPost.swift; sourceTree = "<group>"; };
+		81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNet-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNetTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		81AB24B419EFCAC000293D26 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperation.h"; sourceTree = "<group>"; };
+		81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperation.m"; sourceTree = "<group>"; };
+		81AB24B619EFCAC000293D26 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.h"; sourceTree = "<group>"; };
+		81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.m"; sourceTree = "<group>"; };
+		81AB24B819EFCAC000293D26 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPSessionManager.h"; sourceTree = "<group>"; };
+		81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPSessionManager.m"; sourceTree = "<group>"; };
+		81AB24BA19EFCAC000293D26 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = "../Third Party/AFNetworking/AFNetworking/AFNetworking.h"; sourceTree = "<group>"; };
+		81AB24BB19EFCAC000293D26 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFNetworkReachabilityManager.h"; sourceTree = "<group>"; };
+		81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m"; sourceTree = "<group>"; };
+		81AB24BD19EFCAC000293D26 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = "../Third Party/AFNetworking/AFNetworking/AFSecurityPolicy.h"; sourceTree = "<group>"; };
+		81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = "../Third Party/AFNetworking/AFNetworking/AFSecurityPolicy.m"; sourceTree = "<group>"; };
+		81AB24BF19EFCAC000293D26 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLConnectionOperation.h"; sourceTree = "<group>"; };
+		81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLConnectionOperation.m"; sourceTree = "<group>"; };
+		81AB24C119EFCAC000293D26 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLRequestSerialization.h"; sourceTree = "<group>"; };
+		81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLRequestSerialization.m"; sourceTree = "<group>"; };
+		81AB24C319EFCAC000293D26 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLResponseSerialization.h"; sourceTree = "<group>"; };
+		81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLResponseSerialization.m"; sourceTree = "<group>"; };
+		81AB24C519EFCAC000293D26 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.h"; sourceTree = "<group>"; };
+		81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +109,7 @@
 			children = (
 				81AB247E19EFBD7700293D26 /* SWTOR HoloNet */,
 				81AB249419EFBD7700293D26 /* SWTOR HoloNetTests */,
+				81AB24B019EFCA8A00293D26 /* Third Party */,
 				81AB247D19EFBD7700293D26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +140,7 @@
 		81AB247F19EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */,
 				81AB248019EFBD7700293D26 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -117,6 +158,7 @@
 		81AB249519EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */,
 				81AB249619EFBD7700293D26 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -154,6 +196,40 @@
 				81AB24AD19EFC5C400293D26 /* ForumPost.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		81AB24B019EFCA8A00293D26 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24B119EFCAA100293D26 /* AFNetworking */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		81AB24B119EFCAA100293D26 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24B419EFCAC000293D26 /* AFHTTPRequestOperation.h */,
+				81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */,
+				81AB24B619EFCAC000293D26 /* AFHTTPRequestOperationManager.h */,
+				81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */,
+				81AB24B819EFCAC000293D26 /* AFHTTPSessionManager.h */,
+				81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */,
+				81AB24BA19EFCAC000293D26 /* AFNetworking.h */,
+				81AB24BB19EFCAC000293D26 /* AFNetworkReachabilityManager.h */,
+				81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */,
+				81AB24BD19EFCAC000293D26 /* AFSecurityPolicy.h */,
+				81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */,
+				81AB24BF19EFCAC000293D26 /* AFURLConnectionOperation.h */,
+				81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */,
+				81AB24C119EFCAC000293D26 /* AFURLRequestSerialization.h */,
+				81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */,
+				81AB24C319EFCAC000293D26 /* AFURLResponseSerialization.h */,
+				81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */,
+				81AB24C519EFCAC000293D26 /* AFURLSessionManager.h */,
+				81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +332,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
+				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
+				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
+				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
+				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
+				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
+				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,8 +354,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */,
+				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
+				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
+				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
+				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
+				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
+				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,10 +480,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -397,10 +494,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -408,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -419,6 +519,8 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Debug;
@@ -427,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -434,6 +537,7 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Release;
