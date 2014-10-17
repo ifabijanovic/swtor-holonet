@@ -13,11 +13,17 @@ class ForumCategoryRepository {
     // MARK: - Properties
     
     private let rootUrl: String
+    private var cache: Dictionary<Int, Array<ForumCategory>>
+    
+    var useCache: Bool
     
     // MARK: - Init
     
     init(rootUrl: String) {
         self.rootUrl = rootUrl
+        self.cache = Dictionary<Int, Array<ForumCategory>>()
+        
+        self.useCache = true
     }
     
     // MARK: - Public methods
@@ -33,6 +39,14 @@ class ForumCategoryRepository {
     // MARK: - Network
     
     private func get(#id: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+        // Cache
+        if useCache {
+            if let data = self.cache[id] {
+                success(data)
+                return
+            }
+        }
+        
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
@@ -40,10 +54,28 @@ class ForumCategoryRepository {
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
+            if self.useCache {
+                self.cache[id] = items
+            }
+            
             success(items)
         }) { (operation, error) in
             failure(error)
         }
+    }
+    
+    // MARK: - Caching
+    
+    func clear() {
+        self.cache.removeAll(keepCapacity: false)
+    }
+    
+    func clear(#language: ForumLanguage) {
+        self.cache[language.toRaw()] = nil
+    }
+    
+    func clear(#category: ForumCategory) {
+        self.cache[category.id] = nil
     }
     
     // MARK: - Parsing
