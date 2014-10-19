@@ -14,6 +14,7 @@ class ForumThreadRepository: NSObject {
     
     private let rootUrl: String
     private var cache: Dictionary<Int, Array<ForumThread>>
+    private let parser: ForumParser
     
     var useCache: Bool
     
@@ -22,6 +23,7 @@ class ForumThreadRepository: NSObject {
     init(rootUrl: String) {
         self.rootUrl = rootUrl
         self.cache = Dictionary<Int, Array<ForumThread>>()
+        self.parser = ForumParser()
         
         self.useCache = true
     }
@@ -89,63 +91,22 @@ class ForumThreadRepository: NSObject {
     }
     
     private func parseThread(element: HTMLElement) -> ForumThread? {
-        
+        // Id & Title
         let titleElement = element.firstNodeMatchingSelector(".threadTitle")
-        if titleElement == nil {
-            // No title element, skip
-            return nil
-        }
-        
-        // Id
-        let link = titleElement.objectForKeyedSubscript("href") as? String
-        if link == nil {
-            // Link href missing, skip
-            return nil
-        }
-        let id = NSURLComponents(string: link!).queryValueForName("t")
-        if id == nil || id!.toInt() == nil {
-            // Id cannot be parsed, skip
-            return nil
-        }
-        
-        // Title
-        let title = titleElement.textContent
-        
+        let id = self.parser.linkParameter(linkElement: titleElement, name: "t")?.toInt()
+        let title = titleElement?.textContent
+
         // Last post date
-        let lastPostDateElement = element.firstNodeMatchingSelector(".lastpostdate")
-        if lastPostDateElement == nil {
-            // Last post date missing, skip
-            return nil
-        }
-        let lastPostDate = lastPostDateElement.textContent
+        let lastPostDate = element.firstNodeMatchingSelector(".lastpostdate")?.textContent
         
         // Author
-        let authorElement = element.firstNodeMatchingSelector(".author")
-        if authorElement == nil {
-            // Author missing, skip
-            return nil
-        }
-        let author = authorElement.textContent
-        
-        let formatter = NSNumberFormatter()
-        formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
-        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        let author = element.firstNodeMatchingSelector(".author")?.textContent
         
         // Replies
-        let repliesElement = element.firstNodeMatchingSelector(".resultReplies")
-        if repliesElement == nil {
-            // Replies missing, skip
-            return nil
-        }
-        let replies = formatter.numberFromString(repliesElement.textContent)
+        let replies = self.parser.integerContent(element: element.firstNodeMatchingSelector(".resultReplies"))
         
         // Views
-        let viewsElement = element.firstNodeMatchingSelector(".resultViews")
-        if viewsElement == nil {
-            // Views missing, skip
-            return nil
-        }
-        let views = formatter.numberFromString(viewsElement.textContent)
+        let views = self.parser.integerContent(element: element.firstNodeMatchingSelector(".resultViews"))
         
         // Has Bioware reply & sticky
         var hasBiowareReply = false
@@ -164,7 +125,14 @@ class ForumThreadRepository: NSObject {
             }
         }
         
-        let thread = ForumThread(id: id!.toInt()!, title: title, lastPostDate: lastPostDate, author: author, replies: replies!.integerValue, views: views!.integerValue, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
+        if id == nil { return nil }
+        if title == nil { return nil }
+        if lastPostDate == nil { return nil }
+        if author == nil { return nil }
+        if replies == nil { return nil }
+        if views == nil { return nil }
+        
+        let thread = ForumThread(id: id!, title: title!, lastPostDate: lastPostDate!, author: author!, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
         
         return thread
     }

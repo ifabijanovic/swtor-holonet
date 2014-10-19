@@ -14,6 +14,7 @@ class ForumCategoryRepository {
     
     private let rootUrl: String
     private var cache: Dictionary<Int, Array<ForumCategory>>
+    private let parser: ForumParser
     
     var useCache: Bool
     
@@ -22,6 +23,7 @@ class ForumCategoryRepository {
     init(rootUrl: String) {
         self.rootUrl = rootUrl
         self.cache = Dictionary<Int, Array<ForumCategory>>()
+        self.parser = ForumParser()
         
         self.useCache = true
     }
@@ -97,64 +99,45 @@ class ForumCategoryRepository {
     }
     
     private func parseCategory(element: HTMLElement) -> ForumCategory? {
-        
+        // Id & Title
         let titleElement = element.firstNodeMatchingSelector(".resultTitle > a")
-        if titleElement == nil {
-            // No title element, skip
-            return nil
-        }
-        
-        // Id
-        let link = titleElement.objectForKeyedSubscript("href") as? String
-        if link == nil {
-            // Link href missing, skip
-            return nil
-        }
-        let id = NSURLComponents(string: link!).queryValueForName("f")
-        if id == nil || id!.toInt() == nil {
-            // Id cannot be parsed, skip
-            return nil
-        }
-        
-        // Title
-        let title = titleElement.textContent
-        
-        let category = ForumCategory(id: id!.toInt()!, title: title)
+        let id = self.parser.linkParameter(linkElement: titleElement, name: "f")?.toInt()
+        let title = titleElement?.textContent
         
         // Icon
-        let thumbElement = element.firstNodeMatchingSelector(".thumbBackground")
-        if thumbElement != nil {
-            let iconStyle = thumbElement.objectForKeyedSubscript("style") as? String
-            if iconStyle != nil {
-                let start = iconStyle!.rangeOfString("url(", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
-                let end = iconStyle!.rangeOfString(")", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
+        var iconUrl: String? = nil
+        if let thumbElement = element.firstNodeMatchingSelector(".thumbBackground") {
+            if let iconStyle = thumbElement.objectForKeyedSubscript("style") as? String {
+                let start = iconStyle.rangeOfString("url(", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
+                let end = iconStyle.rangeOfString(")", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
                 let range = Range<String.Index>(start: start!.endIndex, end: end!.startIndex)
-                category.iconUrl = iconStyle!.substringWithRange(range)
+                iconUrl = iconStyle.substringWithRange(range)
             }
         }
         
         // Description
-        let textElement = element.firstNodeMatchingSelector(".resultText")
-        if textElement != nil {
-            let description = textElement.textContent
-            category.description = description
-        }
+        let description = element.firstNodeMatchingSelector(".resultText")?.textContent
         
+        // Stats & Last post
+        var stats: String? = nil
+        var lastPost: String? = nil
         let subTextElements = element.nodesMatchingSelector(".resultSubText") as Array<HTMLElement>
-        
-        // Stats
+
         if subTextElements.count > 0 {
-            let statsElement = subTextElements[0]
-            let stats = statsElement.textContent
-            category.stats = stats.stripNewLinesAndTabs()
+            stats = subTextElements[0].textContent
+        }
+        if subTextElements.count > 1 {
+            lastPost = subTextElements[1].textContent
         }
         
-        // Last post
-        if subTextElements.count > 1 {
-            let lastPostElement = subTextElements[1]
-            let lastPost = lastPostElement.textContent
-            category.lastPost = lastPost.stripNewLinesAndTabs()
-        }
+        if id == nil { return nil }
+        if title == nil { return nil }
+        
+        let category = ForumCategory(id: id!, title: title!)
+        category.iconUrl = iconUrl
+        category.description = description
+        category.stats = stats
+        category.lastPost = lastPost
         
         return category
     }

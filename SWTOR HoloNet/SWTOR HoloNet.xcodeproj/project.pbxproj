@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
+		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
+		8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
@@ -93,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
+		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
 		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 			children = (
 				81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */,
 				8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */,
+				8147C8F919F161EC00D98C61 /* ForumParser.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -500,6 +504,7 @@
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
 				81A49A9619F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
 				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -548,6 +553,7 @@
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
 				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
+				8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81A49A8B19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 			);
