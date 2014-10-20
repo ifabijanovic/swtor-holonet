@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumThreadRepository: NSObject {
+class ForumThreadRepository {
     
     // MARK: - Properties
     

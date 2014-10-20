@@ -16,16 +16,18 @@ class ForumPost {
     var avatarUrl: String?
     var username: String
     var date: String
+    var postNumber: Int
     var isBiowarePost: Bool
     var text: String
     var signature: String?
     
     // MARK: - Init
     
-    init(id: Int, username: String, date: String, isBiowarePost: Bool, text: String) {
+    init(id: Int, username: String, date: String, postNumber: Int, isBiowarePost: Bool, text: String) {
         self.id = id
         self.username = username
         self.date = date
+        self.postNumber = postNumber
         self.isBiowarePost = isBiowarePost
         self.text = text
     }

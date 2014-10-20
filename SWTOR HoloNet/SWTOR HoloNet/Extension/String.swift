@@ -18,6 +18,19 @@ extension String {
         return withoutTabs
     }
     
+    func stripSpaces() -> String {
+        return self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    
+    func formatPostDate() -> String {
+        let withoutSpaces = self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        if let range = withoutSpaces.rangeOfString("|#", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+            let withoutPostNumber = withoutSpaces.substringToIndex(range.startIndex)
+            return withoutPostNumber
+        }
+        return withoutSpaces
+    }
+    
     // MARK: - Substring
     
     func substringToIndex(index: Int) -> String {

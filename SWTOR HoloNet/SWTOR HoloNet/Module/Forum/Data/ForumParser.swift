@@ -41,5 +41,25 @@ class ForumParser {
         }
         return nil
     }
+    
+    func postDate(#element: HTMLElement?) -> String? {
+        if element != nil {
+            return element!.textContent.stripNewLinesAndTabs().formatPostDate()
+        }
+        return nil
+    }
+    
+    func postNumber(#element: HTMLElement?) -> Int? {
+        if element != nil {
+            if let range = element!.textContent.rangeOfString("| #", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+                var numberString = element!.textContent.substringFromIndex(range.endIndex).stripNewLinesAndTabs().stripSpaces()
+                if let spaceRange = numberString.rangeOfString("Next", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+                    numberString = numberString.substringToIndex(spaceRange.startIndex)
+                }
+                return self.numberFormatter.numberFromString(numberString)
+            }
+        }
+        return nil
+    }
    
 }
