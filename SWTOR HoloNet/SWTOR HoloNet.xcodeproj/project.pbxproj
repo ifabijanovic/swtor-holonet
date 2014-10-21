@@ -16,6 +16,8 @@
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
 		817A216B19F6C4480093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
 		817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
+		81A1E20419F707E800C5C833 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1E20319F707E800C5C833 /* MainMenuViewController.swift */; };
+		81A1E20519F707E800C5C833 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1E20319F707E800C5C833 /* MainMenuViewController.swift */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
@@ -104,6 +106,7 @@
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		81A1E20319F707E800C5C833 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = Module/App/UI/MainMenuViewController.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
 		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
@@ -199,6 +202,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81A1E1FE19F704D700C5C833 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				81A1E1FF19F704DD00C5C833 /* UI */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		81A1E1FF19F704DD00C5C833 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81A1E20319F707E800C5C833 /* MainMenuViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		81A49A5619F0FC98007FEA4C /* HTMLReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +328,7 @@
 		81AB24A319EFC18400293D26 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				81A1E1FE19F704D700C5C833 /* App */,
 				81AB24A419EFC18B00293D26 /* Forum */,
 			);
 			name = Module;
@@ -499,6 +519,7 @@
 				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
+				81A1E20419F707E800C5C833 /* MainMenuViewController.swift in Sources */,
 				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
 				81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
@@ -571,6 +592,7 @@
 				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
 				8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
+				81A1E20519F707E800C5C833 /* MainMenuViewController.swift in Sources */,
 				81A49A8B19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
