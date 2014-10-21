@@ -12,20 +12,20 @@ class ForumPostRepository {
     
     // MARK: - Properties
     
-    private let rootUrl: String
+    var useCache: Bool
+    
+    private let settings: Settings
     private var cache: Dictionary<Int, Array<ForumPost>>
     private let parser: ForumParser
     
-    var useCache: Bool
-    
     // MARK: - Init
     
-    init(rootUrl: String) {
-        self.rootUrl = rootUrl
-        self.cache = Dictionary<Int, Array<ForumPost>>()
+    init(settings: Settings) {
+        self.settings = settings
         self.parser = ForumParser()
         
         self.useCache = true
+        self.cache = Dictionary<Int, Array<ForumPost>>()
     }
     
     // MARK: - Public methods
@@ -48,7 +48,7 @@ class ForumPostRepository {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = "\(self.rootUrl)?t=\(id)"
+        let url = "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(id)"
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)

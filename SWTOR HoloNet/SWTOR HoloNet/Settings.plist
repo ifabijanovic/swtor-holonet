@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Forum Display URL</key>
+	<string>http://www.swtor.com/community/forumdisplay.php</string>
+	<key>Thread Display URL</key>
+	<string>http://www.swtor.com/community/showthread.php</string>
+	<key>Category Query Param</key>
+	<string>f</string>
+	<key>Thread Param Name</key>
+	<string>t</string>
+	<key>Paging Query Param</key>
+	<string>page</string>
+</dict>
+</plist>
