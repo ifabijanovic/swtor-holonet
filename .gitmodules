@@ -1,0 +1,6 @@
+[submodule "Third Party/AFNetworking"]
+	path = Third Party/AFNetworking
+	url = git@github.com:AFNetworking/AFNetworking.git
+[submodule "Third Party/HTMLReader"]
+	path = Third Party/HTMLReader
+	url = https://github.com/nolanw/HTMLReader.git

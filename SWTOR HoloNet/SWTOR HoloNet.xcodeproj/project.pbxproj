@@ -7,12 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
+		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
+		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
+		8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
+		815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
+		815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
+		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
+		817A216B19F6C4480093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
+		817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
+		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
+		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
+		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
+		81A49A7F19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
+		81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5C19F0FCC0007FEA4C /* HTMLDocumentType.m */; };
+		81A49A8119F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5C19F0FCC0007FEA4C /* HTMLDocumentType.m */; };
+		81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5E19F0FCC0007FEA4C /* HTMLElement.m */; };
+		81A49A8319F0FCC0007FEA4C /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5E19F0FCC0007FEA4C /* HTMLElement.m */; };
+		81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6019F0FCC0007FEA4C /* HTMLEntities.m */; };
+		81A49A8519F0FCC0007FEA4C /* HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6019F0FCC0007FEA4C /* HTMLEntities.m */; };
+		81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6319F0FCC0007FEA4C /* HTMLNode.m */; };
+		81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6319F0FCC0007FEA4C /* HTMLNode.m */; };
+		81A49A8819F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6519F0FCC0007FEA4C /* HTMLOrderedDictionary.m */; };
+		81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6519F0FCC0007FEA4C /* HTMLOrderedDictionary.m */; };
+		81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6719F0FCC0007FEA4C /* HTMLParser.m */; };
+		81A49A8B19F0FCC0007FEA4C /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6719F0FCC0007FEA4C /* HTMLParser.m */; };
+		81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6919F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m */; };
+		81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6919F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m */; };
+		81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6D19F0FCC0007FEA4C /* HTMLSelector.m */; };
+		81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6D19F0FCC0007FEA4C /* HTMLSelector.m */; };
+		81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6F19F0FCC0007FEA4C /* HTMLSerialization.m */; };
+		81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A6F19F0FCC0007FEA4C /* HTMLSerialization.m */; };
+		81A49A9219F0FCC0007FEA4C /* HTMLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7119F0FCC0007FEA4C /* HTMLString.m */; };
+		81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7119F0FCC0007FEA4C /* HTMLString.m */; };
+		81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7419F0FCC0007FEA4C /* HTMLTextNode.m */; };
+		81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7419F0FCC0007FEA4C /* HTMLTextNode.m */; };
+		81A49A9619F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7619F0FCC0007FEA4C /* HTMLTokenizer.m */; };
+		81A49A9719F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7619F0FCC0007FEA4C /* HTMLTokenizer.m */; };
+		81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */; };
+		81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */; };
+		81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
+		81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
 		81AB248419EFBD7700293D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248319EFBD7700293D26 /* ViewController.swift */; };
 		81AB248719EFBD7700293D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248519EFBD7700293D26 /* Main.storyboard */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81AB248C19EFBD7700293D26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248A19EFBD7700293D26 /* LaunchScreen.xib */; };
 		81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */; };
+		81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
+		81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
+		81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
+		81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
+		81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
+		81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AD19EFC5C400293D26 /* ForumPost.swift */; };
+		81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */; };
+		81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */; };
+		81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */; };
+		81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */; };
+		81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */; };
+		81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */; };
+		81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */; };
+		81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */; };
+		81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */; };
+		81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */; };
+		81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */; };
+		81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */; };
+		81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */; };
+		81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */; };
+		81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */; };
+		81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */; };
+		81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
+		81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */; };
+		81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */; };
+		81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */; };
+		81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
+		81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
+		81C228A419F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
+		81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
+		81C228A919F146C500EEF2C6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* String.swift */; };
+		81C228AA19F146C500EEF2C6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +99,48 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
+		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
+		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
+		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
+		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
+		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
+		81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLDocument.m; path = "../Third Party/HTMLReader/Code/HTMLDocument.m"; sourceTree = "<group>"; };
+		81A49A5B19F0FCC0007FEA4C /* HTMLDocumentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentType.h; path = "../Third Party/HTMLReader/Code/HTMLDocumentType.h"; sourceTree = "<group>"; };
+		81A49A5C19F0FCC0007FEA4C /* HTMLDocumentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentType.m; path = "../Third Party/HTMLReader/Code/HTMLDocumentType.m"; sourceTree = "<group>"; };
+		81A49A5D19F0FCC0007FEA4C /* HTMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLElement.h; path = "../Third Party/HTMLReader/Code/HTMLElement.h"; sourceTree = "<group>"; };
+		81A49A5E19F0FCC0007FEA4C /* HTMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLElement.m; path = "../Third Party/HTMLReader/Code/HTMLElement.m"; sourceTree = "<group>"; };
+		81A49A5F19F0FCC0007FEA4C /* HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLEntities.h; path = "../Third Party/HTMLReader/Code/HTMLEntities.h"; sourceTree = "<group>"; };
+		81A49A6019F0FCC0007FEA4C /* HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLEntities.m; path = "../Third Party/HTMLReader/Code/HTMLEntities.m"; sourceTree = "<group>"; };
+		81A49A6119F0FCC0007FEA4C /* HTMLNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNamespace.h; path = "../Third Party/HTMLReader/Code/HTMLNamespace.h"; sourceTree = "<group>"; };
+		81A49A6219F0FCC0007FEA4C /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = "../Third Party/HTMLReader/Code/HTMLNode.h"; sourceTree = "<group>"; };
+		81A49A6319F0FCC0007FEA4C /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = "../Third Party/HTMLReader/Code/HTMLNode.m"; sourceTree = "<group>"; };
+		81A49A6419F0FCC0007FEA4C /* HTMLOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLOrderedDictionary.h; path = "../Third Party/HTMLReader/Code/HTMLOrderedDictionary.h"; sourceTree = "<group>"; };
+		81A49A6519F0FCC0007FEA4C /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLOrderedDictionary.m; path = "../Third Party/HTMLReader/Code/HTMLOrderedDictionary.m"; sourceTree = "<group>"; };
+		81A49A6619F0FCC0007FEA4C /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "../Third Party/HTMLReader/Code/HTMLParser.h"; sourceTree = "<group>"; };
+		81A49A6719F0FCC0007FEA4C /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "../Third Party/HTMLReader/Code/HTMLParser.m"; sourceTree = "<group>"; };
+		81A49A6819F0FCC0007FEA4C /* HTMLPreprocessedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLPreprocessedInputStream.h; path = "../Third Party/HTMLReader/Code/HTMLPreprocessedInputStream.h"; sourceTree = "<group>"; };
+		81A49A6919F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLPreprocessedInputStream.m; path = "../Third Party/HTMLReader/Code/HTMLPreprocessedInputStream.m"; sourceTree = "<group>"; };
+		81A49A6A19F0FCC0007FEA4C /* HTMLQuirksMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLQuirksMode.h; path = "../Third Party/HTMLReader/Code/HTMLQuirksMode.h"; sourceTree = "<group>"; };
+		81A49A6B19F0FCC0007FEA4C /* HTMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLReader.h; path = "../Third Party/HTMLReader/Code/HTMLReader.h"; sourceTree = "<group>"; };
+		81A49A6C19F0FCC0007FEA4C /* HTMLSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSelector.h; path = "../Third Party/HTMLReader/Code/HTMLSelector.h"; sourceTree = "<group>"; };
+		81A49A6D19F0FCC0007FEA4C /* HTMLSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLSelector.m; path = "../Third Party/HTMLReader/Code/HTMLSelector.m"; sourceTree = "<group>"; };
+		81A49A6E19F0FCC0007FEA4C /* HTMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSerialization.h; path = "../Third Party/HTMLReader/Code/HTMLSerialization.h"; sourceTree = "<group>"; };
+		81A49A6F19F0FCC0007FEA4C /* HTMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLSerialization.m; path = "../Third Party/HTMLReader/Code/HTMLSerialization.m"; sourceTree = "<group>"; };
+		81A49A7019F0FCC0007FEA4C /* HTMLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLString.h; path = "../Third Party/HTMLReader/Code/HTMLString.h"; sourceTree = "<group>"; };
+		81A49A7119F0FCC0007FEA4C /* HTMLString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLString.m; path = "../Third Party/HTMLReader/Code/HTMLString.m"; sourceTree = "<group>"; };
+		81A49A7219F0FCC0007FEA4C /* HTMLSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSupport.h; path = "../Third Party/HTMLReader/Code/HTMLSupport.h"; sourceTree = "<group>"; };
+		81A49A7319F0FCC0007FEA4C /* HTMLTextNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTextNode.h; path = "../Third Party/HTMLReader/Code/HTMLTextNode.h"; sourceTree = "<group>"; };
+		81A49A7419F0FCC0007FEA4C /* HTMLTextNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTextNode.m; path = "../Third Party/HTMLReader/Code/HTMLTextNode.m"; sourceTree = "<group>"; };
+		81A49A7519F0FCC0007FEA4C /* HTMLTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizer.h; path = "../Third Party/HTMLReader/Code/HTMLTokenizer.h"; sourceTree = "<group>"; };
+		81A49A7619F0FCC0007FEA4C /* HTMLTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizer.m; path = "../Third Party/HTMLReader/Code/HTMLTokenizer.m"; sourceTree = "<group>"; };
+		81A49A7719F0FCC0007FEA4C /* HTMLTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerState.h; path = "../Third Party/HTMLReader/Code/HTMLTokenizerState.h"; sourceTree = "<group>"; };
+		81A49A7819F0FCC0007FEA4C /* HTMLTreeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTreeEnumerator.h; path = "../Third Party/HTMLReader/Code/HTMLTreeEnumerator.h"; sourceTree = "<group>"; };
+		81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "../Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
+		81A49A7A19F0FCC0007FEA4C /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
+		81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
 		81AB247C19EFBD7700293D26 /* SWTOR HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWTOR HoloNet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB248119EFBD7700293D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +151,34 @@
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTOR_HoloNetTests.swift; sourceTree = "<group>"; };
+		81AB24A719EFC21100293D26 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategory.swift; path = Module/Forum/Model/ForumCategory.swift; sourceTree = "<group>"; };
+		81AB24AA19EFC3FD00293D26 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThread.swift; path = Module/Forum/Model/ForumThread.swift; sourceTree = "<group>"; };
+		81AB24AD19EFC5C400293D26 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPost.swift; path = Module/Forum/Model/ForumPost.swift; sourceTree = "<group>"; };
+		81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNet-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNetTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		81AB24B419EFCAC000293D26 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperation.h"; sourceTree = "<group>"; };
+		81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperation.m"; sourceTree = "<group>"; };
+		81AB24B619EFCAC000293D26 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.h"; sourceTree = "<group>"; };
+		81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.m"; sourceTree = "<group>"; };
+		81AB24B819EFCAC000293D26 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPSessionManager.h"; sourceTree = "<group>"; };
+		81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFHTTPSessionManager.m"; sourceTree = "<group>"; };
+		81AB24BA19EFCAC000293D26 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = "../Third Party/AFNetworking/AFNetworking/AFNetworking.h"; sourceTree = "<group>"; };
+		81AB24BB19EFCAC000293D26 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFNetworkReachabilityManager.h"; sourceTree = "<group>"; };
+		81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m"; sourceTree = "<group>"; };
+		81AB24BD19EFCAC000293D26 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = "../Third Party/AFNetworking/AFNetworking/AFSecurityPolicy.h"; sourceTree = "<group>"; };
+		81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = "../Third Party/AFNetworking/AFNetworking/AFSecurityPolicy.m"; sourceTree = "<group>"; };
+		81AB24BF19EFCAC000293D26 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLConnectionOperation.h"; sourceTree = "<group>"; };
+		81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLConnectionOperation.m"; sourceTree = "<group>"; };
+		81AB24C119EFCAC000293D26 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLRequestSerialization.h"; sourceTree = "<group>"; };
+		81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLRequestSerialization.m"; sourceTree = "<group>"; };
+		81AB24C319EFCAC000293D26 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLResponseSerialization.h"; sourceTree = "<group>"; };
+		81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLResponseSerialization.m"; sourceTree = "<group>"; };
+		81AB24C519EFCAC000293D26 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.h"; sourceTree = "<group>"; };
+		81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.m"; sourceTree = "<group>"; };
+		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
+		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
+		81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponents.swift; path = Extension/NSURLComponents.swift; sourceTree = "<group>"; };
+		81C228A819F146C500EEF2C6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Extension/String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +199,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81A49A5619F0FC98007FEA4C /* HTMLReader */ = {
+			isa = PBXGroup;
+			children = (
+				81A49A5719F0FCC0007FEA4C /* HTMLComment.h */,
+				81A49A5819F0FCC0007FEA4C /* HTMLComment.m */,
+				81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */,
+				81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */,
+				81A49A5B19F0FCC0007FEA4C /* HTMLDocumentType.h */,
+				81A49A5C19F0FCC0007FEA4C /* HTMLDocumentType.m */,
+				81A49A5D19F0FCC0007FEA4C /* HTMLElement.h */,
+				81A49A5E19F0FCC0007FEA4C /* HTMLElement.m */,
+				81A49A5F19F0FCC0007FEA4C /* HTMLEntities.h */,
+				81A49A6019F0FCC0007FEA4C /* HTMLEntities.m */,
+				81A49A6119F0FCC0007FEA4C /* HTMLNamespace.h */,
+				81A49A6219F0FCC0007FEA4C /* HTMLNode.h */,
+				81A49A6319F0FCC0007FEA4C /* HTMLNode.m */,
+				81A49A6419F0FCC0007FEA4C /* HTMLOrderedDictionary.h */,
+				81A49A6519F0FCC0007FEA4C /* HTMLOrderedDictionary.m */,
+				81A49A6619F0FCC0007FEA4C /* HTMLParser.h */,
+				81A49A6719F0FCC0007FEA4C /* HTMLParser.m */,
+				81A49A6819F0FCC0007FEA4C /* HTMLPreprocessedInputStream.h */,
+				81A49A6919F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m */,
+				81A49A6A19F0FCC0007FEA4C /* HTMLQuirksMode.h */,
+				81A49A6B19F0FCC0007FEA4C /* HTMLReader.h */,
+				81A49A6C19F0FCC0007FEA4C /* HTMLSelector.h */,
+				81A49A6D19F0FCC0007FEA4C /* HTMLSelector.m */,
+				81A49A6E19F0FCC0007FEA4C /* HTMLSerialization.h */,
+				81A49A6F19F0FCC0007FEA4C /* HTMLSerialization.m */,
+				81A49A7019F0FCC0007FEA4C /* HTMLString.h */,
+				81A49A7119F0FCC0007FEA4C /* HTMLString.m */,
+				81A49A7219F0FCC0007FEA4C /* HTMLSupport.h */,
+				81A49A7319F0FCC0007FEA4C /* HTMLTextNode.h */,
+				81A49A7419F0FCC0007FEA4C /* HTMLTextNode.m */,
+				81A49A7519F0FCC0007FEA4C /* HTMLTokenizer.h */,
+				81A49A7619F0FCC0007FEA4C /* HTMLTokenizer.m */,
+				81A49A7719F0FCC0007FEA4C /* HTMLTokenizerState.h */,
+				81A49A7819F0FCC0007FEA4C /* HTMLTreeEnumerator.h */,
+				81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */,
+				81A49A7A19F0FCC0007FEA4C /* NSString+HTMLEntities.h */,
+				81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */,
+			);
+			name = HTMLReader;
+			sourceTree = "<group>";
+		};
 		81AB247319EFBD7700293D26 = {
 			isa = PBXGroup;
 			children = (
 				81AB247E19EFBD7700293D26 /* SWTOR HoloNet */,
 				81AB249419EFBD7700293D26 /* SWTOR HoloNetTests */,
+				81AB24B019EFCA8A00293D26 /* Third Party */,
 				81AB247D19EFBD7700293D26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,9 +265,12 @@
 		81AB247E19EFBD7700293D26 /* SWTOR HoloNet */ = {
 			isa = PBXGroup;
 			children = (
+				81C228A219F1337C00EEF2C6 /* Extension */,
+				81AB24A319EFC18400293D26 /* Module */,
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
 				81AB248319EFBD7700293D26 /* ViewController.swift */,
 				81AB248519EFBD7700293D26 /* Main.storyboard */,
+				817A216A19F6C4480093ECE3 /* Settings.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
 				81AB248A19EFBD7700293D26 /* LaunchScreen.xib */,
 				81AB247F19EFBD7700293D26 /* Supporting Files */,
@@ -90,7 +281,9 @@
 		81AB247F19EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */,
 				81AB248019EFBD7700293D26 /* Info.plist */,
+				817A216719F6C1BD0093ECE3 /* Settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -107,9 +300,93 @@
 		81AB249519EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */,
 				81AB249619EFBD7700293D26 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81AB24A319EFC18400293D26 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24A419EFC18B00293D26 /* Forum */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		81AB24A419EFC18B00293D26 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24A519EFC19100293D26 /* Data */,
+				81AB24A619EFC19C00293D26 /* Model */,
+			);
+			name = Forum;
+			sourceTree = "<group>";
+		};
+		81AB24A519EFC19100293D26 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8147C8F919F161EC00D98C61 /* ForumParser.swift */,
+				81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */,
+				8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */,
+				815B211519F3A2B900B9E725 /* ForumPostRepository.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		81AB24A619EFC19C00293D26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */,
+				81AB24A719EFC21100293D26 /* ForumCategory.swift */,
+				81AB24AA19EFC3FD00293D26 /* ForumThread.swift */,
+				81AB24AD19EFC5C400293D26 /* ForumPost.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		81AB24B019EFCA8A00293D26 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24B119EFCAA100293D26 /* AFNetworking */,
+				81A49A5619F0FC98007FEA4C /* HTMLReader */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		81AB24B119EFCAA100293D26 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				81AB24B419EFCAC000293D26 /* AFHTTPRequestOperation.h */,
+				81AB24B519EFCAC000293D26 /* AFHTTPRequestOperation.m */,
+				81AB24B619EFCAC000293D26 /* AFHTTPRequestOperationManager.h */,
+				81AB24B719EFCAC000293D26 /* AFHTTPRequestOperationManager.m */,
+				81AB24B819EFCAC000293D26 /* AFHTTPSessionManager.h */,
+				81AB24B919EFCAC000293D26 /* AFHTTPSessionManager.m */,
+				81AB24BA19EFCAC000293D26 /* AFNetworking.h */,
+				81AB24BB19EFCAC000293D26 /* AFNetworkReachabilityManager.h */,
+				81AB24BC19EFCAC000293D26 /* AFNetworkReachabilityManager.m */,
+				81AB24BD19EFCAC000293D26 /* AFSecurityPolicy.h */,
+				81AB24BE19EFCAC000293D26 /* AFSecurityPolicy.m */,
+				81AB24BF19EFCAC000293D26 /* AFURLConnectionOperation.h */,
+				81AB24C019EFCAC000293D26 /* AFURLConnectionOperation.m */,
+				81AB24C119EFCAC000293D26 /* AFURLRequestSerialization.h */,
+				81AB24C219EFCAC000293D26 /* AFURLRequestSerialization.m */,
+				81AB24C319EFCAC000293D26 /* AFURLResponseSerialization.h */,
+				81AB24C419EFCAC000293D26 /* AFURLResponseSerialization.m */,
+				81AB24C519EFCAC000293D26 /* AFURLSessionManager.h */,
+				81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		81C228A219F1337C00EEF2C6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */,
+				81C228A819F146C500EEF2C6 /* String.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
+				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				81AB248C19EFBD7700293D26 /* LaunchScreen.xib in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 			);
@@ -212,8 +490,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
+				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
+				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
+				81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
+				81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
+				81A49A8819F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
+				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
+				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
+				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
+				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
+				81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */,
+				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
+				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
+				81C228A419F1340C00EEF2C6 /* NSURLComponents.swift in Sources */,
+				81C228A919F146C500EEF2C6 /* String.swift in Sources */,
+				81A49A9219F0FCC0007FEA4C /* HTMLString.m in Sources */,
+				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
+				817A216B19F6C4480093ECE3 /* Settings.swift in Sources */,
+				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
+				81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */,
+				81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
+				81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
+				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
+				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
+				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */,
+				81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
+				81A49A9619F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
+				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
+				81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
+				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
+				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
+				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +535,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
+				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */,
+				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
+				81A49A8519F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
+				81A49A8319F0FCC0007FEA4C /* HTMLElement.m in Sources */,
+				81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
+				815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
+				81A49A7F19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
+				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
+				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */,
+				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				81C228AA19F146C500EEF2C6 /* String.swift in Sources */,
+				81A49A8119F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
+				81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
+				817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */,
+				81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
+				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
+				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
+				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
+				81A49A9719F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
+				81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
+				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
+				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
+				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
+				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
+				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
+				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
+				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
+				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
+				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
+				8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */,
+				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
+				81A49A8B19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +686,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -347,10 +700,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -358,6 +713,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -369,6 +725,8 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Debug;
@@ -377,6 +735,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -384,6 +743,7 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Release;
@@ -407,6 +767,7 @@
 				81AB249D19EFBD7700293D26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81AB249E19EFBD7700293D26 /* Build configuration list for PBXNativeTarget "SWTOR HoloNetTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +776,7 @@
 				81AB24A019EFBD7700293D26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
