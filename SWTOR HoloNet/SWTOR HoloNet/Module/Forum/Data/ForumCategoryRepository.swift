@@ -12,10 +12,7 @@ class ForumCategoryRepository {
     
     // MARK: - Properties
     
-    var useCache: Bool
-    
     private let settings: Settings
-    private var cache: Dictionary<Int, Array<ForumCategory>>
     private let parser: ForumParser
     
     // MARK: - Init
@@ -23,61 +20,32 @@ class ForumCategoryRepository {
     init(settings: Settings) {
         self.settings = settings
         self.parser = ForumParser()
-        
-        self.useCache = true
-        self.cache = Dictionary<Int, Array<ForumCategory>>()
     }
     
     // MARK: - Public methods
     
     func get(#language: ForumLanguage, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: language.toRaw(), success: success, failure: failure)
+        self.get(id: language.toRaw(), page: 1, success: success, failure: failure)
     }
     
-    func get(#category: ForumCategory, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: category.id, success: success, failure: failure)
+    func get(#category: ForumCategory, page: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+        self.get(id: category.id, page: page, success: success, failure: failure)
     }
     
     // MARK: - Network
     
-    private func get(#id: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
-        // Cache
-        if useCache {
-            if let data = self.cache[id] {
-                success(data)
-                return
-            }
-        }
-        
+    private func get(#id: Int, page: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
+        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
-            if self.useCache {
-                self.cache[id] = items
-            }
-            
             success(items)
         }) { (operation, error) in
             failure(error)
         }
-    }
-    
-    // MARK: - Caching
-    
-    func clear() {
-        self.cache.removeAll(keepCapacity: false)
-    }
-    
-    func clear(#language: ForumLanguage) {
-        self.cache[language.toRaw()] = nil
-    }
-    
-    func clear(#category: ForumCategory) {
-        self.cache[category.id] = nil
     }
     
     // MARK: - Parsing

@@ -326,10 +326,10 @@
 		81AB24A519EFC19100293D26 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */,
 				8147C8F919F161EC00D98C61 /* ForumParser.swift */,
-				815B211519F3A2B900B9E725 /* ForumPostRepository.swift */,
+				81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */,
 				8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */,
+				815B211519F3A2B900B9E725 /* ForumPostRepository.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -337,10 +337,10 @@
 		81AB24A619EFC19C00293D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */,
 				81AB24A719EFC21100293D26 /* ForumCategory.swift */,
 				81AB24AA19EFC3FD00293D26 /* ForumThread.swift */,
 				81AB24AD19EFC5C400293D26 /* ForumPost.swift */,
-				81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
