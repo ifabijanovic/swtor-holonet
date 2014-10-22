@@ -56,6 +56,8 @@ class ForumListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.rowHeight = 104.0
 
         func categorySuccess(categories: Array<ForumCategory>) {
             self.categories = categories
@@ -121,9 +123,7 @@ class ForumListTableViewController: UITableViewController {
         if indexPath.section == CategorySection {
             // Category
             cell = tableView.dequeueReusableCellWithIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-            let category = self.categories![indexPath.row]
-            cell.textLabel.text = category.title
-            cell.tag = indexPath.row
+            self.setupCategoryCell(cell, indexPath: indexPath)
         } else if indexPath.section == ThreadSection {
             cell = tableView.dequeueReusableCellWithIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as UITableViewCell
             let thread = self.threads![indexPath.row]
@@ -165,6 +165,18 @@ class ForumListTableViewController: UITableViewController {
     
     private func hasThreads() -> Bool {
         return self.threads?.count > 0 ?? false
+    }
+    
+    private func setupCategoryCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+        let category = self.categories![indexPath.row]
+        let imageView = cell.viewWithTag(100) as UIImageView
+        let titleLabel = cell.viewWithTag(101) as UILabel
+        let statsLabel = cell.viewWithTag(102) as UILabel
+        let lastPostLabel = cell.viewWithTag(103) as UILabel
+        
+        titleLabel.text = category.title
+        statsLabel.text = category.stats
+        lastPostLabel.text = category.lastPost
     }
 
 }
