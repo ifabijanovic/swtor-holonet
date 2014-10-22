@@ -29,7 +29,10 @@ class MainMenuViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "forum" {
+            let controller = segue.destinationViewController as ForumListTableViewController
+            controller.setup(settings: self.settings)
+        }
     }
     
 }

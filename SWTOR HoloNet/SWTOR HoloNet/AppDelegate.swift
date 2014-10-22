@@ -35,45 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        let settings = Settings()
-        let catRepo = ForumCategoryRepository(settings: settings)
-        let threadRepo = ForumThreadRepository(settings: settings)
-        let postRepo = ForumPostRepository(settings: settings)
-        
-        catRepo.get(language: ForumLanguage.English, success: { (categories) -> Void in
-            
-            println("*** CATEGORIES ***")
-            for item in categories {
-                println(item.title)
-            }
-            
-            let general = categories[9]
-            threadRepo.get(category: general, page: 1, success: { (threads) -> Void in
-                
-                println("*** THREADS ***")
-                for item in threads {
-                    println(item.title)
-                }
-                
-                postRepo.get(thread: threads.first!, page: 1, success: { (posts) -> Void in
-                    
-                    println("*** POSTS ***")
-                    for item in posts {
-                        println("Posted by \(item.username) on \(item.date)")
-                    }
-                    
-                }, failure: { (error) -> Void in
-                    println("Post error: \(error.localizedDescription)")
-                })
-                
-            }, failure: { (error) -> Void in
-                println("Thread error: \(error.localizedDescription)")
-            })
-            
-        }) { (error) -> Void in
-            println("Category error: \(error.localizedDescription)")
-        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
