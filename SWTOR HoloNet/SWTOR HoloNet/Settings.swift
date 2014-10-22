@@ -17,6 +17,8 @@ class Settings {
     let categoryQueryParam: String
     let threadQueryParam: String
     let pageQueryParam: String
+    let devTrackerIconUrl: String
+    let stickyIconUrl: String
     
     var forumLanguage: ForumLanguage
     
@@ -31,6 +33,8 @@ class Settings {
         self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
         self.threadQueryParam = settings?.objectForKey("Thread Param Name") as? String ?? ""
         self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
+        self.devTrackerIconUrl = settings?.objectForKey("Dev Tracker Icon URL") as? String ?? ""
+        self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
         
         self.forumLanguage = ForumLanguage.English
     }

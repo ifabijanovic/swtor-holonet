@@ -104,7 +104,7 @@ class ForumThreadRepository {
         if replies == nil { return nil }
         if views == nil { return nil }
         
-        let thread = ForumThread(id: id!, title: title!, lastPostDate: lastPostDate!, author: author!, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
+        let thread = ForumThread(id: id!, title: title!.stripLeadingSpaces(), lastPostDate: lastPostDate!, author: author!, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
         
         return thread
     }

@@ -12,5 +12,9 @@
 	<string>t</string>
 	<key>Paging Query Param</key>
 	<string>page</string>
+	<key>Dev Tracker Icon URL</key>
+	<string>http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png</string>
+	<key>Sticky Icon URL</key>
+	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
 </dict>
 </plist>

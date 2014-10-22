@@ -119,7 +119,7 @@ class ForumListTableViewController: UITableViewController {
         if indexPath.section == CategorySection {
             return 104.0
         }
-        return 44.0
+        return 64.0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -131,10 +131,7 @@ class ForumListTableViewController: UITableViewController {
             self.setupCategoryCell(cell, indexPath: indexPath)
         } else if indexPath.section == ThreadSection {
             cell = tableView.dequeueReusableCellWithIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-            let thread = self.threads![indexPath.row]
-            cell.textLabel.text = thread.title
-            cell.detailTextLabel?.text = thread.author
-            cell.tag = indexPath.row
+            self.setupThreadCell(cell, indexPath: indexPath)
         } else {
             cell = UITableViewCell()
         }
@@ -186,6 +183,35 @@ class ForumListTableViewController: UITableViewController {
         titleLabel.text = category.title
         statsLabel.text = category.stats
         lastPostLabel.text = category.lastPost
+        
+        cell.tag = indexPath.row
+    }
+    
+    private func setupThreadCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+        let thread = self.threads![indexPath.row]
+        let titleLabel = cell.viewWithTag(100) as UILabel
+        let authorLabel = cell.viewWithTag(101) as UILabel
+        let devImageView = cell.viewWithTag(102) as UIImageView
+        let stickyImageView = cell.viewWithTag(103) as UIImageView
+        let repliesViewsLabel = cell.viewWithTag(104) as UILabel
+        
+        if thread.hasBiowareReply {
+            devImageView.hidden = false
+            devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+        } else {
+            devImageView.hidden = true
+        }
+        
+        if thread.isSticky {
+            stickyImageView.hidden = false
+            stickyImageView.sd_setImageWithURL(NSURL(string: self.settings!.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+        } else {
+            stickyImageView.hidden = true
+        }
+        
+        titleLabel.text = thread.title
+        authorLabel.text = thread.author
+        repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
         
         cell.tag = indexPath.row
     }

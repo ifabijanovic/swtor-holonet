@@ -17,6 +17,14 @@ extension String {
         let withoutTabs = withoutNewLines.stringByReplacingOccurrencesOfString("\t", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         return withoutTabs
     }
+
+    func stripLeadingSpaces() -> String {
+        var value = self
+        while value.hasPrefix(" ") {
+            value = value.substringFromIndex(1)
+        }
+        return value
+    }
     
     func stripSpaces() -> String {
         return self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
