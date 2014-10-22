@@ -4,3 +4,6 @@
 [submodule "Third Party/HTMLReader"]
 	path = Third Party/HTMLReader
 	url = https://github.com/nolanw/HTMLReader.git
+[submodule "Third Party/SDWebImage"]
+	path = Third Party/SDWebImage
+	url = git@github.com:rs/SDWebImage.git
