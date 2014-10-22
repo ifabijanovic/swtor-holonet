@@ -4,3 +4,4 @@
 
 #import "AFNetworking.h"
 #import "HTMLReader.h"
+#import "UIImageView+WebCache.h"

@@ -114,6 +114,13 @@ class ForumListTableViewController: UITableViewController {
         }
         return nil
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == CategorySection {
+            return 104.0
+        }
+        return 44.0
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell
@@ -121,9 +128,7 @@ class ForumListTableViewController: UITableViewController {
         if indexPath.section == CategorySection {
             // Category
             cell = tableView.dequeueReusableCellWithIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-            let category = self.categories![indexPath.row]
-            cell.textLabel.text = category.title
-            cell.tag = indexPath.row
+            self.setupCategoryCell(cell, indexPath: indexPath)
         } else if indexPath.section == ThreadSection {
             cell = tableView.dequeueReusableCellWithIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as UITableViewCell
             let thread = self.threads![indexPath.row]
@@ -165,6 +170,24 @@ class ForumListTableViewController: UITableViewController {
     
     private func hasThreads() -> Bool {
         return self.threads?.count > 0 ?? false
+    }
+    
+    private func setupCategoryCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+        let category = self.categories![indexPath.row]
+        let imageView = cell.viewWithTag(100) as UIImageView
+        let titleLabel = cell.viewWithTag(101) as UILabel
+        let statsLabel = cell.viewWithTag(102) as UILabel
+        let lastPostLabel = cell.viewWithTag(103) as UILabel
+        
+        if let url = category.iconUrl {
+            imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+        }
+        
+        titleLabel.text = category.title
+        statsLabel.text = category.stats
+        lastPostLabel.text = category.lastPost
+        
+        cell.tag = indexPath.row
     }
 
 }
