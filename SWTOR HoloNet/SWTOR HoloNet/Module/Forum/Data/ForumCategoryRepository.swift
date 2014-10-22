@@ -25,20 +25,20 @@ class ForumCategoryRepository {
     // MARK: - Public methods
     
     func get(#language: ForumLanguage, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: language.toRaw(), page: 1, success: success, failure: failure)
+        self.get(id: language.rawValue, success: success, failure: failure)
     }
     
-    func get(#category: ForumCategory, page: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: category.id, page: page, success: success, failure: failure)
+    func get(#category: ForumCategory, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+        self.get(id: category.id, success: success, failure: failure)
     }
     
     // MARK: - Network
     
-    private func get(#id: Int, page: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+    private func get(#id: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)

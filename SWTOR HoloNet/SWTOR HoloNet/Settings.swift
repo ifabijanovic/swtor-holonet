@@ -18,6 +18,8 @@ class Settings {
     let threadQueryParam: String
     let pageQueryParam: String
     
+    var forumLanguage: ForumLanguage
+    
     // MARK: - Init
     
     init() {
@@ -29,6 +31,8 @@ class Settings {
         self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
         self.threadQueryParam = settings?.objectForKey("Thread Param Name") as? String ?? ""
         self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
+        
+        self.forumLanguage = ForumLanguage.English
     }
     
 }
