@@ -15,6 +15,8 @@
 		815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
 		8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
+		8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */; };
+		8177E50A19F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */; };
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
 		817A216B19F6C4480093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
 		817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
@@ -106,6 +108,7 @@
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
 		8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListTableViewController.swift; path = Module/Forum/UI/ForumListTableViewController.swift; sourceTree = "<group>"; };
+		8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewController.swift; path = Module/Forum/UI/ForumThreadTableViewController.swift; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		81A1E20319F707E800C5C833 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = Module/App/UI/MainMenuViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
+				8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -542,6 +546,7 @@
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
 				81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */,
 				81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
+				8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
 				81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
@@ -596,6 +601,7 @@
 				8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
 				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
+				8177E50A19F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
 				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,

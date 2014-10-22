@@ -10,6 +10,10 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
 
+    // MARK: - Constants
+    
+    private let ForumSegue = "forumSegue"
+    
     // MARK: - Properties
     
     private let settings = Settings()
@@ -29,7 +33,7 @@ class MainMenuViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "forum" {
+        if segue.identifier == ForumSegue {
             let controller = segue.destinationViewController as ForumListTableViewController
             controller.setup(settings: self.settings)
         }

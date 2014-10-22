@@ -24,7 +24,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0DN-yQ-lYj" kind="show" identifier="forum" id="WRk-YA-Spb"/>
+                                    <segue destination="0DN-yQ-lYj" kind="show" identifier="forumSegue" id="WRk-YA-Spb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,7 +64,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="0DN-yQ-lYj" kind="show" identifier="category" id="ynV-cj-ujw"/>
+                                    <segue destination="0DN-yQ-lYj" kind="show" identifier="categorySegue" id="ynV-cj-ujw"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="threadCell" textLabel="hVZ-Tu-XwV" detailTextLabel="xO8-oP-ilC" style="IBUITableViewCellStyleValue1" id="xss-hz-aBv">
@@ -86,6 +86,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MmZ-8K-Gwd" kind="show" identifier="postSegue" id="CcK-iC-5WK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -99,6 +102,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQg-lx-z6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2793" y="390"/>
+        </scene>
+        <!--Forum Thread Table View Controller-->
+        <scene sceneID="JxE-zd-xu0">
+            <objects>
+                <tableViewController id="MmZ-8K-Gwd" customClass="ForumThreadTableViewController" customModule="SWTOR_HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5s0-aB-Ql8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" textLabel="IbP-xP-G42" style="IBUITableViewCellStyleDefault" id="hoN-0B-fC0">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hoN-0B-fC0" id="IBe-kl-zYW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IbP-xP-G42">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MmZ-8K-Gwd" id="CLH-i7-dKr"/>
+                            <outlet property="delegate" destination="MmZ-8K-Gwd" id="2Hb-XT-aMH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7g-FO-C2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3619" y="390"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aJV-lT-EtN">

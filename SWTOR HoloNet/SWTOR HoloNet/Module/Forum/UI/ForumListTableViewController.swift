@@ -18,7 +18,8 @@ class ForumListTableViewController: UITableViewController {
     private let ThreadsSectionTitle = "Threads"
     private let CategoryCellIdentifier = "categoryCell"
     private let ThreadCellIdentifier = "threadCell"
-    private let SubCategorySegue = "category"
+    private let SubCategorySegue = "categorySegue"
+    private let PostSegue = "postSegue"
     
     // MARK: - Properties
     
@@ -148,6 +149,11 @@ class ForumListTableViewController: UITableViewController {
             let cell = sender as UITableViewCell
             let category = self.categories![cell.tag]
             controller.setup(settings: self.settings!, category: category)
+        } else if segue.identifier == PostSegue {
+            let controller = segue.destinationViewController as ForumThreadTableViewController
+            let cell = sender as UITableViewCell
+            let thread = self.threads![cell.tag]
+            controller.setup(settings: self.settings!, thread: thread)
         }
     }
     
