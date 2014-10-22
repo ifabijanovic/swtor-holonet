@@ -24,11 +24,11 @@ class Settings {
         let path = NSBundle.mainBundle().pathForResource("Settings", ofType: "plist")!
         let settings = NSDictionary(contentsOfFile: path)
         
-        self.forumDisplayUrl = settings.objectForKey("Forum Display URL") as String
-        self.threadDisplayUrl = settings.objectForKey("Thread Display URL") as String
-        self.categoryQueryParam = settings.objectForKey("Category Query Param") as String
-        self.threadQueryParam = settings.objectForKey("Thread Param Name") as String
-        self.pageQueryParam = settings.objectForKey("Paging Query Param") as String
+        self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
+        self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""
+        self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
+        self.threadQueryParam = settings?.objectForKey("Thread Param Name") as? String ?? ""
+        self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
     }
     
 }

@@ -27,7 +27,7 @@ class ForumParser {
     func linkParameter(#linkElement: HTMLElement?, name: String) -> String? {
         if let element = linkElement {
             if let href = element.objectForKeyedSubscript("href") as? String {
-                if let value = NSURLComponents(string: href).queryValueForName(name) {
+                if let value = NSURLComponents(string: href)?.queryValueForName(name) {
                     return value
                 }
             }
@@ -37,7 +37,7 @@ class ForumParser {
     
     func integerContent(#element: HTMLElement?) -> Int? {
         if element != nil {
-            return self.numberFormatter.numberFromString(element!.textContent)
+            return self.numberFormatter.numberFromString(element!.textContent)?.integerValue
         }
         return nil
     }
@@ -56,7 +56,7 @@ class ForumParser {
                 if let spaceRange = numberString.rangeOfString("Next", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
                     numberString = numberString.substringToIndex(spaceRange.startIndex)
                 }
-                return self.numberFormatter.numberFromString(numberString)
+                return self.numberFormatter.numberFromString(numberString)?.integerValue
             }
         }
         return nil
