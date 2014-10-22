@@ -105,7 +105,7 @@ class ForumCategoryRepository {
         category.iconUrl = iconUrl
         category.description = description
         category.stats = stats
-        category.lastPost = lastPost
+        category.lastPost = lastPost?.stripNewLinesAndTabs()
         
         return category
     }

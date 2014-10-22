@@ -31,12 +31,12 @@ extension String {
     }
     
     func formatPostDate() -> String {
-        let withoutSpaces = self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        if let range = withoutSpaces.rangeOfString("|#", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
-            let withoutPostNumber = withoutSpaces.substringToIndex(range.startIndex)
-            return withoutPostNumber
+        var value = self.stripSpaces()
+        if let range = value.rangeOfString("|#", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+            value = value.substringToIndex(range.startIndex)
         }
-        return withoutSpaces
+        value = value.stringByReplacingOccurrencesOfString(",", withString: ", ", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        return value
     }
     
     // MARK: - Substring

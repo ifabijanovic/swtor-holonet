@@ -39,7 +39,7 @@ class ForumThreadTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.estimatedRowHeight = 94.0
         
         func success(posts: Array<ForumPost>) {
             self.posts = posts
@@ -73,7 +73,28 @@ class ForumThreadTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(PostCellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         let post = self.posts![indexPath.row]
-        cell.textLabel.text = post.text
+        let avatarImageView = cell.viewWithTag(100) as UIImageView
+        let dateLabel = cell.viewWithTag(101) as UILabel
+        let usernameLabel = cell.viewWithTag(102) as UILabel
+        let textLabel = cell.viewWithTag(103) as UILabel
+        let devImageView = cell.viewWithTag(104) as UIImageView
+
+        if let url = post.avatarUrl {
+            avatarImageView.hidden = false
+            avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
+        } else {
+            avatarImageView.hidden = true
+        }
+        if post.isBiowarePost {
+            devImageView.hidden = false
+            devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+        } else {
+            devImageView.hidden = true
+        }
+        
+        dateLabel.text = "\(post.date) | #\(post.postNumber)"
+        usernameLabel.text = post.username
+        textLabel.text = post.text
 
         return cell
     }
