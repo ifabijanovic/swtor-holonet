@@ -56,8 +56,6 @@ class ForumListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.rowHeight = 104.0
 
         func categorySuccess(categories: Array<ForumCategory>) {
             self.categories = categories
@@ -115,6 +113,13 @@ class ForumListTableViewController: UITableViewController {
             return ThreadsSectionTitle
         }
         return nil
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == CategorySection {
+            return 104.0
+        }
+        return 44.0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -174,9 +179,15 @@ class ForumListTableViewController: UITableViewController {
         let statsLabel = cell.viewWithTag(102) as UILabel
         let lastPostLabel = cell.viewWithTag(103) as UILabel
         
+        if let url = category.iconUrl {
+            imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+        }
+        
         titleLabel.text = category.title
         statsLabel.text = category.stats
         lastPostLabel.text = category.lastPost
+        
+        cell.tag = indexPath.row
     }
 
 }
