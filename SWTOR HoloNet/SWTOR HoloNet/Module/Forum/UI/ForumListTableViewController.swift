@@ -52,16 +52,12 @@ class ForumListTableViewController: ForumBaseTableViewController {
         }
     }
     
-    override func onRefresh() {
-        self.loadInitialData()
-    }
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadInitialData()
+        self.onRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -154,7 +150,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         return self.threads?.count > 0 ?? false
     }
     
-    func loadInitialData() {
+    override func onRefresh() {
         let lock = dispatch_queue_create("com.if.locl", nil)
         var requestCount = 0
         

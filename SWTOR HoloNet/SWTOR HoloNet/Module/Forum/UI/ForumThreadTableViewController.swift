@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumThreadTableViewController: UITableViewController {
+class ForumThreadTableViewController: ForumBaseTableViewController {
 
     // MARK: - Constants
     
@@ -41,15 +41,7 @@ class ForumThreadTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 94.0
         
-        func success(posts: Array<ForumPost>) {
-            self.posts = posts
-            self.tableView.reloadData()
-        }
-        func failure(error: NSError) {
-            println(error)
-        }
-        
-        self.postRepo!.get(thread: self.thread!, page: 1, success: success, failure: failure)
+        self.onRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +89,21 @@ class ForumThreadTableViewController: UITableViewController {
         textLabel.text = post.text
 
         return cell
+    }
+    
+    // MARK: - Helper methods
+    
+    override func onRefresh() {
+        func success(posts: Array<ForumPost>) {
+            self.posts = posts
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+        func failure(error: NSError) {
+            println(error)
+        }
+        
+        self.postRepo!.get(thread: self.thread!, page: 1, success: success, failure: failure)
     }
 
 }
