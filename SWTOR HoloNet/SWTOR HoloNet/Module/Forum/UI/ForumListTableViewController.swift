@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumListTableViewController: UITableViewController {
+class ForumListTableViewController: ForumBaseTableViewController {
     
     // MARK: - Constants
     
@@ -56,27 +56,8 @@ class ForumListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        func categorySuccess(categories: Array<ForumCategory>) {
-            self.categories = categories
-            self.tableView.reloadSections(NSIndexSet(index: CategorySection), withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-        func threadSuccess(threads: Array<ForumThread>) {
-            self.threads = threads
-            self.tableView.reloadSections(NSIndexSet(index: ThreadSection), withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-        func failure(error: NSError) {
-            println(error)
-        }
         
-        if let category = self.category {
-            // Load subcategories and threads for the current category
-            self.categoryRepo!.get(category: category, success: categorySuccess, failure: failure)
-            self.threadRepo!.get(category: category, page: 1, success: threadSuccess, failure: failure)
-        } else {
-            // Forum root, only load categories
-            self.categoryRepo!.get(language: self.settings!.forumLanguage, success: categorySuccess, failure: failure)
-        }
+        self.onRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,7 +139,7 @@ class ForumListTableViewController: UITableViewController {
             controller.setup(settings: self.settings!, thread: thread)
         }
     }
-    
+
     // MARK: - Helper methods
     
     private func hasCategories() -> Bool {
@@ -167,6 +148,43 @@ class ForumListTableViewController: UITableViewController {
     
     private func hasThreads() -> Bool {
         return self.threads?.count > 0 ?? false
+    }
+    
+    override func onRefresh() {
+        let lock = dispatch_queue_create("com.if.locl", nil)
+        var requestCount = 0
+        
+        let hideLoader: () -> Void = {
+            dispatch_sync(lock) { requestCount -= 1 }
+            if requestCount == 0 {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+        
+        func categorySuccess(categories: Array<ForumCategory>) {
+            self.categories = categories
+            self.tableView.reloadSections(NSIndexSet(index: CategorySection), withRowAnimation: UITableViewRowAnimation.Automatic)
+            hideLoader()
+        }
+        func threadSuccess(threads: Array<ForumThread>) {
+            self.threads = threads
+            self.tableView.reloadSections(NSIndexSet(index: ThreadSection), withRowAnimation: UITableViewRowAnimation.Automatic)
+            hideLoader()
+        }
+        func failure(error: NSError) {
+            println(error)
+        }
+        
+        if let category = self.category {
+            // Load subcategories and threads for the current category
+            requestCount = 2
+            self.categoryRepo!.get(category: category, success: categorySuccess, failure: failure)
+            self.threadRepo!.get(category: category, page: 1, success: threadSuccess, failure: failure)
+        } else {
+            // Forum root, only load categories
+            requestCount = 1
+            self.categoryRepo!.get(language: self.settings!.forumLanguage, success: categorySuccess, failure: failure)
+        }
     }
     
     private func setupCategoryCell(cell: UITableViewCell, indexPath: NSIndexPath) {

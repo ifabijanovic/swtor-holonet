@@ -119,6 +119,8 @@
 		81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */; };
 		81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
 		81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
+		81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */; };
+		81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */; };
 		81C228A419F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
 		81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
 		81C228A919F146C500EEF2C6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* String.swift */; };
@@ -249,6 +251,7 @@
 		81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = "../Third Party/AFNetworking/AFNetworking/AFURLSessionManager.m"; sourceTree = "<group>"; };
 		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
 		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
+		81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseTableViewController.swift; path = Module/Forum/UI/ForumBaseTableViewController.swift; sourceTree = "<group>"; };
 		81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponents.swift; path = Extension/NSURLComponents.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Extension/String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,6 +317,7 @@
 		8177E50419F7827600CF2B4B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
 				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
 				8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */,
 			);
@@ -630,6 +634,7 @@
 			files = (
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81255D8A19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
+				81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81255D8419F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
@@ -713,6 +718,7 @@
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
+				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */,
 				81255D8F19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
 				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
