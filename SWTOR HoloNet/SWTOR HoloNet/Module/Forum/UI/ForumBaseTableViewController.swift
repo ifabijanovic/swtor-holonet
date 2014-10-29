@@ -37,7 +37,7 @@ class ForumBaseTableViewController: UITableViewController {
     
     // MARK: - Scroll
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if !canLoadMore { return }
         
         let actualPosition = scrollView.contentOffset.y

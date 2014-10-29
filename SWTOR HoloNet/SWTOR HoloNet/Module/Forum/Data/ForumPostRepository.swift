@@ -53,7 +53,7 @@ class ForumPostRepository {
         let threadNodes = document.nodesMatchingSelector("#posts > div") as Array<HTMLElement>
         
         for node in threadNodes {
-            let thread = self.parseThread(node)
+            let thread = self.parsePost(node)
             if thread != nil {
                 items.append(thread!)
             }
@@ -62,7 +62,7 @@ class ForumPostRepository {
         return items
     }
     
-    private func parseThread(element: HTMLElement) -> ForumPost? {
+    private func parsePost(element: HTMLElement) -> ForumPost? {
         // Id
         let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".tinySubmitBtn"), name: "p")?.toInt()
         
