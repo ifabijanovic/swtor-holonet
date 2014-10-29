@@ -9,6 +9,26 @@
 /* Begin PBXBuildFile section */
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
+		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
+		8120F27319FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
+		8120F27419FFB2E200C02DF8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26919FFB2E200C02DF8 /* Dictionary.swift */; };
+		8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26919FFB2E200C02DF8 /* Dictionary.swift */; };
+		8120F27619FFB2E200C02DF8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26A19FFB2E200C02DF8 /* Double.swift */; };
+		8120F27719FFB2E200C02DF8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26A19FFB2E200C02DF8 /* Double.swift */; };
+		8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26B19FFB2E200C02DF8 /* ExSwift.swift */; };
+		8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26B19FFB2E200C02DF8 /* ExSwift.swift */; };
+		8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26C19FFB2E200C02DF8 /* Float.swift */; };
+		8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26C19FFB2E200C02DF8 /* Float.swift */; };
+		8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26D19FFB2E200C02DF8 /* Int.swift */; };
+		8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26D19FFB2E200C02DF8 /* Int.swift */; };
+		8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26E19FFB2E200C02DF8 /* NSArray.swift */; };
+		8120F27F19FFB2E200C02DF8 /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26E19FFB2E200C02DF8 /* NSArray.swift */; };
+		8120F28019FFB2E200C02DF8 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26F19FFB2E200C02DF8 /* Range.swift */; };
+		8120F28119FFB2E200C02DF8 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26F19FFB2E200C02DF8 /* Range.swift */; };
+		8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
+		8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
+		8120F28419FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
+		8120F28519FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
 		81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5419F7BBD600E0C018 /* NSData+ImageContentType.m */; };
@@ -123,10 +143,10 @@
 		81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
 		81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */; };
 		81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */; };
-		81C228A419F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
-		81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */; };
-		81C228A919F146C500EEF2C6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* String.swift */; };
-		81C228AA19F146C500EEF2C6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* String.swift */; };
+		81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
+		81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
+		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
+		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +161,16 @@
 
 /* Begin PBXFileReference section */
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
+		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
+		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
+		8120F26A19FFB2E200C02DF8 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Double.swift; path = "../Third Party/ExSwift/ExSwift/Double.swift"; sourceTree = "<group>"; };
+		8120F26B19FFB2E200C02DF8 /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = "../Third Party/ExSwift/ExSwift/ExSwift.swift"; sourceTree = "<group>"; };
+		8120F26C19FFB2E200C02DF8 /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Float.swift; path = "../Third Party/ExSwift/ExSwift/Float.swift"; sourceTree = "<group>"; };
+		8120F26D19FFB2E200C02DF8 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Int.swift; path = "../Third Party/ExSwift/ExSwift/Int.swift"; sourceTree = "<group>"; };
+		8120F26E19FFB2E200C02DF8 /* NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSArray.swift; path = "../Third Party/ExSwift/ExSwift/NSArray.swift"; sourceTree = "<group>"; };
+		8120F26F19FFB2E200C02DF8 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = "../Third Party/ExSwift/ExSwift/Range.swift"; sourceTree = "<group>"; };
+		8120F27019FFB2E200C02DF8 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = "../Third Party/ExSwift/ExSwift/Sequence.swift"; sourceTree = "<group>"; };
+		8120F27119FFB2E200C02DF8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../Third Party/ExSwift/ExSwift/String.swift"; sourceTree = "<group>"; };
 		81255D5119F7BBD600E0C018 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81255D5319F7BBD600E0C018 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "../Third Party/SDWebImage/SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -255,8 +285,8 @@
 		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
 		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
 		81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseTableViewController.swift; path = Module/Forum/UI/ForumBaseTableViewController.swift; sourceTree = "<group>"; };
-		81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponents.swift; path = Extension/NSURLComponents.swift; sourceTree = "<group>"; };
-		81C228A819F146C500EEF2C6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Extension/String.swift; sourceTree = "<group>"; };
+		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
+		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +313,23 @@
 				8120F26319FFB01A00C02DF8 /* Entity.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8120F26719FFB2BE00C02DF8 /* ExSwift */ = {
+			isa = PBXGroup;
+			children = (
+				8120F26819FFB2E200C02DF8 /* Array.swift */,
+				8120F26919FFB2E200C02DF8 /* Dictionary.swift */,
+				8120F26A19FFB2E200C02DF8 /* Double.swift */,
+				8120F26B19FFB2E200C02DF8 /* ExSwift.swift */,
+				8120F26C19FFB2E200C02DF8 /* Float.swift */,
+				8120F26D19FFB2E200C02DF8 /* Int.swift */,
+				8120F26E19FFB2E200C02DF8 /* NSArray.swift */,
+				8120F26F19FFB2E200C02DF8 /* Range.swift */,
+				8120F27019FFB2E200C02DF8 /* Sequence.swift */,
+				8120F27119FFB2E200C02DF8 /* String.swift */,
+			);
+			name = ExSwift;
 			sourceTree = "<group>";
 		};
 		81255D4819F7BAE700E0C018 /* SDWebImage */ = {
@@ -503,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				81AB24B119EFCAA100293D26 /* AFNetworking */,
+				8120F26719FFB2BE00C02DF8 /* ExSwift */,
 				81A49A5619F0FC98007FEA4C /* HTMLReader */,
 				81255D4819F7BAE700E0C018 /* SDWebImage */,
 			);
@@ -538,8 +586,8 @@
 		81C228A219F1337C00EEF2C6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				81C228A319F1340C00EEF2C6 /* NSURLComponents.swift */,
-				81C228A819F146C500EEF2C6 /* String.swift */,
+				81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */,
+				81C228A819F146C500EEF2C6 /* StringEx.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -650,6 +698,9 @@
 				81255D8419F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
+				8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */,
+				8120F28019FFB2E200C02DF8 /* Range.swift in Sources */,
+				8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */,
 				81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 				8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
@@ -665,12 +716,16 @@
 				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
 				81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				81255D8E19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
+				8120F27219FFB2E200C02DF8 /* Array.swift in Sources */,
 				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
+				8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
 				81255D7E19F7BBD600E0C018 /* SDWebImageDownloaderOperation.m in Sources */,
 				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
-				81C228A419F1340C00EEF2C6 /* NSURLComponents.swift in Sources */,
-				81C228A919F146C500EEF2C6 /* String.swift in Sources */,
+				8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */,
+				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
+				8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */,
+				81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */,
 				81A49A9219F0FCC0007FEA4C /* HTMLString.m in Sources */,
 				81255D7819F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
@@ -681,9 +736,11 @@
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
 				81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */,
 				81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
+				8120F27619FFB2E200C02DF8 /* Double.swift in Sources */,
 				81255D8019F7BBD600E0C018 /* SDWebImageManager.m in Sources */,
 				81255D7A19F7BBD600E0C018 /* SDWebImageDecoder.m in Sources */,
 				8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
+				8120F28419FFB2E200C02DF8 /* String.swift in Sources */,
 				81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
@@ -698,6 +755,7 @@
 				81A49A9619F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
 				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
 				81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
+				8120F27419FFB2E200C02DF8 /* Dictionary.swift in Sources */,
 				81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
@@ -724,38 +782,48 @@
 				81255D7B19F7BBD600E0C018 /* SDWebImageDecoder.m in Sources */,
 				81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
+				8120F28519FFB2E200C02DF8 /* String.swift in Sources */,
 				81A49A7F19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
+				8120F27F19FFB2E200C02DF8 /* NSArray.swift in Sources */,
+				8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */,
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
+				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
+				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
-				81C228A519F1340C00EEF2C6 /* NSURLComponents.swift in Sources */,
+				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				81255D8F19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
 				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
-				81C228AA19F146C500EEF2C6 /* String.swift in Sources */,
+				81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */,
 				81A49A8119F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
 				81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */,
 				81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
+				8120F27319FFB2E200C02DF8 /* Array.swift in Sources */,
 				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
+				8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81A49A9719F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
 				81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
 				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
+				8120F28119FFB2E200C02DF8 /* Range.swift in Sources */,
+				8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */,
 				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81255D8119F7BBD600E0C018 /* SDWebImageManager.m in Sources */,
 				8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
 				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
+				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
 				8177E50A19F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
 				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,

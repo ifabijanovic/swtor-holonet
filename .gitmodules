@@ -7,3 +7,6 @@
 [submodule "Third Party/SDWebImage"]
 	path = Third Party/SDWebImage
 	url = git@github.com:rs/SDWebImage.git
+[submodule "Third Party/ExSwift"]
+	path = Third Party/ExSwift
+	url = git@github.com:pNre/ExSwift.git
