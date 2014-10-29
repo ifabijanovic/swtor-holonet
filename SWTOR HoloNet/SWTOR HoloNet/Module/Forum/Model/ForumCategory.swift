@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ForumCategory {
+class ForumCategory: Entity {
     
     // MARK: - Properties
     
-    var id: Int
     var iconUrl: String?
     var title: String
     var description: String?
@@ -22,8 +21,8 @@ class ForumCategory {
     // MARK: - Init
     
     init(id: Int, title: String) {
-        self.id = id
         self.title = title
+        super.init(id: id)
     }
     
 }

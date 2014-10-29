@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ForumThread {
+class ForumThread: Entity {
     
     // MARK: - Properties
     
-    var id: Int
     var title: String
     var lastPostDate: String
     var author: String
@@ -24,7 +23,6 @@ class ForumThread {
     // MARK: - Init
     
     init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int, hasBiowareReply: Bool, isSticky: Bool) {
-        self.id = id
         self.title = title
         self.lastPostDate = lastPostDate
         self.author = author
@@ -32,6 +30,7 @@ class ForumThread {
         self.views = views
         self.hasBiowareReply = hasBiowareReply
         self.isSticky = isSticky
+        super.init(id: id)
     }
     
     convenience init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int) {
