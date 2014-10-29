@@ -32,8 +32,6 @@ class ForumListTableViewController: ForumBaseTableViewController {
     private var categories: Array<ForumCategory>?
     private var threads: Array<ForumThread>?
     
-    private var threadPage = 1
-    
     // MARK: - Public methods
     
     func setup(#settings: Settings) {
@@ -154,10 +152,18 @@ class ForumListTableViewController: ForumBaseTableViewController {
         let lock = dispatch_queue_create("com.if.locl", nil)
         var requestCount = 0
         
+        self.loadedPage = 1
+        self.canLoadMore = false
+        self.showLoader()
+        
         let hideLoader: () -> Void = {
             dispatch_sync(lock) { requestCount -= 1 }
             if requestCount == 0 {
-                self.refreshControl?.endRefreshing()
+                if self.category != nil {
+                    self.canLoadMore = true
+                } else {
+                    self.hideLoader()
+                }
             }
         }
         
@@ -185,6 +191,34 @@ class ForumListTableViewController: ForumBaseTableViewController {
             requestCount = 1
             self.categoryRepo!.get(language: self.settings!.forumLanguage, success: categorySuccess, failure: failure)
         }
+    }
+    
+    override func onLoadMore() {
+        if self.category == nil { return }
+        
+        self.canLoadMore = false
+        
+        func success(threads: Array<ForumThread>) {
+            if threads.isEmpty { return }
+            
+            var indexes = Array<NSIndexPath>()
+            for thread in threads {
+                indexes.append(NSIndexPath(forRow: self.threads!.count, inSection: ThreadSection))
+                self.threads!.append(thread)
+            }
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths(indexes, withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableView.endUpdates()
+            
+            self.loadedPage++
+            self.canLoadMore = true
+        }
+        func failure(error: NSError) {
+            println(error)
+        }
+        
+        self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
     private func setupCategoryCell(cell: UITableViewCell, indexPath: NSIndexPath) {
