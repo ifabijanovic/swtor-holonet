@@ -67,6 +67,10 @@
 		8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
 		815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
 		815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
+		8163619A1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */; };
+		8163619B1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */; };
+		8163619C1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 816361991A017C6E00E7D194 /* ForumThreadTableViewCell.xib */; };
+		8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 816361991A017C6E00E7D194 /* ForumThreadTableViewCell.xib */; };
 		8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */; };
@@ -207,6 +211,8 @@
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
+		816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewCell.swift; path = Module/Forum/UI/TableCell/ForumThreadTableViewCell.swift; sourceTree = "<group>"; };
+		816361991A017C6E00E7D194 /* ForumThreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumThreadTableViewCell.xib; path = Module/Forum/UI/TableCell/ForumThreadTableViewCell.xib; sourceTree = "<group>"; };
 		8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListTableViewController.swift; path = Module/Forum/UI/ForumListTableViewController.swift; sourceTree = "<group>"; };
 		8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewController.swift; path = Module/Forum/UI/ForumThreadTableViewController.swift; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
@@ -372,9 +378,19 @@
 			name = SDWebImage;
 			sourceTree = "<group>";
 		};
+		816361971A017C2400E7D194 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */,
+				816361991A017C6E00E7D194 /* ForumThreadTableViewCell.xib */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
 		8177E50419F7827600CF2B4B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				816361971A017C2400E7D194 /* TableCell */,
 				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
 				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
 				8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */,
@@ -673,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
+				8163619C1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 			);
@@ -682,6 +699,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +767,7 @@
 				81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				8163619A1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */,
 				8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
 				81255D8219F7BBD600E0C018 /* SDWebImagePrefetcher.m in Sources */,
@@ -825,6 +844,7 @@
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
 				8177E50A19F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
+				8163619B1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */,
 				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,

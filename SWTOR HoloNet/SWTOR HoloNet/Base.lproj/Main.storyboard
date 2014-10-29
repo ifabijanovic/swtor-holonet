@@ -113,62 +113,6 @@
                                     <segue destination="0DN-yQ-lYj" kind="show" identifier="categorySegue" id="ynV-cj-ujw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="threadCell" rowHeight="64" id="xss-hz-aBv">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xss-hz-aBv" id="7PH-eP-Rhm">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdU-1V-sBG">
-                                            <rect key="frame" x="15" y="12" width="570" height="17"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMh-Cq-aLh">
-                                            <rect key="frame" x="15" y="37" width="38" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hww-Jd-jho">
-                                            <rect key="frame" x="63" y="34" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="MYK-K9-v1U"/>
-                                                <constraint firstAttribute="width" constant="20" id="qKP-9O-Vav"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KGV-iE-yz5">
-                                            <rect key="frame" x="83" y="37" width="12" height="12"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="12" id="Ec6-8Z-nKA"/>
-                                                <constraint firstAttribute="width" constant="12" id="wyg-56-K41"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replies/Views" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-4V-f2U">
-                                            <rect key="frame" x="507" y="37" width="78" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="IMh-Cq-aLh" firstAttribute="leading" secondItem="7PH-eP-Rhm" secondAttribute="leading" constant="15" id="234-pK-uiV"/>
-                                        <constraint firstAttribute="trailing" secondItem="OdU-1V-sBG" secondAttribute="trailing" constant="15" id="6Vn-Ae-15Q"/>
-                                        <constraint firstItem="IMh-Cq-aLh" firstAttribute="top" secondItem="OdU-1V-sBG" secondAttribute="bottom" constant="8" id="6y0-0y-8W0"/>
-                                        <constraint firstItem="hww-Jd-jho" firstAttribute="leading" secondItem="IMh-Cq-aLh" secondAttribute="trailing" constant="10" id="8mr-jU-gUT"/>
-                                        <constraint firstItem="hww-Jd-jho" firstAttribute="top" secondItem="OdU-1V-sBG" secondAttribute="bottom" constant="5" id="MQu-Wa-B5y"/>
-                                        <constraint firstItem="KGV-iE-yz5" firstAttribute="leading" secondItem="hww-Jd-jho" secondAttribute="trailing" id="QsH-YA-FGp"/>
-                                        <constraint firstItem="rcj-4V-f2U" firstAttribute="top" secondItem="OdU-1V-sBG" secondAttribute="bottom" constant="8" id="RwO-fL-xMX"/>
-                                        <constraint firstItem="OdU-1V-sBG" firstAttribute="leading" secondItem="7PH-eP-Rhm" secondAttribute="leading" constant="15" id="UOq-4f-moP"/>
-                                        <constraint firstAttribute="trailing" secondItem="rcj-4V-f2U" secondAttribute="trailing" constant="15" id="b5n-aJ-5N3"/>
-                                        <constraint firstItem="KGV-iE-yz5" firstAttribute="top" secondItem="OdU-1V-sBG" secondAttribute="bottom" constant="8" id="dwr-xt-QZ2"/>
-                                        <constraint firstItem="OdU-1V-sBG" firstAttribute="top" secondItem="7PH-eP-Rhm" secondAttribute="top" constant="12" id="vrb-ht-kWy"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="MmZ-8K-Gwd" kind="show" identifier="postSegue" id="CcK-iC-5WK"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
