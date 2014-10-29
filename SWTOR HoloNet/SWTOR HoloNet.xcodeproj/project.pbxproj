@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
+		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5419F7BBD600E0C018 /* NSData+ImageContentType.m */; };
@@ -138,6 +140,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		81255D5119F7BBD600E0C018 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81255D5319F7BBD600E0C018 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "../Third Party/SDWebImage/SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -274,6 +277,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8120F26219FFB00600C02DF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8120F26319FFB01A00C02DF8 /* Entity.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		81255D4819F7BAE700E0C018 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +338,7 @@
 		81A1E1FE19F704D700C5C833 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8120F26219FFB00600C02DF8 /* Model */,
 				81A1E1FF19F704DD00C5C833 /* UI */,
 			);
 			name = App;
@@ -645,6 +657,7 @@
 				81255D7619F7BBD600E0C018 /* SDImageCache.m in Sources */,
 				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */,
+				8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81A1E20419F707E800C5C833 /* MainMenuViewController.swift in Sources */,
@@ -727,6 +740,7 @@
 				81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */,
 				81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
+				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
