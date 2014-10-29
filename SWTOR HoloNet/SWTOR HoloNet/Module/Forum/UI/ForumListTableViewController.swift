@@ -199,7 +199,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.canLoadMore = false
         
         func success(threads: Array<ForumThread>) {
-            if threads.isEmpty { return }
+            if threads.isEmpty {
+                self.hideLoader()
+                return
+            }
             
             var indexes = Array<NSIndexPath>()
             for thread in threads {

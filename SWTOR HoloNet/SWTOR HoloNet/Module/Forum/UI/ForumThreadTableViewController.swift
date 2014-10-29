@@ -94,16 +94,50 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     // MARK: - Helper methods
     
     override func onRefresh() {
+        self.loadedPage = 1
+        self.canLoadMore = false
+        self.showLoader()
+        
         func success(posts: Array<ForumPost>) {
             self.posts = posts
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
+            self.canLoadMore = true
         }
         func failure(error: NSError) {
             println(error)
         }
         
         self.postRepo!.get(thread: self.thread!, page: 1, success: success, failure: failure)
+    }
+    
+    override func onLoadMore() {
+        self.canLoadMore = false
+        
+        func success(posts: Array<ForumPost>) {
+            if posts.isEmpty {
+                self.hideLoader()
+                return
+            }
+            
+            var indexes = Array<NSIndexPath>()
+            for post in posts {
+                indexes.append(NSIndexPath(forRow: self.posts!.count, inSection: 0))
+                self.posts!.append(post)
+            }
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths(indexes, withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableView.endUpdates()
+            
+            self.loadedPage++
+            self.canLoadMore = true
+        }
+        func failure(error: NSError) {
+            println(error)
+        }
+        
+        self.postRepo!.get(thread: self.thread!, page: self.loadedPage + 1, success: success, failure: failure)
     }
 
 }
