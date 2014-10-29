@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="104" id="KGk-i7-Jjw" customClass="ForumCategoryTableViewCell" customModule="SWTOR_HoloNet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CcD-MO-7ja">
+                        <rect key="frame" x="15" y="12" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="3Nz-5B-bp2"/>
+                            <constraint firstAttribute="height" constant="80" id="zsH-jH-J2h"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCD-xG-ge5">
+                        <rect key="frame" x="110" y="17" width="475" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-6s-mRF">
+                        <rect key="frame" x="110" y="46" width="475" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsB-oK-z8x">
+                        <rect key="frame" x="110" y="68.5" width="475" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bsB-oK-z8x" firstAttribute="top" secondItem="Pai-6s-mRF" secondAttribute="bottom" constant="8" id="5CV-iS-6MF"/>
+                    <constraint firstItem="bCD-xG-ge5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="DvE-2V-3lj"/>
+                    <constraint firstAttribute="trailing" secondItem="bCD-xG-ge5" secondAttribute="trailing" constant="15" id="Eyf-qc-OYY"/>
+                    <constraint firstAttribute="trailing" secondItem="Pai-6s-mRF" secondAttribute="trailing" constant="15" id="Nf9-4Z-AQH"/>
+                    <constraint firstItem="bCD-xG-ge5" firstAttribute="leading" secondItem="CcD-MO-7ja" secondAttribute="trailing" constant="15" id="aZi-qa-nZ9"/>
+                    <constraint firstItem="Pai-6s-mRF" firstAttribute="top" secondItem="bCD-xG-ge5" secondAttribute="bottom" constant="8" id="b73-fl-joA"/>
+                    <constraint firstAttribute="trailing" secondItem="bsB-oK-z8x" secondAttribute="trailing" constant="15" id="h1h-5h-r3X"/>
+                    <constraint firstItem="CcD-MO-7ja" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ij9-BC-nlL"/>
+                    <constraint firstItem="CcD-MO-7ja" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mzc-ef-RyR"/>
+                    <constraint firstItem="Pai-6s-mRF" firstAttribute="leading" secondItem="CcD-MO-7ja" secondAttribute="trailing" constant="15" id="whY-cj-sT2"/>
+                    <constraint firstItem="bsB-oK-z8x" firstAttribute="leading" secondItem="CcD-MO-7ja" secondAttribute="trailing" constant="15" id="xh8-DE-Cei"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImageView" destination="CcD-MO-7ja" id="wIW-is-ujE"/>
+                <outlet property="lastPostLabel" destination="bsB-oK-z8x" id="TWE-L1-nXi"/>
+                <outlet property="statsLabel" destination="Pai-6s-mRF" id="ZpS-8t-Dp8"/>
+                <outlet property="titleLabel" destination="bCD-xG-ge5" id="rAf-Bq-Tcd"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

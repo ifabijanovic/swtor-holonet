@@ -56,6 +56,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         super.viewDidLoad()
         
         let bundle = NSBundle.mainBundle()
+        self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
         
         self.onRefresh()
@@ -108,8 +109,9 @@ class ForumListTableViewController: ForumBaseTableViewController {
         var cell: UITableViewCell
 
         if indexPath.section == CategorySection {
-            cell = tableView.dequeueReusableCellWithIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as UITableViewCell
-            self.setupCategoryCell(cell, indexPath: indexPath)
+            let categoryCell = tableView.dequeueReusableCellWithIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as ForumCategoryTableViewCell
+            self.setupCategoryCell(categoryCell, indexPath: indexPath)
+            cell = categoryCell
         } else if indexPath.section == ThreadSection {
             let threadCell = tableView.dequeueReusableCellWithIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as ForumThreadTableViewCell
             self.setupThreadCell(threadCell, indexPath: indexPath)
@@ -124,6 +126,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let identifier = indexPath.section == CategorySection ? SubCategorySegue : PostSegue
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        self.performSegueWithIdentifier(identifier, sender: cell)
     }
     
     // MARK: - Navigation
@@ -248,21 +254,17 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
-    private func setupCategoryCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+    private func setupCategoryCell(cell: ForumCategoryTableViewCell, indexPath: NSIndexPath) {
         let category = self.categories![indexPath.row]
-        let imageView = cell.viewWithTag(100) as UIImageView
-        let titleLabel = cell.viewWithTag(101) as UILabel
-        let statsLabel = cell.viewWithTag(102) as UILabel
-        let lastPostLabel = cell.viewWithTag(103) as UILabel
         
         // Set category icon if URL is defined in the model
         if let url = category.iconUrl {
-            imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+            cell.iconImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
         }
         
-        titleLabel.text = category.title
-        statsLabel.text = category.stats
-        lastPostLabel.text = category.lastPost
+        cell.titleLabel.text = category.title
+        cell.statsLabel.text = category.stats
+        cell.lastPostLabel.text = category.lastPost
         
         cell.tag = indexPath.row
     }

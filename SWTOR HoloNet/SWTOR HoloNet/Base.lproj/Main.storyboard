@@ -64,53 +64,22 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="104" id="dcx-k7-i1t">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="dcx-k7-i1t">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcx-k7-i1t" id="tCu-KJ-vAV">
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-gm-KNL">
-                                            <rect key="frame" x="110" y="17" width="475" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCx-n9-xVu">
-                                            <rect key="frame" x="110" y="46" width="475" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVY-7t-LHw">
-                                            <rect key="frame" x="15" y="12" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="Lu7-RF-Bi5"/>
-                                                <constraint firstAttribute="height" constant="80" id="bLG-xC-2RV"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoC-ut-aBJ">
-                                            <rect key="frame" x="110" y="69" width="475" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="RuM-gm-KNL" secondAttribute="trailing" constant="15" id="1wj-bp-54z"/>
-                                        <constraint firstItem="qoC-ut-aBJ" firstAttribute="top" secondItem="cCx-n9-xVu" secondAttribute="bottom" constant="8" id="3Je-tq-djH"/>
-                                        <constraint firstItem="RuM-gm-KNL" firstAttribute="leading" secondItem="TVY-7t-LHw" secondAttribute="trailing" constant="15" id="9VT-Md-ZGq"/>
-                                        <constraint firstItem="RuM-gm-KNL" firstAttribute="top" secondItem="tCu-KJ-vAV" secondAttribute="top" constant="17" id="CeD-Jk-Xyx"/>
-                                        <constraint firstItem="qoC-ut-aBJ" firstAttribute="leading" secondItem="TVY-7t-LHw" secondAttribute="trailing" constant="15" id="Gfc-cc-EPj"/>
-                                        <constraint firstItem="TVY-7t-LHw" firstAttribute="leading" secondItem="tCu-KJ-vAV" secondAttribute="leading" constant="15" id="JWs-og-d7u"/>
-                                        <constraint firstAttribute="trailing" secondItem="cCx-n9-xVu" secondAttribute="trailing" constant="15" id="OkG-cu-Juc"/>
-                                        <constraint firstItem="cCx-n9-xVu" firstAttribute="top" secondItem="RuM-gm-KNL" secondAttribute="bottom" constant="8" id="UfB-Dv-qoQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="qoC-ut-aBJ" secondAttribute="trailing" constant="15" id="YvY-ZU-X2h"/>
-                                        <constraint firstItem="TVY-7t-LHw" firstAttribute="top" secondItem="tCu-KJ-vAV" secondAttribute="top" constant="12" id="j4R-ns-ca1"/>
-                                        <constraint firstItem="cCx-n9-xVu" firstAttribute="leading" secondItem="TVY-7t-LHw" secondAttribute="trailing" constant="15" id="kVV-Yp-OwC"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="0DN-yQ-lYj" kind="show" identifier="categorySegue" id="ynV-cj-ujw"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="threadCell" id="xss-hz-aBv">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xss-hz-aBv" id="7PH-eP-Rhm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MmZ-8K-Gwd" kind="show" identifier="postSegue" id="CcK-iC-5WK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
