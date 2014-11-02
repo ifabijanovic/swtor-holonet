@@ -39,7 +39,9 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         // Set so each row will resize to fit content
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 94.0
+        self.tableView.estimatedRowHeight = 110.0
+        
+        self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
         
         self.onRefresh()
     }
@@ -62,34 +64,29 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(PostCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(PostCellIdentifier, forIndexPath: indexPath) as ForumPostTableViewCell
 
         let post = self.posts![indexPath.row]
-        let avatarImageView = cell.viewWithTag(100) as UIImageView
-        let dateLabel = cell.viewWithTag(101) as UILabel
-        let usernameLabel = cell.viewWithTag(102) as UILabel
-        let textLabel = cell.viewWithTag(103) as UILabel
-        let devImageView = cell.viewWithTag(104) as UIImageView
 
         // Set user avatar image if URL is defined in the model
         if let url = post.avatarUrl {
-            avatarImageView.hidden = false
-            avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
+            cell.avatarImageView.hidden = false
+            cell.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
         } else {
-            avatarImageView.hidden = true
+            cell.avatarImageView.hidden = true
         }
         
         // Set dev icon if post is marked as Bioware post
         if post.isBiowarePost {
-            devImageView.hidden = false
-            devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.hidden = false
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
-            devImageView.hidden = true
+            cell.devImageView.hidden = true
         }
         
-        dateLabel.text = "\(post.date) | #\(post.postNumber)"
-        usernameLabel.text = post.username
-        textLabel.text = post.text
+        cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
+        cell.usernameLabel.text = post.username
+        cell.textView.text = post.text
 
         return cell
     }
