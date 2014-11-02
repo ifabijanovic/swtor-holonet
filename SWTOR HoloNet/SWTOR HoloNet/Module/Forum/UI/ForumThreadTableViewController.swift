@@ -86,7 +86,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
         cell.usernameLabel.text = post.username
-        cell.textTextView.text = post.text
+        cell.textView.text = post.text
 
         return cell
     }

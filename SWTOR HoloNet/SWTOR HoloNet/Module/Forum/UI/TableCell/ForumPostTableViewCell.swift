@@ -16,6 +16,6 @@ class ForumPostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var devImageView: UIImageView!
-    @IBOutlet weak var textTextView: UITextView!
+    @IBOutlet var textView: UILabel!
     
 }

@@ -46,13 +46,12 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-U7-gZt">
-                        <rect key="frame" x="15" y="65" width="570" height="33"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1d-KK-sKH">
+                        <rect key="frame" x="15" y="65" width="570" height="32.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                    </textView>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="KgA-3h-3iR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="3M5-zs-d25"/>
@@ -61,27 +60,21 @@
                     <constraint firstAttribute="trailing" secondItem="iFx-Np-kEM" secondAttribute="trailing" constant="15" id="DlO-aA-8ui"/>
                     <constraint firstItem="AiU-3Q-D2W" firstAttribute="leading" secondItem="KgA-3h-3iR" secondAttribute="trailing" constant="15" id="F2T-kz-a9p"/>
                     <constraint firstItem="iFx-Np-kEM" firstAttribute="leading" secondItem="vvD-mK-zSF" secondAttribute="trailing" constant="15" id="G6Z-XR-t3z"/>
-                    <constraint firstAttribute="bottom" secondItem="TIh-U7-gZt" secondAttribute="bottom" constant="12" id="SmH-6i-wFS"/>
+                    <constraint firstItem="S1d-KK-sKH" firstAttribute="top" secondItem="KgA-3h-3iR" secondAttribute="bottom" constant="8" id="Whg-Uj-ycc"/>
                     <constraint firstItem="KgA-3h-3iR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Y1I-1W-buz"/>
-                    <constraint firstAttribute="trailing" secondItem="TIh-U7-gZt" secondAttribute="trailing" constant="15" id="cnL-mT-jBX"/>
-                    <constraint firstItem="TIh-U7-gZt" firstAttribute="top" secondItem="KgA-3h-3iR" secondAttribute="bottom" constant="8" id="dOd-Ab-S7q"/>
+                    <constraint firstAttribute="trailing" secondItem="S1d-KK-sKH" secondAttribute="trailing" constant="15" id="dEc-ZU-Jrg"/>
+                    <constraint firstItem="S1d-KK-sKH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="e9P-by-qGo"/>
+                    <constraint firstAttribute="bottom" secondItem="S1d-KK-sKH" secondAttribute="bottom" constant="12" id="eMV-RQ-D5o"/>
                     <constraint firstItem="vvD-mK-zSF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ewv-IL-Aka"/>
-                    <constraint firstItem="TIh-U7-gZt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="eyR-kf-xwS"/>
                     <constraint firstAttribute="trailing" secondItem="AiU-3Q-D2W" secondAttribute="trailing" constant="15" id="iWe-Ty-mnl"/>
-                    <constraint firstAttribute="bottom" secondItem="TIh-U7-gZt" secondAttribute="bottom" constant="12" id="jPx-eg-zey"/>
                     <constraint firstItem="iFx-Np-kEM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="z1q-94-NNJ"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="jPx-eg-zey"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="KgA-3h-3iR" id="L2y-hW-EQh"/>
                 <outlet property="dateLabel" destination="vvD-mK-zSF" id="fLJ-CA-79y"/>
                 <outlet property="devImageView" destination="iFx-Np-kEM" id="JP8-gR-v6s"/>
-                <outlet property="textTextView" destination="TIh-U7-gZt" id="yKB-v3-jBB"/>
+                <outlet property="textView" destination="S1d-KK-sKH" id="DBA-ef-5M8"/>
                 <outlet property="usernameLabel" destination="AiU-3Q-D2W" id="xN8-Dq-BQ3"/>
             </connections>
         </tableViewCell>
