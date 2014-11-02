@@ -103,6 +103,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="niA-SR-eBO">
+                            <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56K-TE-2ww">
+                                    <rect key="frame" x="15" y="8" width="570" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="bB9-0z-GeT"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="56K-TE-2ww" firstAttribute="top" secondItem="niA-SR-eBO" secondAttribute="top" constant="8" id="BKL-X6-09d"/>
+                                <constraint firstAttribute="trailing" secondItem="56K-TE-2ww" secondAttribute="trailing" constant="15" id="DQp-Vn-nQm"/>
+                                <constraint firstAttribute="bottom" secondItem="56K-TE-2ww" secondAttribute="bottom" constant="8" id="Dfl-CV-YIo"/>
+                                <constraint firstItem="56K-TE-2ww" firstAttribute="leading" secondItem="niA-SR-eBO" secondAttribute="leading" constant="15" id="Vuw-Gs-G6h"/>
+                            </constraints>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="UU6-gO-Cd6">
                             <rect key="frame" x="0.0" y="180" width="600" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -130,6 +152,9 @@
                             <outlet property="delegate" destination="MmZ-8K-Gwd" id="2Hb-XT-aMH"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="titleLabel" destination="56K-TE-2ww" id="Rhw-jJ-bkZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7g-FO-C2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

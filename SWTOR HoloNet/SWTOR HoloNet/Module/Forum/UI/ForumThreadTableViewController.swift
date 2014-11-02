@@ -23,6 +23,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     private var postRepo: ForumPostRepository?
     private var posts: Array<ForumPost>?
     
+    // MARK: - Outlets
+    
+    @IBOutlet var titleLabel: UILabel!
+    
     // MARK: - Public methods
 
     func setup(#settings: Settings, thread: ForumThread) {
@@ -42,6 +46,20 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         self.tableView.estimatedRowHeight = 110.0
         
         self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
+        
+        self.titleLabel.text = self.thread!.title
+        
+        // Calculate height of title text
+        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
+        let font = UIFont.systemFontOfSize(17.0)
+        let attributes = [NSFontAttributeName: font]
+        let titleSize = (self.thread!.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        let titleHeight = ceil(titleSize.height)
+        
+        // Set the height of header view
+        var headerFrame = self.tableView.tableHeaderView!.frame
+        headerFrame.size.height = titleHeight + 16
+        self.tableView.tableHeaderView!.frame = headerFrame
         
         self.onRefresh()
     }
