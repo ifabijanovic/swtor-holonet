@@ -13,6 +13,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     // MARK: - Constants
     
     private let PostCellIdentifier = "postCell"
+    private let PostSegue = "postSegue"
     private let PostsPerPage = 10
 
     // MARK: - Properties
@@ -33,7 +34,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         self.settings = settings
         self.thread = thread
         self.postRepo = ForumPostRepository(settings: settings)
-        self.navigationItem.title = thread.title
     }
     
     // MARK: - Lifecycle
@@ -105,8 +105,29 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
+        
+        cell.tag = indexPath.row
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        self.performSegueWithIdentifier(PostSegue, sender: cell)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == PostSegue {
+            let controller = segue.destinationViewController as ForumPostViewController
+            let cell = sender as UITableViewCell
+            let post = self.posts![cell.tag]
+            
+            controller.setup(settings: self.settings!, post: post)
+        }
     }
     
     // MARK: - Helper methods

@@ -19,7 +19,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
     private let CategoryCellIdentifier = "categoryCell"
     private let ThreadCellIdentifier = "threadCell"
     private let SubCategorySegue = "categorySegue"
-    private let PostSegue = "postSegue"
+    private let ThreadSegue = "threadSegue"
     
     // MARK: - Properties
     
@@ -127,7 +127,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let identifier = indexPath.section == CategorySection ? SubCategorySegue : PostSegue
+        let identifier = indexPath.section == CategorySection ? SubCategorySegue : ThreadSegue
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         self.performSegueWithIdentifier(identifier, sender: cell)
     }
@@ -140,7 +140,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
             let cell = sender as UITableViewCell
             let category = self.categories![cell.tag]
             controller.setup(settings: self.settings!, category: category)
-        } else if segue.identifier == PostSegue {
+        } else if segue.identifier == ThreadSegue {
             let controller = segue.destinationViewController as ForumThreadTableViewController
             let cell = sender as UITableViewCell
             let thread = self.threads![cell.tag]
