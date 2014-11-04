@@ -24,14 +24,18 @@ class Settings {
     
     // MARK: - Init
     
-    init() {
+    convenience init() {
         let path = NSBundle.mainBundle().pathForResource("Settings", ofType: "plist")!
+        self.init(path: path)
+    }
+    
+    init(path: String) {
         let settings = NSDictionary(contentsOfFile: path)
         
         self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
         self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""
         self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
-        self.threadQueryParam = settings?.objectForKey("Thread Param Name") as? String ?? ""
+        self.threadQueryParam = settings?.objectForKey("Thread Query Param") as? String ?? ""
         self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
         self.devTrackerIconUrl = settings?.objectForKey("Dev Tracker Icon URL") as? String ?? ""
         self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""

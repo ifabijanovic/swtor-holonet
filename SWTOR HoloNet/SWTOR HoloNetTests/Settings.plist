@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>Forum Display URL</key>
-	<string>http://www.swtor.com/community/forumdisplay.php</string>
+	<string>http://www.holonet.test/forum</string>
 	<key>Thread Display URL</key>
-	<string>http://www.swtor.com/community/showthread.php</string>
+	<string>http://www.holonet.test/thread</string>
 	<key>Category Query Param</key>
-	<string>f</string>
+	<string>category</string>
 	<key>Thread Query Param</key>
-	<string>t</string>
+	<string>thread</string>
 	<key>Paging Query Param</key>
 	<string>page</string>
 	<key>Dev Tracker Icon URL</key>
-	<string>http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png</string>
+	<string>http://www.holonet.test/devIcon.png</string>
 	<key>Sticky Icon URL</key>
-	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
+	<string>http://www.holonet.test/stickyIcon.png</string>
 </dict>
 </plist>
