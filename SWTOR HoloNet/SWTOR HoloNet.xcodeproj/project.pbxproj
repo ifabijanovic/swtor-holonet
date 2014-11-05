@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810950891A0A1AA700B974E1 /* EntityTests.swift */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -177,6 +178,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810950891A0A1AA700B974E1 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityTests.swift; path = Module/App/Model/EntityTests.swift; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -334,6 +336,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810950861A0A1A7C00B974E1 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				810950871A0A1A8400B974E1 /* App */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		810950871A0A1A8400B974E1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				810950881A0A1A8E00B974E1 /* Model */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		810950881A0A1A8E00B974E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				810950891A0A1AA700B974E1 /* EntityTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8120F26219FFB00600C02DF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				818029D61A08C7D300999871 /* Extension */,
+				810950861A0A1A7C00B974E1 /* Module */,
 				818029D21A08B78000999871 /* SettingsTests.swift */,
 				81AB249519EFBD7700293D26 /* Supporting Files */,
 			);
@@ -872,6 +899,7 @@
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */,
 				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				816361A71A01855200E7D194 /* ForumPostTableViewCell.swift in Sources */,
