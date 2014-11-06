@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810950891A0A1AA700B974E1 /* EntityTests.swift */; };
+		8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -179,6 +180,7 @@
 
 /* Begin PBXFileReference section */
 		810950891A0A1AA700B974E1 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityTests.swift; path = Module/App/Model/EntityTests.swift; sourceTree = "<group>"; };
+		8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParserTests.swift; path = Module/Forum/Data/ForumParserTests.swift; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				810950871A0A1A8400B974E1 /* App */,
+				8109508B1A0A1BE300B974E1 /* Forum */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -358,6 +361,22 @@
 				810950891A0A1AA700B974E1 /* EntityTests.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8109508B1A0A1BE300B974E1 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				8109508C1A0A1BE900B974E1 /* Data */,
+			);
+			name = Forum;
+			sourceTree = "<group>";
+		};
+		8109508C1A0A1BE900B974E1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		8120F26219FFB00600C02DF8 /* Model */ = {
@@ -917,6 +936,7 @@
 				8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
 				81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
+				8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */,
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
