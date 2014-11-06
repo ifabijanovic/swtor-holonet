@@ -42,14 +42,25 @@ extension String {
     // MARK: - Substring
     
     func substringToIndex(index: Int) -> String {
+        if index < 0 { return "" }
+        if index >= countElements(self) { return self }
+        
         return self.substringToIndex(advance(self.startIndex, index))
     }
     
     func substringFromIndex(index: Int) -> String {
+        if index < 0 { return "" }
+        if index > countElements(self) { return "" }
+        
         return self.substringFromIndex(advance(self.startIndex, index))
     }
     
     func substringWithRange(range: Range<Int>) -> String {
+        if range.startIndex < 0 { return "" }
+        if range.endIndex < 0 { return "" }
+        if range.startIndex > countElements(self) { return "" }
+        if range.endIndex >= countElements(self) { return self.substringFromIndex(range.startIndex) }
+        
         let start = advance(self.startIndex, range.startIndex)
         let end = advance(self.startIndex, range.endIndex)
         return self.substringWithRange(start..<end)

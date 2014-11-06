@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810950891A0A1AA700B974E1 /* EntityTests.swift */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -61,6 +62,7 @@
 		81255D8F19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D6F19F7BBD600E0C018 /* UIImageView+WebCache.m */; };
 		81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */; };
 		81255D9119F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */; };
+		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
@@ -86,6 +88,9 @@
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
 		817A216B19F6C4480093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
 		817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A216A19F6C4480093ECE3 /* Settings.swift */; };
+		818029D31A08B78000999871 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818029D21A08B78000999871 /* SettingsTests.swift */; };
+		818029D51A08B7CC00999871 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 818029D41A08B7CC00999871 /* Settings.plist */; };
+		818029D81A08C7F000999871 /* NSURLComponentsExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818029D71A08C7F000999871 /* NSURLComponentsExTests.swift */; };
 		81A1E20419F707E800C5C833 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1E20319F707E800C5C833 /* MainMenuViewController.swift */; };
 		81A1E20519F707E800C5C833 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1E20319F707E800C5C833 /* MainMenuViewController.swift */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
@@ -124,7 +129,6 @@
 		81AB248419EFBD7700293D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248319EFBD7700293D26 /* ViewController.swift */; };
 		81AB248719EFBD7700293D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248519EFBD7700293D26 /* Main.storyboard */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
-		81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */; };
 		81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
 		81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
 		81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24AA19EFC3FD00293D26 /* ForumThread.swift */; };
@@ -174,6 +178,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810950891A0A1AA700B974E1 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityTests.swift; path = Module/App/Model/EntityTests.swift; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -218,6 +223,7 @@
 		81255D6F19F7BBD600E0C018 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		81255D7019F7BBD600E0C018 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "../Third Party/SDWebImage/SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "../Third Party/SDWebImage/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
@@ -231,6 +237,9 @@
 		8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewController.swift; path = Module/Forum/UI/ForumThreadTableViewController.swift; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		818029D21A08B78000999871 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		818029D41A08B7CC00999871 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		818029D71A08C7F000999871 /* NSURLComponentsExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsExTests.swift; path = Extension/NSURLComponentsExTests.swift; sourceTree = "<group>"; };
 		81A1E20319F707E800C5C833 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = Module/App/UI/MainMenuViewController.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
@@ -277,7 +286,6 @@
 		81AB248819EFBD7700293D26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTOR_HoloNetTests.swift; sourceTree = "<group>"; };
 		81AB24A719EFC21100293D26 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategory.swift; path = Module/Forum/Model/ForumCategory.swift; sourceTree = "<group>"; };
 		81AB24AA19EFC3FD00293D26 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThread.swift; path = Module/Forum/Model/ForumThread.swift; sourceTree = "<group>"; };
 		81AB24AD19EFC5C400293D26 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPost.swift; path = Module/Forum/Model/ForumPost.swift; sourceTree = "<group>"; };
@@ -328,6 +336,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810950861A0A1A7C00B974E1 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				810950871A0A1A8400B974E1 /* App */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		810950871A0A1A8400B974E1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				810950881A0A1A8E00B974E1 /* Model */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		810950881A0A1A8E00B974E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				810950891A0A1AA700B974E1 /* EntityTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8120F26219FFB00600C02DF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +448,15 @@
 				81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		818029D61A08C7D300999871 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				818029D71A08C7F000999871 /* NSURLComponentsExTests.swift */,
+				812B428C1A08CB7700302649 /* StringExTests.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		81A1E1FE19F704D700C5C833 /* App */ = {
@@ -526,7 +567,9 @@
 		81AB249419EFBD7700293D26 /* SWTOR HoloNetTests */ = {
 			isa = PBXGroup;
 			children = (
-				81AB249719EFBD7700293D26 /* SWTOR_HoloNetTests.swift */,
+				818029D61A08C7D300999871 /* Extension */,
+				810950861A0A1A7C00B974E1 /* Module */,
+				818029D21A08B78000999871 /* SettingsTests.swift */,
 				81AB249519EFBD7700293D26 /* Supporting Files */,
 			);
 			path = "SWTOR HoloNetTests";
@@ -537,6 +580,7 @@
 			children = (
 				81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */,
 				81AB249619EFBD7700293D26 /* Info.plist */,
+				818029D41A08B7CC00999871 /* Settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -722,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
+				818029D51A08B7CC00999871 /* Settings.plist in Resources */,
 				816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				816361A31A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
 			);
@@ -819,7 +864,6 @@
 				81255D8B19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
 				81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
 				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
-				81AB249819EFBD7700293D26 /* SWTOR_HoloNetTests.swift in Sources */,
 				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81255D7519F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */,
 				81A49A8519F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
@@ -834,6 +878,7 @@
 				8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */,
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
+				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
@@ -854,6 +899,7 @@
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
+				8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */,
 				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				816361A71A01855200E7D194 /* ForumPostTableViewCell.swift in Sources */,
@@ -864,6 +910,7 @@
 				816361A11A01814300E7D194 /* ForumCategoryTableViewCell.swift in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				8120F28119FFB2E200C02DF8 /* Range.swift in Sources */,
+				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,
 				8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */,
 				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81255D8119F7BBD600E0C018 /* SDWebImageManager.m in Sources */,
@@ -881,6 +928,7 @@
 				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
 				81255D8319F7BBD600E0C018 /* SDWebImagePrefetcher.m in Sources */,
 				8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */,
+				818029D81A08C7F000999871 /* NSURLComponentsExTests.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81255D9119F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81255D7719F7BBD600E0C018 /* SDImageCache.m in Sources */,
