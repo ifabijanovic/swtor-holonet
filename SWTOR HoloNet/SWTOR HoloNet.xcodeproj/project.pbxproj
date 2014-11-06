@@ -64,6 +64,7 @@
 		81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */; };
 		81255D9119F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */; };
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
+		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
@@ -169,6 +170,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		813C194F1A0B743E0072626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A4119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS";
+		};
+		813C19511A0B743E0072626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09110A5119805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS Tests";
+		};
+		813C19531A0B743E0072626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981C219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac";
+		};
+		813C19551A0B743E0072626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 095981D219806A7900807DBE;
+			remoteInfo = "OHHTTPStubs Mac Tests";
+		};
+		813C19571A0B74740072626A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 09110A4019805F4800D175E4;
+			remoteInfo = "OHHTTPStubs iOS";
+		};
 		81AB249219EFBD7700293D26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81AB247419EFBD7700293D26 /* Project object */;
@@ -226,6 +262,7 @@
 		81255D7019F7BBD600E0C018 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "../Third Party/SDWebImage/SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "../Third Party/SDWebImage/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
+		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
@@ -332,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +480,25 @@
 				81255D7119F7BBD600E0C018 /* UIView+WebCacheOperation.m */,
 			);
 			name = SDWebImage;
+			sourceTree = "<group>";
+		};
+		813C19471A0B73F40072626A /* OHHTTPStubs */ = {
+			isa = PBXGroup;
+			children = (
+				813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */,
+			);
+			name = OHHTTPStubs;
+			sourceTree = "<group>";
+		};
+		813C19491A0B743D0072626A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				813C19501A0B743E0072626A /* libOHHTTPStubs.a */,
+				813C19521A0B743E0072626A /* OHHTTPStubs iOS Tests.xctest */,
+				813C19541A0B743E0072626A /* OHHTTPStubs.framework */,
+				813C19561A0B743E0072626A /* OHHTTPStubs Mac Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		816361971A017C2400E7D194 /* TableCell */ = {
@@ -651,6 +708,7 @@
 				81AB24B119EFCAA100293D26 /* AFNetworking */,
 				8120F26719FFB2BE00C02DF8 /* ExSwift */,
 				81A49A5619F0FC98007FEA4C /* HTMLReader */,
+				813C19471A0B73F40072626A /* OHHTTPStubs */,
 				81255D4819F7BAE700E0C018 /* SDWebImage */,
 			);
 			name = "Third Party";
@@ -722,6 +780,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				813C19581A0B74740072626A /* PBXTargetDependency */,
 				81AB249319EFBD7700293D26 /* PBXTargetDependency */,
 			);
 			name = "SWTOR HoloNetTests";
@@ -758,6 +817,12 @@
 			mainGroup = 81AB247319EFBD7700293D26;
 			productRefGroup = 81AB247D19EFBD7700293D26 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 813C19491A0B743D0072626A /* Products */;
+					ProjectRef = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				81AB247B19EFBD7700293D26 /* SWTOR HoloNet */,
@@ -765,6 +830,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		813C19501A0B743E0072626A /* libOHHTTPStubs.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOHHTTPStubs.a;
+			remoteRef = 813C194F1A0B743E0072626A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		813C19521A0B743E0072626A /* OHHTTPStubs iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs iOS Tests.xctest";
+			remoteRef = 813C19511A0B743E0072626A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		813C19541A0B743E0072626A /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 813C19531A0B743E0072626A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		813C19561A0B743E0072626A /* OHHTTPStubs Mac Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "OHHTTPStubs Mac Tests.xctest";
+			remoteRef = 813C19551A0B743E0072626A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		81AB247A19EFBD7700293D26 /* Resources */ = {
@@ -960,6 +1056,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		813C19581A0B74740072626A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OHHTTPStubs iOS";
+			targetProxy = 813C19571A0B74740072626A /* PBXContainerItemProxy */;
+		};
 		81AB249319EFBD7700293D26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 81AB247B19EFBD7700293D26 /* SWTOR HoloNet */;

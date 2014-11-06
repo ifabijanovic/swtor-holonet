@@ -10,3 +10,6 @@
 [submodule "Third Party/ExSwift"]
 	path = Third Party/ExSwift
 	url = git@github.com:pNre/ExSwift.git
+[submodule "Third Party/OHHTTPStubs"]
+	path = Third Party/OHHTTPStubs
+	url = git@github.com:AliSoftware/OHHTTPStubs.git
