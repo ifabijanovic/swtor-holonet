@@ -168,6 +168,11 @@
 		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81D30F1F1A0CAFC500CF2843 /* forum-category-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */; };
+		81D30F211A0CBFFF00CF2843 /* forum-category-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */; };
+		81D30F251A0CC11000CF2843 /* forum-category-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */; };
+		81D30F271A0CC1F500CF2843 /* forum-category-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */; };
+		81D30F291A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */; };
+		81D30F2D1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 /* End PBXBuildFile section */
@@ -360,6 +365,11 @@
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
 		81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-valid.html"; path = "Module/Forum/Test Data/forum-category-single-valid.html"; sourceTree = "<group>"; };
+		81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-invalid-id.html"; path = "Module/Forum/Test Data/forum-category-single-invalid-id.html"; sourceTree = "<group>"; };
+		81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-missing-optionals.html"; path = "Module/Forum/Test Data/forum-category-single-missing-optionals.html"; sourceTree = "<group>"; };
+		81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-valid.html"; path = "Module/Forum/Test Data/forum-category-multiple-valid.html"; sourceTree = "<group>"; };
+		81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-id.html"; path = "Module/Forum/Test Data/forum-category-multiple-missing-id.html"; sourceTree = "<group>"; };
+		81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-optionals.html"; path = "Module/Forum/Test Data/forum-category-multiple-missing-optionals.html"; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -527,6 +537,11 @@
 			children = (
 				816A7F2D1A0B8FCE0005F1A1 /* forum-category-empty.html */,
 				81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */,
+				81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */,
+				81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */,
+				81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */,
+				81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */,
+				81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */,
 			);
 			name = "Test Data";
 			sourceTree = "<group>";
@@ -899,10 +914,15 @@
 			files = (
 				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				816A7F2E1A0B8FCE0005F1A1 /* forum-category-empty.html in Resources */,
+				81D30F2D1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html in Resources */,
 				818029D51A08B7CC00999871 /* Settings.plist in Resources */,
+				81D30F211A0CBFFF00CF2843 /* forum-category-single-invalid-id.html in Resources */,
 				816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				81D30F1F1A0CAFC500CF2843 /* forum-category-single-valid.html in Resources */,
 				816361A31A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
+				81D30F271A0CC1F500CF2843 /* forum-category-multiple-valid.html in Resources */,
+				81D30F291A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html in Resources */,
+				81D30F251A0CC11000CF2843 /* forum-category-single-missing-optionals.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

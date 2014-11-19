@@ -137,5 +137,164 @@ class ForumCategoryRepositoryTests: XCTestCase {
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
+    
+    func testGet_SingleItem_InvalidId() {
+        let expectation = expectationWithDescription("")
+        
+        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
+            let path = self.bundle!.pathForResource("forum-category-single-invalid-id", ofType: "html")
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+        }
+        
+        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 0, "")
+            
+            }, failure: self.defaultFailure)
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
+    
+    func testGet_SingleItem_MissingOptionals() {
+        let expectation = expectationWithDescription("")
+        
+        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
+            let path = self.bundle!.pathForResource("forum-category-single-missing-optionals", ofType: "html")
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+        }
+        
+        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 1, "")
+            
+            // Exception safeguard
+            if items.count != 1 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertNil(items[0].iconUrl, "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertNil(items[0].desc, "")
+            XCTAssertNil(items[0].stats, "")
+            XCTAssertNil(items[0].lastPost, "")
+            
+        }, failure: self.defaultFailure)
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
+    
+    func testGet_MultipleItems_Valid() {
+        let expectation = expectationWithDescription("")
+        
+        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
+            let path = self.bundle!.pathForResource("forum-category-multiple-valid", ofType: "html")
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+        }
+        
+        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 3, "")
+            
+            // Exception safeguard
+            if items.count != 3 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertEqual(items[0].desc!, "Description 5", "")
+            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+            
+            XCTAssertEqual(items[1].id, 6, "")
+            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+            XCTAssertEqual(items[1].title, "Forum category 6", "")
+            XCTAssertEqual(items[1].desc!, "Description 6", "")
+            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+            
+            XCTAssertEqual(items[2].id, 7, "")
+            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+            XCTAssertEqual(items[2].title, "Forum category 7", "")
+            XCTAssertEqual(items[2].desc!, "Description 7", "")
+            XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
+            XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
+            
+            }, failure: self.defaultFailure)
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
+    
+    func testGet_MultipleItems_InvalidId() {
+        let expectation = expectationWithDescription("")
+        
+        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
+            let path = self.bundle!.pathForResource("forum-category-multiple-missing-id", ofType: "html")
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+        }
+        
+        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 2, "")
+            
+            // Exception safeguard
+            if items.count != 2 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertEqual(items[1].id, 7, "")
+            
+        }, failure: self.defaultFailure)
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
+    
+    func testGet_MultipleItems_MissingOptionals() {
+        let expectation = expectationWithDescription("")
+        
+        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
+            let path = self.bundle!.pathForResource("forum-category-multiple-missing-optionals", ofType: "html")
+            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+        }
+        
+        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 3, "")
+            
+            // Exception safeguard
+            if items.count != 3 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertNil(items[0].iconUrl, "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertEqual(items[0].desc!, "Description 5", "")
+            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+            
+            XCTAssertEqual(items[1].id, 6, "")
+            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+            XCTAssertEqual(items[1].title, "Forum category 6", "")
+            XCTAssertNil(items[1].desc, "")
+            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+            
+            XCTAssertEqual(items[2].id, 7, "")
+            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+            XCTAssertEqual(items[2].title, "Forum category 7", "")
+            XCTAssertEqual(items[2].desc!, "Description 7", "")
+            XCTAssertNil(items[2].stats, "")
+            XCTAssertNil(items[2].lastPost, "")
+            
+        }, failure: self.defaultFailure)
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
 
 }
