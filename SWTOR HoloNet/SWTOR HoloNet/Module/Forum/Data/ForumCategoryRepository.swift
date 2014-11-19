@@ -108,8 +108,8 @@ class ForumCategoryRepository {
         let category = ForumCategory(id: id!, title: title!)
         category.iconUrl = iconUrl
         category.desc = description
-        category.stats = stats?.stripNewLinesAndTabs()
-        category.lastPost = lastPost?.stripNewLinesAndTabs()
+        category.stats = stats?.trimSpaces().stripNewLinesAndTabs().collapseMultipleSpaces()
+        category.lastPost = lastPost?.trimSpaces().stripNewLinesAndTabs().collapseMultipleSpaces()
         
         return category
     }

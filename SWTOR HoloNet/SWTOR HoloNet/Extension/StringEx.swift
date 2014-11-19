@@ -18,16 +18,16 @@ extension String {
         return withoutTabs
     }
 
-    func stripLeadingSpaces() -> String {
-        var value = self
-        while value.hasPrefix(" ") {
-            value = value.substringFromIndex(1)
-        }
-        return value
+    func trimSpaces() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     
     func stripSpaces() -> String {
         return self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    
+    func collapseMultipleSpaces() -> String {
+        return self.stringByReplacingOccurrencesOfString("[ ]+", withString: " ", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
     }
     
     func formatPostDate() -> String {
