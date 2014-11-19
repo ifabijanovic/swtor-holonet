@@ -17,9 +17,13 @@ class ForumCategoryRepository {
     
     // MARK: - Init
     
-    init(settings: Settings) {
+    convenience init(settings: Settings) {
+        self.init(settings: settings, parser: ForumParser())
+    }
+    
+    init(settings: Settings, parser: ForumParser) {
         self.settings = settings
-        self.parser = ForumParser()
+        self.parser = parser
     }
     
     // MARK: - Public methods
@@ -69,7 +73,7 @@ class ForumCategoryRepository {
     private func parseCategory(element: HTMLElement) -> ForumCategory? {
         // Id & Title
         let titleElement = element.firstNodeMatchingSelector(".resultTitle > a")
-        let id = self.parser.linkParameter(linkElement: titleElement, name: "f")?.toInt()
+        let id = self.parser.linkParameter(linkElement: titleElement, name: self.settings.categoryQueryParam)?.toInt()
         let title = titleElement?.textContent
         
         // Icon
@@ -103,8 +107,8 @@ class ForumCategoryRepository {
         
         let category = ForumCategory(id: id!, title: title!)
         category.iconUrl = iconUrl
-        category.description = description
-        category.stats = stats
+        category.desc = description
+        category.stats = stats?.stripNewLinesAndTabs()
         category.lastPost = lastPost?.stripNewLinesAndTabs()
         
         return category
