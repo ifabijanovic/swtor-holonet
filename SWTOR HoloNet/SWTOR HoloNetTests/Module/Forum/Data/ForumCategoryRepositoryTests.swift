@@ -72,6 +72,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-empty", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -90,6 +91,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-single-valid", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -119,6 +121,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-single-invalid-id", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -138,6 +141,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-single-missing-optionals", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -167,6 +171,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-multiple-valid", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -210,6 +215,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-multiple-missing-id", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -235,6 +241,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-category-multiple-missing-optionals", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         

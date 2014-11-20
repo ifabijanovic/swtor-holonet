@@ -54,6 +54,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-empty", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -72,6 +73,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-valid", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -103,6 +105,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-valid-not-dev", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -128,6 +131,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-valid-not-sticky", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -153,6 +157,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-id", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -172,6 +177,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-title", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -191,6 +197,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-last-post-date", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -210,6 +217,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-author", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -229,6 +237,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-replies", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -248,6 +257,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-single-invalid-views", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -267,6 +277,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-multiple-valid", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
@@ -316,6 +327,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-thread-multiple-invalid-id", ofType: "html")
+            XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         
