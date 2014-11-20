@@ -9,44 +9,21 @@
 import UIKit
 import XCTest
 
-class ForumCategoryRepositoryTests: XCTestCase {
+class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
 
     // MARK: - Properties
     
-    var bundle: NSBundle?
-    var settings: Settings?
     var repo: ForumCategoryRepository?
-    
-    let timeout: NSTimeInterval = 3
-    let headers = ["Content-Type": "text/html"]
-    let passAll: OHHTTPStubsTestBlock = { (request) in
-        return true
-    }
-    let defaultFailure: (NSError) -> Void = { (error) in
-        XCTFail("Failed with error \(error)")
-    }
-    let defaultExpectationHandler: XCWaitCompletionHandler = { (error) in
-        if error != nil {
-            XCTFail("Failed with error \(error)")
-        }
-    }
     
     // MARK: - Setup
     
     override func setUp() {
         super.setUp()
-        
-        self.bundle = NSBundle(forClass: SettingsTests.self)
-        let path = self.bundle!.pathForResource("Settings", ofType: "plist")!
-        self.settings = Settings(path: path)
         self.repo = ForumCategoryRepository(settings: self.settings!)
     }
     
     override func tearDown() {
-        self.settings = nil
         self.repo = nil
-        OHHTTPStubs.removeAllStubs()
-        
         super.tearDown()
     }
     
@@ -72,7 +49,6 @@ class ForumCategoryRepositoryTests: XCTestCase {
     }
     
     func testGetForCategory_RequestsCorrectUrl() {
-        let requestedLanguage = ForumLanguage.English
         let category = ForumCategory(id: 17, title: "Test")
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(category.id)"
         let expectation = expectationWithDescription("")
@@ -95,7 +71,7 @@ class ForumCategoryRepositoryTests: XCTestCase {
         let expectation = expectationWithDescription("")
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-empty", ofType: "html")
+            let path = self.bundle!.pathForResource("forum-empty", ofType: "html")
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
         }
         

@@ -37,7 +37,8 @@ class ForumParser {
     
     func integerContent(#element: HTMLElement?) -> Int? {
         if element != nil {
-            return self.numberFormatter.numberFromString(element!.textContent)?.integerValue
+            let text = element!.textContent.stripNewLinesAndTabs().stripSpaces()
+            return self.numberFormatter.numberFromString(text)?.integerValue
         }
         return nil
     }
