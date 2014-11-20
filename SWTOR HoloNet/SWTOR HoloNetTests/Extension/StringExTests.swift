@@ -109,7 +109,7 @@ class StringExTests: XCTestCase {
         let string = "10.10.2014 , 10:10 AM | #1"
         let output = string.formatPostDate()
         
-        XCTAssertEqual(output, "10.10.2014, 10:10AM", "")
+        XCTAssertEqual(output, "10.10.2014, 10:10 AM", "")
     }
     
     func testFormatPostDate_EmptyString() {

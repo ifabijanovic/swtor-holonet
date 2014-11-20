@@ -114,7 +114,7 @@ class ForumParserTests: XCTestCase {
         html.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postDate(element: html)!
         
-        XCTAssertEqual(value, "10.10.2014, 10:10AM", "")
+        XCTAssertEqual(value, "10.10.2014, 10:10 AM", "")
     }
     
     func testPostDate_Nested() {
@@ -124,7 +124,7 @@ class ForumParserTests: XCTestCase {
         child.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postDate(element: parent)!
         
-        XCTAssertEqual(value, "10.10.2014, 10:10AM", "")
+        XCTAssertEqual(value, "10.10.2014, 10:10 AM", "")
     }
     
     func testPostDate_ElementNil() {

@@ -52,8 +52,9 @@ class ForumParser {
     
     func postNumber(#element: HTMLElement?) -> Int? {
         if element != nil {
-            if let range = element!.textContent.rangeOfString("| #", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
-                var numberString = element!.textContent.substringFromIndex(range.endIndex).stripNewLinesAndTabs().stripSpaces()
+            let text = element!.textContent!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+            if let range = text.rangeOfString("| #", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+                var numberString = text.substringFromIndex(range.endIndex).stripNewLinesAndTabs().stripSpaces()
                 if let spaceRange = numberString.rangeOfString("Next", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
                     numberString = numberString.substringToIndex(spaceRange.startIndex)
                 }
