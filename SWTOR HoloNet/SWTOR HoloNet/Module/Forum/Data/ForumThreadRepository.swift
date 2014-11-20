@@ -65,7 +65,7 @@ class ForumThreadRepository {
     private func parseThread(element: HTMLElement) -> ForumThread? {
         // Id & Title
         let titleElement = element.firstNodeMatchingSelector(".threadTitle")
-        let id = self.parser.linkParameter(linkElement: titleElement, name: "t")?.toInt()
+        let id = self.parser.linkParameter(linkElement: titleElement, name: self.settings.threadQueryParam)?.toInt()
         let title = titleElement?.textContent
 
         // Last post date
@@ -90,9 +90,9 @@ class ForumThreadRepository {
                 continue
             }
             
-            if src!.hasSuffix("devtracker_icon.png") {
+            if src == self.settings.devTrackerIconUrl {
                 hasBiowareReply = true
-            } else if src!.hasSuffix("sticky.gif") {
+            } else if src == self.settings.stickyIconUrl {
                 isSticky = true
             }
         }
@@ -104,7 +104,11 @@ class ForumThreadRepository {
         if replies == nil { return nil }
         if views == nil { return nil }
         
-        let thread = ForumThread(id: id!, title: title!.stripLeadingSpaces(), lastPostDate: lastPostDate!, author: author!, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
+        let finalTitle = title!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalLastPostDate = lastPostDate!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalAuthor = author!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        
+        let thread = ForumThread(id: id!, title: finalTitle, lastPostDate: finalLastPostDate, author: finalAuthor, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
         
         return thread
     }

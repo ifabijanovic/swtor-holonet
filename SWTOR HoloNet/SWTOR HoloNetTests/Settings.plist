@@ -10,6 +10,8 @@
 	<string>category</string>
 	<key>Thread Query Param</key>
 	<string>thread</string>
+	<key>Post Query Param</key>
+	<string>post</string>
 	<key>Paging Query Param</key>
 	<string>page</string>
 	<key>Dev Tracker Icon URL</key>

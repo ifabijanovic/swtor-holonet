@@ -64,7 +64,7 @@ class ForumPostRepository {
     
     private func parsePost(element: HTMLElement) -> ForumPost? {
         // Id
-        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".tinySubmitBtn"), name: "p")?.toInt()
+        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".tinySubmitBtn"), name: self.settings.postQueryParam)?.toInt()
         
         // Avatar url
         var avatarUrl: String? = nil
@@ -81,7 +81,19 @@ class ForumPostRepository {
         let postNumber = self.parser.postNumber(element: dateElement)
         
         // Is Bioware post
-        let isBiowarePost = element.firstNodeMatchingSelector(".post .forumPadding > .resultText > font") != nil
+        var isBiowarePost = false
+        let imageElements = element.nodesMatchingSelector(".post img.inlineimg") as Array<HTMLElement>
+        for image in imageElements {
+            let src = image.objectForKeyedSubscript("src") as? String
+            if src == nil {
+                continue
+            }
+            
+            if src == self.settings.devTrackerIconUrl {
+                isBiowarePost = true
+                break
+            }
+        }
         
         // Text
         let text = element.firstNodeMatchingSelector(".post .forumPadding > .resultText")?.textContent
@@ -96,7 +108,9 @@ class ForumPostRepository {
         if postNumber == nil { return nil }
         if text == nil { return nil }
         
-        let post = ForumPost(id: id!, username: username!, date: date!, postNumber: postNumber!, isBiowarePost: isBiowarePost, text: text!)
+        let finalUsername = username!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        
+        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber!, isBiowarePost: isBiowarePost, text: text!)
         post.avatarUrl = avatarUrl
         post.signature = signature
         

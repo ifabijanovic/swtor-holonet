@@ -48,6 +48,10 @@ class SettingsTests: XCTestCase {
         XCTAssertEqual(self.settings!.threadQueryParam, "thread", "")
     }
     
+    func testPostQueryParam() {
+        XCTAssertEqual(self.settings!.postQueryParam, "post", "")
+    }
+    
     func testPagingQueryParam() {
         XCTAssertEqual(self.settings!.pageQueryParam, "page", "")
     }

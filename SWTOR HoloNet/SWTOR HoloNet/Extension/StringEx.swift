@@ -18,25 +18,25 @@ extension String {
         return withoutTabs
     }
 
-    func stripLeadingSpaces() -> String {
-        var value = self
-        while value.hasPrefix(" ") {
-            value = value.substringFromIndex(1)
-        }
-        return value
+    func trimSpaces() -> String {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     
     func stripSpaces() -> String {
         return self.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
     }
     
+    func collapseMultipleSpaces() -> String {
+        return self.stringByReplacingOccurrencesOfString("[ ]+", withString: " ", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
+    }
+    
     func formatPostDate() -> String {
-        var value = self.stripSpaces()
-        if let range = value.rangeOfString("|#", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
+        var value = self.collapseMultipleSpaces()
+        if let range = value.rangeOfString("| #", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
             value = value.substringToIndex(range.startIndex)
         }
-        value = value.stringByReplacingOccurrencesOfString(",", withString: ", ", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        return value
+        value = value.stringByReplacingOccurrencesOfString(" ,", withString: ",", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        return value.trimSpaces()
     }
     
     // MARK: - Substring

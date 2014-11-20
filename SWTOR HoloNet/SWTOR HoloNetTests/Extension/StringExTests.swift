@@ -34,25 +34,25 @@ class StringExTests: XCTestCase {
         XCTAssertEqual(output, string, "")
     }
     
-    // MARK: - stripLeadingSpaces()
+    // MARK: - trimSpaces()
     
-    func testStripLeadingSpaces_Success() {
-        let string = "     some   text with spaces"
-        let output = string.stripLeadingSpaces()
+    func testTrimSpaces_Success() {
+        let string = "     some   text with spaces   "
+        let output = string.trimSpaces()
         
         XCTAssertEqual(output, "some   text with spaces", "")
     }
     
-    func testStripLeadingSpaces_NoLeadingSpaces() {
+    func testTrimSpaces_NoSpacesToTrim() {
         let string = "some   text with spaces"
-        let output = string.stripLeadingSpaces()
+        let output = string.trimSpaces()
         
         XCTAssertEqual(output, string, "")
     }
     
-    func testStripLeadingSpaces_EmptyString() {
+    func testTrimSpaces_EmptyString() {
         let string = ""
-        let output = string.stripLeadingSpaces()
+        let output = string.trimSpaces()
         
         XCTAssertEqual(output, string, "")
     }
@@ -80,13 +80,36 @@ class StringExTests: XCTestCase {
         XCTAssertEqual(output, string, "")
     }
     
+    // MARK: - collapseMultipleSpaces()
+    
+    func testCollapseMultipleSpaces_Success() {
+        let string = "     some    text with    a    lot of spaces     "
+        let output = string.collapseMultipleSpaces()
+        
+        XCTAssertEqual(output, " some text with a lot of spaces ", "")
+    }
+    
+    func testCollapseMultipleSpaces_NoSpaces() {
+        let string = "sometextwithoutanyspaces"
+        let output = string.collapseMultipleSpaces()
+        
+        XCTAssertEqual(output, string, "")
+    }
+    
+    func testCollapseMultipleSpaces_EmptyString() {
+        let string = ""
+        let output = string.collapseMultipleSpaces()
+        
+        XCTAssertEqual(output, string, "")
+    }
+    
     // MARK: - formatPostDate()
     
     func testFormatPostDate_Success() {
         let string = "10.10.2014 , 10:10 AM | #1"
         let output = string.formatPostDate()
         
-        XCTAssertEqual(output, "10.10.2014, 10:10AM", "")
+        XCTAssertEqual(output, "10.10.2014, 10:10 AM", "")
     }
     
     func testFormatPostDate_EmptyString() {

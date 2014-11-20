@@ -17,9 +17,13 @@ class ForumCategoryRepository {
     
     // MARK: - Init
     
-    init(settings: Settings) {
+    convenience init(settings: Settings) {
+        self.init(settings: settings, parser: ForumParser())
+    }
+    
+    init(settings: Settings, parser: ForumParser) {
         self.settings = settings
-        self.parser = ForumParser()
+        self.parser = parser
     }
     
     // MARK: - Public methods
@@ -69,7 +73,7 @@ class ForumCategoryRepository {
     private func parseCategory(element: HTMLElement) -> ForumCategory? {
         // Id & Title
         let titleElement = element.firstNodeMatchingSelector(".resultTitle > a")
-        let id = self.parser.linkParameter(linkElement: titleElement, name: "f")?.toInt()
+        let id = self.parser.linkParameter(linkElement: titleElement, name: self.settings.categoryQueryParam)?.toInt()
         let title = titleElement?.textContent
         
         // Icon
@@ -101,11 +105,16 @@ class ForumCategoryRepository {
         if id == nil { return nil }
         if title == nil { return nil }
         
-        let category = ForumCategory(id: id!, title: title!)
+        let finalTitle = title!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalDescription = description?.trimSpaces()
+        let finalStats = stats?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalLastPost = lastPost?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        
+        let category = ForumCategory(id: id!, title: finalTitle)
         category.iconUrl = iconUrl
-        category.description = description
-        category.stats = stats
-        category.lastPost = lastPost?.stripNewLinesAndTabs()
+        category.desc = finalDescription
+        category.stats = finalStats
+        category.lastPost = finalLastPost
         
         return category
     }

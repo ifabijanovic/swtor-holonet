@@ -14,7 +14,7 @@ class ForumCategory: Entity {
     
     var iconUrl: String?
     var title: String
-    var description: String?
+    var desc: String?
     var stats: String?
     var lastPost: String?
     

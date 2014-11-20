@@ -10,6 +10,8 @@
 	<string>f</string>
 	<key>Thread Query Param</key>
 	<string>t</string>
+	<key>Post Query Param</key>
+	<string>p</string>
 	<key>Paging Query Param</key>
 	<string>page</string>
 	<key>Dev Tracker Icon URL</key>
