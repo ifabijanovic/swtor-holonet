@@ -114,7 +114,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
     
-    func testGet_SingleItem_InvalidId() {
+    func testGet_SingleItem_Invalid_Id() {
         let expectation = expectationWithDescription("")
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
@@ -128,7 +128,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 0, "")
             
-            }, failure: self.defaultFailure)
+        }, failure: self.defaultFailure)
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -200,12 +200,12 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
             XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
             
-            }, failure: self.defaultFailure)
+        }, failure: self.defaultFailure)
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
     
-    func testGet_MultipleItems_InvalidId() {
+    func testGet_MultipleItems_Invalid_Id() {
         let expectation = expectationWithDescription("")
         
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in

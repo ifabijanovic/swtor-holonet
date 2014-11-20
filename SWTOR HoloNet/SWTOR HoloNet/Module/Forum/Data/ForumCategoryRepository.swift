@@ -105,11 +105,16 @@ class ForumCategoryRepository {
         if id == nil { return nil }
         if title == nil { return nil }
         
-        let category = ForumCategory(id: id!, title: title!)
+        let finalTitle = title!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalDescription = description?.trimSpaces()
+        let finalStats = stats?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        let finalLastPost = lastPost?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
+        
+        let category = ForumCategory(id: id!, title: finalTitle)
         category.iconUrl = iconUrl
-        category.desc = description
-        category.stats = stats?.trimSpaces().stripNewLinesAndTabs().collapseMultipleSpaces()
-        category.lastPost = lastPost?.trimSpaces().stripNewLinesAndTabs().collapseMultipleSpaces()
+        category.desc = finalDescription
+        category.stats = finalStats
+        category.lastPost = finalLastPost
         
         return category
     }

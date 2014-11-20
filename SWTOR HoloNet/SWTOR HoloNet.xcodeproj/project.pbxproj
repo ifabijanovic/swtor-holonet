@@ -81,6 +81,12 @@
 		814C9CAF1A1B893900FE1C94 /* forum-thread-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CA61A1B893900FE1C94 /* forum-thread-single-valid.html */; };
 		814C9CB11A1B896900FE1C94 /* forum-thread-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB01A1B896900FE1C94 /* forum-thread-multiple-valid.html */; };
 		814C9CB31A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB21A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html */; };
+		814C9CBA1A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB41A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html */; };
+		814C9CBB1A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB51A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html */; };
+		814C9CBC1A1B8CC400FE1C94 /* forum-category-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB61A1B8CC400FE1C94 /* forum-category-multiple-valid.html */; };
+		814C9CBD1A1B8CC400FE1C94 /* forum-category-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB71A1B8CC400FE1C94 /* forum-category-single-invalid-id.html */; };
+		814C9CBE1A1B8CC400FE1C94 /* forum-category-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB81A1B8CC400FE1C94 /* forum-category-single-missing-optionals.html */; };
+		814C9CBF1A1B8CC400FE1C94 /* forum-category-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CB91A1B8CC400FE1C94 /* forum-category-single-valid.html */; };
 		8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */; };
 		8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */; };
 		815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
@@ -180,12 +186,6 @@
 		81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
 		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
-		81D30F1F1A0CAFC500CF2843 /* forum-category-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */; };
-		81D30F211A0CBFFF00CF2843 /* forum-category-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */; };
-		81D30F251A0CC11000CF2843 /* forum-category-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */; };
-		81D30F271A0CC1F500CF2843 /* forum-category-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */; };
-		81D30F291A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */; };
-		81D30F2D1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 /* End PBXBuildFile section */
@@ -298,6 +298,12 @@
 		814C9CA61A1B893900FE1C94 /* forum-thread-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-valid.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-valid.html"; sourceTree = "<group>"; };
 		814C9CB01A1B896900FE1C94 /* forum-thread-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-multiple-valid.html"; path = "Module/Forum/Test Data/Thread/forum-thread-multiple-valid.html"; sourceTree = "<group>"; };
 		814C9CB21A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-multiple-invalid-id.html"; path = "Module/Forum/Test Data/Thread/forum-thread-multiple-invalid-id.html"; sourceTree = "<group>"; };
+		814C9CB41A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-id.html"; path = "Module/Forum/Test Data/Category/forum-category-multiple-missing-id.html"; sourceTree = "<group>"; };
+		814C9CB51A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-optionals.html"; path = "Module/Forum/Test Data/Category/forum-category-multiple-missing-optionals.html"; sourceTree = "<group>"; };
+		814C9CB61A1B8CC400FE1C94 /* forum-category-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-valid.html"; path = "Module/Forum/Test Data/Category/forum-category-multiple-valid.html"; sourceTree = "<group>"; };
+		814C9CB71A1B8CC400FE1C94 /* forum-category-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-invalid-id.html"; path = "Module/Forum/Test Data/Category/forum-category-single-invalid-id.html"; sourceTree = "<group>"; };
+		814C9CB81A1B8CC400FE1C94 /* forum-category-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-missing-optionals.html"; path = "Module/Forum/Test Data/Category/forum-category-single-missing-optionals.html"; sourceTree = "<group>"; };
+		814C9CB91A1B8CC400FE1C94 /* forum-category-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-valid.html"; path = "Module/Forum/Test Data/Category/forum-category-single-valid.html"; sourceTree = "<group>"; };
 		8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepositoryTests.swift; path = Module/Forum/Data/ForumThreadRepositoryTests.swift; sourceTree = "<group>"; };
 		8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumRepositoryTestsBase.swift; path = Module/Forum/Data/ForumRepositoryTestsBase.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
@@ -390,12 +396,6 @@
 		81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseTableViewController.swift; path = Module/Forum/UI/ForumBaseTableViewController.swift; sourceTree = "<group>"; };
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
-		81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-valid.html"; path = "Module/Forum/Test Data/forum-category-single-valid.html"; sourceTree = "<group>"; };
-		81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-invalid-id.html"; path = "Module/Forum/Test Data/forum-category-single-invalid-id.html"; sourceTree = "<group>"; };
-		81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-single-missing-optionals.html"; path = "Module/Forum/Test Data/forum-category-single-missing-optionals.html"; sourceTree = "<group>"; };
-		81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-valid.html"; path = "Module/Forum/Test Data/forum-category-multiple-valid.html"; sourceTree = "<group>"; };
-		81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-id.html"; path = "Module/Forum/Test Data/forum-category-multiple-missing-id.html"; sourceTree = "<group>"; };
-		81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-category-multiple-missing-optionals.html"; path = "Module/Forum/Test Data/forum-category-multiple-missing-optionals.html"; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -550,12 +550,12 @@
 		814C9C8C1A1B853300FE1C94 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				81D30F1E1A0CAFC500CF2843 /* forum-category-single-valid.html */,
-				81D30F201A0CBFFF00CF2843 /* forum-category-single-invalid-id.html */,
-				81D30F241A0CC11000CF2843 /* forum-category-single-missing-optionals.html */,
-				81D30F261A0CC1F500CF2843 /* forum-category-multiple-valid.html */,
-				81D30F281A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html */,
-				81D30F2C1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html */,
+				814C9CB41A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html */,
+				814C9CB51A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html */,
+				814C9CB61A1B8CC400FE1C94 /* forum-category-multiple-valid.html */,
+				814C9CB71A1B8CC400FE1C94 /* forum-category-single-invalid-id.html */,
+				814C9CB81A1B8CC400FE1C94 /* forum-category-single-missing-optionals.html */,
+				814C9CB91A1B8CC400FE1C94 /* forum-category-single-valid.html */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -967,28 +967,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814C9CBA1A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html in Resources */,
 				814C9CA91A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html in Resources */,
 				814C9CAA1A1B893900FE1C94 /* forum-thread-single-invalid-replies.html in Resources */,
+				814C9CBB1A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html in Resources */,
 				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				814C9CB31A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html in Resources */,
 				816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */,
 				814C9CAE1A1B893900FE1C94 /* forum-thread-single-valid-not-sticky.html in Resources */,
 				814C9CB11A1B896900FE1C94 /* forum-thread-multiple-valid.html in Resources */,
-				81D30F2D1A0CC3E400CF2843 /* forum-category-multiple-missing-optionals.html in Resources */,
 				814C9CA71A1B893900FE1C94 /* forum-thread-single-invalid-author.html in Resources */,
 				814C9CAF1A1B893900FE1C94 /* forum-thread-single-valid.html in Resources */,
 				814C9CAC1A1B893900FE1C94 /* forum-thread-single-invalid-views.html in Resources */,
+				814C9CBF1A1B8CC400FE1C94 /* forum-category-single-valid.html in Resources */,
+				814C9CBE1A1B8CC400FE1C94 /* forum-category-single-missing-optionals.html in Resources */,
 				818029D51A08B7CC00999871 /* Settings.plist in Resources */,
-				81D30F211A0CBFFF00CF2843 /* forum-category-single-invalid-id.html in Resources */,
 				814C9CAD1A1B893900FE1C94 /* forum-thread-single-valid-not-dev.html in Resources */,
+				814C9CBC1A1B8CC400FE1C94 /* forum-category-multiple-valid.html in Resources */,
 				816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				814C9CAB1A1B893900FE1C94 /* forum-thread-single-invalid-title.html in Resources */,
-				81D30F1F1A0CAFC500CF2843 /* forum-category-single-valid.html in Resources */,
+				814C9CBD1A1B8CC400FE1C94 /* forum-category-single-invalid-id.html in Resources */,
 				816361A31A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
 				814C9CA81A1B893900FE1C94 /* forum-thread-single-invalid-id.html in Resources */,
-				81D30F271A0CC1F500CF2843 /* forum-category-multiple-valid.html in Resources */,
-				81D30F291A0CC2CC00CF2843 /* forum-category-multiple-missing-id.html in Resources */,
-				81D30F251A0CC11000CF2843 /* forum-category-single-missing-optionals.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
