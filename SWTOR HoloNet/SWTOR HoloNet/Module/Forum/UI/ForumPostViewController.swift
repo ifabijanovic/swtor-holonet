@@ -13,6 +13,7 @@ class ForumPostViewController: UIViewController {
     // MARK: - Properties
     
     var settings: Settings?
+    var theme: Theme?
     var post: ForumPost?
     
     // MARK: - Outlets
@@ -25,8 +26,9 @@ class ForumPostViewController: UIViewController {
     
     // MARK: - Public methods
     
-    func setup(#settings: Settings, post: ForumPost) {
+    func setup(#settings: Settings, theme: Theme, post: ForumPost) {
         self.settings = settings
+        self.theme = theme
         self.post = post
     }
     
@@ -56,6 +58,11 @@ class ForumPostViewController: UIViewController {
         self.dateLabel.text = "\(self.post!.date) | #\(self.post!.postNumber)"
         self.usernameLabel.text = post!.username
         self.textTextView.text = post!.text
+        
+        self.view.backgroundColor = self.theme!.contentBackground
+        self.dateLabel.textColor = self.theme!.contentText
+        self.usernameLabel.textColor = self.theme!.contentText
+        self.textTextView.textColor = self.post!.isBiowarePost ? self.theme!.contentHighlightText : self.theme!.contentText
     }
     
     override func viewDidAppear(animated: Bool) {

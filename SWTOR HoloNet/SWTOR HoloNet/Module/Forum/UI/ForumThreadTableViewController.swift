@@ -134,7 +134,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             let cell = sender as UITableViewCell
             let post = self.posts![cell.tag]
             
-            controller.setup(settings: self.settings!, post: post)
+            controller.setup(settings: self.settings!, theme: self.theme!, post: post)
         }
     }
     
