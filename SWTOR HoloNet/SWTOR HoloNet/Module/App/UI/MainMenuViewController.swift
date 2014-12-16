@@ -17,8 +17,19 @@ class MainMenuViewController: UIViewController {
     // MARK: - Properties
     
     private let settings = Settings()
+    private let theme = Theme()
     
     // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        UINavigationBar.appearance().barTintColor = self.theme.navBarBackground
+        UINavigationBar.appearance().tintColor = self.theme.navBarText
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: self.theme.navBarText]
+        
+        self.view.backgroundColor = self.theme.contentBackground
+    }
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -35,7 +46,7 @@ class MainMenuViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == ForumSegue {
             let controller = segue.destinationViewController as ForumListTableViewController
-            controller.setup(settings: self.settings)
+            controller.setup(settings: self.settings, theme: self.theme)
         }
     }
     

@@ -17,4 +17,16 @@ class ForumCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var statsLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
     
+    // MARK: - Public methods
+    
+    func applyTheme(theme: Theme) {
+        self.titleLabel.textColor = theme.contentTitle
+        self.statsLabel.textColor = theme.contentText
+        self.lastPostLabel.textColor = theme.contentText
+        
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
+        self.selectedBackgroundView = selectedBackgroundView
+    }
+    
 }
