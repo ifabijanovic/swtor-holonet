@@ -148,7 +148,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
             let controller = segue.destinationViewController as ForumThreadTableViewController
             let cell = sender as UITableViewCell
             let thread = self.threads![cell.tag]
-            controller.setup(settings: self.settings!, thread: thread)
+            controller.setup(settings: self.settings!, theme: self.theme!, thread: thread)
         }
     }
 

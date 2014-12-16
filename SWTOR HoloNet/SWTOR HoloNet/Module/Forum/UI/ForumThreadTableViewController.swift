@@ -26,12 +26,14 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet var titleView: UIView!
     @IBOutlet var titleLabel: UILabel!
     
     // MARK: - Public methods
 
-    func setup(#settings: Settings, thread: ForumThread) {
+    func setup(#settings: Settings, theme: Theme, thread: ForumThread) {
         self.settings = settings
+        self.theme = theme
         self.thread = thread
         self.postRepo = ForumPostRepository(settings: settings)
     }
@@ -60,6 +62,11 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         var headerFrame = self.tableView.tableHeaderView!.frame
         headerFrame.size.height = titleHeight + 16
         self.tableView.tableHeaderView!.frame = headerFrame
+        
+        self.view.backgroundColor = self.theme!.contentBackground
+        self.tableView.backgroundColor = self.theme!.contentBackground
+        self.titleView.backgroundColor = self.theme!.contentBackground
+        self.titleLabel.textColor = self.theme!.contentTitle
         
         self.onRefresh()
     }
@@ -105,6 +112,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
+        cell.applyTheme(self.theme!)
         
         cell.tag = indexPath.row
 

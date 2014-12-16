@@ -158,6 +158,7 @@
                     <navigationItem key="navigationItem" title="Thread" id="ZpG-sq-mgZ"/>
                     <connections>
                         <outlet property="titleLabel" destination="56K-TE-2ww" id="Rhw-jJ-bkZ"/>
+                        <outlet property="titleView" destination="niA-SR-eBO" id="D43-mL-dq4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7g-FO-C2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
