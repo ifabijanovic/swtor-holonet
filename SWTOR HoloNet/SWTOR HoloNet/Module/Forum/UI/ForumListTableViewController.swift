@@ -34,12 +34,13 @@ class ForumListTableViewController: ForumBaseTableViewController {
     
     // MARK: - Public methods
     
-    func setup(#settings: Settings) {
-        self.setup(settings: settings, category: nil)
+    func setup(#settings: Settings, theme: Theme) {
+        self.setup(settings: settings, theme: theme, category: nil)
     }
     
-    func setup(#settings: Settings, category: ForumCategory?) {
+    func setup(#settings: Settings, theme: Theme, category: ForumCategory?) {
         self.settings = settings
+        self.theme = theme
         self.category = category
         self.categoryRepo = ForumCategoryRepository(settings: settings)
         
@@ -58,6 +59,9 @@ class ForumListTableViewController: ForumBaseTableViewController {
         let bundle = NSBundle.mainBundle()
         self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
+        
+        self.view.backgroundColor = self.theme!.contentBackground
+        self.tableView.backgroundColor = self.theme!.contentBackground
         
         self.onRefresh()
     }
@@ -139,12 +143,12 @@ class ForumListTableViewController: ForumBaseTableViewController {
             let controller = segue.destinationViewController as ForumListTableViewController
             let cell = sender as UITableViewCell
             let category = self.categories![cell.tag]
-            controller.setup(settings: self.settings!, category: category)
+            controller.setup(settings: self.settings!, theme: self.theme!, category: category)
         } else if segue.identifier == ThreadSegue {
             let controller = segue.destinationViewController as ForumThreadTableViewController
             let cell = sender as UITableViewCell
             let thread = self.threads![cell.tag]
-            controller.setup(settings: self.settings!, thread: thread)
+            controller.setup(settings: self.settings!, theme: self.theme!, thread: thread)
         }
     }
 
@@ -265,6 +269,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = category.title
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
+        cell.applyTheme(self.theme!)
         
         cell.tag = indexPath.row
     }
@@ -291,6 +296,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
+        cell.applyTheme(self.theme!)
         
         cell.tag = indexPath.row
     }

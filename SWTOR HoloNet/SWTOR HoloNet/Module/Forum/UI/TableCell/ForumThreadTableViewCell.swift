@@ -18,4 +18,16 @@ class ForumThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var stickyImageView: UIImageView!
     @IBOutlet weak var repliesViewsLabel: UILabel!
     
+    // MARK: - Public methods
+    
+    func applyTheme(theme: Theme) {
+        self.titleLabel.textColor = theme.contentTitle
+        self.authorLabel.textColor = theme.contentText
+        self.repliesViewsLabel.textColor = theme.contentText
+        
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
+        self.selectedBackgroundView = selectedBackgroundView
+    }
+    
 }

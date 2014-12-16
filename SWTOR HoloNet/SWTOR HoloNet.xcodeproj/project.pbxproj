@@ -114,6 +114,8 @@
 		816361A71A01855200E7D194 /* ForumPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816361A41A01855200E7D194 /* ForumPostTableViewCell.swift */; };
 		816361A81A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 816361A51A01855200E7D194 /* ForumPostTableViewCell.xib */; };
 		816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 816361A51A01855200E7D194 /* ForumPostTableViewCell.xib */; };
+		816567201A40394F002AA53A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165671F1A40394F002AA53A /* Theme.swift */; };
+		816567211A40394F002AA53A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165671F1A40394F002AA53A /* Theme.swift */; };
 		816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */; };
 		8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
@@ -335,6 +337,7 @@
 		8163619F1A01814300E7D194 /* ForumCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumCategoryTableViewCell.xib; path = Module/Forum/UI/TableCell/ForumCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		816361A41A01855200E7D194 /* ForumPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostTableViewCell.swift; path = Module/Forum/UI/TableCell/ForumPostTableViewCell.swift; sourceTree = "<group>"; };
 		816361A51A01855200E7D194 /* ForumPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumPostTableViewCell.xib; path = Module/Forum/UI/TableCell/ForumPostTableViewCell.xib; sourceTree = "<group>"; };
+		8165671F1A40394F002AA53A /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Module/App/Model/Theme.swift; sourceTree = "<group>"; };
 		816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-empty.html"; path = "Module/Forum/Test Data/forum-empty.html"; sourceTree = "<group>"; };
 		8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListTableViewController.swift; path = Module/Forum/UI/ForumListTableViewController.swift; sourceTree = "<group>"; };
 		8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewController.swift; path = Module/Forum/UI/ForumThreadTableViewController.swift; sourceTree = "<group>"; };
@@ -490,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				8120F26319FFB01A00C02DF8 /* Entity.swift */,
+				8165671F1A40394F002AA53A /* Theme.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1075,6 +1079,7 @@
 				81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
+				816567201A40394F002AA53A /* Theme.swift in Sources */,
 				81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				81255D8E19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
 				8120F27219FFB2E200C02DF8 /* Array.swift in Sources */,
@@ -1184,6 +1189,7 @@
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				816361A11A01814300E7D194 /* ForumCategoryTableViewCell.swift in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
+				816567211A40394F002AA53A /* Theme.swift in Sources */,
 				8120F28119FFB2E200C02DF8 /* Range.swift in Sources */,
 				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,
 				8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */,
