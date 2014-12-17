@@ -24,10 +24,6 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UINavigationBar.appearance().barTintColor = self.theme.navBarBackground
-        UINavigationBar.appearance().tintColor = self.theme.navBarText
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: self.theme.navBarText]
-        
         self.view.backgroundColor = self.theme.contentBackground
     }
     

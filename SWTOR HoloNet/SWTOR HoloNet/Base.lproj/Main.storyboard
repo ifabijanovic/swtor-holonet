@@ -9,7 +9,7 @@
         <!--Menu-->
         <scene sceneID="Xam-xb-SPC">
             <objects>
-                <viewController id="H6T-DS-BS9" customClass="MainMenuViewController" customModule="SWTOR_HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H6T-DS-BS9" customClass="MainMenuViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NJB-U9-vZN"/>
                         <viewControllerLayoutGuide type="bottom" id="YT3-V5-965"/>
@@ -44,7 +44,7 @@
         <!--Forum-->
         <scene sceneID="r1i-Dn-oqE">
             <objects>
-                <tableViewController id="0DN-yQ-lYj" customClass="ForumListTableViewController" customModule="SWTOR_HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0DN-yQ-lYj" customClass="ForumListTableViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BH3-dt-Xo8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +98,7 @@
         <!--Thread-->
         <scene sceneID="JxE-zd-xu0">
             <objects>
-                <tableViewController id="MmZ-8K-Gwd" customClass="ForumThreadTableViewController" customModule="SWTOR_HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="MmZ-8K-Gwd" customClass="ForumThreadTableViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5s0-aB-Ql8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +168,7 @@
         <!--Post-->
         <scene sceneID="JlW-nx-khJ">
             <objects>
-                <viewController id="hIc-4P-cfF" customClass="ForumPostViewController" customModule="SWTOR_HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hIc-4P-cfF" customClass="ForumPostViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2MN-Ti-qtQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Eh5-nm-n0N"/>

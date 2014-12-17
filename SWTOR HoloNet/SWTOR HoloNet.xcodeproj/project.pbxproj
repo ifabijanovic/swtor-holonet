@@ -162,7 +162,6 @@
 		81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
 		81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
-		81AB248419EFBD7700293D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248319EFBD7700293D26 /* ViewController.swift */; };
 		81AB248719EFBD7700293D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248519EFBD7700293D26 /* Main.storyboard */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
@@ -384,10 +383,9 @@
 		81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "../Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
 		81A49A7A19F0FCC0007FEA4C /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
 		81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
-		81AB247C19EFBD7700293D26 /* SWTOR HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWTOR HoloNet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB247C19EFBD7700293D26 /* SWTOR HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "SWTOR HoloNet.app"; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB248119EFBD7700293D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81AB248319EFBD7700293D26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81AB248619EFBD7700293D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81AB248819EFBD7700293D26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -753,7 +751,6 @@
 				81C228A219F1337C00EEF2C6 /* Extension */,
 				81AB24A319EFC18400293D26 /* Module */,
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
-				81AB248319EFBD7700293D26 /* ViewController.swift */,
 				81AB248519EFBD7700293D26 /* Main.storyboard */,
 				817A216A19F6C4480093ECE3 /* Settings.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
@@ -1085,7 +1082,6 @@
 				8120F27219FFB2E200C02DF8 /* Array.swift in Sources */,
 				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */,
-				81AB248419EFBD7700293D26 /* ViewController.swift in Sources */,
 				81255D7E19F7BBD600E0C018 /* SDWebImageDownloaderOperation.m in Sources */,
 				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */,
