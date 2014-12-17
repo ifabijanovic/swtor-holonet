@@ -884,9 +884,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		81AB247B19EFBD7700293D26 /* SWTOR HoloNet */ = {
+		81AB247B19EFBD7700293D26 /* HoloNet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81AB249B19EFBD7700293D26 /* Build configuration list for PBXNativeTarget "SWTOR HoloNet" */;
+			buildConfigurationList = 81AB249B19EFBD7700293D26 /* Build configuration list for PBXNativeTarget "HoloNet" */;
 			buildPhases = (
 				81AB247819EFBD7700293D26 /* Sources */,
 				81AB247919EFBD7700293D26 /* Frameworks */,
@@ -896,7 +896,7 @@
 			);
 			dependencies = (
 			);
-			name = "SWTOR HoloNet";
+			name = HoloNet;
 			productName = "SWTOR HoloNet";
 			productReference = 81AB247C19EFBD7700293D26 /* SWTOR HoloNet.app */;
 			productType = "com.apple.product-type.application";
@@ -957,7 +957,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				81AB247B19EFBD7700293D26 /* SWTOR HoloNet */,
+				81AB247B19EFBD7700293D26 /* HoloNet */,
 				81AB249019EFBD7700293D26 /* SWTOR HoloNetTests */,
 			);
 		};
@@ -1229,7 +1229,7 @@
 		};
 		81AB249319EFBD7700293D26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 81AB247B19EFBD7700293D26 /* SWTOR HoloNet */;
+			target = 81AB247B19EFBD7700293D26 /* HoloNet */;
 			targetProxy = 81AB249219EFBD7700293D26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1403,7 +1403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81AB249B19EFBD7700293D26 /* Build configuration list for PBXNativeTarget "SWTOR HoloNet" */ = {
+		81AB249B19EFBD7700293D26 /* Build configuration list for PBXNativeTarget "HoloNet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81AB249C19EFBD7700293D26 /* Debug */,
