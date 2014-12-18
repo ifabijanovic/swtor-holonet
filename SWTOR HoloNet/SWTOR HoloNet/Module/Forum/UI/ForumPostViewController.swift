@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ForumPostViewController: UIViewController {
+class ForumPostViewController: UIViewController, InjectableViewController {
 
     // MARK: - Properties
     
-    var settings: Settings?
-    var theme: Theme?
-    var post: ForumPost?
+    var settings: Settings!
+    var theme: Theme!
+    var post: ForumPost!
     
     // MARK: - Outlets
     
@@ -24,23 +24,18 @@ class ForumPostViewController: UIViewController {
     @IBOutlet var devImageView: UIImageView!
     @IBOutlet var textTextView: UITextView!
     
-    // MARK: - Public methods
-    
-    func setup(#settings: Settings, theme: Theme, post: ForumPost) {
-        self.settings = settings
-        self.theme = theme
-        self.post = post
-    }
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        // Poor man's dependency injection, remove ASAP
+        InstanceHolder.sharedInstance().inject(controller: self)
+        
         super.viewDidLoad()
         
         self.textTextView.textContainerInset = UIEdgeInsetsMake(0, 12, 0, 12)
         
         // Set user avatar image if URL is defined in the model
-        if let url = self.post!.avatarUrl {
+        if let url = self.post.avatarUrl {
             self.avatarImageView.hidden = false
             self.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
         } else {
@@ -48,21 +43,21 @@ class ForumPostViewController: UIViewController {
         }
         
         // Set dev icon if post is marked as Bioware post
-        if self.post!.isBiowarePost {
+        if self.post.isBiowarePost {
             self.devImageView.hidden = false
-            self.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            self.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
             self.devImageView.hidden = true
         }
         
-        self.dateLabel.text = "\(self.post!.date) | #\(self.post!.postNumber)"
-        self.usernameLabel.text = post!.username
-        self.textTextView.text = post!.text
+        self.dateLabel.text = "\(self.post.date) | #\(self.post.postNumber)"
+        self.usernameLabel.text = post.username
+        self.textTextView.text = post.text
         
-        self.view.backgroundColor = self.theme!.contentBackground
-        self.dateLabel.textColor = self.theme!.contentText
-        self.usernameLabel.textColor = self.theme!.contentText
-        self.textTextView.textColor = self.post!.isBiowarePost ? self.theme!.contentHighlightText : self.theme!.contentText
+        self.view.backgroundColor = self.theme.contentBackground
+        self.dateLabel.textColor = self.theme.contentText
+        self.usernameLabel.textColor = self.theme.contentText
+        self.textTextView.textColor = self.post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
     }
     
     override func viewDidAppear(animated: Bool) {

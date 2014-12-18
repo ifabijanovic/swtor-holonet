@@ -12,8 +12,8 @@ class Theme {
     
     // MARK: - Properties
     
-    let navBarBackground: UIColor
-    let navBarText: UIColor
+    let navBackground: UIColor
+    let navText: UIColor
     let contentBackground: UIColor
     let contentHighlightBackground: UIColor
     let contentTitle: UIColor
@@ -26,10 +26,8 @@ class Theme {
     // MARK: - Init
     
     init() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-        
-        self.navBarBackground = UIColor(red: 19.0/255.0, green: 19.0/255.0, blue: 19.0/255.0, alpha: 1.0) //#131313 (dark)
-        self.navBarText = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
+        self.navBackground = UIColor(red: 19.0/255.0, green: 19.0/255.0, blue: 19.0/255.0, alpha: 1.0) //#131313 (dark)
+        self.navText = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
         self.contentBackground = UIColor(red: 19.0/255.0, green: 19.0/255.0, blue: 19.0/255.0, alpha: 1.0) // #131313 (dark)
         self.contentHighlightBackground = UIColor(red: 45.0/255.0, green: 45.0/255.0, blue: 45.0/255.0, alpha: 1.0) // #131313 (dark)
         self.contentTitle = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
@@ -38,5 +36,20 @@ class Theme {
         
         self.activityIndicatorStyle = UIActivityIndicatorViewStyle.White
         self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle.White
+        
+        self.apply()
+    }
+    
+    // MARK: - Private methods
+    
+    func apply() {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        
+        UINavigationBar.appearance().barTintColor = self.navBackground
+        UINavigationBar.appearance().tintColor = self.navText
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: self.navText]
+        
+        UITabBar.appearance().barTintColor = self.navBackground
+        UITabBar.appearance().tintColor = self.navText
     }
 }

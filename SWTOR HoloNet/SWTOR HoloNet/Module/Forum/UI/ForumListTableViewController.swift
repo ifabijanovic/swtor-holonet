@@ -23,45 +23,35 @@ class ForumListTableViewController: ForumBaseTableViewController {
     
     // MARK: - Properties
     
-    private var settings: Settings?
-    private var category: ForumCategory?
+    var category: ForumCategory?
     
-    private var categoryRepo: ForumCategoryRepository?
+    private var categoryRepo: ForumCategoryRepository!
     private var threadRepo: ForumThreadRepository?
     
     private var categories: Array<ForumCategory>?
     private var threads: Array<ForumThread>?
     
-    // MARK: - Public methods
-    
-    func setup(#settings: Settings, theme: Theme) {
-        self.setup(settings: settings, theme: theme, category: nil)
-    }
-    
-    func setup(#settings: Settings, theme: Theme, category: ForumCategory?) {
-        self.settings = settings
-        self.theme = theme
-        self.category = category
-        self.categoryRepo = ForumCategoryRepository(settings: settings)
-        
-        if category != nil {
-            // Threads exist only inside categories, not in forum root
-            self.threadRepo = ForumThreadRepository(settings: settings)
-            self.navigationItem.title = category!.title
-        }
-    }
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
+        // Poor man's dependency injection, remove ASAP
+        InstanceHolder.sharedInstance().inject(controller: self)
+        
         super.viewDidLoad()
+        
+        self.categoryRepo = ForumCategoryRepository(settings: self.settings)
+        if self.category != nil {
+            // Threads exist only inside categories, not in forum root
+            self.threadRepo = ForumThreadRepository(settings: self.settings)
+            self.navigationItem.title = self.category!.title
+        }
         
         let bundle = NSBundle.mainBundle()
         self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
         
-        self.view.backgroundColor = self.theme!.contentBackground
-        self.tableView.backgroundColor = self.theme!.contentBackground
+        self.view.backgroundColor = self.theme.contentBackground
+        self.tableView.backgroundColor = self.theme.contentBackground
         
         self.onRefresh()
     }
@@ -143,12 +133,12 @@ class ForumListTableViewController: ForumBaseTableViewController {
             let controller = segue.destinationViewController as ForumListTableViewController
             let cell = sender as UITableViewCell
             let category = self.categories![cell.tag]
-            controller.setup(settings: self.settings!, theme: self.theme!, category: category)
+            controller.category = category
         } else if segue.identifier == ThreadSegue {
             let controller = segue.destinationViewController as ForumThreadTableViewController
             let cell = sender as UITableViewCell
             let thread = self.threads![cell.tag]
-            controller.setup(settings: self.settings!, theme: self.theme!, thread: thread)
+            controller.thread = thread
         }
     }
 
@@ -209,12 +199,12 @@ class ForumListTableViewController: ForumBaseTableViewController {
         if let category = self.category {
             // Load subcategories and threads for the current category
             requestCount = 2
-            self.categoryRepo!.get(category: category, success: categorySuccess, failure: failure)
+            self.categoryRepo.get(category: category, success: categorySuccess, failure: failure)
             self.threadRepo!.get(category: category, page: 1, success: threadSuccess, failure: failure)
         } else {
             // Forum root, only load categories
             requestCount = 1
-            self.categoryRepo!.get(language: self.settings!.forumLanguage, success: categorySuccess, failure: failure)
+            self.categoryRepo.get(language: self.settings.forumLanguage, success: categorySuccess, failure: failure)
         }
     }
     
@@ -269,7 +259,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = category.title
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
-        cell.applyTheme(self.theme!)
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
     }
@@ -280,7 +270,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         // Set dev icon if thread is marked as having Bioware reply
         if thread.hasBiowareReply {
             cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
             cell.devImageView.hidden = true
         }
@@ -288,7 +278,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         // Set sticky icon if thread is marked with sticky
         if thread.isSticky {
             cell.stickyImageView.hidden = false
-            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings!.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
         } else {
             cell.stickyImageView.hidden = true
         }
@@ -296,7 +286,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
-        cell.applyTheme(self.theme!)
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
     }

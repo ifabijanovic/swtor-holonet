@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let cache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         NSURLCache.setSharedURLCache(cache)
+        
+        InstanceHolder.sharedInstance()
 
         return true
     }
