@@ -18,9 +18,9 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
 
     // MARK: - Properties
 
-    private var thread: ForumThread?
+    var thread: ForumThread!
     
-    private var postRepo: ForumPostRepository?
+    private var postRepo: ForumPostRepository!
     private var posts: Array<ForumPost>?
     
     // MARK: - Outlets
@@ -28,19 +28,12 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     @IBOutlet var titleView: UIView!
     @IBOutlet var titleLabel: UILabel!
     
-    // MARK: - Public methods
-
-    func setup(#settings: Settings, theme: Theme, thread: ForumThread) {
-        self.settings = settings
-        self.theme = theme
-        self.thread = thread
-        self.postRepo = ForumPostRepository(settings: settings)
-    }
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.postRepo = ForumPostRepository(settings: self.settings)
         
         // Set so each row will resize to fit content
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -48,13 +41,13 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
         
-        self.titleLabel.text = self.thread!.title
+        self.titleLabel.text = self.thread.title
         
         // Calculate height of title text
         let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
         let font = UIFont.systemFontOfSize(17.0)
         let attributes = [NSFontAttributeName: font]
-        let titleSize = (self.thread!.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
         let titleHeight = ceil(titleSize.height)
         
         // Set the height of header view
@@ -132,8 +125,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             let controller = segue.destinationViewController as ForumPostViewController
             let cell = sender as UITableViewCell
             let post = self.posts![cell.tag]
-            
-            controller.setup(settings: self.settings, theme: self.theme, post: post)
+            controller.post = post
         }
     }
     
@@ -164,7 +156,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             println(error)
         }
         
-        self.postRepo!.get(thread: self.thread!, page: 1, success: success, failure: failure)
+        self.postRepo.get(thread: self.thread, page: 1, success: success, failure: failure)
     }
     
     override func onLoadMore() {
@@ -202,7 +194,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             println(error)
         }
         
-        self.postRepo!.get(thread: self.thread!, page: self.loadedPage + 1, success: success, failure: failure)
+        self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
     }
 
 }
