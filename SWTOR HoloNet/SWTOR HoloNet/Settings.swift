@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc class Settings {
+class Settings {
     
     // MARK: - Properties
     

@@ -31,6 +31,9 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        // Poor man's dependency injection, remove ASAP
+        InstanceHolder.sharedInstance().inject(controller: self)
+        
         super.viewDidLoad()
         
         self.postRepo = ForumPostRepository(settings: self.settings)

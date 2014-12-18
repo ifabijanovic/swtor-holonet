@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc class Theme {
+class Theme {
     
     // MARK: - Properties
     
@@ -48,5 +48,8 @@ import UIKit
         UINavigationBar.appearance().barTintColor = self.navBackground
         UINavigationBar.appearance().tintColor = self.navText
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: self.navText]
+        
+        UITabBar.appearance().barTintColor = self.navBackground
+        UITabBar.appearance().tintColor = self.navText
     }
 }

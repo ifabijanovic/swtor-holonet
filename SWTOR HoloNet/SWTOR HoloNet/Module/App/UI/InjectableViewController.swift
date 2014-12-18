@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol InjectableViewController {
+protocol InjectableViewController {
    
     // MARK: - Properties
     

@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="2032" y="389"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="e48-eZ-3wz">
             <objects>
-                <tabBarController id="zkL-zi-P2Z" customClass="MainViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="zkL-zi-P2Z" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JRi-7f-dzI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

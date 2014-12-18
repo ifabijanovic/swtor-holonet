@@ -159,6 +159,8 @@
 		81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */; };
 		81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
 		81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
+		81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
+		81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
 		81AB248719EFBD7700293D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248519EFBD7700293D26 /* Main.storyboard */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
@@ -382,6 +384,7 @@
 		81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "../Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
 		81A49A7A19F0FCC0007FEA4C /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
 		81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
+		81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceHolder.swift; sourceTree = "<group>"; };
 		81AB247C19EFBD7700293D26 /* HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB248119EFBD7700293D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -753,6 +756,7 @@
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
 				81AB248519EFBD7700293D26 /* Main.storyboard */,
 				817A216A19F6C4480093ECE3 /* Settings.swift */,
+				81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
 				81AB247F19EFBD7700293D26 /* Supporting Files */,
 			);
@@ -931,7 +935,6 @@
 					};
 					81AB249019EFBD7700293D26 = {
 						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 81AB247B19EFBD7700293D26;
 					};
 				};
 			};
@@ -1063,6 +1066,7 @@
 				8120F28019FFB2E200C02DF8 /* Range.swift in Sources */,
 				816361A61A01855200E7D194 /* ForumPostTableViewCell.swift in Sources */,
 				8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */,
+				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 				8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
@@ -1169,6 +1173,7 @@
 				81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */,
 				81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
+				81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */,
 				8120F27319FFB2E200C02DF8 /* Array.swift in Sources */,
 				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
@@ -1351,7 +1356,6 @@
 		81AB249F19EFBD7700293D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1366,14 +1370,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Debug;
 		};
 		81AB24A019EFBD7700293D26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1383,7 +1385,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SWTOR HoloNet.app/SWTOR HoloNet";
 			};
 			name = Release;
 		};

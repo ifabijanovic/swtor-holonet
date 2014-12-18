@@ -27,6 +27,9 @@ class ForumPostViewController: UIViewController, InjectableViewController {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        // Poor man's dependency injection, remove ASAP
+        InstanceHolder.sharedInstance().inject(controller: self)
+        
         super.viewDidLoad()
         
         self.textTextView.textContainerInset = UIEdgeInsetsMake(0, 12, 0, 12)
