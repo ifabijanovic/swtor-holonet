@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ForumPostViewController: UIViewController {
+class ForumPostViewController: UIViewController, InjectableViewController {
 
     // MARK: - Properties
     
-    var settings: Settings?
-    var theme: Theme?
+    var settings: Settings!
+    var theme: Theme!
     var post: ForumPost?
     
     // MARK: - Outlets
@@ -50,7 +50,7 @@ class ForumPostViewController: UIViewController {
         // Set dev icon if post is marked as Bioware post
         if self.post!.isBiowarePost {
             self.devImageView.hidden = false
-            self.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            self.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
             self.devImageView.hidden = true
         }
@@ -59,10 +59,10 @@ class ForumPostViewController: UIViewController {
         self.usernameLabel.text = post!.username
         self.textTextView.text = post!.text
         
-        self.view.backgroundColor = self.theme!.contentBackground
-        self.dateLabel.textColor = self.theme!.contentText
-        self.usernameLabel.textColor = self.theme!.contentText
-        self.textTextView.textColor = self.post!.isBiowarePost ? self.theme!.contentHighlightText : self.theme!.contentText
+        self.view.backgroundColor = self.theme.contentBackground
+        self.dateLabel.textColor = self.theme.contentText
+        self.usernameLabel.textColor = self.theme.contentText
+        self.textTextView.textColor = self.post!.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
     }
     
     override func viewDidAppear(animated: Bool) {

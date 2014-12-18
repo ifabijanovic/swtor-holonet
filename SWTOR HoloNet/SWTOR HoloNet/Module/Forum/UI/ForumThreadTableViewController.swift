@@ -18,7 +18,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
 
     // MARK: - Properties
 
-    private var settings: Settings?
     private var thread: ForumThread?
     
     private var postRepo: ForumPostRepository?
@@ -63,10 +62,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         headerFrame.size.height = titleHeight + 16
         self.tableView.tableHeaderView!.frame = headerFrame
         
-        self.view.backgroundColor = self.theme!.contentBackground
-        self.tableView.backgroundColor = self.theme!.contentBackground
-        self.titleView.backgroundColor = self.theme!.contentBackground
-        self.titleLabel.textColor = self.theme!.contentTitle
+        self.view.backgroundColor = self.theme.contentBackground
+        self.tableView.backgroundColor = self.theme.contentBackground
+        self.titleView.backgroundColor = self.theme.contentBackground
+        self.titleLabel.textColor = self.theme.contentTitle
         
         self.onRefresh()
     }
@@ -104,7 +103,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         // Set dev icon if post is marked as Bioware post
         if post.isBiowarePost {
             cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
             cell.devImageView.hidden = true
         }
@@ -112,7 +111,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
-        cell.applyTheme(self.theme!)
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
 
@@ -134,7 +133,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             let cell = sender as UITableViewCell
             let post = self.posts![cell.tag]
             
-            controller.setup(settings: self.settings!, theme: self.theme!, post: post)
+            controller.setup(settings: self.settings, theme: self.theme, post: post)
         }
     }
     

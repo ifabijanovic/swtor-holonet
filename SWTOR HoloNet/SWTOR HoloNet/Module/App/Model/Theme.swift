@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Theme {
+@objc class Theme {
     
     // MARK: - Properties
     

@@ -23,7 +23,6 @@ class ForumListTableViewController: ForumBaseTableViewController {
     
     // MARK: - Properties
     
-    private var settings: Settings?
     private var category: ForumCategory?
     
     private var categoryRepo: ForumCategoryRepository?
@@ -60,8 +59,8 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
         
-        self.view.backgroundColor = self.theme!.contentBackground
-        self.tableView.backgroundColor = self.theme!.contentBackground
+        self.view.backgroundColor = self.theme.contentBackground
+        self.tableView.backgroundColor = self.theme.contentBackground
         
         self.onRefresh()
     }
@@ -143,12 +142,12 @@ class ForumListTableViewController: ForumBaseTableViewController {
             let controller = segue.destinationViewController as ForumListTableViewController
             let cell = sender as UITableViewCell
             let category = self.categories![cell.tag]
-            controller.setup(settings: self.settings!, theme: self.theme!, category: category)
+            controller.setup(settings: self.settings, theme: self.theme, category: category)
         } else if segue.identifier == ThreadSegue {
             let controller = segue.destinationViewController as ForumThreadTableViewController
             let cell = sender as UITableViewCell
             let thread = self.threads![cell.tag]
-            controller.setup(settings: self.settings!, theme: self.theme!, thread: thread)
+            controller.setup(settings: self.settings, theme: self.theme, thread: thread)
         }
     }
 
@@ -214,7 +213,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         } else {
             // Forum root, only load categories
             requestCount = 1
-            self.categoryRepo!.get(language: self.settings!.forumLanguage, success: categorySuccess, failure: failure)
+            self.categoryRepo!.get(language: self.settings.forumLanguage, success: categorySuccess, failure: failure)
         }
     }
     
@@ -269,7 +268,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = category.title
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
-        cell.applyTheme(self.theme!)
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
     }
@@ -280,7 +279,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         // Set dev icon if thread is marked as having Bioware reply
         if thread.hasBiowareReply {
             cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings!.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
             cell.devImageView.hidden = true
         }
@@ -288,7 +287,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         // Set sticky icon if thread is marked with sticky
         if thread.isSticky {
             cell.stickyImageView.hidden = false
-            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings!.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
         } else {
             cell.stickyImageView.hidden = true
         }
@@ -296,7 +295,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
-        cell.applyTheme(self.theme!)
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
     }
