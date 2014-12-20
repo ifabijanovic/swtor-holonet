@@ -206,6 +206,8 @@
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0C111A4465EA00AFA035 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */; };
 		81EC0C121A4465EA00AFA035 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */; };
+		81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C131A44896F00AFA035 /* TextViewController.swift */; };
+		81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C131A44896F00AFA035 /* TextViewController.swift */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 /* End PBXBuildFile section */
@@ -431,6 +433,7 @@
 		81C38F301A42B4E400A8E1D2 /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Module/App/UI/Injectable.swift; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
+		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -708,6 +711,7 @@
 				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
 				81EC0BFC1A44589600AFA035 /* Themeable.swift */,
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
+				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1159,6 +1163,7 @@
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
+				81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,6 +1242,7 @@
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
+				81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */,
 				8177E50A19F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
 				8163619B1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */,
 				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
