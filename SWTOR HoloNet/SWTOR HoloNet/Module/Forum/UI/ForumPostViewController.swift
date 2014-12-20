@@ -32,7 +32,7 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         
         super.viewDidLoad()
         
-        self.textTextView.textContainerInset = UIEdgeInsetsMake(0, 12, 0, 12)
+        self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         
         // Set user avatar image if URL is defined in the model
         if let url = self.post.avatarUrl {
@@ -54,13 +54,10 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
         
+        // UITextView sometimes scrolls down when view gets loaded
+        self.textTextView.setContentOffset(CGPointMake(0, -145), animated: false)
+        
         self.applyTheme(self.theme)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // UITextView sometimes scrolls down on load, this returns the scroll to top
-        self.textTextView.setContentOffset(CGPointZero, animated: false)
     }
     
     // MARK: - Themeable
