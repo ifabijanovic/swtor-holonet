@@ -50,9 +50,6 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
         
-        self.view.backgroundColor = self.theme.contentBackground
-        self.tableView.backgroundColor = self.theme.contentBackground
-        
         self.onRefresh()
     }
 
@@ -289,6 +286,15 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
+    }
+    
+    // MARK: - Themeable
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.tableView.backgroundColor = theme.contentBackground
     }
 
 }

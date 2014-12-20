@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumThreadTableViewCell: UITableViewCell {
+class ForumThreadTableViewCell: UITableViewCell, Themeable {
 
     // MARK: - Outlets
     
@@ -18,7 +18,7 @@ class ForumThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var stickyImageView: UIImageView!
     @IBOutlet weak var repliesViewsLabel: UILabel!
     
-    // MARK: - Public methods
+    // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle

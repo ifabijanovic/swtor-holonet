@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumPostViewController: UIViewController, Injectable {
+class ForumPostViewController: UIViewController, Injectable, Themeable {
 
     // MARK: - Properties
     
@@ -54,16 +54,22 @@ class ForumPostViewController: UIViewController, Injectable {
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
         
-        self.view.backgroundColor = self.theme.contentBackground
-        self.dateLabel.textColor = self.theme.contentText
-        self.usernameLabel.textColor = self.theme.contentText
-        self.textTextView.textColor = self.post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
+        self.applyTheme(self.theme)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // UITextView sometimes scrolls down on load, this returns the scroll to top
         self.textTextView.setContentOffset(CGPointZero, animated: false)
+    }
+    
+    // MARK: - Themeable
+    
+    func applyTheme(theme: Theme) {
+        self.view.backgroundColor = theme.contentBackground
+        self.dateLabel.textColor = theme.contentText
+        self.usernameLabel.textColor = theme.contentText
+        self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
     }
 
 }

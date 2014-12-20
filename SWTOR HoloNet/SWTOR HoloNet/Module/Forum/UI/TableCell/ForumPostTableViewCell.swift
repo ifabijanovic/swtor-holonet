@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumPostTableViewCell: UITableViewCell {
+class ForumPostTableViewCell: UITableViewCell, Themeable {
 
     // MARK: - Outlets
     
@@ -18,7 +18,7 @@ class ForumPostTableViewCell: UITableViewCell {
     @IBOutlet weak var devImageView: UIImageView!
     @IBOutlet weak var textView: UILabel!
     
-    // MARK: - Public methods
+    // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
         self.dateLabel.textColor = theme.contentText
