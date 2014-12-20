@@ -198,8 +198,10 @@
 		81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
 		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
-		81C38F311A42B4E400A8E1D2 /* InjectableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* InjectableViewController.swift */; };
-		81C38F321A42B4E400A8E1D2 /* InjectableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* InjectableViewController.swift */; };
+		81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
+		81C38F321A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
+		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
+		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 /* End PBXBuildFile section */
@@ -421,7 +423,8 @@
 		81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseTableViewController.swift; path = Module/Forum/UI/ForumBaseTableViewController.swift; sourceTree = "<group>"; };
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
-		81C38F301A42B4E400A8E1D2 /* InjectableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InjectableViewController.swift; path = Module/App/UI/InjectableViewController.swift; sourceTree = "<group>"; };
+		81C38F301A42B4E400A8E1D2 /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Module/App/UI/Injectable.swift; sourceTree = "<group>"; };
+		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -680,7 +683,8 @@
 		81A1E1FF19F704DD00C5C833 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				81C38F301A42B4E400A8E1D2 /* InjectableViewController.swift */,
+				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
+				81EC0BFC1A44589600AFA035 /* Themeable.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1055,7 +1059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				816361A01A01814300E7D194 /* ForumCategoryTableViewCell.swift in Sources */,
-				81C38F311A42B4E400A8E1D2 /* InjectableViewController.swift in Sources */,
+				81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81255D8A19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
 				81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
@@ -1071,6 +1075,7 @@
 				81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
 				8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
 				81A49A8819F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
+				81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */,
 				81255D7619F7BBD600E0C018 /* SDImageCache.m in Sources */,
 				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */,
@@ -1154,7 +1159,7 @@
 				81A49A7F19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
 				8120F27F19FFB2E200C02DF8 /* NSArray.swift in Sources */,
 				8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */,
-				81C38F321A42B4E400A8E1D2 /* InjectableViewController.swift in Sources */,
+				81C38F321A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
@@ -1201,6 +1206,7 @@
 				81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81AB24CC19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */,
+				81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */,
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,

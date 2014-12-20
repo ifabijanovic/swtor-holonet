@@ -35,9 +35,9 @@ class InstanceHolder {
     
     // MARK: - Public methods
     
-    func inject(var #controller: InjectableViewController) {
-        controller.settings = self.settings
-        controller.theme = self.theme
+    func inject(var injectable: Injectable) {
+        injectable.settings = self.settings
+        injectable.theme = self.theme
     }
     
 }

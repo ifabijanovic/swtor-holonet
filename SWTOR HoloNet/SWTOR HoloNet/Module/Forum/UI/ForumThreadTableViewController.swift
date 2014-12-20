@@ -32,7 +32,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     
     override func viewDidLoad() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(controller: self)
+        InstanceHolder.sharedInstance().inject(self)
         
         super.viewDidLoad()
         
@@ -57,11 +57,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         var headerFrame = self.tableView.tableHeaderView!.frame
         headerFrame.size.height = titleHeight + 16
         self.tableView.tableHeaderView!.frame = headerFrame
-        
-        self.view.backgroundColor = self.theme.contentBackground
-        self.tableView.backgroundColor = self.theme.contentBackground
-        self.titleView.backgroundColor = self.theme.contentBackground
-        self.titleLabel.textColor = self.theme.contentTitle
         
         self.onRefresh()
     }
@@ -198,6 +193,17 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         }
         
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
+    }
+    
+    // MARK: - Themeable
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.tableView.backgroundColor = theme.contentBackground
+        self.titleView.backgroundColor = theme.contentBackground
+        self.titleLabel.textColor = theme.contentTitle
     }
 
 }

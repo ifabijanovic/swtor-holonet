@@ -1,5 +1,5 @@
 //
-//  InjectableViewController.swift
+//  Injectable.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 18/12/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol InjectableViewController {
+protocol Injectable {
    
     // MARK: - Properties
     

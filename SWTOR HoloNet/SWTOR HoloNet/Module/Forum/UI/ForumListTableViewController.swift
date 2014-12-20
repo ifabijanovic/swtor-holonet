@@ -35,7 +35,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
 
     override func viewDidLoad() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(controller: self)
+        InstanceHolder.sharedInstance().inject(self)
         
         super.viewDidLoad()
         
@@ -49,9 +49,6 @@ class ForumListTableViewController: ForumBaseTableViewController {
         let bundle = NSBundle.mainBundle()
         self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
-        
-        self.view.backgroundColor = self.theme.contentBackground
-        self.tableView.backgroundColor = self.theme.contentBackground
         
         self.onRefresh()
     }
@@ -289,6 +286,15 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
+    }
+    
+    // MARK: - Themeable
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.tableView.backgroundColor = theme.contentBackground
     }
 
 }

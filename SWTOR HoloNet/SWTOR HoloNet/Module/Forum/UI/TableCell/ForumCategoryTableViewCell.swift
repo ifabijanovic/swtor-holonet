@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumCategoryTableViewCell: UITableViewCell {
+class ForumCategoryTableViewCell: UITableViewCell, Themeable {
 
     // MARK: - Outlets
     
@@ -17,7 +17,7 @@ class ForumCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var statsLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
     
-    // MARK: - Public methods
+    // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle
