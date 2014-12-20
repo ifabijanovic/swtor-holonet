@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumPostViewController: UIViewController, InjectableViewController {
+class ForumPostViewController: UIViewController, Injectable {
 
     // MARK: - Properties
     
@@ -28,7 +28,7 @@ class ForumPostViewController: UIViewController, InjectableViewController {
     
     override func viewDidLoad() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(controller: self)
+        InstanceHolder.sharedInstance().inject(self)
         
         super.viewDidLoad()
         

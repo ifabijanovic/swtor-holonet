@@ -35,7 +35,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
 
     override func viewDidLoad() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(controller: self)
+        InstanceHolder.sharedInstance().inject(self)
         
         super.viewDidLoad()
         

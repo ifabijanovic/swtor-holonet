@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumBaseTableViewController: UITableViewController, InjectableViewController {
+class ForumBaseTableViewController: UITableViewController, Injectable {
 
     // MARK: - Constants
     
