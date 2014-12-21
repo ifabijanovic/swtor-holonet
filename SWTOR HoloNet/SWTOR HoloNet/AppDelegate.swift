@@ -13,13 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         let cache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         NSURLCache.setSharedURLCache(cache)
         
-        InstanceHolder.sharedInstance()
+        let parseSettings = InstanceHolder.sharedInstance().settings.parse
+        Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
         return true
     }

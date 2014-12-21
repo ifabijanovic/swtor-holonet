@@ -51,6 +51,9 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
         
         self.onRefresh()
+        
+        // Analytics
+        PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
     }
 
     override func didReceiveMemoryWarning() {

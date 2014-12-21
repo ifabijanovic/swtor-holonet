@@ -58,6 +58,9 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         self.textTextView.setContentOffset(CGPointMake(0, -145), animated: false)
         
         self.applyTheme(self.theme)
+        
+        // Analytics
+        PFAnalytics.trackEvent("forum", dimensions: ["type": "post"])
     }
     
     // MARK: - Themeable

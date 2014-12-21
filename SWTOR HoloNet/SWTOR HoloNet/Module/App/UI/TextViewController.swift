@@ -15,6 +15,10 @@ class TextViewController: UIViewController, Injectable, Themeable {
     var settings: Settings!
     var theme: Theme!
     
+    var text: String?
+    var analyticsName: String?
+    var analyticsDimensions: Dictionary<String, String>?
+    
     // MARK: - Outlets
     
     @IBOutlet var textView: UITextView!
@@ -27,11 +31,24 @@ class TextViewController: UIViewController, Injectable, Themeable {
         
         super.viewDidLoad()
         
+        if self.text != nil {
+            self.textView.text = self.text!
+        }
+        
         self.textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         // UITextView sometimes scrolls down when view gets loaded
         self.textView.setContentOffset(CGPointMake(0, -142.5), animated: false)
         
         self.applyTheme(self.theme)
+        
+        // Analytics
+        if let name = self.analyticsName {
+            if let dimensions = self.analyticsDimensions {
+                PFAnalytics.trackEvent(name, dimensions: dimensions)
+            } else {
+                PFAnalytics.trackEvent(name)
+            }
+        }
     }
     
     // MARK: - Themeable

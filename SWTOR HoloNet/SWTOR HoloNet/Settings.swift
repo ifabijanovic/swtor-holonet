@@ -8,6 +8,32 @@
 
 import UIKit
 
+class ParseSettings {
+    
+    // MARK: - Properties
+    
+    let applicationId: String
+    let clientId: String
+    
+    // MARK: - Init
+    
+    convenience init() {
+        self.init(bundle: NSBundle.mainBundle())
+    }
+    
+    init(bundle: NSBundle) {
+        let path = bundle.pathForResource("Parse", ofType: "plist")
+        if path == nil {
+            println("Parse.plist does not exist. Make a copy of Parse-Template.plist named Parse.plist and fill it with correct vaues")
+        }
+        let settings = NSDictionary(contentsOfFile: path!)
+        
+        self.applicationId = settings?.objectForKey("ApplicationId") as? String ?? ""
+        self.clientId = settings?.objectForKey("ClientId") as? String ?? ""
+    }
+    
+}
+
 class Settings {
     
     // MARK: - Properties
@@ -23,14 +49,16 @@ class Settings {
     
     var forumLanguage: ForumLanguage
     
+    let parse: ParseSettings
+    
     // MARK: - Init
     
     convenience init() {
-        let path = NSBundle.mainBundle().pathForResource("Settings", ofType: "plist")!
-        self.init(path: path)
+        self.init(bundle: NSBundle.mainBundle())
     }
     
-    init(path: String) {
+    init(bundle: NSBundle) {
+        let path = bundle.pathForResource("Settings", ofType: "plist")!
         let settings = NSDictionary(contentsOfFile: path)
         
         self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
@@ -43,6 +71,8 @@ class Settings {
         self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
         
         self.forumLanguage = ForumLanguage.English
+        
+        self.parse = ParseSettings(bundle: bundle)
     }
     
 }

@@ -68,6 +68,10 @@
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
 		813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */; };
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
+		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
+		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
+		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
+		8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
@@ -202,6 +206,32 @@
 		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
 		81C38F321A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
+		81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */; };
+		81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F871A46C0F40020BE6B /* CFNetwork.framework */; };
+		81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */; };
+		81CF9F8C1A46C0FF0020BE6B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */; };
+		81CF9F8E1A46C1070020BE6B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */; };
+		81CF9F901A46C10B0020BE6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */; };
+		81CF9F921A46C1120020BE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F911A46C1120020BE6B /* Security.framework */; };
+		81CF9F941A46C1170020BE6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F931A46C1170020BE6B /* StoreKit.framework */; };
+		81CF9F961A46C11F0020BE6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */; };
+		81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F971A46C1230020BE6B /* libz.dylib */; };
+		81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F991A46C1280020BE6B /* libsqlite3.dylib */; };
+		81CF9F9B1A46C1420020BE6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */; };
+		81CF9F9C1A46C1450020BE6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F871A46C0F40020BE6B /* CFNetwork.framework */; };
+		81CF9F9D1A46C1470020BE6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */; };
+		81CF9F9E1A46C1490020BE6B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */; };
+		81CF9F9F1A46C14B0020BE6B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */; };
+		81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */; };
+		81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F911A46C1120020BE6B /* Security.framework */; };
+		81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F931A46C1170020BE6B /* StoreKit.framework */; };
+		81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */; };
+		81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F991A46C1280020BE6B /* libsqlite3.dylib */; };
+		81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F971A46C1230020BE6B /* libz.dylib */; };
+		81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA61A46C1B30020BE6B /* Bolts.framework */; };
+		81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA61A46C1B30020BE6B /* Bolts.framework */; };
+		81CF9FAA1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
+		81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
 		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0C111A4465EA00AFA035 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */; };
@@ -308,6 +338,9 @@
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
 		813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepositoryTests.swift; path = Module/Forum/Data/ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
+		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
+		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
+		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-author.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
@@ -431,6 +464,19 @@
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
 		81C38F301A42B4E400A8E1D2 /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Module/App/UI/Injectable.swift; sourceTree = "<group>"; };
+		81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		81CF9F871A46C0F40020BE6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		81CF9F911A46C1120020BE6B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		81CF9F931A46C1170020BE6B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		81CF9F971A46C1230020BE6B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		81CF9F991A46C1280020BE6B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		81CF9FA61A46C1B30020BE6B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		81CF9FA71A46C1B30020BE6B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +488,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */,
+				81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */,
+				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
+				81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */,
+				81CF9F8C1A46C0FF0020BE6B /* CoreLocation.framework in Frameworks */,
+				81CF9F8E1A46C1070020BE6B /* MobileCoreServices.framework in Frameworks */,
+				81CF9FAA1A46C1B30020BE6B /* Parse.framework in Frameworks */,
+				81CF9F901A46C10B0020BE6B /* QuartzCore.framework in Frameworks */,
+				81CF9F921A46C1120020BE6B /* Security.framework in Frameworks */,
+				81CF9F941A46C1170020BE6B /* StoreKit.framework in Frameworks */,
+				81CF9F961A46C11F0020BE6B /* SystemConfiguration.framework in Frameworks */,
+				81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */,
+				81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +508,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81CF9F9B1A46C1420020BE6B /* AudioToolbox.framework in Frameworks */,
+				81CF9F9C1A46C1450020BE6B /* CFNetwork.framework in Frameworks */,
+				81CF9F9D1A46C1470020BE6B /* CoreGraphics.framework in Frameworks */,
+				81CF9F9E1A46C1490020BE6B /* CoreLocation.framework in Frameworks */,
+				81CF9F9F1A46C14B0020BE6B /* MobileCoreServices.framework in Frameworks */,
+				81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */,
+				81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */,
+				81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */,
+				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
+				81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */,
+				81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */,
 				813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */,
+				81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */,
+				81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +784,7 @@
 				81EC0BFC1A44589600AFA035 /* Themeable.swift */,
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
+				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -765,6 +838,7 @@
 			children = (
 				81AB247E19EFBD7700293D26 /* SWTOR HoloNet */,
 				81AB249419EFBD7700293D26 /* SWTOR HoloNetTests */,
+				81CF9F811A46C0C60020BE6B /* Frameworks */,
 				81AB24B019EFCA8A00293D26 /* Third Party */,
 				81AB247D19EFBD7700293D26 /* Products */,
 			);
@@ -800,6 +874,8 @@
 				81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */,
 				81AB248019EFBD7700293D26 /* Info.plist */,
 				817A216719F6C1BD0093ECE3 /* Settings.plist */,
+				8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */,
+				8146A6C11A46DC6F00C2F9BC /* Parse.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -912,6 +988,26 @@
 				81C228A819F146C500EEF2C6 /* StringEx.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
+				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
+				81CF9F871A46C0F40020BE6B /* CFNetwork.framework */,
+				81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */,
+				81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */,
+				81CF9F991A46C1280020BE6B /* libsqlite3.dylib */,
+				81CF9F971A46C1230020BE6B /* libz.dylib */,
+				81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */,
+				81CF9FA71A46C1B30020BE6B /* Parse.framework */,
+				81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */,
+				81CF9F911A46C1120020BE6B /* Security.framework */,
+				81CF9F931A46C1170020BE6B /* StoreKit.framework */,
+				81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1036,6 +1132,7 @@
 				8163619C1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
+				8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				816361A21A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,6 +1169,7 @@
 				816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				814C9CAB1A1B893900FE1C94 /* forum-thread-single-invalid-title.html in Resources */,
 				814C9CBD1A1B8CC400FE1C94 /* forum-category-single-invalid-id.html in Resources */,
+				8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				816361A31A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
 				815007631A1C942900C897F1 /* forum-post-single-invalid-text.html in Resources */,
 				815007611A1C940500C897F1 /* forum-post-single-invalid-date.html in Resources */,
@@ -1123,6 +1221,7 @@
 				8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81255D7E19F7BBD600E0C018 /* SDWebImageDownloaderOperation.m in Sources */,
 				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
+				8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */,
 				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */,
@@ -1195,6 +1294,7 @@
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
+				8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
@@ -1370,6 +1470,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1385,6 +1489,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1400,6 +1508,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1420,6 +1529,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
