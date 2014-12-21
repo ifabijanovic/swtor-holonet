@@ -36,8 +36,7 @@ class ForumRepositoryTestsBase: XCTestCase {
         super.setUp()
         
         self.bundle = NSBundle(forClass: SettingsTests.self)
-        let path = self.bundle!.pathForResource("Settings", ofType: "plist")!
-        self.settings = Settings(path: path)
+        self.settings = Settings(bundle: self.bundle!)
     }
     
     override func tearDown() {

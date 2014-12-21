@@ -20,8 +20,8 @@ class SettingsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let path = NSBundle(forClass: SettingsTests.self).pathForResource("Settings", ofType: "plist")!
-        self.settings = Settings(path: path)
+        let bundle = NSBundle(forClass: SettingsTests.self)
+        self.settings = Settings(bundle: bundle)
     }
     
     override func tearDown() {
