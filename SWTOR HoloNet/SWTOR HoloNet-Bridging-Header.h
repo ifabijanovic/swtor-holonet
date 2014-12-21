@@ -5,3 +5,5 @@
 #import "AFNetworking.h"
 #import "HTMLReader.h"
 #import "UIImageView+WebCache.h"
+#import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
