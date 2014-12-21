@@ -59,6 +59,9 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         self.tableView.tableHeaderView!.frame = headerFrame
         
         self.onRefresh()
+        
+        // Analytics
+        PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])
     }
 
     override func didReceiveMemoryWarning() {
