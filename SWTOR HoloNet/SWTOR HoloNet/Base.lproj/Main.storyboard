@@ -488,8 +488,6 @@ If you have any questions regarding privacy while using the Application, or have
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9Mz-Km-CtA" kind="relationship" relationship="viewControllers" id="Rrq-1L-bEH"/>
-                        <segue destination="uzj-mc-cn1" kind="relationship" relationship="viewControllers" id="G5f-kA-vlN"/>
                         <segue destination="cTA-Ix-QMo" kind="relationship" relationship="viewControllers" id="iDR-4W-YXg"/>
                         <segue destination="jmO-K3-Ftx" kind="relationship" relationship="viewControllers" id="ejo-GF-lff"/>
                     </connections>
