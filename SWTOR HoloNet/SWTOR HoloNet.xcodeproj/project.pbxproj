@@ -70,6 +70,8 @@
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
 		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
+		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
+		8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
@@ -338,6 +340,7 @@
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
 		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
 		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
+		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-author.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
@@ -781,6 +784,7 @@
 				81EC0BFC1A44589600AFA035 /* Themeable.swift */,
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
+				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1217,6 +1221,7 @@
 				8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81255D7E19F7BBD600E0C018 /* SDWebImageDownloaderOperation.m in Sources */,
 				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
+				8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */,
 				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */,
@@ -1289,6 +1294,7 @@
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
+				8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,

@@ -477,10 +477,10 @@ If you have any questions regarding privacy while using the Application, or have
             </objects>
             <point key="canvasLocation" x="3619" y="3289"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="e48-eZ-3wz">
             <objects>
-                <tabBarController id="zkL-zi-P2Z" sceneMemberID="viewController">
+                <tabBarController id="zkL-zi-P2Z" customClass="TabViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JRi-7f-dzI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
