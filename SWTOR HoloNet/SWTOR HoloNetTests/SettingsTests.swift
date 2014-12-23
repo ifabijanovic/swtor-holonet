@@ -40,6 +40,14 @@ class SettingsTests: XCTestCase {
         XCTAssertEqual(self.settings!.threadDisplayUrl, "http://www.holonet.test/thread", "")
     }
     
+    func testDevTrackerUrl() {
+        XCTAssertEqual(self.settings!.devTrackerUrl, "http://www.holonet.test/dev", "")
+    }
+    
+    func testDevTrackerId() {
+        XCTAssertEqual(self.settings!.devTrackerId, 5, "")
+    }
+    
     func testCategoryQueryParam() {
         XCTAssertEqual(self.settings!.categoryQueryParam, "category", "")
     }
@@ -58,6 +66,10 @@ class SettingsTests: XCTestCase {
     
     func testDevTrackerIconUrl() {
         XCTAssertEqual(self.settings!.devTrackerIconUrl, "http://www.holonet.test/devIcon.png", "")
+    }
+    
+    func testDevAvatarUrl() {
+        XCTAssertEqual(self.settings!.devAvatarUrl, "http://www.holonet.test/devAvatar.png", "")
     }
     
     func testStickyIconUrl() {

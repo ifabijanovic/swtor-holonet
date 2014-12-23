@@ -6,6 +6,10 @@
 	<string>http://www.holonet.test/forum</string>
 	<key>Thread Display URL</key>
 	<string>http://www.holonet.test/thread</string>
+	<key>Developer Tracker URL</key>
+	<string>http://www.holonet.test/dev</string>
+	<key>Developer Tracker ID</key>
+	<integer>5</integer>
 	<key>Category Query Param</key>
 	<string>category</string>
 	<key>Thread Query Param</key>
@@ -16,6 +20,8 @@
 	<string>page</string>
 	<key>Dev Tracker Icon URL</key>
 	<string>http://www.holonet.test/devIcon.png</string>
+	<key>Dev Avatar URL</key>
+	<string>http://www.holonet.test/devAvatar.png</string>
 	<key>Sticky Icon URL</key>
 	<string>http://www.holonet.test/stickyIcon.png</string>
 </dict>

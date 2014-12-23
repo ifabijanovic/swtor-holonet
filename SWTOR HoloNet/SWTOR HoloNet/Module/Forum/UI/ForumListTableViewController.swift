@@ -121,9 +121,24 @@ class ForumListTableViewController: ForumBaseTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let identifier = indexPath.section == CategorySection ? SubCategorySegue : ThreadSegue
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        self.performSegueWithIdentifier(identifier, sender: cell)
+        if indexPath.section == CategorySection {
+            // Category
+            let category = self.categories![cell!.tag]
+            
+            // Special case for Developer Tracker, treat this sub category as a thread
+            if category.id == self.settings.devTrackerId {
+                let thread = ForumThread.devTracker()
+                self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+                return
+            }
+            
+            self.performSegueWithIdentifier(SubCategorySegue, sender: category)
+        } else {
+            // Thread
+            let thread = self.threads![cell!.tag]
+            self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+        }
     }
     
     // MARK: - Navigation
@@ -131,13 +146,11 @@ class ForumListTableViewController: ForumBaseTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SubCategorySegue {
             let controller = segue.destinationViewController as ForumListTableViewController
-            let cell = sender as UITableViewCell
-            let category = self.categories![cell.tag]
+            let category = sender as ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
             let controller = segue.destinationViewController as ForumThreadTableViewController
-            let cell = sender as UITableViewCell
-            let thread = self.threads![cell.tag]
+            let thread = sender as ForumThread
             controller.thread = thread
         }
     }

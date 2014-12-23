@@ -25,21 +25,18 @@ class ForumPostRepository {
     // MARK: - Public methods
     
     func get(#thread: ForumThread, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: thread.id, page: page, success: success, failure: failure)
-    }
-    
-    // MARK: - Network
-    
-    private func get(#id: Int, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = thread.isDevTracker
+            ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
+            : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
+        
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
             success(items)
-        }) { (operation, error) in
+            }) { (operation, error) in
                 failure(error)
         }
     }
@@ -50,7 +47,7 @@ class ForumPostRepository {
         var items = Array<ForumPost>()
         
         let document = HTMLDocument(string: html)
-        let threadNodes = document.nodesMatchingSelector("#posts > div") as Array<HTMLElement>
+        let threadNodes = document.nodesMatchingSelector("#posts table.threadPost") as Array<HTMLElement>
         
         for node in threadNodes {
             let thread = self.parsePost(node)
@@ -64,7 +61,7 @@ class ForumPostRepository {
     
     private func parsePost(element: HTMLElement) -> ForumPost? {
         // Id
-        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".tinySubmitBtn"), name: self.settings.postQueryParam)?.toInt()
+        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".post .threadDate a"), name: self.settings.postQueryParam)?.toInt()
         
         // Avatar url
         var avatarUrl: String? = nil
@@ -94,6 +91,10 @@ class ForumPostRepository {
                 break
             }
         }
+        // Additional check for Dev Avatar (used on Dev Tracker)
+        if !isBiowarePost {
+            isBiowarePost = avatarUrl? == self.settings.devAvatarUrl
+        }
         
         // Text
         let text = element.firstNodeMatchingSelector(".post .forumPadding > .resultText")?.textContent
@@ -105,12 +106,11 @@ class ForumPostRepository {
         if id == nil { return nil }
         if username == nil { return nil }
         if date == nil { return nil }
-        if postNumber == nil { return nil }
         if text == nil { return nil }
         
         let finalUsername = username!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         
-        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber!, isBiowarePost: isBiowarePost, text: text!)
+        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber, isBiowarePost: isBiowarePost, text: text!)
         post.avatarUrl = avatarUrl
         post.signature = signature
         

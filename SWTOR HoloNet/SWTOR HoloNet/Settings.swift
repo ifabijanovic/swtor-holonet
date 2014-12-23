@@ -40,11 +40,14 @@ class Settings {
     
     let forumDisplayUrl: String
     let threadDisplayUrl: String
+    let devTrackerUrl: String
+    let devTrackerId: Int
     let categoryQueryParam: String
     let threadQueryParam: String
     let postQueryParam: String
     let pageQueryParam: String
     let devTrackerIconUrl: String
+    let devAvatarUrl: String
     let stickyIconUrl: String
     
     var forumLanguage: ForumLanguage
@@ -63,11 +66,14 @@ class Settings {
         
         self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
         self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""
+        self.devTrackerUrl = settings?.objectForKey("Developer Tracker URL") as? String ?? ""
+        self.devTrackerId = settings?.objectForKey("Developer Tracker ID") as? Int ?? 0
         self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
         self.threadQueryParam = settings?.objectForKey("Thread Query Param") as? String ?? ""
         self.postQueryParam = settings?.objectForKey("Post Query Param") as? String ?? ""
         self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
         self.devTrackerIconUrl = settings?.objectForKey("Dev Tracker Icon URL") as? String ?? ""
+        self.devAvatarUrl = settings?.objectForKey("Dev Avatar URL") as? String ?? ""
         self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
         
         self.forumLanguage = ForumLanguage.English
