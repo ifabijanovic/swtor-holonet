@@ -38,6 +38,8 @@ class Settings {
     
     // MARK: - Properties
     
+    let appEmail: String
+    
     let forumDisplayUrl: String
     let threadDisplayUrl: String
     let devTrackerUrl: String
@@ -63,6 +65,8 @@ class Settings {
     init(bundle: NSBundle) {
         let path = bundle.pathForResource("Settings", ofType: "plist")!
         let settings = NSDictionary(contentsOfFile: path)
+        
+        self.appEmail = settings?.objectForKey("App Email") as? String ?? ""
         
         self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
         self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""

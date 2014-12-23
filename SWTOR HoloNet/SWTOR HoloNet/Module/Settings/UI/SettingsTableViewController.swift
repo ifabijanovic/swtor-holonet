@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingsTableViewController: UITableViewController, Injectable, Themeable {
+class SettingsTableViewController: UITableViewController, Injectable, Themeable, MFMailComposeViewControllerDelegate {
    
     // MARK: - Properties
     
@@ -17,6 +18,8 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable 
     
     // MARK: - Outlets
     
+    @IBOutlet var contactCell: UITableViewCell!
+    @IBOutlet var reportBugCell: UITableViewCell!
     @IBOutlet var disclaimerCell: UITableViewCell!
     @IBOutlet var privacyPolicyCell: UITableViewCell!
     
@@ -38,14 +41,65 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell == self.contactCell {
+            self.contact()
+        }
+        if cell == self.reportBugCell {
+            self.reportBug()
+        }
+    }
+    
+    // MARK: - Actions
+    
+    private func contact() {
+        if !MFMailComposeViewController.canSendMail() {
+            self.emailNotAvailable()
+            return
+        }
+        
+        let controller = MFMailComposeViewController()
+        controller.mailComposeDelegate = self
+        controller.setToRecipients([self.settings.appEmail])
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    private func reportBug() {
+        if !MFMailComposeViewController.canSendMail() {
+            self.emailNotAvailable()
+            return
+        }
+        
+        let controller = MFMailComposeViewController()
+        controller.mailComposeDelegate = self
+        controller.setToRecipients([self.settings.appEmail])
+        controller.setSubject("[Bug]")
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    private func emailNotAvailable() {
+        let alert = UIAlertView(title: "Error", message: "It seems email is not configured on this device.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
     }
     
     // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
+        
+        self.contactCell.applyThemeEx(theme)
+        self.reportBugCell.applyThemeEx(theme)
         self.disclaimerCell.applyThemeEx(theme)
         self.privacyPolicyCell.applyThemeEx(theme)
+    }
+    
+    // MARK: - MFMailComposeViewControllerDelegate
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

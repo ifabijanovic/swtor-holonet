@@ -32,6 +32,10 @@ class SettingsTests: XCTestCase {
     
     // MARK: - Tests
     
+    func testAppEmail() {
+        XCTAssertEqual(self.settings!.appEmail, "holonet.swtor@gmail.com", "")
+    }
+    
     func testForumDisplayUrl() {
         XCTAssertEqual(self.settings!.forumDisplayUrl, "http://www.holonet.test/forum", "")
     }

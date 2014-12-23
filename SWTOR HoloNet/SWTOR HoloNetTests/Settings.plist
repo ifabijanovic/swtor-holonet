@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>App Email</key>
+	<string>holonet.swtor@gmail.com</string>
 	<key>Forum Display URL</key>
 	<string>http://www.holonet.test/forum</string>
 	<key>Thread Display URL</key>

@@ -122,6 +122,8 @@
 		816567201A40394F002AA53A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165671F1A40394F002AA53A /* Theme.swift */; };
 		816567211A40394F002AA53A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165671F1A40394F002AA53A /* Theme.swift */; };
 		816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */; };
+		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
+		8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50719F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */; };
 		8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */; };
@@ -380,6 +382,7 @@
 		816361A51A01855200E7D194 /* ForumPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumPostTableViewCell.xib; path = Module/Forum/UI/TableCell/ForumPostTableViewCell.xib; sourceTree = "<group>"; };
 		8165671F1A40394F002AA53A /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Module/App/Model/Theme.swift; sourceTree = "<group>"; };
 		816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-empty.html"; path = "Module/Forum/Test Data/forum-empty.html"; sourceTree = "<group>"; };
+		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListTableViewController.swift; path = Module/Forum/UI/ForumListTableViewController.swift; sourceTree = "<group>"; };
 		8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewController.swift; path = Module/Forum/UI/ForumThreadTableViewController.swift; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
@@ -491,6 +494,7 @@
 				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
 				81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9F8C1A46C0FF0020BE6B /* CoreLocation.framework in Frameworks */,
+				8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */,
 				81CF9F8E1A46C1070020BE6B /* MobileCoreServices.framework in Frameworks */,
 				81CF9FAA1A46C1B30020BE6B /* Parse.framework in Frameworks */,
 				81CF9F901A46C10B0020BE6B /* QuartzCore.framework in Frameworks */,
@@ -510,6 +514,7 @@
 				81CF9F9C1A46C1450020BE6B /* CFNetwork.framework in Frameworks */,
 				81CF9F9D1A46C1470020BE6B /* CoreGraphics.framework in Frameworks */,
 				81CF9F9E1A46C1490020BE6B /* CoreLocation.framework in Frameworks */,
+				8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */,
 				81CF9F9F1A46C14B0020BE6B /* MobileCoreServices.framework in Frameworks */,
 				81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */,
 				81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */,
@@ -997,6 +1002,7 @@
 				81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */,
 				81CF9F991A46C1280020BE6B /* libsqlite3.dylib */,
 				81CF9F971A46C1230020BE6B /* libz.dylib */,
+				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */,
 				81CF9FA71A46C1B30020BE6B /* Parse.framework */,
 				81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */,
