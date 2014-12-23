@@ -8,6 +8,8 @@
 	<string>http://www.swtor.com/community/showthread.php</string>
 	<key>Developer Tracker URL</key>
 	<string>http://www.swtor.com/community/devtracker.php</string>
+	<key>Developer Tracker ID</key>
+	<integer>304</integer>
 	<key>Category Query Param</key>
 	<string>f</string>
 	<key>Thread Query Param</key>
@@ -18,6 +20,8 @@
 	<string>page</string>
 	<key>Dev Tracker Icon URL</key>
 	<string>http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png</string>
+	<key>Dev Avatar URL</key>
+	<string>http://www.swtor.com/sites/all/files/avatars/BioWare.gif</string>
 	<key>Sticky Icon URL</key>
 	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
 </dict>

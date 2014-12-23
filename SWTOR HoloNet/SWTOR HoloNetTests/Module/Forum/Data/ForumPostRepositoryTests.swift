@@ -49,6 +49,27 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
     
+    func testGet_DevTrackerRequestsCorrectUrl() {
+        let page = 7
+        let expectedUrl = "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)"
+        let expectation = expectationWithDescription("")
+        
+        let testBlock: OHHTTPStubsTestBlock = { (request) in
+            return request.URL.absoluteString == expectedUrl
+        }
+        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
+            expectation.fulfill()
+            return nil
+        }
+        
+        let thread = ForumThread.devTracker()
+        
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        self.repo!.get(thread: thread, page: page, success: { (items) in }, failure: {(error) in })
+        
+        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+    }
+    
     func testGet_EmptyHtml() {
         let expectation = expectationWithDescription("")
         

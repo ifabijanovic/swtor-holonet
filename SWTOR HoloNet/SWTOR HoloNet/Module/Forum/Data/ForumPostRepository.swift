@@ -25,21 +25,18 @@ class ForumPostRepository {
     // MARK: - Public methods
     
     func get(#thread: ForumThread, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
-        self.get(id: thread.id, page: page, success: success, failure: failure)
-    }
-    
-    // MARK: - Network
-    
-    private func get(#id: Int, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = thread.isDevTracker
+            ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
+            : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
+        
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
             success(items)
-        }) { (operation, error) in
+            }) { (operation, error) in
                 failure(error)
         }
     }
@@ -93,6 +90,10 @@ class ForumPostRepository {
                 isBiowarePost = true
                 break
             }
+        }
+        // Additional check for Dev Avatar (used on Dev Tracker)
+        if !isBiowarePost {
+            isBiowarePost = avatarUrl? == self.settings.devAvatarUrl
         }
         
         // Text

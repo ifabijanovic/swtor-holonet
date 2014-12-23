@@ -14,7 +14,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     
     private let PostCellIdentifier = "postCell"
     private let PostSegue = "postSegue"
-    private let PostsPerPage = 10
+    private var PostsPerPage = 10
 
     // MARK: - Properties
 
@@ -57,6 +57,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         var headerFrame = self.tableView.tableHeaderView!.frame
         headerFrame.size.height = titleHeight + 16
         self.tableView.tableHeaderView!.frame = headerFrame
+        
+        if thread.isDevTracker {
+            self.PostsPerPage = 20
+        }
         
         self.onRefresh()
         
@@ -102,7 +106,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             cell.devImageView.hidden = true
         }
         
-        cell.dateLabel.text = "\(post.date) | #\(post.postNumber)"
+        cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber)" : post.date
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
         cell.applyTheme(self.theme)
