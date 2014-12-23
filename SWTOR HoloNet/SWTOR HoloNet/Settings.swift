@@ -40,6 +40,7 @@ class Settings {
     
     let forumDisplayUrl: String
     let threadDisplayUrl: String
+    let devTrackerUrl: String
     let categoryQueryParam: String
     let threadQueryParam: String
     let postQueryParam: String
@@ -63,6 +64,7 @@ class Settings {
         
         self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
         self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""
+        self.devTrackerUrl = settings?.objectForKey("Developer Tracker URL") as? String ?? ""
         self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
         self.threadQueryParam = settings?.objectForKey("Thread Query Param") as? String ?? ""
         self.postQueryParam = settings?.objectForKey("Post Query Param") as? String ?? ""

@@ -40,6 +40,10 @@ class SettingsTests: XCTestCase {
         XCTAssertEqual(self.settings!.threadDisplayUrl, "http://www.holonet.test/thread", "")
     }
     
+    func testDevTrackerUrl() {
+        XCTAssertEqual(self.settings!.devTrackerUrl, "http://www.holonet.test/dev", "")
+    }
+    
     func testCategoryQueryParam() {
         XCTAssertEqual(self.settings!.categoryQueryParam, "category", "")
     }

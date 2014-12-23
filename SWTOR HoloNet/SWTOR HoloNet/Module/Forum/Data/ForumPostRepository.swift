@@ -50,7 +50,7 @@ class ForumPostRepository {
         var items = Array<ForumPost>()
         
         let document = HTMLDocument(string: html)
-        let threadNodes = document.nodesMatchingSelector("#posts > div") as Array<HTMLElement>
+        let threadNodes = document.nodesMatchingSelector("#posts table.threadPost") as Array<HTMLElement>
         
         for node in threadNodes {
             let thread = self.parsePost(node)
@@ -64,7 +64,7 @@ class ForumPostRepository {
     
     private func parsePost(element: HTMLElement) -> ForumPost? {
         // Id
-        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".tinySubmitBtn"), name: self.settings.postQueryParam)?.toInt()
+        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".post .threadDate a"), name: self.settings.postQueryParam)?.toInt()
         
         // Avatar url
         var avatarUrl: String? = nil
@@ -105,12 +105,11 @@ class ForumPostRepository {
         if id == nil { return nil }
         if username == nil { return nil }
         if date == nil { return nil }
-        if postNumber == nil { return nil }
         if text == nil { return nil }
         
         let finalUsername = username!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         
-        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber!, isBiowarePost: isBiowarePost, text: text!)
+        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber, isBiowarePost: isBiowarePost, text: text!)
         post.avatarUrl = avatarUrl
         post.signature = signature
         

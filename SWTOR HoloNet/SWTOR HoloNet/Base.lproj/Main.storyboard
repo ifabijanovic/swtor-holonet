@@ -395,7 +395,7 @@ LUCASARTS, THE LUCASARTS LOGO, STAR WARS AND RELATED PROPERTIES ARE TRADEMARKS I
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-Wt-7yK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">This privacy policy governs your use of the software application HoloNet (“Application”) for mobile devices that was created by Ivan Fabijanović. The Application is a mobile reader of the official SW:TOR forums (located on http://www.swtor.com).
+                                <string key="text">This privacy policy governs your use of the software application HoloNet (“Application”) for mobile devices that was created by Ivan Fabijanović. The Application is a mobile reader of the official SW:TOR forums (located on http://www.swtor.com).
 
 What information does the Application obtain and how is it used?
 
@@ -455,7 +455,7 @@ By using the Application, you are consenting to our processing of your informati
 
 Contact us
 
-If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at holonet.swtor@gmail.com.</mutableString>
+If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at holonet.swtor@gmail.com.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

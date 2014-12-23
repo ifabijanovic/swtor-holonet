@@ -6,6 +6,8 @@
 	<string>http://www.swtor.com/community/forumdisplay.php</string>
 	<key>Thread Display URL</key>
 	<string>http://www.swtor.com/community/showthread.php</string>
+	<key>Developer Tracker URL</key>
+	<string>http://www.swtor.com/community/devtracker.php</string>
 	<key>Category Query Param</key>
 	<string>f</string>
 	<key>Thread Query Param</key>

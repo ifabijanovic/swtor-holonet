@@ -99,7 +99,6 @@
 		8150075F1A1C93D900C897F1 /* forum-post-single-invalid-username.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150075E1A1C93D900C897F1 /* forum-post-single-invalid-username.html */; };
 		815007611A1C940500C897F1 /* forum-post-single-invalid-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007601A1C940500C897F1 /* forum-post-single-invalid-date.html */; };
 		815007631A1C942900C897F1 /* forum-post-single-invalid-text.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007621A1C942900C897F1 /* forum-post-single-invalid-text.html */; };
-		815007671A1C94A400C897F1 /* forum-post-single-invalid-post-number.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007661A1C94A400C897F1 /* forum-post-single-invalid-post-number.html */; };
 		8150076B1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076A1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html */; };
 		8150076D1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */; };
 		8150076F1A1C967B00C897F1 /* forum-post-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076E1A1C967B00C897F1 /* forum-post-multiple-valid.html */; };
@@ -366,7 +365,6 @@
 		8150075E1A1C93D900C897F1 /* forum-post-single-invalid-username.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-invalid-username.html"; path = "Module/Forum/Test Data/Post/forum-post-single-invalid-username.html"; sourceTree = "<group>"; };
 		815007601A1C940500C897F1 /* forum-post-single-invalid-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-invalid-date.html"; path = "Module/Forum/Test Data/Post/forum-post-single-invalid-date.html"; sourceTree = "<group>"; };
 		815007621A1C942900C897F1 /* forum-post-single-invalid-text.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-invalid-text.html"; path = "Module/Forum/Test Data/Post/forum-post-single-invalid-text.html"; sourceTree = "<group>"; };
-		815007661A1C94A400C897F1 /* forum-post-single-invalid-post-number.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-invalid-post-number.html"; path = "Module/Forum/Test Data/Post/forum-post-single-invalid-post-number.html"; sourceTree = "<group>"; };
 		8150076A1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-valid-not-dev.html"; path = "Module/Forum/Test Data/Post/forum-post-single-valid-not-dev.html"; sourceTree = "<group>"; };
 		8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-missing-optionals.html"; path = "Module/Forum/Test Data/Post/forum-post-single-missing-optionals.html"; sourceTree = "<group>"; };
 		8150076E1A1C967B00C897F1 /* forum-post-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-multiple-valid.html"; path = "Module/Forum/Test Data/Post/forum-post-multiple-valid.html"; sourceTree = "<group>"; };
@@ -713,7 +711,6 @@
 				815007591A1C924400C897F1 /* forum-post-single-invalid-id.html */,
 				8150075E1A1C93D900C897F1 /* forum-post-single-invalid-username.html */,
 				815007601A1C940500C897F1 /* forum-post-single-invalid-date.html */,
-				815007661A1C94A400C897F1 /* forum-post-single-invalid-post-number.html */,
 				815007621A1C942900C897F1 /* forum-post-single-invalid-text.html */,
 				8150076A1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html */,
 				8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */,
@@ -1156,7 +1153,6 @@
 				814C9CA71A1B893900FE1C94 /* forum-thread-single-invalid-author.html in Resources */,
 				8150076D1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html in Resources */,
 				814C9CAF1A1B893900FE1C94 /* forum-thread-single-valid.html in Resources */,
-				815007671A1C94A400C897F1 /* forum-post-single-invalid-post-number.html in Resources */,
 				814C9CAC1A1B893900FE1C94 /* forum-thread-single-invalid-views.html in Resources */,
 				815007711A1C989100C897F1 /* forum-post-multiple-invalid-id.html in Resources */,
 				814C9CBF1A1B8CC400FE1C94 /* forum-category-single-valid.html in Resources */,

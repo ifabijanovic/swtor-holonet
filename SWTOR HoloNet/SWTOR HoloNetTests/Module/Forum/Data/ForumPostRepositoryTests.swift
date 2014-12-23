@@ -91,7 +91,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items[0].avatarUrl!, "http://www.holonet.test/avatar.png", "")
             XCTAssertEqual(items[0].username, "User name 5", "")
             XCTAssertEqual(items[0].date, "1.1.2014, 08:22 AM", "")
-            XCTAssertEqual(items[0].postNumber, 1, "")
+            XCTAssertEqual(items[0].postNumber!, 1, "")
             XCTAssertTrue(items[0].isBiowarePost, "")
             XCTAssertGreaterThan(items[0].text.length, 0, "")
             XCTAssertGreaterThan(items[0].signature!.length, 0, "")
@@ -187,26 +187,6 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
     }
     
-    func testGet_SingleItem_Invalid_PostNumber() {
-        let expectation = expectationWithDescription("")
-        
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-post-single-invalid-post-number", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
-        
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
-    }
-    
     func testGet_SingleItem_MissingOptionals() {
         let expectation = expectationWithDescription("")
         
@@ -227,6 +207,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             
             XCTAssertEqual(items[0].id, 5, "")
             XCTAssertNil(items[0].avatarUrl, "")
+            XCTAssertNil(items[0].postNumber, "")
             XCTAssertNil(items[0].signature, "")
             
         }, failure: self.defaultFailure)
@@ -256,7 +237,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items[0].avatarUrl!, "http://www.holonet.test/avatar.png", "")
             XCTAssertEqual(items[0].username, "User name 5", "")
             XCTAssertEqual(items[0].date, "1.1.2014, 08:22 AM", "")
-            XCTAssertEqual(items[0].postNumber, 1, "")
+            XCTAssertEqual(items[0].postNumber!, 1, "")
             XCTAssertTrue(items[0].isBiowarePost, "")
             XCTAssertGreaterThan(items[0].text.length, 0, "")
             XCTAssertGreaterThan(items[0].signature!.length, 0, "")
@@ -265,7 +246,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items[1].avatarUrl!, "http://www.holonet.test/avatar.png", "")
             XCTAssertEqual(items[1].username, "User name 6", "")
             XCTAssertEqual(items[1].date, "2.2.2014, 09:22 AM", "")
-            XCTAssertEqual(items[1].postNumber, 2, "")
+            XCTAssertEqual(items[1].postNumber!, 2, "")
             XCTAssertFalse(items[1].isBiowarePost, "")
             XCTAssertGreaterThan(items[1].text.length, 0, "")
             XCTAssertGreaterThan(items[1].signature!.length, 0, "")
@@ -274,7 +255,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items[2].avatarUrl!, "http://www.holonet.test/avatar.png", "")
             XCTAssertEqual(items[2].username, "User name 7", "")
             XCTAssertEqual(items[2].date, "3.3.2014, 10:22 AM", "")
-            XCTAssertEqual(items[2].postNumber, 3, "")
+            XCTAssertEqual(items[2].postNumber!, 3, "")
             XCTAssertTrue(items[2].isBiowarePost, "")
             XCTAssertGreaterThan(items[2].text.length, 0, "")
             XCTAssertGreaterThan(items[2].signature!.length, 0, "")

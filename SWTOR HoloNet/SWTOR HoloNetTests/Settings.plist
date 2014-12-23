@@ -6,6 +6,8 @@
 	<string>http://www.holonet.test/forum</string>
 	<key>Thread Display URL</key>
 	<string>http://www.holonet.test/thread</string>
+	<key>Developer Tracker URL</key>
+	<string>http://www.holonet.test/dev</string>
 	<key>Category Query Param</key>
 	<string>category</string>
 	<key>Thread Query Param</key>
