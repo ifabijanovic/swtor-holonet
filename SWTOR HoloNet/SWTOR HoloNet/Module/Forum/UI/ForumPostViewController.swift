@@ -32,8 +32,6 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         
         super.viewDidLoad()
         
-        self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
-        
         // Set user avatar image if URL is defined in the model
         if let url = self.post.avatarUrl {
             self.avatarImageView.hidden = false
@@ -61,6 +59,12 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "post"])
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
+        
+        super.viewDidLayoutSubviews()
     }
     
     // MARK: - Themeable

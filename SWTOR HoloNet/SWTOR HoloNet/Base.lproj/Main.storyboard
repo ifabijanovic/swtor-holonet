@@ -133,7 +133,7 @@
         <!--Post-->
         <scene sceneID="JlW-nx-khJ">
             <objects>
-                <viewController id="hIc-4P-cfF" customClass="ForumPostViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="hIc-4P-cfF" customClass="ForumPostViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2MN-Ti-qtQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Eh5-nm-n0N"/>
