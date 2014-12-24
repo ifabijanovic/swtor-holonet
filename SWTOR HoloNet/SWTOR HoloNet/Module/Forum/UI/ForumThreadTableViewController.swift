@@ -106,7 +106,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             cell.devImageView.hidden = true
         }
         
-        cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber)" : post.date
+        cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
         cell.applyTheme(self.theme)

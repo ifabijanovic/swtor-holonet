@@ -50,7 +50,7 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
             self.devImageView.hidden = true
         }
         
-        self.dateLabel.text = "\(self.post.date) | #\(self.post.postNumber)"
+        self.dateLabel.text = self.post.postNumber != nil ? "\(self.post.date) | #\(self.post.postNumber!)" : self.post.date
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
         
