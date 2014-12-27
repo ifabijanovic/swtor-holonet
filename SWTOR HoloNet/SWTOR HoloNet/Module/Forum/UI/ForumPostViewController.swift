@@ -52,9 +52,6 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
         
-        // UITextView sometimes scrolls down when view gets loaded
-        self.textTextView.setContentOffset(CGPointMake(0, -145), animated: false)
-        
         self.applyTheme(self.theme)
         
         // Analytics
@@ -63,6 +60,7 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
     
     override func viewDidLayoutSubviews() {
         self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
+        self.textTextView.setContentOffset(CGPointZero, animated: false)
         
         super.viewDidLayoutSubviews()
     }

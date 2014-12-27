@@ -36,8 +36,6 @@ class TextViewController: UIViewController, Injectable, Themeable {
         }
         
         self.textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
-        // UITextView sometimes scrolls down when view gets loaded
-        self.textView.setContentOffset(CGPointMake(0, -142.5), animated: false)
         
         self.applyTheme(self.theme)
         
@@ -49,6 +47,13 @@ class TextViewController: UIViewController, Injectable, Themeable {
                 PFAnalytics.trackEvent(name)
             }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.textView.textContainerInset = UIEdgeInsetsMake(self.topLayoutGuide.length + 8, 8, self.bottomLayoutGuide.length + 8, 8)
+        self.textView.setContentOffset(CGPointZero, animated: false)
+        
+        super.viewDidLayoutSubviews()
     }
     
     // MARK: - Themeable
