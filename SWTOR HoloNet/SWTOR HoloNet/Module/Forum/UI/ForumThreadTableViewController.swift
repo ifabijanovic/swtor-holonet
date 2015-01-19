@@ -41,10 +41,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.postRepo = ForumPostRepository(settings: self.settings)
         
-        // Set so each row will resize to fit content
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 110.0
-        
         self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
         
         self.titleLabel.text = self.thread.title
@@ -86,10 +82,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return self.calculateHeightForCellAtIndexPath(indexPath)
-    }
-    
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 110.0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -226,6 +218,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         if let cell = self.sizingCell {
             // Fill it with data
             self.fillCell(cell, atIndexPath: indexPath)
+            cell.textView.preferredMaxLayoutWidth = CGRectGetWidth(self.tableView.frame) - 30.0
             // Now that it has data tell it to size itself
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
