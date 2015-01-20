@@ -14,7 +14,13 @@ LUCASARTS, THE LUCASARTS LOGO, STAR WARS AND RELATED PROPERTIES ARE TRADEMARKS I
 
 ## Credits
 
-HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/).
+HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/). The app uses the code from several other open source projects, credits go to their authors:
+
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [ExSwift](https://github.com/AFNetworking/AFNetworking)
+* [HTMLReader](https://github.com/nolanw/HTMLReader)
+* [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs)
+* [SDWebImage](https://github.com/rs/SDWebImage)
 
 ## Contact
 
