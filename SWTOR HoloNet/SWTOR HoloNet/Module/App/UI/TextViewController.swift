@@ -15,6 +15,7 @@ class TextViewController: UIViewController, Injectable, Themeable {
     var settings: Settings!
     var theme: Theme!
     
+    var file: String?
     var text: String?
     var analyticsName: String?
     var analyticsDimensions: Dictionary<String, String>?
@@ -31,7 +32,14 @@ class TextViewController: UIViewController, Injectable, Themeable {
         
         super.viewDidLoad()
         
-        if self.text != nil {
+        if self.file != nil {
+            let bundle = NSBundle.mainBundle()
+            let path = bundle.pathForResource(file, ofType: "txt")
+            if let path = path {
+                let content = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
+                self.textView.text = content
+            }
+        } else if self.text != nil {
             self.textView.text = self.text!
         }
         
