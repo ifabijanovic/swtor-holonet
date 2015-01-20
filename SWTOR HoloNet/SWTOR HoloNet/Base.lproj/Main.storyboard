@@ -72,7 +72,7 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56K-TE-2ww">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="570" translatesAutoresizingMaskIntoConstraints="NO" id="56K-TE-2ww">
                                     <rect key="frame" x="15" y="8" width="570" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="bB9-0z-GeT"/>
@@ -156,19 +156,10 @@
                                     <constraint firstAttribute="width" constant="20" id="jy2-IS-Ezh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d27-A5-r0c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="473" translatesAutoresizingMaskIntoConstraints="NO" id="d27-A5-r0c">
                                 <rect key="frame" x="76" y="76" width="473" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MYx-AL-hVh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bk-Ro-HNn">
-                                <rect key="frame" x="76" y="101" width="493" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="5xt-8L-9Fx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -181,6 +172,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="493" translatesAutoresizingMaskIntoConstraints="NO" id="4bk-Ro-HNn">
+                                <rect key="frame" x="76" y="101" width="493" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="5xt-8L-9Fx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -237,44 +237,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5d-Iw-ovU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2032" y="389"/>
-        </scene>
-        <!--Community-->
-        <scene sceneID="6Gk-dm-VTA">
-            <objects>
-                <viewController id="uNi-1d-6K1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sdq-L5-dp5"/>
-                        <viewControllerLayoutGuide type="bottom" id="fO2-mx-HKe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O2C-vg-0oZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.074509803921568626" green="0.074509803921568626" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Community" id="m4N-vN-Glc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tEU-rD-CTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2792" y="1088"/>
-        </scene>
-        <!--Game-->
-        <scene sceneID="OrF-NT-yXc">
-            <objects>
-                <viewController id="GcW-Lg-2Yq" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6Y7-L4-sMn"/>
-                        <viewControllerLayoutGuide type="bottom" id="dQ6-bh-LzK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Syt-Oc-SkB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.074509803920000006" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Game" id="54B-Mt-jd7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XNx-QL-6Ws" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2792" y="1814"/>
         </scene>
         <!--Settings-->
         <scene sceneID="c42-jI-c61">
@@ -532,44 +494,6 @@ If you have any questions regarding privacy while using the Application, or have
             </objects>
             <point key="canvasLocation" x="1099" y="945"/>
         </scene>
-        <!--Community-->
-        <scene sceneID="Z0h-Pv-zw1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Mz-Km-CtA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" image="Community" id="bHw-Pr-cKv"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m1R-Jy-RJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="uNi-1d-6K1" kind="relationship" relationship="rootViewController" id="WxD-8O-dls"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eta-qc-Ide" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2032" y="1088"/>
-        </scene>
-        <!--Game-->
-        <scene sceneID="HtC-Ng-6L2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uzj-mc-cn1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Game" image="Game" id="CT8-IB-ytj"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bwy-DM-IHD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GcW-Lg-2Yq" kind="relationship" relationship="rootViewController" id="voW-SX-DSx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tEh-84-vH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2032" y="1814"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="r2M-HW-Gzh">
             <objects>
@@ -591,9 +515,7 @@ If you have any questions regarding privacy while using the Application, or have
         </scene>
     </scenes>
     <resources>
-        <image name="Community" width="25" height="25"/>
         <image name="Forum" width="25" height="25"/>
-        <image name="Game" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
