@@ -68,6 +68,10 @@
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
 		813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */; };
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
+		813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		813E590A1A6F7AFF0012A7A8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E59091A6F7AFF0012A7A8 /* Alert.swift */; };
+		813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E59091A6F7AFF0012A7A8 /* Alert.swift */; };
 		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
@@ -345,6 +349,8 @@
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
 		813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepositoryTests.swift; path = Module/Forum/Data/ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
+		813E59061A6F78760012A7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		813E59091A6F7AFF0012A7A8 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alert.swift; path = Module/App/UI/Alert.swift; sourceTree = "<group>"; };
 		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
 		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
 		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +516,7 @@
 				81CF9F921A46C1120020BE6B /* Security.framework in Frameworks */,
 				81CF9F941A46C1170020BE6B /* StoreKit.framework in Frameworks */,
 				81CF9F961A46C11F0020BE6B /* SystemConfiguration.framework in Frameworks */,
+				813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */,
 				81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */,
 				81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */,
 			);
@@ -531,6 +538,7 @@
 				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
 				81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */,
 				81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */,
+				813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */,
 				813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */,
 				81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */,
 				81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */,
@@ -796,6 +804,7 @@
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
 				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
+				813E59091A6F7AFF0012A7A8 /* Alert.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1005,6 +1014,7 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				813E59061A6F78760012A7A8 /* UIKit.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
 				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
 				81CF9F871A46C0F40020BE6B /* CFNetwork.framework */,
@@ -1290,6 +1300,7 @@
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
+				813E590A1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
 				81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1328,6 +1339,7 @@
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
