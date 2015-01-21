@@ -180,6 +180,9 @@ class ForumListTableViewController: ForumBaseTableViewController {
         // Hides loading indicators and enables infinite scroll if applicable
         // Uses thread locking to make sure it is only executed once
         let finishLoad: () -> Void = {
+            // Check for error state
+            if requestCount == -1 { return }
+            
             dispatch_sync(lock) { requestCount -= 1 }
             if requestCount == 0 {
                 self.refreshControl?.endRefreshing()
@@ -206,7 +209,16 @@ class ForumListTableViewController: ForumBaseTableViewController {
             finishLoad()
         }
         func failure(error: NSError) {
-            println(error)
+            // Check for error state
+            if requestCount == -1 { return }
+            // Set an error state on the requestCount variable
+            dispatch_sync(lock) { requestCount = -1 }
+            
+            self.refreshControl?.endRefreshing()
+            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+                (.Cancel, "No", { self.hideLoader() }),
+                (.Default, "Yes", { self.onRefresh() })
+            )
         }
         
         if let category = self.category {
@@ -255,7 +267,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
             self.canLoadMore = true
         }
         func failure(error: NSError) {
-            println(error)
+            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+                (.Cancel, "No", { self.hideLoader() }),
+                (.Default, "Yes", { self.onLoadMore() })
+            )
         }
         
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
