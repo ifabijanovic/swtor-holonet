@@ -11,7 +11,7 @@ import UIKit
 extension NSURLComponents {
     
     func queryValueForName(name: String) -> String? {
-        if NSClassFromString("NSURLQueryItem") != nil {
+        if objc_getClass("NSURLQueryItem") != nil {
             if let items = self.queryItems as? Array<NSURLQueryItem> {
                 for item in items {
                     if item.name == name {
