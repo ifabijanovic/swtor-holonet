@@ -11,6 +11,12 @@ import MessageUI
 
 class SettingsTableViewController: UITableViewController, Injectable, Themeable, MFMailComposeViewControllerDelegate {
    
+    // MARK: - Constants
+    
+    private let DisclaimerSegue = "DisclaimerSegue"
+    private let PrivacyPolicySegue = "PrivacyPolicySegue"
+    private let LicenseSegue = "LicenseSegue"
+    
     // MARK: - Properties
     
     var settings: Settings!
@@ -22,6 +28,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     @IBOutlet var reportBugCell: UITableViewCell!
     @IBOutlet var disclaimerCell: UITableViewCell!
     @IBOutlet var privacyPolicyCell: UITableViewCell!
+    @IBOutlet weak var licenseCell: UITableViewCell!
     
     // MARK: - Lifecycle
     
@@ -85,6 +92,27 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         alert.show()
     }
     
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case DisclaimerSegue:
+            let controller = segue.destinationViewController as TextViewController
+            controller.title = "Disclaimer"
+            controller.file = "Disclaimer"
+        case PrivacyPolicySegue:
+            let controller = segue.destinationViewController as TextViewController
+            controller.title = "Privacy Policy"
+            controller.file = "PrivacyPolicy"
+        case LicenseSegue:
+            let controller = segue.destinationViewController as TextViewController
+            controller.title = "License"
+            controller.file = "License"
+        default:
+            break
+        }
+    }
+    
     // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
@@ -94,6 +122,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         self.reportBugCell.applyThemeEx(theme)
         self.disclaimerCell.applyThemeEx(theme)
         self.privacyPolicyCell.applyThemeEx(theme)
+        self.licenseCell.applyThemeEx(theme)
     }
     
     // MARK: - MFMailComposeViewControllerDelegate

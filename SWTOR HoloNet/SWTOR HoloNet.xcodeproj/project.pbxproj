@@ -68,6 +68,10 @@
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
 		813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */; };
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
+		813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		813E590A1A6F7AFF0012A7A8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E59091A6F7AFF0012A7A8 /* Alert.swift */; };
+		813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E59091A6F7AFF0012A7A8 /* Alert.swift */; };
 		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
@@ -241,6 +245,12 @@
 		81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C131A44896F00AFA035 /* TextViewController.swift */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
+		81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
+		81FDCC8D1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
+		81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC8A1A6EC37900E2C44A /* License.txt */; };
+		81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC8A1A6EC37900E2C44A /* License.txt */; };
+		81FDCC901A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */; };
+		81FDCC911A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +349,8 @@
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
 		813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepositoryTests.swift; path = Module/Forum/Data/ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
+		813E59061A6F78760012A7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		813E59091A6F7AFF0012A7A8 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alert.swift; path = Module/App/UI/Alert.swift; sourceTree = "<group>"; };
 		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
 		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
 		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
@@ -482,6 +494,9 @@
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
+		81FDCC891A6EC37900E2C44A /* Disclaimer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Disclaimer.txt; path = Resource/Disclaimer.txt; sourceTree = "<group>"; };
+		81FDCC8A1A6EC37900E2C44A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = Resource/License.txt; sourceTree = "<group>"; };
+		81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PrivacyPolicy.txt; path = Resource/PrivacyPolicy.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +516,7 @@
 				81CF9F921A46C1120020BE6B /* Security.framework in Frameworks */,
 				81CF9F941A46C1170020BE6B /* StoreKit.framework in Frameworks */,
 				81CF9F961A46C11F0020BE6B /* SystemConfiguration.framework in Frameworks */,
+				813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */,
 				81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */,
 				81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */,
 			);
@@ -522,6 +538,7 @@
 				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
 				81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */,
 				81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */,
+				813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */,
 				813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */,
 				81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */,
 				81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */,
@@ -787,6 +804,7 @@
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
 				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
+				813E59091A6F7AFF0012A7A8 /* Alert.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -860,6 +878,7 @@
 			children = (
 				81C228A219F1337C00EEF2C6 /* Extension */,
 				81AB24A319EFC18400293D26 /* Module */,
+				81FDCC881A6EC31500E2C44A /* Resource */,
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
 				81AB248519EFBD7700293D26 /* Main.storyboard */,
 				817A216A19F6C4480093ECE3 /* Settings.swift */,
@@ -995,6 +1014,7 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				813E59061A6F78760012A7A8 /* UIKit.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
 				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
 				81CF9F871A46C0F40020BE6B /* CFNetwork.framework */,
@@ -1011,6 +1031,16 @@
 				81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81FDCC881A6EC31500E2C44A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				81FDCC891A6EC37900E2C44A /* Disclaimer.txt */,
+				81FDCC8A1A6EC37900E2C44A /* License.txt */,
+				81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1131,9 +1161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
+				81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */,
 				816361A81A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				8163619C1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
+				81FDCC901A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */,
+				81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 				8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				816361A21A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
@@ -1148,6 +1181,7 @@
 				814C9CA91A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html in Resources */,
 				814C9CAA1A1B893900FE1C94 /* forum-thread-single-invalid-replies.html in Resources */,
 				814C9CBB1A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html in Resources */,
+				81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */,
 				814C9CC41A1B92DB00FE1C94 /* forum-post-single-valid.html in Resources */,
 				8150075F1A1C93D900C897F1 /* forum-post-single-invalid-username.html in Resources */,
 				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
@@ -1158,6 +1192,7 @@
 				814C9CB11A1B896900FE1C94 /* forum-thread-multiple-valid.html in Resources */,
 				814C9CA71A1B893900FE1C94 /* forum-thread-single-invalid-author.html in Resources */,
 				8150076D1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html in Resources */,
+				81FDCC911A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */,
 				814C9CAF1A1B893900FE1C94 /* forum-thread-single-valid.html in Resources */,
 				814C9CAC1A1B893900FE1C94 /* forum-thread-single-invalid-views.html in Resources */,
 				815007711A1C989100C897F1 /* forum-post-multiple-invalid-id.html in Resources */,
@@ -1167,6 +1202,7 @@
 				818029D51A08B7CC00999871 /* Settings.plist in Resources */,
 				814C9CAD1A1B893900FE1C94 /* forum-thread-single-valid-not-dev.html in Resources */,
 				8150076F1A1C967B00C897F1 /* forum-post-multiple-valid.html in Resources */,
+				81FDCC8D1A6EC37900E2C44A /* Disclaimer.txt in Resources */,
 				814C9CBC1A1B8CC400FE1C94 /* forum-category-multiple-valid.html in Resources */,
 				816361A91A01855200E7D194 /* ForumPostTableViewCell.xib in Resources */,
 				814C9CAB1A1B893900FE1C94 /* forum-thread-single-invalid-title.html in Resources */,
@@ -1264,6 +1300,7 @@
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
+				813E590A1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
 				81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1302,6 +1339,7 @@
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
@@ -1423,7 +1461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1459,7 +1497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1477,7 +1515,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
@@ -1496,7 +1534,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";

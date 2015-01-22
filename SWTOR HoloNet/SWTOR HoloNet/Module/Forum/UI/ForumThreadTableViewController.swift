@@ -23,6 +23,9 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     private var postRepo: ForumPostRepository!
     private var posts: Array<ForumPost>?
     
+    private var sizingCell: ForumPostTableViewCell?
+    private var onceToken: dispatch_once_t = 0
+    
     // MARK: - Outlets
     
     @IBOutlet var titleView: UIView!
@@ -37,10 +40,6 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         super.viewDidLoad()
         
         self.postRepo = ForumPostRepository(settings: self.settings)
-        
-        // Set so each row will resize to fit content
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 110.0
         
         self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
         
@@ -80,6 +79,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return self.calculateHeightForCellAtIndexPath(indexPath)
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts?.count ?? 0
@@ -88,30 +91,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PostCellIdentifier, forIndexPath: indexPath) as ForumPostTableViewCell
 
-        let post = self.posts![indexPath.row]
-
-        // Set user avatar image if URL is defined in the model
-        if let url = post.avatarUrl {
-            cell.avatarImageView.hidden = false
-            cell.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
-        } else {
-            cell.avatarImageView.hidden = true
-        }
-        
-        // Set dev icon if post is marked as Bioware post
-        if post.isBiowarePost {
-            cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
-        } else {
-            cell.devImageView.hidden = true
-        }
-        
-        cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
-        cell.usernameLabel.text = post.username
-        cell.textView.text = post.text
-        cell.applyTheme(self.theme)
-        
-        cell.tag = indexPath.row
+        self.fillCell(cell, atIndexPath: indexPath)
 
         return cell
     }
@@ -158,7 +138,11 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             }
         }
         func failure(error: NSError) {
-            println(error)
+            self.refreshControl?.endRefreshing()
+            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+                (.Cancel, "No", { self.hideLoader() }),
+                (.Default, "Yes", { self.onRefresh() })
+            )
         }
         
         self.postRepo.get(thread: self.thread, page: 1, success: success, failure: failure)
@@ -196,10 +180,60 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             self.canLoadMore = true
         }
         func failure(error: NSError) {
-            println(error)
+            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+                (.Cancel, "No", { self.hideLoader() }),
+                (.Default, "Yes", { self.onLoadMore() })
+            )
         }
         
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
+    }
+    
+    func fillCell(cell: ForumPostTableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let post = self.posts![indexPath.row]
+        
+        // Set user avatar image if URL is defined in the model
+        if let url = post.avatarUrl {
+            cell.avatarImageView.hidden = false
+            cell.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
+        } else {
+            cell.avatarImageView.hidden = true
+        }
+        
+        // Set dev icon if post is marked as Bioware post
+        if post.isBiowarePost {
+            cell.devImageView.hidden = false
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+        } else {
+            cell.devImageView.hidden = true
+        }
+        
+        cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
+        cell.usernameLabel.text = post.username
+        cell.textView.text = post.text
+        cell.applyTheme(self.theme)
+        
+        cell.tag = indexPath.row
+    }
+    
+    func calculateHeightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
+        // Initialize the helper cell used for calculating height
+        dispatch_once(&self.onceToken) {
+            self.sizingCell = self.tableView.dequeueReusableCellWithIdentifier(self.PostCellIdentifier) as? ForumPostTableViewCell
+        }
+        
+        if let cell = self.sizingCell {
+            // Fill it with data
+            self.fillCell(cell, atIndexPath: indexPath)
+            cell.textView.preferredMaxLayoutWidth = CGRectGetWidth(self.tableView.frame) - 30.0
+            // Now that it has data tell it to size itself
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            // Add 1.0 for the cell separator height
+            return size.height + 1.0
+        }
+        return 0.0
     }
     
     // MARK: - Themeable
