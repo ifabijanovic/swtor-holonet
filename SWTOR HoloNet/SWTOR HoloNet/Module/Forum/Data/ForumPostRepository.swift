@@ -97,7 +97,7 @@ class ForumPostRepository {
         }
         
         // Text
-        let text = element.firstNodeMatchingSelector(".post .forumPadding > .resultText")?.textContent
+        let text = self.parser.postText(node: element.firstNodeMatchingSelector(".post .forumPadding > .resultText"))
         
         // Signature
         let lastPostRow = (element.nodesMatchingSelector(".post tr") as Array<HTMLElement>).last
@@ -116,6 +116,5 @@ class ForumPostRepository {
         
         return post
     }
-
     
 }
