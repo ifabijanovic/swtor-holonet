@@ -73,8 +73,8 @@ class ForumParser {
     func formatPostBlock(#header: String?, body: String?) -> String {
         if body == nil { return "" }
         return header != nil
-            ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body!)
-            : String(format: self.postBlockNoHeaderFormat, body!)
+            ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body!.trimSpaces())
+            : String(format: self.postBlockNoHeaderFormat, body!.trimSpaces())
     }
     
     func postText(#node: HTMLNode?) -> String? {
