@@ -10,6 +10,11 @@ import UIKit
 
 class ForumParser {
     
+    // MARK: - Constants
+    
+    let postBlockSeparator = "----------"
+    let postBlockClasses = ["quote", "spoiler"]
+    
     // MARK: - Properties
     
     private let numberFormatter: NSNumberFormatter
@@ -79,20 +84,15 @@ class ForumParser {
             return node.textContent
         }
         
-        // Special cases for quotes and spoilers
         if let element = node as? HTMLElement {
-            var specialClass = ""
-            if element.hasClass("quote") {
-                specialClass = "quote"
-            } else if element.hasClass("spoiler") {
-                specialClass = "spoiler"
-            }
-            
-            if specialClass.length > 0 {
-                let header = element.firstNodeMatchingSelector(".\(specialClass)-header")?.textContent
-                let body = element.firstNodeMatchingSelector(".\(specialClass)-body")?.textContent
-                
-                return self.formatBlock(header: header, body: body)
+            // Special formatting for "blocks" inside posts
+            for blockClass in self.postBlockClasses {
+                if element.hasClass(blockClass) {
+                    let header = element.firstNodeMatchingSelector(".\(blockClass)-header")?.textContent
+                    let body = element.firstNodeMatchingSelector(".\(blockClass)-body")?.textContent
+                    
+                    return self.formatBlock(header: header, body: body)
+                }
             }
         }
         
@@ -107,7 +107,10 @@ class ForumParser {
     }
     
     private func formatBlock(#header: String?, body: String?) -> String {
-        return "----------\n" + header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces() + "\n\n" + body!.trimSpaces() + "\n----------\n\n"
+        let finalHeader = header != nil ? header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces() : ""
+        let finalBody = body != nil ? body!.trimSpaces() : ""
+        
+        return "\(self.postBlockSeparator)\n\(finalHeader)\n\n\(finalBody)\n\(self.postBlockSeparator)\n\n"
     }
    
 }
