@@ -12,7 +12,8 @@ class ForumParser {
     
     // MARK: - Constants
     
-    let postBlockSeparator = "----------"
+    let postBlockFormat = "----------\n%@\n\n%@\n----------\n\n"
+    let postBlockNoHeaderFormat = "----------\n%@\n----------\n\n"
     let postBlockClasses = ["quote", "spoiler"]
     
     // MARK: - Properties
@@ -69,16 +70,23 @@ class ForumParser {
         return nil
     }
     
+    func formatPostBlock(#header: String?, body: String?) -> String {
+        if body == nil { return "" }
+        return header != nil
+            ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body!)
+            : String(format: self.postBlockNoHeaderFormat, body!)
+    }
+    
     func postText(#node: HTMLNode?) -> String? {
         if node != nil {
-            return self.getText(node!)
+            return self.getPostText(node!)
         }
         return nil
     }
     
     // MARK: - Private methods
     
-    private func getText(node: HTMLNode) -> String {
+    private func getPostText(node: HTMLNode) -> String {
         // Leaf node
         if node.children.count == 0 {
             return node.textContent
@@ -91,7 +99,7 @@ class ForumParser {
                     let header = element.firstNodeMatchingSelector(".\(blockClass)-header")?.textContent
                     let body = element.firstNodeMatchingSelector(".\(blockClass)-body")?.textContent
                     
-                    return self.formatBlock(header: header, body: body)
+                    return self.formatPostBlock(header: header, body: body)
                 }
             }
         }
@@ -100,17 +108,10 @@ class ForumParser {
         var text = ""
         node.children.enumerateObjectsUsingBlock { (child, index, stop) in
             if let childNode = child as? HTMLNode {
-                text += self.getText(childNode)
+                text += self.getPostText(childNode)
             }
         }
         return text
     }
     
-    private func formatBlock(#header: String?, body: String?) -> String {
-        let finalHeader = header != nil ? header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces() : ""
-        let finalBody = body != nil ? body!.trimSpaces() : ""
-        
-        return "\(self.postBlockSeparator)\n\(finalHeader)\n\n\(finalBody)\n\(self.postBlockSeparator)\n\n"
-    }
-   
 }

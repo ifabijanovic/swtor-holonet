@@ -158,5 +158,115 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertNil(value, "")
     }
+    
+    // MARK: - formatPostBlock()
+    
+    func testPostText_Success() {
+        let header = "Header text"
+        let body = "Body text"
+        
+        let value = self.parser!.formatPostBlock(header: header, body: body)
+        
+        XCTAssertEqual(value, String(format: self.parser!.postBlockFormat, header, body), "")
+    }
+    
+    func testPostText_MissingHeader() {
+        let body = "Body text"
+        
+        let value = self.parser!.formatPostBlock(header: nil, body: body)
+        
+        XCTAssertEqual(value, String(format: self.parser!.postBlockNoHeaderFormat, body), "")
+    }
+    
+    func testPostText_MissingBody() {
+        let header = "Header text"
+        
+        let value = self.parser!.formatPostBlock(header: header, body: nil)
+        
+        XCTAssertEqual(value, "", "")
+    }
+    
+    // MARK: - postText()
+    
+    func testPostText_Simple() {
+        let html = "<div>Test post text<br>More text in new line</div>"
+        let doc = HTMLDocument(string: html)
+        
+        let value = self.parser!.postText(node: doc.rootElement)
+        
+        XCTAssertNotNil(value, "")
+        XCTAssertEqual(value!, doc.rootElement.textContent, "")
+    }
+    
+    func testPostText_Nested() {
+        let html = "<div><span>Test post text</span><br><span>More text in new line</span><div>Even more text</div></div>"
+        let doc = HTMLDocument(string: html)
+        
+        let value = self.parser!.postText(node: doc.rootElement)
+        
+        XCTAssertNotNil(value, "")
+        XCTAssertEqual(value!, doc.rootElement.textContent, "")
+    }
+    
+    func testPostText_Styled() {
+        let html = "<div><font color='Yellow'>Yellow text</font><font color='Red'><font size='4'><b>Red bold text of size 4</b></font></font><br><font size='6'><i>Italic text of size 6</i></font></div>"
+        let doc = HTMLDocument(string: html)
+        
+        let value = self.parser!.postText(node: doc.rootElement)
+        
+        XCTAssertNotNil(value, "")
+        XCTAssertEqual(value!, doc.rootElement.textContent, "")
+    }
+    
+    func testPostText_WithBlock() {
+        for blockClass in self.parser!.postBlockClasses {
+            let blockHtml = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by TestUser</div><div class='\(blockClass)-body'>Block body text here<br>More text in new line</div></div>"
+            let postHtml = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
+            let html = "<div>\(blockHtml)\(postHtml)</div>"
+            let doc = HTMLDocument(string: html)
+            
+            let value = self.parser!.postText(node: doc.rootElement)
+            
+            let header = doc.rootElement.firstNodeMatchingSelector(".\(blockClass)-header").textContent
+            let body = doc.rootElement.firstNodeMatchingSelector(".\(blockClass)-body").textContent
+            let block = self.parser!.formatPostBlock(header: header, body: body)
+            let post = doc.rootElement.firstNodeMatchingSelector(".regular-post").textContent
+            
+            XCTAssertNotNil(value, "")
+            XCTAssertEqual(value!, "\(block)\(post)", "")
+        }
+    }
+    
+    func testPostText_WithMultipleBlocks() {
+        for blockClass in self.parser!.postBlockClasses {
+            let block1Html = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by TestUser</div><div class='\(blockClass)-body'>Block body text here<br>More text in new line</div></div>"
+            let block2Html = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by DifferentUser</div><div class='\(blockClass)-body'>Simple block body</div></div>"
+            
+            let post1Html = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
+            let post2Html = "<div class='regular-post'>Simple regular post text</div>"
+            
+            let html = "<div>\(block1Html)\(post1Html)\(block2Html)\(post2Html)</div>"
+            let doc = HTMLDocument(string: html)
+            
+            let value = self.parser!.postText(node: doc.rootElement)
+            
+            let blocks = doc.rootElement.nodesMatchingSelector(".\(blockClass)") as Array<HTMLElement>
+            var blocksText = Array<String>()
+            for block in blocks {
+                let header = block.firstNodeMatchingSelector(".\(blockClass)-header").textContent
+                let body = block.firstNodeMatchingSelector(".\(blockClass)-body").textContent
+                let block = self.parser!.formatPostBlock(header: header, body: body)
+                blocksText.append(block)
+            }
+            let posts = doc.rootElement.nodesMatchingSelector(".regular-post") as Array<HTMLElement>
+            var postsText = Array<String>()
+            for post in posts {
+                postsText.append(post.textContent)
+            }
+            
+            XCTAssertNotNil(value, "")
+            XCTAssertEqual(value!, "\(blocksText[0])\(postsText[0])\(blocksText[1])\(postsText[1])", "")
+        }
+    }
 
 }
