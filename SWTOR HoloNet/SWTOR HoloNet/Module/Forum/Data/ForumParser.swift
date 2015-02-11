@@ -63,5 +63,51 @@ class ForumParser {
         }
         return nil
     }
+    
+    func postText(#node: HTMLNode?) -> String? {
+        if node != nil {
+            return self.getText(node!)
+        }
+        return nil
+    }
+    
+    // MARK: - Private methods
+    
+    private func getText(node: HTMLNode) -> String {
+        // Leaf node
+        if node.children.count == 0 {
+            return node.textContent
+        }
+        
+        // Special cases for quotes and spoilers
+        if let element = node as? HTMLElement {
+            var specialClass = ""
+            if element.hasClass("quote") {
+                specialClass = "quote"
+            } else if element.hasClass("spoiler") {
+                specialClass = "spoiler"
+            }
+            
+            if specialClass.length > 0 {
+                let header = element.firstNodeMatchingSelector(".\(specialClass)-header")?.textContent
+                let body = element.firstNodeMatchingSelector(".\(specialClass)-body")?.textContent
+                
+                return self.formatBlock(header: header, body: body)
+            }
+        }
+        
+        // Continue down the DOM tree
+        var text = ""
+        node.children.enumerateObjectsUsingBlock { (child, index, stop) in
+            if let childNode = child as? HTMLNode {
+                text += self.getText(childNode)
+            }
+        }
+        return text
+    }
+    
+    private func formatBlock(#header: String?, body: String?) -> String {
+        return "----------\n" + header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces() + "\n\n" + body!.trimSpaces() + "\n----------\n\n"
+    }
    
 }
