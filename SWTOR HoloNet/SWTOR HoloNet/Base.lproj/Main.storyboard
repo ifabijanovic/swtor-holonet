@@ -495,7 +495,7 @@
         <scene sceneID="ehR-2w-gF3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Rrx-bM-Eeh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dulfy" image="Game" id="fpd-Qz-5ig"/>
+                    <tabBarItem key="tabBarItem" title="Dulfy" image="Dulfy" id="fpd-Qz-5ig"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQ1-Ov-bIZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -516,9 +516,9 @@
     </scenes>
     <resources>
         <image name="Back" width="25" height="25"/>
+        <image name="Dulfy" width="35" height="35"/>
         <image name="Forum" width="25" height="25"/>
         <image name="Forward" width="25" height="25"/>
-        <image name="Game" width="25" height="25"/>
         <image name="Home" width="25" height="25"/>
         <image name="Reload" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
