@@ -941,8 +941,8 @@
 		81AB24A319EFC18400293D26 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
 				81A1E1FE19F704D700C5C833 /* App */,
+				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
 				81AB24A419EFC18B00293D26 /* Forum */,
 				810D2DFE1A44455400FF0FEF /* Settings */,
 			);

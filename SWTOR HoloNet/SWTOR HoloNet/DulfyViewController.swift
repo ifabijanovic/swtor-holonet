@@ -9,7 +9,7 @@
 import Foundation
 import WebKit
 
-class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate {
+class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDelegate, WKNavigationDelegate {
     
     // MARK: - Properties
     
@@ -23,9 +23,38 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     // MARK: - Outlets
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var forwardButton: UIBarButtonItem!
+    
+    @IBAction func backTapped(sender: AnyObject) {
+        if self.useWebKit {
+            let webView = self.webView as WKWebView
+            webView.goBack()
+        } else {
+            let webView = self.webView as UIWebView
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func forwardTapped(sender: AnyObject) {
+        if self.useWebKit {
+            let webView = self.webView as WKWebView
+            webView.goForward()
+        } else {
+            let webView = self.webView as UIWebView
+            webView.goForward()
+        }
+    }
+    
+    @IBAction func reloadTapped(sender: AnyObject) {
+        if self.useWebKit {
+            let webView = self.webView as WKWebView
+            webView.reload()
+        } else {
+            let webView = self.webView as UIWebView
+            webView.reload()
+        }
+    }
     
     @IBAction func homeTapped(sender: AnyObject) {
         self.navigateHome()
@@ -41,21 +70,31 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         
         self.applyTheme(self.theme)
         
+        // Initially user cannot navigate back or forward so disable the buttons
         self.backButton.enabled = false
         self.forwardButton.enabled = false
         
         self.setupWebView()
         self.navigateHome()
+        
+        // Enable hide actions on navigation controller if they are available
+        if self.useWebKit {
+            if let navController = self.navigationController {
+                navController.hidesBarsOnSwipe = true
+                navController.hidesBarsWhenVerticallyCompact = true
+                navController.hidesBarsWhenKeyboardAppears = true
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        self.webView.delegate = self
+        self.setWebViewDelegate(self)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-//        self.webView.delegate = nil
+        self.setWebViewDelegate(nil)
     }
     
     // MARK: - UIWebViewDelegate
@@ -68,6 +107,20 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         self.activityIndicator.stopAnimating()
         
         self.navigationItem.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+        self.backButton.enabled = webView.canGoBack
+        self.forwardButton.enabled = webView.canGoForward
+    }
+    
+    // MARK: - WKNavigationDelegate
+    
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.activityIndicator.startAnimating()
+    }
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        self.activityIndicator.stopAnimating()
+        
+        self.navigationItem.title = webView.title
         self.backButton.enabled = webView.canGoBack
         self.forwardButton.enabled = webView.canGoForward
     }
@@ -103,7 +156,7 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     }
     
     private func navigateHome() {
-        let url = NSURL(string: "http://dulfy.net/")
+        let url = NSURL(string: self.settings.dulfyNetUrl)
         let request = NSURLRequest(URL: url!)
         
         if self.useWebKit {
@@ -112,6 +165,16 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         } else {
             let webView = self.webView as UIWebView
             webView.loadRequest(request)
+        }
+    }
+    
+    private func setWebViewDelegate(delegate: AnyObject?) {
+        if self.useWebKit {
+            let webView = self.webView as WKWebView
+            webView.navigationDelegate = delegate as? WKNavigationDelegate
+        } else {
+            let webView = self.webView as UIWebView
+            webView.delegate = delegate as? UIWebViewDelegate
         }
     }
     
