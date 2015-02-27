@@ -51,5 +51,8 @@ class Theme {
         
         UITabBar.appearance().barTintColor = self.navBackground
         UITabBar.appearance().tintColor = self.navText
+        
+        UIToolbar.appearance().barTintColor = self.navBackground
+        UIToolbar.appearance().tintColor = self.navText
     }
 }
