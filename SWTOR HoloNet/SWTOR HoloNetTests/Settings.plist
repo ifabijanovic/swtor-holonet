@@ -26,5 +26,7 @@
 	<string>http://www.holonet.test/devAvatar.png</string>
 	<key>Sticky Icon URL</key>
 	<string>http://www.holonet.test/stickyIcon.png</string>
+	<key>Dulfy.net URL</key>
+	<string>http://dulfy.test</string>
 </dict>
 </plist>
