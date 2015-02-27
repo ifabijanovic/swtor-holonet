@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zkL-zi-P2Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zkL-zi-P2Z">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -406,12 +406,80 @@
                     </tabBar>
                     <connections>
                         <segue destination="cTA-Ix-QMo" kind="relationship" relationship="viewControllers" id="iDR-4W-YXg"/>
+                        <segue destination="Rrx-bM-Eeh" kind="relationship" relationship="viewControllers" id="a7a-zH-09b"/>
                         <segue destination="jmO-K3-Ftx" kind="relationship" relationship="viewControllers" id="ejo-GF-lff"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rR2-EB-wd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1099" y="945"/>
+        </scene>
+        <!--Dulfy View Controller-->
+        <scene sceneID="9cJ-bj-5f3">
+            <objects>
+                <viewController id="qXx-Eo-5Gp" customClass="DulfyViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2np-Xf-r7L"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Ra-tr-nxK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iGU-Ns-9YW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5E-Z0-cJM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BVK-Uz-AIc">
+                                <rect key="frame" x="281" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W5E-Z0-cJM" firstAttribute="leading" secondItem="iGU-Ns-9YW" secondAttribute="leading" id="ABQ-kd-98C"/>
+                            <constraint firstAttribute="centerY" secondItem="BVK-Uz-AIc" secondAttribute="centerY" id="AWk-ut-xdo"/>
+                            <constraint firstAttribute="bottom" secondItem="W5E-Z0-cJM" secondAttribute="bottom" id="T4G-7Q-oRI"/>
+                            <constraint firstItem="W5E-Z0-cJM" firstAttribute="top" secondItem="iGU-Ns-9YW" secondAttribute="top" id="bkD-ON-eKz"/>
+                            <constraint firstAttribute="centerX" secondItem="BVK-Uz-AIc" secondAttribute="centerX" id="iq0-hC-L3h"/>
+                            <constraint firstAttribute="trailing" secondItem="W5E-Z0-cJM" secondAttribute="trailing" id="v3B-fq-pkL"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem image="Back" style="plain" id="c29-05-nAe">
+                            <connections>
+                                <action selector="goBack" destination="W5E-Z0-cJM" id="ok3-8i-Ocz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="K1v-Dg-Hbk"/>
+                        <barButtonItem image="Forward" id="ZsE-d7-beF">
+                            <connections>
+                                <action selector="goForward" destination="W5E-Z0-cJM" id="Dtt-0f-8eT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ste-0P-UYD"/>
+                        <barButtonItem image="Reload" id="kPA-yl-R2m">
+                            <connections>
+                                <action selector="reload" destination="W5E-Z0-cJM" id="6ka-Zp-4wB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Nua-vm-pOn"/>
+                        <barButtonItem image="Home" id="VQn-hJ-BkG">
+                            <connections>
+                                <action selector="homeTapped:" destination="qXx-Eo-5Gp" id="QV7-qK-0Mx"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="gM4-1V-Sx9"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BVK-Uz-AIc" id="l4i-me-GXx"/>
+                        <outlet property="backButton" destination="c29-05-nAe" id="Z3B-2i-CRc"/>
+                        <outlet property="forwardButton" destination="ZsE-d7-beF" id="guG-lG-Z3E"/>
+                        <outlet property="webView" destination="W5E-Z0-cJM" id="vvP-r5-AYl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMr-Yr-SrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2792" y="1411"/>
         </scene>
         <!--Settings-->
         <scene sceneID="r2M-HW-Gzh">
@@ -432,9 +500,36 @@
             </objects>
             <point key="canvasLocation" x="2032" y="2549"/>
         </scene>
+        <!--Dulfy-->
+        <scene sceneID="ehR-2w-gF3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Rrx-bM-Eeh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dulfy" image="Game" id="fpd-Qz-5ig"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQ1-Ov-bIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="f8e-FQ-qgP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="qXx-Eo-5Gp" kind="relationship" relationship="rootViewController" id="yyk-ja-6Jo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XeF-cb-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2032" y="1411"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Back" width="25" height="25"/>
         <image name="Forum" width="25" height="25"/>
+        <image name="Forward" width="25" height="25"/>
+        <image name="Game" width="25" height="25"/>
+        <image name="Home" width="25" height="25"/>
+        <image name="Reload" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

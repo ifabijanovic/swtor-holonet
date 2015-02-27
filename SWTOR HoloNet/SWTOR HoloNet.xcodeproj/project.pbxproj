@@ -170,6 +170,8 @@
 		81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */; };
 		81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
 		81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */; };
+		81A68FEF1A9F2F00003B3C55 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68FEE1A9F2F00003B3C55 /* DulfyViewController.swift */; };
+		81A68FF01A9F2F00003B3C55 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A68FEE1A9F2F00003B3C55 /* DulfyViewController.swift */; };
 		81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
@@ -439,6 +441,7 @@
 		81A49A7919F0FCC0007FEA4C /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "../Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
 		81A49A7A19F0FCC0007FEA4C /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
 		81A49A7B19F0FCC0007FEA4C /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "../Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
+		81A68FEE1A9F2F00003B3C55 /* DulfyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyViewController.swift; sourceTree = "<group>"; };
 		81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceHolder.swift; sourceTree = "<group>"; };
 		81AB247C19EFBD7700293D26 /* HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -853,6 +856,14 @@
 			name = HTMLReader;
 			sourceTree = "<group>";
 		};
+		81A68FEA1A9F2EEB003B3C55 /* Dulfy */ = {
+			isa = PBXGroup;
+			children = (
+				81A68FEE1A9F2F00003B3C55 /* DulfyViewController.swift */,
+			);
+			name = Dulfy;
+			sourceTree = "<group>";
+		};
 		81AB247319EFBD7700293D26 = {
 			isa = PBXGroup;
 			children = (
@@ -925,6 +936,7 @@
 		81AB24A319EFC18400293D26 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
 				81A1E1FE19F704D700C5C833 /* App */,
 				81AB24A419EFC18B00293D26 /* Forum */,
 				810D2DFE1A44455400FF0FEF /* Settings */,
@@ -1269,6 +1281,7 @@
 				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
 				81255D8619F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				81255D8C19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
+				81A68FEF1A9F2F00003B3C55 /* DulfyViewController.swift in Sources */,
 				817A216B19F6C4480093ECE3 /* Settings.swift in Sources */,
 				81255D8819F7BBD600E0C018 /* UIImage+MultiFormat.m in Sources */,
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
@@ -1337,6 +1350,7 @@
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				81A68FF01A9F2F00003B3C55 /* DulfyViewController.swift in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
