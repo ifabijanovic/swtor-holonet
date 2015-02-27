@@ -18,7 +18,7 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     var post: ForumPost!
     
     let useWebKit = objc_getClass("WKWebView") != nil
-    var webView: UIView!
+    var webView: WebViewProtocol!
     
     // MARK: - Outlets
     
@@ -27,33 +27,15 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     @IBOutlet var forwardButton: UIBarButtonItem!
     
     @IBAction func backTapped(sender: AnyObject) {
-        if self.useWebKit {
-            let webView = self.webView as WKWebView
-            webView.goBack()
-        } else {
-            let webView = self.webView as UIWebView
-            webView.goBack()
-        }
+        self.webView.doGoBack()
     }
     
     @IBAction func forwardTapped(sender: AnyObject) {
-        if self.useWebKit {
-            let webView = self.webView as WKWebView
-            webView.goForward()
-        } else {
-            let webView = self.webView as UIWebView
-            webView.goForward()
-        }
+        self.webView.doGoForward()
     }
     
     @IBAction func reloadTapped(sender: AnyObject) {
-        if self.useWebKit {
-            let webView = self.webView as WKWebView
-            webView.reload()
-        } else {
-            let webView = self.webView as UIWebView
-            webView.reload()
-        }
+        self.webView.doReload()
     }
     
     @IBAction func homeTapped(sender: AnyObject) {
@@ -89,12 +71,31 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.setWebViewDelegate(self)
+        self.webView.doSetDelegate(self)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.setWebViewDelegate(nil)
+        self.webView.doSetDelegate(nil)
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        if self.useWebKit { return }
+        
+        // Hide the navbar and toolbar if using UIWebView since the new gestures are not available
+        if let navController = self.navigationController {
+            var hide: Bool
+            switch toInterfaceOrientation {
+            case .LandscapeLeft, .LandscapeRight:
+                hide = true
+            default:
+                hide = false
+            }
+            
+            navController.setNavigationBarHidden(hide, animated: true)
+            navController.setToolbarHidden(hide, animated: true)
+        }
     }
     
     // MARK: - UIWebViewDelegate
@@ -137,45 +138,28 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         // Use WKWebView if available, fallback to UIWebView
         self.webView = self.useWebKit ? WKWebView() : UIWebView()
         // Insert the webView at index 0 so its scroll view insets get adjusted automatically
-        self.view.insertSubview(self.webView, atIndex: 0)
+        self.view.insertSubview(self.webView.view, atIndex: 0)
         // Disable autoresizing mask translation so auto layout constraints can be added
-        self.webView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.webView.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         // Define constraints that make the webView display in full screen
-        let trailing = NSLayoutConstraint(item: self.view, attribute: .Trailing, relatedBy: .Equal, toItem: self.webView, attribute: .Trailing, multiplier: 1.0, constant: 0)
-        let leading = NSLayoutConstraint(item: self.view, attribute: .Leading, relatedBy: .Equal, toItem: self.webView, attribute: .Leading, multiplier: 1.0, constant: 0)
-        let bottom = NSLayoutConstraint(item: self.view, attribute: .Bottom, relatedBy: .Equal, toItem: self.webView, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        let top = NSLayoutConstraint(item: self.view, attribute: .Top, relatedBy: .Equal, toItem: self.webView, attribute: .Top, multiplier: 1.0, constant: 0)
+        let trailing = NSLayoutConstraint(item: self.view, attribute: .Trailing, relatedBy: .Equal, toItem: self.webView.view, attribute: .Trailing, multiplier: 1.0, constant: 0)
+        let leading = NSLayoutConstraint(item: self.view, attribute: .Leading, relatedBy: .Equal, toItem: self.webView.view, attribute: .Leading, multiplier: 1.0, constant: 0)
+        let bottom = NSLayoutConstraint(item: self.view, attribute: .Bottom, relatedBy: .Equal, toItem: self.webView.view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        let top = NSLayoutConstraint(item: self.view, attribute: .Top, relatedBy: .Equal, toItem: self.webView.view, attribute: .Top, multiplier: 1.0, constant: 0)
         
         // Apply the auto layout constraints
         self.view.addConstraints([trailing, leading, bottom, top])
         
         // Make the webView transparent
-        self.webView.opaque = false
-        self.webView.backgroundColor = UIColor.clearColor()
+        self.webView.view.opaque = false
+        self.webView.view.backgroundColor = UIColor.clearColor()
     }
     
     private func navigateHome() {
         let url = NSURL(string: self.settings.dulfyNetUrl)
         let request = NSURLRequest(URL: url!)
-        
-        if self.useWebKit {
-            let webView = self.webView as WKWebView
-            webView.loadRequest(request)
-        } else {
-            let webView = self.webView as UIWebView
-            webView.loadRequest(request)
-        }
-    }
-    
-    private func setWebViewDelegate(delegate: AnyObject?) {
-        if self.useWebKit {
-            let webView = self.webView as WKWebView
-            webView.navigationDelegate = delegate as? WKNavigationDelegate
-        } else {
-            let webView = self.webView as UIWebView
-            webView.delegate = delegate as? UIWebViewDelegate
-        }
+        self.webView.load(request)
     }
     
 }
