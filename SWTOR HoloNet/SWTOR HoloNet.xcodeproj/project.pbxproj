@@ -33,6 +33,8 @@
 		8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
 		8120F28419FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
 		8120F28519FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
+		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5419F7BBD600E0C018 /* NSData+ImageContentType.m */; };
@@ -315,6 +317,7 @@
 		8120F26F19FFB2E200C02DF8 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = "../Third Party/ExSwift/ExSwift/Range.swift"; sourceTree = "<group>"; };
 		8120F27019FFB2E200C02DF8 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = "../Third Party/ExSwift/ExSwift/Sequence.swift"; sourceTree = "<group>"; };
 		8120F27119FFB2E200C02DF8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../Third Party/ExSwift/ExSwift/String.swift"; sourceTree = "<group>"; };
+		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		81255D5119F7BBD600E0C018 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81255D5319F7BBD600E0C018 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "../Third Party/SDWebImage/SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -507,6 +510,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				812276FB1AA080790064156A /* WebKit.framework in Frameworks */,
 				81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */,
 				81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */,
 				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
@@ -536,6 +540,7 @@
 				8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */,
 				81CF9F9F1A46C14B0020BE6B /* MobileCoreServices.framework in Frameworks */,
 				81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */,
+				812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */,
 				81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */,
 				81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
@@ -1026,6 +1031,7 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				812276FA1AA080790064156A /* WebKit.framework */,
 				813E59061A6F78760012A7A8 /* UIKit.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
 				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
