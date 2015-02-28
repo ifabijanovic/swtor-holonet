@@ -11,6 +11,8 @@
 		8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */; };
 		810D2E041A44457800FF0FEF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */; };
 		810D2E051A44457800FF0FEF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */; };
+		81103E8F1AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
+		81103E901AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -310,6 +312,7 @@
 		810950891A0A1AA700B974E1 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityTests.swift; path = Module/App/Model/EntityTests.swift; sourceTree = "<group>"; };
 		8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParserTests.swift; path = Module/Forum/Data/ForumParserTests.swift; sourceTree = "<group>"; };
 		810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Module/Settings/UI/SettingsTableViewController.swift; sourceTree = "<group>"; };
+		81103E8E1AA2374200822A3B /* PushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManager.swift; path = Module/Push/PushManager.swift; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -622,6 +625,14 @@
 				810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		81103E8A1AA2370C00822A3B /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				81103E8E1AA2374200822A3B /* PushManager.swift */,
+			);
+			name = Push;
 			sourceTree = "<group>";
 		};
 		8120F26219FFB00600C02DF8 /* Model */ = {
@@ -968,6 +979,7 @@
 				81A1E1FE19F704D700C5C833 /* App */,
 				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
 				81AB24A419EFC18B00293D26 /* Forum */,
+				81103E8A1AA2370C00822A3B /* Push */,
 				810D2DFE1A44455400FF0FEF /* Settings */,
 			);
 			name = Module;
@@ -1327,6 +1339,7 @@
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				81103E8F1AA2374200822A3B /* PushManager.swift in Sources */,
 				81255D7C19F7BBD600E0C018 /* SDWebImageDownloader.m in Sources */,
 				81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
@@ -1401,6 +1414,7 @@
 				81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */,
 				8120F27319FFB2E200C02DF8 /* Array.swift in Sources */,
+				81103E901AA2374200822A3B /* PushManager.swift in Sources */,
 				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
