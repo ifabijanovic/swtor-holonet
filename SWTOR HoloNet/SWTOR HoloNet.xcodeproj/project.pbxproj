@@ -33,6 +33,8 @@
 		8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
 		8120F28419FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
 		8120F28519FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
+		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
 		81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5419F7BBD600E0C018 /* NSData+ImageContentType.m */; };
@@ -109,6 +111,12 @@
 		815007711A1C989100C897F1 /* forum-post-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */; };
 		8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */; };
 		8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */; };
+		815793241AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815793231AA0BD2E00C62E87 /* DulfyViewController.swift */; };
+		815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815793231AA0BD2E00C62E87 /* DulfyViewController.swift */; };
+		815793281AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815793271AA0BD6400C62E87 /* WebViewProtocol.swift */; };
+		815793291AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815793271AA0BD6400C62E87 /* WebViewProtocol.swift */; };
+		8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157932A1AA0BD9700C62E87 /* WebViewEx.swift */; };
+		8157932C1AA0BD9700C62E87 /* WebViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157932A1AA0BD9700C62E87 /* WebViewEx.swift */; };
 		815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
 		815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815B211519F3A2B900B9E725 /* ForumPostRepository.swift */; };
 		8163619A1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */; };
@@ -313,6 +321,7 @@
 		8120F26F19FFB2E200C02DF8 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = "../Third Party/ExSwift/ExSwift/Range.swift"; sourceTree = "<group>"; };
 		8120F27019FFB2E200C02DF8 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = "../Third Party/ExSwift/ExSwift/Sequence.swift"; sourceTree = "<group>"; };
 		8120F27119FFB2E200C02DF8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../Third Party/ExSwift/ExSwift/String.swift"; sourceTree = "<group>"; };
+		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		81255D5119F7BBD600E0C018 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81255D5319F7BBD600E0C018 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "../Third Party/SDWebImage/SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -385,6 +394,9 @@
 		815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-multiple-invalid-id.html"; path = "Module/Forum/Test Data/Post/forum-post-multiple-invalid-id.html"; sourceTree = "<group>"; };
 		8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepositoryTests.swift; path = Module/Forum/Data/ForumThreadRepositoryTests.swift; sourceTree = "<group>"; };
 		8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumRepositoryTestsBase.swift; path = Module/Forum/Data/ForumRepositoryTestsBase.swift; sourceTree = "<group>"; };
+		815793231AA0BD2E00C62E87 /* DulfyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyViewController.swift; path = Module/Dulfy/UI/DulfyViewController.swift; sourceTree = "<group>"; };
+		815793271AA0BD6400C62E87 /* WebViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewProtocol.swift; path = Module/Dulfy/WebView/WebViewProtocol.swift; sourceTree = "<group>"; };
+		8157932A1AA0BD9700C62E87 /* WebViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewEx.swift; path = Module/Dulfy/WebView/WebViewEx.swift; sourceTree = "<group>"; };
 		815B211519F3A2B900B9E725 /* ForumPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostRepository.swift; path = Module/Forum/Data/ForumPostRepository.swift; sourceTree = "<group>"; };
 		816361981A017C6E00E7D194 /* ForumThreadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadTableViewCell.swift; path = Module/Forum/UI/TableCell/ForumThreadTableViewCell.swift; sourceTree = "<group>"; };
 		816361991A017C6E00E7D194 /* ForumThreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumThreadTableViewCell.xib; path = Module/Forum/UI/TableCell/ForumThreadTableViewCell.xib; sourceTree = "<group>"; };
@@ -504,6 +516,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				812276FB1AA080790064156A /* WebKit.framework in Frameworks */,
 				81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */,
 				81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */,
 				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
@@ -533,6 +546,7 @@
 				8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */,
 				81CF9F9F1A46C14B0020BE6B /* MobileCoreServices.framework in Frameworks */,
 				81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */,
+				812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */,
 				81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */,
 				81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
@@ -742,6 +756,23 @@
 			name = Post;
 			sourceTree = "<group>";
 		};
+		8157931F1AA0BCF900C62E87 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				815793231AA0BD2E00C62E87 /* DulfyViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		815793261AA0BD4C00C62E87 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				815793271AA0BD6400C62E87 /* WebViewProtocol.swift */,
+				8157932A1AA0BD9700C62E87 /* WebViewEx.swift */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
 		816361971A017C2400E7D194 /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,6 +884,15 @@
 			name = HTMLReader;
 			sourceTree = "<group>";
 		};
+		81A68FEA1A9F2EEB003B3C55 /* Dulfy */ = {
+			isa = PBXGroup;
+			children = (
+				815793261AA0BD4C00C62E87 /* WebView */,
+				8157931F1AA0BCF900C62E87 /* UI */,
+			);
+			name = Dulfy;
+			sourceTree = "<group>";
+		};
 		81AB247319EFBD7700293D26 = {
 			isa = PBXGroup;
 			children = (
@@ -926,6 +966,7 @@
 			isa = PBXGroup;
 			children = (
 				81A1E1FE19F704D700C5C833 /* App */,
+				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
 				81AB24A419EFC18B00293D26 /* Forum */,
 				810D2DFE1A44455400FF0FEF /* Settings */,
 			);
@@ -1014,6 +1055,7 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				812276FA1AA080790064156A /* WebKit.framework */,
 				813E59061A6F78760012A7A8 /* UIKit.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
 				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
@@ -1224,6 +1266,7 @@
 			files = (
 				816361A01A01814300E7D194 /* ForumCategoryTableViewCell.swift in Sources */,
 				81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */,
+				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81255D8A19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
 				81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
@@ -1269,6 +1312,7 @@
 				81AB24D519EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
 				81255D8619F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				81255D8C19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
+				815793241AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				817A216B19F6C4480093ECE3 /* Settings.swift in Sources */,
 				81255D8819F7BBD600E0C018 /* UIImage+MultiFormat.m in Sources */,
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
@@ -1292,6 +1336,7 @@
 				81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
 				81255D8219F7BBD600E0C018 /* SDWebImagePrefetcher.m in Sources */,
 				81A49A9619F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
+				815793281AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */,
 				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
 				81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				8120F27419FFB2E200C02DF8 /* Dictionary.swift in Sources */,
@@ -1337,6 +1382,7 @@
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				813E590B1A6F7AFF0012A7A8 /* Alert.swift in Sources */,
@@ -1344,7 +1390,9 @@
 				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				81255D8F19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
+				8157932C1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
+				815793291AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */,
 				81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */,
 				81A49A8119F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
 				81A49A9919F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
