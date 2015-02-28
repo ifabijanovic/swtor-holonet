@@ -18,6 +18,7 @@ class InstanceHolder {
     
     let settings = Settings()
     let theme = Theme()
+    let pushManager = PushManager()
     
     // MARK: - Singleton
     

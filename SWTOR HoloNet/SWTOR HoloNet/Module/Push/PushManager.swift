@@ -18,12 +18,22 @@ class PushManager {
     let pushAccessRequestRetryInterval: NSTimeInterval = 5*24*60*60 // 5 days
     
     private let requestPushTitle = "Notifications"
-    private let requestPushMessage = "Hey, is it cool if we send you a notification from time to time?"
+    private let requestPushMessage = "Hey, would you like to receive notifications from HoloNet and Dulfy?"
+    
+    private let useNewApi = objc_getClass("UIUserNotificationSettings") != nil
     
     // MARK: - Properties
     
     private var didCancelPushAccess: Bool
     private var lastPushAccessRequestTimestamp: NSDate
+    
+    var isPushEnabled: Bool {
+        get {
+            return self.useNewApi
+                ? UIApplication.sharedApplication().currentUserNotificationSettings().types != UIUserNotificationType.None
+                : UIApplication.sharedApplication().enabledRemoteNotificationTypes() != UIRemoteNotificationType.None
+        }
+    }
     
     // MARK: - Init
     
@@ -37,10 +47,10 @@ class PushManager {
     }
 
     
-    // MARK: - Push access
+    // MARK: - Requesting access
     
     func shouldRequestPushAccess() -> Bool {
-        if self.isPushEnabled() {
+        if self.isPushEnabled {
             // Push is already enabled, no need to request access
             return false
         }
@@ -59,31 +69,77 @@ class PushManager {
     func requestPushAccess(#viewController: UIViewController) {
         showAlert(viewController, style: .Alert, title: self.requestPushTitle, message: self.requestPushMessage, sourceView: nil, completion: nil,
             (.Cancel, "No", {
+                // User decided not to grant push access. Set a flag so the app can ask again at a later time
                 self.didCancelPushAccess = true
+                self.lastPushAccessRequestTimestamp = NSDate()
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: self.keyDidCancelPushAccess)
+                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: self.keyLastPushAccessRequestTimestamp)
                 NSUserDefaults.standardUserDefaults().synchronize()
             }),
             (.Default, "Yes", {
-                // TODO: Request push access here
+                // User agreed to grant push access. Remove the flag used for repeating this query and register for push
+                self.didCancelPushAccess = false
+                self.lastPushAccessRequestTimestamp = NSDate.distantFuture() as NSDate
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(self.keyDidCancelPushAccess)
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(self.keyLastPushAccessRequestTimestamp)
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                self.registerForPush()
             })
         )
     }
     
-    // MARK: - Private methods
+    // MARK: - Registering
     
-    private func isPushEnabled() -> Bool {
-        let app = UIApplication.sharedApplication()
-        var pushEnabled = false
+    func registerForPush() {
+        let application = UIApplication.sharedApplication()
         
-        if objc_getClass("UIUserNotificationSettings") != nil {
+        if self.useNewApi {
             // iOS 8+
-            pushEnabled = app.currentUserNotificationSettings().types != UIUserNotificationType.None
+            let types: UIUserNotificationType = .Alert | .Badge | .Sound
+            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
         } else {
             // iOS 7
-            pushEnabled = app.enabledRemoteNotificationTypes() != UIRemoteNotificationType.None
+            let types: UIRemoteNotificationType = .Alert | .Badge | .Sound
+            application.registerForRemoteNotificationTypes(types)
         }
-        
-        return pushEnabled
+    }
+    
+    func registerDeviceToken(deviceToken: NSData) {
+        // Store the deviceToken in the current installation and save it to Parse.
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.channels = ["global"];
+        currentInstallation.saveInBackground()
+    }
+    
+    // MARK: - Notification handling
+    
+    func handleRemoteNotification(#application: UIApplication, userInfo: [NSObject : AnyObject]) {
+        let state = application.applicationState
+        if state == .Active {
+            self.handleForegroundNotification(userInfo)
+        } else if state == .Inactive {
+            self.handleBackgroundNotification(userInfo)
+        }
+    }
+    
+    func resetBadge() {
+        let currentInstallation = PFInstallation.currentInstallation()
+        if currentInstallation.badge > 0 {
+            currentInstallation.badge = 0
+            currentInstallation.saveInBackground()
+        }
+    }
+    
+    private func handleForegroundNotification(userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+    }
+    
+    private func handleBackgroundNotification(userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
     }
     
 }
