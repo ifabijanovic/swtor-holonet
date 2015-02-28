@@ -13,6 +13,7 @@
 		810D2E051A44457800FF0FEF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */; };
 		81103E8F1AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E901AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
+		81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E9B1AA2614300822A3B /* PushManagerTests.swift */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -313,6 +314,7 @@
 		8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParserTests.swift; path = Module/Forum/Data/ForumParserTests.swift; sourceTree = "<group>"; };
 		810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Module/Settings/UI/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		81103E8E1AA2374200822A3B /* PushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManager.swift; path = Module/Push/PushManager.swift; sourceTree = "<group>"; };
+		81103E9B1AA2614300822A3B /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManagerTests.swift; path = Module/Push/PushManagerTests.swift; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			children = (
 				810950871A0A1A8400B974E1 /* App */,
 				8109508B1A0A1BE300B974E1 /* Forum */,
+				81103E971AA2611700822A3B /* Push */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -631,6 +634,14 @@
 			isa = PBXGroup;
 			children = (
 				81103E8E1AA2374200822A3B /* PushManager.swift */,
+			);
+			name = Push;
+			sourceTree = "<group>";
+		};
+		81103E971AA2611700822A3B /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				81103E9B1AA2614300822A3B /* PushManagerTests.swift */,
 			);
 			name = Push;
 			sourceTree = "<group>";
@@ -1404,6 +1415,7 @@
 				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				81255D8F19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
 				8157932C1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
+				81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */,
 				81AB24CA19EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
 				815793291AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */,
 				81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */,

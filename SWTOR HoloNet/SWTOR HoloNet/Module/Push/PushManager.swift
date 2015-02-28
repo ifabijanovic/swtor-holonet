@@ -8,14 +8,15 @@
 
 import Foundation
 
+let keyDidCancelPushAccess = "pushDidCancelPushAccess"
+let keyDidApprovePushAccess = "pushDidApprovePushAccess"
+let keyLastPushAccessRequestTimestamp = "pushLastPushAccessRequestTimestamp"
+
+let pushAccessRequestRetryInterval: NSTimeInterval = 5*24*60*60 // 5 days
+
 class PushManager {
     
     // MARK: - Constants
-    
-    let keyDidCancelPushAccess = "pushDidCancelPushAccess"
-    let keyLastPushAccessRequestTimestamp = "pushLastPushAccessRequestTimestamp"
-    
-    let pushAccessRequestRetryInterval: NSTimeInterval = 5*24*60*60 // 5 days
     
     private let requestPushTitle = "Notifications"
     private let requestPushMessage = "Hey, would you like to receive notifications from HoloNet and Dulfy?"
@@ -25,6 +26,7 @@ class PushManager {
     // MARK: - Properties
     
     private var didCancelPushAccess: Bool
+    private var didApprovePushAccess: Bool
     private var lastPushAccessRequestTimestamp: NSDate
     
     var isPushEnabled: Bool {
@@ -40,9 +42,10 @@ class PushManager {
     init() {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        self.didCancelPushAccess = defaults.boolForKey(self.keyDidCancelPushAccess)
+        self.didCancelPushAccess = defaults.boolForKey(keyDidCancelPushAccess)
+        self.didApprovePushAccess = defaults.boolForKey(keyDidApprovePushAccess)
         
-        let timestamp = defaults.objectForKey(self.keyLastPushAccessRequestTimestamp) as? NSDate
+        let timestamp = defaults.objectForKey(keyLastPushAccessRequestTimestamp) as? NSDate
         self.lastPushAccessRequestTimestamp = timestamp != nil ? timestamp! : NSDate.distantPast() as NSDate
     }
 
@@ -55,10 +58,15 @@ class PushManager {
             return false
         }
         
+        if self.didApprovePushAccess {
+            // User already approved push access, no need to ask again
+            return false
+        }
+        
         if self.didCancelPushAccess {
             // User canceled the push access prompt, check if enough time passed to ask again
             let secondsSinceLastRequest = NSDate().timeIntervalSinceDate(self.lastPushAccessRequestTimestamp)
-            if secondsSinceLastRequest < self.pushAccessRequestRetryInterval {
+            if secondsSinceLastRequest < pushAccessRequestRetryInterval {
                 return false
             }
         }
@@ -72,16 +80,14 @@ class PushManager {
                 // User decided not to grant push access. Set a flag so the app can ask again at a later time
                 self.didCancelPushAccess = true
                 self.lastPushAccessRequestTimestamp = NSDate()
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: self.keyDidCancelPushAccess)
-                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: self.keyLastPushAccessRequestTimestamp)
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidCancelPushAccess)
+                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: keyLastPushAccessRequestTimestamp)
                 NSUserDefaults.standardUserDefaults().synchronize()
             }),
             (.Default, "Yes", {
-                // User agreed to grant push access. Remove the flag used for repeating this query and register for push
-                self.didCancelPushAccess = false
-                self.lastPushAccessRequestTimestamp = NSDate.distantFuture() as NSDate
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(self.keyDidCancelPushAccess)
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(self.keyLastPushAccessRequestTimestamp)
+                // User agreed to grant push access. Set a flag and register for push
+                self.didApprovePushAccess = true
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidApprovePushAccess)
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 self.registerForPush()
