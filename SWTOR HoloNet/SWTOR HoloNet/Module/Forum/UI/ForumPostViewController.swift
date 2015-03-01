@@ -14,6 +14,8 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
     
     var settings: Settings!
     var theme: Theme!
+    var alertFactory: AlertFactory!
+    
     var post: ForumPost!
     
     // MARK: - Outlets

@@ -16,8 +16,11 @@ class InstanceHolder {
     
     // MARK: - Properties
     
+    var alertFactory: AlertFactory
+    
     let settings = Settings()
     let theme = Theme()
+    let pushManager: PushManager
     
     // MARK: - Singleton
     
@@ -33,11 +36,19 @@ class InstanceHolder {
         return Singleton.instance!
     }
     
+    // MARK: - Init
+    
+    init() {
+        self.alertFactory = UIAlertFactory()
+        self.pushManager = PushManager(alertFactory: self.alertFactory)
+    }
+    
     // MARK: - Public methods
     
     func inject(var injectable: Injectable) {
         injectable.settings = self.settings
         injectable.theme = self.theme
+        injectable.alertFactory = self.alertFactory
     }
     
 }
