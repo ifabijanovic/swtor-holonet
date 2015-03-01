@@ -215,10 +215,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
             dispatch_sync(lock) { requestCount = -1 }
             
             self.refreshControl?.endRefreshing()
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onRefresh() })
-            )
+//            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+//                (.Cancel, "No", { self.hideLoader() }),
+//                (.Default, "Yes", { self.onRefresh() })
+//            )
         }
         
         if let category = self.category {
@@ -267,10 +267,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
             self.canLoadMore = true
         }
         func failure(error: NSError) {
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onLoadMore() })
-            )
+//            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
+//                (.Cancel, "No", { self.hideLoader() }),
+//                (.Default, "Yes", { self.onLoadMore() })
+//            )
         }
         
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)

@@ -75,24 +75,24 @@ class PushManager {
     }
     
     func requestPushAccess(#viewController: UIViewController) {
-        showAlert(viewController, style: .Alert, title: self.requestPushTitle, message: self.requestPushMessage, sourceView: nil, completion: nil,
-            (.Cancel, "No", {
-                // User decided not to grant push access. Set a flag so the app can ask again at a later time
-                self.didCancelPushAccess = true
-                self.lastPushAccessRequestTimestamp = NSDate()
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidCancelPushAccess)
-                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: keyLastPushAccessRequestTimestamp)
-                NSUserDefaults.standardUserDefaults().synchronize()
-            }),
-            (.Default, "Yes", {
-                // User agreed to grant push access. Set a flag and register for push
-                self.didApprovePushAccess = true
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidApprovePushAccess)
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
-                self.registerForPush()
-            })
-        )
+//        showAlert(viewController, style: .Alert, title: self.requestPushTitle, message: self.requestPushMessage, sourceView: nil, completion: nil,
+//            (.Cancel, "No", {
+//                // User decided not to grant push access. Set a flag so the app can ask again at a later time
+//                self.didCancelPushAccess = true
+//                self.lastPushAccessRequestTimestamp = NSDate()
+//                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidCancelPushAccess)
+//                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: keyLastPushAccessRequestTimestamp)
+//                NSUserDefaults.standardUserDefaults().synchronize()
+//            }),
+//            (.Default, "Yes", {
+//                // User agreed to grant push access. Set a flag and register for push
+//                self.didApprovePushAccess = true
+//                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidApprovePushAccess)
+//                NSUserDefaults.standardUserDefaults().synchronize()
+//                
+//                self.registerForPush()
+//            })
+//        )
     }
     
     // MARK: - Registering
