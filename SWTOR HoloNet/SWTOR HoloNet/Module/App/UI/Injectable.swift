@@ -14,5 +14,6 @@ protocol Injectable {
     
     var settings: Settings! { get set }
     var theme: Theme! { get set }
+    var alertFactory: AlertFactory! { get set }
     
 }

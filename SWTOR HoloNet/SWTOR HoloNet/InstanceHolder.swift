@@ -20,6 +20,8 @@ class InstanceHolder {
     let theme = Theme()
     let pushManager = PushManager()
     
+    var alertFactory: AlertFactory = UIAlertFactory()
+    
     // MARK: - Singleton
     
     struct Singleton {
@@ -39,6 +41,7 @@ class InstanceHolder {
     func inject(var injectable: Injectable) {
         injectable.settings = self.settings
         injectable.theme = self.theme
+        injectable.alertFactory = self.alertFactory
     }
     
 }

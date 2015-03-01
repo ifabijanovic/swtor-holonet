@@ -21,6 +21,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     var settings: Settings!
     var theme: Theme!
+    var alertFactory: AlertFactory!
     
     // MARK: - Outlets
     

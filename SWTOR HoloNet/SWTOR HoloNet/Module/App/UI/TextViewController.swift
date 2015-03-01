@@ -14,6 +14,7 @@ class TextViewController: UIViewController, Injectable, Themeable {
     
     var settings: Settings!
     var theme: Theme!
+    var alertFactory: AlertFactory!
     
     var file: String?
     var text: String?

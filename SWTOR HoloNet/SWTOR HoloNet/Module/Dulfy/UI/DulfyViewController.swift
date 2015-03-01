@@ -15,7 +15,7 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     
     var settings: Settings!
     var theme: Theme!
-    var post: ForumPost!
+    var alertFactory: AlertFactory!
     
     let useWebKit = objc_getClass("WKWebView") != nil
     var webView: WebViewProtocol!
