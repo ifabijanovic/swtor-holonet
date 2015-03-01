@@ -25,6 +25,8 @@ class PushManager {
     
     // MARK: - Properties
     
+    let alertFactory: AlertFactory
+    
     private var didCancelPushAccess: Bool
     private var didApprovePushAccess: Bool
     private var lastPushAccessRequestTimestamp: NSDate
@@ -39,7 +41,8 @@ class PushManager {
     
     // MARK: - Init
     
-    init() {
+    init(alertFactory: AlertFactory) {
+        self.alertFactory = alertFactory
         let defaults = NSUserDefaults.standardUserDefaults()
         
         self.didCancelPushAccess = defaults.boolForKey(keyDidCancelPushAccess)
@@ -75,24 +78,26 @@ class PushManager {
     }
     
     func requestPushAccess(#viewController: UIViewController) {
-//        showAlert(viewController, style: .Alert, title: self.requestPushTitle, message: self.requestPushMessage, sourceView: nil, completion: nil,
-//            (.Cancel, "No", {
-//                // User decided not to grant push access. Set a flag so the app can ask again at a later time
-//                self.didCancelPushAccess = true
-//                self.lastPushAccessRequestTimestamp = NSDate()
-//                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidCancelPushAccess)
-//                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: keyLastPushAccessRequestTimestamp)
-//                NSUserDefaults.standardUserDefaults().synchronize()
-//            }),
-//            (.Default, "Yes", {
-//                // User agreed to grant push access. Set a flag and register for push
-//                self.didApprovePushAccess = true
-//                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidApprovePushAccess)
-//                NSUserDefaults.standardUserDefaults().synchronize()
-//                
-//                self.registerForPush()
-//            })
-//        )
+        let alert = self.alertFactory.createAlert(viewController, title: self.requestPushTitle, message: self.requestPushMessage, buttons:
+            (style: .Cancel, title: "No", handler: {
+                // User decided not to grant push access. Set a flag so the app can ask again at a later time
+                self.didCancelPushAccess = true
+                self.lastPushAccessRequestTimestamp = NSDate()
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidCancelPushAccess)
+                NSUserDefaults.standardUserDefaults().setObject(self.lastPushAccessRequestTimestamp, forKey: keyLastPushAccessRequestTimestamp)
+                NSUserDefaults.standardUserDefaults().synchronize()
+
+            }),
+            (style: .Default, title: "Yes", handler: {
+                // User agreed to grant push access. Set a flag and register for push
+                self.didApprovePushAccess = true
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: keyDidApprovePushAccess)
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                self.registerForPush()
+            })
+        )
+        alert.show()
     }
     
     // MARK: - Registering

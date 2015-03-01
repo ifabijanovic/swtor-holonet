@@ -16,11 +16,11 @@ class InstanceHolder {
     
     // MARK: - Properties
     
+    var alertFactory: AlertFactory
+    
     let settings = Settings()
     let theme = Theme()
-    let pushManager = PushManager()
-    
-    var alertFactory: AlertFactory = UIAlertFactory()
+    let pushManager: PushManager
     
     // MARK: - Singleton
     
@@ -34,6 +34,13 @@ class InstanceHolder {
             Singleton.instance = InstanceHolder()
         }
         return Singleton.instance!
+    }
+    
+    // MARK: - Init
+    
+    init() {
+        self.alertFactory = UIAlertFactory()
+        self.pushManager = PushManager(alertFactory: self.alertFactory)
     }
     
     // MARK: - Public methods

@@ -13,6 +13,8 @@ class PushManagerTests: XCTestCase {
     
     class PushManagerMock: PushManager {
         
+        var didRegisterForPush = false
+        
         var isPushEnabledValue = false
         override var isPushEnabled: Bool {
             get {
@@ -20,8 +22,16 @@ class PushManagerTests: XCTestCase {
             }
         }
         
-        override init() {
-            super.init()
+        init() {
+            super.init(alertFactory: TestAlertFactory())
+        }
+        
+        override init(alertFactory: AlertFactory) {
+            super.init(alertFactory: alertFactory)
+        }
+        
+        override func registerForPush() {
+            self.didRegisterForPush = true
         }
         
     }
@@ -58,6 +68,8 @@ class PushManagerTests: XCTestCase {
         self.setTimestamp(nil)
     }
     
+    // MARK: - shouldRequestPushAccess
+    
     func testShouldRequestPushAccess_FirstStart() {
         let manager = PushManagerMock()
         
@@ -92,6 +104,40 @@ class PushManagerTests: XCTestCase {
         let manager = PushManagerMock()
         
         XCTAssertTrue(manager.shouldRequestPushAccess(), "")
+    }
+    
+    // MARK: - requestPushAccess
+    
+    func testRequestPushAccess_Canceled() {
+        let alertFactory = TestAlertFactory()
+        let manager = PushManagerMock(alertFactory: alertFactory)
+        let presenter = UIViewController()
+        
+        manager.requestPushAccess(viewController: presenter)
+        
+        XCTAssertNotNil(alertFactory.lastAlert, "")
+        alertFactory.lastAlert!.tapCancel()
+        
+        XCTAssertFalse(manager.didRegisterForPush, "")
+        XCTAssertTrue(NSUserDefaults.standardUserDefaults().boolForKey(keyDidCancelPushAccess), "")
+        let date = NSUserDefaults.standardUserDefaults().objectForKey(keyLastPushAccessRequestTimestamp) as? NSDate
+        XCTAssertNotNil(date, "")
+        let diff = NSDate().timeIntervalSinceDate(date!)
+        XCTAssertLessThanOrEqual(diff, 3, "")
+    }
+    
+    func testRequestPushAccess_Accepted() {
+        let alertFactory = TestAlertFactory()
+        let manager = PushManagerMock(alertFactory: alertFactory)
+        let presenter = UIViewController()
+        
+        manager.requestPushAccess(viewController: presenter)
+        
+        XCTAssertNotNil(alertFactory.lastAlert, "")
+        alertFactory.lastAlert!.tapDefault()
+        
+        XCTAssertTrue(manager.didRegisterForPush, "")
+        XCTAssertTrue(NSUserDefaults.standardUserDefaults().boolForKey(keyDidApprovePushAccess), "")
     }
 
 }

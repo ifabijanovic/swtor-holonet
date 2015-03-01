@@ -10,14 +10,20 @@ import UIKit
 
 class TestAlertFactory: AlertFactory {
 
+    var lastAlert: TestAlert? = nil
+    
     // MARK: - Public methods
     
     func createActionSheet(presenter: UIViewController, title: String, buttons: (style: UIAlertActionStyle, title: String, handler: (() -> ())?)...) -> Alert {
-        return TestAlert(presenter: presenter, title: title, buttons: buttons)
+        let alert = TestAlert(presenter: presenter, title: title, buttons: buttons)
+        self.lastAlert = alert
+        return alert
     }
     
     func createAlert(presenter: UIViewController, title: String, message: String, buttons: (style: UIAlertActionStyle, title: String, handler: (() -> ())?)...) -> Alert {
-        return TestAlert(presenter: presenter, title: title, message: message, buttons: buttons)
+        let alert = TestAlert(presenter: presenter, title: title, message: message, buttons: buttons)
+        self.lastAlert = alert
+        return alert
     }
     
 }
