@@ -134,7 +134,7 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     
     // MARK: - Private methods
     
-    private func setupWebView() {
+    internal func setupWebView() {
         // Use WKWebView if available, fallback to UIWebView
         self.webView = self.useWebKit ? WKWebView() : UIWebView()
         // Insert the webView at index 0 so its scroll view insets get adjusted automatically

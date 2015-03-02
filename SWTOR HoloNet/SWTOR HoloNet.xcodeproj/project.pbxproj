@@ -272,6 +272,7 @@
 		81DD07FD1AA32AE600278130 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F61AA32AE600278130 /* AlertTests.swift */; };
 		81DD07FE1AA32AE600278130 /* TestAlertFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */; };
 		81DD07FF1AA32AE600278130 /* TestAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F91AA32AE600278130 /* TestAlertTests.swift */; };
+		81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */; };
 		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0C111A4465EA00AFA035 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */; };
@@ -546,6 +547,7 @@
 		81DD07F61AA32AE600278130 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactoryTests.swift; sourceTree = "<group>"; };
 		81DD07F91AA32AE600278130 /* TestAlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertTests.swift; sourceTree = "<group>"; };
+		81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyViewControllerTests.swift; path = Module/Dulfy/UI/DulfyViewControllerTests.swift; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				810950871A0A1A8400B974E1 /* App */,
+				81E62D011AA44A8A006FA0F9 /* Dulfy */,
 				8109508B1A0A1BE300B974E1 /* Forum */,
 				81103E971AA2611700822A3B /* Push */,
 			);
@@ -1242,6 +1245,22 @@
 			path = Testing;
 			sourceTree = "<group>";
 		};
+		81E62D011AA44A8A006FA0F9 /* Dulfy */ = {
+			isa = PBXGroup;
+			children = (
+				81E62D051AA44A92006FA0F9 /* UI */,
+			);
+			name = Dulfy;
+			sourceTree = "<group>";
+		};
+		81E62D051AA44A92006FA0F9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		81FDCC881A6EC31500E2C44A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1636,6 +1655,7 @@
 				8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				818029D81A08C7F000999871 /* NSURLComponentsExTests.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
+				81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */,
 				81255D9119F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81255D7719F7BBD600E0C018 /* SDImageCache.m in Sources */,
 				81A49A8B19F0FCC0007FEA4C /* HTMLParser.m in Sources */,

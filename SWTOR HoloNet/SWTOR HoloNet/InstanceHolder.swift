@@ -18,8 +18,8 @@ class InstanceHolder {
     
     var alertFactory: AlertFactory
     
-    let settings = Settings()
-    let theme = Theme()
+    let settings: Settings
+    let theme: Theme
     let pushManager: PushManager
     
     // MARK: - Singleton
@@ -36,9 +36,24 @@ class InstanceHolder {
         return Singleton.instance!
     }
     
+    class func initWithBundle(bundle: NSBundle) {
+        dispatch_once(&Singleton.token) {
+            Singleton.instance = InstanceHolder(bundle: bundle)
+        }
+    }
+    
     // MARK: - Init
     
     init() {
+        self.settings = Settings()
+        self.theme = Theme()
+        self.alertFactory = UIAlertFactory()
+        self.pushManager = PushManager(alertFactory: self.alertFactory)
+    }
+    
+    init(bundle: NSBundle) {
+        self.settings = Settings(bundle: bundle)
+        self.theme = Theme()
         self.alertFactory = UIAlertFactory()
         self.pushManager = PushManager(alertFactory: self.alertFactory)
     }
