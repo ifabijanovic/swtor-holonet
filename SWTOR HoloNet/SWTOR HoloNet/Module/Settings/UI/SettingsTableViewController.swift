@@ -27,9 +27,6 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     @IBOutlet var contactCell: UITableViewCell!
     @IBOutlet var reportBugCell: UITableViewCell!
-    @IBOutlet var disclaimerCell: UITableViewCell!
-    @IBOutlet var privacyPolicyCell: UITableViewCell!
-    @IBOutlet weak var licenseCell: UITableViewCell!
     
     // MARK: - Lifecycle
     
@@ -119,11 +116,12 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
-        self.contactCell.applyThemeEx(theme)
-        self.reportBugCell.applyThemeEx(theme)
-        self.disclaimerCell.applyThemeEx(theme)
-        self.privacyPolicyCell.applyThemeEx(theme)
-        self.licenseCell.applyThemeEx(theme)
+        for section in 0..<self.tableView.numberOfSections() {
+            for row in 0..<self.tableView.numberOfRowsInSection(section) {
+                let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+                cell?.applyThemeEx(theme)
+            }
+        }
     }
     
     // MARK: - MFMailComposeViewControllerDelegate
