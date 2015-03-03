@@ -21,5 +21,14 @@ extension UITableViewCell {
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView
     }
+    
+    func setDisclosureIndicator(theme: Theme) {
+        if self.accessoryView == nil {
+            let image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
+            let imageView = UIImageView(image: image)
+            imageView.tintColor = theme.contentTitle
+            self.accessoryView = imageView
+        }
+    }
 
 }

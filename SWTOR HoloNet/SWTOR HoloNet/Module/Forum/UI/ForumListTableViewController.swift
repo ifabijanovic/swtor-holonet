@@ -290,6 +290,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
@@ -317,6 +318,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }

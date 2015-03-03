@@ -214,6 +214,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
