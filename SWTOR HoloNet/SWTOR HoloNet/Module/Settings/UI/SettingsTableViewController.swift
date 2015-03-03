@@ -118,8 +118,10 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         
         for section in 0..<self.tableView.numberOfSections() {
             for row in 0..<self.tableView.numberOfRowsInSection(section) {
-                let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
-                cell?.applyThemeEx(theme)
+                if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
+                    cell.applyThemeEx(theme)
+                    cell.setDisclosureIndicator(theme)
+                }
             }
         }
     }
