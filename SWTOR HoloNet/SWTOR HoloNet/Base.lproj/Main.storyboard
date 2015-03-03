@@ -531,10 +531,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="25" height="25"/>
+        <image name="Back" width="8" height="13"/>
         <image name="Dulfy" width="35" height="35"/>
         <image name="Forum" width="25" height="25"/>
-        <image name="Forward" width="25" height="25"/>
+        <image name="Forward" width="8" height="13"/>
         <image name="Home" width="25" height="25"/>
         <image name="Reload" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
