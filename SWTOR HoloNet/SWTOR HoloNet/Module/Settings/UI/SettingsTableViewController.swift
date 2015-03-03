@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     private let DisclaimerSegue = "DisclaimerSegue"
     private let PrivacyPolicySegue = "PrivacyPolicySegue"
     private let LicenseSegue = "LicenseSegue"
+    private let NotificationSettingsSegue = "NotificationSettingsSegue"
     
     // MARK: - Properties
     
@@ -27,6 +28,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     @IBOutlet var contactCell: UITableViewCell!
     @IBOutlet var reportBugCell: UITableViewCell!
+    @IBOutlet var notificationSettingsCell: UITableViewCell!
     
     // MARK: - Lifecycle
     
@@ -53,6 +55,9 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         }
         if cell == self.reportBugCell {
             self.reportBug()
+        }
+        if cell == self.notificationSettingsCell && isIOS8OrLater() {
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }
     }
     
@@ -109,6 +114,13 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         default:
             break
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == NotificationSettingsSegue && isIOS8OrLater() {
+            return false
+        }
+        return true
     }
     
     // MARK: - Themeable

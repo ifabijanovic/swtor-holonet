@@ -263,6 +263,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="1Dn-HK-Tkk" kind="show" identifier="NotificationSettingsSegue" id="Igl-ff-oaf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -367,12 +370,31 @@
                     <navigationItem key="navigationItem" title="Settings" id="scU-D6-uMR"/>
                     <connections>
                         <outlet property="contactCell" destination="i3R-X2-awr" id="BKB-is-weC"/>
+                        <outlet property="notificationSettingsCell" destination="4OI-Cd-TXf" id="dhs-88-XwA"/>
                         <outlet property="reportBugCell" destination="WBB-kD-Iip" id="n4Y-jc-MgW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vn-DG-TzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2792" y="2549"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CfM-am-nKr">
+            <objects>
+                <viewController id="1Dn-HK-Tkk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1zr-ot-3XW"/>
+                        <viewControllerLayoutGuide type="bottom" id="c4t-Dr-jNZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w74-EY-qMf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktp-QJ-nHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3619" y="3304"/>
         </scene>
         <!--Text View Controller-->
         <scene sceneID="ypC-Sw-xxp">
@@ -540,7 +562,7 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="JTD-Hb-rpp"/>
         <segue reference="8xH-gx-Q45"/>
-        <segue reference="veD-PW-DVt"/>
     </inferredMetricsTieBreakers>
 </document>
