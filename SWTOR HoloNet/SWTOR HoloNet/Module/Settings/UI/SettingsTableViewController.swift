@@ -40,8 +40,10 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
 
         self.applyTheme(self.theme)
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("settings")
+#endif
     }
     
     // MARK: - Table view delegate

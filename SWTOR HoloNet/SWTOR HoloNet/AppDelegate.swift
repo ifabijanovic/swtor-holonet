@@ -22,8 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let parseSettings = InstanceHolder.sharedInstance().settings.parse
         Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
         
+#if !DEBUG && !TEST
         // Enable Parse analytics
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+#endif
         
         // Register for push notifications
         let pushManager = InstanceHolder.sharedInstance().pushManager
@@ -40,7 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         if application.applicationState == .Inactive {
+#if !DEBUG && !TEST
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+#endif
         }
         InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(application: application, userInfo: userInfo)
     }

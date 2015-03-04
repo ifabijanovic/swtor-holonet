@@ -55,8 +55,10 @@ class NotificationSettingsViewController: UIViewController, Injectable, Themeabl
         let status = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "enabled" : "disabled"
         self.titleLabel.text = "Notifications are \(status)"
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("settings", dimensions: ["page":"notification"])
+#endif
     }
     
     private func loadImages() {

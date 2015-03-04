@@ -68,8 +68,10 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
             }
         }
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("dulfy")
+#endif
     }
     
     override func viewDidAppear(animated: Bool) {
