@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "SettingsWhite.png"
+      "filename" : "TintPushNone.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "SettingsWhite@2x.png"
+      "filename" : "TintPushNone@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "SettingsWhite@3x.png"
+      "filename" : "TintPushNone@3x.png"
     }
   ],
   "info" : {
