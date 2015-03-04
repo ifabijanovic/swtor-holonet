@@ -56,8 +56,10 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         
         self.applyTheme(self.theme)
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "post"])
+#endif
     }
     
     override func viewDidLayoutSubviews() {

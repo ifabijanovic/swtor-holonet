@@ -63,8 +63,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.onRefresh()
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])
+#endif
     }
 
     override func didReceiveMemoryWarning() {

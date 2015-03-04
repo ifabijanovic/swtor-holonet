@@ -48,6 +48,7 @@ class TextViewController: UIViewController, Injectable, Themeable {
         
         self.applyTheme(self.theme)
         
+#if !DEBUG && !TEST
         // Analytics
         if let name = self.analyticsName {
             if let dimensions = self.analyticsDimensions {
@@ -56,6 +57,7 @@ class TextViewController: UIViewController, Injectable, Themeable {
                 PFAnalytics.trackEvent(name)
             }
         }
+#endif
     }
     
     override func viewDidLayoutSubviews() {

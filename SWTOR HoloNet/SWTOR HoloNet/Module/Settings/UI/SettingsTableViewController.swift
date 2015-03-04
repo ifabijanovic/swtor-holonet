@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     private let DisclaimerSegue = "DisclaimerSegue"
     private let PrivacyPolicySegue = "PrivacyPolicySegue"
     private let LicenseSegue = "LicenseSegue"
+    private let NotificationSettingsSegue = "NotificationSettingsSegue"
     
     // MARK: - Properties
     
@@ -27,9 +28,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     @IBOutlet var contactCell: UITableViewCell!
     @IBOutlet var reportBugCell: UITableViewCell!
-    @IBOutlet var disclaimerCell: UITableViewCell!
-    @IBOutlet var privacyPolicyCell: UITableViewCell!
-    @IBOutlet weak var licenseCell: UITableViewCell!
+    @IBOutlet var notificationSettingsCell: UITableViewCell!
     
     // MARK: - Lifecycle
     
@@ -41,8 +40,10 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
 
         self.applyTheme(self.theme)
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("settings")
+#endif
     }
     
     // MARK: - Table view delegate
@@ -56,6 +57,9 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         }
         if cell == self.reportBugCell {
             self.reportBug()
+        }
+        if cell == self.notificationSettingsCell && isIOS8OrLater() {
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }
     }
     
@@ -114,16 +118,26 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == NotificationSettingsSegue && isIOS8OrLater() {
+            return false
+        }
+        return true
+    }
+    
     // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
-        self.contactCell.applyThemeEx(theme)
-        self.reportBugCell.applyThemeEx(theme)
-        self.disclaimerCell.applyThemeEx(theme)
-        self.privacyPolicyCell.applyThemeEx(theme)
-        self.licenseCell.applyThemeEx(theme)
+        for section in 0..<self.tableView.numberOfSections() {
+            for row in 0..<self.tableView.numberOfRowsInSection(section) {
+                if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
+                    cell.applyThemeEx(theme)
+                    cell.setDisclosureIndicator(theme)
+                }
+            }
+        }
     }
     
     // MARK: - MFMailComposeViewControllerDelegate

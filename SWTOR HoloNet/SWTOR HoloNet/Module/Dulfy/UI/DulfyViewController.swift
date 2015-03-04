@@ -67,6 +67,11 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
                 navController.hidesBarsWhenKeyboardAppears = true
             }
         }
+        
+#if !DEBUG && !TEST
+        // Analytics
+        PFAnalytics.trackEvent("dulfy")
+#endif
     }
     
     override func viewDidAppear(animated: Bool) {

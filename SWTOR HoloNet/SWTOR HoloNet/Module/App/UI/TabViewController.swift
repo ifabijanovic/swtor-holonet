@@ -11,7 +11,9 @@ import UIKit
 class TabViewController: UITabBarController {
 
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+#if !DEBUG && !TEST
         PFAnalytics.trackEvent("tab", dimensions: ["type": item.title!])
+#endif
     }
 
 }

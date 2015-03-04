@@ -83,6 +83,8 @@
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
 		8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
+		8149871C1AA5B66300CF3B7B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149871B1AA5B66300CF3B7B /* Global.swift */; };
+		8149871D1AA5B66300CF3B7B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149871B1AA5B66300CF3B7B /* Global.swift */; };
 		814C9CA71A1B893900FE1C94 /* forum-thread-single-invalid-author.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */; };
 		814C9CA81A1B893900FE1C94 /* forum-thread-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9C9F1A1B893900FE1C94 /* forum-thread-single-invalid-id.html */; };
 		814C9CA91A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CA01A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html */; };
@@ -272,6 +274,8 @@
 		81DD07FD1AA32AE600278130 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F61AA32AE600278130 /* AlertTests.swift */; };
 		81DD07FE1AA32AE600278130 /* TestAlertFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */; };
 		81DD07FF1AA32AE600278130 /* TestAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F91AA32AE600278130 /* TestAlertTests.swift */; };
+		81DFB9BC1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */; };
+		81DFB9BD1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */; };
 		81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */; };
 		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
@@ -394,6 +398,7 @@
 		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
+		8149871B1AA5B66300CF3B7B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = Module/App/Global.swift; sourceTree = "<group>"; };
 		814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-author.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
 		814C9C9F1A1B893900FE1C94 /* forum-thread-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-id.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-id.html"; sourceTree = "<group>"; };
 		814C9CA01A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-last-post-date.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-last-post-date.html"; sourceTree = "<group>"; };
@@ -547,6 +552,7 @@
 		81DD07F61AA32AE600278130 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactoryTests.swift; sourceTree = "<group>"; };
 		81DD07F91AA32AE600278130 /* TestAlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertTests.swift; sourceTree = "<group>"; };
+		81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyViewControllerTests.swift; path = Module/Dulfy/UI/DulfyViewControllerTests.swift; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
@@ -668,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */,
+				81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -887,6 +894,7 @@
 			children = (
 				8120F26219FFB00600C02DF8 /* Model */,
 				81A1E1FF19F704DD00C5C833 /* UI */,
+				8149871B1AA5B66300CF3B7B /* Global.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -1458,6 +1466,7 @@
 				81255D8A19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
 				81C0220C19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
 				81255D8419F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
+				8149871C1AA5B66300CF3B7B /* Global.swift in Sources */,
 				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */,
@@ -1525,6 +1534,7 @@
 				81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				81DFB9BC1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */,
 				8163619A1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */,
 				8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */,
 				81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
@@ -1588,6 +1598,7 @@
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
+				8149871D1AA5B66300CF3B7B /* Global.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
 				81DD07E81AA32A7200278130 /* DelegateBase.swift in Sources */,
 				81C0220D19FE3F220088CB31 /* ForumBaseTableViewController.swift in Sources */,
@@ -1620,6 +1631,7 @@
 				81A49A9719F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
 				81DD07EB1AA32A7200278130 /* TestAlert.swift in Sources */,
 				81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
+				81DFB9BD1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */,
 				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
@@ -1726,6 +1738,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1818,6 +1831,7 @@
 				);
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG -D TEST";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1835,6 +1849,7 @@
 				);
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D TEST";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 			};
