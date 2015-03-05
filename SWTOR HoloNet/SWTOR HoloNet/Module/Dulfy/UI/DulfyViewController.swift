@@ -38,6 +38,15 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         self.webView.doReload()
     }
     
+    @IBAction func stopTapped(sender: AnyObject) {
+        self.webView.doStopLoading()
+        
+        self.activityIndicator.stopAnimating()
+        self.navigationItem.title = self.webView.title
+        self.backButton.enabled = self.webView.canGoBack
+        self.forwardButton.enabled = self.webView.canGoForward
+    }
+    
     @IBAction func homeTapped(sender: AnyObject) {
         self.navigateHome()
     }

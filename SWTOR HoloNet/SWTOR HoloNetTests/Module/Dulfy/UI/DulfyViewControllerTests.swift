@@ -102,6 +102,7 @@ class DulfyViewControllerTests: XCTestCase {
         self.viewController.webView = self.webView
         self.viewController.backButton = UIBarButtonItem()
         self.viewController.forwardButton = UIBarButtonItem()
+        self.viewController.activityIndicator = UIActivityIndicatorView()
     }
     
     // MARK: - Lifecycle
@@ -155,6 +156,11 @@ class DulfyViewControllerTests: XCTestCase {
     func testReloadTapped_Reloads() {
         self.viewController.reloadTapped(UIBarButtonItem())
         XCTAssertTrue(self.webView.didReload, "")
+    }
+    
+    func testStopTapped_StopsLoading() {
+        self.viewController.stopTapped(UIBarButtonItem())
+        XCTAssertTrue(self.webView.didStopLoading, "")
     }
     
     func testHomeTapped_NavigatesToHomePage() {

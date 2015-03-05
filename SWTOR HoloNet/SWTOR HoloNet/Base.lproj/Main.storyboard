@@ -750,6 +750,12 @@
                                 <action selector="reloadTapped:" destination="qXx-Eo-5Gp" id="qfV-aL-XVS"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HMg-Fr-TLA"/>
+                        <barButtonItem image="Stop" id="Gyg-qa-feS">
+                            <connections>
+                                <action selector="stopTapped:" destination="qXx-Eo-5Gp" id="d9k-ke-ay7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Nua-vm-pOn"/>
                         <barButtonItem image="Home" id="VQn-hJ-BkG">
                             <connections>
@@ -818,6 +824,7 @@
         <image name="Home" width="25" height="25"/>
         <image name="Reload" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
+        <image name="Stop" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JTD-Hb-rpp"/>
