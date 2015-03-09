@@ -763,7 +763,13 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="gM4-1V-Sx9"/>
+                    <navigationItem key="navigationItem" id="gM4-1V-Sx9">
+                        <barButtonItem key="rightBarButtonItem" image="Safari" id="VSr-Xa-Z5S">
+                            <connections>
+                                <action selector="safariTapped:" destination="qXx-Eo-5Gp" id="57t-6q-inl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="BVK-Uz-AIc" id="l4i-me-GXx"/>
                         <outlet property="backButton" destination="c29-05-nAe" id="Z3B-2i-CRc"/>
@@ -823,6 +829,7 @@
         <image name="Forward" width="8" height="13"/>
         <image name="Home" width="25" height="25"/>
         <image name="Reload" width="25" height="25"/>
+        <image name="Safari" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
         <image name="Stop" width="25" height="25"/>
     </resources>

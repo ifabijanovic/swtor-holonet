@@ -44,6 +44,12 @@ extension WKWebView: WebViewProtocol {
 
 extension UIWebView: WebViewProtocol {
     
+    var URL: NSURL? {
+        get {
+            return self.request?.URL
+        }
+    }
+    
     func doSetDelegate(delegate: AnyObject?) {
         self.delegate = delegate as? UIWebViewDelegate
     }

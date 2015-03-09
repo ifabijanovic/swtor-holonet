@@ -10,6 +10,8 @@ import Foundation
 
 protocol WebViewProtocol: class {
     
+    var URL: NSURL? { get }
+    
     func doSetDelegate(delegate: AnyObject?)
     func load(request: NSURLRequest)
     

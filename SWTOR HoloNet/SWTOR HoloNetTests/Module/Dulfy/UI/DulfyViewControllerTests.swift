@@ -27,6 +27,12 @@ class DulfyViewControllerTests: XCTestCase {
         var titleValue = ""
         var viewValue = UIView()
         
+        var URL: NSURL? {
+            get {
+                return self.request?.URL
+            }
+        }
+        
         func doSetDelegate(delegate: AnyObject?) {
             self.delegate = delegate
         }

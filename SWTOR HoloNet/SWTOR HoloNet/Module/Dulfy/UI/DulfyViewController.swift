@@ -51,6 +51,12 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         self.navigateHome()
     }
     
+    @IBAction func safariTapped(sender: AnyObject) {
+        if let url = self.webView.URL {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
