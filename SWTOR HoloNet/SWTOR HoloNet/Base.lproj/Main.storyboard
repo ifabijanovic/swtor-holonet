@@ -120,7 +120,13 @@
                             <outlet property="delegate" destination="MmZ-8K-Gwd" id="2Hb-XT-aMH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Thread" id="ZpG-sq-mgZ"/>
+                    <navigationItem key="navigationItem" title="Thread" id="ZpG-sq-mgZ">
+                        <barButtonItem key="rightBarButtonItem" image="Safari" id="Ds5-yH-KmB">
+                            <connections>
+                                <action selector="safariTapped:" destination="MmZ-8K-Gwd" id="Hll-ah-L2j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="titleLabel" destination="56K-TE-2ww" id="Rhw-jJ-bkZ"/>
                         <outlet property="titleView" destination="niA-SR-eBO" id="D43-mL-dq4"/>
@@ -829,7 +835,7 @@
         <image name="Forward" width="8" height="13"/>
         <image name="Home" width="25" height="25"/>
         <image name="Reload" width="25" height="25"/>
-        <image name="Safari" width="25" height="25"/>
+        <image name="Safari" width="32" height="32"/>
         <image name="Settings" width="25" height="25"/>
         <image name="Stop" width="25" height="25"/>
     </resources>

@@ -31,6 +31,13 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     @IBOutlet var titleView: UIView!
     @IBOutlet var titleLabel: UILabel!
     
+    @IBAction func safariTapped(sender: AnyObject) {
+        let urlString = self.postRepo.url(thread: self.thread, page: 0)
+        if let url = NSURL(string: urlString) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
