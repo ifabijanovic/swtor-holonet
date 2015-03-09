@@ -9,7 +9,7 @@
 import Foundation
 import WebKit
 
-class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDelegate, WKNavigationDelegate {
+class DulfyViewController: UIViewController, Injectable, Themeable, ActionPerformer, UIWebViewDelegate, WKNavigationDelegate {
     
     // MARK: - Properties
     
@@ -19,6 +19,15 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     
     let useWebKit = objc_getClass("WKWebView") != nil
     var webView: WebViewProtocol!
+    
+    var homeUrl: NSURL {
+        get {
+            return NSURL(string: self.settings.dulfyNetUrl)!
+        }
+    }
+    var url: NSURL?
+    
+    var isVisible = false
     
     // MARK: - Outlets
     
@@ -48,7 +57,7 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     }
     
     @IBAction func homeTapped(sender: AnyObject) {
-        self.navigateHome()
+        self.navigateTo(self.homeUrl)
     }
     
     @IBAction func safariTapped(sender: AnyObject) {
@@ -72,7 +81,11 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         self.forwardButton.enabled = false
         
         self.setupWebView()
-        self.navigateHome()
+        
+        // Initial navigation, custom url if set, fallback to home page
+        let url = self.url != nil ? self.url! : self.homeUrl
+        self.navigateTo(url)
+        self.url = nil
         
         // Enable hide actions on navigation controller if they are available
         if self.useWebKit {
@@ -92,11 +105,19 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.webView.doSetDelegate(self)
+        self.isVisible = true
+        
+        // Navigate to custom url if set
+        if self.url != nil {
+            self.navigateTo(self.url!)
+            self.url = nil
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.webView.doSetDelegate(nil)
+        self.isVisible = false
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -152,6 +173,25 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         self.view.backgroundColor = theme.contentBackground
     }
     
+    // MARK: - ActionPerformer
+    
+    func perform(userInfo: [NSObject : AnyObject]) {
+        if let url = userInfo["url"] as? NSURL {
+            if self.isVisible {
+                self.navigateTo(url)
+            } else {
+                self.url = url
+            }
+        }
+    }
+    
+    // MARK: - Public methods
+    
+    func navigateTo(url: NSURL) {
+        let request = NSURLRequest(URL: url)
+        self.webView.load(request)
+    }
+    
     // MARK: - Private methods
     
     internal func setupWebView() {
@@ -174,12 +214,6 @@ class DulfyViewController: UIViewController, Injectable, Themeable, UIWebViewDel
         // Make the webView transparent
         self.webView.view.opaque = false
         self.webView.view.backgroundColor = UIColor.clearColor()
-    }
-    
-    private func navigateHome() {
-        let url = NSURL(string: self.settings.dulfyNetUrl)
-        let request = NSURLRequest(URL: url!)
-        self.webView.load(request)
     }
     
 }

@@ -8,8 +8,6 @@
 
 import Foundation
 
-let SwitchToTabNotification = "SwitchToTabNotification"
-
 protocol Action {
     
     // MARK: - Properties
