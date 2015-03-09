@@ -30,6 +30,8 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     @IBOutlet var reportBugCell: UITableViewCell!
     @IBOutlet var notificationSettingsCell: UITableViewCell!
     
+    @IBOutlet var notificationSettingsStatusLabel: UILabel!
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -44,6 +46,11 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
         // Analytics
         PFAnalytics.trackEvent("settings")
 #endif
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "Enabled" : "Disabled"
     }
     
     // MARK: - Table view delegate
