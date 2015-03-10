@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
 #endif
         }
-        InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(application: application, userInfo: userInfo)
+        InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
     }
 
     func applicationWillResignActive(application: UIApplication) {

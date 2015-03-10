@@ -42,9 +42,9 @@ class PushManager {
     
     // MARK: - Init
     
-    init(alertFactory: AlertFactory) {
+    init(alertFactory: AlertFactory, actionFactory: ActionFactory) {
         self.alertFactory = alertFactory
-        self.actionFactory = ActionFactory(alertFactory: alertFactory)
+        self.actionFactory = actionFactory
         
         let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -131,16 +131,20 @@ class PushManager {
     
     // MARK: - Notification handling
     
-    func handleRemoteNotification(#application: UIApplication, userInfo: [NSObject : AnyObject]) {
-        let state = application.applicationState
+    func handleRemoteNotification(#applicationState: UIApplicationState, userInfo: [NSObject : AnyObject]) {
         var result = false
         // Try to perform an action
         if let action = self.actionFactory.create(userInfo) {
-            result = action.perform(userInfo, isForeground: state == .Active)
+            result = action.perform(userInfo, isForeground: applicationState == .Active)
         }
-        // If performing an action failed, fallback to default Parse handling
-        if !result {
+        
+        if result {
+            self.resetBadge()
+        } else {
+#if !TEST
+            // If performing an action failed, fallback to default Parse handling
             PFPush.handlePush(userInfo)
+#endif
         }
     }
     
