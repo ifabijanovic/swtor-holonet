@@ -26,6 +26,7 @@ class PushManager {
     // MARK: - Properties
     
     let alertFactory: AlertFactory
+    let actionFactory: ActionFactory
     
     private var didCancelPushAccess: Bool
     private var didApprovePushAccess: Bool
@@ -43,8 +44,10 @@ class PushManager {
     
     init(alertFactory: AlertFactory) {
         self.alertFactory = alertFactory
-        let defaults = NSUserDefaults.standardUserDefaults()
+        self.actionFactory = ActionFactory(alertFactory: alertFactory)
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+
         self.didCancelPushAccess = defaults.boolForKey(keyDidCancelPushAccess)
         self.didApprovePushAccess = defaults.boolForKey(keyDidApprovePushAccess)
         
@@ -130,10 +133,14 @@ class PushManager {
     
     func handleRemoteNotification(#application: UIApplication, userInfo: [NSObject : AnyObject]) {
         let state = application.applicationState
-        if state == .Active {
-            self.handleForegroundNotification(userInfo)
-        } else if state == .Inactive {
-            self.handleBackgroundNotification(userInfo)
+        var result = false
+        // Try to perform an action
+        if let action = self.actionFactory.create(userInfo) {
+            result = action.perform(userInfo, isForeground: state == .Active)
+        }
+        // If performing an action failed, fallback to default Parse handling
+        if !result {
+            PFPush.handlePush(userInfo)
         }
     }
     
@@ -143,14 +150,6 @@ class PushManager {
             currentInstallation.badge = 0
             currentInstallation.saveInBackground()
         }
-    }
-    
-    private func handleForegroundNotification(userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-    }
-    
-    private func handleBackgroundNotification(userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
     }
     
 }

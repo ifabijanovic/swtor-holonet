@@ -9,7 +9,6 @@
 import Foundation
 
 let keyDulfyUrl = "url"
-let keyDulfyMessage = "alert"
 
 class DulfyAction: Action {
     
@@ -35,8 +34,9 @@ class DulfyAction: Action {
     
     func perform(userInfo: [NSObject : AnyObject]?, isForeground: Bool) -> Bool {
         if let userInfo = userInfo {
-            if let message = userInfo[keyDulfyMessage] as? String {
-                if let urlString = userInfo[keyDulfyUrl] as? String {
+            let parser = ActionParser(userInfo: userInfo)
+            if let message = parser.getAlert() {
+                if let urlString = parser.getString(keyDulfyUrl) {
                     if let url = NSURL(string: urlString) {
                         self.perform(message, url: url, isForeground: isForeground)
                         return true
