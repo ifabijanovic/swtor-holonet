@@ -56,7 +56,7 @@ class TabViewController: UITabBarController {
         }
         
         // Finally, select the tab
-        self.selectedIndex = 1
+        self.selectedIndex = index!
     }
     
     // MARK: - UITabBarDelegate

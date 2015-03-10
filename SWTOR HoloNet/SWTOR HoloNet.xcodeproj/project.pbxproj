@@ -120,6 +120,7 @@
 		8150076D1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */; };
 		8150076F1A1C967B00C897F1 /* forum-post-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076E1A1C967B00C897F1 /* forum-post-multiple-valid.html */; };
 		815007711A1C989100C897F1 /* forum-post-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */; };
+		8155492E1AAEEE9F00D8176D /* TabViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155492D1AAEEE9F00D8176D /* TabViewControllerTests.swift */; };
 		8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */; };
 		8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */; };
 		815793241AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815793231AA0BD2E00C62E87 /* DulfyViewController.swift */; };
@@ -440,6 +441,7 @@
 		8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-single-missing-optionals.html"; path = "Module/Forum/Test Data/Post/forum-post-single-missing-optionals.html"; sourceTree = "<group>"; };
 		8150076E1A1C967B00C897F1 /* forum-post-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-multiple-valid.html"; path = "Module/Forum/Test Data/Post/forum-post-multiple-valid.html"; sourceTree = "<group>"; };
 		815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-post-multiple-invalid-id.html"; path = "Module/Forum/Test Data/Post/forum-post-multiple-invalid-id.html"; sourceTree = "<group>"; };
+		8155492D1AAEEE9F00D8176D /* TabViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewControllerTests.swift; path = Module/App/UI/TabViewControllerTests.swift; sourceTree = "<group>"; };
 		8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepositoryTests.swift; path = Module/Forum/Data/ForumThreadRepositoryTests.swift; sourceTree = "<group>"; };
 		8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumRepositoryTestsBase.swift; path = Module/Forum/Data/ForumRepositoryTestsBase.swift; sourceTree = "<group>"; };
 		815793231AA0BD2E00C62E87 /* DulfyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyViewController.swift; path = Module/Dulfy/UI/DulfyViewController.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				810950881A0A1A8E00B974E1 /* Model */,
+				815549291AAEEE6B00D8176D /* UI */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -852,6 +855,14 @@
 				815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */,
 			);
 			name = Post;
+			sourceTree = "<group>";
+		};
+		815549291AAEEE6B00D8176D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8155492D1AAEEE9F00D8176D /* TabViewControllerTests.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		8157931F1AA0BCF900C62E87 /* UI */ = {
@@ -1695,6 +1706,7 @@
 				8163619B1A017C6E00E7D194 /* ForumThreadTableViewCell.swift in Sources */,
 				81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */,
 				81A49A9319F0FCC0007FEA4C /* HTMLString.m in Sources */,
+				8155492E1AAEEE9F00D8176D /* TabViewControllerTests.swift in Sources */,
 				81AB24CE19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				81AB24D619EFCAC000293D26 /* AFURLResponseSerialization.m in Sources */,
 				81AB24D819EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
