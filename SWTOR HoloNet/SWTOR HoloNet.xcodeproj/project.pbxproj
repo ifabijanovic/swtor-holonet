@@ -15,6 +15,7 @@
 		81103E901AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E9B1AA2614300822A3B /* PushManagerTests.swift */; };
 		81160C111AB3542C00C608FF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81160C101AB3542C00C608FF /* ParseCrashReporting.framework */; };
+		81160C181AB3596500C608FF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81160C171AB3596500C608FF /* libstdc++.6.dylib */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -360,6 +361,7 @@
 		81103E8E1AA2374200822A3B /* PushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManager.swift; path = Module/Push/PushManager.swift; sourceTree = "<group>"; };
 		81103E9B1AA2614300822A3B /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManagerTests.swift; path = Module/Push/PushManagerTests.swift; sourceTree = "<group>"; };
 		81160C101AB3542C00C608FF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		81160C171AB3596500C608FF /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */,
 				81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */,
 				81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */,
+				81160C181AB3596500C608FF /* libstdc++.6.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,6 +1197,7 @@
 				81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */,
 				81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */,
 				81CF9F991A46C1280020BE6B /* libsqlite3.dylib */,
+				81160C171AB3596500C608FF /* libstdc++.6.dylib */,
 				81CF9F971A46C1230020BE6B /* libz.dylib */,
 				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */,
@@ -1867,6 +1871,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1c597fc2-c3cc-4b8d-b5e5-5e0820ed4ec8";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1886,6 +1891,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1c597fc2-c3cc-4b8d-b5e5-5e0820ed4ec8";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 			};
 			name = Release;
