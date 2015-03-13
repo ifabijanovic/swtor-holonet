@@ -77,6 +77,7 @@
 		8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129B3361AADB18B004D8774 /* DulfyAction.swift */; };
 		8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129B3361AADB18B004D8774 /* DulfyAction.swift */; };
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
+		8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BAC71AB029A80045A93E /* ActionParserTests.swift */; };
 		813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */; };
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
 		813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -404,6 +405,7 @@
 		8125C4911AA9DBB000046197 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Module/App/Action/Action.swift; sourceTree = "<group>"; };
 		8129B3361AADB18B004D8774 /* DulfyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyAction.swift; path = Module/App/Action/DulfyAction.swift; sourceTree = "<group>"; };
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
+		8138BAC71AB029A80045A93E /* ActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParserTests.swift; path = Module/App/Action/ActionParserTests.swift; sourceTree = "<group>"; };
 		813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepositoryTests.swift; path = Module/Forum/Data/ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
 		813E59061A6F78760012A7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -645,6 +647,7 @@
 		810950871A0A1A8400B974E1 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8138BAC31AB029910045A93E /* Action */,
 				810950881A0A1A8E00B974E1 /* Model */,
 				815549291AAEEE6B00D8176D /* UI */,
 			);
@@ -787,6 +790,14 @@
 				81964D8A1AAED73D008CA544 /* ActionParser.swift */,
 				8125C48E1AA9DB6C00046197 /* ActionPerformer.swift */,
 				8129B3361AADB18B004D8774 /* DulfyAction.swift */,
+			);
+			name = Action;
+			sourceTree = "<group>";
+		};
+		8138BAC31AB029910045A93E /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				8138BAC71AB029A80045A93E /* ActionParserTests.swift */,
 			);
 			name = Action;
 			sourceTree = "<group>";
@@ -1644,6 +1655,7 @@
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
+				8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				8149871D1AA5B66300CF3B7B /* Global.swift in Sources */,
 				81255D8519F7BBD600E0C018 /* UIButton+WebCache.m in Sources */,
