@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         NSURLCache.setSharedURLCache(cache)
         
+        // Register notification listeners
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAlert:", name: ShowAlertNotification, object: nil)
+        
         // Setup parse
         let parseSettings = InstanceHolder.sharedInstance().settings.parse
         Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
@@ -46,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
 #endif
         }
-        InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(application: application, userInfo: userInfo)
+        InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -76,6 +79,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func showAlert(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let alert = userInfo["alert"] as? Alert {
+                if let presenter = self.window?.rootViewController {
+                    alert.presenter = presenter
+                    alert.show()
+                }
+            }
+        }
     }
 
 }

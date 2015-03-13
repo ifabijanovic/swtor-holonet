@@ -133,7 +133,14 @@ class DulfyViewControllerTests: XCTestCase {
     func testViewDidLoad_NavigatesToHomePage() {
         self.viewController.viewDidLoad()
         XCTAssertNotNil(self.webView.request, "")
-        XCTAssertEqual(self.webView.request!.URL.absoluteString!, self.viewController.settings.dulfyNetUrl, "")
+        XCTAssertEqual(self.webView.URL!.absoluteString!, self.viewController.settings.dulfyNetUrl, "")
+    }
+    
+    func testViewDidLoad_NavigatesToCustomUrlIfSet() {
+        let url = NSURL(string: "http://www.test.com")
+        self.viewController.url = url
+        self.viewController.viewDidLoad()
+        XCTAssertEqual(self.webView.URL!.absoluteString!, url!.absoluteString!, "")
     }
     
     func testViewDidAppear_SetsWebViewDelegate() {
@@ -141,10 +148,28 @@ class DulfyViewControllerTests: XCTestCase {
         XCTAssertNotNil(self.webView.delegate, "")
     }
     
+    func testViewDidAppear_MarksViewVisible() {
+        self.viewController.viewDidAppear(false)
+        XCTAssertTrue(self.viewController.isVisible, "")
+    }
+    
+    func testViewDidAppear_NavigatesToCustomUrlIfSet() {
+        let url = NSURL(string: "http://www.test.com")
+        self.viewController.url = url
+        self.viewController.viewDidAppear(false)
+        XCTAssertEqual(self.webView.URL!.absoluteString!, url!.absoluteString!, "")
+    }
+    
     func testViewDidDisappear_ClearsWebViewDelegate() {
         self.webView.delegate = self.viewController
         self.viewController.viewDidDisappear(false)
         XCTAssertNil(self.webView.delegate, "")
+    }
+    
+    func testViewDidDisappear_MarksViewInvisible() {
+        self.viewController.isVisible = true
+        self.viewController.viewDidDisappear(false)
+        XCTAssertFalse(self.viewController.isVisible, "")
     }
     
     // MARK: - Outlets
@@ -174,6 +199,43 @@ class DulfyViewControllerTests: XCTestCase {
         self.viewController.homeTapped(UIBarButtonItem())
         XCTAssertNotNil(self.webView.request, "")
         XCTAssertEqual(self.webView.request!.URL.absoluteString!, self.viewController.settings.dulfyNetUrl, "")
+    }
+    
+    // MARK: - ActionPerformer
+    
+    func testPerform_NavigatesToUrlIfVisible() {
+        self.viewController.isVisible = true
+        let url = NSURL(string: "http://www.test.com")
+        let payload = ["url": url!]
+        self.viewController.perform(payload)
+        
+        XCTAssertNil(self.viewController.url, "")
+        XCTAssertEqual(self.webView.URL!.absoluteString!, url!.absoluteString!, "")
+    }
+    
+    func testPerform_SetsCustomUrlIfInvisible() {
+        let url = NSURL(string: "http://www.test.com")
+        let payload = ["url": url!]
+        self.viewController.perform(payload)
+        
+        XCTAssertNil(self.webView.request, "")
+        XCTAssertEqual(self.viewController.url!.absoluteString!, url!.absoluteString!, "")
+    }
+    
+    func testPerform_HandlesMissingUrl() {
+        let payload = ["something": "something"]
+        self.viewController.perform(payload)
+        
+        XCTAssertNil(self.viewController.url, "")
+        XCTAssertNil(self.webView.request, "")
+    }
+    
+    func testPerform_HandlesInvalidParameters() {
+        let payload = ["url": "url"]
+        self.viewController.perform(payload)
+        
+        XCTAssertNil(self.viewController.url, "")
+        XCTAssertNil(self.webView.request, "")
     }
 
 }

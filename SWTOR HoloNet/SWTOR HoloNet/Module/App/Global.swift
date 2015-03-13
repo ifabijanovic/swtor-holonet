@@ -8,6 +8,9 @@
 
 import Foundation
 
+let ShowAlertNotification = "ShowAlertNotification"
+let SwitchToTabNotification = "SwitchToTabNotification"
+
 func isIOS8() -> Bool {
     let systemVersion = UIDevice.currentDevice().systemVersion
     let result = systemVersion.compare("8.0.0", options: .NumericSearch)

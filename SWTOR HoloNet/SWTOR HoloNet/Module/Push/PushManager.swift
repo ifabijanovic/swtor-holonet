@@ -26,6 +26,7 @@ class PushManager {
     // MARK: - Properties
     
     let alertFactory: AlertFactory
+    let actionFactory: ActionFactory
     
     private var didCancelPushAccess: Bool
     private var didApprovePushAccess: Bool
@@ -41,10 +42,12 @@ class PushManager {
     
     // MARK: - Init
     
-    init(alertFactory: AlertFactory) {
+    init(alertFactory: AlertFactory, actionFactory: ActionFactory) {
         self.alertFactory = alertFactory
-        let defaults = NSUserDefaults.standardUserDefaults()
+        self.actionFactory = actionFactory
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+
         self.didCancelPushAccess = defaults.boolForKey(keyDidCancelPushAccess)
         self.didApprovePushAccess = defaults.boolForKey(keyDidApprovePushAccess)
         
@@ -128,12 +131,20 @@ class PushManager {
     
     // MARK: - Notification handling
     
-    func handleRemoteNotification(#application: UIApplication, userInfo: [NSObject : AnyObject]) {
-        let state = application.applicationState
-        if state == .Active {
-            self.handleForegroundNotification(userInfo)
-        } else if state == .Inactive {
-            self.handleBackgroundNotification(userInfo)
+    func handleRemoteNotification(#applicationState: UIApplicationState, userInfo: [NSObject : AnyObject]) {
+        var result = false
+        // Try to perform an action
+        if let action = self.actionFactory.create(userInfo: userInfo) {
+            result = action.perform(userInfo, isForeground: applicationState == .Active)
+        }
+        
+        self.resetBadge()
+        
+        if !result {
+#if !TEST
+            // If performing an action failed, fallback to default Parse handling
+            PFPush.handlePush(userInfo)
+#endif
         }
     }
     
@@ -143,14 +154,6 @@ class PushManager {
             currentInstallation.badge = 0
             currentInstallation.saveInBackground()
         }
-    }
-    
-    private func handleForegroundNotification(userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-    }
-    
-    private func handleBackgroundNotification(userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
     }
     
 }

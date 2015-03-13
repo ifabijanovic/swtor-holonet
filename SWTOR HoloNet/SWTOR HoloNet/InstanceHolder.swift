@@ -48,14 +48,16 @@ class InstanceHolder {
         self.settings = Settings()
         self.theme = Theme()
         self.alertFactory = UIAlertFactory()
-        self.pushManager = PushManager(alertFactory: self.alertFactory)
+        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
+        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
     }
     
     init(bundle: NSBundle) {
         self.settings = Settings(bundle: bundle)
         self.theme = Theme()
         self.alertFactory = UIAlertFactory()
-        self.pushManager = PushManager(alertFactory: self.alertFactory)
+        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
+        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
     }
     
     // MARK: - Public methods
