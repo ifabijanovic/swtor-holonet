@@ -90,6 +90,8 @@
 		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
 		8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
+		814748A31AB3798C001CCC2E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814748A21AB3798C001CCC2E /* Bolts.framework */; };
+		814748A41AB3798C001CCC2E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814748A21AB3798C001CCC2E /* Bolts.framework */; };
 		8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
@@ -260,8 +262,6 @@
 		81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */; };
 		81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F991A46C1280020BE6B /* libsqlite3.dylib */; };
 		81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F971A46C1230020BE6B /* libz.dylib */; };
-		81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA61A46C1B30020BE6B /* Bolts.framework */; };
-		81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA61A46C1B30020BE6B /* Bolts.framework */; };
 		81CF9FAA1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
 		81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
 		81DD07DA1AA3299500278130 /* AlertIOS7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07CC1AA3299500278130 /* AlertIOS7.swift */; };
@@ -420,6 +420,7 @@
 		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
 		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
 		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
+		814748A21AB3798C001CCC2E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
 		8149871B1AA5B66300CF3B7B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = Module/App/Global.swift; sourceTree = "<group>"; };
@@ -561,7 +562,6 @@
 		81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81CF9F971A46C1230020BE6B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		81CF9F991A46C1280020BE6B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		81CF9FA61A46C1B30020BE6B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		81CF9FA71A46C1B30020BE6B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		81DD07CC1AA3299500278130 /* AlertIOS7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS7.swift; sourceTree = "<group>"; };
 		81DD07CD1AA3299500278130 /* AlertIOS8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS8.swift; sourceTree = "<group>"; };
@@ -600,7 +600,6 @@
 				81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */,
 				81160C111AB3542C00C608FF /* ParseCrashReporting.framework in Frameworks */,
 				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
-				81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9F8C1A46C0FF0020BE6B /* CoreLocation.framework in Frameworks */,
 				8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */,
 				81CF9F8E1A46C1070020BE6B /* MobileCoreServices.framework in Frameworks */,
@@ -611,6 +610,7 @@
 				81CF9F961A46C11F0020BE6B /* SystemConfiguration.framework in Frameworks */,
 				813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */,
 				81CF9F9A1A46C1280020BE6B /* libsqlite3.dylib in Frameworks */,
+				814748A31AB3798C001CCC2E /* Bolts.framework in Frameworks */,
 				81CF9F981A46C1230020BE6B /* libz.dylib in Frameworks */,
 				81160C181AB3596500C608FF /* libstdc++.6.dylib in Frameworks */,
 			);
@@ -629,10 +629,10 @@
 				81CF9FA01A46C14D0020BE6B /* QuartzCore.framework in Frameworks */,
 				812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */,
 				81CF9FA11A46C14F0020BE6B /* Security.framework in Frameworks */,
-				81CF9FA91A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9FA21A46C1540020BE6B /* StoreKit.framework in Frameworks */,
 				81CF9FA31A46C1560020BE6B /* SystemConfiguration.framework in Frameworks */,
 				81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */,
+				814748A41AB3798C001CCC2E /* Bolts.framework in Frameworks */,
 				813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */,
 				813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */,
 				81CF9FA41A46C1590020BE6B /* libsqlite3.dylib in Frameworks */,
@@ -1191,8 +1191,8 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				814748A21AB3798C001CCC2E /* Bolts.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
-				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
 				81CF9F871A46C0F40020BE6B /* CFNetwork.framework */,
 				81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */,
 				81CF9F8B1A46C0FF0020BE6B /* CoreLocation.framework */,
