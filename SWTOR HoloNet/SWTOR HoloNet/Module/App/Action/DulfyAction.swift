@@ -20,7 +20,7 @@ class DulfyAction: Action {
     
     var type: String {
         get {
-            return keyDulfyAction
+            return ActionTypeDulfy
         }
     }
     

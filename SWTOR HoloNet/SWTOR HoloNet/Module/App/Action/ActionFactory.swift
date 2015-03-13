@@ -9,7 +9,7 @@
 import Foundation
 
 let keyActionType = "action"
-let keyDulfyAction = "dulfy"
+let ActionTypeDulfy = "dulfy"
 
 class ActionFactory {
     
@@ -25,16 +25,16 @@ class ActionFactory {
     
     // MARK: - Public methods
     
-    func create(type: String) -> Action? {
+    func create(#type: String) -> Action? {
         switch type {
-        case keyDulfyAction: return DulfyAction(alertFactory: self.alertFactory)
+        case ActionTypeDulfy: return DulfyAction(alertFactory: self.alertFactory)
         default: return nil
         }
     }
     
-    func create(userInfo: [NSObject : AnyObject]) -> Action? {
+    func create(#userInfo: [NSObject : AnyObject]) -> Action? {
         if let actionType = userInfo[keyActionType] as? String {
-            return self.create(actionType)
+            return self.create(type: actionType)
         }
         return nil
     }

@@ -33,7 +33,7 @@ class PushManagerTests: XCTestCase {
         
         var action: TestAction? = TestAction()
         
-        override func create(userInfo: [NSObject : AnyObject]) -> Action? {
+        override func create(#userInfo: [NSObject : AnyObject]) -> Action? {
             return self.action
         }
         

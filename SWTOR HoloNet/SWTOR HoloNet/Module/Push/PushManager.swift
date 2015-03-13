@@ -134,7 +134,7 @@ class PushManager {
     func handleRemoteNotification(#applicationState: UIApplicationState, userInfo: [NSObject : AnyObject]) {
         var result = false
         // Try to perform an action
-        if let action = self.actionFactory.create(userInfo) {
+        if let action = self.actionFactory.create(userInfo: userInfo) {
             result = action.perform(userInfo, isForeground: applicationState == .Active)
         }
         

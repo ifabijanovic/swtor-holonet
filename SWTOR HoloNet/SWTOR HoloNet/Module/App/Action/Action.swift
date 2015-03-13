@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Action {
+protocol Action: class {
     
     // MARK: - Properties
     
