@@ -16,8 +16,11 @@ class InstanceHolder {
     
     // MARK: - Properties
     
-    let settings = Settings()
-    let theme = Theme()
+    var alertFactory: AlertFactory
+    
+    let settings: Settings
+    let theme: Theme
+    let pushManager: PushManager
     
     // MARK: - Singleton
     
@@ -33,11 +36,36 @@ class InstanceHolder {
         return Singleton.instance!
     }
     
+    class func initWithBundle(bundle: NSBundle) {
+        dispatch_once(&Singleton.token) {
+            Singleton.instance = InstanceHolder(bundle: bundle)
+        }
+    }
+    
+    // MARK: - Init
+    
+    init() {
+        self.settings = Settings()
+        self.theme = Theme()
+        self.alertFactory = UIAlertFactory()
+        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
+        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
+    }
+    
+    init(bundle: NSBundle) {
+        self.settings = Settings(bundle: bundle)
+        self.theme = Theme()
+        self.alertFactory = UIAlertFactory()
+        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
+        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
+    }
+    
     // MARK: - Public methods
     
     func inject(var injectable: Injectable) {
         injectable.settings = self.settings
         injectable.theme = self.theme
+        injectable.alertFactory = self.alertFactory
     }
     
 }

@@ -30,6 +30,23 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     
     // MARK: - Tests
     
+    func testUrl_ReturnsCorrectUrl() {
+        let page = 7
+        let expectedUrl = "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)"
+        let url = self.repo!.url(thread: self.testThread, page: page)
+        
+        XCTAssertEqual(url, expectedUrl, "")
+    }
+    
+    func testUrl_ReturnsCorrectDevTrackerUrl() {
+        let page = 7
+        let thread = ForumThread.devTracker()
+        let expectedUrl = "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)"
+        let url = self.repo!.url(thread: thread, page: page)
+        
+        XCTAssertEqual(url, expectedUrl, "")
+    }
+    
     func testGet_RequestsCorrectUrl() {
         let page = 7
         let expectedUrl = "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)"

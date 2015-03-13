@@ -52,8 +52,10 @@ class ForumListTableViewController: ForumBaseTableViewController {
         
         self.onRefresh()
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
+#endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -215,10 +217,11 @@ class ForumListTableViewController: ForumBaseTableViewController {
             dispatch_sync(lock) { requestCount = -1 }
             
             self.refreshControl?.endRefreshing()
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onRefresh() })
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
             )
+            alert.show()
         }
         
         if let category = self.category {
@@ -267,10 +270,11 @@ class ForumListTableViewController: ForumBaseTableViewController {
             self.canLoadMore = true
         }
         func failure(error: NSError) {
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onLoadMore() })
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
             )
+            alert.show()
         }
         
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
@@ -288,6 +292,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
@@ -315,6 +320,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }

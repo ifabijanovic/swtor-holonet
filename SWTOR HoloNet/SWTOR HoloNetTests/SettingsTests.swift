@@ -79,5 +79,9 @@ class SettingsTests: XCTestCase {
     func testStickyIconUrl() {
         XCTAssertEqual(self.settings!.stickyIconUrl, "http://www.holonet.test/stickyIcon.png", "")
     }
+    
+    func testDulfyNetUrl() {
+        XCTAssertEqual(self.settings!.dulfyNetUrl, "http://dulfy.test", "")
+    }
 
 }

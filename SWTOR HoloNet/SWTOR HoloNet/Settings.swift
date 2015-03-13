@@ -51,6 +51,7 @@ class Settings {
     let devTrackerIconUrl: String
     let devAvatarUrl: String
     let stickyIconUrl: String
+    let dulfyNetUrl: String
     
     var forumLanguage: ForumLanguage
     
@@ -79,6 +80,7 @@ class Settings {
         self.devTrackerIconUrl = settings?.objectForKey("Dev Tracker Icon URL") as? String ?? ""
         self.devAvatarUrl = settings?.objectForKey("Dev Avatar URL") as? String ?? ""
         self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
+        self.dulfyNetUrl = settings?.objectForKey("Dulfy.net URL") as? String ?? ""
         
         self.forumLanguage = ForumLanguage.English
         

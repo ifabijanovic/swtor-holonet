@@ -14,6 +14,8 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
     
     var settings: Settings!
     var theme: Theme!
+    var alertFactory: AlertFactory!
+    
     var post: ForumPost!
     
     // MARK: - Outlets
@@ -54,8 +56,10 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         
         self.applyTheme(self.theme)
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "post"])
+#endif
     }
     
     override func viewDidLayoutSubviews() {

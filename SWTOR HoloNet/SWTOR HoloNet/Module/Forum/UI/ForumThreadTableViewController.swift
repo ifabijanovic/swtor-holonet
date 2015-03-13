@@ -31,6 +31,13 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     @IBOutlet var titleView: UIView!
     @IBOutlet var titleLabel: UILabel!
     
+    @IBAction func safariTapped(sender: AnyObject) {
+        let urlString = self.postRepo.url(thread: self.thread, page: 0)
+        if let url = NSURL(string: urlString) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -63,8 +70,10 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.onRefresh()
         
+#if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])
+#endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,10 +148,11 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         }
         func failure(error: NSError) {
             self.refreshControl?.endRefreshing()
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onRefresh() })
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
             )
+            alert.show()
         }
         
         self.postRepo.get(thread: self.thread, page: 1, success: success, failure: failure)
@@ -180,10 +190,11 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             self.canLoadMore = true
         }
         func failure(error: NSError) {
-            showAlert(self, style: .Alert, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", sourceView: nil, completion: nil,
-                (.Cancel, "No", { self.hideLoader() }),
-                (.Default, "Yes", { self.onLoadMore() })
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
             )
+            alert.show()
         }
         
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
@@ -212,6 +223,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
         cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }

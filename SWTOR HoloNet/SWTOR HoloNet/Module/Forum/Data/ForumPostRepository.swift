@@ -24,13 +24,17 @@ class ForumPostRepository {
     
     // MARK: - Public methods
     
+    func url(#thread: ForumThread, page: Int) -> String {
+        return thread.isDevTracker
+            ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
+            : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
+    }
+    
     func get(#thread: ForumThread, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let url = thread.isDevTracker
-            ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
-            : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = self.url(thread: thread, page: page)
         
         manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
@@ -97,7 +101,7 @@ class ForumPostRepository {
         }
         
         // Text
-        let text = element.firstNodeMatchingSelector(".post .forumPadding > .resultText")?.textContent
+        let text = self.parser.postText(node: element.firstNodeMatchingSelector(".post .forumPadding > .resultText"))
         
         // Signature
         let lastPostRow = (element.nodesMatchingSelector(".post tr") as Array<HTMLElement>).last
@@ -116,6 +120,5 @@ class ForumPostRepository {
         
         return post
     }
-
     
 }

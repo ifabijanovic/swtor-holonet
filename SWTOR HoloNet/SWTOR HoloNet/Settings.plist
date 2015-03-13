@@ -26,5 +26,7 @@
 	<string>http://www.swtor.com/sites/all/files/avatars/BioWare.gif</string>
 	<key>Sticky Icon URL</key>
 	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
+	<key>Dulfy.net URL</key>
+	<string>http://dulfy.net</string>
 </dict>
 </plist>
