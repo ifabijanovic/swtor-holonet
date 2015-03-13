@@ -138,9 +138,9 @@ class PushManager {
             result = action.perform(userInfo, isForeground: applicationState == .Active)
         }
         
-        if result {
-            self.resetBadge()
-        } else {
+        self.resetBadge()
+        
+        if !result {
 #if !TEST
             // If performing an action failed, fallback to default Parse handling
             PFPush.handlePush(userInfo)
