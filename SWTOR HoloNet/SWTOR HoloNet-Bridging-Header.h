@@ -6,4 +6,5 @@
 #import "HTMLReader.h"
 #import "UIImageView+WebCache.h"
 #import <Parse/Parse.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #import <Bolts/Bolts.h>

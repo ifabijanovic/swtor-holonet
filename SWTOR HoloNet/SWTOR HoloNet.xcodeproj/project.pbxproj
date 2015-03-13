@@ -14,6 +14,7 @@
 		81103E8F1AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E901AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E9B1AA2614300822A3B /* PushManagerTests.swift */; };
+		81160C111AB3542C00C608FF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81160C101AB3542C00C608FF /* ParseCrashReporting.framework */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
@@ -358,6 +359,7 @@
 		810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Module/Settings/UI/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		81103E8E1AA2374200822A3B /* PushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManager.swift; path = Module/Push/PushManager.swift; sourceTree = "<group>"; };
 		81103E9B1AA2614300822A3B /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManagerTests.swift; path = Module/Push/PushManagerTests.swift; sourceTree = "<group>"; };
+		81160C101AB3542C00C608FF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
 		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 				812276FB1AA080790064156A /* WebKit.framework in Frameworks */,
 				81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */,
 				81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */,
+				81160C111AB3542C00C608FF /* ParseCrashReporting.framework in Frameworks */,
 				81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */,
 				81CF9FA81A46C1B30020BE6B /* Bolts.framework in Frameworks */,
 				81CF9F8C1A46C0FF0020BE6B /* CoreLocation.framework in Frameworks */,
@@ -1185,8 +1188,6 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				812276FA1AA080790064156A /* WebKit.framework */,
-				813E59061A6F78760012A7A8 /* UIKit.framework */,
 				81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */,
 				81CF9FA61A46C1B30020BE6B /* Bolts.framework */,
 				81CF9F871A46C0F40020BE6B /* CFNetwork.framework */,
@@ -1197,10 +1198,13 @@
 				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				81CF9F8D1A46C1070020BE6B /* MobileCoreServices.framework */,
 				81CF9FA71A46C1B30020BE6B /* Parse.framework */,
+				81160C101AB3542C00C608FF /* ParseCrashReporting.framework */,
 				81CF9F8F1A46C10B0020BE6B /* QuartzCore.framework */,
 				81CF9F911A46C1120020BE6B /* Security.framework */,
 				81CF9F931A46C1170020BE6B /* StoreKit.framework */,
 				81CF9F951A46C11F0020BE6B /* SystemConfiguration.framework */,
+				813E59061A6F78760012A7A8 /* UIKit.framework */,
+				812276FA1AA080790064156A /* WebKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

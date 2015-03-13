@@ -224,7 +224,7 @@ class PushManagerTests: XCTestCase {
         
         manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        XCTAssertFalse(manager.didResetBadge, "")
+        XCTAssertTrue(manager.didResetBadge, "")
     }
     
     func testHandleRemoteNotification_ActionFailed() {
@@ -237,7 +237,7 @@ class PushManagerTests: XCTestCase {
         
         manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        XCTAssertFalse(manager.didResetBadge, "")
+        XCTAssertTrue(manager.didResetBadge, "")
     }
 
 }

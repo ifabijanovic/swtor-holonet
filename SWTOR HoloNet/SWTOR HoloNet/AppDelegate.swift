@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup parse
         let parseSettings = InstanceHolder.sharedInstance().settings.parse
+#if !DEBUG && !TEST
+        ParseCrashReporting.enable()
+#endif
         Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
         
 #if !DEBUG && !TEST
