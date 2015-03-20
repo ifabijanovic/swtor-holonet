@@ -1,5 +1,5 @@
 //
-//  ForumHeaderCollectionReusableView.swift
+//  TableHeaderCollectionReusableView.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 19/03/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumHeaderCollectionReusableView: UICollectionReusableView, Themeable {
+class TableHeaderCollectionReusableView: UICollectionReusableView, Themeable {
 
     // MARK: - Outlets
     

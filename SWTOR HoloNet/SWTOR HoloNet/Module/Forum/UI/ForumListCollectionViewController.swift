@@ -18,6 +18,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     private let ThreadsSectionTitle = "Threads"
     private let CategoryCellIdentifier = "categoryCell"
     private let ThreadCellIdentifier = "threadCell"
+    private let HeaderIdentifier = "header"
+    private let FooterIdentifier = "footer"
     private let SubCategorySegue = "categorySegue"
     private let ThreadSegue = "threadSegue"
     
@@ -49,7 +51,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         let bundle = NSBundle.mainBundle()
         self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
         self.collectionView!.registerNib(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
-        self.collectionView!.registerNib(UINib(nibName: "ForumHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
+        self.collectionView!.registerNib(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
         self.onRefresh()
         
@@ -124,7 +126,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as ForumHeaderCollectionReusableView
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
             view.applyTheme(self.theme)
             return view
