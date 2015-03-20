@@ -15,6 +15,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
     let InfiniteScrollOffset: CGFloat = 50.0
     let ScreenHeight = UIScreen.mainScreen().bounds.height
     
+    private let FooterIdentifier = "footer"
+    
     // MARK: - Injectable
     
     var settings: Settings!
@@ -27,6 +29,7 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
     
     internal var refreshControl: UIRefreshControl?
     internal var canLoadMore = false
+    internal var showLoadMore = false
     internal var loadedPage = 1
     
     // MARK: - Lifecycle
@@ -40,7 +43,25 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
         self.refreshControl = refreshControl
         self.collectionView!.addSubview(refreshControl)
         
+        self.collectionView!.registerNib(UINib(nibName: "LoadMoreCollectionReusableView", bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
+        
         self.applyTheme(self.theme)
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return self.showLoadMore ? CGSizeMake(0, 64.0) : CGSizeZero
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionFooter {
+            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FooterIdentifier, forIndexPath: indexPath) as LoadMoreCollectionReusableView
+            footer.applyTheme(self.theme)
+            return footer
+        }
+        
+        return UICollectionReusableView()
     }
     
     // MARK: - Scroll
@@ -58,11 +79,13 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
     // MARK: - Activity indicator
     
     internal func showLoader() {
-        //self.tableView.tableFooterView = self.footer
+        self.showLoadMore = true
+        self.collectionView!.collectionViewLayout.invalidateLayout()
     }
     
     internal func hideLoader() {
-        //self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.showLoadMore = false
+        self.collectionView!.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - Abstract methods

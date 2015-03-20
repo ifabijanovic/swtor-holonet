@@ -19,7 +19,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     private let CategoryCellIdentifier = "categoryCell"
     private let ThreadCellIdentifier = "threadCell"
     private let HeaderIdentifier = "header"
-    private let FooterIdentifier = "footer"
     private let SubCategorySegue = "categorySegue"
     private let ThreadSegue = "threadSegue"
     
@@ -102,6 +101,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         
         return CGSizeMake(self.view.frame.size.width, 22.0)
     }
+    
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == CategorySection && self.threadRepo != nil { return CGSizeZero }
+        return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForFooterInSection: section)
+    }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell
@@ -126,12 +130,13 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as TableHeaderCollectionReusableView
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
             view.applyTheme(self.theme)
             return view
         }
-        return UICollectionReusableView()
+        
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
