@@ -20,6 +20,10 @@ class Theme {
     let contentText: UIColor
     let contentHighlightText: UIColor
     
+    let headerHeight: CGFloat
+    let headerText: UIColor
+    let headerBackground: UIColor
+    
     let instructionsIcon: UIColor
     let instructionsIconBackground: UIColor
     let instructionsFrame: UIColor
@@ -37,6 +41,10 @@ class Theme {
         self.contentTitle = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
         self.contentText = UIColor(red: 209.0/255.0, green: 209.0/255.0, blue: 209.0/255.0, alpha: 1.0) // D1D1D1 (gray)
         self.contentHighlightText = UIColor(red: 249.0/255.0, green: 214.0/255.0, blue: 72.0/255.0, alpha: 1.0)
+        
+        self.headerHeight = 22.0
+        self.headerText = UIColor.blackColor()
+        self.headerBackground = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1.0)
         
         self.instructionsIcon = UIColor.blackColor()
         self.instructionsIconBackground = UIColor.whiteColor()

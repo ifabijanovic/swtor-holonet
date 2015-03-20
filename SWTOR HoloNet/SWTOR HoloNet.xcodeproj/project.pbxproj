@@ -244,6 +244,10 @@
 		81C070B41ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */; };
 		81C070B61ABB039600B70A06 /* CollectionViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */; };
 		81C070B71ABB039600B70A06 /* CollectionViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */; };
+		81C070BB1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B91ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift */; };
+		81C070BC1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B91ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift */; };
+		81C070BD1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C070BA1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib */; };
+		81C070BE1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C070BA1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib */; };
 		81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
 		81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
 		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
@@ -563,6 +567,8 @@
 		81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListCollectionViewController.swift; path = Module/Forum/UI/ForumListCollectionViewController.swift; sourceTree = "<group>"; };
 		81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseCollectionViewController.swift; path = Module/Forum/UI/ForumBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionViewCell+Themeable.swift"; path = "Module/App/UI/CollectionViewCell+Themeable.swift"; sourceTree = "<group>"; };
+		81C070B91ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumHeaderCollectionReusableView.swift; path = Module/Forum/UI/CollectionReusableView/ForumHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		81C070BA1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumHeaderCollectionReusableView.xib; path = Module/Forum/UI/CollectionReusableView/ForumHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
 		81C38F301A42B4E400A8E1D2 /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Module/App/UI/Injectable.swift; sourceTree = "<group>"; };
@@ -956,6 +962,7 @@
 		8177E50419F7827600CF2B4B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				81C070B81ABB237A00B70A06 /* CollectionReusableView */,
 				813E284B1AB9ACCF007B723D /* CollectionViewCell */,
 				816361971A017C2400E7D194 /* TableCell */,
 				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
@@ -1205,6 +1212,15 @@
 				81AB24C619EFCAC000293D26 /* AFURLSessionManager.m */,
 			);
 			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		81C070B81ABB237A00B70A06 /* CollectionReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				81C070B91ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift */,
+				81C070BA1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib */,
+			);
+			name = CollectionReusableView;
 			sourceTree = "<group>";
 		};
 		81C228A219F1337C00EEF2C6 /* Extension */ = {
@@ -1494,6 +1510,7 @@
 				8163619C1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				81FDCC901A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */,
+				81C070BD1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib in Resources */,
 				81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */,
 				813E28501AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
@@ -1515,6 +1532,7 @@
 				814C9CC41A1B92DB00FE1C94 /* forum-post-single-valid.html in Resources */,
 				8150075F1A1C93D900C897F1 /* forum-post-single-invalid-username.html in Resources */,
 				8163619D1A017C6E00E7D194 /* ForumThreadTableViewCell.xib in Resources */,
+				81C070BE1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.xib in Resources */,
 				814C9CB31A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html in Resources */,
 				8150076B1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html in Resources */,
 				816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */,
@@ -1582,6 +1600,7 @@
 				8177E50619F7829E00CF2B4B /* ForumListTableViewController.swift in Sources */,
 				81A49A8819F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
 				81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */,
+				81C070BB1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift in Sources */,
 				81255D7619F7BBD600E0C018 /* SDImageCache.m in Sources */,
 				81AB24C719EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
 				81255D7419F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */,
@@ -1673,6 +1692,7 @@
 				8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
+				81C070BC1ABB23A800B70A06 /* ForumHeaderCollectionReusableView.swift in Sources */,
 				81255D7519F7BBD600E0C018 /* NSData+ImageContentType.m in Sources */,
 				81DD07EA1AA32A7200278130 /* AlertFactory.swift in Sources */,
 				81DD07FF1AA32AE600278130 /* TestAlertTests.swift in Sources */,

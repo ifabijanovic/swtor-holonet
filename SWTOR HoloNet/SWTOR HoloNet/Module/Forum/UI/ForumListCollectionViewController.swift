@@ -48,6 +48,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         
         let bundle = NSBundle.mainBundle()
         self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "ForumHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         
         self.onRefresh()
         
@@ -75,7 +76,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         return 1
     }
 
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == CategorySection {
             return self.categories?.count ?? 0
@@ -90,6 +90,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
             return CGSizeMake(self.view.frame.size.width, 104.0)
         }
         return CGSizeMake(self.view.frame.size.width, 64.0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(self.view.frame.size.width, 22.0)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -108,37 +112,53 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as ForumHeaderCollectionReusableView
+            view.titleLabel.text = CategoriesSectionTitle
+            view.applyTheme(self.theme)
+            return view
+        }
+        return UICollectionReusableView()
     }
-    */
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if indexPath.section == CategorySection {
+            // Category
+            let category = self.categories![cell!.tag]
+            
+            // Special case for Developer Tracker, treat this sub category as a thread
+            if category.id == self.settings.devTrackerId {
+                let thread = ForumThread.devTracker()
+                self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+                return
+            }
+            
+            self.performSegueWithIdentifier(SubCategorySegue, sender: category)
+        } else {
+            // Thread
+            let thread = self.threads![cell!.tag]
+            self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SubCategorySegue {
+            let controller = segue.destinationViewController as ForumListTableViewController
+            let category = sender as ForumCategory
+            controller.category = category
+        } else if segue.identifier == ThreadSegue {
+            let controller = segue.destinationViewController as ForumThreadTableViewController
+            let thread = sender as ForumThread
+            controller.thread = thread
+        }
+    }
     
     // MARK: - Helper methods
     
@@ -276,6 +296,15 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
+    }
+    
+    // MARK: - Themeable
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.collectionView!.backgroundColor = theme.contentBackground
     }
 
 }
