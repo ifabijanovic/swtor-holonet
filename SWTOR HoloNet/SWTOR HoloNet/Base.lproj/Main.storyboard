@@ -61,6 +61,50 @@
             <point key="canvasLocation" x="2792" y="389"/>
         </scene>
         <!--Thread-->
+        <scene sceneID="Y53-ML-mvl">
+            <objects>
+                <collectionViewController id="g8l-BW-mf8" customClass="ForumThreadCollectionViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="H6y-Lo-niu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KPR-v2-Pkh">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="postCell" id="aUa-k0-gJ5">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="hIc-4P-cfF" kind="show" identifier="postSegue" id="b9g-Ww-zzQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="g8l-BW-mf8" id="opD-T8-iyN"/>
+                            <outlet property="delegate" destination="g8l-BW-mf8" id="KR6-S3-Vmg"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Thread" id="nzb-ye-RjV">
+                        <barButtonItem key="rightBarButtonItem" image="Safari" id="3Ca-Hl-uo9">
+                            <connections>
+                                <action selector="safariTapped:" destination="g8l-BW-mf8" id="qOc-Im-Mdf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hN7-fw-bZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3619" y="-295"/>
+        </scene>
+        <!--Thread-->
         <scene sceneID="JxE-zd-xu0">
             <objects>
                 <tableViewController id="MmZ-8K-Gwd" customClass="ForumThreadTableViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,7 +302,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="MmZ-8K-Gwd" kind="show" identifier="threadSegue" id="Nvi-eN-9mt"/>
+                                    <segue destination="g8l-BW-mf8" kind="show" identifier="threadSegue" id="Z3i-23-yfE"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -918,6 +962,6 @@
         <segue reference="8hl-IS-SuL"/>
         <segue reference="JTD-Hb-rpp"/>
         <segue reference="8xH-gx-Q45"/>
-        <segue reference="Nvi-eN-9mt"/>
+        <segue reference="b9g-Ww-zzQ"/>
     </inferredMetricsTieBreakers>
 </document>

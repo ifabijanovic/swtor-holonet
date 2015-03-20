@@ -168,7 +168,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             let category = sender as ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
-            let controller = segue.destinationViewController as ForumThreadTableViewController
+            let controller = segue.destinationViewController as ForumThreadCollectionViewController
             let thread = sender as ForumThread
             controller.thread = thread
         }
