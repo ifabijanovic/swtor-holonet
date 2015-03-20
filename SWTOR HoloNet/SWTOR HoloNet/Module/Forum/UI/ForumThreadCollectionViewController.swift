@@ -14,6 +14,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     private let PostCellIdentifier = "postCell"
     private let PostSegue = "postSegue"
+    private let HeaderIdentifier = "header"
     private var PostsPerPage = 10
     
     // MARK: - Properties
@@ -26,9 +27,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     private var sizingCell: ForumPostCollectionViewCell!
     
     // MARK: - Outlets
-    
-//    @IBOutlet var titleView: UIView!
-//    @IBOutlet var titleLabel: UILabel!
     
     @IBAction func safariTapped(sender: AnyObject) {
         let urlString = self.postRepo.url(thread: self.thread, page: 0)
@@ -47,24 +45,12 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         self.postRepo = ForumPostRepository(settings: self.settings)
         
-        let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: NSBundle.mainBundle())
-        self.collectionView!.registerNib(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
-        
+        let bundle = NSBundle.mainBundle()
+        let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
         self.sizingCell = cellNib.instantiateWithOwner(nil, options: nil).first as ForumPostCollectionViewCell
         
-//        self.titleLabel.text = self.thread.title
-        
-//        // Calculate height of title text
-//        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
-//        let font = UIFont.systemFontOfSize(17.0)
-//        let attributes = [NSFontAttributeName: font]
-//        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
-//        let titleHeight = ceil(titleSize.height)
-//        
-//        // Set the height of header view
-//        var headerFrame = self.tableView.tableHeaderView!.frame
-//        headerFrame.size.height = titleHeight + 16
-//        self.tableView.tableHeaderView!.frame = headerFrame
+        self.collectionView!.registerNib(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
         if thread.isDevTracker {
             self.PostsPerPage = 20
@@ -95,6 +81,17 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return self.calculateSizeForItemAtIndexPath(indexPath)
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // Calculate height of title text
+        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
+        let font = UIFont.systemFontOfSize(17.0)
+        let attributes = [NSFontAttributeName: font]
+        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        let titleHeight = ceil(titleSize.height)
+
+        return CGSizeMake(0, titleHeight + 16.0)
+    }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.posts?.count ?? 0
@@ -106,6 +103,17 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.fillCell(cell, atIndexPath: indexPath)
         
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as ForumThreadHeaderCollectionReusableView
+            header.textLabel.text = self.thread.title
+            header.applyTheme(self.theme)
+            return header
+        }
+        
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -250,8 +258,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         self.view.backgroundColor = theme.contentBackground
         self.collectionView!.backgroundColor = theme.contentBackground
-//        self.titleView.backgroundColor = theme.contentBackground
-//        self.titleLabel.textColor = theme.contentTitle
     }
 
 }
