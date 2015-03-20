@@ -16,6 +16,7 @@ class ForumCategoryCollectionViewCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statsLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
+    @IBOutlet weak var accessoryView: UIImageView!
     
     // MARK: - Themeable
     
@@ -23,6 +24,8 @@ class ForumCategoryCollectionViewCell: UICollectionViewCell, Themeable {
         self.titleLabel.textColor = theme.contentTitle
         self.statsLabel.textColor = theme.contentText
         self.lastPostLabel.textColor = theme.contentText
+        self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.accessoryView.tintColor = theme.contentTitle
         
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground

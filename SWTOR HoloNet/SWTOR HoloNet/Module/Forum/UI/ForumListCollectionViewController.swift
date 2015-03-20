@@ -1,0 +1,281 @@
+//
+//  ForumListCollectionViewController.swift
+//  SWTOR HoloNet
+//
+//  Created by Ivan Fabijanovic on 19/03/15.
+//  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
+//
+
+import UIKit
+
+class ForumListCollectionViewController: ForumBaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+
+    // MARK: - Constants
+    
+    private let CategorySection = 0
+    private let ThreadSection = 1
+    private let CategoriesSectionTitle = "Categories"
+    private let ThreadsSectionTitle = "Threads"
+    private let CategoryCellIdentifier = "categoryCell"
+    private let ThreadCellIdentifier = "threadCell"
+    private let SubCategorySegue = "categorySegue"
+    private let ThreadSegue = "threadSegue"
+    
+    // MARK: - Properties
+    
+    var category: ForumCategory?
+    
+    private var categoryRepo: ForumCategoryRepository!
+    private var threadRepo: ForumThreadRepository?
+    
+    private var categories: Array<ForumCategory>?
+    private var threads: Array<ForumThread>?
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        // Poor man's dependency injection, remove ASAP
+        InstanceHolder.sharedInstance().inject(self)
+        
+        super.viewDidLoad()
+
+        self.categoryRepo = ForumCategoryRepository(settings: self.settings)
+        if self.category != nil {
+            // Threads exist only inside categories, not in forum root
+            self.threadRepo = ForumThreadRepository(settings: self.settings)
+            self.navigationItem.title = self.category!.title
+        }
+        
+        let bundle = NSBundle.mainBundle()
+        self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
+        
+        self.onRefresh()
+        
+        #if !DEBUG && !TEST
+            // Analytics
+            PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
+        #endif
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    
+        self.categories?.removeAll(keepCapacity: false)
+        self.categories = nil
+        self.threads?.removeAll(keepCapacity: false)
+        self.threads = nil
+    }
+
+    // MARK: UICollectionViewDataSource
+
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        if self.threadRepo != nil {
+            return 2
+        }
+        return 1
+    }
+
+
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == CategorySection {
+            return self.categories?.count ?? 0
+        } else if section == ThreadSection {
+            return self.threads?.count ?? 0
+        }
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if indexPath.section == CategorySection {
+            return CGSizeMake(self.view.frame.size.width, 104.0)
+        }
+        return CGSizeMake(self.view.frame.size.width, 64.0)
+    }
+
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell: UICollectionViewCell
+        
+        if indexPath.section == CategorySection {
+            let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as ForumCategoryCollectionViewCell
+            self.setupCategoryCell(categoryCell, indexPath: indexPath)
+            cell = categoryCell
+        } else {
+            // Safeguard, should not happen
+            cell = UICollectionViewCell()
+        }
+    
+        // Configure the cell
+    
+        return cell
+    }
+
+    // MARK: UICollectionViewDelegate
+
+    /*
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+        return false
+    }
+
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+    
+    }
+    */
+    
+    // MARK: - Helper methods
+    
+    private func hasCategories() -> Bool {
+        return self.categories?.count > 0 ?? false
+    }
+    
+    private func hasThreads() -> Bool {
+        return self.threads?.count > 0 ?? false
+    }
+    
+    override func onRefresh() {
+        // Setup a thread lock which will be used to synchronize two HTTP requests
+        let lock = dispatch_queue_create("com.if.lock", nil)
+        var requestCount = 0
+        
+        // Reloading content, set loaded page back to the first page
+        self.loadedPage = 1
+        // Disable infinite scroll while loading
+        self.canLoadMore = false
+        // Show loading indicator
+        self.showLoader()
+        
+        // Hides loading indicators and enables infinite scroll if applicable
+        // Uses thread locking to make sure it is only executed once
+        let finishLoad: () -> Void = {
+            // Check for error state
+            if requestCount == -1 { return }
+            
+            dispatch_sync(lock) { requestCount -= 1 }
+            if requestCount == 0 {
+                self.refreshControl?.endRefreshing()
+                if self.category != nil {
+                    // Enable infinite scrolling only if inside a category
+                    // because forum root does not contain any threads
+                    self.canLoadMore = true
+                } else {
+                    self.hideLoader()
+                }
+            }
+        }
+        
+        func categorySuccess(categories: Array<ForumCategory>) {
+            // Set retrieved categories and reload the category section
+            self.categories = categories
+            self.collectionView!.reloadSections(NSIndexSet(index: CategorySection))
+            finishLoad()
+        }
+        func threadSuccess(threads: Array<ForumThread>) {
+            // Set retrieved threads and reload the thread section
+            self.threads = threads
+            self.collectionView!.reloadSections(NSIndexSet(index: ThreadSection))
+            finishLoad()
+        }
+        func failure(error: NSError) {
+            // Check for error state
+            if requestCount == -1 { return }
+            // Set an error state on the requestCount variable
+            dispatch_sync(lock) { requestCount = -1 }
+            
+            self.refreshControl?.endRefreshing()
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
+            )
+            alert.show()
+        }
+        
+        if let category = self.category {
+            // Load subcategories and threads for the current category
+            requestCount = 2
+            self.categoryRepo.get(category: category, success: categorySuccess, failure: failure)
+            self.threadRepo!.get(category: category, page: 1, success: threadSuccess, failure: failure)
+        } else {
+            // Forum root, only load categories
+            requestCount = 1
+            self.categoryRepo.get(language: self.settings.forumLanguage, success: categorySuccess, failure: failure)
+        }
+    }
+    
+    override func onLoadMore() {
+        // Only applicable in categories, forum root does not contain threads
+        if self.category == nil { return }
+        
+        // Disable infinite scroll while loading
+        self.canLoadMore = false
+        
+        func success(threads: Array<ForumThread>) {
+            let newThreads = threads.difference(self.threads!)
+            
+            if newThreads.isEmpty {
+                // No new threads, disable infinite scrolling
+                self.canLoadMore = false
+                self.hideLoader()
+                return
+            }
+            
+            // Append the new threads and prepare indexes for table update
+            var indexes = Array<NSIndexPath>()
+            for thread in newThreads {
+                indexes.append(NSIndexPath(forRow: self.threads!.count, inSection: ThreadSection))
+                self.threads!.append(thread)
+            }
+            
+            // Smoothly update the table by just inserting the new indexes
+            self.collectionView!.insertItemsAtIndexPaths(indexes)
+            
+            // Mark this page as loaded and enable infinite scroll again
+            self.loadedPage++
+            self.canLoadMore = true
+        }
+        func failure(error: NSError) {
+            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .Cancel, title: "No", { self.hideLoader() }),
+                (style: .Default, title: "Yes", { self.onRefresh() })
+            )
+            alert.show()
+        }
+        
+        self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
+    }
+    
+    private func setupCategoryCell(cell: ForumCategoryCollectionViewCell, indexPath: NSIndexPath) {
+        let category = self.categories![indexPath.row]
+        
+        // Set category icon if URL is defined in the model
+        if let url = category.iconUrl {
+            cell.iconImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+        }
+        
+        cell.titleLabel.text = category.title
+        cell.statsLabel.text = category.stats
+        cell.lastPostLabel.text = category.lastPost
+        cell.applyTheme(self.theme)
+        cell.setDisclosureIndicator(self.theme)
+        
+        cell.tag = indexPath.row
+    }
+
+}
