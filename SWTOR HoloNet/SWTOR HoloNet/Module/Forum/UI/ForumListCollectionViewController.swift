@@ -48,6 +48,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         
         let bundle = NSBundle.mainBundle()
         self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
         self.collectionView!.registerNib(UINib(nibName: "ForumHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         
         self.onRefresh()
@@ -93,6 +94,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == CategorySection && (self.categories == nil || self.categories!.isEmpty) {
+            return CGSizeZero
+        }
+        
         return CGSizeMake(self.view.frame.size.width, 22.0)
     }
 
@@ -103,6 +108,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
             let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as ForumCategoryCollectionViewCell
             self.setupCategoryCell(categoryCell, indexPath: indexPath)
             cell = categoryCell
+        } else if indexPath.section == ThreadSection {
+            let threadCell = collectionView.dequeueReusableCellWithReuseIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as ForumThreadCollectionViewCell
+            self.setupThreadCell(threadCell, indexPath: indexPath)
+            cell = threadCell
         } else {
             // Safeguard, should not happen
             cell = UICollectionViewCell()
@@ -116,7 +125,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as ForumHeaderCollectionReusableView
-            view.titleLabel.text = CategoriesSectionTitle
+            view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
             view.applyTheme(self.theme)
             return view
         }
@@ -150,7 +159,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SubCategorySegue {
-            let controller = segue.destinationViewController as ForumListTableViewController
+            let controller = segue.destinationViewController as ForumListCollectionViewController
             let category = sender as ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
@@ -293,7 +302,33 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
         cell.applyTheme(self.theme)
-        cell.setDisclosureIndicator(self.theme)
+        
+        cell.tag = indexPath.row
+    }
+    
+    private func setupThreadCell(cell: ForumThreadCollectionViewCell, indexPath: NSIndexPath) {
+        let thread = self.threads![indexPath.row]
+        
+        // Set dev icon if thread is marked as having Bioware reply
+        if thread.hasBiowareReply {
+            cell.devImageView.hidden = false
+            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+        } else {
+            cell.devImageView.hidden = true
+        }
+        
+        // Set sticky icon if thread is marked with sticky
+        if thread.isSticky {
+            cell.stickyImageView.hidden = false
+            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+        } else {
+            cell.stickyImageView.hidden = true
+        }
+        
+        cell.titleLabel.text = thread.title
+        cell.authorLabel.text = thread.author
+        cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
+        cell.applyTheme(self.theme)
         
         cell.tag = indexPath.row
     }

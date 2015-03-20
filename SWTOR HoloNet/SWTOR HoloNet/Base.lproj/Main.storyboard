@@ -238,7 +238,19 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="jrF-v8-17K">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="i6c-FW-1oU" kind="show" identifier="categorySegue" id="r1I-Wn-xVi"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
                             <outlet property="dataSource" destination="i6c-FW-1oU" id="AhH-we-sjR"/>
                             <outlet property="delegate" destination="i6c-FW-1oU" id="1h7-dd-yxX"/>
@@ -892,7 +904,8 @@
         <image name="Stop" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JTD-Hb-rpp"/>
+        <segue reference="8hl-IS-SuL"/>
         <segue reference="8xH-gx-Q45"/>
+        <segue reference="JTD-Hb-rpp"/>
     </inferredMetricsTieBreakers>
 </document>
