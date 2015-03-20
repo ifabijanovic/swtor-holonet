@@ -84,6 +84,10 @@
 		8138BACC1AB030000045A93E /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BACB1AB030000045A93E /* DulfyActionTests.swift */; };
 		813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */; };
 		813C19591A0B747E0072626A /* libOHHTTPStubs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 813C19501A0B743E0072626A /* libOHHTTPStubs.a */; };
+		813E284E1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */; };
+		813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */; };
+		813E28501AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */; };
+		813E28511AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */; };
 		813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
@@ -416,6 +420,8 @@
 		8138BACB1AB030000045A93E /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyActionTests.swift; path = Module/App/Action/DulfyActionTests.swift; sourceTree = "<group>"; };
 		813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepositoryTests.swift; path = Module/Forum/Data/ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHHTTPStubs.xcodeproj; path = "../Third Party/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj"; sourceTree = "<group>"; };
+		813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryCollectionViewCell.swift; path = Module/Forum/UI/CollectionViewCell/ForumCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumCategoryCollectionViewCell.xib; path = Module/Forum/UI/CollectionViewCell/ForumCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		813E59061A6F78760012A7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
 		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
@@ -833,6 +839,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		813E284B1AB9ACCF007B723D /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */,
+				813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */,
+			);
+			name = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		814C9C8C1A1B853300FE1C94 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +947,7 @@
 		8177E50419F7827600CF2B4B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				813E284B1AB9ACCF007B723D /* CollectionViewCell */,
 				816361971A017C2400E7D194 /* TableCell */,
 				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
 				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
@@ -1467,6 +1483,7 @@
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				81FDCC901A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */,
 				81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */,
+				813E28501AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 				8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				816361A21A01814300E7D194 /* ForumCategoryTableViewCell.xib in Resources */,
@@ -1479,6 +1496,7 @@
 			files = (
 				814C9CBA1A1B8CC400FE1C94 /* forum-category-multiple-missing-id.html in Resources */,
 				814C9CA91A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html in Resources */,
+				813E28511AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */,
 				814C9CAA1A1B893900FE1C94 /* forum-thread-single-invalid-replies.html in Resources */,
 				814C9CBB1A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html in Resources */,
 				81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */,
@@ -1593,6 +1611,7 @@
 				8177E50919F79B8100CF2B4B /* ForumThreadTableViewController.swift in Sources */,
 				8120F28419FFB2E200C02DF8 /* String.swift in Sources */,
 				81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
+				813E284E1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81DD07E21AA3299500278130 /* TestAlertFactory.swift in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
@@ -1669,6 +1688,7 @@
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
+				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				81255D8D19F7BBD600E0C018 /* UIImageView+HighlightedWebCache.m in Sources */,
 				8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
