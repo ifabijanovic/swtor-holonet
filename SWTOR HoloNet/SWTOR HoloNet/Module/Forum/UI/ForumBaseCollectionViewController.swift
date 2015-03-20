@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumBaseCollectionViewController: UICollectionViewController, Injectable, Themeable {
+class ForumBaseCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, Injectable, Themeable {
 
     // MARK: - Constants
     
@@ -25,9 +25,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
     
     // MARK: - Properties
     
-    private var footer: UIView?
-    
     internal var refreshControl: UIRefreshControl?
+    
     internal var canLoadMore = false
     internal var showLoadMore = false
     internal var loadedPage = 1
@@ -101,14 +100,6 @@ class ForumBaseCollectionViewController: UICollectionViewController, Injectable,
     // MARK: - Themeable
     
     func applyTheme(theme: Theme) {
-        // Footer background
-        //self.footer = self.tableView.tableFooterView
-        //self.footer?.backgroundColor = theme.contentBackground
-        
-        // Footer activity indicator style
-        let activityIndicator = self.footer?.subviews.first as? UIActivityIndicatorView
-        activityIndicator?.activityIndicatorViewStyle = theme.activityIndicatorStyle
-        
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle
         

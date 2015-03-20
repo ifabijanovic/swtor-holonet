@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumListCollectionViewController: ForumBaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
     // MARK: - Constants
     
@@ -54,10 +54,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
         
         self.onRefresh()
         
-        #if !DEBUG && !TEST
-            // Analytics
-            PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
-        #endif
+#if !DEBUG && !TEST
+        // Analytics
+        PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
+#endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,8 +122,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController, UICo
             // Safeguard, should not happen
             cell = UICollectionViewCell()
         }
-    
-        // Configure the cell
     
         return cell
     }

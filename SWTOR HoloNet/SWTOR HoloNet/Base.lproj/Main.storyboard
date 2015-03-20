@@ -225,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="4429" y="387"/>
         </scene>
-        <!--Forum List Collection View Controller-->
+        <!--Forum-->
         <scene sceneID="gHt-Mr-xT6">
             <objects>
                 <collectionViewController id="i6c-FW-1oU" customClass="ForumListCollectionViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
@@ -250,13 +250,24 @@
                                     <segue destination="i6c-FW-1oU" kind="show" identifier="categorySegue" id="r1I-Wn-xVi"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="threadCell" id="Qm7-lA-4Vn">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="MmZ-8K-Gwd" kind="show" identifier="threadSegue" id="Nvi-eN-9mt"/>
+                                </connections>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="i6c-FW-1oU" id="AhH-we-sjR"/>
                             <outlet property="delegate" destination="i6c-FW-1oU" id="1h7-dd-yxX"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Zsa-6z-pSh"/>
+                    <navigationItem key="navigationItem" title="Forum" id="Zsa-6z-pSh"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vxj-ha-qOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -905,7 +916,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8hl-IS-SuL"/>
-        <segue reference="8xH-gx-Q45"/>
         <segue reference="JTD-Hb-rpp"/>
+        <segue reference="8xH-gx-Q45"/>
+        <segue reference="Nvi-eN-9mt"/>
     </inferredMetricsTieBreakers>
 </document>
