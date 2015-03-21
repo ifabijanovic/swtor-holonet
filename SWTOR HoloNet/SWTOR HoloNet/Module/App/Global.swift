@@ -24,9 +24,7 @@ func isIOS8OrLater() -> Bool {
 }
 
 func isIOS7() -> Bool {
-    let systemVersion = UIDevice.currentDevice().systemVersion
-    let result = systemVersion.compare("7.0.0", options: .NumericSearch)
-    return result == .OrderedSame
+    return !isIOS8OrLater() && isIOS7OrLater()
 }
 
 func isIOS7OrLater() -> Bool {
