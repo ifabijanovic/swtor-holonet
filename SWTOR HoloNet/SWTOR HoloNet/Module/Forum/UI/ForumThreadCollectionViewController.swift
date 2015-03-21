@@ -246,7 +246,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
             cell.layoutIfNeeded()
             let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
 
-            return CGSizeMake(self.view.frame.size.width, size.height)
+            return CGSizeMake(self.collectionView!.frame.size.width, size.height)
         }
         return CGSizeZero
     }

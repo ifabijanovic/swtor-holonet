@@ -886,10 +886,10 @@
 			children = (
 				813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */,
 				813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */,
-				81846C851ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift */,
-				81846C861ABC34CD00982C2C /* ForumThreadCollectionViewCell.xib */,
 				8146BF031ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift */,
 				8146BF041ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.xib */,
+				81846C851ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift */,
+				81846C861ABC34CD00982C2C /* ForumThreadCollectionViewCell.xib */,
 			);
 			name = CollectionViewCell;
 			sourceTree = "<group>";
@@ -1005,13 +1005,13 @@
 				8146BF0F1ABCABF6002DB6D3 /* CollectionReusableView */,
 				813E284B1AB9ACCF007B723D /* CollectionViewCell */,
 				816361971A017C2400E7D194 /* TableCell */,
-				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
-				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
-				8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */,
-				81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */,
-				81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */,
 				81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */,
+				81C0220B19FE3F220088CB31 /* ForumBaseTableViewController.swift */,
+				81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */,
+				8177E50519F7829E00CF2B4B /* ForumListTableViewController.swift */,
+				81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */,
 				8146BF0C1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift */,
+				8177E50819F79B8100CF2B4B /* ForumThreadTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";

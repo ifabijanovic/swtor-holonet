@@ -89,9 +89,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if indexPath.section == CategorySection {
-            return CGSizeMake(self.view.frame.size.width, 104.0)
+            return CGSizeMake(collectionView.frame.width, 104.0)
         }
-        return CGSizeMake(self.view.frame.size.width, 64.0)
+        return CGSizeMake(collectionView.frame.width, 64.0)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -99,7 +99,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             return CGSizeZero
         }
         
-        return CGSizeMake(self.view.frame.size.width, 22.0)
+        return CGSizeMake(0, 22.0)
     }
     
     override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
