@@ -47,31 +47,40 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
         self.applyTheme(self.theme)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if isIOS7() {
+            self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+        }
+    }
+    
     // MARK: - Orientation change
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        self.signalOrientationChange(self.collectionView!.collectionViewLayout, isLandscape: size.width > size.height)
+        
+        // If transitioning to Landscape invalidate CollectionView layout after a short delay
+        // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
+        // when orientation occurs.
+        self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: size.width > size.height)
     }
     
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        let isLandscape = toInterfaceOrientation == .LandscapeLeft || toInterfaceOrientation == .LandscapeRight
-        self.signalOrientationChange(self.collectionView!.collectionViewLayout, isLandscape: isLandscape)
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        
+        // If transitioning to Landscape invalidate CollectionView layout after a short delay
+        // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
+        // when orientation occurs.
+        self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
     }
     
-    private func signalOrientationChange(layout: UICollectionViewLayout, isLandscape: Bool) {
-        if isLandscape {
-            // If transitioning to Landscape invalidate CollectionView layout after a short delay
-            // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
-            // when orientation occurs.
+    private func signalOrientationChange(layout: UICollectionViewLayout, shouldDelay: Bool) {
+        if shouldDelay {
             var delay = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_MSEC))
             dispatch_after(delay, dispatch_get_main_queue()) {
                 layout.invalidateLayout()
             }
         } else {
-            // If transitioning to Portrait CollectionView layout can be invalidate right away
-            // because the width is shrinking and FlowLayout won't throw out a warning.
             layout.invalidateLayout()
         }
     }
