@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseCrashReporting
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
