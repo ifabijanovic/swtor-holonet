@@ -111,11 +111,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         var cell: UICollectionViewCell
         
         if indexPath.section == CategorySection {
-            let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as ForumCategoryCollectionViewCell
+            let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as! ForumCategoryCollectionViewCell
             self.setupCategoryCell(categoryCell, indexPath: indexPath)
             cell = categoryCell
         } else if indexPath.section == ThreadSection {
-            let threadCell = collectionView.dequeueReusableCellWithReuseIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as ForumThreadCollectionViewCell
+            let threadCell = collectionView.dequeueReusableCellWithReuseIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as! ForumThreadCollectionViewCell
             self.setupThreadCell(threadCell, indexPath: indexPath)
             cell = threadCell
         } else {
@@ -128,7 +128,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as TableHeaderCollectionReusableView
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
             view.applyTheme(self.theme)
             return view
@@ -164,12 +164,12 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SubCategorySegue {
-            let controller = segue.destinationViewController as ForumListCollectionViewController
-            let category = sender as ForumCategory
+            let controller = segue.destinationViewController as! ForumListCollectionViewController
+            let category = sender as! ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
-            let controller = segue.destinationViewController as ForumThreadCollectionViewController
-            let thread = sender as ForumThread
+            let controller = segue.destinationViewController as! ForumThreadCollectionViewController
+            let thread = sender as! ForumThread
             controller.thread = thread
         }
     }
@@ -177,11 +177,17 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     // MARK: - Helper methods
     
     private func hasCategories() -> Bool {
-        return self.categories?.count > 0 ?? false
+        if let categories = self.categories {
+            return categories.count > 0
+        }
+        return false
     }
     
     private func hasThreads() -> Bool {
-        return self.threads?.count > 0 ?? false
+        if let threads = self.threads {
+            return threads.count > 0
+        }
+        return false
     }
     
     override func onRefresh() {

@@ -50,7 +50,7 @@ class ForumThreadRepository {
         var items = Array<ForumThread>()
         
         let document = HTMLDocument(string: html)
-        let threadNodes = document.nodesMatchingSelector("table#threadslist tr") as Array<HTMLElement>
+        let threadNodes = document.nodesMatchingSelector("table#threadslist tr") as! Array<HTMLElement>
         
         for node in threadNodes {
             let thread = self.parseThread(node)
@@ -83,7 +83,7 @@ class ForumThreadRepository {
         // Has Bioware reply & sticky
         var hasBiowareReply = false
         var isSticky = false
-        let imageElements = element.nodesMatchingSelector(".threadLeft img.inlineimg") as Array<HTMLElement>
+        let imageElements = element.nodesMatchingSelector(".threadLeft img.inlineimg") as! Array<HTMLElement>
         for image in imageElements {
             let src = image.objectForKeyedSubscript("src") as? String
             if src == nil {

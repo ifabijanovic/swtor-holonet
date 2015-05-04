@@ -43,14 +43,14 @@ extension String {
     
     func substringToIndex(index: Int) -> String {
         if index < 0 { return "" }
-        if index >= countElements(self) { return self }
+        if index >= count(self) { return self }
         
         return self.substringToIndex(advance(self.startIndex, index))
     }
     
     func substringFromIndex(index: Int) -> String {
         if index < 0 { return "" }
-        if index > countElements(self) { return "" }
+        if index > count(self) { return "" }
         
         return self.substringFromIndex(advance(self.startIndex, index))
     }
@@ -58,8 +58,8 @@ extension String {
     func substringWithRange(range: Range<Int>) -> String {
         if range.startIndex < 0 { return "" }
         if range.endIndex < 0 { return "" }
-        if range.startIndex > countElements(self) { return "" }
-        if range.endIndex >= countElements(self) { return self.substringFromIndex(range.startIndex) }
+        if range.startIndex > count(self) { return "" }
+        if range.endIndex >= count(self) { return self.substringFromIndex(range.startIndex) }
         
         let start = advance(self.startIndex, range.startIndex)
         let end = advance(self.startIndex, range.endIndex)
