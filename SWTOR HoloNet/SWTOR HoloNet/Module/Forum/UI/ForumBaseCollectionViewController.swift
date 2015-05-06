@@ -30,6 +30,7 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     internal var canLoadMore = false
     internal var showLoadMore = false
     internal var loadedPage = 1
+    internal var isPad = false
     
     private var needsContentLoad = true
     
@@ -47,6 +48,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
         self.collectionView!.addSubview(refreshControl)
+        
+        self.isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
         
         self.collectionView!.registerNib(UINib(nibName: "LoadMoreCollectionReusableView", bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
         
