@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Parse
+import Bolts
 
 let keyDidCancelPushAccess = "pushDidCancelPushAccess"
 let keyDidApprovePushAccess = "pushDidApprovePushAccess"
@@ -52,7 +54,7 @@ class PushManager {
         self.didApprovePushAccess = defaults.boolForKey(keyDidApprovePushAccess)
         
         let timestamp = defaults.objectForKey(keyLastPushAccessRequestTimestamp) as? NSDate
-        self.lastPushAccessRequestTimestamp = timestamp != nil ? timestamp! : NSDate.distantPast() as NSDate
+        self.lastPushAccessRequestTimestamp = timestamp != nil ? timestamp! : NSDate.distantPast() as! NSDate
     }
 
     

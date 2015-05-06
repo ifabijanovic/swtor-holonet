@@ -93,7 +93,7 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionFooter {
-            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FooterIdentifier, forIndexPath: indexPath) as LoadMoreCollectionReusableView
+            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FooterIdentifier, forIndexPath: indexPath) as! LoadMoreCollectionReusableView
             footer.applyTheme(self.theme)
             return footer
         }

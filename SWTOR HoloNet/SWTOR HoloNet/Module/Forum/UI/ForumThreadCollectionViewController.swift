@@ -47,7 +47,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         let bundle = NSBundle.mainBundle()
         let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
-        self.sizingCell = cellNib.instantiateWithOwner(nil, options: nil).first as ForumPostCollectionViewCell
+        self.sizingCell = cellNib.instantiateWithOwner(nil, options: nil).first as! ForumPostCollectionViewCell
         
         self.collectionView!.registerNib(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
         self.collectionView!.registerNib(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
@@ -98,7 +98,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PostCellIdentifier, forIndexPath: indexPath) as ForumPostCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PostCellIdentifier, forIndexPath: indexPath) as! ForumPostCollectionViewCell
         
         self.fillCell(cell, atIndexPath: indexPath)
         
@@ -107,7 +107,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as ForumThreadHeaderCollectionReusableView
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! ForumThreadHeaderCollectionReusableView
             header.textLabel.text = self.thread.title
             header.applyTheme(self.theme)
             return header
@@ -127,8 +127,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == PostSegue {
-            let controller = segue.destinationViewController as ForumPostViewController
-            let cell = sender as UICollectionViewCell
+            let controller = segue.destinationViewController as! ForumPostViewController
+            let cell = sender as! UICollectionViewCell
             let post = self.posts![cell.tag]
             controller.post = post
         }

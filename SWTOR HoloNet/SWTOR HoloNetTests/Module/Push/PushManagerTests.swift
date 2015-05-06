@@ -192,7 +192,7 @@ class PushManagerTests: XCTestCase {
         XCTAssertTrue(actionFactory.action!.didPerform, "")
         XCTAssertNotNil(actionFactory.action!.userInfo, "")
         XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as String, userInfo["action"]!, "")
+        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!, "")
         XCTAssertTrue(actionFactory.action!.isForeground, "")
         XCTAssertTrue(manager.didResetBadge, "")
     }
@@ -209,7 +209,7 @@ class PushManagerTests: XCTestCase {
         XCTAssertTrue(actionFactory.action!.didPerform, "")
         XCTAssertNotNil(actionFactory.action!.userInfo, "")
         XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as String, userInfo["action"]!, "")
+        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!, "")
         XCTAssertFalse(actionFactory.action!.isForeground, "")
         XCTAssertTrue(manager.didResetBadge, "")
     }

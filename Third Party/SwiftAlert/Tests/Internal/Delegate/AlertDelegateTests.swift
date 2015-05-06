@@ -18,7 +18,7 @@ class AlertDelegateTests: XCTestCase {
         let delegate = AlertDelegate(alertView: alert) { index in return }
         XCTAssertNotNil(alert.delegate, "")
         XCTAssertTrue(alert.delegate is AlertDelegate, "")
-        XCTAssertEqual(alert.delegate! as AlertDelegate, delegate, "")
+        XCTAssertEqual(alert.delegate! as! AlertDelegate, delegate, "")
     }
     
     func testClickRemovesDelegate() {
