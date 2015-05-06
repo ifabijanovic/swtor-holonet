@@ -18,7 +18,7 @@ class ActionSheetDelegateTests: XCTestCase {
         let delegate = ActionSheetDelegate(actionSheet: actionSheet) { index in return }
         XCTAssertNotNil(actionSheet.delegate, "")
         XCTAssertTrue(actionSheet.delegate is ActionSheetDelegate, "")
-        XCTAssertEqual(actionSheet.delegate! as ActionSheetDelegate, delegate, "")
+        XCTAssertEqual(actionSheet.delegate! as! ActionSheetDelegate, delegate, "")
     }
     
     func testClickRemovesDelegate() {

@@ -250,7 +250,7 @@ class ForumParserTests: XCTestCase {
             
             let value = self.parser!.postText(node: doc.rootElement)
             
-            let blocks = doc.rootElement.nodesMatchingSelector(".\(blockClass)") as Array<HTMLElement>
+            let blocks = doc.rootElement.nodesMatchingSelector(".\(blockClass)") as! Array<HTMLElement>
             var blocksText = Array<String>()
             for block in blocks {
                 let header = block.firstNodeMatchingSelector(".\(blockClass)-header").textContent
@@ -258,7 +258,7 @@ class ForumParserTests: XCTestCase {
                 let block = self.parser!.formatPostBlock(header: header, body: body)
                 blocksText.append(block)
             }
-            let posts = doc.rootElement.nodesMatchingSelector(".regular-post") as Array<HTMLElement>
+            let posts = doc.rootElement.nodesMatchingSelector(".regular-post") as! Array<HTMLElement>
             var postsText = Array<String>()
             for post in posts {
                 postsText.append(post.textContent)

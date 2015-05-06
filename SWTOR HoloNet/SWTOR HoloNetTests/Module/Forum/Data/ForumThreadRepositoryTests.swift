@@ -36,14 +36,14 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         let expectation = expectationWithDescription("")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL.absoluteString == expectedUrl
+            return request.URL!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
             return nil
         }
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
         self.repo!.get(category: self.testCategory, page: page, success: { (items) in }, failure: {(error) in })
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)

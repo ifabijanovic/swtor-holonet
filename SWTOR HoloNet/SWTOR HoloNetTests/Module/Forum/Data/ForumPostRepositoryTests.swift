@@ -53,14 +53,14 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         let expectation = expectationWithDescription("")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL.absoluteString == expectedUrl
+            return request.URL!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
             return nil
         }
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
         self.repo!.get(thread: self.testThread, page: page, success: { (items) in }, failure: {(error) in })
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
@@ -72,7 +72,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         let expectation = expectationWithDescription("")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL.absoluteString == expectedUrl
+            return request.URL!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
@@ -81,7 +81,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         
         let thread = ForumThread.devTracker()
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
         self.repo!.get(thread: thread, page: page, success: { (items) in }, failure: {(error) in })
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)

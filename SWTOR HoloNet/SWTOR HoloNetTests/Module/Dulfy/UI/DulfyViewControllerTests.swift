@@ -198,7 +198,7 @@ class DulfyViewControllerTests: XCTestCase {
         self.viewController.viewDidLoad()
         self.viewController.homeTapped(UIBarButtonItem())
         XCTAssertNotNil(self.webView.request, "")
-        XCTAssertEqual(self.webView.request!.URL.absoluteString!, self.viewController.settings.dulfyNetUrl, "")
+        XCTAssertEqual(self.webView.request!.URL!.absoluteString!, self.viewController.settings.dulfyNetUrl, "")
     }
     
     // MARK: - ActionPerformer

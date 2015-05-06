@@ -55,7 +55,7 @@ class DulfyActionTests: XCTestCase {
     func testPerform_Background_Works() {
         let message = "test"
         let url = "http://www.test.com"
-        let userInfo = ["aps":["alert":message],"url":url]
+        let userInfo: [NSObject : AnyObject] = ["aps":["alert":message],"url":url]
         let expectation = expectationWithDescription("")
         
         self.callback = NSNotificationCenter.defaultCenter().addObserverForName(SwitchToTabNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
@@ -78,7 +78,7 @@ class DulfyActionTests: XCTestCase {
     func testPerform_Foreground_RaisesAlert() {
         let message = "test"
         let url = "http://www.test.com"
-        let userInfo = ["aps":["alert":message],"url":url]
+        let userInfo: [NSObject : AnyObject] = ["aps":["alert":message],"url":url]
         let expectation = expectationWithDescription("")
         
         self.callback = NSNotificationCenter.defaultCenter().addObserverForName(ShowAlertNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
@@ -102,7 +102,7 @@ class DulfyActionTests: XCTestCase {
     func testPerform_Foreground_Cancel() {
         let message = "test"
         let url = "http://www.test.com"
-        let userInfo = ["aps":["alert":message],"url":url]
+        let userInfo: [NSObject : AnyObject] = ["aps":["alert":message],"url":url]
         
         self.callback = NSNotificationCenter.defaultCenter().addObserverForName(SwitchToTabNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
             XCTFail("")
@@ -118,7 +118,7 @@ class DulfyActionTests: XCTestCase {
     func testPerform_Foreground_View() {
         let message = "test"
         let url = "http://www.test.com"
-        let userInfo = ["aps":["alert":message],"url":url]
+        let userInfo: [NSObject : AnyObject] = ["aps":["alert":message],"url":url]
         let expectation = expectationWithDescription("")
         
         self.callback = NSNotificationCenter.defaultCenter().addObserverForName(SwitchToTabNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
