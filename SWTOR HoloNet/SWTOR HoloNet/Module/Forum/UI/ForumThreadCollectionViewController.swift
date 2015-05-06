@@ -56,8 +56,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
             self.PostsPerPage = 20
         }
         
-        self.onRefresh()
-        
 #if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])

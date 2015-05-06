@@ -52,8 +52,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView!.registerNib(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
         self.collectionView!.registerNib(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
-        self.onRefresh()
-        
 #if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])

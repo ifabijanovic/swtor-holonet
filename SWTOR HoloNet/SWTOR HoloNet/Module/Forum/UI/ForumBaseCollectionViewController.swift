@@ -31,7 +31,13 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     internal var showLoadMore = false
     internal var loadedPage = 1
     
+    private var needsContentLoad = true
+    
     // MARK: - Lifecycle
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +50,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
         
         self.collectionView!.registerNib(UINib(nibName: "LoadMoreCollectionReusableView", bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
         self.applyTheme(self.theme)
     }
     
@@ -52,6 +60,26 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
         if isIOS7() {
             self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
         }
+        self.loadContent()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        self.needsContentLoad = true
+    }
+    
+    // MARK: - Content loading
+    
+    internal func loadContent() {
+        if self.needsContentLoad {
+            self.collectionView?.reloadData()
+            self.onRefresh()
+            self.needsContentLoad = false
+        }
+    }
+    
+    func willEnterForeground(notification: NSNotification) {
+        self.loadContent()
     }
     
     // MARK: - Orientation change
