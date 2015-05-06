@@ -102,6 +102,19 @@ class ForumParser {
                     return self.formatPostBlock(header: header, body: body)
                 }
             }
+            
+            // Special formatting for a weird quote block sometimes found on DevTracker
+            if element.hasAttribute("style", containingValue: "margin:20px") {
+                if let quoteElement = element.firstNodeMatchingSelector(".alt2") {
+                    let nodes = quoteElement.nodesMatchingSelector("div") as! Array<HTMLElement>
+                    if nodes.count > 1 {
+                        let header = nodes[0].textContent
+                        let body = nodes[1].textContent
+                        
+                        return self.formatPostBlock(header: header, body: body)
+                    }
+                }
+            }
         }
         
         // Continue down the DOM tree

@@ -317,6 +317,8 @@
 		81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C131A44896F00AFA035 /* TextViewController.swift */; };
 		81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
+		81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
+		81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
 		81FDCC8D1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
 		81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC8A1A6EC37900E2C44A /* License.txt */; };
@@ -617,6 +619,7 @@
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
+		81FB846D1AF90A2F00D51684 /* HTMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLElement.swift; path = Extension/HTMLElement.swift; sourceTree = "<group>"; };
 		81FDCC891A6EC37900E2C44A /* Disclaimer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Disclaimer.txt; path = Resource/Disclaimer.txt; sourceTree = "<group>"; };
 		81FDCC8A1A6EC37900E2C44A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = Resource/License.txt; sourceTree = "<group>"; };
 		81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PrivacyPolicy.txt; path = Resource/PrivacyPolicy.txt; sourceTree = "<group>"; };
@@ -1242,6 +1245,7 @@
 			children = (
 				81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */,
 				81C228A819F146C500EEF2C6 /* StringEx.swift */,
+				81FB846D1AF90A2F00D51684 /* HTMLElement.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1630,6 +1634,7 @@
 				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
+				81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81C070B61ABB039600B70A06 /* CollectionViewCell+Themeable.swift in Sources */,
 				81AB24D719EFCAC000293D26 /* AFURLSessionManager.m in Sources */,
@@ -1712,6 +1717,7 @@
 				81255D7D19F7BBD600E0C018 /* SDWebImageDownloader.m in Sources */,
 				81255D8B19F7BBD600E0C018 /* UIImage+WebP.m in Sources */,
 				81DD07FC1AA32AE600278130 /* DelegateBaseTests.swift in Sources */,
+				81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
 				8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
