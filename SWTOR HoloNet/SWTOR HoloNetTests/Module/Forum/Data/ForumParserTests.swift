@@ -268,5 +268,23 @@ class ForumParserTests: XCTestCase {
             XCTAssertEqual(value!, "\(blocksText[0])\(postsText[0])\(blocksText[1])\(postsText[1])", "")
         }
     }
+    
+    func testPostText_WithSpecialBlock() {
+        let blockHtml = "<div style='margin:20px; margin-top:5px; '><div class='smallfont'>Quote:</div><table><tbody><tr><td class='alt2'><div class='header'>Block by TestUser</div><div class='body'>Block body text here<br>More text in new line</div></td></tr></tbody></table></div>"
+        let postHtml = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
+        
+        let html = "<div>\(blockHtml)\(postHtml)</div>"
+        let doc = HTMLDocument(string: html)
+        
+        let value = self.parser!.postText(node: doc.rootElement)
+        
+        let header = doc.rootElement.firstNodeMatchingSelector(".header").textContent
+        let body = doc.rootElement.firstNodeMatchingSelector(".body").textContent
+        let block = self.parser!.formatPostBlock(header: header, body: body)
+        let post = doc.rootElement.firstNodeMatchingSelector(".regular-post").textContent
+        
+        XCTAssertNotNil(value, "")
+        XCTAssertEqual(value!, "\(block)\(post)", "")
+    }
 
 }
