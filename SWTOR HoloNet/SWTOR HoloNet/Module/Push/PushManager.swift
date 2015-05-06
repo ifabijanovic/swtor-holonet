@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Bolts
 
 let keyDidCancelPushAccess = "pushDidCancelPushAccess"
 let keyDidApprovePushAccess = "pushDidApprovePushAccess"
