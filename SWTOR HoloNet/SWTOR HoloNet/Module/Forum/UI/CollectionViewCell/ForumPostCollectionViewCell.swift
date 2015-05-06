@@ -41,6 +41,10 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+            self.textView.numberOfLines = 40
+        }
     }
 
 }

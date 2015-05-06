@@ -87,7 +87,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if indexPath.section == CategorySection {
-            return CGSizeMake(collectionView.frame.width, 104.0)
+            let width = self.isPad ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
+            return CGSizeMake(width, 104.0)
         }
         return CGSizeMake(collectionView.frame.width, 64.0)
     }
