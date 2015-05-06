@@ -361,6 +361,13 @@
 			remoteGlobalIDString = 09110A4019805F4800D175E4;
 			remoteInfo = "OHHTTPStubs iOS";
 		};
+		816E0C7B1AF8D5CC00C662D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 813C19481A0B743D0072626A /* OHHTTPStubs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 725CD99B1A9EB65100F84C8B;
+			remoteInfo = "OHHTTPStubs iOS Framework";
+		};
 		81AB249219EFBD7700293D26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81AB247419EFBD7700293D26 /* Project object */;
@@ -852,6 +859,7 @@
 			children = (
 				813C19501A0B743E0072626A /* libOHHTTPStubs.a */,
 				813C19521A0B743E0072626A /* OHHTTPStubs iOS Tests.xctest */,
+				816E0C7C1AF8D5CC00C662D7 /* OHHTTPStubs.framework */,
 				813C19541A0B743E0072626A /* OHHTTPStubs.framework */,
 				813C19561A0B743E0072626A /* OHHTTPStubs Mac Tests.xctest */,
 			);
@@ -1503,6 +1511,13 @@
 			remoteRef = 813C19551A0B743E0072626A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		816E0C7C1AF8D5CC00C662D7 /* OHHTTPStubs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OHHTTPStubs.framework;
+			remoteRef = 816E0C7B1AF8D5CC00C662D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1939,6 +1954,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1957,6 +1973,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
