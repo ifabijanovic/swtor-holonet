@@ -278,6 +278,8 @@
 		81CF9FA51A46C15B0020BE6B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F971A46C1230020BE6B /* libz.dylib */; };
 		81CF9FAA1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
 		81CF9FAB1A46C1B30020BE6B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9FA71A46C1B30020BE6B /* Parse.framework */; };
+		81DBE59A1AF779AA00F93483 /* HTMLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DBE5991AF779AA00F93483 /* HTMLEncoding.m */; };
+		81DBE59B1AF779AA00F93483 /* HTMLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DBE5991AF779AA00F93483 /* HTMLEncoding.m */; };
 		81DD07DA1AA3299500278130 /* AlertIOS7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07CC1AA3299500278130 /* AlertIOS7.swift */; };
 		81DD07DB1AA3299500278130 /* AlertIOS8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07CD1AA3299500278130 /* AlertIOS8.swift */; };
 		81DD07DC1AA3299500278130 /* ActionSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07CF1AA3299500278130 /* ActionSheetDelegate.swift */; };
@@ -584,6 +586,8 @@
 		81CF9F971A46C1230020BE6B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		81CF9F991A46C1280020BE6B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		81CF9FA71A46C1B30020BE6B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		81DBE5981AF779AA00F93483 /* HTMLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLEncoding.h; path = "../Third Party/HTMLReader/Code/HTMLEncoding.h"; sourceTree = "<group>"; };
+		81DBE5991AF779AA00F93483 /* HTMLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLEncoding.m; path = "../Third Party/HTMLReader/Code/HTMLEncoding.m"; sourceTree = "<group>"; };
 		81DD07CC1AA3299500278130 /* AlertIOS7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS7.swift; sourceTree = "<group>"; };
 		81DD07CD1AA3299500278130 /* AlertIOS8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS8.swift; sourceTree = "<group>"; };
 		81DD07CF1AA3299500278130 /* ActionSheetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDelegate.swift; sourceTree = "<group>"; };
@@ -1028,6 +1032,8 @@
 				81A49A5C19F0FCC0007FEA4C /* HTMLDocumentType.m */,
 				81A49A5D19F0FCC0007FEA4C /* HTMLElement.h */,
 				81A49A5E19F0FCC0007FEA4C /* HTMLElement.m */,
+				81DBE5981AF779AA00F93483 /* HTMLEncoding.h */,
+				81DBE5991AF779AA00F93483 /* HTMLEncoding.m */,
 				81A49A5F19F0FCC0007FEA4C /* HTMLEntities.h */,
 				81A49A6019F0FCC0007FEA4C /* HTMLEntities.m */,
 				81A49A6119F0FCC0007FEA4C /* HTMLNamespace.h */,
@@ -1587,6 +1593,7 @@
 				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */,
+				81DBE59A1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81DD07E31AA3299500278130 /* UIAlertFactory.swift in Sources */,
@@ -1723,6 +1730,7 @@
 				8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8125C4901AA9DB6C00046197 /* ActionPerformer.swift in Sources */,
 				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
+				81DBE59B1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
