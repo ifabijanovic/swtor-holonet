@@ -15,6 +15,8 @@ import Bolts
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private var launchNotification: [NSObject: AnyObject]? = nil
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Disable caching
@@ -40,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pushManager = InstanceHolder.sharedInstance().pushManager
         if pushManager.isPushEnabled {
             pushManager.registerForPush()
+        }
+        
+        // Check if app was launched via push notification
+        if let launchNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+            self.launchNotification = launchNotification
         }
 
         return true
@@ -80,6 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let presenter = self.window?.rootViewController {
                 pushManager.requestPushAccess(viewController: presenter)
             }
+        }
+        
+        // Check if there is a pending launch push notification
+        if let launchNotification = self.launchNotification {
+            // Handle the notification as if the app was in background
+            pushManager.handleRemoteNotification(applicationState: .Background, userInfo: launchNotification)
+            self.launchNotification = nil
         }
     }
 
