@@ -68,6 +68,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         self.posts?.removeAll(keepCapacity: false)
         self.posts = nil
+        self.collectionView?.reloadData()
     }
 
     // MARK: UICollectionViewDataSource

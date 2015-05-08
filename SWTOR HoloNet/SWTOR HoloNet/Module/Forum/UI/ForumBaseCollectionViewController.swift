@@ -33,6 +33,7 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     internal var isPad = false
     
     private var needsContentLoad = true
+    private var needsLayout = false
     
     // MARK: - Lifecycle
     
@@ -60,7 +61,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if isIOS7() {
+        if isIOS7() || self.needsLayout {
+            self.needsLayout = false
             self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
         }
         self.loadContent()
@@ -75,8 +77,8 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     
     internal func loadContent() {
         if self.needsContentLoad {
-            self.collectionView?.reloadData()
             self.onRefresh()
+            self.needsLayout = true
             self.needsContentLoad = false
         }
     }
