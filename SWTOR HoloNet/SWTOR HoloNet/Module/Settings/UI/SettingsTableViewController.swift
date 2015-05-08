@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import MessageUI
 
 class SettingsTableViewController: UITableViewController, Injectable, Themeable, MFMailComposeViewControllerDelegate {

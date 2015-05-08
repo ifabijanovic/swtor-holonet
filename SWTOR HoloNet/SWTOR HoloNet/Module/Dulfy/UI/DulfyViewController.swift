@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import WebKit
+import Parse
 
 class DulfyViewController: UIViewController, Injectable, Themeable, ActionPerformer, UIWebViewDelegate, WKNavigationDelegate {
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import Parse
 
 class NotificationSettingsViewController: UIViewController, Injectable, Themeable {
     
