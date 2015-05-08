@@ -27,11 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAlert:", name: ShowAlertNotification, object: nil)
         
         // Setup parse
+        Parse.enableLocalDatastore()
         let parseSettings = InstanceHolder.sharedInstance().settings.parse
+        
 #if !DEBUG && !TEST
         ParseCrashReporting.enable()
 #endif
+        
         Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
+        PFUser.enableAutomaticUser()
         
 #if !DEBUG && !TEST
         // Enable Parse analytics
@@ -94,6 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Handle the notification as if the app was in background
             pushManager.handleRemoteNotification(applicationState: .Background, userInfo: launchNotification)
             self.launchNotification = nil
+        }
+        
+        // Save some settings for the user
+        if let user = PFUser.currentUser() {
+            user["pushEnabled"] = pushManager.isPushEnabled
+            user.saveInBackground()
         }
     }
 
