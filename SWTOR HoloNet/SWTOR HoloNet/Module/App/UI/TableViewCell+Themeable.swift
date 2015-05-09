@@ -16,6 +16,7 @@ extension UITableViewCell {
     func applyThemeEx(theme: Theme) {
         self.textLabel?.textColor = theme.contentTitle
         self.detailTextLabel?.textColor = theme.contentText
+        self.backgroundColor = UIColor.clearColor()
         
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground

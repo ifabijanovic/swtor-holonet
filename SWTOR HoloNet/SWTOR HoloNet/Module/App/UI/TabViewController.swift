@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class TabViewController: UITabBarController {
 
     // MARK: - Init
     
-    override init() {
-        super.init()
+    required init() {
+        super.init(nibName: nil, bundle: nil)
         self.registerForNotifications()
     }
     

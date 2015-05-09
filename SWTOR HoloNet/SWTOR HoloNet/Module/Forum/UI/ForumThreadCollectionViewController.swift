@@ -1,35 +1,33 @@
 //
-//  ForumThreadTableViewController.swift
+//  ForumThreadCollectionViewController.swift
 //  SWTOR HoloNet
 //
-//  Created by Ivan Fabijanovic on 22/10/14.
-//  Copyright (c) 2014 Ivan Fabijanović. All rights reserved.
+//  Created by Ivan Fabijanovic on 20/03/15.
+//  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
 //
 
 import UIKit
+import Parse
 
-class ForumThreadTableViewController: ForumBaseTableViewController {
+class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
     // MARK: - Constants
     
     private let PostCellIdentifier = "postCell"
     private let PostSegue = "postSegue"
+    private let HeaderIdentifier = "header"
     private var PostsPerPage = 10
-
+    
     // MARK: - Properties
-
+    
     var thread: ForumThread!
     
     private var postRepo: ForumPostRepository!
     private var posts: Array<ForumPost>?
     
-    private var sizingCell: ForumPostTableViewCell?
-    private var onceToken: dispatch_once_t = 0
+    private var sizingCell: ForumPostCollectionViewCell!
     
     // MARK: - Outlets
-    
-    @IBOutlet var titleView: UIView!
-    @IBOutlet var titleLabel: UILabel!
     
     @IBAction func safariTapped(sender: AnyObject) {
         let urlString = self.postRepo.url(thread: self.thread, page: 0)
@@ -48,32 +46,22 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.postRepo = ForumPostRepository(settings: self.settings)
         
-        self.tableView.registerNib(UINib(nibName: "ForumPostTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PostCellIdentifier)
+        let bundle = NSBundle.mainBundle()
+        let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
+        self.sizingCell = cellNib.instantiateWithOwner(nil, options: nil).first as! ForumPostCollectionViewCell
         
-        self.titleLabel.text = self.thread.title
-        
-        // Calculate height of title text
-        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
-        let font = UIFont.systemFontOfSize(17.0)
-        let attributes = [NSFontAttributeName: font]
-        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
-        let titleHeight = ceil(titleSize.height)
-        
-        // Set the height of header view
-        var headerFrame = self.tableView.tableHeaderView!.frame
-        headerFrame.size.height = titleHeight + 16
-        self.tableView.tableHeaderView!.frame = headerFrame
+        self.collectionView!.registerNib(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
         if thread.isDevTracker {
             self.PostsPerPage = 20
         }
         
-        self.onRefresh()
-        
 #if !DEBUG && !TEST
         // Analytics
         PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])
 #endif
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,34 +69,57 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         
         self.posts?.removeAll(keepCapacity: false)
         self.posts = nil
+        self.collectionView?.reloadData()
     }
 
-    // MARK: - Table view
+    // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.calculateHeightForCellAtIndexPath(indexPath)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return self.calculateSizeForItemAtIndexPath(indexPath)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // Calculate height of title text
+        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
+        let font = UIFont.systemFontOfSize(17.0)
+        let attributes = [NSFontAttributeName: font]
+        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        let titleHeight = ceil(titleSize.height)
+
+        return CGSizeMake(0, titleHeight + 16.0)
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.posts?.count ?? 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(PostCellIdentifier, forIndexPath: indexPath) as ForumPostTableViewCell
-
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PostCellIdentifier, forIndexPath: indexPath) as! ForumPostCollectionViewCell
+        
         self.fillCell(cell, atIndexPath: indexPath)
-
+        
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! ForumThreadHeaderCollectionReusableView
+            header.textLabel.text = self.thread.title
+            header.applyTheme(self.theme)
+            return header
+        }
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
         self.performSegueWithIdentifier(PostSegue, sender: cell)
     }
     
@@ -116,8 +127,8 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == PostSegue {
-            let controller = segue.destinationViewController as ForumPostViewController
-            let cell = sender as UITableViewCell
+            let controller = segue.destinationViewController as! ForumPostViewController
+            let cell = sender as! UICollectionViewCell
             let post = self.posts![cell.tag]
             controller.post = post
         }
@@ -136,7 +147,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         func success(posts: Array<ForumPost>) {
             // Set retrieved posts and reload table
             self.posts = posts
-            self.tableView.reloadData()
+            self.collectionView!.reloadData()
             self.refreshControl?.endRefreshing()
             // Enable infinite scroll if initial page is full
             if posts.count == PostsPerPage {
@@ -181,9 +192,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
             }
             
             // Smoothly update the table by just inserting the new indexes
-            self.tableView.beginUpdates()
-            self.tableView.insertRowsAtIndexPaths(indexes, withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.tableView.endUpdates()
+            self.collectionView!.insertItemsAtIndexPaths(indexes)
             
             // Mark this page as loaded and enable infinite scroll again
             self.loadedPage++
@@ -200,7 +209,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
-    func fillCell(cell: ForumPostTableViewCell, atIndexPath indexPath: NSIndexPath) {
+    func fillCell(cell: ForumPostCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         let post = self.posts![indexPath.row]
         
         // Set user avatar image if URL is defined in the model
@@ -223,29 +232,23 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
         cell.applyTheme(self.theme)
-        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
     
-    func calculateHeightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
-        // Initialize the helper cell used for calculating height
-        dispatch_once(&self.onceToken) {
-            self.sizingCell = self.tableView.dequeueReusableCellWithIdentifier(self.PostCellIdentifier) as? ForumPostTableViewCell
-        }
-        
+    func calculateSizeForItemAtIndexPath(indexPath: NSIndexPath) -> CGSize {
         if let cell = self.sizingCell {
             // Fill it with data
             self.fillCell(cell, atIndexPath: indexPath)
-            cell.textView.preferredMaxLayoutWidth = CGRectGetWidth(self.tableView.frame) - 30.0
+            cell.textView.preferredMaxLayoutWidth = CGRectGetWidth(self.collectionView!.frame) - 30.0
             // Now that it has data tell it to size itself
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
             let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-            // Add 1.0 for the cell separator height
-            return size.height + 1.0
+
+            return CGSizeMake(self.collectionView!.frame.size.width, size.height)
         }
-        return 0.0
+        return CGSizeZero
     }
     
     // MARK: - Themeable
@@ -254,9 +257,7 @@ class ForumThreadTableViewController: ForumBaseTableViewController {
         super.applyTheme(theme)
         
         self.view.backgroundColor = theme.contentBackground
-        self.tableView.backgroundColor = theme.contentBackground
-        self.titleView.backgroundColor = theme.contentBackground
-        self.titleLabel.textColor = theme.contentTitle
+        self.collectionView!.backgroundColor = theme.contentBackground
     }
 
 }

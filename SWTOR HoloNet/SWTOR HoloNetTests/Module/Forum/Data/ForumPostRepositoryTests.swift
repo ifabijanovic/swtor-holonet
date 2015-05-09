@@ -53,14 +53,14 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         let expectation = expectationWithDescription("")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL.absoluteString == expectedUrl
+            return request.URL!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
-            return nil
+            return OHHTTPStubsResponse()
         }
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
         self.repo!.get(thread: self.testThread, page: page, success: { (items) in }, failure: {(error) in })
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
@@ -72,16 +72,16 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         let expectation = expectationWithDescription("")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL.absoluteString == expectedUrl
+            return request.URL!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
-            return nil
+            return OHHTTPStubsResponse()
         }
         
         let thread = ForumThread.devTracker()
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, responseBlock)
+        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
         self.repo!.get(thread: thread, page: page, success: { (items) in }, failure: {(error) in })
         
         waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
@@ -93,7 +93,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-empty", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -113,7 +113,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-valid", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -145,7 +145,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-valid-not-dev", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -171,7 +171,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-invalid-id", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -191,7 +191,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-invalid-username", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -211,7 +211,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-invalid-date", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -231,7 +231,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-single-missing-optionals", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -259,7 +259,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-multiple-valid", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
@@ -309,7 +309,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
         OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
             let path = self.bundle!.pathForResource("forum-post-multiple-invalid-id", ofType: "html")
             XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: self.headers)
+            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
         self.repo!.get(thread: self.testThread, page: 1, success: { (items) in

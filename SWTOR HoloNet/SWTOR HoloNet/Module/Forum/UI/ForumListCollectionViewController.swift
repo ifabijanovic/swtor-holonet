@@ -1,15 +1,16 @@
 //
-//  ForumListTableViewController.swift
+//  ForumListCollectionViewController.swift
 //  SWTOR HoloNet
 //
-//  Created by Ivan Fabijanovic on 22/10/14.
-//  Copyright (c) 2014 Ivan Fabijanović. All rights reserved.
+//  Created by Ivan Fabijanovic on 19/03/15.
+//  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
 //
 
 import UIKit
+import Parse
 
-class ForumListTableViewController: ForumBaseTableViewController {
-    
+class ForumListCollectionViewController: ForumBaseCollectionViewController {
+
     // MARK: - Constants
     
     private let CategorySection = 0
@@ -18,6 +19,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
     private let ThreadsSectionTitle = "Threads"
     private let CategoryCellIdentifier = "categoryCell"
     private let ThreadCellIdentifier = "threadCell"
+    private let HeaderIdentifier = "header"
     private let SubCategorySegue = "categorySegue"
     private let ThreadSegue = "threadSegue"
     
@@ -32,13 +34,13 @@ class ForumListTableViewController: ForumBaseTableViewController {
     private var threads: Array<ForumThread>?
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         // Poor man's dependency injection, remove ASAP
         InstanceHolder.sharedInstance().inject(self)
         
         super.viewDidLoad()
-        
+
         self.categoryRepo = ForumCategoryRepository(settings: self.settings)
         if self.category != nil {
             // Threads exist only inside categories, not in forum root
@@ -47,10 +49,9 @@ class ForumListTableViewController: ForumBaseTableViewController {
         }
         
         let bundle = NSBundle.mainBundle()
-        self.tableView.registerNib(UINib(nibName: "ForumCategoryTableViewCell", bundle: bundle), forCellReuseIdentifier: CategoryCellIdentifier)
-        self.tableView.registerNib(UINib(nibName: "ForumThreadTableViewCell", bundle: bundle), forCellReuseIdentifier: ThreadCellIdentifier)
-        
-        self.onRefresh()
+        self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
+        self.collectionView!.registerNib(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
 #if !DEBUG && !TEST
         // Analytics
@@ -60,23 +61,24 @@ class ForumListTableViewController: ForumBaseTableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+    
         self.categories?.removeAll(keepCapacity: false)
         self.categories = nil
         self.threads?.removeAll(keepCapacity: false)
         self.threads = nil
+        self.collectionView?.reloadData()
     }
 
-    // MARK: - Table view
+    // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if self.threadRepo != nil {
             return 2
         }
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == CategorySection {
             return self.categories?.count ?? 0
         } else if section == ThreadSection {
@@ -85,45 +87,61 @@ class ForumListTableViewController: ForumBaseTableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == CategorySection && self.hasCategories() {
-            return CategoriesSectionTitle
-        } else if section == ThreadSection && self.hasThreads() {
-            return ThreadsSectionTitle
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if indexPath.section == CategorySection {
+            let width = self.isPad ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
+            return CGSizeMake(width, 104.0)
         }
-        return nil
+        return CGSizeMake(collectionView.frame.width, 64.0)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == CategorySection {
-            return 104.0
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == CategorySection && (self.categories == nil || self.categories!.isEmpty) {
+            return CGSizeZero
         }
-        return 64.0
+        
+        return CGSizeMake(0, 22.0)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == CategorySection && self.threadRepo != nil { return CGSizeZero }
+        return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForFooterInSection: section)
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
-
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell: UICollectionViewCell
+        
         if indexPath.section == CategorySection {
-            let categoryCell = tableView.dequeueReusableCellWithIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as ForumCategoryTableViewCell
+            let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as! ForumCategoryCollectionViewCell
             self.setupCategoryCell(categoryCell, indexPath: indexPath)
             cell = categoryCell
         } else if indexPath.section == ThreadSection {
-            let threadCell = tableView.dequeueReusableCellWithIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as ForumThreadTableViewCell
+            let threadCell = collectionView.dequeueReusableCellWithReuseIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as! ForumThreadCollectionViewCell
             self.setupThreadCell(threadCell, indexPath: indexPath)
             cell = threadCell
         } else {
             // Safeguard, should not happen
-            cell = UITableViewCell()
+            cell = UICollectionViewCell()
         }
-
+    
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! TableHeaderCollectionReusableView
+            view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
+            view.applyTheme(self.theme)
+            return view
+        }
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if indexPath.section == CategorySection {
             // Category
             let category = self.categories![cell!.tag]
@@ -147,24 +165,30 @@ class ForumListTableViewController: ForumBaseTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SubCategorySegue {
-            let controller = segue.destinationViewController as ForumListTableViewController
-            let category = sender as ForumCategory
+            let controller = segue.destinationViewController as! ForumListCollectionViewController
+            let category = sender as! ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
-            let controller = segue.destinationViewController as ForumThreadTableViewController
-            let thread = sender as ForumThread
+            let controller = segue.destinationViewController as! ForumThreadCollectionViewController
+            let thread = sender as! ForumThread
             controller.thread = thread
         }
     }
-
+    
     // MARK: - Helper methods
     
     private func hasCategories() -> Bool {
-        return self.categories?.count > 0 ?? false
+        if let categories = self.categories {
+            return categories.count > 0
+        }
+        return false
     }
     
     private func hasThreads() -> Bool {
-        return self.threads?.count > 0 ?? false
+        if let threads = self.threads {
+            return threads.count > 0
+        }
+        return false
     }
     
     override func onRefresh() {
@@ -201,13 +225,13 @@ class ForumListTableViewController: ForumBaseTableViewController {
         func categorySuccess(categories: Array<ForumCategory>) {
             // Set retrieved categories and reload the category section
             self.categories = categories
-            self.tableView.reloadSections(NSIndexSet(index: CategorySection), withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.collectionView!.reloadSections(NSIndexSet(index: CategorySection))
             finishLoad()
         }
         func threadSuccess(threads: Array<ForumThread>) {
             // Set retrieved threads and reload the thread section
             self.threads = threads
-            self.tableView.reloadSections(NSIndexSet(index: ThreadSection), withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.collectionView!.reloadSections(NSIndexSet(index: ThreadSection))
             finishLoad()
         }
         func failure(error: NSError) {
@@ -261,9 +285,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
             }
             
             // Smoothly update the table by just inserting the new indexes
-            self.tableView.beginUpdates()
-            self.tableView.insertRowsAtIndexPaths(indexes, withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.tableView.endUpdates()
+            self.collectionView!.insertItemsAtIndexPaths(indexes)
             
             // Mark this page as loaded and enable infinite scroll again
             self.loadedPage++
@@ -280,7 +302,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
-    private func setupCategoryCell(cell: ForumCategoryTableViewCell, indexPath: NSIndexPath) {
+    private func setupCategoryCell(cell: ForumCategoryCollectionViewCell, indexPath: NSIndexPath) {
         let category = self.categories![indexPath.row]
         
         // Set category icon if URL is defined in the model
@@ -292,12 +314,11 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
         cell.applyTheme(self.theme)
-        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
     
-    private func setupThreadCell(cell: ForumThreadTableViewCell, indexPath: NSIndexPath) {
+    private func setupThreadCell(cell: ForumThreadCollectionViewCell, indexPath: NSIndexPath) {
         let thread = self.threads![indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
@@ -320,7 +341,6 @@ class ForumListTableViewController: ForumBaseTableViewController {
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
         cell.applyTheme(self.theme)
-        cell.setDisclosureIndicator(self.theme)
         
         cell.tag = indexPath.row
     }
@@ -331,7 +351,7 @@ class ForumListTableViewController: ForumBaseTableViewController {
         super.applyTheme(theme)
         
         self.view.backgroundColor = theme.contentBackground
-        self.tableView.backgroundColor = theme.contentBackground
+        self.collectionView!.backgroundColor = theme.contentBackground
     }
 
 }

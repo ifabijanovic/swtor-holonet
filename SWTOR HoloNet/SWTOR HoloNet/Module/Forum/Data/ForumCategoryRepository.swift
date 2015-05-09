@@ -58,7 +58,7 @@ class ForumCategoryRepository {
         var items = Array<ForumCategory>()
         
         let document = HTMLDocument(string: html)
-        let categoryNodes = document.nodesMatchingSelector(".forumCategory > .subForum") as Array<HTMLElement>
+        let categoryNodes = document.nodesMatchingSelector(".forumCategory > .subForum") as! Array<HTMLElement>
         
         for node in categoryNodes {
             let category = self.parseCategory(node)
@@ -93,7 +93,7 @@ class ForumCategoryRepository {
         // Stats & Last post
         var stats: String? = nil
         var lastPost: String? = nil
-        let subTextElements = element.nodesMatchingSelector(".resultSubText") as Array<HTMLElement>
+        let subTextElements = element.nodesMatchingSelector(".resultSubText") as! Array<HTMLElement>
 
         if subTextElements.count > 0 {
             stats = subTextElements[0].textContent

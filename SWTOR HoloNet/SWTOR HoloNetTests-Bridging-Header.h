@@ -6,5 +6,3 @@
 #import "HTMLReader.h"
 #import "UIImageView+WebCache.h"
 #import <OHHTTPStubs/OHHTTPStubs.h>
-#import <Parse/Parse.h>
-#import <Bolts/Bolts.h>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import MessageUI
 
 class SettingsTableViewController: UITableViewController, Injectable, Themeable, MFMailComposeViewControllerDelegate {
@@ -109,15 +110,15 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case DisclaimerSegue:
-            let controller = segue.destinationViewController as TextViewController
+            let controller = segue.destinationViewController as! TextViewController
             controller.title = "Disclaimer"
             controller.file = "Disclaimer"
         case PrivacyPolicySegue:
-            let controller = segue.destinationViewController as TextViewController
+            let controller = segue.destinationViewController as! TextViewController
             controller.title = "Privacy Policy"
             controller.file = "PrivacyPolicy"
         case LicenseSegue:
-            let controller = segue.destinationViewController as TextViewController
+            let controller = segue.destinationViewController as! TextViewController
             controller.title = "License"
             controller.file = "License"
         default:

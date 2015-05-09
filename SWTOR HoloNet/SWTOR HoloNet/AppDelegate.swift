@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Parse
+import ParseCrashReporting
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private var launchNotification: [NSObject: AnyObject]? = nil
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Disable caching
@@ -22,11 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAlert:", name: ShowAlertNotification, object: nil)
         
         // Setup parse
+        Parse.enableLocalDatastore()
         let parseSettings = InstanceHolder.sharedInstance().settings.parse
+        
 #if !DEBUG && !TEST
         ParseCrashReporting.enable()
 #endif
+        
         Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
+        PFUser.enableAutomaticUser()
         
 #if !DEBUG && !TEST
         // Enable Parse analytics
@@ -37,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pushManager = InstanceHolder.sharedInstance().pushManager
         if pushManager.isPushEnabled {
             pushManager.registerForPush()
+        }
+        
+        // Check if app was launched via push notification
+        if let launchNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+            self.launchNotification = launchNotification
         }
 
         return true
@@ -77,6 +91,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let presenter = self.window?.rootViewController {
                 pushManager.requestPushAccess(viewController: presenter)
             }
+        }
+        
+        // Check if there is a pending launch push notification
+        if let launchNotification = self.launchNotification {
+            // Handle the notification as if the app was in background
+            pushManager.handleRemoteNotification(applicationState: .Background, userInfo: launchNotification)
+            self.launchNotification = nil
+        }
+        
+        // Save some settings for the user
+        if let user = PFUser.currentUser() {
+            user["pushEnabled"] = pushManager.isPushEnabled
+            user.saveInBackground()
         }
     }
 
