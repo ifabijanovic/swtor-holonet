@@ -24,8 +24,10 @@ class ForumPostRepository: ForumRepositoryBase {
             let html = operation.responseString
             let items = self.parseHtml(html)
             success(items)
-            }) { (operation, error) in
+        }) { (operation, error) in
+            if !operation.cancelled {
                 failure(error)
+            }
         }
     }
     

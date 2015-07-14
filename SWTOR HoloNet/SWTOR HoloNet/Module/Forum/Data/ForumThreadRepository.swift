@@ -25,7 +25,9 @@ class ForumThreadRepository: ForumRepositoryBase {
             let items = self.parseHtml(html)
             success(items)
         }) { (operation, error) in
+            if !operation.cancelled {
                 failure(error)
+            }
         }
     }
     

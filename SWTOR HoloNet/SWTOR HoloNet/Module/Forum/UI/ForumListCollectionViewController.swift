@@ -58,6 +58,17 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
 #endif
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Controller is being popped from the navigation stack
+        if self.isMovingFromParentViewController() {
+            // Cancel any pending requests to prevent wasted processing
+            self.categoryRepo.cancelAllOperations()
+            self.threadRepo?.cancelAllOperations()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,7 +80,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView?.reloadData()
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if self.threadRepo != nil {
