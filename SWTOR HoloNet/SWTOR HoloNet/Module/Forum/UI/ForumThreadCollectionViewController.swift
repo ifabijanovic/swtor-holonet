@@ -63,6 +63,16 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 #endif
 
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Controller is being popped from the navigation stack
+        if self.isMovingFromParentViewController() {
+            // Cancel any pending requests to prevent wasted processing
+            self.postRepo.cancelAllOperations()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -72,7 +82,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView?.reloadData()
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1

@@ -8,19 +8,7 @@
 
 import UIKit
 
-class ForumPostRepository {
-    
-    // MARK: - Properties
-    
-    private let settings: Settings
-    private let parser: ForumParser
-    
-    // MARK: - Init
-    
-    init(settings: Settings) {
-        self.settings = settings
-        self.parser = ForumParser()
-    }
+class ForumPostRepository: ForumRepositoryBase {
     
     // MARK: - Public methods
     
@@ -31,17 +19,15 @@ class ForumPostRepository {
     }
     
     func get(#thread: ForumThread, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
         let url = self.url(thread: thread, page: page)
-        
-        manager.GET(url, parameters: nil, success: { (operation, response) in
+        self.manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
             success(items)
-            }) { (operation, error) in
+        }) { (operation, error) in
+            if !operation.cancelled {
                 failure(error)
+            }
         }
     }
     

@@ -52,6 +52,7 @@ class Settings {
     let devAvatarUrl: String
     let stickyIconUrl: String
     let dulfyNetUrl: String
+    let requestTimeout: NSTimeInterval
     
     var forumLanguage: ForumLanguage
     
@@ -81,6 +82,7 @@ class Settings {
         self.devAvatarUrl = settings?.objectForKey("Dev Avatar URL") as? String ?? ""
         self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
         self.dulfyNetUrl = settings?.objectForKey("Dulfy.net URL") as? String ?? ""
+        self.requestTimeout = settings?.objectForKey("Request Timeout") as? NSTimeInterval ?? 60.0
         
         self.forumLanguage = ForumLanguage.English
         

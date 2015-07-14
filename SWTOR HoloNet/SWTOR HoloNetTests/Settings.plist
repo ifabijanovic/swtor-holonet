@@ -28,5 +28,7 @@
 	<string>http://www.holonet.test/stickyIcon.png</string>
 	<key>Dulfy.net URL</key>
 	<string>http://dulfy.test</string>
+	<key>Request Timeout</key>
+	<integer>10</integer>
 </dict>
 </plist>
