@@ -28,5 +28,7 @@
 	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
 	<key>Dulfy.net URL</key>
 	<string>http://dulfy.net</string>
+	<key>Request Timeout</key>
+	<integer>10</integer>
 </dict>
 </plist>

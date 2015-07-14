@@ -83,5 +83,9 @@ class SettingsTests: XCTestCase {
     func testDulfyNetUrl() {
         XCTAssertEqual(self.settings!.dulfyNetUrl, "http://dulfy.test", "")
     }
+    
+    func testRequestTimeout() {
+        XCTAssertEqual(self.settings!.requestTimeout, 10, "")
+    }
 
 }
