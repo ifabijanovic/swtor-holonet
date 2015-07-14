@@ -8,25 +8,7 @@
 
 import UIKit
 
-class ForumThreadRepository {
-    
-    // MARK: - Properties
-
-    private let settings: Settings
-    private let parser: ForumParser
-    
-    private let manager: AFHTTPRequestOperationManager
-    
-    // MARK: - Init
-    
-    init(settings: Settings) {
-        self.settings = settings
-        self.parser = ForumParser()
-        
-        self.manager = AFHTTPRequestOperationManager()
-        self.manager.requestSerializer.timeoutInterval = settings.requestTimeout
-        self.manager.responseSerializer = AFHTTPResponseSerializer()
-    }
+class ForumThreadRepository: ForumRepositoryBase {
     
     // MARK: - Public methods
     
