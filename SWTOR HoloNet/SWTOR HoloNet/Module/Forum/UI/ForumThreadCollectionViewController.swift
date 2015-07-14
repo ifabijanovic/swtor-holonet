@@ -169,10 +169,18 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         }
         func failure(error: NSError) {
             self.refreshControl?.endRefreshing()
-            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                (style: .Cancel, title: "No", { self.hideLoader() }),
-                (style: .Default, title: "Yes", { self.onRefresh() })
-            )
+            
+            let alert: Alert!
+            
+            if (error.isMaintenanceError()) {
+                alert = self.alertFactory.createAlert(self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .Default, title: "OK", { self.hideLoader() })
+                )
+            } else {
+                alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                    (style: .Cancel, title: "No", { self.hideLoader() }),
+                    (style: .Default, title: "Yes", { self.onRefresh() })
+                )
+            }
             alert.show()
         }
         

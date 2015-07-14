@@ -23,6 +23,11 @@ class ForumThreadRepository: ForumRepositoryBase {
         self.manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
+            
+            if items.isEmpty && self.isMaintenanceResponse(html) {
+                return failure(NSError.maintenanceError())
+            }
+            
             success(items)
         }) { (operation, error) in
             if !operation.cancelled {

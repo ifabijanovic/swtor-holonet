@@ -38,4 +38,18 @@ class ForumRepositoryBase {
         self.manager.operationQueue.cancelAllOperations()
     }
     
+    // MARK: - Internal methods
+    
+    internal func isMaintenanceResponse(html: String) -> Bool {
+        let document = HTMLDocument(string: html)
+        let errorNodes = document.nodesMatchingSelector("#mainContent > #errorPage #errorBody p") as! Array<HTMLElement>
+        
+        if !errorNodes.isEmpty {
+            let englishNode = errorNodes.first!
+            return englishNode.textContent.rangeOfString("scheduled maintenance") != nil
+        }
+        
+        return false
+    }
+    
 }
