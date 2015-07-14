@@ -15,11 +15,17 @@ class ForumThreadRepository {
     private let settings: Settings
     private let parser: ForumParser
     
+    private let manager: AFHTTPRequestOperationManager
+    
     // MARK: - Init
     
     init(settings: Settings) {
         self.settings = settings
         self.parser = ForumParser()
+        
+        self.manager = AFHTTPRequestOperationManager()
+        self.manager.requestSerializer.timeoutInterval = settings.requestTimeout
+        self.manager.responseSerializer = AFHTTPResponseSerializer()
     }
     
     // MARK: - Public methods
@@ -31,11 +37,8 @@ class ForumThreadRepository {
     // MARK: - Network
     
     private func get(#id: Int, page: Int, success: ((Array<ForumThread>) -> Void), failure: ((NSError) -> Void)) {
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
         let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
-        manager.GET(url, parameters: nil, success: { (operation, response) in
+        self.manager.GET(url, parameters: nil, success: { (operation, response) in
             let html = operation.responseString
             let items = self.parseHtml(html)
             success(items)
