@@ -99,9 +99,15 @@ class Theme {
         self.apply()
     }
     
+    // MARK: - Public methods
+    
+    func fireThemeChanged() {
+        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
+    }
+    
     // MARK: - Private methods
     
-    func apply() {
+    private func apply() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
         UINavigationBar.appearance().barTintColor = self.navBackground

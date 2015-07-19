@@ -39,7 +39,7 @@ class TextSizeSettingsTableViewController: UITableViewController, Injectable, Th
         super.viewWillDisappear(animated)
         
         self.theme.textSize = self.textSizeForIndex(self.checkedRow.row)
-        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
+        self.theme.fireThemeChanged()
     }
 
     // MARK: - Table view data source

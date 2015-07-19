@@ -1,5 +1,5 @@
 //
-//  BaseTableViewController.swift
+//  BaseCollectionViewController.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 15/07/15.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController, Injectable, Themeable {
+let reuseIdentifier = "Cell"
+
+class BaseCollectionViewController: UICollectionViewController, Injectable, Themeable {
 
     // MARK: - Properties
     
@@ -23,8 +25,8 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
         self.registerThemeChangedCallback()
     }
     
-    override init(style: UITableViewStyle) {
-        super.init(style: style)
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
         self.registerThemeChangedCallback()
     }
     
@@ -57,7 +59,7 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
     
     func themeChanged(theme: Theme) {
         self.applyTheme(theme)
-        self.tableView.reloadData()
+        self.collectionView!.reloadData()
     }
     
     func themeChanged(notification: NSNotification) {
