@@ -22,21 +22,29 @@ class BaseCollectionViewController: UICollectionViewController, Injectable, Them
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        self.inject()
         self.registerThemeChangedCallback()
     }
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
+        
+        self.inject()
         self.registerThemeChangedCallback()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        self.inject()
         self.registerThemeChangedCallback()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        self.inject()
         self.registerThemeChangedCallback()
     }
     
@@ -44,13 +52,9 @@ class BaseCollectionViewController: UICollectionViewController, Injectable, Them
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
+    private func inject() {
         // Poor man's dependency injection, remove ASAP
         InstanceHolder.sharedInstance().inject(self)
-        
-        super.viewDidLoad()
     }
     
     // MARK: - Themeable

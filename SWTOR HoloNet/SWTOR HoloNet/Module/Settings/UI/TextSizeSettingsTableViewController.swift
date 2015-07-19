@@ -8,22 +8,15 @@
 
 import UIKit
 
-class TextSizeSettingsTableViewController: UITableViewController, Injectable, Themeable {
+class TextSizeSettingsTableViewController: BaseTableViewController {
     
     // MARK: - Properties
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
     
     var checkedRow: NSIndexPath!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
-        
         super.viewDidLoad()
         
         self.applyTheme(self.theme)
@@ -93,7 +86,7 @@ class TextSizeSettingsTableViewController: UITableViewController, Injectable, Th
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
         for row in 0..<self.tableView.numberOfRowsInSection(0) {
