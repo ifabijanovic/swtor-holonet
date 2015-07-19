@@ -10,6 +10,10 @@ import UIKit
 
 class Theme {
     
+    // MARK: - Constants
+    
+    private let keyPostFontSize = "postFontSize"
+    
     // MARK: - Properties
     
     let navBackground: UIColor
@@ -30,6 +34,19 @@ class Theme {
     
     let activityIndicatorStyle: UIActivityIndicatorViewStyle
     let scrollViewIndicatorStyle: UIScrollViewIndicatorStyle
+    
+    var postFontSize: CGFloat {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let savedValue = userDefaults.doubleForKey(keyPostFontSize)
+        
+        if savedValue > 0 {
+            return CGFloat(savedValue)
+        } else {
+            userDefaults.setDouble(14.0, forKey: keyPostFontSize)
+            userDefaults.synchronize()
+            return 14.0
+        }
+    }
     
     // MARK: - Init
     
