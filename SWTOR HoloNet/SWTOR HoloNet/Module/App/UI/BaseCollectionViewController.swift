@@ -8,8 +8,6 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
-
 class BaseCollectionViewController: UICollectionViewController, Injectable, Themeable {
 
     // MARK: - Properties

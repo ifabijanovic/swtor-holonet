@@ -20,6 +20,8 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        self.inject()
         self.registerThemeChangedCallback()
     }
     
