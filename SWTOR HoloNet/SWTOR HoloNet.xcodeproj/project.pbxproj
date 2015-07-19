@@ -157,6 +157,10 @@
 		816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */; };
 		81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E1D1B558858008775DE /* NSErrorEx.swift */; };
 		81753E1F1B558858008775DE /* NSErrorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E1D1B558858008775DE /* NSErrorEx.swift */; };
+		81753E321B564622008775DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E311B564622008775DE /* BaseViewController.swift */; };
+		81753E331B564622008775DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E311B564622008775DE /* BaseViewController.swift */; };
+		81753E351B564844008775DE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E341B564844008775DE /* BaseTableViewController.swift */; };
+		81753E361B564844008775DE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E341B564844008775DE /* BaseTableViewController.swift */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
@@ -500,6 +504,8 @@
 		8165671F1A40394F002AA53A /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Module/App/Model/Theme.swift; sourceTree = "<group>"; };
 		816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-empty.html"; path = "Module/Forum/Test Data/forum-empty.html"; sourceTree = "<group>"; };
 		81753E1D1B558858008775DE /* NSErrorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorEx.swift; path = Extension/NSErrorEx.swift; sourceTree = "<group>"; };
+		81753E311B564622008775DE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Module/App/UI/BaseViewController.swift; sourceTree = "<group>"; };
+		81753E341B564844008775DE /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Module/App/UI/BaseTableViewController.swift; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -1032,6 +1038,8 @@
 			isa = PBXGroup;
 			children = (
 				81846C991ABC44C800982C2C /* CollectionReusableView */,
+				81753E341B564844008775DE /* BaseTableViewController.swift */,
+				81753E311B564622008775DE /* BaseViewController.swift */,
 				81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */,
 				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
@@ -1614,6 +1622,7 @@
 				81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */,
 				81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */,
+				81753E321B564622008775DE /* BaseViewController.swift in Sources */,
 				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */,
@@ -1649,6 +1658,7 @@
 				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
+				81753E351B564844008775DE /* BaseTableViewController.swift in Sources */,
 				81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81C070B61ABB039600B70A06 /* CollectionViewCell+Themeable.swift in Sources */,
@@ -1769,6 +1779,7 @@
 				81DBE59B1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				81753E331B564622008775DE /* BaseViewController.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8146BF0E1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
@@ -1812,6 +1823,8 @@
 				81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
 				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
+				81753E361B564844008775DE /* BaseTableViewController.swift in Sources */,
+				81AD3D0E1B55381C0030C6FF /* TextSizeSettingsTableViewController.swift in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,

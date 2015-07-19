@@ -14,6 +14,14 @@ enum TextSize: CGFloat {
     case Small = 14.0
     case Medium = 16.0
     case Large = 18.0
+    
+    func toString() -> String {
+        switch self {
+        case .Small: return "Small"
+        case .Medium: return "Medium"
+        case .Large: return "Large"
+        }
+    }
 }
 
 class Theme {

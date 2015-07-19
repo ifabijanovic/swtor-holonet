@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import MessageUI
 
-class SettingsTableViewController: UITableViewController, Injectable, Themeable, MFMailComposeViewControllerDelegate {
+class SettingsTableViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
    
     // MARK: - Constants
     
@@ -19,12 +19,6 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     private let LicenseSegue = "LicenseSegue"
     private let NotificationSettingsSegue = "NotificationSettingsSegue"
     
-    // MARK: - Properties
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
-    
     // MARK: - Outlets
     
     @IBOutlet var contactCell: UITableViewCell!
@@ -32,13 +26,11 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     @IBOutlet var notificationSettingsCell: UITableViewCell!
     
     @IBOutlet var notificationSettingsStatusLabel: UILabel!
+    @IBOutlet var textSizeStatusLabel: UILabel!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
-        
         super.viewDidLoad()
 
         self.applyTheme(self.theme)
@@ -51,7 +43,9 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "Enabled" : "Disabled"
+        self.textSizeStatusLabel.text = self.theme.textSize.toString()
     }
     
     // MARK: - Table view delegate
@@ -135,7 +129,7 @@ class SettingsTableViewController: UITableViewController, Injectable, Themeable,
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
         for section in 0..<self.tableView.numberOfSections() {
