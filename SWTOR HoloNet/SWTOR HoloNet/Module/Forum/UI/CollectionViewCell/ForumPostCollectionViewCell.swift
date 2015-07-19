@@ -26,7 +26,7 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textView.textColor = theme.contentText
-        self.textView.font = UIFont.systemFontOfSize(theme.postFontSize)
+        self.textView.font = UIFont.systemFontOfSize(theme.textSize)
         
         if (!self.devImageView.hidden) {
             self.textView.textColor = theme.contentHighlightText

@@ -12,7 +12,7 @@ class Theme {
     
     // MARK: - Constants
     
-    private let keyPostFontSize = "postFontSize"
+    private let keyTextSize = "textSize"
     
     // MARK: - Properties
     
@@ -35,14 +35,14 @@ class Theme {
     let activityIndicatorStyle: UIActivityIndicatorViewStyle
     let scrollViewIndicatorStyle: UIScrollViewIndicatorStyle
     
-    var postFontSize: CGFloat {
+    var textSize: CGFloat {
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let savedValue = userDefaults.doubleForKey(keyPostFontSize)
+        let savedValue = userDefaults.doubleForKey(keyTextSize)
         
         if savedValue > 0 {
             return CGFloat(savedValue)
         } else {
-            userDefaults.setDouble(14.0, forKey: keyPostFontSize)
+            userDefaults.setDouble(14.0, forKey: keyTextSize)
             userDefaults.synchronize()
             return 14.0
         }
