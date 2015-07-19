@@ -77,7 +77,7 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
-        self.textTextView.font = UIFont.systemFontOfSize(theme.textSize)
+        self.textTextView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
     }
 
 }

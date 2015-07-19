@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+
+enum TextSize: CGFloat {
+    case Small = 14.0
+    case Medium = 16.0
+    case Large = 18.0
+}
+
 class Theme {
     
     // MARK: - Constants
@@ -35,16 +43,26 @@ class Theme {
     let activityIndicatorStyle: UIActivityIndicatorViewStyle
     let scrollViewIndicatorStyle: UIScrollViewIndicatorStyle
     
-    var textSize: CGFloat {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let savedValue = userDefaults.doubleForKey(keyTextSize)
-        
-        if savedValue > 0 {
-            return CGFloat(savedValue)
-        } else {
-            userDefaults.setDouble(14.0, forKey: keyTextSize)
+    var textSize: TextSize {
+        get {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let savedValue = userDefaults.floatForKey(keyTextSize)
+            
+            if savedValue > 0 {
+                if let value = TextSize(rawValue: CGFloat(savedValue)) {
+                    return value
+                }
+            } else {
+                userDefaults.setFloat(Float(TextSize.Small.rawValue), forKey: keyTextSize)
+                userDefaults.synchronize()
+            }
+            
+            return .Small
+        }
+        set(newSize) {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setFloat(Float(newSize.rawValue), forKey: keyTextSize)
             userDefaults.synchronize()
-            return 14.0
         }
     }
     

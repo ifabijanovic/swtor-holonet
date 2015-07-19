@@ -16,7 +16,6 @@ class TextSizeSettingsTableViewController: UITableViewController, Injectable, Th
     var theme: Theme!
     var alertFactory: AlertFactory!
     
-    var currentTextSize: CGFloat!
     var checkedRow: NSIndexPath!
     
     // MARK: - Lifecycle
@@ -29,22 +28,18 @@ class TextSizeSettingsTableViewController: UITableViewController, Injectable, Th
         
         self.applyTheme(self.theme)
         
-        self.currentTextSize = theme.textSize
-        switch self.currentTextSize {
-        case 16:
-            self.checkedRow = NSIndexPath(forRow: 1, inSection: 0)
-            break
-        case 18:
-            self.checkedRow = NSIndexPath(forRow: 2, inSection: 0)
-            break
-        default:
-            self.checkedRow = NSIndexPath(forRow: 0, inSection: 0)
-            break
-        }
+        self.checkedRow = NSIndexPath(forRow: self.indexForTextSize(self.theme.textSize), inSection: 0)
         
         if let cell = self.tableView.cellForRowAtIndexPath(self.checkedRow) {
             cell.accessoryType = .Checkmark
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.theme.textSize = self.textSizeForIndex(self.checkedRow.row)
+        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
     }
 
     // MARK: - Table view data source
@@ -70,6 +65,30 @@ class TextSizeSettingsTableViewController: UITableViewController, Injectable, Th
         }
         
         self.checkedRow = indexPath
+    }
+    
+    // MARK: - Private methods
+    
+    private func indexForTextSize(textSize: TextSize) -> Int {
+        switch self.theme.textSize {
+        case .Medium:
+            return 1
+        case .Large:
+            return 2
+        default:
+            return 0
+        }
+    }
+    
+    private func textSizeForIndex(index: Int) -> TextSize {
+        switch self.checkedRow.row {
+        case 1:
+            return .Medium
+        case 2:
+            return .Large
+        default:
+            return .Small
+        }
     }
     
     // MARK: - Themeable
