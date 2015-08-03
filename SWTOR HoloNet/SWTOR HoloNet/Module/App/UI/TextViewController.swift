@@ -66,6 +66,8 @@ class TextViewController: BaseViewController {
     override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.textView.textColor = theme.contentText
+        self.textView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.textView.indicatorStyle = theme.scrollViewIndicatorStyle
     }
 
 }

@@ -22,8 +22,14 @@ class ForumCategoryCollectionViewCell: UICollectionViewCell, Themeable {
     
     func applyTheme(theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle
+        self.titleLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue + 4.0)
+        
         self.statsLabel.textColor = theme.contentText
+        self.statsLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue - 2.0)
+        
         self.lastPostLabel.textColor = theme.contentText
+        self.lastPostLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue - 2.0)
+        
         if self.accessoryView.image == nil {
             self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
             self.accessoryView.tintColor = theme.contentTitle

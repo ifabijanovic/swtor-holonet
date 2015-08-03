@@ -95,12 +95,23 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout:
+        UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        // This value represents the difference from currently selected text size and
+        // the smallest (default) value. It is added to the cell height for each label
+        let textSizeDiff = self.theme.textSize.rawValue - TextSize.Small.rawValue
+        let width: CGFloat
+        let height: CGFloat
+            
         if indexPath.section == CategorySection {
-            let width = self.isPad ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
-            return CGSizeMake(width, 104.0)
+            width = self.isPad ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
+            height = 104.0 + (3 * textSizeDiff)
+        } else {
+            width = collectionView.frame.width
+            height = 64.0 + (2 * textSizeDiff)
         }
-        return CGSizeMake(collectionView.frame.width, 64.0)
+        
+        return CGSizeMake(width, height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
