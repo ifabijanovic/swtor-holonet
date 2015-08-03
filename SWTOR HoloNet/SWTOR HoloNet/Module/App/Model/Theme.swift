@@ -8,7 +8,27 @@
 
 import UIKit
 
+
+
+enum TextSize: CGFloat {
+    case Small = 14.0
+    case Medium = 16.0
+    case Large = 18.0
+    
+    func toString() -> String {
+        switch self {
+        case .Small: return "Small"
+        case .Medium: return "Medium"
+        case .Large: return "Large"
+        }
+    }
+}
+
 class Theme {
+    
+    // MARK: - Constants
+    
+    private let keyTextSize = "textSize"
     
     // MARK: - Properties
     
@@ -30,6 +50,29 @@ class Theme {
     
     let activityIndicatorStyle: UIActivityIndicatorViewStyle
     let scrollViewIndicatorStyle: UIScrollViewIndicatorStyle
+    
+    var textSize: TextSize {
+        get {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let savedValue = userDefaults.floatForKey(keyTextSize)
+            
+            if savedValue > 0 {
+                if let value = TextSize(rawValue: CGFloat(savedValue)) {
+                    return value
+                }
+            } else {
+                userDefaults.setFloat(Float(TextSize.Small.rawValue), forKey: keyTextSize)
+                userDefaults.synchronize()
+            }
+            
+            return .Small
+        }
+        set(newSize) {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setFloat(Float(newSize.rawValue), forKey: keyTextSize)
+            userDefaults.synchronize()
+        }
+    }
     
     // MARK: - Init
     
@@ -56,9 +99,15 @@ class Theme {
         self.apply()
     }
     
+    // MARK: - Public methods
+    
+    func fireThemeChanged() {
+        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
+    }
+    
     // MARK: - Private methods
     
-    func apply() {
+    private func apply() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
         UINavigationBar.appearance().barTintColor = self.navBackground

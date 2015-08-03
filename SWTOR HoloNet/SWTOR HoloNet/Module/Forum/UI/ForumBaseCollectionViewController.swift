@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumBaseCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, Injectable, Themeable {
+class ForumBaseCollectionViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Constants
     
@@ -16,12 +16,6 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     let ScreenHeight = UIScreen.mainScreen().bounds.height
     
     private let FooterIdentifier = "footer"
-    
-    // MARK: - Injectable
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
     
     // MARK: - Properties
     
@@ -170,7 +164,7 @@ class ForumBaseCollectionViewController: UICollectionViewController, UICollectio
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle
         

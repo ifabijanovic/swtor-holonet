@@ -10,13 +10,7 @@ import UIKit
 import QuartzCore
 import Parse
 
-class NotificationSettingsViewController: UIViewController, Injectable, Themeable {
-    
-    // MARK: - Properties
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
+class NotificationSettingsViewController: BaseViewController {
     
     // MARK: - Outlets
     
@@ -45,9 +39,6 @@ class NotificationSettingsViewController: UIViewController, Injectable, Themeabl
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
-        
         super.viewDidLoad()
         
         self.loadImages()
@@ -88,7 +79,7 @@ class NotificationSettingsViewController: UIViewController, Injectable, Themeabl
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
         self.settingsImageView.tintColor = theme.instructionsIcon

@@ -157,6 +157,12 @@
 		816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */; };
 		81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E1D1B558858008775DE /* NSErrorEx.swift */; };
 		81753E1F1B558858008775DE /* NSErrorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E1D1B558858008775DE /* NSErrorEx.swift */; };
+		81753E321B564622008775DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E311B564622008775DE /* BaseViewController.swift */; };
+		81753E331B564622008775DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E311B564622008775DE /* BaseViewController.swift */; };
+		81753E351B564844008775DE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E341B564844008775DE /* BaseTableViewController.swift */; };
+		81753E361B564844008775DE /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E341B564844008775DE /* BaseTableViewController.swift */; };
+		81753E381B564F40008775DE /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E371B564F40008775DE /* BaseCollectionViewController.swift */; };
+		81753E391B564F40008775DE /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81753E371B564F40008775DE /* BaseCollectionViewController.swift */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
@@ -179,6 +185,10 @@
 		81846CA51ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */; };
 		81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
 		81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
+		819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
+		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
+		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
+		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
@@ -310,8 +320,6 @@
 		81DD07FD1AA32AE600278130 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F61AA32AE600278130 /* AlertTests.swift */; };
 		81DD07FE1AA32AE600278130 /* TestAlertFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */; };
 		81DD07FF1AA32AE600278130 /* TestAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD07F91AA32AE600278130 /* TestAlertTests.swift */; };
-		81DFB9BC1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */; };
-		81DFB9BD1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */; };
 		81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */; };
 		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
@@ -498,6 +506,9 @@
 		8165671F1A40394F002AA53A /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Module/App/Model/Theme.swift; sourceTree = "<group>"; };
 		816A7F2D1A0B8FCE0005F1A1 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-empty.html"; path = "Module/Forum/Test Data/forum-empty.html"; sourceTree = "<group>"; };
 		81753E1D1B558858008775DE /* NSErrorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSErrorEx.swift; path = Extension/NSErrorEx.swift; sourceTree = "<group>"; };
+		81753E311B564622008775DE /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Module/App/UI/BaseViewController.swift; sourceTree = "<group>"; };
+		81753E341B564844008775DE /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Module/App/UI/BaseTableViewController.swift; sourceTree = "<group>"; };
+		81753E371B564F40008775DE /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewController.swift; path = Module/App/UI/BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		817A216A19F6C4480093ECE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -511,6 +522,8 @@
 		81846CA01ABC45E500982C2C /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadMoreCollectionReusableView.swift; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadMoreCollectionReusableView.xib; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.xib; sourceTree = "<group>"; };
 		81964D8A1AAED73D008CA544 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParser.swift; path = Module/App/Action/ActionParser.swift; sourceTree = "<group>"; };
+		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
 		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
@@ -619,7 +632,6 @@
 		81DD07F61AA32AE600278130 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		81DD07F81AA32AE600278130 /* TestAlertFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactoryTests.swift; sourceTree = "<group>"; };
 		81DD07F91AA32AE600278130 /* TestAlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertTests.swift; sourceTree = "<group>"; };
-		81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		81E62D061AA44AB0006FA0F9 /* DulfyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyViewControllerTests.swift; path = Module/Dulfy/UI/DulfyViewControllerTests.swift; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
@@ -745,8 +757,9 @@
 		810D2E021A44455E00FF0FEF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */,
+				819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */,
 				810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */,
-				81DFB9BB1AA705D100DFD1E9 /* NotificationSettingsViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1028,6 +1041,9 @@
 			isa = PBXGroup;
 			children = (
 				81846C991ABC44C800982C2C /* CollectionReusableView */,
+				81753E371B564F40008775DE /* BaseCollectionViewController.swift */,
+				81753E341B564844008775DE /* BaseTableViewController.swift */,
+				81753E311B564622008775DE /* BaseViewController.swift */,
 				81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */,
 				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
 				81EC0C101A4465EA00AFA035 /* TableViewCell+Themeable.swift */,
@@ -1610,6 +1626,7 @@
 				81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */,
 				81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */,
+				81753E321B564622008775DE /* BaseViewController.swift in Sources */,
 				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */,
@@ -1622,6 +1639,7 @@
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81DBE59A1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
+				81753E381B564F40008775DE /* BaseCollectionViewController.swift in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81DD07E31AA3299500278130 /* UIAlertFactory.swift in Sources */,
@@ -1631,6 +1649,7 @@
 				81AD3D041B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 				8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */,
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
+				819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
 				81DD07DF1AA3299500278130 /* Alert.swift in Sources */,
 				81A49A8A19F0FCC0007FEA4C /* HTMLParser.m in Sources */,
@@ -1644,6 +1663,7 @@
 				81AB24CD19EFCAC000293D26 /* AFNetworkReachabilityManager.m in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
+				81753E351B564844008775DE /* BaseTableViewController.swift in Sources */,
 				81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				81C070B61ABB039600B70A06 /* CollectionViewCell+Themeable.swift in Sources */,
@@ -1675,6 +1695,7 @@
 				81846C871ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
 				81C070B31ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
 				81255D8819F7BBD600E0C018 /* UIImage+MultiFormat.m in Sources */,
+				819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
 				81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */,
 				81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
@@ -1693,7 +1714,6 @@
 				81255D9019F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				81A49A8E19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
-				81DFB9BC1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */,
 				814F07401AADECF5009BD5F1 /* ActionFactory.swift in Sources */,
 				8146BF051ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift in Sources */,
 				8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */,
@@ -1729,6 +1749,7 @@
 				81DD07FC1AA32AE600278130 /* DelegateBaseTests.swift in Sources */,
 				81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
+				81753E391B564F40008775DE /* BaseCollectionViewController.swift in Sources */,
 				8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				81AB24D019EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
@@ -1764,6 +1785,7 @@
 				81DBE59B1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
+				81753E331B564622008775DE /* BaseViewController.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8146BF0E1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
@@ -1794,6 +1816,7 @@
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
 				81DD07FA1AA32AE600278130 /* ActionSheetDelegateTests.swift in Sources */,
 				81AB24C819EFCAC000293D26 /* AFHTTPRequestOperation.m in Sources */,
+				819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */,
 				81846C881ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
@@ -1804,9 +1827,10 @@
 				81DD07EB1AA32A7200278130 /* TestAlert.swift in Sources */,
 				81753E1F1B558858008775DE /* NSErrorEx.swift in Sources */,
 				81A49A8919F0FCC0007FEA4C /* HTMLOrderedDictionary.m in Sources */,
-				81DFB9BD1AA705D100DFD1E9 /* NotificationSettingsViewController.swift in Sources */,
 				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
+				81753E361B564844008775DE /* BaseTableViewController.swift in Sources */,
+				81AD3D0E1B55381C0030C6FF /* TextSizeSettingsTableViewController.swift in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
@@ -1843,6 +1867,7 @@
 				8125C4931AA9DBB000046197 /* Action.swift in Sources */,
 				81C070B11ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
+				819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */,
 				81AD3D051B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 				81255D9119F7BBD600E0C018 /* UIView+WebCacheOperation.m in Sources */,

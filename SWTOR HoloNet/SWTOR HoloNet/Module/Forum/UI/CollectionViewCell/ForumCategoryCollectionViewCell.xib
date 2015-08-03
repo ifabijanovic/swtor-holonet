@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -21,19 +21,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZ8-VI-RJi">
-                        <rect key="frame" x="110" y="17" width="475" height="22"/>
+                        <rect key="frame" x="110" y="17" width="475" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwr-pz-9tp">
-                        <rect key="frame" x="110" y="47" width="452" height="15"/>
+                        <rect key="frame" x="110" y="45" width="452" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RF7-0H-La7">
-                        <rect key="frame" x="110" y="70" width="475" height="15"/>
+                        <rect key="frame" x="110" y="67.5" width="475" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                 <constraint firstItem="kZ8-VI-RJi" firstAttribute="leading" secondItem="DLp-Fm-1ie" secondAttribute="trailing" constant="15" id="2yf-zd-gEf"/>
                 <constraint firstAttribute="trailing" secondItem="RF7-0H-La7" secondAttribute="trailing" constant="15" id="BHu-sd-1CE"/>
                 <constraint firstAttribute="trailing" secondItem="kZ8-VI-RJi" secondAttribute="trailing" constant="15" id="Ij0-XF-YK1"/>
+                <constraint firstAttribute="centerY" secondItem="DLp-Fm-1ie" secondAttribute="centerY" id="RAM-dt-CD8"/>
                 <constraint firstItem="DLp-Fm-1ie" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Rpa-kw-6cm"/>
                 <constraint firstItem="DLp-Fm-1ie" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Spu-BR-V3j"/>
                 <constraint firstItem="RF7-0H-La7" firstAttribute="top" secondItem="Fwr-pz-9tp" secondAttribute="bottom" constant="8" id="Vhk-F0-WkM"/>
@@ -61,6 +62,7 @@
                 <constraint firstAttribute="centerY" secondItem="mEj-Vs-rG6" secondAttribute="centerY" id="cFG-gr-kKr"/>
                 <constraint firstAttribute="trailing" secondItem="mEj-Vs-rG6" secondAttribute="trailing" constant="15" id="gsq-6s-l2c"/>
                 <constraint firstAttribute="trailing" secondItem="kZ8-VI-RJi" secondAttribute="trailing" constant="15" id="hou-FB-aPf"/>
+                <constraint firstAttribute="centerY" secondItem="Fwr-pz-9tp" secondAttribute="centerY" id="nHL-tW-hd8"/>
                 <constraint firstItem="RF7-0H-La7" firstAttribute="leading" secondItem="DLp-Fm-1ie" secondAttribute="trailing" constant="15" id="qYy-I1-0wE"/>
                 <constraint firstItem="mEj-Vs-rG6" firstAttribute="leading" secondItem="Fwr-pz-9tp" secondAttribute="trailing" constant="15" id="t2g-GI-Cv0"/>
                 <constraint firstItem="Fwr-pz-9tp" firstAttribute="top" secondItem="kZ8-VI-RJi" secondAttribute="bottom" constant="8" id="ugA-Rr-onb"/>
@@ -68,6 +70,7 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="Rpa-kw-6cm"/>
                     <exclude reference="hou-FB-aPf"/>
                     <exclude reference="ygh-oH-3EE"/>
                     <exclude reference="BHu-sd-1CE"/>

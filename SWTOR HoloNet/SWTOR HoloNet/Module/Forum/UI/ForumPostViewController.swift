@@ -9,13 +9,9 @@
 import UIKit
 import Parse
 
-class ForumPostViewController: UIViewController, Injectable, Themeable {
+class ForumPostViewController: BaseViewController {
 
     // MARK: - Properties
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
     
     var post: ForumPost!
     
@@ -30,9 +26,6 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
-        
         super.viewDidLoad()
         
         // Set user avatar image if URL is defined in the model
@@ -72,11 +65,12 @@ class ForumPostViewController: UIViewController, Injectable, Themeable {
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
+        self.textTextView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
     }
 
 }

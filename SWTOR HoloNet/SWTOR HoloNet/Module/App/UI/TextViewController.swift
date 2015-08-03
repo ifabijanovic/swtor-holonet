@@ -9,13 +9,9 @@
 import UIKit
 import Parse
 
-class TextViewController: UIViewController, Injectable, Themeable {
+class TextViewController: BaseViewController {
 
     // MARK: - Properties
-    
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: AlertFactory!
     
     var file: String?
     var text: String?
@@ -29,9 +25,6 @@ class TextViewController: UIViewController, Injectable, Themeable {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
-        
         super.viewDidLoad()
         
         if self.file != nil {
@@ -70,9 +63,11 @@ class TextViewController: UIViewController, Injectable, Themeable {
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.textView.textColor = theme.contentText
+        self.textView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.textView.indicatorStyle = theme.scrollViewIndicatorStyle
     }
 
 }

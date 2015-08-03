@@ -10,6 +10,7 @@ import Foundation
 
 let ShowAlertNotification = "ShowAlertNotification"
 let SwitchToTabNotification = "SwitchToTabNotification"
+let ThemeChangedNotification = "ThemeChangedNotification"
 
 func isIOS8() -> Bool {
     let systemVersion = UIDevice.currentDevice().systemVersion
