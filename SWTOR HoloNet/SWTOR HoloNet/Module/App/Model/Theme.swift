@@ -10,6 +10,7 @@ import UIKit
 
 enum ThemeType: String {
     case Dark = "DarkTheme"
+    case Light = "LightTheme"
 }
 
 enum TextSize: CGFloat {
@@ -56,7 +57,8 @@ class Theme {
     private(set) var instructionsFrame: UIColor!
     
     private(set) var activityIndicatorStyle: UIActivityIndicatorViewStyle!
-    private(set) var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle = .Default
+    private(set) var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle!
+    private(set) var statusBarStyle: UIStatusBarStyle!
     
     var textSize: TextSize {
         get {
@@ -104,12 +106,10 @@ class Theme {
     // MARK: - Public methods
     
     func changeTheme(type: ThemeType) {
-        self.type = type
-        
-        // Load theme data
         let path = self.bundle.pathForResource(type.rawValue, ofType: "plist")
         let data = NSDictionary(contentsOfFile: path!)!
         
+        // Load theme data
         self.navBackground = self.colorForKey("navBackground", data: data)
         self.navText = self.colorForKey("navText", data: data)
         self.contentBackground = self.colorForKey("contentBackground", data: data)
@@ -128,8 +128,17 @@ class Theme {
         
         self.activityIndicatorStyle = UIActivityIndicatorViewStyle(rawValue: self.numberForKey("activityIndicatorStyle", data: data).integerValue)!
         self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle(rawValue: self.numberForKey("scrollViewIndicatorStyle", data: data).integerValue)!
+        self.statusBarStyle = UIStatusBarStyle(rawValue: self.numberForKey("statusBarStyle", data: data).integerValue)!
         
+        // Apply the new theme
         self.apply()
+        
+        // Save the new theme type into user settings
+        self.type = type
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(type.rawValue, forKey: keyThemeType)
+        userDefaults.synchronize()
     }
     
     func fireThemeChanged() {
@@ -147,7 +156,7 @@ class Theme {
     }
     
     private func apply() {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+        UIApplication.sharedApplication().setStatusBarStyle(self.statusBarStyle, animated: false)
         
         UINavigationBar.appearance().barTintColor = self.navBackground
         UINavigationBar.appearance().tintColor = self.navText
