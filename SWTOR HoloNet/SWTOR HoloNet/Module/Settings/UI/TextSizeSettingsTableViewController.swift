@@ -12,27 +12,30 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     
     // MARK: - Properties
     
-    var checkedRow: NSIndexPath!
+    private var pickerDelegate: SettingPickerDelegate<TextSize>!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.pickerDelegate = SettingPickerDelegate<TextSize>(initialValue: self.theme.textSize, tableView: self.tableView, map: [
+            (index: 0, value: .Small),
+            (index: 1, value: .Medium),
+            (index: 2, value: .Large)
+        ])
+        
         self.applyTheme(self.theme)
-        
-        self.checkedRow = NSIndexPath(forRow: self.indexForTextSize(self.theme.textSize), inSection: 0)
-        
-        if let cell = self.tableView.cellForRowAtIndexPath(self.checkedRow) {
-            cell.accessoryType = .Checkmark
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.theme.textSize = self.textSizeForIndex(self.checkedRow.row)
-        self.theme.fireThemeChanged()
+        let newValue = self.pickerDelegate.getCurrentValue()
+        if (newValue != self.pickerDelegate.initialValue) {
+            self.theme.textSize = newValue
+            self.theme.fireThemeChanged()
+        }
     }
 
     // MARK: - Table view data source
@@ -46,56 +49,13 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if !indexPath.isEqual(self.checkedRow) {
-            if let cell = tableView.cellForRowAtIndexPath(self.checkedRow) {
-                cell.accessoryType = .None
-            }
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                cell.accessoryType = .Checkmark
-            }
-        }
-        
-        self.checkedRow = indexPath
-    }
-    
-    // MARK: - Private methods
-    
-    private func indexForTextSize(textSize: TextSize) -> Int {
-        switch self.theme.textSize {
-        case .Medium:
-            return 1
-        case .Large:
-            return 2
-        default:
-            return 0
-        }
-    }
-    
-    private func textSizeForIndex(index: Int) -> TextSize {
-        switch self.checkedRow.row {
-        case 1:
-            return .Medium
-        case 2:
-            return .Large
-        default:
-            return .Small
-        }
+        self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
     // MARK: - Themeable
     
     override func applyTheme(theme: Theme) {
-        self.view.backgroundColor = theme.contentBackground
-        
-        for row in 0..<self.tableView.numberOfRowsInSection(0) {
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) {
-                cell.applyThemeEx(theme)
-                cell.textLabel?.textColor = theme.contentText
-                cell.tintColor = theme.contentTitle
-            }
-        }
+        self.pickerDelegate.applyTheme(theme)
     }
 
 }

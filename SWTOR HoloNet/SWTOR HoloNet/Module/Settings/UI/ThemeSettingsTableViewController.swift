@@ -12,31 +12,26 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     
     // MARK: - Properties
     
-    private var initialValue: ThemeType!
-    
-    var checkedRow: NSIndexPath!
+    private var pickerDelegate: SettingPickerDelegate<ThemeType>!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.initialValue = self.theme.type
+        
+        self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, tableView: self.tableView, map: [
+            (index: 0, value: .Dark),
+            (index: 1, value: .Light)
+        ])
         
         self.applyTheme(self.theme)
-        
-        self.checkedRow = NSIndexPath(forRow: self.indexForThemeType(self.theme.type), inSection: 0)
-        
-        if let cell = self.tableView.cellForRowAtIndexPath(self.checkedRow) {
-            cell.accessoryType = .Checkmark
-        }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let newValue = self.themeTypeForIndex(self.checkedRow.row)
-        if (newValue != self.initialValue) {
+        let newValue = self.pickerDelegate.getCurrentValue()
+        if (newValue != self.pickerDelegate.initialValue) {
             self.theme.changeTheme(newValue)
             self.theme.fireThemeChanged()
         }
@@ -51,54 +46,15 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if !indexPath.isEqual(self.checkedRow) {
-            if let cell = tableView.cellForRowAtIndexPath(self.checkedRow) {
-                cell.accessoryType = .None
-            }
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                cell.accessoryType = .Checkmark
-            }
-        }
-        
-        self.checkedRow = indexPath
-    }
-    
-    // MARK: - Private methods
-    
-    private func indexForThemeType(themeType: ThemeType) -> Int {
-        switch self.theme.type {
-        case .Light:
-            return 1
-        default:
-            return 0
-        }
-    }
-    
-    private func themeTypeForIndex(index: Int) -> ThemeType {
-        switch self.checkedRow.row {
-        case 1:
-            return .Light
-        default:
-            return .Dark
-        }
+        self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
     // MARK: - Themeable
     
     override func applyTheme(theme: Theme) {
-        self.view.backgroundColor = theme.contentBackground
-        
-        for row in 0..<self.tableView.numberOfRowsInSection(0) {
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) {
-                cell.applyThemeEx(theme)
-                cell.textLabel?.textColor = theme.contentText
-                cell.tintColor = theme.contentTitle
-            }
-        }
+        self.pickerDelegate.applyTheme(theme)
     }
 
 }
