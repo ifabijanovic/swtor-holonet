@@ -185,16 +185,16 @@
 		81846CA51ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */; };
 		81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
 		81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
-		819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
-		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
-		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
-		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		819901091B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
 		8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
 		8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
 		8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
 		8199010F1B57CF5F0077A2BF /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010E1B57CF5F0077A2BF /* LightTheme.plist */; };
 		819901101B57CF5F0077A2BF /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010E1B57CF5F0077A2BF /* LightTheme.plist */; };
+		819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
+		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
+		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
+		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
@@ -262,6 +262,8 @@
 		81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */; };
 		81AD3D041B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD3D031B5527B20030C6FF /* ForumRepositoryBase.swift */; };
 		81AD3D051B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD3D031B5527B20030C6FF /* ForumRepositoryBase.swift */; };
+		81B8B95D1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8B95C1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift */; };
+		81B8B95E1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8B95C1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift */; };
 		81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */; };
 		81C070B11ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */; };
 		81C070B31ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */; };
@@ -528,11 +530,11 @@
 		81846CA01ABC45E500982C2C /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadMoreCollectionReusableView.swift; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadMoreCollectionReusableView.xib; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.xib; sourceTree = "<group>"; };
 		81964D8A1AAED73D008CA544 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParser.swift; path = Module/App/Action/ActionParser.swift; sourceTree = "<group>"; };
-		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
-		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		819901081B57C04C0077A2BF /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorEx.swift; path = Extension/UIColorEx.swift; sourceTree = "<group>"; };
 		8199010B1B57C3DA0077A2BF /* DarkTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DarkTheme.plist; path = Resource/Theme/DarkTheme.plist; sourceTree = "<group>"; };
 		8199010E1B57CF5F0077A2BF /* LightTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LightTheme.plist; sourceTree = "<group>"; };
+		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
 		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
 		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
 		81AD3D031B5527B20030C6FF /* ForumRepositoryBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumRepositoryBase.swift; path = Module/Forum/Data/ForumRepositoryBase.swift; sourceTree = "<group>"; };
+		81B8B95C1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeSettingsTableViewController.swift; path = Module/Settings/UI/ThemeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumListCollectionViewController.swift; path = Module/Forum/UI/ForumListCollectionViewController.swift; sourceTree = "<group>"; };
 		81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseCollectionViewController.swift; path = Module/Forum/UI/ForumBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		81C070B51ABB039600B70A06 /* CollectionViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionViewCell+Themeable.swift"; path = "Module/App/UI/CollectionViewCell+Themeable.swift"; sourceTree = "<group>"; };
@@ -767,8 +770,9 @@
 			isa = PBXGroup;
 			children = (
 				819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */,
-				819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */,
 				810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */,
+				819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */,
+				81B8B95C1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1757,6 +1761,7 @@
 				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
 				819901091B57C04C0077A2BF /* UIColorEx.swift in Sources */,
 				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
+				81B8B95D1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */,
 				81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1856,7 +1861,6 @@
 				81A49A8719F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
 				81753E361B564844008775DE /* BaseTableViewController.swift in Sources */,
-				81AD3D0E1B55381C0030C6FF /* TextSizeSettingsTableViewController.swift in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
@@ -1876,6 +1880,7 @@
 				81C070B41ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
 				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
+				81B8B95E1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */,
 				81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */,
 				81DD07EC1AA32A7200278130 /* TestAlertFactory.swift in Sources */,
 				81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */,

@@ -33,8 +33,8 @@ class ForumThreadCollectionViewCell: UICollectionViewCell, Themeable {
         
         if self.accessoryView.image == nil {
             self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
-            self.accessoryView.tintColor = theme.contentTitle
         }
+        self.accessoryView.tintColor = theme.contentTitle
         
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground

@@ -26,6 +26,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     @IBOutlet var notificationSettingsCell: UITableViewCell!
     
     @IBOutlet var notificationSettingsStatusLabel: UILabel!
+    @IBOutlet var themeStatusLabel: UILabel!
     @IBOutlet var textSizeStatusLabel: UILabel!
     
     // MARK: - Lifecycle
@@ -45,6 +46,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         super.viewWillAppear(animated)
         
         self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "Enabled" : "Disabled"
+        self.themeStatusLabel.text = self.theme.type.toString()
         self.textSizeStatusLabel.text = self.theme.textSize.toString()
     }
     

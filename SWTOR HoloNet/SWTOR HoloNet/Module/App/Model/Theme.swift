@@ -11,6 +11,13 @@ import UIKit
 enum ThemeType: String {
     case Dark = "DarkTheme"
     case Light = "LightTheme"
+    
+    func toString() -> String {
+        switch self {
+        case .Dark: return "Dark"
+        case .Light: return "Light"
+        }
+    }
 }
 
 enum TextSize: CGFloat {
@@ -139,6 +146,22 @@ class Theme {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(type.rawValue, forKey: keyThemeType)
         userDefaults.synchronize()
+    }
+    
+    func apply(navigationBar: UINavigationBar) {
+        navigationBar.barTintColor = self.navBackground
+        navigationBar.tintColor = self.navText
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: self.navText]
+    }
+    
+    func apply(tabBar: UITabBar) {
+        tabBar.barTintColor = self.navBackground
+        tabBar.tintColor = self.navText
+    }
+    
+    func apply(toolbar: UIToolbar) {
+        toolbar.barTintColor = self.navBackground
+        toolbar.tintColor = self.navText
     }
     
     func fireThemeChanged() {
