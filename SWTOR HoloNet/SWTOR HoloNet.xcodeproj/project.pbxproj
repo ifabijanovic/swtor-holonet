@@ -177,14 +177,14 @@
 		81846CA31ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81846CA01ABC45E500982C2C /* LoadMoreCollectionReusableView.swift */; };
 		81846CA41ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */; };
 		81846CA51ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */; };
+		81916A7C1B7171B00001B3F2 /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81916A7B1B7171B00001B3F2 /* LightTheme.plist */; };
+		81916A7D1B7171B00001B3F2 /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81916A7B1B7171B00001B3F2 /* LightTheme.plist */; };
 		81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
 		81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81964D8A1AAED73D008CA544 /* ActionParser.swift */; };
 		819901091B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
 		8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
 		8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
 		8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
-		8199010F1B57CF5F0077A2BF /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010E1B57CF5F0077A2BF /* LightTheme.plist */; };
-		819901101B57CF5F0077A2BF /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010E1B57CF5F0077A2BF /* LightTheme.plist */; };
 		819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
 		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
 		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
@@ -530,10 +530,10 @@
 		81846C9B1ABC451500982C2C /* TableHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableHeaderCollectionReusableView.xib; path = Module/App/UI/CollectionReusableView/TableHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		81846CA01ABC45E500982C2C /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadMoreCollectionReusableView.swift; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		81846CA11ABC45E500982C2C /* LoadMoreCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadMoreCollectionReusableView.xib; path = Module/App/UI/CollectionReusableView/LoadMoreCollectionReusableView.xib; sourceTree = "<group>"; };
+		81916A7B1B7171B00001B3F2 /* LightTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LightTheme.plist; path = Resource/Theme/LightTheme.plist; sourceTree = "<group>"; };
 		81964D8A1AAED73D008CA544 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParser.swift; path = Module/App/Action/ActionParser.swift; sourceTree = "<group>"; };
 		819901081B57C04C0077A2BF /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorEx.swift; path = Extension/UIColorEx.swift; sourceTree = "<group>"; };
 		8199010B1B57C3DA0077A2BF /* DarkTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DarkTheme.plist; path = Resource/Theme/DarkTheme.plist; sourceTree = "<group>"; };
-		8199010E1B57CF5F0077A2BF /* LightTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LightTheme.plist; sourceTree = "<group>"; };
 		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
@@ -1050,7 +1050,7 @@
 			isa = PBXGroup;
 			children = (
 				8199010B1B57C3DA0077A2BF /* DarkTheme.plist */,
-				8199010E1B57CF5F0077A2BF /* LightTheme.plist */,
+				81916A7B1B7171B00001B3F2 /* LightTheme.plist */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -1601,7 +1601,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8199010F1B57CF5F0077A2BF /* LightTheme.plist in Resources */,
+				81916A7C1B7171B00001B3F2 /* LightTheme.plist in Resources */,
 				8146BF1A1ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
 				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
 				81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */,
@@ -1628,7 +1628,7 @@
 				81846C8A1ABC34CD00982C2C /* ForumThreadCollectionViewCell.xib in Resources */,
 				813E28511AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */,
 				814C9CAA1A1B893900FE1C94 /* forum-thread-single-invalid-replies.html in Resources */,
-				819901101B57CF5F0077A2BF /* LightTheme.plist in Resources */,
+				81916A7D1B7171B00001B3F2 /* LightTheme.plist in Resources */,
 				814C9CBB1A1B8CC400FE1C94 /* forum-category-multiple-missing-optionals.html in Resources */,
 				8146BF081ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.xib in Resources */,
 				81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */,
