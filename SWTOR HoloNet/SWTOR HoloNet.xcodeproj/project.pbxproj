@@ -189,6 +189,10 @@
 		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
 		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
+		819901091B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
+		8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColorEx.swift */; };
+		8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
+		8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
 		81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7D19F0FCC0007FEA4C /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5819F0FCC0007FEA4C /* HTMLComment.m */; };
 		81A49A7E19F0FCC0007FEA4C /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A49A5A19F0FCC0007FEA4C /* HTMLDocument.m */; };
@@ -524,6 +528,8 @@
 		81964D8A1AAED73D008CA544 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParser.swift; path = Module/App/Action/ActionParser.swift; sourceTree = "<group>"; };
 		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
+		819901081B57C04C0077A2BF /* UIColorEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorEx.swift; path = Extension/UIColorEx.swift; sourceTree = "<group>"; };
+		8199010B1B57C3DA0077A2BF /* DarkTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DarkTheme.plist; path = Resource/Theme/DarkTheme.plist; sourceTree = "<group>"; };
 		81A49A5719F0FCC0007FEA4C /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "../Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
 		81A49A5819F0FCC0007FEA4C /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "../Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
 		81A49A5919F0FCC0007FEA4C /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "../Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
@@ -1026,6 +1032,14 @@
 			name = CollectionReusableView;
 			sourceTree = "<group>";
 		};
+		819901011B57BCF20077A2BF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8199010B1B57C3DA0077A2BF /* DarkTheme.plist */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
 		81A1E1FE19F704D700C5C833 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -1270,6 +1284,7 @@
 				81753E1D1B558858008775DE /* NSErrorEx.swift */,
 				81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */,
 				81C228A819F146C500EEF2C6 /* StringEx.swift */,
+				819901081B57C04C0077A2BF /* UIColorEx.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1422,6 +1437,7 @@
 		81FDCC881A6EC31500E2C44A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				819901011B57BCF20077A2BF /* Theme */,
 				81FDCC891A6EC37900E2C44A /* Disclaimer.txt */,
 				81FDCC8A1A6EC37900E2C44A /* License.txt */,
 				81FDCC8B1A6EC37900E2C44A /* PrivacyPolicy.txt */,
@@ -1565,6 +1581,7 @@
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 				8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				81846C891ABC34CD00982C2C /* ForumThreadCollectionViewCell.xib in Resources */,
+				8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */,
 				81846C9E1ABC451500982C2C /* TableHeaderCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1583,6 +1600,7 @@
 				81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */,
 				814C9CC41A1B92DB00FE1C94 /* forum-post-single-valid.html in Resources */,
 				8150075F1A1C93D900C897F1 /* forum-post-single-invalid-username.html in Resources */,
+				8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */,
 				814C9CB31A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html in Resources */,
 				8150076B1A1C958C00C897F1 /* forum-post-single-valid-not-dev.html in Resources */,
 				816A7F2E1A0B8FCE0005F1A1 /* forum-empty.html in Resources */,
@@ -1731,6 +1749,7 @@
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
 				81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */,
 				81AB24CB19EFCAC000293D26 /* AFHTTPSessionManager.m in Sources */,
+				819901091B57C04C0077A2BF /* UIColorEx.swift in Sources */,
 				81A49A8419F0FCC0007FEA4C /* HTMLEntities.m in Sources */,
 				81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */,
 			);
@@ -1786,6 +1805,7 @@
 				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				81753E331B564622008775DE /* BaseViewController.swift in Sources */,
+				8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8146BF0E1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,

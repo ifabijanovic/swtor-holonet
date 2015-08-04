@@ -8,7 +8,9 @@
 
 import UIKit
 
-
+enum ThemeType: String {
+    case Dark = "DarkTheme"
+}
 
 enum TextSize: CGFloat {
     case Small = 14.0
@@ -28,28 +30,33 @@ class Theme {
     
     // MARK: - Constants
     
+    private let keyThemeType = "themeType"
     private let keyTextSize = "textSize"
     
     // MARK: - Properties
     
-    let navBackground: UIColor
-    let navText: UIColor
-    let contentBackground: UIColor
-    let contentHighlightBackground: UIColor
-    let contentTitle: UIColor
-    let contentText: UIColor
-    let contentHighlightText: UIColor
+    private let bundle: NSBundle
     
-    let headerHeight: CGFloat
-    let headerText: UIColor
-    let headerBackground: UIColor
+    private(set) var type: ThemeType
     
-    let instructionsIcon: UIColor
-    let instructionsIconBackground: UIColor
-    let instructionsFrame: UIColor
+    private(set) var navBackground: UIColor!
+    private(set) var navText: UIColor!
+    private(set) var contentBackground: UIColor!
+    private(set) var contentHighlightBackground: UIColor!
+    private(set) var contentTitle: UIColor!
+    private(set) var contentText: UIColor!
+    private(set) var contentHighlightText: UIColor!
     
-    let activityIndicatorStyle: UIActivityIndicatorViewStyle
-    let scrollViewIndicatorStyle: UIScrollViewIndicatorStyle
+    private(set) var headerHeight: CGFloat!
+    private(set) var headerText: UIColor!
+    private(set) var headerBackground: UIColor!
+    
+    private(set) var instructionsIcon: UIColor!
+    private(set) var instructionsIconBackground: UIColor!
+    private(set) var instructionsFrame: UIColor!
+    
+    private(set) var activityIndicatorStyle: UIActivityIndicatorViewStyle!
+    private(set) var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle = .Default
     
     var textSize: TextSize {
         get {
@@ -76,36 +83,68 @@ class Theme {
     
     // MARK: - Init
     
-    init() {
-        self.navBackground = UIColor(red: 19.0/255.0, green: 19.0/255.0, blue: 19.0/255.0, alpha: 1.0) //#131313 (dark)
-        self.navText = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
-        self.contentBackground = UIColor(red: 19.0/255.0, green: 19.0/255.0, blue: 19.0/255.0, alpha: 1.0) // #131313 (dark)
-        self.contentHighlightBackground = UIColor(red: 45.0/255.0, green: 45.0/255.0, blue: 45.0/255.0, alpha: 1.0) // #131313 (dark)
-        self.contentTitle = UIColor(red: 204.0/255.0, green: 158.0/255.0, blue: 66.0/255.0, alpha: 1.0) // #CC9E42 (gold)
-        self.contentText = UIColor(red: 209.0/255.0, green: 209.0/255.0, blue: 209.0/255.0, alpha: 1.0) // D1D1D1 (gray)
-        self.contentHighlightText = UIColor(red: 249.0/255.0, green: 214.0/255.0, blue: 72.0/255.0, alpha: 1.0)
+    convenience init() {
+        self.init(bundle: NSBundle.mainBundle())
+    }
+    
+    init(bundle: NSBundle) {
+        self.bundle = bundle
         
-        self.headerHeight = 22.0
-        self.headerText = UIColor.blackColor()
-        self.headerBackground = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 77.0/255.0, alpha: 1.0)
+        // Load the theme type from user settings
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let savedThemeType = userDefaults.stringForKey(keyThemeType) {
+            self.type = ThemeType(rawValue: savedThemeType)!
+        } else {
+            self.type = .Dark
+        }
         
-        self.instructionsIcon = UIColor.blackColor()
-        self.instructionsIconBackground = UIColor.whiteColor()
-        self.instructionsFrame = UIColor.grayColor()
-        
-        self.activityIndicatorStyle = UIActivityIndicatorViewStyle.White
-        self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle.White
-        
-        self.apply()
+        self.changeTheme(self.type)
     }
     
     // MARK: - Public methods
+    
+    func changeTheme(type: ThemeType) {
+        self.type = type
+        
+        // Load theme data
+        let path = self.bundle.pathForResource(type.rawValue, ofType: "plist")
+        let data = NSDictionary(contentsOfFile: path!)!
+        
+        self.navBackground = self.colorForKey("navBackground", data: data)
+        self.navText = self.colorForKey("navText", data: data)
+        self.contentBackground = self.colorForKey("contentBackground", data: data)
+        self.contentHighlightBackground = self.colorForKey("contentHighlightBackground", data: data)
+        self.contentTitle = self.colorForKey("contentTitle", data: data)
+        self.contentText = self.colorForKey("contentText", data: data)
+        self.contentHighlightText = self.colorForKey("contentHighlightText", data: data)
+        
+        self.headerHeight = CGFloat(self.numberForKey("headerHeight", data: data).floatValue)
+        self.headerText = self.colorForKey("headerText", data: data)
+        self.headerBackground = self.colorForKey("headerBackground", data: data)
+        
+        self.instructionsIcon = self.colorForKey("instructionsIcon", data: data)
+        self.instructionsIconBackground = self.colorForKey("instructionsIconBackground", data: data)
+        self.instructionsFrame = self.colorForKey("instructionsFrame", data: data)
+        
+        self.activityIndicatorStyle = UIActivityIndicatorViewStyle(rawValue: self.numberForKey("activityIndicatorStyle", data: data).integerValue)!
+        self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle(rawValue: self.numberForKey("scrollViewIndicatorStyle", data: data).integerValue)!
+        
+        self.apply()
+    }
     
     func fireThemeChanged() {
         NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
     }
     
     // MARK: - Private methods
+    
+    private func colorForKey(key: String, data: NSDictionary) -> UIColor {
+        return UIColor.fromString(data.valueForKey(key) as! String)!
+    }
+    
+    private func numberForKey(key: String, data: NSDictionary) -> NSNumber {
+        return data.valueForKey(key) as! NSNumber
+    }
     
     private func apply() {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
