@@ -26,6 +26,8 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         ])
         
         self.applyTheme(self.theme)
+        
+        self.pickerDelegate.markInitialValue()
     }
     
     override func viewWillDisappear(animated: Bool) {

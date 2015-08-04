@@ -26,12 +26,17 @@ class SettingPickerDelegate<SettingType: Equatable> {
         self.map = map
         
         self.checkedRow = NSIndexPath(forRow: self.indexForSettingType(self.initialValue), inSection: 0)
-        if let cell = self.tableView.cellForRowAtIndexPath(self.checkedRow) {
-            cell.accessoryType = .Checkmark
-        }
     }
     
     // MARK: - Public methods
+    
+    func markInitialValue() {
+        let initialValueRow = NSIndexPath(forRow: self.indexForSettingType(self.initialValue), inSection: 0)
+        if let cell = self.tableView.cellForRowAtIndexPath(initialValueRow) {
+            cell.accessoryType = .Checkmark
+        }
+        self.checkedRow = initialValueRow
+    }
     
     func getCurrentValue() -> SettingType {
         return self.settingTypeForIndex(self.checkedRow.row)!
