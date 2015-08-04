@@ -1,41 +1,40 @@
 //
-//  TextSizeSettingsTableViewController.swift
+//  ThemeSettingsTableViewController.swift
 //  SWTOR HoloNet
 //
-//  Created by Ivan Fabijanovic on 14/07/15.
+//  Created by Ivan Fabijanovic on 03/08/15.
 //  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
 //
 
 import UIKit
 
-class TextSizeSettingsTableViewController: BaseTableViewController {
+class ThemeSettingsTableViewController: BaseTableViewController {
     
     // MARK: - Properties
     
-    private var pickerDelegate: SettingPickerDelegate<TextSize>!
+    private var pickerDelegate: SettingPickerDelegate<ThemeType>!
     
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pickerDelegate = SettingPickerDelegate<TextSize>(initialValue: self.theme.textSize, tableView: self.tableView, map: [
-            (index: 0, value: .Small),
-            (index: 1, value: .Medium),
-            (index: 2, value: .Large)
+        self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, tableView: self.tableView, map: [
+            (index: 0, value: .Dark),
+            (index: 1, value: .Light)
         ])
         
         self.applyTheme(self.theme)
         
         self.pickerDelegate.markInitialValue()
     }
-    
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         let newValue = self.pickerDelegate.getCurrentValue()
         if (newValue != self.pickerDelegate.initialValue) {
-            self.theme.textSize = newValue
+            self.theme.changeTheme(newValue)
             self.theme.fireThemeChanged()
         }
     }
@@ -47,7 +46,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

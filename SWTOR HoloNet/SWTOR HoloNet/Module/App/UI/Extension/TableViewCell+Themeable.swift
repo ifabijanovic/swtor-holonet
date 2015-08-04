@@ -27,9 +27,10 @@ extension UITableViewCell {
         if self.accessoryView == nil {
             let image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
             let imageView = UIImageView(image: image)
-            imageView.tintColor = theme.contentTitle
             self.accessoryView = imageView
         }
+        
+        self.accessoryView!.tintColor = theme.contentTitle
     }
 
 }

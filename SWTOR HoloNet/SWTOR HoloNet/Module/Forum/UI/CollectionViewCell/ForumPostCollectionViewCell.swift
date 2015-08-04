@@ -34,8 +34,8 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
         
         if self.accessoryView.image == nil {
             self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
-            self.accessoryView.tintColor = theme.contentTitle
         }
+        self.accessoryView.tintColor = theme.contentTitle
         
         self.separatorLine.backgroundColor = theme.contentText
         

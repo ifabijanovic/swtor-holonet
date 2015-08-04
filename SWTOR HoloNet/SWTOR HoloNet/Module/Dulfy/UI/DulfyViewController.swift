@@ -15,7 +15,6 @@ import Parse
 
 class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegate, WKNavigationDelegate {
     
-    
     // MARK: - Properties
     
     let useWebKit = objc_getClass("WKWebView") != nil
@@ -204,6 +203,14 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     
     override func applyTheme(theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
+    }
+    
+    override func themeChanged(theme: Theme) {
+        super.themeChanged(theme)
+        
+        // Only animate the toolbar transition if current view is visible
+        let animate = self.isViewLoaded() && self.view.window != nil
+        theme.apply(self.navigationController!.toolbar, animate: animate)
     }
     
     // MARK: - ActionPerformer
