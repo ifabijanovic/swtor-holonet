@@ -28,10 +28,15 @@ class TabViewController: UITabBarController {
         self.registerForNotifications()
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     // MARK: - Action dispatching
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToTab:", name: SwitchToTabNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "themeChanged:", name: ThemeChangedNotification, object: nil)
     }
     
     func switchToTab(notification: NSNotification) {
@@ -58,6 +63,12 @@ class TabViewController: UITabBarController {
         
         // Finally, select the tab
         self.selectedIndex = index!
+    }
+    
+    func themeChanged(notification: NSNotification) {
+        if let theme = notification.userInfo?["theme"] as? Theme {
+            theme.apply(self.tabBar, animate: true)
+        }
     }
     
     // MARK: - UITabBarDelegate

@@ -331,6 +331,8 @@
 		81E99F541B70A8970055A5A2 /* CollectionViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E99F511B70A8970055A5A2 /* CollectionViewCell+Themeable.swift */; };
 		81E99F551B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E99F521B70A8970055A5A2 /* TableViewCell+Themeable.swift */; };
 		81E99F561B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E99F521B70A8970055A5A2 /* TableViewCell+Themeable.swift */; };
+		81E99F581B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E99F571B70C1AD0055A5A2 /* NavigationViewController.swift */; };
+		81E99F591B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E99F571B70C1AD0055A5A2 /* NavigationViewController.swift */; };
 		81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0BFC1A44589600AFA035 /* Themeable.swift */; };
 		81EC0C141A44896F00AFA035 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC0C131A44896F00AFA035 /* TextViewController.swift */; };
@@ -646,6 +648,7 @@
 		81E99F4A1B70A88F0055A5A2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Module/App/UI/Base/BaseViewController.swift; sourceTree = "<group>"; };
 		81E99F511B70A8970055A5A2 /* CollectionViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionViewCell+Themeable.swift"; path = "Module/App/UI/Extension/CollectionViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		81E99F521B70A8970055A5A2 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableViewCell+Themeable.swift"; path = "Module/App/UI/Extension/TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
+		81E99F571B70C1AD0055A5A2 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationViewController.swift; path = Module/App/UI/NavigationViewController.swift; sourceTree = "<group>"; };
 		81EC0BFC1A44589600AFA035 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Themeable.swift; path = Module/App/UI/Themeable.swift; sourceTree = "<group>"; };
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
@@ -1066,6 +1069,7 @@
 				81846C991ABC44C800982C2C /* CollectionReusableView */,
 				81E99F471B70A87F0055A5A2 /* Extension */,
 				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
+				81E99F571B70C1AD0055A5A2 /* NavigationViewController.swift */,
 				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
 				81EC0BFC1A44589600AFA035 /* Themeable.swift */,
@@ -1738,6 +1742,7 @@
 				81846C871ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
 				81C070B31ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
 				81255D8819F7BBD600E0C018 /* UIImage+MultiFormat.m in Sources */,
+				81E99F581B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
 				81E99F531B70A8970055A5A2 /* CollectionViewCell+Themeable.swift in Sources */,
 				819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
@@ -1879,6 +1884,7 @@
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
 				81A49A8D19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81255D8719F7BBD600E0C018 /* UIImage+GIF.m in Sources */,
+				81E99F591B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
 				8120F28119FFB2E200C02DF8 /* Range.swift in Sources */,
 				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,

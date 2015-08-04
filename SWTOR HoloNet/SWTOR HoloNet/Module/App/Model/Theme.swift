@@ -148,24 +148,39 @@ class Theme {
         userDefaults.synchronize()
     }
     
-    func apply(navigationBar: UINavigationBar) {
+    func apply(navigationBar: UINavigationBar, animate: Bool) {
+        if !animate {
+            navigationBar.barTintColor = nil
+            navigationBar.tintColor = nil
+        }
+        
         navigationBar.barTintColor = self.navBackground
         navigationBar.tintColor = self.navText
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: self.navText]
     }
     
-    func apply(tabBar: UITabBar) {
+    func apply(tabBar: UITabBar, animate: Bool) {
+        if !animate {
+            tabBar.barTintColor = nil
+            tabBar.tintColor = nil
+        }
+        
         tabBar.barTintColor = self.navBackground
         tabBar.tintColor = self.navText
     }
     
-    func apply(toolbar: UIToolbar) {
+    func apply(toolbar: UIToolbar, animate: Bool) {
+        if !animate {
+            toolbar.barTintColor = nil
+            toolbar.tintColor = nil
+        }
+        
         toolbar.barTintColor = self.navBackground
         toolbar.tintColor = self.navText
     }
     
     func fireThemeChanged() {
-        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: ["theme": self])
     }
     
     // MARK: - Private methods
