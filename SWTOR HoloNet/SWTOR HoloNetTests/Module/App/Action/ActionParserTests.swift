@@ -39,7 +39,7 @@ class ActionParserTests: XCTestCase {
     func testGetString_Works() {
         let userInfo = ["key":"value"]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString("key")
+        let result = parser.getString(key: "key")
         
         XCTAssertNotNil(result, "")
         XCTAssertEqual(result!, "value", "")
@@ -48,7 +48,7 @@ class ActionParserTests: XCTestCase {
     func testGetString_MissingKey() {
         let userInfo = ["key":"value"]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString("other_key")
+        let result = parser.getString(key: "other_key")
         
         XCTAssertNil(result, "")
     }
@@ -56,7 +56,7 @@ class ActionParserTests: XCTestCase {
     func testGetString_WrongType() {
         let userInfo = ["key":NSDate()]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString("key")
+        let result = parser.getString(key: "key")
         
         XCTAssertNil(result, "")
     }

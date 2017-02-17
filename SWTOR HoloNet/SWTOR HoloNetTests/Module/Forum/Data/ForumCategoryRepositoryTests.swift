@@ -32,46 +32,46 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     func testGetForLanguage_RequestsCorrectUrl() {
         let requestedLanguage = ForumLanguage.English
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(requestedLanguage.rawValue)"
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL!.absoluteString == expectedUrl
+            return request.url!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
             return OHHTTPStubsResponse()
         }
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
+        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
         self.repo!.get(language: requestedLanguage, success: { (items) in }, failure: {(error) in })
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGetForCategory_RequestsCorrectUrl() {
         let category = ForumCategory(id: 17, title: "Test")
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(category.id)"
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
         let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.URL!.absoluteString == expectedUrl
+            return request.url!.absoluteString == expectedUrl
         }
         let responseBlock: OHHTTPStubsResponseBlock = { (request) in
             expectation.fulfill()
             return OHHTTPStubsResponse()
         }
         
-        OHHTTPStubs.stubRequestsPassingTest(testBlock, withStubResponse: responseBlock)
+        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
         self.repo!.get(category: category, success: { (items) in }, failure: {(error) in })
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_EmptyHtml() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-empty", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-empty", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -83,14 +83,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertEqual(items.count, 0, "")
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Valid() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-single-valid", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-single-valid", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -113,14 +113,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Invalid_Id() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-single-invalid-id", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-single-invalid-id", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -133,14 +133,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_MissingOptionals() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-single-missing-optionals", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-single-missing-optionals", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -163,14 +163,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Valid() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-multiple-valid", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-multiple-valid", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -207,14 +207,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Invalid_Id() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-multiple-missing-id", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-multiple-missing-id", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -233,14 +233,14 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_MissingOptionals() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         
-        OHHTTPStubs.stubRequestsPassingTest(self.passAll) { (request) in
-            let path = self.bundle!.pathForResource("forum-category-multiple-missing-optionals", ofType: "html")
+        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
+            let path = self.bundle!.path(forResource: "forum-category-multiple-missing-optionals", ofType: "html")
             XCTAssertNotNil(path, "")
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
@@ -277,7 +277,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             
         }, failure: self.defaultFailure)
         
-        waitForExpectationsWithTimeout(self.timeout, handler: self.defaultExpectationHandler)
+        waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
 
 }

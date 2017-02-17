@@ -26,12 +26,12 @@ class ActionSheetDelegateTests: XCTestCase {
         let delegate = ActionSheetDelegate(actionSheet: actionSheet) { index in return }
         
         XCTAssertNotNil(actionSheet.delegate, "")
-        delegate.actionSheet(actionSheet, clickedButtonAtIndex: 0)
+        delegate.actionSheet(actionSheet, clickedButtonAt: 0)
         XCTAssertNil(actionSheet.delegate, "")
     }
     
     func testClickFiresCallback() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         let random = Int(arc4random())
         let actionSheet = UIActionSheet()
         let delegate = ActionSheetDelegate(actionSheet: actionSheet) { index in
@@ -39,8 +39,8 @@ class ActionSheetDelegateTests: XCTestCase {
             expectation.fulfill()
         }
         
-        delegate.actionSheet(actionSheet, clickedButtonAtIndex: random)
-        waitForExpectationsWithTimeout(3, handler: { error in
+        delegate.actionSheet(actionSheet, clickedButtonAt: random)
+        waitForExpectations(timeout: 3, handler: { error in
             if error != nil {
                 XCTFail("")
             }

@@ -20,21 +20,21 @@ class DelegateBaseTests: XCTestCase {
     
     func testFinishReleasesSelf() {
         let delegate = DelegateBase { index in return }
-        delegate.finish(0)
+        delegate.finish(index: 0)
         
         XCTAssertNil(delegate.holdSelf, "")
     }
     
     func testFinishFiresCallback() {
-        let ex = expectationWithDescription("")
+        let ex = expectation(description: "")
         let random = Int(arc4random())
         let delegate = DelegateBase { index in
             XCTAssertEqual(index, random, "")
             ex.fulfill()
         }
         
-        delegate.finish(random)
-        waitForExpectationsWithTimeout(3, handler: { error in
+        delegate.finish(index: random)
+        waitForExpectations(timeout: 3, handler: { error in
             if error != nil {
                 XCTFail("")
             }

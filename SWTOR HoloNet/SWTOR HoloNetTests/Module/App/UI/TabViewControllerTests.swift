@@ -23,7 +23,7 @@ class TabViewControllerTests: XCTestCase {
         
         override func switchToTab(notification: NSNotification) {
             self.didSwitchToTab = true
-            super.switchToTab(notification)
+            super.switchToTab(notification: notification)
         }
         
     }
@@ -32,7 +32,7 @@ class TabViewControllerTests: XCTestCase {
         
         var didPerform = false
         
-        func perform(userInfo: [NSObject : AnyObject]) {
+        func perform(_ userInfo: [AnyHashable : Any]) {
             self.didPerform = true
         }
         
@@ -53,44 +53,44 @@ class TabViewControllerTests: XCTestCase {
     }
     
     func testSwitchToTab_Fires() {
-        NSNotificationCenter.defaultCenter().postNotificationName(SwitchToTabNotification, object: self, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: nil)
         
         XCTAssertTrue(self.controller.didSwitchToTab, "")
     }
     
     func testSwitchToTab_IgnoresEmptyNotifications() {
-        let notification = NSNotification(name: SwitchToTabNotification, object: self)
-        self.controller.switchToTab(notification)
+        let notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
     }
     
     func testSwitchToTab_IgnoresIfIndexMissing() {
         let payload = ["test":"test"]
-        let notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        let notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
     }
     
     func testSwitchToTab_IgnoresIfIndexInvalid() {
         var payload = ["index":-1]
-        var notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
         
         payload["index"] = 5
-        notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
     }
     
     func testSwitchToTab_Succeeds() {
         var payload = ["index":1]
-        var notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 1, "")
     }
@@ -102,8 +102,8 @@ class TabViewControllerTests: XCTestCase {
         self.controller.setViewControllers(viewControllers, animated: false)
         
         var payload = ["index":2]
-        var notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertTrue(actionPerformer.didPerform, "")
         XCTAssertEqual(self.controller.selectedIndex, 2, "")
@@ -116,8 +116,8 @@ class TabViewControllerTests: XCTestCase {
         self.controller.setViewControllers(viewControllers, animated: false)
         
         var payload = ["index":1]
-        var notification = NSNotification(name: SwitchToTabNotification, object: self, userInfo: payload)
-        self.controller.switchToTab(notification)
+        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        self.controller.switchToTab(notification: notification)
         
         XCTAssertTrue(actionPerformer.didPerform, "")
         XCTAssertEqual(self.controller.selectedIndex, 1, "")

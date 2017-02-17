@@ -22,14 +22,8 @@ class ParseSettings {
     }
     
     init(bundle: Bundle) {
-        let path = bundle.path(forResource: "Parse", ofType: "plist")
-        if path == nil {
-            print("Parse.plist does not exist. Make a copy of Parse-Template.plist named Parse.plist and fill it with correct vaues")
-        }
-        let settings = NSDictionary(contentsOfFile: path!)
-        
-        self.applicationId = settings?.object(forKey: "ApplicationId") as? String ?? ""
-        self.clientId = settings?.object(forKey: "ClientId") as? String ?? ""
+        self.applicationId = ""
+        self.clientId = ""
     }
     
 }

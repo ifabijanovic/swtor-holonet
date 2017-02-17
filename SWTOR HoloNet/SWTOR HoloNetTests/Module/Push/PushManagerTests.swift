@@ -16,11 +16,11 @@ class PushManagerTests: XCTestCase {
         var type: String { get { return "test" } }
         
         var didPerform = false
-        var userInfo: [NSObject : AnyObject]?
+        var userInfo: [AnyHashable : Any]?
         var isForeground = false
         var returnValue = true
         
-        func perform(userInfo: [NSObject : AnyObject]?, isForeground: Bool) -> Bool {
+        func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
             self.didPerform = true
             self.userInfo = userInfo
             self.isForeground = isForeground
@@ -33,7 +33,7 @@ class PushManagerTests: XCTestCase {
         
         var action: TestAction? = TestAction()
         
-        override func create(#userInfo: [NSObject : AnyObject]) -> Action? {
+        override func create(userInfo: [AnyHashable : Any]) -> Action? {
             return self.action
         }
         
@@ -74,27 +74,27 @@ class PushManagerTests: XCTestCase {
         
     }
     
-    func setDidCancel(value: Bool?) {
+    func setDidCancel(_ value: Bool?) {
         if let value = value {
-            NSUserDefaults.standardUserDefaults().setBool(value, forKey: keyDidCancelPushAccess)
+            UserDefaults.standard.set(value, forKey: keyDidCancelPushAccess)
         } else {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(keyDidCancelPushAccess)
+            UserDefaults.standard.removeObject(forKey: keyDidCancelPushAccess)
         }
     }
     
-    func setDidApprove(value: Bool?) {
+    func setDidApprove(_ value: Bool?) {
         if let value = value {
-            NSUserDefaults.standardUserDefaults().setBool(value, forKey: keyDidApprovePushAccess)
+            UserDefaults.standard.set(value, forKey: keyDidApprovePushAccess)
         } else {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(keyDidApprovePushAccess)
+            UserDefaults.standard.removeObject(forKey: keyDidApprovePushAccess)
         }
     }
     
-    func setTimestamp(date: NSDate?) {
+    func setTimestamp(_ date: NSDate?) {
         if let date = date {
-            NSUserDefaults.standardUserDefaults().setObject(date, forKey: keyLastPushAccessRequestTimestamp)
+            UserDefaults.standard.set(date, forKey: keyLastPushAccessRequestTimestamp)
         } else {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(keyLastPushAccessRequestTimestamp)
+            UserDefaults.standard.removeObject(forKey: keyLastPushAccessRequestTimestamp)
         }
     }
     
@@ -138,7 +138,7 @@ class PushManagerTests: XCTestCase {
     
     func testShouldRequestPushAccess_CanceledSomeTimeAgo() {
         self.setDidCancel(true)
-        self.setTimestamp(NSDate(timeIntervalSinceNow: -pushAccessRequestRetryInterval as NSTimeInterval))
+        self.setTimestamp(NSDate(timeIntervalSinceNow: -pushAccessRequestRetryInterval as TimeInterval))
         let manager = PushManagerMock()
         
         XCTAssertTrue(manager.shouldRequestPushAccess(), "")
@@ -157,10 +157,10 @@ class PushManagerTests: XCTestCase {
         alertFactory.lastAlert!.tapCancel()
         
         XCTAssertFalse(manager.didRegisterForPush, "")
-        XCTAssertTrue(NSUserDefaults.standardUserDefaults().boolForKey(keyDidCancelPushAccess), "")
-        let date = NSUserDefaults.standardUserDefaults().objectForKey(keyLastPushAccessRequestTimestamp) as? NSDate
+        XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidCancelPushAccess), "")
+        let date = UserDefaults.standard.object(forKey: keyLastPushAccessRequestTimestamp) as? Date
         XCTAssertNotNil(date, "")
-        let diff = NSDate().timeIntervalSinceDate(date!)
+        let diff = NSDate().timeIntervalSince(date!)
         XCTAssertLessThanOrEqual(diff, 3, "")
     }
     
@@ -175,14 +175,14 @@ class PushManagerTests: XCTestCase {
         alertFactory.lastAlert!.tapDefault()
         
         XCTAssertTrue(manager.didRegisterForPush, "")
-        XCTAssertTrue(NSUserDefaults.standardUserDefaults().boolForKey(keyDidApprovePushAccess), "")
+        XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidApprovePushAccess), "")
     }
     
     // MARK: - handleRemoteNotification
     
     func testHandleRemoteNotification_PerformsForegroundAction() {
         let userInfo = ["action":"test"]
-        let appState = UIApplicationState.Active
+        let appState = UIApplicationState.active
         let alertFactory = TestAlertFactory()
         let actionFactory = TestActionFactory(alertFactory: alertFactory)
         let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
@@ -199,7 +199,7 @@ class PushManagerTests: XCTestCase {
     
     func testHandleRemoteNotification_PerformsBackgroundAction() {
         let userInfo = ["action":"test"]
-        let appState = UIApplicationState.Inactive
+        let appState = UIApplicationState.inactive
         let alertFactory = TestAlertFactory()
         let actionFactory = TestActionFactory(alertFactory: alertFactory)
         let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
@@ -216,7 +216,7 @@ class PushManagerTests: XCTestCase {
     
     func testHandleRemoteNotification_InvalidAction() {
         let userInfo = ["action":"test"]
-        let appState = UIApplicationState.Active
+        let appState = UIApplicationState.active
         let alertFactory = TestAlertFactory()
         let actionFactory = TestActionFactory(alertFactory: alertFactory)
         actionFactory.action = nil
@@ -229,7 +229,7 @@ class PushManagerTests: XCTestCase {
     
     func testHandleRemoteNotification_ActionFailed() {
         let userInfo = ["action":"test"]
-        let appState = UIApplicationState.Active
+        let appState = UIApplicationState.active
         let alertFactory = TestAlertFactory()
         let actionFactory = TestActionFactory(alertFactory: alertFactory)
         actionFactory.action!.returnValue = false

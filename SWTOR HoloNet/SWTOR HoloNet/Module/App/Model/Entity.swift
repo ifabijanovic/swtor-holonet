@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Entity: NSObject {
+class Entity: Hashable, Equatable {
     
     // MARK: - Properties
     
@@ -20,6 +20,9 @@ class Entity: NSObject {
         self.id = id
     }
     
+    var hashValue: Int {
+        return self.id.hashValue
+    }
 }
 
 func == (lhs: Entity, rhs: Entity) -> Bool {

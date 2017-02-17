@@ -18,7 +18,7 @@ class AlertTests: XCTestCase {
         let alert = Alert(presenter: presenter, buttons: buttons)
         
         XCTAssertEqual(alert.presenter, presenter, "")
-        XCTAssertEqual(alert.style, UIAlertControllerStyle.Alert, "")
+        XCTAssertEqual(alert.style, UIAlertControllerStyle.alert, "")
         XCTAssertEqual(alert.buttons.count, 0, "")
     }
     
@@ -29,7 +29,7 @@ class AlertTests: XCTestCase {
         let alert = Alert(presenter: presenter, title: title, message: message, buttons: buttons)
         
         XCTAssertEqual(alert.presenter, presenter, "")
-        XCTAssertEqual(alert.style, UIAlertControllerStyle.Alert, "")
+        XCTAssertEqual(alert.style, UIAlertControllerStyle.alert, "")
         XCTAssertNotNil(alert.title, "")
         XCTAssertEqual(alert.title!, title, "")
         XCTAssertNotNil(alert.message, "")
@@ -43,18 +43,18 @@ class AlertTests: XCTestCase {
         let alert = Alert(presenter: presenter, title: title, buttons: buttons)
         
         XCTAssertEqual(alert.presenter, presenter, "")
-        XCTAssertEqual(alert.style, UIAlertControllerStyle.ActionSheet, "")
+        XCTAssertEqual(alert.style, UIAlertControllerStyle.actionSheet, "")
         XCTAssertNotNil(alert.title, "")
         XCTAssertEqual(alert.title!, title, "")
         XCTAssertEqual(alert.buttons.count, 0, "")
     }
     
     func testInitAssignsButtons() {
-        let expectCancel = expectationWithDescription("")
-        let expectDefault = expectationWithDescription("")
+        let expectCancel = self.expectation(description: "")
+        let expectDefault = self.expectation(description: "")
         let buttons: Array<(style: UIAlertActionStyle, title: String, handler:(() -> ())?)> = [
-            (style: .Cancel, title: "Cancel", handler: { expectCancel.fulfill() }),
-            (style: .Default, title: "Default", handler: { expectDefault.fulfill() })
+            (style: .cancel, title: "Cancel", handler: { expectCancel.fulfill() }),
+            (style: .default, title: "Default", handler: { expectDefault.fulfill() })
         ]
         let alert = Alert(presenter: presenter, buttons: buttons)
         
@@ -65,7 +65,7 @@ class AlertTests: XCTestCase {
             alert.buttons[index].handler!()
         }
         
-        waitForExpectationsWithTimeout(3, handler: { error in
+        waitForExpectations(timeout: 3, handler: { error in
             if error != nil {
                 XCTFail("")
             }

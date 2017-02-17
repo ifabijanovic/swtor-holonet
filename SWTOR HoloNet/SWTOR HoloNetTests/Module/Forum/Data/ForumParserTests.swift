@@ -68,7 +68,7 @@ class ForumParserTests: XCTestCase {
     // MARK: - integerContent()
     
     func testIntegerContent_Success() {
-        let html = HTMLElement(tagName: "div", attributes: nil)
+        let html = HTMLElement(tagName: "div", attributes: nil)!
         html.textContent = "123"
         let value = self.parser!.integerContent(element: html)!
         
@@ -76,8 +76,8 @@ class ForumParserTests: XCTestCase {
     }
     
     func testIntegerContent_Nested() {
-        let parent = HTMLElement(tagName: "div", attributes: nil)
-        let child = HTMLElement(tagName: "div", attributes: nil)
+        let parent = HTMLElement(tagName: "div", attributes: nil)!
+        let child = HTMLElement(tagName: "div", attributes: nil)!
         child.parentElement = parent
         child.textContent = "123"
         let value = self.parser!.integerContent(element: parent)!
@@ -92,7 +92,7 @@ class ForumParserTests: XCTestCase {
     }
     
     func testIntegerContent_NoInteger() {
-        let html = HTMLElement(tagName: "div", attributes: nil)
+        let html = HTMLElement(tagName: "div", attributes: nil)!
         html.textContent = "some text"
         let value = self.parser!.integerContent(element: html)
         
@@ -100,7 +100,7 @@ class ForumParserTests: XCTestCase {
     }
     
     func testIntegetContent_MixedContent() {
-        let html = HTMLElement(tagName: "div", attributes: nil)
+        let html = HTMLElement(tagName: "div", attributes: nil)!
         html.textContent = "some text with 123 numbers 456"
         let value = self.parser!.integerContent(element: html)
         
@@ -110,7 +110,7 @@ class ForumParserTests: XCTestCase {
     // MARK: - postDate()
     
     func testPostDate_Success() {
-        let html = HTMLElement(tagName: "div", attributes: nil)
+        let html = HTMLElement(tagName: "div", attributes: nil)!
         html.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postDate(element: html)!
         
@@ -118,8 +118,8 @@ class ForumParserTests: XCTestCase {
     }
     
     func testPostDate_Nested() {
-        let parent = HTMLElement(tagName: "div", attributes: nil)
-        let child = HTMLElement(tagName: "div", attributes: nil)
+        let parent = HTMLElement(tagName: "div", attributes: nil)!
+        let child = HTMLElement(tagName: "div", attributes: nil)!
         child.parentElement = parent
         child.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postDate(element: parent)!
@@ -136,7 +136,7 @@ class ForumParserTests: XCTestCase {
     // MARK: - postNumber()
     
     func testPostNumber_Success() {
-        let html = HTMLElement(tagName: "div", attributes: nil)
+        let html = HTMLElement(tagName: "div", attributes: nil)!
         html.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postNumber(element: html)!
         
@@ -144,8 +144,8 @@ class ForumParserTests: XCTestCase {
     }
     
     func testPostNumber_Nested() {
-        let parent = HTMLElement(tagName: "div", attributes: nil)
-        let child = HTMLElement(tagName: "div", attributes: nil)
+        let parent = HTMLElement(tagName: "div", attributes: nil)!
+        let child = HTMLElement(tagName: "div", attributes: nil)!
         child.parentElement = parent
         child.textContent = "10.10.2014 , 10:10 AM | #1"
         let value = self.parser!.postNumber(element: parent)!
@@ -190,7 +190,7 @@ class ForumParserTests: XCTestCase {
     
     func testPostText_Simple() {
         let html = "<div>Test post text<br>More text in new line</div>"
-        let doc = HTMLDocument(string: html)
+        let doc = HTMLDocument(string: html)!
         
         let value = self.parser!.postText(node: doc.rootElement)
         
@@ -200,7 +200,7 @@ class ForumParserTests: XCTestCase {
     
     func testPostText_Nested() {
         let html = "<div><span>Test post text</span><br><span>More text in new line</span><div>Even more text</div></div>"
-        let doc = HTMLDocument(string: html)
+        let doc = HTMLDocument(string: html)!
         
         let value = self.parser!.postText(node: doc.rootElement)
         
@@ -210,7 +210,7 @@ class ForumParserTests: XCTestCase {
     
     func testPostText_Styled() {
         let html = "<div><font color='Yellow'>Yellow text</font><font color='Red'><font size='4'><b>Red bold text of size 4</b></font></font><br><font size='6'><i>Italic text of size 6</i></font></div>"
-        let doc = HTMLDocument(string: html)
+        let doc = HTMLDocument(string: html)!
         
         let value = self.parser!.postText(node: doc.rootElement)
         
@@ -223,14 +223,14 @@ class ForumParserTests: XCTestCase {
             let blockHtml = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by TestUser</div><div class='\(blockClass)-body'>Block body text here<br>More text in new line</div></div>"
             let postHtml = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
             let html = "<div>\(blockHtml)\(postHtml)</div>"
-            let doc = HTMLDocument(string: html)
+            let doc = HTMLDocument(string: html)!
             
             let value = self.parser!.postText(node: doc.rootElement)
             
-            let header = doc.rootElement.firstNodeMatchingSelector(".\(blockClass)-header").textContent
-            let body = doc.rootElement.firstNodeMatchingSelector(".\(blockClass)-body").textContent
+            let header = doc.rootElement.firstNode(matchingSelector: ".\(blockClass)-header").textContent!
+            let body = doc.rootElement.firstNode(matchingSelector: ".\(blockClass)-body").textContent!
             let block = self.parser!.formatPostBlock(header: header, body: body)
-            let post = doc.rootElement.firstNodeMatchingSelector(".regular-post").textContent
+            let post = doc.rootElement.firstNode(matchingSelector: ".regular-post").textContent!
             
             XCTAssertNotNil(value, "")
             XCTAssertEqual(value!, "\(block)\(post)", "")
@@ -246,19 +246,19 @@ class ForumParserTests: XCTestCase {
             let post2Html = "<div class='regular-post'>Simple regular post text</div>"
             
             let html = "<div>\(block1Html)\(post1Html)\(block2Html)\(post2Html)</div>"
-            let doc = HTMLDocument(string: html)
+            let doc = HTMLDocument(string: html)!
             
             let value = self.parser!.postText(node: doc.rootElement)
             
-            let blocks = doc.rootElement.nodesMatchingSelector(".\(blockClass)") as! Array<HTMLElement>
+            let blocks = doc.rootElement.nodes(matchingSelector: ".\(blockClass)") as! Array<HTMLElement>
             var blocksText = Array<String>()
             for block in blocks {
-                let header = block.firstNodeMatchingSelector(".\(blockClass)-header").textContent
-                let body = block.firstNodeMatchingSelector(".\(blockClass)-body").textContent
+                let header = block.firstNode(matchingSelector: ".\(blockClass)-header").textContent!
+                let body = block.firstNode(matchingSelector: ".\(blockClass)-body").textContent!
                 let block = self.parser!.formatPostBlock(header: header, body: body)
                 blocksText.append(block)
             }
-            let posts = doc.rootElement.nodesMatchingSelector(".regular-post") as! Array<HTMLElement>
+            let posts = doc.rootElement.nodes(matchingSelector: ".regular-post") as! Array<HTMLElement>
             var postsText = Array<String>()
             for post in posts {
                 postsText.append(post.textContent)
@@ -274,14 +274,14 @@ class ForumParserTests: XCTestCase {
         let postHtml = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
         
         let html = "<div>\(blockHtml)\(postHtml)</div>"
-        let doc = HTMLDocument(string: html)
+        let doc = HTMLDocument(string: html)!
         
         let value = self.parser!.postText(node: doc.rootElement)
         
-        let header = doc.rootElement.firstNodeMatchingSelector(".header").textContent
-        let body = doc.rootElement.firstNodeMatchingSelector(".body").textContent
+        let header = doc.rootElement.firstNode(matchingSelector: ".header").textContent!
+        let body = doc.rootElement.firstNode(matchingSelector: ".body").textContent!
         let block = self.parser!.formatPostBlock(header: header, body: body)
-        let post = doc.rootElement.firstNodeMatchingSelector(".regular-post").textContent
+        let post = doc.rootElement.firstNode(matchingSelector: ".regular-post").textContent!
         
         XCTAssertNotNil(value, "")
         XCTAssertEqual(value!, "\(block)\(post)", "")

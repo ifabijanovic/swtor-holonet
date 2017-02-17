@@ -18,7 +18,7 @@ class TestAlertFactoryTests: XCTestCase {
         let title = "Title"
         let message = "Message"
         
-        let alert = factory.createAlert(presenter, title: title, message: message, buttons: (style: .Cancel, title: "Cancel", handler: {}), (style: .Default, title: "Default", handler: {}))
+        let alert = factory.createAlert(presenter: presenter, title: title, message: message, buttons: (style: .cancel, title: "Cancel", handler: {}), (style: .default, title: "Default", handler: {}))
         
         XCTAssertTrue(alert is TestAlert, "")
         XCTAssertEqual(alert.buttons.count, 2, "")
@@ -28,7 +28,7 @@ class TestAlertFactoryTests: XCTestCase {
         let factory = TestAlertFactory()
         let title = "Title"
         
-        let actionSheet = factory.createActionSheet(presenter, title: title, buttons: (style: .Cancel, title: "Cancel", handler: {}), (style: .Default, title: "Default", handler: {}))
+        let actionSheet = factory.createActionSheet(presenter: presenter, title: title, buttons: (style: .cancel, title: "Cancel", handler: {}), (style: .default, title: "Default", handler: {}))
         
         XCTAssertTrue(actionSheet is TestAlert, "")
         XCTAssertEqual(actionSheet.buttons.count, 2, "")

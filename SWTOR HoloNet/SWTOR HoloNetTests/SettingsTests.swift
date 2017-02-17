@@ -20,7 +20,7 @@ class SettingsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let bundle = NSBundle(forClass: SettingsTests.self)
+        let bundle = Bundle(for: SettingsTests.self)
         self.settings = Settings(bundle: bundle)
     }
     

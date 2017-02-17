@@ -26,12 +26,12 @@ class AlertDelegateTests: XCTestCase {
         let delegate = AlertDelegate(alertView: alert) { index in return }
         
         XCTAssertNotNil(alert.delegate, "")
-        delegate.alertView(alert, clickedButtonAtIndex: 0)
+        delegate.alertView(alert, clickedButtonAt: 0)
         XCTAssertNil(alert.delegate, "")
     }
     
     func testClickFiresCallback() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         let random = Int(arc4random())
         let alert = UIAlertView()
         let delegate = AlertDelegate(alertView: alert) { index in
@@ -39,8 +39,8 @@ class AlertDelegateTests: XCTestCase {
             expectation.fulfill()
         }
         
-        delegate.alertView(alert, clickedButtonAtIndex: random)
-        waitForExpectationsWithTimeout(3, handler: { error in
+        delegate.alertView(alert, clickedButtonAt: random)
+        waitForExpectations(timeout: 3, handler: { error in
             if error != nil {
                 XCTFail("")
             }

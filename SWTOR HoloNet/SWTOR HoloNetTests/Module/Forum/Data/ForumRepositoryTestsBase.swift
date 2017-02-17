@@ -13,15 +13,15 @@ class ForumRepositoryTestsBase: XCTestCase {
 
     // MARK: - Properties
     
-    var bundle: NSBundle?
+    var bundle: Bundle?
     var settings: Settings?
     
-    let timeout: NSTimeInterval = 3
+    let timeout: TimeInterval = 3
     let headers = ["Content-Type": "text/html"]
     let passAll: OHHTTPStubsTestBlock = { (request) in
         return true
     }
-    let defaultFailure: (NSError) -> Void = { (error) in
+    let defaultFailure: (Error) -> Void = { (error) in
         XCTFail("Failed with error \(error)")
     }
     let defaultExpectationHandler: XCWaitCompletionHandler = { (error) in
@@ -35,7 +35,7 @@ class ForumRepositoryTestsBase: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.bundle = NSBundle(forClass: SettingsTests.self)
+        self.bundle = Bundle(for: SettingsTests.self)
         self.settings = Settings(bundle: self.bundle!)
     }
     
