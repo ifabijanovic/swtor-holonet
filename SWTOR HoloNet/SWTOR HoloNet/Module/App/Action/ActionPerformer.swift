@@ -10,6 +10,6 @@ import Foundation
 
 @objc protocol ActionPerformer {
     
-    func perform(userInfo: [NSObject : AnyObject])
+    func perform(_ userInfo: [AnyHashable: Any])
     
 }

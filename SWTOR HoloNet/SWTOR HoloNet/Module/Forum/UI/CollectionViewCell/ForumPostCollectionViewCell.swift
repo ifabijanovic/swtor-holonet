@@ -22,18 +22,18 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
 
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    func applyTheme(_ theme: Theme) {
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textView.textColor = theme.contentText
-        self.textView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.textView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
         
-        if (!self.devImageView.hidden) {
+        if (!self.devImageView.isHidden) {
             self.textView.textColor = theme.contentHighlightText
         }
         
         if self.accessoryView.image == nil {
-            self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
+            self.accessoryView.image = UIImage(named: "Forward")?.withRenderingMode(.alwaysTemplate)
         }
         self.accessoryView.tintColor = theme.contentTitle
         
@@ -43,7 +43,7 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView
         
-        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
             self.textView.numberOfLines = 40
         }
     }

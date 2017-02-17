@@ -44,7 +44,7 @@ class NotificationSettingsViewController: BaseViewController {
         self.loadImages()
         self.applyTheme(self.theme)
         
-        let status = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "enabled" : "disabled"
+        let status = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "enabled" : "disabled"
         self.titleLabel.text = "Notifications are \(status)"
         
 #if !DEBUG && !TEST
@@ -56,30 +56,30 @@ class NotificationSettingsViewController: BaseViewController {
     private func loadImages() {
         self.settingsImageView.layer.cornerRadius = 5.0
         self.settingsImageView.layer.masksToBounds = true
-        self.settingsImageView.image = UIImage(named: "TintSettings")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.settingsImageView.image = UIImage(named: "TintSettings")?.withRenderingMode(.alwaysTemplate)
         
         self.notificationCenterImageView.layer.cornerRadius = 5.0
         self.notificationCenterImageView.layer.masksToBounds = true
-        self.notificationCenterImageView.image = UIImage(named: "TintNotificationCenter")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.notificationCenterImageView.image = UIImage(named: "TintNotificationCenter")?.withRenderingMode(.alwaysTemplate)
         
         self.holoNetImageView.layer.cornerRadius = 5.0
         self.holoNetImageView.layer.masksToBounds = true
-        self.holoNetImageView.image = UIImage(named: "TintHoloNet")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.holoNetImageView.image = UIImage(named: "TintHoloNet")?.withRenderingMode(.alwaysTemplate)
         
-        self.largeFrameImageView.image = UIImage(named: "TintFrameLarge")?.imageWithRenderingMode(.AlwaysTemplate)
-        self.noneImageView.image = UIImage(named: "TintPushNone")?.imageWithRenderingMode(.AlwaysTemplate)
-        self.bannersImageView.image = UIImage(named: "TintPushBanners")?.imageWithRenderingMode(.AlwaysTemplate)
-        self.alertsImageView.image = UIImage(named: "TintPushAlerts")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.largeFrameImageView.image = UIImage(named: "TintFrameLarge")?.withRenderingMode(.alwaysTemplate)
+        self.noneImageView.image = UIImage(named: "TintPushNone")?.withRenderingMode(.alwaysTemplate)
+        self.bannersImageView.image = UIImage(named: "TintPushBanners")?.withRenderingMode(.alwaysTemplate)
+        self.alertsImageView.image = UIImage(named: "TintPushAlerts")?.withRenderingMode(.alwaysTemplate)
         
-        self.smallFrameImageView.image = UIImage(named: "TintFrameSmall")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.smallFrameImageView.image = UIImage(named: "TintFrameSmall")?.withRenderingMode(.alwaysTemplate)
         self.onOffView.layer.cornerRadius = 10.0
         self.onOffView.layer.masksToBounds = true
-        self.onOffImageView.image = UIImage(named: "TintOnSwitch")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.onOffImageView.image = UIImage(named: "TintOnSwitch")?.withRenderingMode(.alwaysTemplate)
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
         self.settingsImageView.tintColor = theme.instructionsIcon

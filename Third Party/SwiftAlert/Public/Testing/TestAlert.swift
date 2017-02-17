@@ -13,15 +13,15 @@ class TestAlert: Alert {
     // MARK: - Public methods
     
     func tapDefault() {
-        self.fireButtonHandlerWithStyle(.Default)
+        self.fireButtonHandlerWithStyle(.default)
     }
     
     func tapCancel() {
-        self.fireButtonHandlerWithStyle(.Cancel)
+        self.fireButtonHandlerWithStyle(.cancel)
     }
     
     func tapDestructive() {
-        self.fireButtonHandlerWithStyle(.Destructive)
+        self.fireButtonHandlerWithStyle(.destructive)
     }
     
     func tapButtonAtIndex(index: Int) {
@@ -35,7 +35,7 @@ class TestAlert: Alert {
     
     // MARK: - Private methods
     
-    func fireButtonHandlerWithStyle(style: UIAlertActionStyle) {
+    func fireButtonHandlerWithStyle(_ style: UIAlertActionStyle) {
         for button in buttons {
             if button.style == style {
                 if let handler = button.handler {

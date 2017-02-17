@@ -30,18 +30,18 @@ class ForumPostViewController: BaseViewController {
         
         // Set user avatar image if URL is defined in the model
         if let url = self.post.avatarUrl {
-            self.avatarImageView.hidden = false
-            self.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
+            self.avatarImageView.isHidden = false
+            self.avatarImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "Avatar"))
         } else {
-            self.avatarImageView.hidden = true
+            self.avatarImageView.isHidden = true
         }
         
         // Set dev icon if post is marked as Bioware post
         if self.post.isBiowarePost {
-            self.devImageView.hidden = false
-            self.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            self.devImageView.isHidden = false
+            self.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
-            self.devImageView.hidden = true
+            self.devImageView.isHidden = true
         }
         
         self.dateLabel.text = self.post.postNumber != nil ? "\(self.post.date) | #\(self.post.postNumber!)" : self.post.date
@@ -58,19 +58,19 @@ class ForumPostViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
-        self.textTextView.setContentOffset(CGPointZero, animated: false)
+        self.textTextView.setContentOffset(CGPoint.zero, animated: false)
         
         super.viewDidLayoutSubviews()
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
-        self.textTextView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.textTextView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
     }
 
 }

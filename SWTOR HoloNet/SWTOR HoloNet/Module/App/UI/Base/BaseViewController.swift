@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController, Injectable, Themeable {
+class BaseViewController: UIViewController, Themeable {
 
     // MARK: - Properties
     
@@ -25,14 +25,14 @@ class BaseViewController: UIViewController, Injectable, Themeable {
         self.registerThemeChangedCallback()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.inject()
         self.registerThemeChangedCallback()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         self.inject()
@@ -40,19 +40,23 @@ class BaseViewController: UIViewController, Injectable, Themeable {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func inject() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
+        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory in
+            self.settings = settings
+            self.theme = theme
+            self.alertFactory = alertFactory
+        }
     }
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {}
+    func applyTheme(_ theme: Theme) {}
     
-    func themeChanged(theme: Theme) {
+    func themeChanged(_ theme: Theme) {
         self.applyTheme(theme)
     }
     
@@ -61,7 +65,7 @@ class BaseViewController: UIViewController, Injectable, Themeable {
     }
     
     private func registerThemeChangedCallback() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "themeChanged:", name: ThemeChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.themeChanged(notification:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
     }
 
 }

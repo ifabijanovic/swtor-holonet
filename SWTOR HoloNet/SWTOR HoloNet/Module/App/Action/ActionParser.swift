@@ -12,18 +12,18 @@ class ActionParser {
     
     // MARK: - Variables
     
-    let userInfo: [NSObject: AnyObject]
+    let userInfo: [AnyHashable: Any]
     
     // MARK: - Init
     
-    init(userInfo: [NSObject: AnyObject]) {
+    init(userInfo: [AnyHashable: Any]) {
         self.userInfo = userInfo
     }
     
     // MARK: - Methods
     
     func getAlert() -> String? {
-        if let aps = self.userInfo["aps"] as? [NSObject: AnyObject] {
+        if let aps = self.userInfo["aps"] as? [AnyHashable: Any] {
             if let alert = aps["alert"] as? String {
                 return alert
             }

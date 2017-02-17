@@ -14,9 +14,9 @@ internal class AlertIOS7: Alert {
     
     override func show() {
         switch self.style {
-        case .ActionSheet:
+        case .actionSheet:
             self.showActionSheet()
-        case .Alert:
+        case .alert:
             self.showAlert()
         }
     }
@@ -31,26 +31,26 @@ internal class AlertIOS7: Alert {
         }
         
         for button in self.buttons {
-            actionSheet.addButtonWithTitle(button.title)
+            actionSheet.addButton(withTitle: button.title)
             switch button.style {
-            case .Default:
+            case .default:
                 break
-            case .Cancel:
+            case .cancel:
                 actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1
-            case .Destructive:
+            case .destructive:
                 actionSheet.destructiveButtonIndex = actionSheet.numberOfButtons - 1
             }
         }
         
-        ActionSheetDelegate(actionSheet: actionSheet) { (index: Int) in
+        _ = ActionSheetDelegate(actionSheet: actionSheet) { (index: Int) in
             if let completion = self.completion { completion() }
             if let handler = self.buttons[index].handler { handler() }
         }
         
         if let sourceView = self.sourceView {
-            actionSheet.showFromRect(sourceView.bounds, inView: sourceView, animated: true)
+            actionSheet.show(from: sourceView.bounds, in: sourceView, animated: true)
         } else {
-            actionSheet.showInView(self.presenter.view)
+            actionSheet.show(in: self.presenter.view)
         }
     }
     
@@ -66,16 +66,16 @@ internal class AlertIOS7: Alert {
         }
         
         for button in self.buttons {
-            alertView.addButtonWithTitle(button.title)
+            alertView.addButton(withTitle: button.title)
             switch button.style {
-            case .Cancel:
+            case .cancel:
                 alertView.cancelButtonIndex = alertView.numberOfButtons - 1
             default:
                 break
             }
         }
         
-        AlertDelegate(alertView: alertView) { (index: Int) in
+        _ = AlertDelegate(alertView: alertView) { (index: Int) in
             if let completion = self.completion { completion() }
             if let handler = self.buttons[index].handler { handler() }
         }

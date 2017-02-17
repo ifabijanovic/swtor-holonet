@@ -42,20 +42,20 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
 #endif
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance().pushManager.isPushEnabled ? "Enabled" : "Disabled"
+        self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
         self.themeStatusLabel.text = self.theme.type.toString()
         self.textSizeStatusLabel.text = self.theme.textSize.toString()
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRow(at: indexPath)
         if cell == self.contactCell {
             self.contact()
         }
@@ -63,7 +63,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
             self.reportBug()
         }
         if cell == self.notificationSettingsCell && isIOS8OrLater() {
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
         }
     }
     
@@ -79,7 +79,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         controller.mailComposeDelegate = self
         controller.setToRecipients([self.settings.appEmail])
         
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     
     private func reportBug() {
@@ -93,7 +93,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         controller.setToRecipients([self.settings.appEmail])
         controller.setSubject("[Bug]")
         
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
     
     private func emailNotAvailable() {
@@ -103,18 +103,18 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case DisclaimerSegue:
-            let controller = segue.destinationViewController as! TextViewController
+            let controller = segue.destination as! TextViewController
             controller.title = "Disclaimer"
             controller.file = "Disclaimer"
         case PrivacyPolicySegue:
-            let controller = segue.destinationViewController as! TextViewController
+            let controller = segue.destination as! TextViewController
             controller.title = "Privacy Policy"
             controller.file = "PrivacyPolicy"
         case LicenseSegue:
-            let controller = segue.destinationViewController as! TextViewController
+            let controller = segue.destination as! TextViewController
             controller.title = "License"
             controller.file = "License"
         default:
@@ -122,7 +122,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == NotificationSettingsSegue && isIOS8OrLater() {
             return false
         }
@@ -131,12 +131,12 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         
-        for section in 0..<self.tableView.numberOfSections() {
-            for row in 0..<self.tableView.numberOfRowsInSection(section) {
-                if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
+        for section in 0..<self.tableView.numberOfSections {
+            for row in 0..<self.tableView.numberOfRows(inSection: section) {
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: section)) {
                     cell.applyThemeEx(theme)
                     cell.setDisclosureIndicator(theme)
                 }
@@ -146,8 +146,8 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     
     // MARK: - MFMailComposeViewControllerDelegate
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
 }

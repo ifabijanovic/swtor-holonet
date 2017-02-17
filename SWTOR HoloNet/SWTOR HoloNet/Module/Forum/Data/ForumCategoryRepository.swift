@@ -12,41 +12,41 @@ class ForumCategoryRepository: ForumRepositoryBase {
     
     // MARK: - Public methods
     
-    func get(#language: ForumLanguage, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+    func get(language: ForumLanguage, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: language.rawValue, success: success, failure: failure)
     }
     
-    func get(#category: ForumCategory, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+    func get(category: ForumCategory, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: category.id, success: success, failure: failure)
     }
     
     // MARK: - Network
     
-    private func get(#id: Int, success: ((Array<ForumCategory>) -> Void), failure: ((NSError) -> Void)) {
+    private func get(id: Int, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
         let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
-        self.manager.GET(url, parameters: nil, success: { (operation, response) in
-            let html = operation.responseString
+        self.manager.get(url, parameters: nil, success: { (operation, response) in
+            let html = operation!.responseString!
             let items = self.parseHtml(html)
             
             if items.isEmpty && self.isMaintenanceResponse(html) {
-                return failure(NSError.maintenanceError())
+                return failure(maintenanceError())
             }
             
             success(items)
         }) { (operation, error) in
-            if !operation.cancelled {
-                failure(error)
+            if !operation!.isCancelled {
+                failure(error!)
             }
         }
     }
     
     // MARK: - Parsing
     
-    private func parseHtml(html: String) -> Array<ForumCategory> {
+    private func parseHtml(_ html: String) -> Array<ForumCategory> {
         var items = Array<ForumCategory>()
         
         let document = HTMLDocument(string: html)
-        let categoryNodes = document.nodesMatchingSelector(".forumCategory > .subForum") as! Array<HTMLElement>
+        let categoryNodes = document!.nodes(matchingSelector: ".forumCategory > .subForum") as! Array<HTMLElement>
         
         for node in categoryNodes {
             let category = self.parseCategory(node)
@@ -58,30 +58,30 @@ class ForumCategoryRepository: ForumRepositoryBase {
         return items
     }
     
-    private func parseCategory(element: HTMLElement) -> ForumCategory? {
+    private func parseCategory(_ element: HTMLElement) -> ForumCategory? {
         // Id & Title
-        let titleElement = element.firstNodeMatchingSelector(".resultTitle > a")
-        let id = self.parser.linkParameter(linkElement: titleElement, name: self.settings.categoryQueryParam)?.toInt()
+        let titleElement = element.firstNode(matchingSelector: ".resultTitle > a")
+        let idString = self.parser.linkParameter(linkElement: titleElement, name: self.settings.categoryQueryParam)
+        let id = idString != nil ? Int(idString!) : nil
         let title = titleElement?.textContent
         
         // Icon
         var iconUrl: String? = nil
-        if let thumbElement = element.firstNodeMatchingSelector(".thumbBackground") {
+        if let thumbElement = element.firstNode(matchingSelector: ".thumbBackground") {
             if let iconStyle = thumbElement.objectForKeyedSubscript("style") as? String {
-                let start = iconStyle.rangeOfString("url(", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
-                let end = iconStyle.rangeOfString(")", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil)
-                let range = Range<String.Index>(start: start!.endIndex, end: end!.startIndex)
-                iconUrl = iconStyle.substringWithRange(range)
+                let start = iconStyle.range(of: "url(", options: .literal, range: nil, locale: nil)
+                let end = iconStyle.range(of: ")", options: .literal, range: nil, locale: nil)
+                iconUrl = iconStyle.substring(with: Range(uncheckedBounds: (lower: start!.upperBound, upper: end!.lowerBound)))
             }
         }
         
         // Description
-        let description = element.firstNodeMatchingSelector(".resultText")?.textContent
+        let description = element.firstNode(matchingSelector: ".resultText")?.textContent
         
         // Stats & Last post
         var stats: String? = nil
         var lastPost: String? = nil
-        let subTextElements = element.nodesMatchingSelector(".resultSubText") as! Array<HTMLElement>
+        let subTextElements = element.nodes(matchingSelector: ".resultSubText") as! Array<HTMLElement>
 
         if subTextElements.count > 0 {
             stats = subTextElements[0].textContent

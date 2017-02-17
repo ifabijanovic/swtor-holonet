@@ -12,37 +12,37 @@ class ForumPostRepository: ForumRepositoryBase {
     
     // MARK: - Public methods
     
-    func url(#thread: ForumThread, page: Int) -> String {
+    func url(thread: ForumThread, page: Int) -> String {
         return thread.isDevTracker
             ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
             : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
     }
     
-    func get(#thread: ForumThread, page: Int, success: ((Array<ForumPost>) -> Void), failure: ((NSError) -> Void)) {
+    func get(thread: ForumThread, page: Int, success: @escaping ((Array<ForumPost>) -> Void), failure: @escaping ((Error) -> Void)) {
         let url = self.url(thread: thread, page: page)
-        self.manager.GET(url, parameters: nil, success: { (operation, response) in
-            let html = operation.responseString
+        self.manager.get(url, parameters: nil, success: { (operation, response) in
+            let html = operation!.responseString!
             let items = self.parseHtml(html)
             
             if items.isEmpty && self.isMaintenanceResponse(html) {
-                return failure(NSError.maintenanceError())
+                return failure(maintenanceError())
             }
             
             success(items)
         }) { (operation, error) in
-            if !operation.cancelled {
-                failure(error)
+            if !operation!.isCancelled {
+                failure(error!)
             }
         }
     }
     
     // MARK: - Parsing
     
-    private func parseHtml(html: String) -> Array<ForumPost> {
+    private func parseHtml(_ html: String) -> Array<ForumPost> {
         var items = Array<ForumPost>()
         
         let document = HTMLDocument(string: html)
-        let threadNodes = document.nodesMatchingSelector("#posts table.threadPost") as! Array<HTMLElement>
+        let threadNodes = document!.nodes(matchingSelector: "#posts table.threadPost") as! Array<HTMLElement>
         
         for node in threadNodes {
             let thread = self.parsePost(node)
@@ -54,27 +54,28 @@ class ForumPostRepository: ForumRepositoryBase {
         return items
     }
     
-    private func parsePost(element: HTMLElement) -> ForumPost? {
+    private func parsePost(_ element: HTMLElement) -> ForumPost? {
         // Id
-        let id = self.parser.linkParameter(linkElement: element.firstNodeMatchingSelector(".post .threadDate a"), name: self.settings.postQueryParam)?.toInt()
+        let idString = self.parser.linkParameter(linkElement: element.firstNode(matchingSelector: ".post .threadDate a"), name: self.settings.postQueryParam)
+        let id = idString != nil ? Int(idString!) : nil
         
         // Avatar url
         var avatarUrl: String? = nil
-        if let avatarElement = element.firstNodeMatchingSelector(".avatar img") {
+        if let avatarElement = element.firstNode(matchingSelector: ".avatar img") {
             avatarUrl = avatarElement.objectForKeyedSubscript("src") as? String
         }
         
         // Username
-        let username = element.firstNodeMatchingSelector(".avatar > .resultCategory > a")?.textContent
+        let username = element.firstNode(matchingSelector: ".avatar > .resultCategory > a")?.textContent
         
         // Date & Post number
-        let dateElement = (element.nodesMatchingSelector(".post .threadDate") as! Array<HTMLElement>).last
+        let dateElement = (element.nodes(matchingSelector: ".post .threadDate") as! Array<HTMLElement>).last
         let date = self.parser.postDate(element: dateElement)
         let postNumber = self.parser.postNumber(element: dateElement)
         
         // Is Bioware post
         var isBiowarePost = false
-        let imageElements = element.nodesMatchingSelector(".post img.inlineimg") as! Array<HTMLElement>
+        let imageElements = element.nodes(matchingSelector: ".post img.inlineimg") as! Array<HTMLElement>
         for image in imageElements {
             let src = image.objectForKeyedSubscript("src") as? String
             if src == nil {
@@ -92,11 +93,11 @@ class ForumPostRepository: ForumRepositoryBase {
         }
         
         // Text
-        let text = self.parser.postText(node: element.firstNodeMatchingSelector(".post .forumPadding > .resultText"))
+        let text = self.parser.postText(node: element.firstNode(matchingSelector: ".post .forumPadding > .resultText"))
         
         // Signature
-        let lastPostRow = (element.nodesMatchingSelector(".post tr") as! Array<HTMLElement>).last
-        let signature = lastPostRow?.firstNodeMatchingSelector(".resultText")?.textContent
+        let lastPostRow = (element.nodes(matchingSelector: ".post tr") as! Array<HTMLElement>).last
+        let signature = lastPostRow?.firstNode(matchingSelector: ".resultText")?.textContent
         
         if id == nil { return nil }
         if username == nil { return nil }

@@ -30,7 +30,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         self.pickerDelegate.markInitialValue()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         let newValue = self.pickerDelegate.getCurrentValue()
@@ -42,21 +42,21 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.pickerDelegate.applyTheme(theme)
     }
 

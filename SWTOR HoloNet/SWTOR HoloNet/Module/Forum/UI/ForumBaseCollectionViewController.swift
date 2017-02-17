@@ -13,7 +13,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     // MARK: - Constants
     
     let InfiniteScrollOffset: CGFloat = 50.0
-    let ScreenHeight = UIScreen.mainScreen().bounds.height
+    let ScreenHeight = UIScreen.main.bounds.height
     
     private let FooterIdentifier = "footer"
     
@@ -32,7 +32,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     // MARK: - Lifecycle
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -40,20 +40,20 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         
         // Setup the pull to refresh control
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(ForumBaseCollectionViewController.onRefresh), for: UIControlEvents.valueChanged)
         self.refreshControl = refreshControl
         self.collectionView!.addSubview(refreshControl)
         
-        self.isPad = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+        self.isPad = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
         
-        self.collectionView!.registerNib(UINib(nibName: "LoadMoreCollectionReusableView", bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
+        self.collectionView!.register(UINib(nibName: "LoadMoreCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ForumBaseCollectionViewController.willEnterForeground(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         self.applyTheme(self.theme)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isIOS7() || self.needsLayout {
             self.needsLayout = false
@@ -83,8 +83,8 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     // MARK: - Orientation change
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
         // If transitioning to Landscape invalidate CollectionView layout after a short delay
         // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
@@ -92,19 +92,9 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: size.width > size.height)
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        
-        // If transitioning to Landscape invalidate CollectionView layout after a short delay
-        // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
-        // when orientation occurs.
-        self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
-    }
-    
-    private func signalOrientationChange(layout: UICollectionViewLayout, shouldDelay: Bool) {
+    private func signalOrientationChange(_ layout: UICollectionViewLayout, shouldDelay: Bool) {
         if shouldDelay {
-            var delay = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_MSEC))
-            dispatch_after(delay, dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
                 layout.invalidateLayout()
             }
         } else {
@@ -114,13 +104,13 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     // MARK: - UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return self.showLoadMore ? CGSizeMake(0, 64.0) : CGSizeZero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return self.showLoadMore ? CGSize(width: 0, height: 64.0) : CGSize.zero
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionFooter {
-            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FooterIdentifier, forIndexPath: indexPath) as! LoadMoreCollectionReusableView
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterIdentifier, for: indexPath) as! LoadMoreCollectionReusableView
             footer.applyTheme(self.theme)
             return footer
         }
@@ -130,7 +120,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     // MARK: - Scroll
     
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if !canLoadMore { return }
         
         let actualPosition = scrollView.contentOffset.y
@@ -164,7 +154,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle
         

@@ -16,6 +16,6 @@ protocol Action: class {
     
     // MARK: - Public methods
     
-    func perform(userInfo: [NSObject : AnyObject]?, isForeground: Bool) -> Bool
+    func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool
     
 }

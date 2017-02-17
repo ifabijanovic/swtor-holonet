@@ -28,14 +28,14 @@ class Alert: NSObject {
     
     init(presenter: UIViewController, buttons: Array<(style: UIAlertActionStyle, title: String, handler:(() -> ())?)>) {
         self.presenter = presenter
-        self.style = .Alert
+        self.style = .alert
         self.buttons = buttons
     }
     
     convenience init(presenter: UIViewController, title: String, buttons: Array<(style: UIAlertActionStyle, title: String, handler:(() -> ())?)>) {
         self.init(presenter: presenter, buttons: buttons)
         
-        self.style = .ActionSheet
+        self.style = .actionSheet
         self.title = title
     }
 

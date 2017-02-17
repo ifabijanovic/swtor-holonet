@@ -11,14 +11,15 @@ import UIKit
 let errorDomain = "HoloNetErrorDomain"
 let errorCodeMaintenance = 13001
 
-extension NSError {
-   
-    class func maintenanceError() -> NSError {
-        return NSError(domain: errorDomain, code: errorCodeMaintenance, userInfo: nil)
-    }
+func maintenanceError() -> Error {
+    return NSError(domain: errorDomain, code: errorCodeMaintenance, userInfo: nil)
+}
+
+extension Error {
     
     func isMaintenanceError() -> Bool {
-        return self.domain == errorDomain && self.code == errorCodeMaintenance
+        let nsError = self as NSError
+        return nsError.domain == errorDomain && nsError.code == errorCodeMaintenance
     }
     
 }

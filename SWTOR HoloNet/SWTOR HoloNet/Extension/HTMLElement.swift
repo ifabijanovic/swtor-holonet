@@ -23,7 +23,7 @@ extension HTMLElement {
     
     func hasAttribute(name: String, containingValue value: String) -> Bool {
         if let attributeValue = self.attributes[name] as? String {
-            return attributeValue.rangeOfString(value, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil
+            return attributeValue.range(of: value, options: .caseInsensitive) != nil
         }
         return false
     }

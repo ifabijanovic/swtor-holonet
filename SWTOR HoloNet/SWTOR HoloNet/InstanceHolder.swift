@@ -24,23 +24,7 @@ class InstanceHolder {
     
     // MARK: - Singleton
     
-    struct Singleton {
-        static var token: dispatch_once_t = 0
-        static var instance: InstanceHolder?
-    }
-    
-    class func sharedInstance() -> InstanceHolder {
-        dispatch_once(&Singleton.token) {
-            Singleton.instance = InstanceHolder()
-        }
-        return Singleton.instance!
-    }
-    
-    class func initWithBundle(bundle: NSBundle) {
-        dispatch_once(&Singleton.token) {
-            Singleton.instance = InstanceHolder(bundle: bundle)
-        }
-    }
+    static let sharedInstance = InstanceHolder()
     
     // MARK: - Init
     
@@ -52,20 +36,10 @@ class InstanceHolder {
         self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
     }
     
-    init(bundle: NSBundle) {
-        self.settings = Settings(bundle: bundle)
-        self.theme = Theme()
-        self.alertFactory = UIAlertFactory()
-        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
-        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
-    }
-    
     // MARK: - Public methods
     
-    func inject(var injectable: Injectable) {
-        injectable.settings = self.settings
-        injectable.theme = self.theme
-        injectable.alertFactory = self.alertFactory
+    func inject(handler: (Settings, Theme, AlertFactory) -> Void) {
+        handler(self.settings, self.theme, self.alertFactory)
     }
     
 }

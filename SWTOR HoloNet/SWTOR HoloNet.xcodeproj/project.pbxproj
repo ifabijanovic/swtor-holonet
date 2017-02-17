@@ -18,26 +18,6 @@
 		81160C181AB3596500C608FF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81160C171AB3596500C608FF /* libstdc++.6.dylib */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
-		8120F27219FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
-		8120F27319FFB2E200C02DF8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26819FFB2E200C02DF8 /* Array.swift */; };
-		8120F27419FFB2E200C02DF8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26919FFB2E200C02DF8 /* Dictionary.swift */; };
-		8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26919FFB2E200C02DF8 /* Dictionary.swift */; };
-		8120F27619FFB2E200C02DF8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26A19FFB2E200C02DF8 /* Double.swift */; };
-		8120F27719FFB2E200C02DF8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26A19FFB2E200C02DF8 /* Double.swift */; };
-		8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26B19FFB2E200C02DF8 /* ExSwift.swift */; };
-		8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26B19FFB2E200C02DF8 /* ExSwift.swift */; };
-		8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26C19FFB2E200C02DF8 /* Float.swift */; };
-		8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26C19FFB2E200C02DF8 /* Float.swift */; };
-		8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26D19FFB2E200C02DF8 /* Int.swift */; };
-		8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26D19FFB2E200C02DF8 /* Int.swift */; };
-		8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26E19FFB2E200C02DF8 /* NSArray.swift */; };
-		8120F27F19FFB2E200C02DF8 /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26E19FFB2E200C02DF8 /* NSArray.swift */; };
-		8120F28019FFB2E200C02DF8 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26F19FFB2E200C02DF8 /* Range.swift */; };
-		8120F28119FFB2E200C02DF8 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26F19FFB2E200C02DF8 /* Range.swift */; };
-		8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
-		8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27019FFB2E200C02DF8 /* Sequence.swift */; };
-		8120F28419FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
-		8120F28519FFB2E200C02DF8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F27119FFB2E200C02DF8 /* String.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		81255D7219F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */; };
@@ -90,8 +70,6 @@
 		813E28511AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */; };
 		813E59071A6F78760012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813E59081A6F78850012A7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813E59061A6F78760012A7A8 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
-		8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8146A6C11A46DC6F00C2F9BC /* Parse.plist */; };
 		8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
 		8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */; };
 		8146BF051ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8146BF031ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift */; };
@@ -266,8 +244,6 @@
 		81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */; };
 		81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
 		81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C228A819F146C500EEF2C6 /* StringEx.swift */; };
-		81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
-		81C38F321A42B4E400A8E1D2 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38F301A42B4E400A8E1D2 /* Injectable.swift */; };
 		81CF9F861A46C0ED0020BE6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */; };
 		81CF9F881A46C0F40020BE6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F871A46C0F40020BE6B /* CFNetwork.framework */; };
 		81CF9F8A1A46C0FB0020BE6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */; };
@@ -412,16 +388,6 @@
 		81160C101AB3542C00C608FF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		81160C171AB3596500C608FF /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
-		8120F26819FFB2E200C02DF8 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../Third Party/ExSwift/ExSwift/Array.swift"; sourceTree = "<group>"; };
-		8120F26919FFB2E200C02DF8 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = "../Third Party/ExSwift/ExSwift/Dictionary.swift"; sourceTree = "<group>"; };
-		8120F26A19FFB2E200C02DF8 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Double.swift; path = "../Third Party/ExSwift/ExSwift/Double.swift"; sourceTree = "<group>"; };
-		8120F26B19FFB2E200C02DF8 /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExSwift.swift; path = "../Third Party/ExSwift/ExSwift/ExSwift.swift"; sourceTree = "<group>"; };
-		8120F26C19FFB2E200C02DF8 /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Float.swift; path = "../Third Party/ExSwift/ExSwift/Float.swift"; sourceTree = "<group>"; };
-		8120F26D19FFB2E200C02DF8 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Int.swift; path = "../Third Party/ExSwift/ExSwift/Int.swift"; sourceTree = "<group>"; };
-		8120F26E19FFB2E200C02DF8 /* NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSArray.swift; path = "../Third Party/ExSwift/ExSwift/NSArray.swift"; sourceTree = "<group>"; };
-		8120F26F19FFB2E200C02DF8 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = "../Third Party/ExSwift/ExSwift/Range.swift"; sourceTree = "<group>"; };
-		8120F27019FFB2E200C02DF8 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = "../Third Party/ExSwift/ExSwift/Sequence.swift"; sourceTree = "<group>"; };
-		8120F27119FFB2E200C02DF8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../Third Party/ExSwift/ExSwift/String.swift"; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		81255D5119F7BBD600E0C018 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+WebCache.h"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81255D5219F7BBD600E0C018 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+WebCache.m"; path = "../Third Party/SDWebImage/SDWebImage/MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
@@ -468,8 +434,6 @@
 		813E284C1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryCollectionViewCell.swift; path = Module/Forum/UI/CollectionViewCell/ForumCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		813E284D1AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumCategoryCollectionViewCell.xib; path = Module/Forum/UI/CollectionViewCell/ForumCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		813E59061A6F78760012A7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Parse-Template.plist"; sourceTree = "<group>"; };
-		8146A6C11A46DC6F00C2F9BC /* Parse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parse.plist; sourceTree = "<group>"; };
 		8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = Module/App/UI/TabViewController.swift; sourceTree = "<group>"; };
 		8146BF031ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostCollectionViewCell.swift; path = Module/Forum/UI/CollectionViewCell/ForumPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8146BF041ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumPostCollectionViewCell.xib; path = Module/Forum/UI/CollectionViewCell/ForumPostCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -613,7 +577,6 @@
 		81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumBaseCollectionViewController.swift; path = Module/Forum/UI/ForumBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		81C228A319F1340C00EEF2C6 /* NSURLComponentsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLComponentsEx.swift; path = Extension/NSURLComponentsEx.swift; sourceTree = "<group>"; };
 		81C228A819F146C500EEF2C6 /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringEx.swift; path = Extension/StringEx.swift; sourceTree = "<group>"; };
-		81C38F301A42B4E400A8E1D2 /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Injectable.swift; path = Module/App/UI/Injectable.swift; sourceTree = "<group>"; };
 		81CF9F851A46C0ED0020BE6B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		81CF9F871A46C0F40020BE6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		81CF9F891A46C0FB0020BE6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -807,23 +770,6 @@
 				8165671F1A40394F002AA53A /* Theme.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		8120F26719FFB2BE00C02DF8 /* ExSwift */ = {
-			isa = PBXGroup;
-			children = (
-				8120F26819FFB2E200C02DF8 /* Array.swift */,
-				8120F26919FFB2E200C02DF8 /* Dictionary.swift */,
-				8120F26A19FFB2E200C02DF8 /* Double.swift */,
-				8120F26B19FFB2E200C02DF8 /* ExSwift.swift */,
-				8120F26C19FFB2E200C02DF8 /* Float.swift */,
-				8120F26D19FFB2E200C02DF8 /* Int.swift */,
-				8120F26E19FFB2E200C02DF8 /* NSArray.swift */,
-				8120F26F19FFB2E200C02DF8 /* Range.swift */,
-				8120F27019FFB2E200C02DF8 /* Sequence.swift */,
-				8120F27119FFB2E200C02DF8 /* String.swift */,
-			);
-			name = ExSwift;
 			sourceTree = "<group>";
 		};
 		81255D4819F7BAE700E0C018 /* SDWebImage */ = {
@@ -1072,7 +1018,6 @@
 				81E99F421B70A7D10055A5A2 /* Base */,
 				81846C991ABC44C800982C2C /* CollectionReusableView */,
 				81E99F471B70A87F0055A5A2 /* Extension */,
-				81C38F301A42B4E400A8E1D2 /* Injectable.swift */,
 				81E99F571B70C1AD0055A5A2 /* NavigationViewController.swift */,
 				8146A6C41A46DE2B00C2F9BC /* TabViewController.swift */,
 				81EC0C131A44896F00AFA035 /* TextViewController.swift */,
@@ -1178,8 +1123,6 @@
 				81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */,
 				81AB248019EFBD7700293D26 /* Info.plist */,
 				817A216719F6C1BD0093ECE3 /* Settings.plist */,
-				8146A6BD1A46D9D400C2F9BC /* Parse-Template.plist */,
-				8146A6C11A46DC6F00C2F9BC /* Parse.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1255,7 +1198,6 @@
 			isa = PBXGroup;
 			children = (
 				81AB24B119EFCAA100293D26 /* AFNetworking */,
-				8120F26719FFB2BE00C02DF8 /* ExSwift */,
 				81A49A5619F0FC98007FEA4C /* HTMLReader */,
 				813C19471A0B73F40072626A /* OHHTTPStubs */,
 				81255D4819F7BAE700E0C018 /* SDWebImage */,
@@ -1522,14 +1464,16 @@
 		81AB247419EFBD7700293D26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ivan Fabijanović";
 				TargetAttributes = {
 					81AB247B19EFBD7700293D26 = {
 						CreatedOnToolsVersion = 6.0.1;
+						LastSwiftMigration = 0820;
 					};
 					81AB249019EFBD7700293D26 = {
 						CreatedOnToolsVersion = 6.0.1;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -1612,7 +1556,6 @@
 				81FDCC8E1A6EC37900E2C44A /* License.txt in Resources */,
 				813E28501AB9AD28007B723D /* ForumCategoryCollectionViewCell.xib in Resources */,
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
-				8146A6C21A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				81846C891ABC34CD00982C2C /* ForumThreadCollectionViewCell.xib in Resources */,
 				8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */,
 				81846C9E1ABC451500982C2C /* TableHeaderCollectionReusableView.xib in Resources */,
@@ -1658,7 +1601,6 @@
 				8146BF1B1ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
 				814C9CAB1A1B893900FE1C94 /* forum-thread-single-invalid-title.html in Resources */,
 				814C9CBD1A1B8CC400FE1C94 /* forum-category-single-invalid-id.html in Resources */,
-				8146A6C31A46DC6F00C2F9BC /* Parse.plist in Resources */,
 				815007631A1C942900C897F1 /* forum-post-single-invalid-text.html in Resources */,
 				81846CA51ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */,
 				815007611A1C940500C897F1 /* forum-post-single-invalid-date.html in Resources */,
@@ -1676,7 +1618,6 @@
 				8125C48F1AA9DB6C00046197 /* ActionPerformer.swift in Sources */,
 				81DD07DB1AA3299500278130 /* AlertIOS8.swift in Sources */,
 				81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */,
-				81C38F311A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */,
 				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81AB24D119EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
@@ -1689,16 +1630,13 @@
 				81A49A8C19F0FCC0007FEA4C /* HTMLPreprocessedInputStream.m in Sources */,
 				81A49A9019F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81E99F4D1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
-				8120F28219FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81DBE59A1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81E99F4B1B70A88F0055A5A2 /* BaseCollectionViewController.swift in Sources */,
 				81DD07E31AA3299500278130 /* UIAlertFactory.swift in Sources */,
-				8120F28019FFB2E200C02DF8 /* Range.swift in Sources */,
 				810D2E041A44457800FF0FEF /* SettingsTableViewController.swift in Sources */,
 				81AD3D041B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
-				8120F27E19FFB2E200C02DF8 /* NSArray.swift in Sources */,
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				81A49A9819F0FCC0007FEA4C /* HTMLTreeEnumerator.m in Sources */,
@@ -1720,10 +1658,8 @@
 				816567201A40394F002AA53A /* Theme.swift in Sources */,
 				81A49A8619F0FCC0007FEA4C /* HTMLNode.m in Sources */,
 				81255D8E19F7BBD600E0C018 /* UIImageView+WebCache.m in Sources */,
-				8120F27219FFB2E200C02DF8 /* Array.swift in Sources */,
 				81DD07DA1AA3299500278130 /* AlertIOS7.swift in Sources */,
 				81AB24D319EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
-				8120F27819FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81DD07E01AA3299500278130 /* AlertFactory.swift in Sources */,
 				81255D7E19F7BBD600E0C018 /* SDWebImageDownloaderOperation.m in Sources */,
 				81E99F6B1B70FFAB0055A5A2 /* SettingPickerDelegate.swift in Sources */,
@@ -1731,9 +1667,7 @@
 				8146BF181ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
 				81A49A9419F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
-				8120F27C19FFB2E200C02DF8 /* Int.swift in Sources */,
 				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
-				8120F27A19FFB2E200C02DF8 /* Float.swift in Sources */,
 				81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */,
 				81A49A9219F0FCC0007FEA4C /* HTMLString.m in Sources */,
 				81E99F4F1B70A88F0055A5A2 /* BaseViewController.swift in Sources */,
@@ -1753,10 +1687,8 @@
 				81A49A9A19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
 				81A49A8219F0FCC0007FEA4C /* HTMLElement.m in Sources */,
 				81A49A7C19F0FCC0007FEA4C /* HTMLComment.m in Sources */,
-				8120F27619FFB2E200C02DF8 /* Double.swift in Sources */,
 				81255D8019F7BBD600E0C018 /* SDWebImageManager.m in Sources */,
 				81255D7A19F7BBD600E0C018 /* SDWebImageDecoder.m in Sources */,
-				8120F28419FFB2E200C02DF8 /* String.swift in Sources */,
 				81A49A8019F0FCC0007FEA4C /* HTMLDocumentType.m in Sources */,
 				813E284E1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
@@ -1779,7 +1711,6 @@
 				81AB24C919EFCAC000293D26 /* AFHTTPRequestOperationManager.m in Sources */,
 				81AB24DD19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				81DD07E11AA3299500278130 /* TestAlert.swift in Sources */,
-				8120F27419FFB2E200C02DF8 /* Dictionary.swift in Sources */,
 				81AB24CF19EFCAC000293D26 /* AFSecurityPolicy.m in Sources */,
 				81DD07DD1AA3299500278130 /* AlertDelegate.swift in Sources */,
 				81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */,
@@ -1827,20 +1758,14 @@
 				813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */,
 				815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81846CA31ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
-				8120F28519FFB2E200C02DF8 /* String.swift in Sources */,
 				81A49A7F19F0FCC0007FEA4C /* HTMLDocument.m in Sources */,
-				8120F27F19FFB2E200C02DF8 /* NSArray.swift in Sources */,
-				8120F27D19FFB2E200C02DF8 /* Int.swift in Sources */,
-				81C38F321A42B4E400A8E1D2 /* Injectable.swift in Sources */,
 				81A49A9119F0FCC0007FEA4C /* HTMLSerialization.m in Sources */,
 				81255D7319F7BBD600E0C018 /* MKAnnotationView+WebCache.m in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
 				8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8125C4901AA9DB6C00046197 /* ActionPerformer.swift in Sources */,
-				8120F27B19FFB2E200C02DF8 /* Float.swift in Sources */,
 				81DBE59B1AF779AA00F93483 /* HTMLEncoding.m in Sources */,
 				81E99F561B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */,
-				8120F28319FFB2E200C02DF8 /* Sequence.swift in Sources */,
 				81A49A8F19F0FCC0007FEA4C /* HTMLSelector.m in Sources */,
 				8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
@@ -1867,7 +1792,6 @@
 				81A49A9B19F0FCC0007FEA4C /* NSString+HTMLEntities.m in Sources */,
 				81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */,
-				8120F27319FFB2E200C02DF8 /* Array.swift in Sources */,
 				81103E901AA2374200822A3B /* PushManager.swift in Sources */,
 				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81AB24D219EFCAC000293D26 /* AFURLConnectionOperation.m in Sources */,
@@ -1879,7 +1803,6 @@
 				8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */,
 				81846C881ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
 				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
-				8120F27919FFB2E200C02DF8 /* ExSwift.swift in Sources */,
 				81DD07FD1AA32AE600278130 /* AlertTests.swift in Sources */,
 				81A49A9719F0FCC0007FEA4C /* HTMLTokenizer.m in Sources */,
 				81DD07EB1AA32A7200278130 /* TestAlert.swift in Sources */,
@@ -1892,9 +1815,7 @@
 				81E99F6C1B70FFAB0055A5A2 /* SettingPickerDelegate.swift in Sources */,
 				81E99F591B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
-				8120F28119FFB2E200C02DF8 /* Range.swift in Sources */,
 				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,
-				8120F27519FFB2E200C02DF8 /* Dictionary.swift in Sources */,
 				81AB24D419EFCAC000293D26 /* AFURLRequestSerialization.m in Sources */,
 				81255D8119F7BBD600E0C018 /* SDWebImageManager.m in Sources */,
 				81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
@@ -1907,7 +1828,6 @@
 				81A49A9519F0FCC0007FEA4C /* HTMLTextNode.m in Sources */,
 				81C070B41ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
 				81255D7919F7BBD600E0C018 /* SDWebImageCompat.m in Sources */,
-				8120F27719FFB2E200C02DF8 /* Double.swift in Sources */,
 				81B8B95E1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */,
 				81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */,
 				81E99F4E1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
@@ -1975,15 +1895,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1996,7 +1920,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -2018,8 +1942,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2027,15 +1953,17 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2051,11 +1979,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2071,10 +2001,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2095,9 +2027,11 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG -D TEST";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2113,8 +2047,10 @@
 				INFOPLIST_FILE = "SWTOR HoloNetTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D TEST";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -16,7 +16,7 @@ class TableHeaderCollectionReusableView: UICollectionReusableView, Themeable {
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    func applyTheme(_ theme: Theme) {
         self.titleLabel.textColor = theme.headerText
         self.backgroundColor = theme.headerBackground
     }

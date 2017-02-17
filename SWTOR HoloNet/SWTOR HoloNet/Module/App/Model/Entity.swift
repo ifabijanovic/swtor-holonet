@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Entity: NSObject, Equatable {
+class Entity: NSObject {
     
     // MARK: - Properties
     

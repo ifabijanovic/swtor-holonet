@@ -12,16 +12,16 @@ internal class AlertDelegate : DelegateBase, UIAlertViewDelegate {
     
     // MARK: - Init
     
-    init(alertView: UIAlertView, cb: (Int) -> ()) {
+    init(alertView: UIAlertView, cb: @escaping (Int) -> ()) {
         super.init(cb: cb)
         alertView.delegate = self
     }
     
     // MARK: - UIAlertViewDelegate
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         alertView.delegate = nil
-        self.finish(buttonIndex)
+        self.finish(index: buttonIndex)
     }
     
 }

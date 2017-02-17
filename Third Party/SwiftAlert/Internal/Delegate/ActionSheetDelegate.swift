@@ -12,16 +12,16 @@ internal class ActionSheetDelegate : DelegateBase, UIActionSheetDelegate {
     
     // MARK: - Init
     
-    init(actionSheet: UIActionSheet, cb: (Int) -> ()) {
+    init(actionSheet: UIActionSheet, cb: @escaping (Int) -> ()) {
         super.init(cb: cb)
         actionSheet.delegate = self
     }
     
     // MARK: - UIActionSheetDelegate
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         actionSheet.delegate = nil
-        self.finish(buttonIndex)
+        self.finish(index: buttonIndex)
     }
     
 }

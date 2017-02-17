@@ -45,10 +45,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             self.navigationItem.title = self.category!.title
         }
         
-        let bundle = NSBundle.mainBundle()
-        self.collectionView!.registerNib(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
-        self.collectionView!.registerNib(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
-        self.collectionView!.registerNib(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
+        let bundle = Bundle.main
+        self.collectionView!.register(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
+        self.collectionView!.register(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
+        self.collectionView!.register(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
 #if !DEBUG && !TEST
         // Analytics
@@ -56,11 +56,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
 #endif
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Controller is being popped from the navigation stack
-        if self.isMovingFromParentViewController() {
+        if self.isMovingFromParentViewController {
             // Cancel any pending requests to prevent wasted processing
             self.categoryRepo.cancelAllOperations()
             self.threadRepo?.cancelAllOperations()
@@ -70,23 +70,23 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     
-        self.categories?.removeAll(keepCapacity: false)
+        self.categories?.removeAll(keepingCapacity: false)
         self.categories = nil
-        self.threads?.removeAll(keepCapacity: false)
+        self.threads?.removeAll(keepingCapacity: false)
         self.threads = nil
         self.collectionView?.reloadData()
     }
 
     // MARK: - UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if self.threadRepo != nil {
             return 2
         }
         return 1
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == CategorySection {
             return self.categories?.count ?? 0
         } else if section == ThreadSection {
@@ -95,8 +95,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout:
-        UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // This value represents the difference from currently selected text size and
         // the smallest (default) value. It is added to the cell height for each label
         let textSizeDiff = self.theme.textSize.rawValue - TextSize.Small.rawValue
@@ -111,31 +110,31 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             height = 64.0 + (2 * textSizeDiff)
         }
         
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == CategorySection && (self.categories == nil || self.categories!.isEmpty) {
-            return CGSizeZero
+            return CGSize.zero
         }
         
-        return CGSizeMake(0, 22.0)
+        return CGSize(width: 0, height: 22.0)
     }
     
-    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == CategorySection && self.threadRepo != nil { return CGSizeZero }
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == CategorySection && self.threadRepo != nil { return CGSize.zero }
         return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForFooterInSection: section)
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell
         
         if indexPath.section == CategorySection {
-            let categoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoryCellIdentifier, forIndexPath: indexPath) as! ForumCategoryCollectionViewCell
+            let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCellIdentifier, for: indexPath) as! ForumCategoryCollectionViewCell
             self.setupCategoryCell(categoryCell, indexPath: indexPath)
             cell = categoryCell
         } else if indexPath.section == ThreadSection {
-            let threadCell = collectionView.dequeueReusableCellWithReuseIdentifier(ThreadCellIdentifier, forIndexPath: indexPath) as! ForumThreadCollectionViewCell
+            let threadCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThreadCellIdentifier, for: indexPath) as! ForumThreadCollectionViewCell
             self.setupThreadCell(threadCell, indexPath: indexPath)
             cell = threadCell
         } else {
@@ -146,21 +145,21 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! TableHeaderCollectionReusableView
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
             view.applyTheme(self.theme)
             return view
         }
         
-        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView.cellForItem(at: indexPath)
         if indexPath.section == CategorySection {
             // Category
             let category = self.categories![cell!.tag]
@@ -168,27 +167,27 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             // Special case for Developer Tracker, treat this sub category as a thread
             if category.id == self.settings.devTrackerId {
                 let thread = ForumThread.devTracker()
-                self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+                self.performSegue(withIdentifier: ThreadSegue, sender: thread)
                 return
             }
             
-            self.performSegueWithIdentifier(SubCategorySegue, sender: category)
+            self.performSegue(withIdentifier: SubCategorySegue, sender: category)
         } else {
             // Thread
             let thread = self.threads![cell!.tag]
-            self.performSegueWithIdentifier(ThreadSegue, sender: thread)
+            self.performSegue(withIdentifier: ThreadSegue, sender: thread)
         }
     }
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SubCategorySegue {
-            let controller = segue.destinationViewController as! ForumListCollectionViewController
+            let controller = segue.destination as! ForumListCollectionViewController
             let category = sender as! ForumCategory
             controller.category = category
         } else if segue.identifier == ThreadSegue {
-            let controller = segue.destinationViewController as! ForumThreadCollectionViewController
+            let controller = segue.destination as! ForumThreadCollectionViewController
             let thread = sender as! ForumThread
             controller.thread = thread
         }
@@ -212,7 +211,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func onRefresh() {
         // Setup a thread lock which will be used to synchronize two HTTP requests
-        let lock = dispatch_queue_create("com.if.lock", nil)
+        let lock = DispatchQueue(label: "com.if.lock")
         var requestCount = 0
         
         // Reloading content, set loaded page back to the first page
@@ -228,7 +227,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             // Check for error state
             if requestCount == -1 { return }
             
-            dispatch_sync(lock) { requestCount -= 1 }
+            lock.sync() { requestCount -= 1 }
             if requestCount == 0 {
                 self.refreshControl?.endRefreshing()
                 if self.category != nil {
@@ -244,32 +243,32 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         func categorySuccess(categories: Array<ForumCategory>) {
             // Set retrieved categories and reload the category section
             self.categories = categories
-            self.collectionView!.reloadSections(NSIndexSet(index: CategorySection))
+            self.collectionView!.reloadSections(IndexSet(integer: CategorySection))
             finishLoad()
         }
         func threadSuccess(threads: Array<ForumThread>) {
             // Set retrieved threads and reload the thread section
             self.threads = threads
-            self.collectionView!.reloadSections(NSIndexSet(index: ThreadSection))
+            self.collectionView!.reloadSections(IndexSet(integer: ThreadSection))
             finishLoad()
         }
-        func failure(error: NSError) {
+        func failure(error: Error) {
             // Check for error state
             if requestCount == -1 { return }
             // Set an error state on the requestCount variable
-            dispatch_sync(lock) { requestCount = -1 }
+            lock.sync() { requestCount = -1 }
             
             self.refreshControl?.endRefreshing()
             
             let alert: Alert!
             
             if (error.isMaintenanceError()) {
-                alert = self.alertFactory.createAlert(self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .Default, title: "OK", { self.hideLoader() })
+                alert = self.alertFactory.createAlert(presenter: self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .default, title: "OK", { self.hideLoader() })
                 )
             } else {
-                alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                    (style: .Cancel, title: "No", { self.hideLoader() }),
-                    (style: .Default, title: "Yes", { self.onRefresh() })
+                alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                    (style: .cancel, title: "No", { self.hideLoader() }),
+                    (style: .default, title: "Yes", { self.onRefresh() })
                 )
             }
             alert.show()
@@ -295,7 +294,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.canLoadMore = false
         
         func success(threads: Array<ForumThread>) {
-            let newThreads = threads.difference(self.threads!)
+            let threadsSet = Set(threads)
+            let cachedThreadsSet = Set(self.threads!)
+            let newThreads = threadsSet.subtracting(cachedThreadsSet)
             
             if newThreads.isEmpty {
                 // No new threads, disable infinite scrolling
@@ -305,23 +306,23 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             }
             
             // Append the new threads and prepare indexes for table update
-            var indexes = Array<NSIndexPath>()
+            var indexes = Array<IndexPath>()
             for thread in newThreads {
-                indexes.append(NSIndexPath(forRow: self.threads!.count, inSection: ThreadSection))
+                indexes.append(IndexPath(row: self.threads!.count, section: ThreadSection))
                 self.threads!.append(thread)
             }
             
             // Smoothly update the table by just inserting the new indexes
-            self.collectionView!.insertItemsAtIndexPaths(indexes)
+            self.collectionView!.insertItems(at: indexes)
             
             // Mark this page as loaded and enable infinite scroll again
-            self.loadedPage++
+            self.loadedPage += 1
             self.canLoadMore = true
         }
-        func failure(error: NSError) {
-            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                (style: .Cancel, title: "No", { self.hideLoader() }),
-                (style: .Default, title: "Yes", { self.onRefresh() })
+        func failure(error: Error) {
+            let alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .cancel, title: "No", { self.hideLoader() }),
+                (style: .default, title: "Yes", { self.onRefresh() })
             )
             alert.show()
         }
@@ -329,12 +330,12 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
-    private func setupCategoryCell(cell: ForumCategoryCollectionViewCell, indexPath: NSIndexPath) {
+    private func setupCategoryCell(_ cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {
         let category = self.categories![indexPath.row]
         
         // Set category icon if URL is defined in the model
         if let url = category.iconUrl {
-            cell.iconImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+            cell.iconImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
         }
         
         cell.titleLabel.text = category.title
@@ -345,23 +346,23 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         cell.tag = indexPath.row
     }
     
-    private func setupThreadCell(cell: ForumThreadCollectionViewCell, indexPath: NSIndexPath) {
+    private func setupThreadCell(_ cell: ForumThreadCollectionViewCell, indexPath: IndexPath) {
         let thread = self.threads![indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
         if thread.hasBiowareReply {
-            cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.isHidden = false
+            cell.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
-            cell.devImageView.hidden = true
+            cell.devImageView.isHidden = true
         }
         
         // Set sticky icon if thread is marked with sticky
         if thread.isSticky {
-            cell.stickyImageView.hidden = false
-            cell.stickyImageView.sd_setImageWithURL(NSURL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+            cell.stickyImageView.isHidden = false
+            cell.stickyImageView.sd_setImage(with: URL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
         } else {
-            cell.stickyImageView.hidden = true
+            cell.stickyImageView.isHidden = true
         }
         
         cell.titleLabel.text = thread.title
@@ -374,7 +375,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)
         
         self.view.backgroundColor = theme.contentBackground

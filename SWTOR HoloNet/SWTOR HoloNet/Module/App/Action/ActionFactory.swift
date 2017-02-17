@@ -25,14 +25,14 @@ class ActionFactory {
     
     // MARK: - Public methods
     
-    func create(#type: String) -> Action? {
+    func create(type: String) -> Action? {
         switch type {
         case ActionTypeDulfy: return DulfyAction(alertFactory: self.alertFactory)
         default: return nil
         }
     }
     
-    func create(#userInfo: [NSObject : AnyObject]) -> Action? {
+    func create(userInfo: [AnyHashable : Any]) -> Action? {
         if let actionType = userInfo[keyActionType] as? String {
             return self.create(type: actionType)
         }

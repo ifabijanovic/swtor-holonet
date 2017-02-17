@@ -22,12 +22,12 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     var wkWebView: WKWebView?
     var uiWebView: UIWebView?
     
-    var homeUrl: NSURL {
+    var homeUrl: URL {
         get {
-            return NSURL(string: self.settings.dulfyNetUrl)!
+            return URL(string: self.settings.dulfyNetUrl)!
         }
     }
-    var url: NSURL?
+    var url: URL?
     
     var isVisible = false
     
@@ -65,13 +65,13 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         if self.useWebKit {
             self.wkWebView!.stopLoading()
             self.navigationItem.title = self.wkWebView!.title
-            self.backButton.enabled = self.wkWebView!.canGoBack
-            self.forwardButton.enabled = self.wkWebView!.canGoForward
+            self.backButton.isEnabled = self.wkWebView!.canGoBack
+            self.forwardButton.isEnabled = self.wkWebView!.canGoForward
         } else {
             self.uiWebView!.stopLoading()
-            self.navigationItem.title = self.uiWebView!.stringByEvaluatingJavaScriptFromString("document.title")
-            self.backButton.enabled = self.uiWebView!.canGoBack
-            self.forwardButton.enabled = self.uiWebView!.canGoForward
+            self.navigationItem.title = self.uiWebView!.stringByEvaluatingJavaScript(from: "document.title")
+            self.backButton.isEnabled = self.uiWebView!.canGoBack
+            self.forwardButton.isEnabled = self.uiWebView!.canGoForward
         }
         
         self.activityIndicator.stopAnimating()
@@ -83,12 +83,12 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     
     @IBAction func safariTapped(sender: AnyObject) {
         if self.useWebKit {
-            if let url = self.wkWebView!.URL {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = self.wkWebView!.url {
+                UIApplication.shared.openURL(url)
             }
         } else {
-            if let url = self.uiWebView!.request?.URL {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = self.uiWebView!.request?.url {
+                UIApplication.shared.openURL(url)
             }
         }
     }
@@ -101,8 +101,8 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         self.applyTheme(self.theme)
         
         // Initially user cannot navigate back or forward so disable the buttons
-        self.backButton.enabled = false
-        self.forwardButton.enabled = false
+        self.backButton.isEnabled = false
+        self.forwardButton.isEnabled = false
         
         self.setupWebView()
         
@@ -126,7 +126,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         #endif
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.useWebKit {
             self.wkWebView!.navigationDelegate = self
@@ -142,7 +142,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if self.useWebKit {
             self.wkWebView!.navigationDelegate = nil
@@ -152,71 +152,52 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         self.isVisible = false
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        if self.useWebKit { return }
-        
-        // Hide the navbar and toolbar if using UIWebView since the new gestures are not available
-        if let navController = self.navigationController {
-            var hide: Bool
-            switch toInterfaceOrientation {
-            case .LandscapeLeft, .LandscapeRight:
-                hide = true
-            default:
-                hide = false
-            }
-            
-            navController.setNavigationBarHidden(hide, animated: true)
-            navController.setToolbarHidden(hide, animated: true)
-        }
-    }
-    
     // MARK: - UIWebViewDelegate
     
-    func webViewDidStartLoad(webView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         self.activityIndicator.startAnimating()
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         self.activityIndicator.stopAnimating()
         
-        self.navigationItem.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
-        self.backButton.enabled = webView.canGoBack
-        self.forwardButton.enabled = webView.canGoForward
+        self.navigationItem.title = webView.stringByEvaluatingJavaScript(from: "document.title")
+        self.backButton.isEnabled = webView.canGoBack
+        self.forwardButton.isEnabled = webView.canGoForward
     }
     
     // MARK: - WKNavigationDelegate
     
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.activityIndicator.startAnimating()
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.activityIndicator.stopAnimating()
         
         self.navigationItem.title = webView.title
-        self.backButton.enabled = webView.canGoBack
-        self.forwardButton.enabled = webView.canGoForward
+        self.backButton.isEnabled = webView.canGoBack
+        self.forwardButton.isEnabled = webView.canGoForward
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
     }
     
-    override func themeChanged(theme: Theme) {
+    override func themeChanged(_ theme: Theme) {
         super.themeChanged(theme)
         
         // Only animate the toolbar transition if current view is visible
-        let animate = self.isViewLoaded() && self.view.window != nil
-        theme.apply(self.navigationController!.toolbar, animate: animate)
+        let animate = self.isViewLoaded && self.view.window != nil
+        theme.apply(toolbar: self.navigationController!.toolbar, animate: animate)
     }
     
     // MARK: - ActionPerformer
     
-    func perform(userInfo: [NSObject : AnyObject]) {
-        if let url = userInfo["url"] as? NSURL {
+    func perform(_ userInfo: [AnyHashable : Any]) {
+        if let url = userInfo["url"] as? URL {
             if self.isVisible {
                 self.navigateTo(url)
             } else {
@@ -227,10 +208,10 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     
     // MARK: - Public methods
     
-    func navigateTo(url: NSURL) {
-        let request = NSURLRequest(URL: url)
+    func navigateTo(_ url: URL) {
+        let request = URLRequest(url: url)
         if self.useWebKit {
-            self.wkWebView!.loadRequest(request)
+            self.wkWebView!.load(request)
         } else {
             self.uiWebView!.loadRequest(request)
         }
@@ -249,22 +230,22 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
             webView = self.uiWebView!
         }
         // Insert the webView at index 0 so its scroll view insets get adjusted automatically
-        self.view.insertSubview(webView, atIndex: 0)
+        self.view.insertSubview(webView, at: 0)
         // Disable autoresizing mask translation so auto layout constraints can be added
-        webView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        webView.translatesAutoresizingMaskIntoConstraints = false
         
         // Define constraints that make the webView display in full screen
-        let trailing = NSLayoutConstraint(item: self.view, attribute: .Trailing, relatedBy: .Equal, toItem: webView, attribute: .Trailing, multiplier: 1.0, constant: 0)
-        let leading = NSLayoutConstraint(item: self.view, attribute: .Leading, relatedBy: .Equal, toItem: webView, attribute: .Leading, multiplier: 1.0, constant: 0)
-        let bottom = NSLayoutConstraint(item: self.view, attribute: .Bottom, relatedBy: .Equal, toItem: webView, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        let top = NSLayoutConstraint(item: self.view, attribute: .Top, relatedBy: .Equal, toItem: webView, attribute: .Top, multiplier: 1.0, constant: 0)
+        let trailing = NSLayoutConstraint(item: self.view, attribute: .trailing, relatedBy: .equal, toItem: webView, attribute: .trailing, multiplier: 1.0, constant: 0)
+        let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: webView, attribute: .leading, multiplier: 1.0, constant: 0)
+        let bottom = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .equal, toItem: webView, attribute: .bottom, multiplier: 1.0, constant: 0)
+        let top = NSLayoutConstraint(item: self.view, attribute: .top, relatedBy: .equal, toItem: webView, attribute: .top, multiplier: 1.0, constant: 0)
         
         // Apply the auto layout constraints
         self.view.addConstraints([trailing, leading, bottom, top])
         
         // Make the webView transparent
-        webView.opaque = false
-        webView.backgroundColor = UIColor.clearColor()
+        webView.isOpaque = false
+        webView.backgroundColor = UIColor.clear
     }
 
 }

@@ -31,8 +31,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     @IBAction func safariTapped(sender: AnyObject) {
         let urlString = self.postRepo.url(thread: self.thread, page: 0)
-        if let url = NSURL(string: urlString) {
-            UIApplication.sharedApplication().openURL(url)
+        if let url = URL(string: urlString) {
+            UIApplication.shared.openURL(url)
         }
     }
     
@@ -43,12 +43,12 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         self.postRepo = ForumPostRepository(settings: self.settings)
         
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
-        self.sizingCell = cellNib.instantiateWithOwner(nil, options: nil).first as! ForumPostCollectionViewCell
+        self.sizingCell = cellNib.instantiate(withOwner: nil, options: nil).first as! ForumPostCollectionViewCell
         
-        self.collectionView!.registerNib(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
-        self.collectionView!.registerNib(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
+        self.collectionView!.register(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
+        self.collectionView!.register(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
         if thread.isDevTracker {
             self.PostsPerPage = 20
@@ -61,11 +61,11 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Controller is being popped from the navigation stack
-        if self.isMovingFromParentViewController() {
+        if self.isMovingFromParentViewController {
             // Cancel any pending requests to prevent wasted processing
             self.postRepo.cancelAllOperations()
         }
@@ -74,67 +74,67 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        self.posts?.removeAll(keepCapacity: false)
+        self.posts?.removeAll(keepingCapacity: false)
         self.posts = nil
         self.collectionView?.reloadData()
     }
 
     // MARK: - UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return self.calculateSizeForItemAtIndexPath(indexPath)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // Calculate height of title text
-        let largeSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 30, 9999)
-        let font = UIFont.systemFontOfSize(17.0)
+        let largeSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 9999)
+        let font = UIFont.systemFont(ofSize: 17.0)
         let attributes = [NSFontAttributeName: font]
-        let titleSize = (self.thread.title as NSString).boundingRectWithSize(largeSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        let titleSize = (self.thread.title as NSString).boundingRect(with: largeSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes, context: nil).size
         let titleHeight = ceil(titleSize.height)
 
-        return CGSizeMake(0, titleHeight + 16.0)
+        return CGSize(width: 0, height: titleHeight + 16.0)
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.posts?.count ?? 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PostCellIdentifier, forIndexPath: indexPath) as! ForumPostCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCellIdentifier, for: indexPath) as! ForumPostCollectionViewCell
         
         self.fillCell(cell, atIndexPath: indexPath)
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: HeaderIdentifier, forIndexPath: indexPath) as! ForumThreadHeaderCollectionReusableView
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! ForumThreadHeaderCollectionReusableView
             header.textLabel.text = self.thread.title
             header.applyTheme(self.theme)
             return header
         }
         
-        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        self.performSegueWithIdentifier(PostSegue, sender: cell)
+        let cell = collectionView.cellForItem(at: indexPath)
+        self.performSegue(withIdentifier: PostSegue, sender: cell)
     }
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PostSegue {
-            let controller = segue.destinationViewController as! ForumPostViewController
+            let controller = segue.destination as! ForumPostViewController
             let cell = sender as! UICollectionViewCell
             let post = self.posts![cell.tag]
             controller.post = post
@@ -164,18 +164,18 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                 self.hideLoader()
             }
         }
-        func failure(error: NSError) {
+        func failure(error: Error) {
             self.refreshControl?.endRefreshing()
             
             let alert: Alert!
             
             if (error.isMaintenanceError()) {
-                alert = self.alertFactory.createAlert(self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .Default, title: "OK", { self.hideLoader() })
+                alert = self.alertFactory.createAlert(presenter: self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .default, title: "OK", { self.hideLoader() })
                 )
             } else {
-                alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                    (style: .Cancel, title: "No", { self.hideLoader() }),
-                    (style: .Default, title: "Yes", { self.onRefresh() })
+                alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                    (style: .cancel, title: "No", { self.hideLoader() }),
+                    (style: .default, title: "Yes", { self.onRefresh() })
                 )
             }
             alert.show()
@@ -190,7 +190,9 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         func success(posts: Array<ForumPost>) {
             // Get a difference of freshly loaded posts with the ones already loaded before
-            let newPosts = posts.difference(self.posts!)
+            let postsSet = Set(posts)
+            let cachedPostsSet = Set(self.posts!)
+            let newPosts = postsSet.subtracting(cachedPostsSet)
             
             if newPosts.isEmpty {
                 // No new posts, disable infinite scrolling
@@ -200,23 +202,23 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
             }
             
             // Append the new posts and prepare indexes for table update
-            var indexes = Array<NSIndexPath>()
+            var indexes = Array<IndexPath>()
             for post in newPosts {
-                indexes.append(NSIndexPath(forRow: self.posts!.count, inSection: 0))
+                indexes.append(IndexPath(row: self.posts!.count, section: 0))
                 self.posts!.append(post)
             }
             
             // Smoothly update the table by just inserting the new indexes
-            self.collectionView!.insertItemsAtIndexPaths(indexes)
+            self.collectionView!.insertItems(at: indexes)
             
             // Mark this page as loaded and enable infinite scroll again
-            self.loadedPage++
+            self.loadedPage += 1
             self.canLoadMore = true
         }
-        func failure(error: NSError) {
-            let alert = self.alertFactory.createAlert(self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                (style: .Cancel, title: "No", { self.hideLoader() }),
-                (style: .Default, title: "Yes", { self.onRefresh() })
+        func failure(error: Error) {
+            let alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
+                (style: .cancel, title: "No", { self.hideLoader() }),
+                (style: .default, title: "Yes", { self.onRefresh() })
             )
             alert.show()
         }
@@ -224,23 +226,23 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
     }
     
-    func fillCell(cell: ForumPostCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
+    func fillCell(_ cell: ForumPostCollectionViewCell, atIndexPath indexPath: IndexPath) {
         let post = self.posts![indexPath.row]
         
         // Set user avatar image if URL is defined in the model
         if let url = post.avatarUrl {
-            cell.avatarImageView.hidden = false
-            cell.avatarImageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "Avatar"))
+            cell.avatarImageView.isHidden = false
+            cell.avatarImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "Avatar"))
         } else {
-            cell.avatarImageView.hidden = true
+            cell.avatarImageView.isHidden = true
         }
         
         // Set dev icon if post is marked as Bioware post
         if post.isBiowarePost {
-            cell.devImageView.hidden = false
-            cell.devImageView.sd_setImageWithURL(NSURL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.isHidden = false
+            cell.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
         } else {
-            cell.devImageView.hidden = true
+            cell.devImageView.isHidden = true
         }
         
         cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
@@ -251,24 +253,24 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         cell.tag = indexPath.row
     }
     
-    func calculateSizeForItemAtIndexPath(indexPath: NSIndexPath) -> CGSize {
+    func calculateSizeForItemAtIndexPath(_ indexPath: IndexPath) -> CGSize {
         if let cell = self.sizingCell {
             // Fill it with data
             self.fillCell(cell, atIndexPath: indexPath)
-            cell.textView.preferredMaxLayoutWidth = CGRectGetWidth(self.collectionView!.frame) - 30.0
+            cell.textView.preferredMaxLayoutWidth = self.collectionView!.frame.width - 30.0
             // Now that it has data tell it to size itself
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
-            let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            let size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
 
-            return CGSizeMake(self.collectionView!.frame.size.width, size.height)
+            return CGSize(width: self.collectionView!.frame.size.width, height: size.height)
         }
-        return CGSizeZero
+        return CGSize.zero
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)
         
         self.view.backgroundColor = theme.contentBackground

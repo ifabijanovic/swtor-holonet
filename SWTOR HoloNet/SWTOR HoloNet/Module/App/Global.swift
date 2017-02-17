@@ -15,15 +15,15 @@ let ThemeChangedNotification = "ThemeChangedNotification"
 let DefaultAnimationDuration = 0.3
 
 func isIOS8() -> Bool {
-    let systemVersion = UIDevice.currentDevice().systemVersion
-    let result = systemVersion.compare("8.0.0", options: .NumericSearch)
-    return result == .OrderedSame
+    let systemVersion = UIDevice.current.systemVersion
+    let result = systemVersion.compare("8.0.0", options: .numeric)
+    return result == .orderedSame
 }
 
 func isIOS8OrLater() -> Bool {
-    let systemVersion = UIDevice.currentDevice().systemVersion
-    let result = systemVersion.compare("8.0.0", options: .NumericSearch)
-    return result == .OrderedSame || result == .OrderedDescending
+    let systemVersion = UIDevice.current.systemVersion
+    let result = systemVersion.compare("8.0.0", options: .numeric)
+    return result == .orderedSame || result == .orderedDescending
 }
 
 func isIOS7() -> Bool {
@@ -31,7 +31,7 @@ func isIOS7() -> Bool {
 }
 
 func isIOS7OrLater() -> Bool {
-    let systemVersion = UIDevice.currentDevice().systemVersion
-    let result = systemVersion.compare("7.0.0", options: .NumericSearch)
-    return result == .OrderedSame || result == .OrderedDescending
+    let systemVersion = UIDevice.current.systemVersion
+    let result = systemVersion.compare("7.0.0", options: .numeric)
+    return result == .orderedSame || result == .orderedDescending
 }

@@ -18,22 +18,22 @@ class ForumParser {
     
     // MARK: - Properties
     
-    private let numberFormatter: NSNumberFormatter
+    private let numberFormatter: NumberFormatter
     
     // MARK: - Init
     
     init() {
-        self.numberFormatter = NSNumberFormatter()
-        self.numberFormatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
-        self.numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        self.numberFormatter = NumberFormatter()
+        self.numberFormatter.formatterBehavior = NumberFormatter.Behavior.behavior10_4
+        self.numberFormatter.numberStyle = .decimal
     }
     
     // MARK: - Public methods
     
-    func linkParameter(#linkElement: HTMLElement?, name: String) -> String? {
+    func linkParameter(linkElement: HTMLElement?, name: String) -> String? {
         if let element = linkElement {
             if let href = element.objectForKeyedSubscript("href") as? String {
-                if let value = NSURLComponents(string: href)?.queryValueForName(name) {
+                if let value = URLComponents(string: href)?.queryValueForName(name) {
                     return value
                 }
             }
@@ -41,43 +41,43 @@ class ForumParser {
         return nil
     }
     
-    func integerContent(#element: HTMLElement?) -> Int? {
+    func integerContent(element: HTMLElement?) -> Int? {
         if element != nil {
             let text = element!.textContent.stripNewLinesAndTabs().stripSpaces()
-            return self.numberFormatter.numberFromString(text)?.integerValue
+            return self.numberFormatter.number(from: text)?.intValue
         }
         return nil
     }
     
-    func postDate(#element: HTMLElement?) -> String? {
+    func postDate(element: HTMLElement?) -> String? {
         if element != nil {
             return element!.textContent.stripNewLinesAndTabs().formatPostDate()
         }
         return nil
     }
     
-    func postNumber(#element: HTMLElement?) -> Int? {
+    func postNumber(element: HTMLElement?) -> Int? {
         if element != nil {
             let text = element!.textContent!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
-            if let range = text.rangeOfString("| #", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
-                var numberString = text.substringFromIndex(range.endIndex).stripNewLinesAndTabs().stripSpaces()
-                if let spaceRange = numberString.rangeOfString("Next", options: NSStringCompareOptions.LiteralSearch, range: nil, locale: nil) {
-                    numberString = numberString.substringToIndex(spaceRange.startIndex)
+            if let range = text.range(of: "| #", options: .literal, range: nil, locale: nil) {
+                var numberString = text.substring(from: range.upperBound).stripNewLinesAndTabs().stripSpaces()
+                if let spaceRange = numberString.range(of: "Next", options: .literal, range: nil, locale: nil) {
+                    numberString = numberString.substring(to: spaceRange.lowerBound)
                 }
-                return self.numberFormatter.numberFromString(numberString)?.integerValue
+                return self.numberFormatter.number(from: numberString)?.intValue
             }
         }
         return nil
     }
     
-    func formatPostBlock(#header: String?, body: String?) -> String {
+    func formatPostBlock(header: String?, body: String?) -> String {
         if body == nil { return "" }
         return header != nil
             ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body!.trimSpaces())
             : String(format: self.postBlockNoHeaderFormat, body!.trimSpaces())
     }
     
-    func postText(#node: HTMLNode?) -> String? {
+    func postText(node: HTMLNode?) -> String? {
         if node != nil {
             return self.getPostText(node!)
         }
@@ -86,7 +86,7 @@ class ForumParser {
     
     // MARK: - Private methods
     
-    private func getPostText(node: HTMLNode) -> String {
+    private func getPostText(_ node: HTMLNode) -> String {
         // Leaf node
         if node.children.count == 0 {
             return node.textContent
@@ -96,17 +96,17 @@ class ForumParser {
             // Special formatting for "blocks" inside posts
             for blockClass in self.postBlockClasses {
                 if element.hasClass(blockClass) {
-                    let header = element.firstNodeMatchingSelector(".\(blockClass)-header")?.textContent
-                    let body = element.firstNodeMatchingSelector(".\(blockClass)-body")?.textContent
+                    let header = element.firstNode(matchingSelector: ".\(blockClass)-header")?.textContent
+                    let body = element.firstNode(matchingSelector: ".\(blockClass)-body")?.textContent
                     
                     return self.formatPostBlock(header: header, body: body)
                 }
             }
             
             // Special formatting for a weird quote block sometimes found on DevTracker
-            if element.hasAttribute("style", containingValue: "margin:20px") {
-                if let quoteElement = element.firstNodeMatchingSelector(".alt2") {
-                    let nodes = quoteElement.nodesMatchingSelector("div") as! Array<HTMLElement>
+            if element.hasAttribute(name: "style", containingValue: "margin:20px") {
+                if let quoteElement = element.firstNode(matchingSelector: ".alt2") {
+                    let nodes = quoteElement.nodes(matchingSelector: "div") as! Array<HTMLElement>
                     if nodes.count > 1 {
                         let header = nodes[0].textContent
                         let body = nodes[1].textContent
@@ -119,11 +119,11 @@ class ForumParser {
         
         // Continue down the DOM tree
         var text = ""
-        node.children.enumerateObjectsUsingBlock { (child, index, stop) in
+        node.children.enumerateObjects({ (child, index, stop) in
             if let childNode = child as? HTMLNode {
                 text += self.getPostText(childNode)
             }
-        }
+        })
         return text
     }
     

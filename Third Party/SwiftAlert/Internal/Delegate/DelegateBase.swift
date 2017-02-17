@@ -17,7 +17,7 @@ internal class DelegateBase: NSObject {
     
     // MARK: - Init
     
-    init(cb: (Int) -> ()) {
+    init(cb: @escaping (Int) -> ()) {
         self.cb = cb
         super.init()
         self.holdSelf = self

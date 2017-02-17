@@ -16,7 +16,7 @@ class SettingPickerDelegate<SettingType: Equatable> {
     
     private let tableView: UITableView
     private let map: Array<(index: Int, value: SettingType)>
-    private var checkedRow: NSIndexPath!
+    private var checkedRow: IndexPath!
     
     // MARK: - Init
     
@@ -25,15 +25,15 @@ class SettingPickerDelegate<SettingType: Equatable> {
         self.tableView = tableView
         self.map = map
         
-        self.checkedRow = NSIndexPath(forRow: self.indexForSettingType(self.initialValue), inSection: 0)
+        self.checkedRow = IndexPath(row: self.indexForSettingType(self.initialValue), section: 0)
     }
     
     // MARK: - Public methods
     
     func markInitialValue() {
-        let initialValueRow = NSIndexPath(forRow: self.indexForSettingType(self.initialValue), inSection: 0)
-        if let cell = self.tableView.cellForRowAtIndexPath(initialValueRow) {
-            cell.accessoryType = .Checkmark
+        let initialValueRow = IndexPath(row: self.indexForSettingType(self.initialValue), section: 0)
+        if let cell = self.tableView.cellForRow(at: initialValueRow) {
+            cell.accessoryType = .checkmark
         }
         self.checkedRow = initialValueRow
     }
@@ -42,26 +42,26 @@ class SettingPickerDelegate<SettingType: Equatable> {
         return self.settingTypeForIndex(self.checkedRow.row)!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        if !indexPath.isEqual(self.checkedRow) {
-            if let cell = tableView.cellForRowAtIndexPath(self.checkedRow) {
-                cell.accessoryType = .None
+        if indexPath != self.checkedRow {
+            if let cell = tableView.cellForRow(at: self.checkedRow) {
+                cell.accessoryType = .none
             }
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                cell.accessoryType = .Checkmark
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .checkmark
             }
         }
         
         self.checkedRow = indexPath
     }
     
-    func applyTheme(theme: Theme) {
+    func applyTheme(_ theme: Theme) {
         self.tableView.backgroundColor = theme.contentBackground
         
-        for row in 0..<self.tableView.numberOfRowsInSection(0) {
-            if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) {
+        for row in 0..<self.tableView.numberOfRows(inSection: 0) {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) {
                 cell.applyThemeEx(theme)
                 cell.textLabel?.textColor = theme.contentText
                 cell.tintColor = theme.contentTitle
@@ -71,7 +71,7 @@ class SettingPickerDelegate<SettingType: Equatable> {
     
     // MARK: - Private methods
     
-    private func indexForSettingType(settingType: SettingType) -> Int {
+    private func indexForSettingType(_ settingType: SettingType) -> Int {
         for item in self.map {
             if item.value == settingType {
                 return item.index
@@ -81,7 +81,7 @@ class SettingPickerDelegate<SettingType: Equatable> {
         return 0
     }
     
-    private func settingTypeForIndex(index: Int) -> SettingType? {
+    private func settingTypeForIndex(_ index: Int) -> SettingType? {
         for item in self.map {
             if item.index == index {
                 return item.value

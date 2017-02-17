@@ -28,7 +28,7 @@ internal class AlertIOS8: Alert {
             }
         }
         
-        self.presenter.presentViewController(alertController, animated: true, completion: nil)
+        self.presenter.present(alertController, animated: true, completion: nil)
     }
     
 }

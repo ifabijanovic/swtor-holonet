@@ -16,19 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private var launchNotification: [NSObject: AnyObject]? = nil
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private var launchNotification: [AnyHashable: Any]? = nil
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Disable caching
-        let cache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-        NSURLCache.setSharedURLCache(cache)
+        let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+        URLCache.shared = cache
         
         // Register notification listeners
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAlert:", name: ShowAlertNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.showAlert(notification:)), name: NSNotification.Name(rawValue: ShowAlertNotification), object: nil)
         
         // Setup parse
         Parse.enableLocalDatastore()
-        let parseSettings = InstanceHolder.sharedInstance().settings.parse
+        let parseSettings = InstanceHolder.sharedInstance.settings.parse
         
 #if !DEBUG && !TEST
         ParseCrashReporting.enable()
@@ -43,49 +43,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
         
         // Register for push notifications
-        let pushManager = InstanceHolder.sharedInstance().pushManager
+        let pushManager = InstanceHolder.sharedInstance.pushManager
         if pushManager.isPushEnabled {
             pushManager.registerForPush()
         }
         
         // Check if app was launched via push notification
-        if let launchNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+        if let launchNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             self.launchNotification = launchNotification
         }
 
         return true
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        InstanceHolder.sharedInstance().pushManager.registerDeviceToken(deviceToken)
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        InstanceHolder.sharedInstance.pushManager.registerDeviceToken(deviceToken)
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        if application.applicationState == .Inactive {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        if application.applicationState == .inactive {
 #if !DEBUG && !TEST
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
 #endif
         }
-        InstanceHolder.sharedInstance().pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
+        InstanceHolder.sharedInstance.pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Push notification startup
-        let pushManager = InstanceHolder.sharedInstance().pushManager
+        let pushManager = InstanceHolder.sharedInstance.pushManager
         pushManager.resetBadge()
         if pushManager.shouldRequestPushAccess() {
             if let presenter = self.window?.rootViewController {
@@ -96,18 +96,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Check if there is a pending launch push notification
         if let launchNotification = self.launchNotification {
             // Handle the notification as if the app was in background
-            pushManager.handleRemoteNotification(applicationState: .Background, userInfo: launchNotification)
+            pushManager.handleRemoteNotification(applicationState: .background, userInfo: launchNotification)
             self.launchNotification = nil
         }
         
         // Save some settings for the user
-        if let user = PFUser.currentUser() {
+        if let user = PFUser.current() {
             user["pushEnabled"] = pushManager.isPushEnabled
             user.saveInBackground()
         }
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     

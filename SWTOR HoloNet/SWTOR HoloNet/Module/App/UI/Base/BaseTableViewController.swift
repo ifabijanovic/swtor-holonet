@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController, Injectable, Themeable {
+class BaseTableViewController: UITableViewController, Themeable {
 
     // MARK: - Properties
     
@@ -32,14 +32,14 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
         self.registerThemeChangedCallback()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.inject()
         self.registerThemeChangedCallback()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         self.inject()
@@ -47,19 +47,23 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func inject() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance().inject(self)
+        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory in
+            self.settings = settings
+            self.theme = theme
+            self.alertFactory = alertFactory
+        }
     }
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {}
+    func applyTheme(_ theme: Theme) {}
     
-    func themeChanged(theme: Theme) {
+    func themeChanged(_ theme: Theme) {
         self.applyTheme(theme)
         self.tableView.reloadData()
     }
@@ -69,7 +73,7 @@ class BaseTableViewController: UITableViewController, Injectable, Themeable {
     }
     
     private func registerThemeChangedCallback() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "themeChanged:", name: ThemeChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseTableViewController.themeChanged(_:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
     }
 
 }

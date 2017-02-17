@@ -34,7 +34,7 @@ enum TextSize: CGFloat {
     }
 }
 
-class Theme {
+class Theme: NSObject {
     
     // MARK: - Constants
     
@@ -43,7 +43,7 @@ class Theme {
     
     // MARK: - Properties
     
-    private let bundle: NSBundle
+    private let bundle: Bundle
     
     private(set) var type: ThemeType
     
@@ -69,51 +69,51 @@ class Theme {
     
     var textSize: TextSize {
         get {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            let savedValue = userDefaults.floatForKey(keyTextSize)
+            let userDefaults = UserDefaults.standard
+            let savedValue = userDefaults.float(forKey: keyTextSize)
             
             if savedValue > 0 {
                 if let value = TextSize(rawValue: CGFloat(savedValue)) {
                     return value
                 }
             } else {
-                userDefaults.setFloat(Float(TextSize.Small.rawValue), forKey: keyTextSize)
+                userDefaults.set(Float(TextSize.Small.rawValue), forKey: keyTextSize)
                 userDefaults.synchronize()
             }
             
             return .Small
         }
         set(newSize) {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.setFloat(Float(newSize.rawValue), forKey: keyTextSize)
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(Float(newSize.rawValue), forKey: keyTextSize)
             userDefaults.synchronize()
         }
     }
     
     // MARK: - Init
     
-    convenience init() {
-        self.init(bundle: NSBundle.mainBundle())
+    convenience override init() {
+        self.init(bundle: Bundle.main)
     }
     
-    init(bundle: NSBundle) {
+    init(bundle: Bundle) {
         self.bundle = bundle
         
         // Load the theme type from user settings
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let savedThemeType = userDefaults.stringForKey(keyThemeType) {
+        let userDefaults = UserDefaults.standard
+        if let savedThemeType = userDefaults.string(forKey: keyThemeType) {
             self.type = ThemeType(rawValue: savedThemeType)!
         } else {
             self.type = .Dark
         }
-        
-        self.changeTheme(self.type)
+        super.init()
+        self.changeTheme(type: self.type)
     }
     
     // MARK: - Public methods
     
     func changeTheme(type: ThemeType) {
-        let path = self.bundle.pathForResource(type.rawValue, ofType: "plist")
+        let path = self.bundle.path(forResource: type.rawValue, ofType: "plist")
         let data = NSDictionary(contentsOfFile: path!)!
         
         // Load theme data
@@ -133,9 +133,9 @@ class Theme {
         self.instructionsIconBackground = self.colorForKey("instructionsIconBackground", data: data)
         self.instructionsFrame = self.colorForKey("instructionsFrame", data: data)
         
-        self.activityIndicatorStyle = UIActivityIndicatorViewStyle(rawValue: self.numberForKey("activityIndicatorStyle", data: data).integerValue)!
-        self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle(rawValue: self.numberForKey("scrollViewIndicatorStyle", data: data).integerValue)!
-        self.statusBarStyle = UIStatusBarStyle(rawValue: self.numberForKey("statusBarStyle", data: data).integerValue)!
+        self.activityIndicatorStyle = UIActivityIndicatorViewStyle(rawValue: self.numberForKey("activityIndicatorStyle", data: data).intValue)!
+        self.scrollViewIndicatorStyle = UIScrollViewIndicatorStyle(rawValue: self.numberForKey("scrollViewIndicatorStyle", data: data).intValue)!
+        self.statusBarStyle = UIStatusBarStyle(rawValue: self.numberForKey("statusBarStyle", data: data).intValue)!
         
         // Apply the new theme
         self.apply()
@@ -143,8 +143,8 @@ class Theme {
         // Save the new theme type into user settings
         self.type = type
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setObject(type.rawValue, forKey: keyThemeType)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(type.rawValue, forKey: keyThemeType)
         userDefaults.synchronize()
     }
     
@@ -180,21 +180,21 @@ class Theme {
     }
     
     func fireThemeChanged() {
-        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangedNotification, object: self, userInfo: ["theme": self])
+        NotificationCenter.default.post(name: Notification.Name(ThemeChangedNotification), object: self, userInfo: ["theme": self])
     }
     
     // MARK: - Private methods
     
-    private func colorForKey(key: String, data: NSDictionary) -> UIColor {
-        return UIColor.fromString(data.valueForKey(key) as! String)!
+    private func colorForKey(_ key: String, data: NSDictionary) -> UIColor {
+        return UIColor.fromString(data.value(forKey: key) as! String)!
     }
     
-    private func numberForKey(key: String, data: NSDictionary) -> NSNumber {
-        return data.valueForKey(key) as! NSNumber
+    private func numberForKey(_ key: String, data: NSDictionary) -> NSNumber {
+        return data.value(forKey: key) as! NSNumber
     }
     
     private func apply() {
-        UIApplication.sharedApplication().setStatusBarStyle(self.statusBarStyle, animated: false)
+        UIApplication.shared.setStatusBarStyle(self.statusBarStyle, animated: false)
         
         UINavigationBar.appearance().barTintColor = self.navBackground
         UINavigationBar.appearance().tintColor = self.navText

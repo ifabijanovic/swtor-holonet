@@ -18,18 +18,18 @@ class ParseSettings {
     // MARK: - Init
     
     convenience init() {
-        self.init(bundle: NSBundle.mainBundle())
+        self.init(bundle: Bundle.main)
     }
     
-    init(bundle: NSBundle) {
-        let path = bundle.pathForResource("Parse", ofType: "plist")
+    init(bundle: Bundle) {
+        let path = bundle.path(forResource: "Parse", ofType: "plist")
         if path == nil {
-            println("Parse.plist does not exist. Make a copy of Parse-Template.plist named Parse.plist and fill it with correct vaues")
+            print("Parse.plist does not exist. Make a copy of Parse-Template.plist named Parse.plist and fill it with correct vaues")
         }
         let settings = NSDictionary(contentsOfFile: path!)
         
-        self.applicationId = settings?.objectForKey("ApplicationId") as? String ?? ""
-        self.clientId = settings?.objectForKey("ClientId") as? String ?? ""
+        self.applicationId = settings?.object(forKey: "ApplicationId") as? String ?? ""
+        self.clientId = settings?.object(forKey: "ClientId") as? String ?? ""
     }
     
 }
@@ -52,7 +52,7 @@ class Settings {
     let devAvatarUrl: String
     let stickyIconUrl: String
     let dulfyNetUrl: String
-    let requestTimeout: NSTimeInterval
+    let requestTimeout: TimeInterval
     
     var forumLanguage: ForumLanguage
     
@@ -61,28 +61,28 @@ class Settings {
     // MARK: - Init
     
     convenience init() {
-        self.init(bundle: NSBundle.mainBundle())
+        self.init(bundle: Bundle.main)
     }
     
-    init(bundle: NSBundle) {
-        let path = bundle.pathForResource("Settings", ofType: "plist")!
+    init(bundle: Bundle) {
+        let path = bundle.path(forResource: "Settings", ofType: "plist")!
         let settings = NSDictionary(contentsOfFile: path)
         
-        self.appEmail = settings?.objectForKey("App Email") as? String ?? ""
+        self.appEmail = settings?.object(forKey: "App Email") as? String ?? ""
         
-        self.forumDisplayUrl = settings?.objectForKey("Forum Display URL") as? String ?? ""
-        self.threadDisplayUrl = settings?.objectForKey("Thread Display URL") as? String ?? ""
-        self.devTrackerUrl = settings?.objectForKey("Developer Tracker URL") as? String ?? ""
-        self.devTrackerId = settings?.objectForKey("Developer Tracker ID") as? Int ?? 0
-        self.categoryQueryParam = settings?.objectForKey("Category Query Param") as? String ?? ""
-        self.threadQueryParam = settings?.objectForKey("Thread Query Param") as? String ?? ""
-        self.postQueryParam = settings?.objectForKey("Post Query Param") as? String ?? ""
-        self.pageQueryParam = settings?.objectForKey("Paging Query Param") as? String ?? ""
-        self.devTrackerIconUrl = settings?.objectForKey("Dev Tracker Icon URL") as? String ?? ""
-        self.devAvatarUrl = settings?.objectForKey("Dev Avatar URL") as? String ?? ""
-        self.stickyIconUrl = settings?.objectForKey("Sticky Icon URL") as? String ?? ""
-        self.dulfyNetUrl = settings?.objectForKey("Dulfy.net URL") as? String ?? ""
-        self.requestTimeout = settings?.objectForKey("Request Timeout") as? NSTimeInterval ?? 60.0
+        self.forumDisplayUrl = settings?.object(forKey: "Forum Display URL") as? String ?? ""
+        self.threadDisplayUrl = settings?.object(forKey: "Thread Display URL") as? String ?? ""
+        self.devTrackerUrl = settings?.object(forKey: "Developer Tracker URL") as? String ?? ""
+        self.devTrackerId = settings?.object(forKey: "Developer Tracker ID") as? Int ?? 0
+        self.categoryQueryParam = settings?.object(forKey: "Category Query Param") as? String ?? ""
+        self.threadQueryParam = settings?.object(forKey: "Thread Query Param") as? String ?? ""
+        self.postQueryParam = settings?.object(forKey: "Post Query Param") as? String ?? ""
+        self.pageQueryParam = settings?.object(forKey: "Paging Query Param") as? String ?? ""
+        self.devTrackerIconUrl = settings?.object(forKey: "Dev Tracker Icon URL") as? String ?? ""
+        self.devAvatarUrl = settings?.object(forKey: "Dev Avatar URL") as? String ?? ""
+        self.stickyIconUrl = settings?.object(forKey: "Sticky Icon URL") as? String ?? ""
+        self.dulfyNetUrl = settings?.object(forKey: "Dulfy.net URL") as? String ?? ""
+        self.requestTimeout = settings?.object(forKey: "Request Timeout") as? TimeInterval ?? 60.0
         
         self.forumLanguage = ForumLanguage.English
         

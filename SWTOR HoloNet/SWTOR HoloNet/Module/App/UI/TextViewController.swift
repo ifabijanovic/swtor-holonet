@@ -28,10 +28,10 @@ class TextViewController: BaseViewController {
         super.viewDidLoad()
         
         if self.file != nil {
-            let bundle = NSBundle.mainBundle()
-            let path = bundle.pathForResource(file, ofType: "txt")
+            let bundle = Bundle.main
+            let path = bundle.path(forResource: file, ofType: "txt")
             if let path = path {
-                let content = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
+                let content = try? String(contentsOfFile: path, encoding: .utf8)
                 self.textView.text = content
             }
         } else if self.text != nil {
@@ -56,17 +56,17 @@ class TextViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         self.textView.textContainerInset = UIEdgeInsetsMake(self.topLayoutGuide.length + 8, 8, self.bottomLayoutGuide.length + 8, 8)
-        self.textView.setContentOffset(CGPointZero, animated: false)
+        self.textView.setContentOffset(CGPoint.zero, animated: false)
         
         super.viewDidLayoutSubviews()
     }
     
     // MARK: - Themeable
     
-    override func applyTheme(theme: Theme) {
+    override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.textView.textColor = theme.contentText
-        self.textView.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.textView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
         self.textView.indicatorStyle = theme.scrollViewIndicatorStyle
     }
 

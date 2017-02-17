@@ -21,18 +21,18 @@ class ForumThreadCollectionViewCell: UICollectionViewCell, Themeable {
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    func applyTheme(_ theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle
-        self.titleLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue)
+        self.titleLabel.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
         
         self.authorLabel.textColor = theme.contentText
-        self.authorLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue - 2.0)
+        self.authorLabel.font = UIFont.systemFont(ofSize: theme.textSize.rawValue - 2.0)
         
         self.repliesViewsLabel.textColor = theme.contentText
-        self.repliesViewsLabel.font = UIFont.systemFontOfSize(theme.textSize.rawValue - 2.0)
+        self.repliesViewsLabel.font = UIFont.systemFont(ofSize: theme.textSize.rawValue - 2.0)
         
         if self.accessoryView.image == nil {
-            self.accessoryView.image = UIImage(named: "Forward")?.imageWithRenderingMode(.AlwaysTemplate)
+            self.accessoryView.image = UIImage(named: "Forward")?.withRenderingMode(.alwaysTemplate)
         }
         self.accessoryView.tintColor = theme.contentTitle
         

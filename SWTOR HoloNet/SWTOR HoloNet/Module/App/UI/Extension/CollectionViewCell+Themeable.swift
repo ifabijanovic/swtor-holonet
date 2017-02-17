@@ -13,7 +13,7 @@ import Foundation
 // overriden in Swift, so this is a temporary solution until later version of Swift
 extension UICollectionViewCell {
     
-    func applyThemeEx(theme: Theme) {
+    func applyThemeEx(_ theme: Theme) {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView

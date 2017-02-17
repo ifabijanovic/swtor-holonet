@@ -17,31 +17,31 @@ class NavigationViewController: UINavigationController {
         self.registerForNotifications()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.registerForNotifications()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.registerForNotifications()
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Action dispatching
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "themeChanged:", name: ThemeChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NavigationViewController.themeChanged(notification:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
     }
     
     func themeChanged(notification: NSNotification) {
         if let theme = notification.userInfo?["theme"] as? Theme {
             // Only animate the transition if current view is visible
-            let animate = self.isViewLoaded() && self.view.window != nil
-            theme.apply(self.navigationBar, animate: animate)
+            let animate = self.isViewLoaded && self.view.window != nil
+            theme.apply(navigationBar: self.navigationBar, animate: animate)
         }
     }
 

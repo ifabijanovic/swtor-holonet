@@ -8,11 +8,11 @@
 
 import UIKit
 
-extension NSURLComponents {
+extension URLComponents {
     
-    func queryValueForName(name: String) -> String? {
-        if objc_getClass("NSURLQueryItem") != nil {
-            if let items = self.queryItems as? Array<NSURLQueryItem> {
+    func queryValueForName(_ name: String) -> String? {
+        if objc_getClass("URLQueryItem") != nil {
+            if let items = self.queryItems {
                 for item in items {
                     if item.name == name {
                         return item.value
@@ -21,8 +21,8 @@ extension NSURLComponents {
             }
         } else {
             if let query = self.query {
-                for param in query.componentsSeparatedByString("&") {
-                    let components = param.componentsSeparatedByString("=")
+                for param in query.components(separatedBy: "&") {
+                    let components = param.components(separatedBy: "=")
                     if components.count < 2 { continue }
                     if components[0] == name {
                         return components[1]

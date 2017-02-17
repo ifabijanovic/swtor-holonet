@@ -16,7 +16,7 @@ class ForumThreadHeaderCollectionReusableView: UICollectionReusableView, Themeab
     
     // MARK: - Themeable
     
-    func applyTheme(theme: Theme) {
+    func applyTheme(_ theme: Theme) {
         self.backgroundColor = theme.contentBackground
         self.textLabel.textColor = theme.contentTitle
     }

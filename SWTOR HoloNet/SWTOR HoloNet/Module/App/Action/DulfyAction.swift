@@ -32,13 +32,13 @@ class DulfyAction: Action {
     
     // MARK: - Public methods
     
-    func perform(userInfo: [NSObject : AnyObject]?, isForeground: Bool) -> Bool {
+    func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
         if let userInfo = userInfo {
             let parser = ActionParser(userInfo: userInfo)
             if let message = parser.getAlert() {
-                if let urlString = parser.getString(keyDulfyUrl) {
+                if let urlString = parser.getString(key: keyDulfyUrl) {
                     if let url = NSURL(string: urlString) {
-                        self.perform(message, url: url, isForeground: isForeground)
+                        self.perform(message: message, url: url, isForeground: isForeground)
                         return true
                     }
                 }
@@ -51,22 +51,22 @@ class DulfyAction: Action {
     // MARK: - Private methods
     
     private func perform(message: String, url: NSURL, isForeground: Bool) {
-        let payload = [
+        let payload: [AnyHashable: Any] = [
             "index": 1,
             "url": url
         ]
         
         if isForeground {
             // If in foreground ask the user if he wants to navigate
-            let alert = self.alertFactory.createAlert(UIViewController(), title: "Dulfy", message: message, buttons:
-                (style: .Cancel, title: "Hide", handler: {}),
-                (style: .Default, title: "View", handler: {
-                    NSNotificationCenter.defaultCenter().postNotificationName(SwitchToTabNotification, object: self, userInfo: payload)
+            let alert = self.alertFactory.createAlert(presenter: UIViewController(), title: "Dulfy", message: message, buttons:
+                (style: .cancel, title: "Hide", handler: {}),
+                (style: .default, title: "View", handler: {
+                    NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
                 })
             )
-            NSNotificationCenter.defaultCenter().postNotificationName(ShowAlertNotification, object: self, userInfo: ["alert": alert])
+            NotificationCenter.default.post(name: NSNotification.Name(ShowAlertNotification), object: self, userInfo: ["alert": alert])
         } else {
-            NSNotificationCenter.defaultCenter().postNotificationName(SwitchToTabNotification, object: self, userInfo: payload)
+            NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         }
     }
     
