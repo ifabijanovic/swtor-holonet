@@ -8,26 +8,6 @@
 
 import UIKit
 
-class ParseSettings {
-    
-    // MARK: - Properties
-    
-    let applicationId: String
-    let clientId: String
-    
-    // MARK: - Init
-    
-    convenience init() {
-        self.init(bundle: Bundle.main)
-    }
-    
-    init(bundle: Bundle) {
-        self.applicationId = ""
-        self.clientId = ""
-    }
-    
-}
-
 class Settings {
     
     // MARK: - Properties
@@ -49,8 +29,6 @@ class Settings {
     let requestTimeout: TimeInterval
     
     var forumLanguage: ForumLanguage
-    
-    let parse: ParseSettings
     
     // MARK: - Init
     
@@ -79,8 +57,6 @@ class Settings {
         self.requestTimeout = settings?.object(forKey: "Request Timeout") as? TimeInterval ?? 60.0
         
         self.forumLanguage = ForumLanguage.English
-        
-        self.parse = ParseSettings(bundle: bundle)
     }
     
 }

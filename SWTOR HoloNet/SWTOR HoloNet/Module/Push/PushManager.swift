@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Parse
-import Bolts
 
 let keyDidCancelPushAccess = "pushDidCancelPushAccess"
 let keyDidApprovePushAccess = "pushDidApprovePushAccess"
@@ -111,11 +109,7 @@ class PushManager {
     }
     
     func registerDeviceToken(_ deviceToken: Data) {
-        // Store the deviceToken in the current installation and save it to Parse.
-        let currentInstallation = PFInstallation.current()
-        currentInstallation.setDeviceTokenFrom(deviceToken)
-        currentInstallation.channels = ["global"];
-        currentInstallation.saveInBackground()
+        
     }
     
     // MARK: - Notification handling
@@ -132,17 +126,12 @@ class PushManager {
         if !result {
 #if !TEST
             // If performing an action failed, fallback to default Parse handling
-            PFPush.handlePush(userInfo)
 #endif
         }
     }
     
     func resetBadge() {
-        let currentInstallation = PFInstallation.current()
-        if currentInstallation.badge > 0 {
-            currentInstallation.badge = 0
-            currentInstallation.saveInBackground()
-        }
+        
     }
     
 }

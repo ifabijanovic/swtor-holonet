@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Parse
-import ParseCrashReporting
-import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,22 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Register notification listeners
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.showAlert(notification:)), name: NSNotification.Name(rawValue: ShowAlertNotification), object: nil)
-        
-        // Setup parse
-        Parse.enableLocalDatastore()
-        let parseSettings = InstanceHolder.sharedInstance.settings.parse
-        
-#if !DEBUG && !TEST
-        ParseCrashReporting.enable()
-#endif
-        
-        Parse.setApplicationId(parseSettings.applicationId, clientKey: parseSettings.clientId)
-        PFUser.enableAutomaticUser()
-        
-#if !DEBUG && !TEST
-        // Enable Parse analytics
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-#endif
         
         // Register for push notifications
         let pushManager = InstanceHolder.sharedInstance.pushManager
@@ -63,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         if application.applicationState == .inactive {
 #if !DEBUG && !TEST
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+            // TODO: App opened analytics
 #endif
         }
         InstanceHolder.sharedInstance.pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
@@ -101,10 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Save some settings for the user
-        if let user = PFUser.current() {
-            user["pushEnabled"] = pushManager.isPushEnabled
-            user.saveInBackground()
-        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

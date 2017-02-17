@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-import Parse
 
 // Workaround solution implemented because of a bug with protocol extension in Swift 1.2 and iOS SDK 8.3
 // See WebViewEx.swift file for more info
@@ -121,8 +120,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         }
         
         #if !DEBUG && !TEST
-            // Analytics
-            PFAnalytics.trackEvent("dulfy")
+            self.analytics.track(event: Constants.Analytics.Event.dulfy)
         #endif
     }
     

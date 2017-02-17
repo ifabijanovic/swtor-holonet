@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class ForumPostViewController: BaseViewController {
 
@@ -51,8 +50,7 @@ class ForumPostViewController: BaseViewController {
         self.applyTheme(self.theme)
         
 #if !DEBUG && !TEST
-        // Analytics
-        PFAnalytics.trackEvent("forum", dimensions: ["type": "post"])
+    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
 #endif
     }
     

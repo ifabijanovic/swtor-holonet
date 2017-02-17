@@ -21,6 +21,7 @@ class InstanceHolder {
     let settings: Settings
     let theme: Theme
     let pushManager: PushManager
+    let analytics: Analytics
     
     // MARK: - Singleton
     
@@ -34,12 +35,13 @@ class InstanceHolder {
         self.alertFactory = UIAlertFactory()
         let actionFactory = ActionFactory(alertFactory: self.alertFactory)
         self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
+        self.analytics = DefaultAnalytics()
     }
     
     // MARK: - Public methods
     
-    func inject(handler: (Settings, Theme, AlertFactory) -> Void) {
-        handler(self.settings, self.theme, self.alertFactory)
+    func inject(handler: (Settings, Theme, AlertFactory, Analytics) -> Void) {
+        handler(self.settings, self.theme, self.alertFactory, self.analytics)
     }
     
 }

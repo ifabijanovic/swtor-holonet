@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Parse
 
 class TabViewController: UITabBarController {
 
+    private let analytics: Analytics = DefaultAnalytics()
+    
     // MARK: - Init
     
     required init() {
@@ -74,7 +75,7 @@ class TabViewController: UITabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 #if !DEBUG && !TEST
-        PFAnalytics.trackEvent("tab", dimensions: ["type": item.title!])
+    self.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
 #endif
     }
 

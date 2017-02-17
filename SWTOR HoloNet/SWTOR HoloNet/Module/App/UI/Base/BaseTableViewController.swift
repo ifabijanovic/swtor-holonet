@@ -15,6 +15,7 @@ class BaseTableViewController: UITableViewController, Themeable {
     var settings: Settings!
     var theme: Theme!
     var alertFactory: AlertFactory!
+    var analytics: Analytics!
     
     // MARK: - Init
     
@@ -52,10 +53,11 @@ class BaseTableViewController: UITableViewController, Themeable {
     
     private func inject() {
         // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory in
+        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory, analytics in
             self.settings = settings
             self.theme = theme
             self.alertFactory = alertFactory
+            self.analytics = analytics
         }
     }
     

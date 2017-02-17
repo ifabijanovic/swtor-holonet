@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class TextViewController: BaseViewController {
 
@@ -15,8 +14,8 @@ class TextViewController: BaseViewController {
     
     var file: String?
     var text: String?
-    var analyticsName: String?
-    var analyticsDimensions: Dictionary<String, String>?
+    var analyticsEvent: String?
+    var analyticsPropeties: [AnyHashable: Any]?
     
     // MARK: - Outlets
     
@@ -43,12 +42,11 @@ class TextViewController: BaseViewController {
         self.applyTheme(self.theme)
         
 #if !DEBUG && !TEST
-        // Analytics
-        if let name = self.analyticsName {
-            if let dimensions = self.analyticsDimensions {
-                PFAnalytics.trackEvent(name, dimensions: dimensions)
+        if let event = self.analyticsEvent {
+            if let properties = self.analyticsPropeties {
+                self.analytics.track(event: event, properties: properties)
             } else {
-                PFAnalytics.trackEvent(name)
+                self.analytics.track(event: event)
             }
         }
 #endif

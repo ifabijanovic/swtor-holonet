@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import MessageUI
 
 class SettingsTableViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
@@ -37,8 +36,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         self.applyTheme(self.theme)
         
 #if !DEBUG && !TEST
-        // Analytics
-        PFAnalytics.trackEvent("settings")
+        self.analytics.track(event: Constants.Analytics.Event.settings)
 #endif
     }
     

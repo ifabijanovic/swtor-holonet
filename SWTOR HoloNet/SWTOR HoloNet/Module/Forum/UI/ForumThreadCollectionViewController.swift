@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
@@ -55,8 +54,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         }
         
 #if !DEBUG && !TEST
-        // Analytics
-        PFAnalytics.trackEvent("forum", dimensions: ["type": "thread"])
+    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
 #endif
 
     }

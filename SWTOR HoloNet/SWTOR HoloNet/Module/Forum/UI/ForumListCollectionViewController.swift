@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
@@ -51,8 +50,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView!.register(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
 #if !DEBUG && !TEST
-        // Analytics
-        PFAnalytics.trackEvent("forum", dimensions: ["type": "list"])
+    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
 #endif
     }
     

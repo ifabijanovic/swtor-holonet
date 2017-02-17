@@ -8,7 +8,6 @@
 
 import UIKit
 import QuartzCore
-import Parse
 
 class NotificationSettingsViewController: BaseViewController {
     
@@ -48,8 +47,7 @@ class NotificationSettingsViewController: BaseViewController {
         self.titleLabel.text = "Notifications are \(status)"
         
 #if !DEBUG && !TEST
-        // Analytics
-        PFAnalytics.trackEvent("settings", dimensions: ["page":"notification"])
+    self.analytics.track(event: Constants.Analytics.Event.settings, properties: [Constants.Analytics.Property.page: "notification"])
 #endif
     }
     
