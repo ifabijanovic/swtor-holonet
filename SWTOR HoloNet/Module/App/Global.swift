@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let ShowAlertNotification = "ShowAlertNotification"
 let SwitchToTabNotification = "SwitchToTabNotification"

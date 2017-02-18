@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let keyDidCancelPushAccess = "pushDidCancelPushAccess"
 let keyDidApprovePushAccess = "pushDidApprovePushAccess"

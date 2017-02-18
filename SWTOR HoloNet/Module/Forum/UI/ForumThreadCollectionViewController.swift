@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
@@ -226,17 +227,17 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         let post = self.posts![indexPath.row]
         
         // Set user avatar image if URL is defined in the model
-        if let url = post.avatarUrl {
+        if let avatarUrl = post.avatarUrl, let url = URL(string: avatarUrl) {
             cell.avatarImageView.isHidden = false
-            cell.avatarImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "Avatar"))
+            cell.avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.avatar))
         } else {
             cell.avatarImageView.isHidden = true
         }
         
         // Set dev icon if post is marked as Bioware post
-        if post.isBiowarePost {
+        if post.isBiowarePost, let url = URL(string: self.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
-            cell.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
             cell.devImageView.isHidden = true
         }

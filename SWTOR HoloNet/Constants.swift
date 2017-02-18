@@ -22,4 +22,13 @@ struct Constants {
             static let page = "page"
         }
     }
+    
+    struct Images {
+        struct Placeholders {
+            static let avatar = "Avatar"
+            static let categoryIcon = "CategoryIcon"
+            static let devTrackerIcon = "DevTrackerIcon"
+            static let stickyIcon = "StickyIcon"
+        }
+    }
 }

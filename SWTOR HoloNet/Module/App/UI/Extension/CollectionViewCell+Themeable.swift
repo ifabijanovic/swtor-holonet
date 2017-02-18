@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Ivan Fabijanović. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // This extension should be implemented so it extends the UITableViewCell
 // with the Themeable protocol, but extended methods still cannot be

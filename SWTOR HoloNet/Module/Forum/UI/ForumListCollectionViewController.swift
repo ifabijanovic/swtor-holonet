@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
@@ -332,8 +333,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let category = self.categories![indexPath.row]
         
         // Set category icon if URL is defined in the model
-        if let url = category.iconUrl {
-            cell.iconImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "CategoryIcon"))
+        if let iconUrl = category.iconUrl, let url = URL(string: iconUrl) {
+            cell.iconImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.categoryIcon))
         }
         
         cell.titleLabel.text = category.title
@@ -348,17 +349,17 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let thread = self.threads![indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
-        if thread.hasBiowareReply {
+        if thread.hasBiowareReply, let url = URL(string: self.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
-            cell.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
             cell.devImageView.isHidden = true
         }
         
         // Set sticky icon if thread is marked with sticky
-        if thread.isSticky {
+        if thread.isSticky, let url = URL(string: self.settings.stickyIconUrl) {
             cell.stickyImageView.isHidden = false
-            cell.stickyImageView.sd_setImage(with: URL(string: self.settings.stickyIconUrl), placeholderImage: UIImage(named: "StickyIcon"))
+            cell.stickyImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.stickyIcon))
         } else {
             cell.stickyImageView.isHidden = true
         }

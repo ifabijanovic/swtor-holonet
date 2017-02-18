@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ForumPostViewController: BaseViewController {
 
@@ -28,17 +29,17 @@ class ForumPostViewController: BaseViewController {
         super.viewDidLoad()
         
         // Set user avatar image if URL is defined in the model
-        if let url = self.post.avatarUrl {
+        if let avatarUrl = self.post.avatarUrl, let url = URL(string: avatarUrl) {
             self.avatarImageView.isHidden = false
-            self.avatarImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "Avatar"))
+            self.avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.avatar))
         } else {
             self.avatarImageView.isHidden = true
         }
         
         // Set dev icon if post is marked as Bioware post
-        if self.post.isBiowarePost {
+        if self.post.isBiowarePost, let url = URL(string: self.settings.devTrackerIconUrl) {
             self.devImageView.isHidden = false
-            self.devImageView.sd_setImage(with: URL(string: self.settings.devTrackerIconUrl), placeholderImage: UIImage(named: "DevTrackerIcon"))
+            self.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
             self.devImageView.isHidden = true
         }
