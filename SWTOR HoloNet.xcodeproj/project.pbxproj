@@ -419,11 +419,11 @@
 		8109508C1A0A1BE900B974E1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */,
-				8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */,
 				813C19451A0B718D0072626A /* ForumCategoryRepositoryTests.swift */,
-				8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */,
+				8109508D1A0A1C0700B974E1 /* ForumParserTests.swift */,
 				814C9CC01A1B8E0900FE1C94 /* ForumPostRepositoryTests.swift */,
+				8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */,
+				8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";

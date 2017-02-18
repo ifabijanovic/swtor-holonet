@@ -8,14 +8,27 @@
 
 import UIKit
 import Alamofire
+import RxSwift
+import RxAlamofire
 import HTMLReader
 
 protocol ForumCategoryRepository {
+    func categories(language: ForumLanguage) -> Observable<[ForumCategory]>
+    func categories(parent: ForumCategory) -> Observable<[ForumCategory]>
+    
     func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
     func get(category: ForumCategory, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
 }
 
 class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryRepository {
+    func categories(language: ForumLanguage) -> Observable<[ForumCategory]> {
+        return self.categories(id: language.rawValue)
+    }
+    
+    func categories(parent: ForumCategory) -> Observable<[ForumCategory]> {
+        return self.categories(id: parent.id)
+    }
+    
     func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: language.rawValue, success: success, failure: failure)
     }
@@ -26,11 +39,16 @@ class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryReposito
 }
 
 extension DefaultForumCategoryRepository {
-    private func url(id: Int) -> URL {
-        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
-        let url = URL(string: string)
-        assert(url != nil)
-        return url!
+    fileprivate func categories(id: Int) -> Observable<[ForumCategory]> {
+        return self.manager.rx
+            .string(.get, self.url(id: id))
+            .map {
+                let items = self.parse(html: $0)
+                if items.isEmpty && self.isMaintenanceResponse($0) {
+                    throw ForumError.maintenance
+                }
+                return items
+        }
     }
     
     fileprivate func get(id: Int, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
@@ -53,6 +71,13 @@ extension DefaultForumCategoryRepository {
                 
                 success(items)
             }
+    }
+    
+    private func url(id: Int) -> URL {
+        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
+        let url = URL(string: string)
+        assert(url != nil)
+        return url!
     }
     
     private func parse(html: String) -> [ForumCategory] {

@@ -12,6 +12,7 @@ import HTMLReader
 
 enum ForumError: Error {
     case noResponse
+    case maintenance
 }
 
 class ForumRepositoryBase {

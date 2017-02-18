@@ -8,19 +8,17 @@
 
 import UIKit
 import XCTest
+import RxSwift
 import OHHTTPStubs
 
 class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
-
-    // MARK: - Properties
-    
     var repo: ForumCategoryRepository?
-    
-    // MARK: - Setup
+    var disposeBag: DisposeBag!
     
     override func setUp() {
         super.setUp()
         self.repo = DefaultForumCategoryRepository(settings: self.settings!)
+        self.disposeBag = DisposeBag()
     }
     
     override func tearDown() {
@@ -44,7 +42,10 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         }
         
         OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!.get(language: requestedLanguage, success: { (items) in }, failure: {(error) in })
+        self.repo!
+            .categories(language: requestedLanguage)
+            .subscribe()
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -63,7 +64,10 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
         }
         
         OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!.get(category: category, success: { (items) in }, failure: {(error) in })
+        self.repo!
+            .categories(parent: category)
+            .subscribe()
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -77,12 +81,18 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -96,23 +106,28 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 1, "")
-            
-            // Exception safeguard
-            if items.count != 1 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
-            XCTAssertEqual(items[0].title, "Forum category 5", "")
-            XCTAssertEqual(items[0].desc!, "Description 5", "")
-            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 1, "")
+                    
+                    // Exception safeguard
+                    if items.count != 1 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
+                    XCTAssertEqual(items[0].title, "Forum category 5", "")
+                    XCTAssertEqual(items[0].desc!, "Description 5", "")
+                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -126,13 +141,18 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -146,23 +166,28 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 1, "")
-            
-            // Exception safeguard
-            if items.count != 1 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertNil(items[0].iconUrl, "")
-            XCTAssertEqual(items[0].title, "Forum category 5", "")
-            XCTAssertNil(items[0].desc, "")
-            XCTAssertNil(items[0].stats, "")
-            XCTAssertNil(items[0].lastPost, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 1, "")
+                    
+                    // Exception safeguard
+                    if items.count != 1 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertNil(items[0].iconUrl, "")
+                    XCTAssertEqual(items[0].title, "Forum category 5", "")
+                    XCTAssertNil(items[0].desc, "")
+                    XCTAssertNil(items[0].stats, "")
+                    XCTAssertNil(items[0].lastPost, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -176,37 +201,42 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 3, "")
-            
-            // Exception safeguard
-            if items.count != 3 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
-            XCTAssertEqual(items[0].title, "Forum category 5", "")
-            XCTAssertEqual(items[0].desc!, "Description 5", "")
-            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-            
-            XCTAssertEqual(items[1].id, 6, "")
-            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
-            XCTAssertEqual(items[1].title, "Forum category 6", "")
-            XCTAssertEqual(items[1].desc!, "Description 6", "")
-            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
-            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
-            
-            XCTAssertEqual(items[2].id, 7, "")
-            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
-            XCTAssertEqual(items[2].title, "Forum category 7", "")
-            XCTAssertEqual(items[2].desc!, "Description 7", "")
-            XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
-            XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 3, "")
+                    
+                    // Exception safeguard
+                    if items.count != 3 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
+                    XCTAssertEqual(items[0].title, "Forum category 5", "")
+                    XCTAssertEqual(items[0].desc!, "Description 5", "")
+                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+                    
+                    XCTAssertEqual(items[1].id, 6, "")
+                    XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+                    XCTAssertEqual(items[1].title, "Forum category 6", "")
+                    XCTAssertEqual(items[1].desc!, "Description 6", "")
+                    XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+                    XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+                    
+                    XCTAssertEqual(items[2].id, 7, "")
+                    XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+                    XCTAssertEqual(items[2].title, "Forum category 7", "")
+                    XCTAssertEqual(items[2].desc!, "Description 7", "")
+                    XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
+                    XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -220,19 +250,24 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 2, "")
-            
-            // Exception safeguard
-            if items.count != 2 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertEqual(items[1].id, 7, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 2, "")
+                    
+                    // Exception safeguard
+                    if items.count != 2 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertEqual(items[1].id, 7, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -246,39 +281,43 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.english, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 3, "")
-            
-            // Exception safeguard
-            if items.count != 3 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertNil(items[0].iconUrl, "")
-            XCTAssertEqual(items[0].title, "Forum category 5", "")
-            XCTAssertEqual(items[0].desc!, "Description 5", "")
-            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-            
-            XCTAssertEqual(items[1].id, 6, "")
-            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
-            XCTAssertEqual(items[1].title, "Forum category 6", "")
-            XCTAssertNil(items[1].desc, "")
-            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
-            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
-            
-            XCTAssertEqual(items[2].id, 7, "")
-            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
-            XCTAssertEqual(items[2].title, "Forum category 7", "")
-            XCTAssertEqual(items[2].desc!, "Description 7", "")
-            XCTAssertNil(items[2].stats, "")
-            XCTAssertNil(items[2].lastPost, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .categories(language: .english)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 3, "")
+                    
+                    // Exception safeguard
+                    if items.count != 3 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertNil(items[0].iconUrl, "")
+                    XCTAssertEqual(items[0].title, "Forum category 5", "")
+                    XCTAssertEqual(items[0].desc!, "Description 5", "")
+                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+                    
+                    XCTAssertEqual(items[1].id, 6, "")
+                    XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+                    XCTAssertEqual(items[1].title, "Forum category 6", "")
+                    XCTAssertNil(items[1].desc, "")
+                    XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+                    XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+                    
+                    XCTAssertEqual(items[2].id, 7, "")
+                    XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+                    XCTAssertEqual(items[2].title, "Forum category 7", "")
+                    XCTAssertEqual(items[2].desc!, "Description 7", "")
+                    XCTAssertNil(items[2].stats, "")
+                    XCTAssertNil(items[2].lastPost, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
-
 }
