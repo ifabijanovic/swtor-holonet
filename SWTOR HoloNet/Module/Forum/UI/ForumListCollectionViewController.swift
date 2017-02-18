@@ -8,13 +8,15 @@
 
 import UIKit
 import AlamofireImage
+import RxSwift
+
+private let CategorySection = 0
+private let ThreadSection = 1
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
     // MARK: - Constants
     
-    private let CategorySection = 0
-    private let ThreadSection = 1
     private let CategoriesSectionTitle = "Categories"
     private let ThreadsSectionTitle = "Threads"
     private let CategoryCellIdentifier = "categoryCell"
@@ -30,8 +32,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     private var categoryRepo: ForumCategoryRepository!
     private var threadRepo: ForumThreadRepository?
     
-    private var categories: Array<ForumCategory>?
-    private var threads: Array<ForumThread>?
+    private var categories: [ForumCategory]?
+    private var threads: [ForumThread]?
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
     
@@ -57,6 +61,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
     }
 
     override func didReceiveMemoryWarning() {
@@ -202,10 +207,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onRefresh() {
-        // Setup a thread lock which will be used to synchronize two HTTP requests
-        let lock = DispatchQueue(label: "com.if.lock")
-        var requestCount = 0
-        
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
         // Disable infinite scroll while loading
@@ -213,121 +214,118 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         // Show loading indicator
         self.showLoader()
         
-        // Hides loading indicators and enables infinite scroll if applicable
-        // Uses thread locking to make sure it is only executed once
-        let finishLoad: () -> Void = {
-            // Check for error state
-            if requestCount == -1 { return }
-            
-            lock.sync() { requestCount -= 1 }
-            if requestCount == 0 {
-                self.refreshControl?.endRefreshing()
-                if self.category != nil {
-                    // Enable infinite scrolling only if inside a category
-                    // because forum root does not contain any threads
-                    self.canLoadMore = true
-                } else {
-                    self.hideLoader()
-                }
-            }
-        }
-        
-        func categorySuccess(categories: Array<ForumCategory>) {
-            // Set retrieved categories and reload the category section
-            self.categories = categories
-            self.collectionView!.reloadSections(IndexSet(integer: CategorySection))
-            finishLoad()
-        }
-        func threadSuccess(threads: Array<ForumThread>) {
-            // Set retrieved threads and reload the thread section
-            self.threads = threads
-            self.collectionView!.reloadSections(IndexSet(integer: ThreadSection))
-            finishLoad()
-        }
-        func failure(error: Error) {
-            // Check for error state
-            if requestCount == -1 { return }
-            // Set an error state on the requestCount variable
-            lock.sync() { requestCount = -1 }
-            
-            self.refreshControl?.endRefreshing()
-            
-            let alertController: UIAlertController
-            if (error.isMaintenanceError()) {
-                alertController = self.alertFactory.infoMaintenance { [weak self] _ in
-                    self?.hideLoader()
-                }
-            } else {
-                alertController = self.alertFactory.errorNetwork(
-                    cancelHandler: { [weak self] _ in
-                        self?.hideLoader()
-                    },
-                    retryHandler: { [weak self] _ in
-                        self?.onRefresh()
-                    }
-                )
-            }
-            self.present(alertController, animated: true, completion: nil)
-        }
+        let categories: Observable<[ForumCategory]>
+        let threads: Observable<[ForumThread]>
         
         if let category = self.category {
             // Load subcategories and threads for the current category
-            requestCount = 2
-            self.categoryRepo.get(category: category, success: categorySuccess, failure: failure)
-            self.threadRepo!.get(category: category, page: 1, success: threadSuccess, failure: failure)
+            categories = self.categoryRepo.categories(parent: category)
+            threads = self.threadRepo!.threads(category: category, page: 1)
         } else {
             // Forum root, only load categories
-            requestCount = 1
-            self.categoryRepo.get(language: self.settings.forumLanguage, success: categorySuccess, failure: failure)
+            categories = self.categoryRepo.categories(language: self.settings.forumLanguage)
+            threads = Observable.just([])
         }
+        
+        Observable
+            .combineLatest(categories, threads) { (categories: [ForumCategory], threads: [ForumThread]) -> DataResult in
+                return DataResult(categories: categories, threads: threads)
+            }
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { result in
+                    self.categories = result.categories
+                    self.collectionView!.reloadSections(IndexSet(integer: CategorySection))
+                    
+                    self.threads = result.threads
+                    if !result.threads.isEmpty {
+                        self.collectionView!.reloadSections(IndexSet(integer: ThreadSection))
+                    }
+                    
+                    self.refreshControl?.endRefreshing()
+                    
+                    if self.category != nil {
+                        // Enable infinite scrolling only if inside a category
+                        // because forum root does not contain any threads
+                        self.canLoadMore = true
+                    } else {
+                        self.hideLoader()
+                    }
+                },
+                onError: { error in
+                    self.refreshControl?.endRefreshing()
+                    
+                    let alertController: UIAlertController
+                    if (error.isMaintenanceError()) {
+                        alertController = self.alertFactory.infoMaintenance { [weak self] _ in
+                            self?.hideLoader()
+                        }
+                    } else {
+                        alertController = self.alertFactory.errorNetwork(
+                            cancelHandler: { [weak self] _ in
+                                self?.hideLoader()
+                            },
+                            retryHandler: { [weak self] _ in
+                                self?.onRefresh()
+                            }
+                        )
+                    }
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            )
+            .addDisposableTo(self.disposeBag)
     }
     
     override func onLoadMore() {
         // Only applicable in categories, forum root does not contain threads
-        if self.category == nil { return }
+        guard let category = self.category else { return }
         
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
-        func success(threads: Array<ForumThread>) {
-            let threadsSet = Set(threads)
-            let cachedThreadsSet = Set(self.threads!)
-            let newThreads = threadsSet.subtracting(cachedThreadsSet)
-            
-            if newThreads.isEmpty {
-                // No new threads, disable infinite scrolling
-                self.canLoadMore = false
-                self.hideLoader()
-                return
-            }
-            
-            // Append the new threads and prepare indexes for table update
-            var indexes = Array<IndexPath>()
-            for thread in newThreads {
-                indexes.append(IndexPath(row: self.threads!.count, section: ThreadSection))
-                self.threads!.append(thread)
-            }
-            
-            // Smoothly update the table by just inserting the new indexes
-            self.collectionView!.insertItems(at: indexes)
-            
-            // Mark this page as loaded and enable infinite scroll again
-            self.loadedPage += 1
-            self.canLoadMore = true
-        }
-        func failure(error: Error) {
-            let alertController = self.alertFactory.errorNetwork(
-                cancelHandler: { [weak self] _ in
-                    self?.hideLoader()
+        self.threadRepo!
+            .threads(category: category, page: self.loadedPage + 1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { threads in
+                    let threadsSet = Set(threads)
+                    let loadedThreads = Set(self.threads!)
+                    let newThreads = threadsSet.subtracting(loadedThreads)
+                    
+                    if newThreads.isEmpty {
+                        // No new threads, disable infinite scrolling
+                        self.canLoadMore = false
+                        self.hideLoader()
+                        return
+                    }
+                    
+                    // Append the new threads and prepare indexes for table update
+                    var indexes = [IndexPath]()
+                    for thread in newThreads {
+                        indexes.append(IndexPath(row: self.threads!.count, section: ThreadSection))
+                        self.threads!.append(thread)
+                    }
+                    
+                    // Smoothly update the table by just inserting the new indexes
+                    self.collectionView!.insertItems(at: indexes)
+                    
+                    // Mark this page as loaded and enable infinite scroll again
+                    self.loadedPage += 1
+                    self.canLoadMore = true
                 },
-                retryHandler: { [weak self] _ in
-                    self?.onRefresh()
+                onError: { error in
+                    let alertController = self.alertFactory.errorNetwork(
+                        cancelHandler: { [weak self] _ in
+                            self?.hideLoader()
+                        },
+                        retryHandler: { [weak self] _ in
+                            self?.onRefresh()
+                        }
+                    )
+                    self.present(alertController, animated: true, completion: nil)
                 }
             )
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        self.threadRepo!.get(category: self.category!, page: self.loadedPage + 1, success: success, failure: failure)
+            .addDisposableTo(self.disposeBag)
     }
     
     private func setupCategoryCell(_ cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {
@@ -382,4 +380,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView!.backgroundColor = theme.contentBackground
     }
 
+}
+
+fileprivate struct DataResult {
+    let categories: [ForumCategory]
+    let threads: [ForumThread]
 }

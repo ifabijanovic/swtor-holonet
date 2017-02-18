@@ -15,9 +15,6 @@ import HTMLReader
 protocol ForumCategoryRepository {
     func categories(language: ForumLanguage) -> Observable<[ForumCategory]>
     func categories(parent: ForumCategory) -> Observable<[ForumCategory]>
-    
-    func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
-    func get(category: ForumCategory, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
 }
 
 class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryRepository {
@@ -27,14 +24,6 @@ class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryReposito
     
     func categories(parent: ForumCategory) -> Observable<[ForumCategory]> {
         return self.categories(id: parent.id)
-    }
-    
-    func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
-        self.get(id: language.rawValue, success: success, failure: failure)
-    }
-    
-    func get(category: ForumCategory, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
-        self.get(id: category.id, success: success, failure: failure)
     }
 }
 
@@ -48,28 +37,6 @@ extension DefaultForumCategoryRepository {
                     throw ForumError.maintenance
                 }
                 return items
-            }
-    }
-    
-    fileprivate func get(id: Int, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
-        let url = self.url(id: id)
-        self.manager
-            .request(url)
-            .responseString { response in
-                if let error = response.error {
-                    return failure(error)
-                }
-                
-                guard let html = response.result.value else {
-                    return failure(ForumError.noResponse)
-                }
-                
-                let items = self.parse(html: html)
-                if items.isEmpty && self.isMaintenanceResponse(html) {
-                    return failure(maintenanceError())
-                }
-                
-                success(items)
             }
     }
     

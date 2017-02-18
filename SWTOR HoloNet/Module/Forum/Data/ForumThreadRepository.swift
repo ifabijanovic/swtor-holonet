@@ -14,17 +14,11 @@ import HTMLReader
 
 protocol ForumThreadRepository {
     func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]>
-    
-    func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void))
 }
 
 class DefaultForumThreadRepository: ForumRepositoryBase, ForumThreadRepository {
     func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]> {
         return self.threads(id: category.id, page: page)
-    }
-    
-    func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
-        self.get(id: category.id, page: page, success: success, failure: failure)
     }
 }
 
@@ -38,28 +32,6 @@ extension DefaultForumThreadRepository {
                     throw ForumError.maintenance
                 }
                 return items
-            }
-    }
-    
-    fileprivate func get(id: Int, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
-        let url = self.url(id: id, page: page)
-        self.manager
-            .request(url)
-            .responseString { response in
-                if let error = response.error {
-                    return failure(error)
-                }
-                
-                guard let html = response.result.value else {
-                    return failure(ForumError.noResponse)
-                }
-                
-                let items = self.parse(html: html)
-                if items.isEmpty && self.isMaintenanceResponse(html) {
-                    return failure(maintenanceError())
-                }
-                
-                success(items)
             }
     }
     
