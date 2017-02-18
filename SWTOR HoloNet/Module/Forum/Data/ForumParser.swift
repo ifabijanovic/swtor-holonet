@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HTMLReader
 
 class ForumParser {
     
@@ -31,43 +32,32 @@ class ForumParser {
     // MARK: - Public methods
     
     func linkParameter(linkElement: HTMLElement?, name: String) -> String? {
-        if let element = linkElement {
-            if let href = element.objectForKeyedSubscript("href") as? String {
-                if let value = URLComponents(string: href)?.queryValueForName(name) {
-                    return value
-                }
-            }
-        }
-        return nil
+        guard let href = linkElement?["href"],
+            let value = URLComponents(string: href)?.queryValueForName(name)
+            else { return nil }
+        
+        return value
     }
     
     func integerContent(element: HTMLElement?) -> Int? {
-        if element != nil {
-            let text = element!.textContent.stripNewLinesAndTabs().stripSpaces()
-            return self.numberFormatter.number(from: text)?.intValue
-        }
-        return nil
+        guard let text = element?.textContent.stripNewLinesAndTabs().stripSpaces() else { return nil }
+        return self.numberFormatter.number(from: text)?.intValue
     }
     
     func postDate(element: HTMLElement?) -> String? {
-        if element != nil {
-            return element!.textContent.stripNewLinesAndTabs().formatPostDate()
-        }
-        return nil
+        return element?.textContent.stripNewLinesAndTabs().formatPostDate()
     }
     
     func postNumber(element: HTMLElement?) -> Int? {
-        if element != nil {
-            let text = element!.textContent!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
-            if let range = text.range(of: "| #", options: .literal, range: nil, locale: nil) {
-                var numberString = text.substring(from: range.upperBound).stripNewLinesAndTabs().stripSpaces()
-                if let spaceRange = numberString.range(of: "Next", options: .literal, range: nil, locale: nil) {
-                    numberString = numberString.substring(to: spaceRange.lowerBound)
-                }
-                return self.numberFormatter.number(from: numberString)?.intValue
-            }
+        guard let text = element?.textContent.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(),
+            let range = text.range(of: "| #", options: .literal, range: nil, locale: nil)
+            else { return nil }
+        
+        var numberString = text.substring(from: range.upperBound).stripNewLinesAndTabs().stripSpaces()
+        if let spaceRange = numberString.range(of: "Next", options: .literal, range: nil, locale: nil) {
+            numberString = numberString.substring(to: spaceRange.lowerBound)
         }
-        return nil
+        return self.numberFormatter.number(from: numberString)?.intValue
     }
     
     func formatPostBlock(header: String?, body: String?) -> String {
@@ -106,7 +96,7 @@ class ForumParser {
             // Special formatting for a weird quote block sometimes found on DevTracker
             if element.hasAttribute(name: "style", containingValue: "margin:20px") {
                 if let quoteElement = element.firstNode(matchingSelector: ".alt2") {
-                    let nodes = quoteElement.nodes(matchingSelector: "div") as! Array<HTMLElement>
+                    let nodes = quoteElement.nodes(matchingSelector: "div")
                     if nodes.count > 1 {
                         let header = nodes[0].textContent
                         let body = nodes[1].textContent

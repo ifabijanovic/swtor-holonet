@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import HTMLReader
 
 class ForumCategoryRepository: ForumRepositoryBase {
     func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
@@ -53,12 +54,11 @@ extension ForumCategoryRepository {
         var items = [ForumCategory]()
         
         let document = HTMLDocument(string: html)
-        let categoryNodes = document!.nodes(matchingSelector: ".forumCategory > .subForum") as! [HTMLElement]
+        let categoryNodes = document.nodes(matchingSelector: ".forumCategory > .subForum")
         
         for node in categoryNodes {
-            let category = self.parseCategory(element: node)
-            if category != nil {
-                items.append(category!)
+            if let category = self.parseCategory(element: node) {
+                items.append(category)
             }
         }
         
@@ -75,7 +75,7 @@ extension ForumCategoryRepository {
         // Icon
         var iconUrl: String? = nil
         if let thumbElement = element.firstNode(matchingSelector: ".thumbBackground") {
-            if let iconStyle = thumbElement.objectForKeyedSubscript("style") as? String {
+            if let iconStyle = thumbElement["style"] {
                 let start = iconStyle.range(of: "url(", options: .literal, range: nil, locale: nil)
                 let end = iconStyle.range(of: ")", options: .literal, range: nil, locale: nil)
                 iconUrl = iconStyle.substring(with: Range(uncheckedBounds: (lower: start!.upperBound, upper: end!.lowerBound)))
@@ -88,7 +88,7 @@ extension ForumCategoryRepository {
         // Stats & Last post
         var stats: String? = nil
         var lastPost: String? = nil
-        let subTextElements = element.nodes(matchingSelector: ".resultSubText") as! [HTMLElement]
+        let subTextElements = element.nodes(matchingSelector: ".resultSubText")
 
         if subTextElements.count > 0 {
             stats = subTextElements[0].textContent

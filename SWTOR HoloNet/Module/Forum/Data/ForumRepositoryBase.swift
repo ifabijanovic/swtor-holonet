@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import HTMLReader
 
 enum ForumError: Error {
     case noResponse
@@ -45,7 +46,7 @@ class ForumRepositoryBase {
     
     internal func isMaintenanceResponse(_ html: String) -> Bool {
         let document = HTMLDocument(string: html)
-        let errorNodes = document!.nodes(matchingSelector: "#mainContent > #errorPage #errorBody p") as! Array<HTMLElement>
+        let errorNodes = document.nodes(matchingSelector: "#mainContent > #errorPage #errorBody p")
         
         if !errorNodes.isEmpty {
             let englishNode = errorNodes.first!

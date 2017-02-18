@@ -28,40 +28,6 @@
 		8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129B3361AADB18B004D8774 /* DulfyAction.swift */; };
 		8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129B3361AADB18B004D8774 /* DulfyAction.swift */; };
 		812B428D1A08CB7700302649 /* StringExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812B428C1A08CB7700302649 /* StringExTests.swift */; };
-		813049301E5838EE00DD14F3 /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490A1E5838EE00DD14F3 /* HTMLComment.m */; };
-		813049311E5838EE00DD14F3 /* HTMLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490A1E5838EE00DD14F3 /* HTMLComment.m */; };
-		813049321E5838EE00DD14F3 /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490C1E5838EE00DD14F3 /* HTMLDocument.m */; };
-		813049331E5838EE00DD14F3 /* HTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490C1E5838EE00DD14F3 /* HTMLDocument.m */; };
-		813049341E5838EE00DD14F3 /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490E1E5838EE00DD14F3 /* HTMLDocumentType.m */; };
-		813049351E5838EE00DD14F3 /* HTMLDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130490E1E5838EE00DD14F3 /* HTMLDocumentType.m */; };
-		813049361E5838EE00DD14F3 /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049101E5838EE00DD14F3 /* HTMLElement.m */; };
-		813049371E5838EE00DD14F3 /* HTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049101E5838EE00DD14F3 /* HTMLElement.m */; };
-		813049381E5838EE00DD14F3 /* HTMLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049121E5838EE00DD14F3 /* HTMLEncoding.m */; };
-		813049391E5838EE00DD14F3 /* HTMLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049121E5838EE00DD14F3 /* HTMLEncoding.m */; };
-		8130493A1E5838EE00DD14F3 /* HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049141E5838EE00DD14F3 /* HTMLEntities.m */; };
-		8130493B1E5838EE00DD14F3 /* HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049141E5838EE00DD14F3 /* HTMLEntities.m */; };
-		8130493C1E5838EE00DD14F3 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049171E5838EE00DD14F3 /* HTMLNode.m */; };
-		8130493D1E5838EE00DD14F3 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049171E5838EE00DD14F3 /* HTMLNode.m */; };
-		8130493E1E5838EE00DD14F3 /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049191E5838EE00DD14F3 /* HTMLOrderedDictionary.m */; };
-		8130493F1E5838EE00DD14F3 /* HTMLOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049191E5838EE00DD14F3 /* HTMLOrderedDictionary.m */; };
-		813049401E5838EE00DD14F3 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130491B1E5838EE00DD14F3 /* HTMLParser.m */; };
-		813049411E5838EE00DD14F3 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130491B1E5838EE00DD14F3 /* HTMLParser.m */; };
-		813049421E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130491D1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m */; };
-		813049431E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130491D1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m */; };
-		813049441E5838EE00DD14F3 /* HTMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049211E5838EE00DD14F3 /* HTMLSelector.m */; };
-		813049451E5838EE00DD14F3 /* HTMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049211E5838EE00DD14F3 /* HTMLSelector.m */; };
-		813049461E5838EE00DD14F3 /* HTMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049231E5838EE00DD14F3 /* HTMLSerialization.m */; };
-		813049471E5838EE00DD14F3 /* HTMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049231E5838EE00DD14F3 /* HTMLSerialization.m */; };
-		813049481E5838EE00DD14F3 /* HTMLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049251E5838EE00DD14F3 /* HTMLString.m */; };
-		813049491E5838EE00DD14F3 /* HTMLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049251E5838EE00DD14F3 /* HTMLString.m */; };
-		8130494A1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049281E5838EE00DD14F3 /* HTMLTextNode.m */; };
-		8130494B1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 813049281E5838EE00DD14F3 /* HTMLTextNode.m */; };
-		8130494C1E5838EE00DD14F3 /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492A1E5838EE00DD14F3 /* HTMLTokenizer.m */; };
-		8130494D1E5838EE00DD14F3 /* HTMLTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492A1E5838EE00DD14F3 /* HTMLTokenizer.m */; };
-		8130494E1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */; };
-		8130494F1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */; };
-		813049501E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */; };
-		813049511E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */; };
 		8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BAC71AB029A80045A93E /* ActionParserTests.swift */; };
 		8138BACA1AB02D2A0045A93E /* ActionFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BAC91AB02D2A0045A93E /* ActionFactoryTests.swift */; };
 		8138BACC1AB030000045A93E /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BACB1AB030000045A93E /* DulfyActionTests.swift */; };
@@ -218,6 +184,8 @@
 		81F6E6861E588BC500DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
 		81F6E6871E588C8E00DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
 		81F6E68A1E58923F00DDF907 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */; };
+		81F6E68C1E589DAA00DDF907 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E68B1E589DAA00DDF907 /* libxml2.tbd */; };
+		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
 		81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
@@ -254,45 +222,6 @@
 		8125C4911AA9DBB000046197 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Module/App/Action/Action.swift; sourceTree = "<group>"; };
 		8129B3361AADB18B004D8774 /* DulfyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyAction.swift; path = Module/App/Action/DulfyAction.swift; sourceTree = "<group>"; };
 		812B428C1A08CB7700302649 /* StringExTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExTests.swift; path = Extension/StringExTests.swift; sourceTree = "<group>"; };
-		813049091E5838EE00DD14F3 /* HTMLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLComment.h; path = "Third Party/HTMLReader/Code/HTMLComment.h"; sourceTree = "<group>"; };
-		8130490A1E5838EE00DD14F3 /* HTMLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLComment.m; path = "Third Party/HTMLReader/Code/HTMLComment.m"; sourceTree = "<group>"; };
-		8130490B1E5838EE00DD14F3 /* HTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocument.h; path = "Third Party/HTMLReader/Code/HTMLDocument.h"; sourceTree = "<group>"; };
-		8130490C1E5838EE00DD14F3 /* HTMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLDocument.m; path = "Third Party/HTMLReader/Code/HTMLDocument.m"; sourceTree = "<group>"; };
-		8130490D1E5838EE00DD14F3 /* HTMLDocumentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLDocumentType.h; path = "Third Party/HTMLReader/Code/HTMLDocumentType.h"; sourceTree = "<group>"; };
-		8130490E1E5838EE00DD14F3 /* HTMLDocumentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLDocumentType.m; path = "Third Party/HTMLReader/Code/HTMLDocumentType.m"; sourceTree = "<group>"; };
-		8130490F1E5838EE00DD14F3 /* HTMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLElement.h; path = "Third Party/HTMLReader/Code/HTMLElement.h"; sourceTree = "<group>"; };
-		813049101E5838EE00DD14F3 /* HTMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLElement.m; path = "Third Party/HTMLReader/Code/HTMLElement.m"; sourceTree = "<group>"; };
-		813049111E5838EE00DD14F3 /* HTMLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLEncoding.h; path = "Third Party/HTMLReader/Code/HTMLEncoding.h"; sourceTree = "<group>"; };
-		813049121E5838EE00DD14F3 /* HTMLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLEncoding.m; path = "Third Party/HTMLReader/Code/HTMLEncoding.m"; sourceTree = "<group>"; };
-		813049131E5838EE00DD14F3 /* HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLEntities.h; path = "Third Party/HTMLReader/Code/HTMLEntities.h"; sourceTree = "<group>"; };
-		813049141E5838EE00DD14F3 /* HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLEntities.m; path = "Third Party/HTMLReader/Code/HTMLEntities.m"; sourceTree = "<group>"; };
-		813049151E5838EE00DD14F3 /* HTMLNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNamespace.h; path = "Third Party/HTMLReader/Code/HTMLNamespace.h"; sourceTree = "<group>"; };
-		813049161E5838EE00DD14F3 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = "Third Party/HTMLReader/Code/HTMLNode.h"; sourceTree = "<group>"; };
-		813049171E5838EE00DD14F3 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = "Third Party/HTMLReader/Code/HTMLNode.m"; sourceTree = "<group>"; };
-		813049181E5838EE00DD14F3 /* HTMLOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLOrderedDictionary.h; path = "Third Party/HTMLReader/Code/HTMLOrderedDictionary.h"; sourceTree = "<group>"; };
-		813049191E5838EE00DD14F3 /* HTMLOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLOrderedDictionary.m; path = "Third Party/HTMLReader/Code/HTMLOrderedDictionary.m"; sourceTree = "<group>"; };
-		8130491A1E5838EE00DD14F3 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "Third Party/HTMLReader/Code/HTMLParser.h"; sourceTree = "<group>"; };
-		8130491B1E5838EE00DD14F3 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = "Third Party/HTMLReader/Code/HTMLParser.m"; sourceTree = "<group>"; };
-		8130491C1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLPreprocessedInputStream.h; path = "Third Party/HTMLReader/Code/HTMLPreprocessedInputStream.h"; sourceTree = "<group>"; };
-		8130491D1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLPreprocessedInputStream.m; path = "Third Party/HTMLReader/Code/HTMLPreprocessedInputStream.m"; sourceTree = "<group>"; };
-		8130491E1E5838EE00DD14F3 /* HTMLQuirksMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLQuirksMode.h; path = "Third Party/HTMLReader/Code/HTMLQuirksMode.h"; sourceTree = "<group>"; };
-		8130491F1E5838EE00DD14F3 /* HTMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLReader.h; path = "Third Party/HTMLReader/Code/HTMLReader.h"; sourceTree = "<group>"; };
-		813049201E5838EE00DD14F3 /* HTMLSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSelector.h; path = "Third Party/HTMLReader/Code/HTMLSelector.h"; sourceTree = "<group>"; };
-		813049211E5838EE00DD14F3 /* HTMLSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLSelector.m; path = "Third Party/HTMLReader/Code/HTMLSelector.m"; sourceTree = "<group>"; };
-		813049221E5838EE00DD14F3 /* HTMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSerialization.h; path = "Third Party/HTMLReader/Code/HTMLSerialization.h"; sourceTree = "<group>"; };
-		813049231E5838EE00DD14F3 /* HTMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLSerialization.m; path = "Third Party/HTMLReader/Code/HTMLSerialization.m"; sourceTree = "<group>"; };
-		813049241E5838EE00DD14F3 /* HTMLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLString.h; path = "Third Party/HTMLReader/Code/HTMLString.h"; sourceTree = "<group>"; };
-		813049251E5838EE00DD14F3 /* HTMLString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLString.m; path = "Third Party/HTMLReader/Code/HTMLString.m"; sourceTree = "<group>"; };
-		813049261E5838EE00DD14F3 /* HTMLSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLSupport.h; path = "Third Party/HTMLReader/Code/HTMLSupport.h"; sourceTree = "<group>"; };
-		813049271E5838EE00DD14F3 /* HTMLTextNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTextNode.h; path = "Third Party/HTMLReader/Code/HTMLTextNode.h"; sourceTree = "<group>"; };
-		813049281E5838EE00DD14F3 /* HTMLTextNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTextNode.m; path = "Third Party/HTMLReader/Code/HTMLTextNode.m"; sourceTree = "<group>"; };
-		813049291E5838EE00DD14F3 /* HTMLTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizer.h; path = "Third Party/HTMLReader/Code/HTMLTokenizer.h"; sourceTree = "<group>"; };
-		8130492A1E5838EE00DD14F3 /* HTMLTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTokenizer.m; path = "Third Party/HTMLReader/Code/HTMLTokenizer.m"; sourceTree = "<group>"; };
-		8130492B1E5838EE00DD14F3 /* HTMLTokenizerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTokenizerState.h; path = "Third Party/HTMLReader/Code/HTMLTokenizerState.h"; sourceTree = "<group>"; };
-		8130492C1E5838EE00DD14F3 /* HTMLTreeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLTreeEnumerator.h; path = "Third Party/HTMLReader/Code/HTMLTreeEnumerator.h"; sourceTree = "<group>"; };
-		8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
-		8130492E1E5838EE00DD14F3 /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
-		8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
 		8138BAC71AB029A80045A93E /* ActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParserTests.swift; path = Module/App/Action/ActionParserTests.swift; sourceTree = "<group>"; };
 		8138BAC91AB02D2A0045A93E /* ActionFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionFactoryTests.swift; path = Module/App/Action/ActionFactoryTests.swift; sourceTree = "<group>"; };
 		8138BACB1AB030000045A93E /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyActionTests.swift; path = Module/App/Action/DulfyActionTests.swift; sourceTree = "<group>"; };
@@ -376,8 +305,6 @@
 		81AB24A719EFC21100293D26 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategory.swift; path = Module/Forum/Model/ForumCategory.swift; sourceTree = "<group>"; };
 		81AB24AA19EFC3FD00293D26 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThread.swift; path = Module/Forum/Model/ForumThread.swift; sourceTree = "<group>"; };
 		81AB24AD19EFC5C400293D26 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPost.swift; path = Module/Forum/Model/ForumPost.swift; sourceTree = "<group>"; };
-		81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNet-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SWTOR HoloNetTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		81AB24D919EFD21700293D26 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumCategoryRepository.swift; path = Module/Forum/Data/ForumCategoryRepository.swift; sourceTree = "<group>"; };
 		81AB24DC19EFD2CE00293D26 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumLanguage.swift; path = Module/Forum/Model/ForumLanguage.swift; sourceTree = "<group>"; };
 		81AD3D031B5527B20030C6FF /* ForumRepositoryBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumRepositoryBase.swift; path = Module/Forum/Data/ForumRepositoryBase.swift; sourceTree = "<group>"; };
@@ -400,6 +327,9 @@
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6851E588BC500DDF907 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactory.swift; sourceTree = "<group>"; };
+		81F6E68B1E589DAA00DDF907 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		81F6E68E1E589DBD00DDF907 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
+		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
 		81FB846D1AF90A2F00D51684 /* HTMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLElement.swift; path = Extension/HTMLElement.swift; sourceTree = "<group>"; };
 		81FDCC891A6EC37900E2C44A /* Disclaimer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Disclaimer.txt; path = Resource/Disclaimer.txt; sourceTree = "<group>"; };
 		81FDCC8A1A6EC37900E2C44A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = Resource/License.txt; sourceTree = "<group>"; };
@@ -411,6 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F6E68C1E589DAA00DDF907 /* libxml2.tbd in Frameworks */,
 				812276FB1AA080790064156A /* WebKit.framework in Frameworks */,
 				8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */,
 			);
@@ -420,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */,
 				81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */,
 				8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */,
 				8146AA6D1E58535C002F65FD /* Alamofire.framework in Frameworks */,
@@ -729,52 +661,6 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		81A49A5619F0FC98007FEA4C /* HTMLReader */ = {
-			isa = PBXGroup;
-			children = (
-				813049091E5838EE00DD14F3 /* HTMLComment.h */,
-				8130490A1E5838EE00DD14F3 /* HTMLComment.m */,
-				8130490B1E5838EE00DD14F3 /* HTMLDocument.h */,
-				8130490C1E5838EE00DD14F3 /* HTMLDocument.m */,
-				8130490D1E5838EE00DD14F3 /* HTMLDocumentType.h */,
-				8130490E1E5838EE00DD14F3 /* HTMLDocumentType.m */,
-				8130490F1E5838EE00DD14F3 /* HTMLElement.h */,
-				813049101E5838EE00DD14F3 /* HTMLElement.m */,
-				813049111E5838EE00DD14F3 /* HTMLEncoding.h */,
-				813049121E5838EE00DD14F3 /* HTMLEncoding.m */,
-				813049131E5838EE00DD14F3 /* HTMLEntities.h */,
-				813049141E5838EE00DD14F3 /* HTMLEntities.m */,
-				813049151E5838EE00DD14F3 /* HTMLNamespace.h */,
-				813049161E5838EE00DD14F3 /* HTMLNode.h */,
-				813049171E5838EE00DD14F3 /* HTMLNode.m */,
-				813049181E5838EE00DD14F3 /* HTMLOrderedDictionary.h */,
-				813049191E5838EE00DD14F3 /* HTMLOrderedDictionary.m */,
-				8130491A1E5838EE00DD14F3 /* HTMLParser.h */,
-				8130491B1E5838EE00DD14F3 /* HTMLParser.m */,
-				8130491C1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.h */,
-				8130491D1E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m */,
-				8130491E1E5838EE00DD14F3 /* HTMLQuirksMode.h */,
-				8130491F1E5838EE00DD14F3 /* HTMLReader.h */,
-				813049201E5838EE00DD14F3 /* HTMLSelector.h */,
-				813049211E5838EE00DD14F3 /* HTMLSelector.m */,
-				813049221E5838EE00DD14F3 /* HTMLSerialization.h */,
-				813049231E5838EE00DD14F3 /* HTMLSerialization.m */,
-				813049241E5838EE00DD14F3 /* HTMLString.h */,
-				813049251E5838EE00DD14F3 /* HTMLString.m */,
-				813049261E5838EE00DD14F3 /* HTMLSupport.h */,
-				813049271E5838EE00DD14F3 /* HTMLTextNode.h */,
-				813049281E5838EE00DD14F3 /* HTMLTextNode.m */,
-				813049291E5838EE00DD14F3 /* HTMLTokenizer.h */,
-				8130492A1E5838EE00DD14F3 /* HTMLTokenizer.m */,
-				8130492B1E5838EE00DD14F3 /* HTMLTokenizerState.h */,
-				8130492C1E5838EE00DD14F3 /* HTMLTreeEnumerator.h */,
-				8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */,
-				8130492E1E5838EE00DD14F3 /* NSString+HTMLEntities.h */,
-				8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */,
-			);
-			name = HTMLReader;
-			sourceTree = "<group>";
-		};
 		81A68FEA1A9F2EEB003B3C55 /* Dulfy */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,7 +676,6 @@
 				81AB247E19EFBD7700293D26 /* SWTOR HoloNet */,
 				81AB249419EFBD7700293D26 /* SWTOR HoloNetTests */,
 				81CF9F811A46C0C60020BE6B /* Frameworks */,
-				81AB24B019EFCA8A00293D26 /* Third Party */,
 				81AB247D19EFBD7700293D26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -824,7 +709,6 @@
 		81AB247F19EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				81AB24B219EFCAC000293D26 /* SWTOR HoloNet-Bridging-Header.h */,
 				81AB248019EFBD7700293D26 /* Info.plist */,
 				817A216719F6C1BD0093ECE3 /* Settings.plist */,
 				81036D151E5848CF00E739FA /* HoloNet.xcconfig */,
@@ -846,7 +730,6 @@
 		81AB249519EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				81AB24B319EFCAC000293D26 /* SWTOR HoloNetTests-Bridging-Header.h */,
 				81AB249619EFBD7700293D26 /* Info.plist */,
 				818029D41A08B7CC00999871 /* Settings.plist */,
 				81036D161E584A6300E739FA /* HoloNetTests.xcconfig */,
@@ -901,14 +784,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		81AB24B019EFCA8A00293D26 /* Third Party */ = {
-			isa = PBXGroup;
-			children = (
-				81A49A5619F0FC98007FEA4C /* HTMLReader */,
-			);
-			name = "Third Party";
-			sourceTree = "<group>";
-		};
 		81C228A219F1337C00EEF2C6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -924,8 +799,11 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81F6E6921E58ABC400DDF907 /* HTMLReader.framework */,
 				8146AA6C1E58535C002F65FD /* Alamofire.framework */,
 				81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */,
+				81F6E68E1E589DBD00DDF907 /* Fuzi.framework */,
+				81F6E68B1E589DAA00DDF907 /* libxml2.tbd */,
 				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */,
 				812276FA1AA080790064156A /* WebKit.framework */,
@@ -1153,6 +1031,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HTMLReader.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1169,18 +1048,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8125C48F1AA9DB6C00046197 /* ActionPerformer.swift in Sources */,
-				8130493C1E5838EE00DD14F3 /* HTMLNode.m in Sources */,
 				81753E1E1B558858008775DE /* NSErrorEx.swift in Sources */,
-				813049341E5838EE00DD14F3 /* HTMLDocumentType.m in Sources */,
 				81964D8B1AAED73D008CA544 /* ActionParser.swift in Sources */,
-				8130494C1E5838EE00DD14F3 /* HTMLTokenizer.m in Sources */,
-				813049441E5838EE00DD14F3 /* HTMLSelector.m in Sources */,
-				813049481E5838EE00DD14F3 /* HTMLString.m in Sources */,
 				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8146BF0D1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
 				8125C4921AA9DBB000046197 /* Action.swift in Sources */,
-				8130494E1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */,
 				81E99F4D1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
@@ -1190,18 +1063,14 @@
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				8100777E1E5773E800F6ACDA /* Analytics.swift in Sources */,
-				813049461E5838EE00DD14F3 /* HTMLSerialization.m in Sources */,
 				81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */,
 				81846C9C1ABC451500982C2C /* TableHeaderCollectionReusableView.swift in Sources */,
 				8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
-				8130493A1E5838EE00DD14F3 /* HTMLEntities.m in Sources */,
-				813049361E5838EE00DD14F3 /* HTMLElement.m in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				816567201A40394F002AA53A /* Theme.swift in Sources */,
 				810077821E57776700F6ACDA /* Constants.swift in Sources */,
-				813049381E5838EE00DD14F3 /* HTMLEncoding.m in Sources */,
 				81E99F6B1B70FFAB0055A5A2 /* SettingPickerDelegate.swift in Sources */,
 				81E99F551B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */,
 				8146BF181ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
@@ -1209,26 +1078,19 @@
 				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				81C228A919F146C500EEF2C6 /* StringEx.swift in Sources */,
 				81E99F4F1B70A88F0055A5A2 /* BaseViewController.swift in Sources */,
-				813049321E5838EE00DD14F3 /* HTMLDocument.m in Sources */,
 				815793241AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				817A216B19F6C4480093ECE3 /* Settings.swift in Sources */,
 				81846C871ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
 				81C070B31ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
-				813049401E5838EE00DD14F3 /* HTMLParser.m in Sources */,
 				81E99F581B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
 				81E99F531B70A8970055A5A2 /* CollectionViewCell+Themeable.swift in Sources */,
-				8130494A1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */,
 				819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
 				813E284E1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				81F6E6861E588BC500DDF907 /* AlertFactory.swift in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
-				813049421E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
-				8130493E1E5838EE00DD14F3 /* HTMLOrderedDictionary.m in Sources */,
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81103E8F1AA2374200822A3B /* PushManager.swift in Sources */,
-				813049301E5838EE00DD14F3 /* HTMLComment.m in Sources */,
-				813049501E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				814F07401AADECF5009BD5F1 /* ActionFactory.swift in Sources */,
 				8146BF051ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift in Sources */,
@@ -1247,35 +1109,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8130493D1E5838EE00DD14F3 /* HTMLNode.m in Sources */,
 				814F07411AADECF5009BD5F1 /* ActionFactory.swift in Sources */,
-				813049431E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m in Sources */,
 				81846C9D1ABC451500982C2C /* TableHeaderCollectionReusableView.swift in Sources */,
-				813049451E5838EE00DD14F3 /* HTMLSelector.m in Sources */,
 				81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				8100777F1E57762600F6ACDA /* Analytics.swift in Sources */,
 				81E99F4C1B70A88F0055A5A2 /* BaseCollectionViewController.swift in Sources */,
 				8129B3381AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				8138BACA1AB02D2A0045A93E /* ActionFactoryTests.swift in Sources */,
-				8130494F1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */,
-				813049391E5838EE00DD14F3 /* HTMLEncoding.m in Sources */,
 				810D2E051A44457800FF0FEF /* SettingsTableViewController.swift in Sources */,
 				8146BF191ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
 				814C9CC11A1B8E0900FE1C94 /* ForumPostRepositoryTests.swift in Sources */,
 				81AB24DE19EFD2CE00293D26 /* ForumLanguage.swift in Sources */,
 				813C19461A0B718D0072626A /* ForumCategoryRepositoryTests.swift in Sources */,
-				8130494B1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */,
-				813049411E5838EE00DD14F3 /* HTMLParser.m in Sources */,
-				813049511E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */,
 				815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81846CA31ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
-				813049351E5838EE00DD14F3 /* HTMLDocumentType.m in Sources */,
 				8146A6C61A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				8125C4901AA9DB6C00046197 /* ActionPerformer.swift in Sources */,
 				81E99F561B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */,
-				813049491E5838EE00DD14F3 /* HTMLString.m in Sources */,
 				8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
@@ -1308,10 +1160,6 @@
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
 				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,
 				81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
-				813049311E5838EE00DD14F3 /* HTMLComment.m in Sources */,
-				813049331E5838EE00DD14F3 /* HTMLDocument.m in Sources */,
-				813049371E5838EE00DD14F3 /* HTMLElement.m in Sources */,
-				8130494D1E5838EE00DD14F3 /* HTMLTokenizer.m in Sources */,
 				81E99F501B70A88F0055A5A2 /* BaseViewController.swift in Sources */,
 				8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */,
 				81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */,
@@ -1320,7 +1168,6 @@
 				81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */,
 				81F6E6871E588C8E00DDF907 /* AlertFactory.swift in Sources */,
 				81E99F4E1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
-				8130493B1E5838EE00DD14F3 /* HTMLEntities.m in Sources */,
 				81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */,
 				8155492E1AAEEE9F00D8176D /* TabViewControllerTests.swift in Sources */,
 				8146BF061ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.swift in Sources */,
@@ -1329,9 +1176,7 @@
 				8125C4931AA9DBB000046197 /* Action.swift in Sources */,
 				81C070B11ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
-				8130493F1E5838EE00DD14F3 /* HTMLOrderedDictionary.m in Sources */,
 				819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
-				813049471E5838EE00DD14F3 /* HTMLSerialization.m in Sources */,
 				81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */,
 				81AD3D051B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 			);
@@ -1451,7 +1296,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1468,7 +1312,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNet-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1486,7 +1329,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${PROJECT_DIR}/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1504,7 +1346,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks ${PROJECT_DIR}/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SWTOR HoloNetTests-Bridging-Header.h";
 			};
 			name = Release;
 		};

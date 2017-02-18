@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import HTMLReader
 
 class ForumPostRepository: ForumRepositoryBase {
     func url(thread: ForumThread, page: Int) -> URL {
@@ -48,13 +49,11 @@ extension ForumPostRepository {
         var items = [ForumPost]()
         
         let document = HTMLDocument(string: html)
-        assert(document != nil)
-        let threadNodes = document!.nodes(matchingSelector: "#posts table.threadPost") as! [HTMLElement]
+        let postNodes = document.nodes(matchingSelector: "#posts table.threadPost")
         
-        for node in threadNodes {
-            let thread = self.parsePost(element: node)
-            if thread != nil {
-                items.append(thread!)
+        for node in postNodes {
+            if let post = self.parsePost(element: node) {
+                items.append(post)
             }
         }
         
@@ -69,22 +68,22 @@ extension ForumPostRepository {
         // Avatar url
         var avatarUrl: String? = nil
         if let avatarElement = element.firstNode(matchingSelector: ".avatar img") {
-            avatarUrl = avatarElement.objectForKeyedSubscript("src") as? String
+            avatarUrl = avatarElement["src"]
         }
         
         // Username
         let username = element.firstNode(matchingSelector: ".avatar > .resultCategory > a")?.textContent
         
         // Date & Post number
-        let dateElement = (element.nodes(matchingSelector: ".post .threadDate") as! [HTMLElement]).last
+        let dateElement = (element.nodes(matchingSelector: ".post .threadDate")).last
         let date = self.parser.postDate(element: dateElement)
         let postNumber = self.parser.postNumber(element: dateElement)
         
         // Is Bioware post
         var isBiowarePost = false
-        let imageElements = element.nodes(matchingSelector: ".post img.inlineimg") as! [HTMLElement]
+        let imageElements = element.nodes(matchingSelector: ".post img.inlineimg")
         for image in imageElements {
-            let src = image.objectForKeyedSubscript("src") as? String
+            let src = image["src"]
             if src == nil {
                 continue
             }
@@ -103,7 +102,7 @@ extension ForumPostRepository {
         let text = self.parser.postText(node: element.firstNode(matchingSelector: ".post .forumPadding > .resultText"))
         
         // Signature
-        let lastPostRow = (element.nodes(matchingSelector: ".post tr") as! [HTMLElement]).last
+        let lastPostRow = (element.nodes(matchingSelector: ".post tr")).last
         let signature = lastPostRow?.firstNode(matchingSelector: ".resultText")?.textContent
         
         if id == nil { return nil }

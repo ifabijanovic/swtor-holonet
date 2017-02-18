@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import HTMLReader
 
 class ForumThreadRepository: ForumRepositoryBase {
     func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
@@ -48,13 +49,12 @@ extension ForumThreadRepository {
     private func parse(html: String) -> [ForumThread] {
         var items = [ForumThread]()
         
-        let document = HTMLDocument(string: html)!
-        let threadNodes = document.nodes(matchingSelector: "table#threadslist tr") as! [HTMLElement]
+        let document = HTMLDocument(string: html)
+        let threadNodes = document.nodes(matchingSelector: "table#threadslist tr")
         
         for node in threadNodes {
-            let thread = self.parseThread(element: node)
-            if thread != nil {
-                items.append(thread!)
+            if let thread = self.parseThread(element: node) {
+                items.append(thread)
             }
         }
         
@@ -83,9 +83,9 @@ extension ForumThreadRepository {
         // Has Bioware reply & sticky
         var hasBiowareReply = false
         var isSticky = false
-        let imageElements = element.nodes(matchingSelector: ".threadLeft img.inlineimg") as! [HTMLElement]
+        let imageElements = element.nodes(matchingSelector: ".threadLeft img.inlineimg")
         for image in imageElements {
-            let src = image.objectForKeyedSubscript("src") as? String
+            let src = image["src"]
             if src == nil {
                 continue
             }
