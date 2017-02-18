@@ -39,7 +39,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.postRepo = ForumPostRepository(settings: self.settings)
+        self.postRepo = DefaultForumPostRepository(settings: self.settings)
         
         let bundle = Bundle.main
         let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
@@ -60,12 +60,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Controller is being popped from the navigation stack
-        if self.isMovingFromParentViewController {
-            // Cancel any pending requests to prevent wasted processing
-            self.postRepo.cancelAllOperations()
-        }
     }
 
     override func didReceiveMemoryWarning() {

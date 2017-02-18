@@ -38,10 +38,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     override func viewDidLoad() {        
         super.viewDidLoad()
 
-        self.categoryRepo = ForumCategoryRepository(settings: self.settings)
+        self.categoryRepo = DefaultForumCategoryRepository(settings: self.settings)
         if self.category != nil {
             // Threads exist only inside categories, not in forum root
-            self.threadRepo = ForumThreadRepository(settings: self.settings)
+            self.threadRepo = DefaultForumThreadRepository(settings: self.settings)
             self.navigationItem.title = self.category!.title
         }
         
@@ -57,13 +57,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Controller is being popped from the navigation stack
-        if self.isMovingFromParentViewController {
-            // Cancel any pending requests to prevent wasted processing
-            self.categoryRepo.cancelAllOperations()
-            self.threadRepo?.cancelAllOperations()
-        }
     }
 
     override func didReceiveMemoryWarning() {

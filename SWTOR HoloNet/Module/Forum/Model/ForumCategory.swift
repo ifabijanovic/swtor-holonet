@@ -8,21 +8,18 @@
 
 import UIKit
 
-class ForumCategory: Entity {
-    
-    // MARK: - Properties
-    
+struct ForumCategory: Entity {
+    let id: Int
     var iconUrl: String?
     var title: String
     var desc: String?
     var stats: String?
     var lastPost: String?
     
-    // MARK: - Init
+    var hashValue: Int { return self.id.hashValue }
     
     init(id: Int, title: String) {
+        self.id = id
         self.title = title
-        super.init(id: id)
     }
-    
 }

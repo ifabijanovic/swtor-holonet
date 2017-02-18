@@ -20,7 +20,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = ForumCategoryRepository(settings: self.settings!)
+        self.repo = DefaultForumCategoryRepository(settings: self.settings!)
     }
     
     override func tearDown() {
@@ -31,7 +31,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     // MARK: - Tests
     
     func testGetForLanguage_RequestsCorrectUrl() {
-        let requestedLanguage = ForumLanguage.English
+        let requestedLanguage = ForumLanguage.english
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(requestedLanguage.rawValue)"
         let expectation = self.expectation(description: "")
         
@@ -77,7 +77,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -96,7 +96,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -126,7 +126,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -146,7 +146,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -176,7 +176,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -220,7 +220,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")
@@ -246,7 +246,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(language: ForumLanguage.English, success: { (items) in
+        self.repo!.get(language: ForumLanguage.english, success: { (items) in
             expectation.fulfill()
             
             XCTAssertNotNil(items, "")

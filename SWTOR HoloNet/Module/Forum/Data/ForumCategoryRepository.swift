@@ -10,7 +10,12 @@ import UIKit
 import Alamofire
 import HTMLReader
 
-class ForumCategoryRepository: ForumRepositoryBase {
+protocol ForumCategoryRepository {
+    func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
+    func get(category: ForumCategory, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void))
+}
+
+class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryRepository {
     func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: language.rawValue, success: success, failure: failure)
     }
@@ -20,7 +25,7 @@ class ForumCategoryRepository: ForumRepositoryBase {
     }
 }
 
-extension ForumCategoryRepository {
+extension DefaultForumCategoryRepository {
     private func url(id: Int) -> URL {
         let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
         let url = URL(string: string)
@@ -105,7 +110,7 @@ extension ForumCategoryRepository {
         let finalStats = stats?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         let finalLastPost = lastPost?.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         
-        let category = ForumCategory(id: id!, title: finalTitle)
+        var category = ForumCategory(id: id!, title: finalTitle)
         category.iconUrl = iconUrl
         category.desc = finalDescription
         category.stats = finalStats

@@ -15,15 +15,10 @@ enum ForumError: Error {
 }
 
 class ForumRepositoryBase {
-   
-    // MARK: - Properties
+    let settings: Settings
+    let parser: ForumParser
     
-    internal let settings: Settings
-    internal let parser: ForumParser
-    
-    internal let manager: Alamofire.SessionManager
-    
-    // MARK: - Init
+    let manager: Alamofire.SessionManager
     
     convenience init(settings: Settings) {
         self.init(settings: settings, parser: ForumParser())
@@ -35,25 +30,17 @@ class ForumRepositoryBase {
         
         self.manager = Alamofire.SessionManager.default
     }
-    
-    // MARK: - Public methods
-    
-    func cancelAllOperations() {
-        
-    }
-    
-    // MARK: - Internal methods
-    
-    internal func isMaintenanceResponse(_ html: String) -> Bool {
+}
+
+extension ForumRepositoryBase {
+    func isMaintenanceResponse(_ html: String) -> Bool {
         let document = HTMLDocument(string: html)
         let errorNodes = document.nodes(matchingSelector: "#mainContent > #errorPage #errorBody p")
         
-        if !errorNodes.isEmpty {
-            let englishNode = errorNodes.first!
+        if let englishNode = errorNodes.first {
             return englishNode.textContent.range(of: "scheduled maintenance") != nil
         }
         
         return false
     }
-    
 }

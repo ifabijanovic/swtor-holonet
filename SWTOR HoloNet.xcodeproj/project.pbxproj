@@ -133,6 +133,7 @@
 		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364D1E58F980000AC89C /* RxAlamofire.framework */; };
 		81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364E1E58F980000AC89C /* RxSwift.framework */; };
+		81A636521E58FE92000AC89C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A636511E58FE92000AC89C /* RxCocoa.framework */; };
 		81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
@@ -297,6 +298,7 @@
 		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81A6364D1E58F980000AC89C /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		81A6364E1E58F980000AC89C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		81A636511E58FE92000AC89C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceHolder.swift; sourceTree = "<group>"; };
 		81AB247C19EFBD7700293D26 /* HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A636521E58FE92000AC89C /* RxCocoa.framework in Frameworks */,
 				81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */,
 				81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */,
 				81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */,
@@ -807,6 +810,7 @@
 				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */,
 				81A6364D1E58F980000AC89C /* RxAlamofire.framework */,
+				81A636511E58FE92000AC89C /* RxCocoa.framework */,
 				81A6364E1E58F980000AC89C /* RxSwift.framework */,
 				812276FA1AA080790064156A /* WebKit.framework */,
 			);
@@ -1036,6 +1040,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/HTMLReader.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
 			name = Carthage;
 			outputPaths = (

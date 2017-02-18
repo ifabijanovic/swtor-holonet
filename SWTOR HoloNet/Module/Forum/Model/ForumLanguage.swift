@@ -9,9 +9,7 @@
 import UIKit
 
 enum ForumLanguage: Int {
-    
-    case English = 3
-    case French = 4
-    case German = 5
-    
+    case english = 3
+    case french = 4
+    case german = 5
 }

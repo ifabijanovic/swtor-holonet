@@ -21,7 +21,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = ForumPostRepository(settings: self.settings!)
+        self.repo = DefaultForumPostRepository(settings: self.settings!)
     }
     
     override func tearDown() {

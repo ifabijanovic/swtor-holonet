@@ -10,7 +10,12 @@ import UIKit
 import Alamofire
 import HTMLReader
 
-class ForumPostRepository: ForumRepositoryBase {
+protocol ForumPostRepository {
+    func url(thread: ForumThread, page: Int) -> URL
+    func get(thread: ForumThread, page: Int, success: @escaping (([ForumPost]) -> Void), failure: @escaping ((Error) -> Void))
+}
+
+class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
     func url(thread: ForumThread, page: Int) -> URL {
         let string = thread.isDevTracker
             ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
@@ -44,7 +49,7 @@ class ForumPostRepository: ForumRepositoryBase {
     }
 }
 
-extension ForumPostRepository {
+extension DefaultForumPostRepository {
     fileprivate func parse(html: String) -> [ForumPost] {
         var items = [ForumPost]()
         
@@ -112,7 +117,7 @@ extension ForumPostRepository {
         
         let finalUsername = username!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         
-        let post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber, isBiowarePost: isBiowarePost, text: text!)
+        var post = ForumPost(id: id!, username: finalUsername, date: date!, postNumber: postNumber, isBiowarePost: isBiowarePost, text: text!)
         post.avatarUrl = avatarUrl
         post.signature = signature
         

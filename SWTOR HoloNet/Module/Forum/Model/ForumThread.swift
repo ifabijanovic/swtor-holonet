@@ -8,10 +8,8 @@
 
 import UIKit
 
-class ForumThread: Entity {
-    
-    // MARK: - Properties
-    
+struct ForumThread: Entity {
+    let id: Int
     var title: String
     var lastPostDate: String
     var author: String
@@ -22,9 +20,10 @@ class ForumThread: Entity {
     
     var isDevTracker: Bool
     
-    // MARK: - Init
+    var hashValue: Int { return self.id.hashValue }
     
     init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int, hasBiowareReply: Bool, isSticky: Bool) {
+        self.id = id
         self.title = title
         self.lastPostDate = lastPostDate
         self.author = author
@@ -33,17 +32,15 @@ class ForumThread: Entity {
         self.hasBiowareReply = hasBiowareReply
         self.isSticky = isSticky
         self.isDevTracker = false
-        super.init(id: id)
     }
     
-    convenience init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int) {
+    init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int) {
         self.init(id: id, title: title, lastPostDate: lastPostDate, author: author, replies: replies, views: views, hasBiowareReply: false, isSticky: false)
     }
     
-    class func devTracker() -> ForumThread {
-        let thread = ForumThread(id: 0, title: "Developer Tracker", lastPostDate: "", author: "", replies: 0, views: 0)
+    static func devTracker() -> ForumThread {
+        var thread = ForumThread(id: 0, title: "Developer Tracker", lastPostDate: "", author: "", replies: 0, views: 0)
         thread.isDevTracker = true
         return thread
     }
-   
 }

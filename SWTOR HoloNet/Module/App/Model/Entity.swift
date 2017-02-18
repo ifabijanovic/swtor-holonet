@@ -6,25 +6,12 @@
 //  Copyright (c) 2014 Ivan Fabijanović. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class Entity: Hashable, Equatable {
-    
-    // MARK: - Properties
-    
-    var id: Int
-    
-    // MARK: - Init
-    
-    init(id: Int) {
-        self.id = id
-    }
-    
-    var hashValue: Int {
-        return self.id.hashValue
-    }
+protocol Entity: Hashable, Equatable {
+    var id: Int { get }
 }
 
-func == (lhs: Entity, rhs: Entity) -> Bool {
+func ==<T: Entity>(lhs: T, rhs: T) -> Bool {
     return lhs.id == rhs.id
 }

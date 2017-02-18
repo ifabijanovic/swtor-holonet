@@ -56,7 +56,7 @@ class Settings {
         self.dulfyNetUrl = settings?.object(forKey: "Dulfy.net URL") as? String ?? ""
         self.requestTimeout = settings?.object(forKey: "Request Timeout") as? TimeInterval ?? 60.0
         
-        self.forumLanguage = ForumLanguage.English
+        self.forumLanguage = ForumLanguage.english
     }
     
 }
