@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLCache.shared = cache
         
         // Register notification listeners
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.showAlert(notification:)), name: NSNotification.Name(rawValue: ShowAlertNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.showAlert(notification:)), name: NSNotification.Name(ShowAlertNotification), object: nil)
         
         // Register for push notifications
         let pushManager = InstanceHolder.sharedInstance.pushManager

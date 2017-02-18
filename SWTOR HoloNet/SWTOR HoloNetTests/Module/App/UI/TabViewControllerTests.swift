@@ -53,13 +53,13 @@ class TabViewControllerTests: XCTestCase {
     }
     
     func testSwitchToTab_Fires() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: nil)
         
         XCTAssertTrue(self.controller.didSwitchToTab, "")
     }
     
     func testSwitchToTab_IgnoresEmptyNotifications() {
-        let notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self)
+        let notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
@@ -67,7 +67,7 @@ class TabViewControllerTests: XCTestCase {
     
     func testSwitchToTab_IgnoresIfIndexMissing() {
         let payload = ["test":"test"]
-        let notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        let notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
@@ -75,13 +75,13 @@ class TabViewControllerTests: XCTestCase {
     
     func testSwitchToTab_IgnoresIfIndexInvalid() {
         var payload = ["index":-1]
-        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        var notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
         
         payload["index"] = 5
-        notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 0, "")
@@ -89,7 +89,7 @@ class TabViewControllerTests: XCTestCase {
     
     func testSwitchToTab_Succeeds() {
         var payload = ["index":1]
-        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        var notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertEqual(self.controller.selectedIndex, 1, "")
@@ -102,7 +102,7 @@ class TabViewControllerTests: XCTestCase {
         self.controller.setViewControllers(viewControllers, animated: false)
         
         var payload = ["index":2]
-        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        var notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertTrue(actionPerformer.didPerform, "")
@@ -116,7 +116,7 @@ class TabViewControllerTests: XCTestCase {
         self.controller.setViewControllers(viewControllers, animated: false)
         
         var payload = ["index":1]
-        var notification = NSNotification(name: NSNotification.Name(rawValue: SwitchToTabNotification), object: self, userInfo: payload)
+        var notification = NSNotification(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         self.controller.switchToTab(notification: notification)
         
         XCTAssertTrue(actionPerformer.didPerform, "")

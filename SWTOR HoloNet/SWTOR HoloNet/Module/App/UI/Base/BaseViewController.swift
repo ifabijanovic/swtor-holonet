@@ -67,7 +67,7 @@ class BaseViewController: UIViewController, Themeable {
     }
     
     private func registerThemeChangedCallback() {
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.themeChanged(notification:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.themeChanged(notification:)), name: NSNotification.Name(ThemeChangedNotification), object: nil)
     }
 
 }

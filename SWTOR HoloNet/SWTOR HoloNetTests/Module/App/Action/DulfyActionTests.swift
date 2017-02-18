@@ -58,7 +58,7 @@ class DulfyActionTests: XCTestCase {
         let userInfo: [AnyHashable : Any] = ["aps":["alert":message],"url":url]
         let expectation = self.expectation(description: "")
         
-        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
+        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
             XCTAssertNotNil(notification.userInfo, "")
             XCTAssertNotNil(notification.userInfo!["index"], "")
             XCTAssertNotNil(notification.userInfo!["url"], "")
@@ -81,7 +81,7 @@ class DulfyActionTests: XCTestCase {
         let userInfo: [AnyHashable : Any] = ["aps":["alert":message],"url":url]
         let expectation = self.expectation(description: "")
         
-        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: ShowAlertNotification), object: nil, queue: OperationQueue.main) { notification in
+        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(ShowAlertNotification), object: nil, queue: OperationQueue.main) { notification in
             XCTAssertNotNil(notification.userInfo, "")
             XCTAssertNotNil(notification.userInfo!["alert"], "")
             XCTAssertNotNil(self.alertFactory.lastAlert)
@@ -104,7 +104,7 @@ class DulfyActionTests: XCTestCase {
         let url = "http://www.test.com"
         let userInfo: [AnyHashable : Any] = ["aps":["alert":message],"url":url]
         
-        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
+        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
             XCTFail("")
         }
         
@@ -121,7 +121,7 @@ class DulfyActionTests: XCTestCase {
         let userInfo: [AnyHashable : Any] = ["aps":["alert":message],"url":url]
         let expectation = self.expectation(description: "")
         
-        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
+        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(SwitchToTabNotification), object: nil, queue: OperationQueue.main) { notification in
             XCTAssertNotNil(notification.userInfo, "")
             XCTAssertNotNil(notification.userInfo!["index"], "")
             XCTAssertNotNil(notification.userInfo!["url"], "")

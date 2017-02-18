@@ -28,7 +28,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: - Outlets
     
-    @IBAction func safariTapped(sender: AnyObject) {
+    @IBAction func safariTapped(_ sender: AnyObject) {
         let urlString = self.postRepo.url(thread: self.thread, page: 0)
         if let url = URL(string: urlString) {
             UIApplication.shared.openURL(url)
@@ -83,11 +83,11 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.calculateSizeForItemAtIndexPath(indexPath)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // Calculate height of title text
         let largeSize = CGSize(width: UIScreen.main.bounds.size.width - 30, height: 9999)
         let font = UIFont.systemFont(ofSize: 17.0)

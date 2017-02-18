@@ -55,10 +55,10 @@ class ForumPostViewController: BaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
         self.textTextView.setContentOffset(CGPoint.zero, animated: false)
-        
-        super.viewDidLayoutSubviews()
     }
     
     // MARK: - Themeable

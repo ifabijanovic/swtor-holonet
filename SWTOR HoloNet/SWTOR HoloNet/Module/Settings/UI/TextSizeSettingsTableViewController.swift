@@ -50,7 +50,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         return 3
     }
     
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     

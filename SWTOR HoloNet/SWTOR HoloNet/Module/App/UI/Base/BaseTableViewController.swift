@@ -75,7 +75,7 @@ class BaseTableViewController: UITableViewController, Themeable {
     }
     
     private func registerThemeChangedCallback() {
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseTableViewController.themeChanged(_:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseTableViewController.themeChanged(notification:)), name: NSNotification.Name(ThemeChangedNotification), object: nil)
     }
 
 }

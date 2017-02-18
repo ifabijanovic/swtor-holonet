@@ -75,7 +75,7 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
     }
     
     private func registerThemeChangedCallback() {
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseCollectionViewController.themeChanged(_:)), name: Notification.Name(ThemeChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseCollectionViewController.themeChanged(notification:)), name: Notification.Name(ThemeChangedNotification), object: nil)
     }
 
 }

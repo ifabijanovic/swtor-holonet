@@ -42,7 +42,6 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
         self.themeStatusLabel.text = self.theme.type.toString()
         self.textSizeStatusLabel.text = self.theme.textSize.toString()
@@ -50,7 +49,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     
     // MARK: - Table view delegate
     
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath)
@@ -133,6 +132,10 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         self.view.backgroundColor = theme.contentBackground
         
         for section in 0..<self.tableView.numberOfSections {
+            if let section = self.tableView.headerView(forSection: section) {
+                section.contentView.backgroundColor = theme.contentBackground
+            }
+            
             for row in 0..<self.tableView.numberOfRows(inSection: section) {
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: section)) {
                     cell.applyThemeEx(theme)

@@ -36,8 +36,8 @@ class TabViewController: UITabBarController {
     // MARK: - Action dispatching
     
     func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.switchToTab(notification:)), name: NSNotification.Name(rawValue: SwitchToTabNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.themeChanged(notification:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.switchToTab(notification:)), name: NSNotification.Name(SwitchToTabNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.themeChanged(notification:)), name: NSNotification.Name(ThemeChangedNotification), object: nil)
     }
     
     func switchToTab(notification: NSNotification) {

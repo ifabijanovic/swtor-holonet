@@ -36,7 +36,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var forwardButton: UIBarButtonItem!
     
-    @IBAction func backTapped(sender: AnyObject) {
+    @IBAction func backTapped(_ sender: AnyObject) {
         if self.useWebKit {
             self.wkWebView!.goBack()
         } else {
@@ -44,7 +44,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         }
     }
     
-    @IBAction func forwardTapped(sender: AnyObject) {
+    @IBAction func forwardTapped(_ sender: AnyObject) {
         if self.useWebKit {
             self.wkWebView!.goForward()
         } else {
@@ -52,7 +52,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         }
     }
     
-    @IBAction func reloadTapped(sender: AnyObject) {
+    @IBAction func reloadTapped(_ sender: AnyObject) {
         if self.useWebKit {
             self.wkWebView!.reload()
         } else {
@@ -60,7 +60,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         }
     }
     
-    @IBAction func stopTapped(sender: AnyObject) {
+    @IBAction func stopTapped(_ sender: AnyObject) {
         if self.useWebKit {
             self.wkWebView!.stopLoading()
             self.navigationItem.title = self.wkWebView!.title
@@ -76,11 +76,11 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
         self.activityIndicator.stopAnimating()
     }
     
-    @IBAction func homeTapped(sender: AnyObject) {
+    @IBAction func homeTapped(_ sender: AnyObject) {
         self.navigateTo(self.homeUrl)
     }
     
-    @IBAction func safariTapped(sender: AnyObject) {
+    @IBAction func safariTapped(_ sender: AnyObject) {
         if self.useWebKit {
             if let url = self.wkWebView!.url {
                 UIApplication.shared.openURL(url)

@@ -34,7 +34,7 @@ class NavigationViewController: UINavigationController {
     // MARK: - Action dispatching
     
     func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(NavigationViewController.themeChanged(notification:)), name: NSNotification.Name(rawValue: ThemeChangedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(NavigationViewController.themeChanged(notification:)), name: NSNotification.Name(ThemeChangedNotification), object: nil)
     }
     
     func themeChanged(notification: NSNotification) {
