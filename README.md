@@ -1,5 +1,7 @@
-HoloNet
-=============
+# HoloNet
+
+[![Build Status](https://travis-ci.org/ifabijanovic/swtor-holonet.svg?branch=develop)](https://travis-ci.org/ifabijanovic/swtor-holonet)
+
 
 HoloNet is an iPhone/iPad application intended for use by players of the MMORPG game Star Wars: The Old Republic (www.swtor.com). Main features of the app are:
 
@@ -22,11 +24,10 @@ LUCASARTS, THE LUCASARTS LOGO, STAR WARS AND RELATED PROPERTIES ARE TRADEMARKS I
 
 HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/). The app uses the code from several other open source projects, credits go to their authors:
 
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
-* [ExSwift](https://github.com/pNre/ExSwift)
+* [Alamofire](https://github.com/Alamofire/Alamofire)
+* [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
 * [HTMLReader](https://github.com/nolanw/HTMLReader)
 * [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs)
-* [SDWebImage](https://github.com/rs/SDWebImage)
 
 ## Contact
 
@@ -39,3 +40,4 @@ Feel free to contact me on Twitter ([@ivanfeb](https://twitter.com/ivanfeb))
 ## License
 
 HoloNet is available under GNU GPL v3.0 license. See the LICENSE file for more info.
+
