@@ -7,49 +7,56 @@
 //
 
 import UIKit
+import Alamofire
 
 class ForumCategoryRepository: ForumRepositoryBase {
-    
-    // MARK: - Public methods
-    
-    func get(language: ForumLanguage, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
+    func get(language: ForumLanguage, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: language.rawValue, success: success, failure: failure)
     }
     
-    func get(category: ForumCategory, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
+    func get(category: ForumCategory, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: category.id, success: success, failure: failure)
     }
-    
-    // MARK: - Network
-    
-    private func get(id: Int, success: @escaping ((Array<ForumCategory>) -> Void), failure: @escaping ((Error) -> Void)) {
-        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
-        self.manager.get(url, parameters: nil, success: { (operation, response) in
-            let html = operation!.responseString!
-            let items = self.parseHtml(html)
-            
-            if items.isEmpty && self.isMaintenanceResponse(html) {
-                return failure(maintenanceError())
-            }
-            
-            success(items)
-        }) { (operation, error) in
-            if !operation!.isCancelled {
-                failure(error!)
-            }
-        }
+}
+
+extension ForumCategoryRepository {
+    private func url(id: Int) -> URL {
+        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
+        let url = URL(string: string)
+        assert(url != nil)
+        return url!
     }
     
-    // MARK: - Parsing
+    fileprivate func get(id: Int, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {
+        let url = self.url(id: id)
+        self.manager
+            .request(url)
+            .responseString { response in
+                if let error = response.error {
+                    return failure(error)
+                }
+                
+                guard let html = response.result.value else {
+                    return failure(ForumError.noResponse)
+                }
+                
+                let items = self.parse(html: html)
+                if items.isEmpty && self.isMaintenanceResponse(html) {
+                    return failure(maintenanceError())
+                }
+                
+                success(items)
+            }
+    }
     
-    private func parseHtml(_ html: String) -> Array<ForumCategory> {
-        var items = Array<ForumCategory>()
+    private func parse(html: String) -> [ForumCategory] {
+        var items = [ForumCategory]()
         
         let document = HTMLDocument(string: html)
-        let categoryNodes = document!.nodes(matchingSelector: ".forumCategory > .subForum") as! Array<HTMLElement>
+        let categoryNodes = document!.nodes(matchingSelector: ".forumCategory > .subForum") as! [HTMLElement]
         
         for node in categoryNodes {
-            let category = self.parseCategory(node)
+            let category = self.parseCategory(element: node)
             if category != nil {
                 items.append(category!)
             }
@@ -58,7 +65,7 @@ class ForumCategoryRepository: ForumRepositoryBase {
         return items
     }
     
-    private func parseCategory(_ element: HTMLElement) -> ForumCategory? {
+    private func parseCategory(element: HTMLElement) -> ForumCategory? {
         // Id & Title
         let titleElement = element.firstNode(matchingSelector: ".resultTitle > a")
         let idString = self.parser.linkParameter(linkElement: titleElement, name: self.settings.categoryQueryParam)
@@ -81,7 +88,7 @@ class ForumCategoryRepository: ForumRepositoryBase {
         // Stats & Last post
         var stats: String? = nil
         var lastPost: String? = nil
-        let subTextElements = element.nodes(matchingSelector: ".resultSubText") as! Array<HTMLElement>
+        let subTextElements = element.nodes(matchingSelector: ".resultSubText") as! [HTMLElement]
 
         if subTextElements.count > 0 {
             stats = subTextElements[0].textContent
@@ -106,5 +113,4 @@ class ForumCategoryRepository: ForumRepositoryBase {
         
         return category
     }
-    
 }

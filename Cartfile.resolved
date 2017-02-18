@@ -1,0 +1,2 @@
+github "Alamofire/Alamofire" "4.3.0"
+github "AliSoftware/OHHTTPStubs" "5.2.3-swift3"

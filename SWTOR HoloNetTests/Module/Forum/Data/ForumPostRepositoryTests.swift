@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import OHHTTPStubs
 
 class ForumPostRepositoryTests: ForumRepositoryTestsBase {
 
@@ -32,7 +33,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     
     func testUrl_ReturnsCorrectUrl() {
         let page = 7
-        let expectedUrl = "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)"
+        let expectedUrl = URL(string: "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)")!
         let url = self.repo!.url(thread: self.testThread, page: page)
         
         XCTAssertEqual(url, expectedUrl, "")
@@ -41,7 +42,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     func testUrl_ReturnsCorrectDevTrackerUrl() {
         let page = 7
         let thread = ForumThread.devTracker()
-        let expectedUrl = "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)"
+        let expectedUrl = URL(string: "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)")!
         let url = self.repo!.url(thread: thread, page: page)
         
         XCTAssertEqual(url, expectedUrl, "")

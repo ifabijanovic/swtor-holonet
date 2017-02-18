@@ -7,45 +7,52 @@
 //
 
 import UIKit
+import Alamofire
 
 class ForumThreadRepository: ForumRepositoryBase {
-    
-    // MARK: - Public methods
-    
-    func get(category: ForumCategory, page: Int, success: @escaping ((Array<ForumThread>) -> Void), failure: @escaping ((Error) -> Void)) {
+    func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: category.id, page: page, success: success, failure: failure)
     }
-    
-    // MARK: - Network
-    
-    private func get(id: Int, page: Int, success: @escaping ((Array<ForumThread>) -> Void), failure: @escaping ((Error) -> Void)) {
-        let url = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
-        self.manager.get(url, parameters: nil, success: { (operation, response) in
-            let html = operation!.responseString!
-            let items = self.parseHtml(html)
-            
-            if items.isEmpty && self.isMaintenanceResponse(html) {
-                return failure(maintenanceError())
-            }
-            
-            success(items)
-        }) { (operation, error) in
-            if !operation!.isCancelled {
-                failure(error!)
-            }
-        }
+}
+
+extension ForumThreadRepository {
+    private func url(id: Int, page: Int) -> URL {
+        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = URL(string: string)
+        assert(url != nil)
+        return url!
     }
     
-    // MARK: - Parsing
+    fileprivate func get(id: Int, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
+        let url = self.url(id: id, page: page)
+        self.manager
+            .request(url)
+            .responseString { response in
+                if let error = response.error {
+                    return failure(error)
+                }
+                
+                guard let html = response.result.value else {
+                    return failure(ForumError.noResponse)
+                }
+                
+                let items = self.parse(html: html)
+                if items.isEmpty && self.isMaintenanceResponse(html) {
+                    return failure(maintenanceError())
+                }
+                
+                success(items)
+            }
+    }
     
-    private func parseHtml(_ html: String) -> Array<ForumThread> {
-        var items = Array<ForumThread>()
+    private func parse(html: String) -> [ForumThread] {
+        var items = [ForumThread]()
         
         let document = HTMLDocument(string: html)!
-        let threadNodes = document.nodes(matchingSelector: "table#threadslist tr") as! Array<HTMLElement>
+        let threadNodes = document.nodes(matchingSelector: "table#threadslist tr") as! [HTMLElement]
         
         for node in threadNodes {
-            let thread = self.parseThread(node)
+            let thread = self.parseThread(element: node)
             if thread != nil {
                 items.append(thread!)
             }
@@ -54,7 +61,7 @@ class ForumThreadRepository: ForumRepositoryBase {
         return items
     }
     
-    private func parseThread(_ element: HTMLElement) -> ForumThread? {
+    private func parseThread(element: HTMLElement) -> ForumThread? {
         // Id & Title
         let titleElement = element.firstNode(matchingSelector: ".threadTitle")
         let idString = self.parser.linkParameter(linkElement: titleElement, name: self.settings.threadQueryParam)
@@ -76,7 +83,7 @@ class ForumThreadRepository: ForumRepositoryBase {
         // Has Bioware reply & sticky
         var hasBiowareReply = false
         var isSticky = false
-        let imageElements = element.nodes(matchingSelector: ".threadLeft img.inlineimg") as! Array<HTMLElement>
+        let imageElements = element.nodes(matchingSelector: ".threadLeft img.inlineimg") as! [HTMLElement]
         for image in imageElements {
             let src = image.objectForKeyedSubscript("src") as? String
             if src == nil {
@@ -105,5 +112,4 @@ class ForumThreadRepository: ForumRepositoryBase {
         
         return thread
     }
-    
 }

@@ -29,10 +29,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     // MARK: - Outlets
     
     @IBAction func safariTapped(_ sender: AnyObject) {
-        let urlString = self.postRepo.url(thread: self.thread, page: 0)
-        if let url = URL(string: urlString) {
-            UIApplication.shared.openURL(url)
-        }
+        let url = self.postRepo.url(thread: self.thread, page: 0)
+        UIApplication.shared.openURL(url)
     }
     
     // MARK: - Lifecycle

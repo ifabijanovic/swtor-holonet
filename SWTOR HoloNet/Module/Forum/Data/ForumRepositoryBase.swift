@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+
+enum ForumError: Error {
+    case noResponse
+}
 
 class ForumRepositoryBase {
    
@@ -15,7 +20,7 @@ class ForumRepositoryBase {
     internal let settings: Settings
     internal let parser: ForumParser
     
-    internal let manager: AFHTTPRequestOperationManager
+    internal let manager: Alamofire.SessionManager
     
     // MARK: - Init
     
@@ -27,15 +32,13 @@ class ForumRepositoryBase {
         self.settings = settings
         self.parser = parser
         
-        self.manager = AFHTTPRequestOperationManager()
-        self.manager.requestSerializer.timeoutInterval = settings.requestTimeout
-        self.manager.responseSerializer = AFHTTPResponseSerializer()
+        self.manager = Alamofire.SessionManager.default
     }
     
     // MARK: - Public methods
     
     func cancelAllOperations() {
-        self.manager.operationQueue.cancelAllOperations()
+        
     }
     
     // MARK: - Internal methods
