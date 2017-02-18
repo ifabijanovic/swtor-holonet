@@ -48,7 +48,7 @@ extension DefaultForumCategoryRepository {
                     throw ForumError.maintenance
                 }
                 return items
-        }
+            }
     }
     
     fileprivate func get(id: Int, success: @escaping (([ForumCategory]) -> Void), failure: @escaping ((Error) -> Void)) {

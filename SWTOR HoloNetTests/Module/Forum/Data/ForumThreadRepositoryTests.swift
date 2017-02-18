@@ -8,20 +8,18 @@
 
 import UIKit
 import XCTest
+import RxSwift
 import OHHTTPStubs
 
 class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
-
-    // MARK: - Properties
-    
     let testCategory = ForumCategory(id: 17, title: "Test")
     var repo: ForumThreadRepository?
-    
-    // MARK: - Setup
+    var disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         self.repo = DefaultForumThreadRepository(settings: self.settings!)
+        self.disposeBag = DisposeBag()
     }
     
     override func tearDown() {
@@ -45,7 +43,10 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
         }
         
         OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!.get(category: self.testCategory, page: page, success: { (items) in }, failure: {(error) in })
+        self.repo!
+            .threads(category: self.testCategory, page: page)
+            .subscribe()
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -59,12 +60,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -78,25 +85,30 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 1, "")
-            
-            // Exception safeguard
-            if items.count != 1 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertEqual(items[0].title, "Forum thread 5", "")
-            XCTAssertEqual(items[0].lastPostDate, "Today 12:22 AM", "")
-            XCTAssertEqual(items[0].author, "Author name 5", "")
-            XCTAssertEqual(items[0].replies, 5, "")
-            XCTAssertEqual(items[0].views, 7, "")
-            XCTAssertTrue(items[0].hasBiowareReply, "")
-            XCTAssertTrue(items[0].isSticky, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 1, "")
+                    
+                    // Exception safeguard
+                    if items.count != 1 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertEqual(items[0].title, "Forum thread 5", "")
+                    XCTAssertEqual(items[0].lastPostDate, "Today 12:22 AM", "")
+                    XCTAssertEqual(items[0].author, "Author name 5", "")
+                    XCTAssertEqual(items[0].replies, 5, "")
+                    XCTAssertEqual(items[0].views, 7, "")
+                    XCTAssertTrue(items[0].hasBiowareReply, "")
+                    XCTAssertTrue(items[0].isSticky, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -110,19 +122,24 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 1, "")
-            
-            // Exception safeguard
-            if items.count != 1 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertFalse(items[0].hasBiowareReply, "")
-            
-            }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 1, "")
+                    
+                    // Exception safeguard
+                    if items.count != 1 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertFalse(items[0].hasBiowareReply, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -136,19 +153,24 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 1, "")
-            
-            // Exception safeguard
-            if items.count != 1 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertFalse(items[0].isSticky, "")
-            
-            }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 1, "")
+                    
+                    // Exception safeguard
+                    if items.count != 1 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertFalse(items[0].isSticky, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -162,13 +184,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -182,13 +209,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -202,13 +234,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -222,13 +259,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -242,13 +284,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -262,13 +309,18 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 0, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -282,43 +334,48 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 3, "")
-            
-            // Exception safeguard
-            if items.count != 3 { return }
-            
-            XCTAssertEqual(items[0].id, 5, "")
-            XCTAssertEqual(items[0].title, "Forum thread 5", "")
-            XCTAssertEqual(items[0].lastPostDate, "Today 12:22 AM", "")
-            XCTAssertEqual(items[0].author, "Author name 5", "")
-            XCTAssertEqual(items[0].replies, 5, "")
-            XCTAssertEqual(items[0].views, 7, "")
-            XCTAssertTrue(items[0].hasBiowareReply, "")
-            XCTAssertTrue(items[0].isSticky, "")
-            
-            XCTAssertEqual(items[1].id, 6, "")
-            XCTAssertEqual(items[1].title, "Forum thread 6", "")
-            XCTAssertEqual(items[1].lastPostDate, "Today 09:22 AM", "")
-            XCTAssertEqual(items[1].author, "Author name 6", "")
-            XCTAssertEqual(items[1].replies, 6, "")
-            XCTAssertEqual(items[1].views, 8, "")
-            XCTAssertTrue(items[1].hasBiowareReply, "")
-            XCTAssertFalse(items[1].isSticky, "")
-            
-            XCTAssertEqual(items[2].id, 7, "")
-            XCTAssertEqual(items[2].title, "Forum thread 7", "")
-            XCTAssertEqual(items[2].lastPostDate, "Today 11:22 AM", "")
-            XCTAssertEqual(items[2].author, "Author name 7", "")
-            XCTAssertEqual(items[2].replies, 7, "")
-            XCTAssertEqual(items[2].views, 9, "")
-            XCTAssertFalse(items[2].hasBiowareReply, "")
-            XCTAssertTrue(items[2].isSticky, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 3, "")
+                    
+                    // Exception safeguard
+                    if items.count != 3 { return }
+                    
+                    XCTAssertEqual(items[0].id, 5, "")
+                    XCTAssertEqual(items[0].title, "Forum thread 5", "")
+                    XCTAssertEqual(items[0].lastPostDate, "Today 12:22 AM", "")
+                    XCTAssertEqual(items[0].author, "Author name 5", "")
+                    XCTAssertEqual(items[0].replies, 5, "")
+                    XCTAssertEqual(items[0].views, 7, "")
+                    XCTAssertTrue(items[0].hasBiowareReply, "")
+                    XCTAssertTrue(items[0].isSticky, "")
+                    
+                    XCTAssertEqual(items[1].id, 6, "")
+                    XCTAssertEqual(items[1].title, "Forum thread 6", "")
+                    XCTAssertEqual(items[1].lastPostDate, "Today 09:22 AM", "")
+                    XCTAssertEqual(items[1].author, "Author name 6", "")
+                    XCTAssertEqual(items[1].replies, 6, "")
+                    XCTAssertEqual(items[1].views, 8, "")
+                    XCTAssertTrue(items[1].hasBiowareReply, "")
+                    XCTAssertFalse(items[1].isSticky, "")
+                    
+                    XCTAssertEqual(items[2].id, 7, "")
+                    XCTAssertEqual(items[2].title, "Forum thread 7", "")
+                    XCTAssertEqual(items[2].lastPostDate, "Today 11:22 AM", "")
+                    XCTAssertEqual(items[2].author, "Author name 7", "")
+                    XCTAssertEqual(items[2].replies, 7, "")
+                    XCTAssertEqual(items[2].views, 9, "")
+                    XCTAssertFalse(items[2].hasBiowareReply, "")
+                    XCTAssertTrue(items[2].isSticky, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -332,21 +389,25 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
             return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
         }
         
-        self.repo!.get(category: self.testCategory, page: 1, success: { (items) in
-            expectation.fulfill()
-            
-            XCTAssertNotNil(items, "")
-            XCTAssertEqual(items.count, 2, "")
-            
-            // Exception safeguard
-            if items.count != 2 { return }
-            
-            XCTAssertEqual(items[0].id, 6, "")
-            XCTAssertEqual(items[1].id, 7, "")
-            
-        }, failure: self.defaultFailure)
+        self.repo!
+            .threads(category: self.testCategory, page: 1)
+            .subscribe(
+                onNext: { items in
+                    expectation.fulfill()
+                    
+                    XCTAssertNotNil(items, "")
+                    XCTAssertEqual(items.count, 2, "")
+                    
+                    // Exception safeguard
+                    if items.count != 2 { return }
+                    
+                    XCTAssertEqual(items[0].id, 6, "")
+                    XCTAssertEqual(items[1].id, 7, "")
+                },
+                onError: self.defaultFailure
+            )
+            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
-
 }

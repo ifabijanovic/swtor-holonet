@@ -8,24 +8,37 @@
 
 import UIKit
 import Alamofire
+import RxSwift
+import RxAlamofire
 import HTMLReader
 
 protocol ForumThreadRepository {
+    func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]>
+    
     func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void))
 }
 
 class DefaultForumThreadRepository: ForumRepositoryBase, ForumThreadRepository {
+    func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]> {
+        return self.threads(id: category.id, page: page)
+    }
+    
     func get(category: ForumCategory, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
         self.get(id: category.id, page: page, success: success, failure: failure)
     }
 }
 
 extension DefaultForumThreadRepository {
-    private func url(id: Int, page: Int) -> URL {
-        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
-        let url = URL(string: string)
-        assert(url != nil)
-        return url!
+    fileprivate func threads(id: Int, page: Int) -> Observable<[ForumThread]> {
+        return self.manager.rx
+            .string(.get, self.url(id: id, page: page))
+            .map {
+                let items = self.parse(html: $0)
+                if items.isEmpty && self.isMaintenanceResponse($0) {
+                    throw ForumError.maintenance
+                }
+                return items
+            }
     }
     
     fileprivate func get(id: Int, page: Int, success: @escaping (([ForumThread]) -> Void), failure: @escaping ((Error) -> Void)) {
@@ -48,6 +61,13 @@ extension DefaultForumThreadRepository {
                 
                 success(items)
             }
+    }
+    
+    private func url(id: Int, page: Int) -> URL {
+        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+        let url = URL(string: string)
+        assert(url != nil)
+        return url!
     }
     
     private func parse(html: String) -> [ForumThread] {
