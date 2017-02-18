@@ -131,6 +131,8 @@
 		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
 		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
+		81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364D1E58F980000AC89C /* RxAlamofire.framework */; };
+		81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364E1E58F980000AC89C /* RxSwift.framework */; };
 		81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
@@ -184,7 +186,6 @@
 		81F6E6861E588BC500DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
 		81F6E6871E588C8E00DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
 		81F6E68A1E58923F00DDF907 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */; };
-		81F6E68C1E589DAA00DDF907 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E68B1E589DAA00DDF907 /* libxml2.tbd */; };
 		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
 		81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
@@ -294,6 +295,8 @@
 		8199010B1B57C3DA0077A2BF /* DarkTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DarkTheme.plist; path = Resource/Theme/DarkTheme.plist; sourceTree = "<group>"; };
 		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
+		81A6364D1E58F980000AC89C /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		81A6364E1E58F980000AC89C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceHolder.swift; sourceTree = "<group>"; };
 		81AB247C19EFBD7700293D26 /* HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -327,8 +330,6 @@
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6851E588BC500DDF907 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactory.swift; sourceTree = "<group>"; };
-		81F6E68B1E589DAA00DDF907 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		81F6E68E1E589DBD00DDF907 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
 		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
 		81FB846D1AF90A2F00D51684 /* HTMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLElement.swift; path = Extension/HTMLElement.swift; sourceTree = "<group>"; };
 		81FDCC891A6EC37900E2C44A /* Disclaimer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Disclaimer.txt; path = Resource/Disclaimer.txt; sourceTree = "<group>"; };
@@ -341,7 +342,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81F6E68C1E589DAA00DDF907 /* libxml2.tbd in Frameworks */,
 				812276FB1AA080790064156A /* WebKit.framework in Frameworks */,
 				8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */,
 			);
@@ -351,6 +351,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */,
+				81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */,
 				81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */,
 				81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */,
 				8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */,
@@ -799,13 +801,13 @@
 		81CF9F811A46C0C60020BE6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81F6E6921E58ABC400DDF907 /* HTMLReader.framework */,
 				8146AA6C1E58535C002F65FD /* Alamofire.framework */,
 				81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */,
-				81F6E68E1E589DBD00DDF907 /* Fuzi.framework */,
-				81F6E68B1E589DAA00DDF907 /* libxml2.tbd */,
+				81F6E6921E58ABC400DDF907 /* HTMLReader.framework */,
 				8175F1F31A497A6C00FC8011 /* MessageUI.framework */,
 				8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */,
+				81A6364D1E58F980000AC89C /* RxAlamofire.framework */,
+				81A6364E1E58F980000AC89C /* RxSwift.framework */,
 				812276FA1AA080790064156A /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -1032,6 +1034,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HTMLReader.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
 			);
 			name = Carthage;
 			outputPaths = (
