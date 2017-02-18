@@ -164,18 +164,22 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         func failure(error: Error) {
             self.refreshControl?.endRefreshing()
             
-            let alert: Alert!
-            
+            let alertController: UIAlertController
             if (error.isMaintenanceError()) {
-                alert = self.alertFactory.createAlert(presenter: self, title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", buttons: (style: .default, title: "OK", { self.hideLoader() })
-                )
+                alertController = self.alertFactory.infoMaintenance { [weak self] _ in
+                    self?.hideLoader()
+                }
             } else {
-                alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                    (style: .cancel, title: "No", { self.hideLoader() }),
-                    (style: .default, title: "Yes", { self.onRefresh() })
+                alertController = self.alertFactory.errorNetwork(
+                    cancelHandler: { [weak self] _ in
+                        self?.hideLoader()
+                    },
+                    retryHandler: { [weak self] _ in
+                        self?.onRefresh()
+                    }
                 )
             }
-            alert.show()
+            self.present(alertController, animated: true, completion: nil)
         }
         
         self.postRepo.get(thread: self.thread, page: 1, success: success, failure: failure)
@@ -213,11 +217,15 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
             self.canLoadMore = true
         }
         func failure(error: Error) {
-            let alert = self.alertFactory.createAlert(presenter: self, title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", buttons:
-                (style: .cancel, title: "No", { self.hideLoader() }),
-                (style: .default, title: "Yes", { self.onRefresh() })
+            let alertController = self.alertFactory.errorNetwork(
+                cancelHandler: { [weak self] _ in
+                    self?.hideLoader()
+                },
+                retryHandler: { [weak self] _ in
+                    self?.onRefresh()
+                }
             )
-            alert.show()
+            self.present(alertController, animated: true, completion: nil)
         }
         
         self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)

@@ -9,13 +9,6 @@
 import Foundation
 
 protocol Action: class {
-    
-    // MARK: - Properties
-    
     var type: String { get }
-    
-    // MARK: - Public methods
-    
     func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool
-    
 }

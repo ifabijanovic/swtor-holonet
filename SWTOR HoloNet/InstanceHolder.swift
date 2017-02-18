@@ -13,35 +13,25 @@
 import UIKit
 
 class InstanceHolder {
-    
-    // MARK: - Properties
-    
-    var alertFactory: AlertFactory
+    var alertFactory: UIAlertFactory
     
     let settings: Settings
     let theme: Theme
     let pushManager: PushManager
     let analytics: Analytics
     
-    // MARK: - Singleton
-    
     static let sharedInstance = InstanceHolder()
-    
-    // MARK: - Init
     
     init() {
         self.settings = Settings()
         self.theme = Theme()
-        self.alertFactory = UIAlertFactory()
+        self.alertFactory = DefaultUIAlertFactory()
         let actionFactory = ActionFactory(alertFactory: self.alertFactory)
         self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
         self.analytics = DefaultAnalytics()
     }
     
-    // MARK: - Public methods
-    
-    func inject(handler: (Settings, Theme, AlertFactory, Analytics) -> Void) {
+    func inject(handler: (Settings, Theme, UIAlertFactory, Analytics) -> Void) {
         handler(self.settings, self.theme, self.alertFactory, self.analytics)
     }
-    
 }

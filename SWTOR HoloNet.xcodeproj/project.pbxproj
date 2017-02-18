@@ -62,32 +62,6 @@
 		8130494F1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */; };
 		813049501E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */; };
 		813049511E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */; };
-		813049B41E58394D00DD14F3 /* AlertIOS7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A61E58394D00DD14F3 /* AlertIOS7.swift */; };
-		813049B51E58394D00DD14F3 /* AlertIOS7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A61E58394D00DD14F3 /* AlertIOS7.swift */; };
-		813049B61E58394D00DD14F3 /* AlertIOS8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A71E58394D00DD14F3 /* AlertIOS8.swift */; };
-		813049B71E58394D00DD14F3 /* AlertIOS8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A71E58394D00DD14F3 /* AlertIOS8.swift */; };
-		813049B81E58394D00DD14F3 /* ActionSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A91E58394D00DD14F3 /* ActionSheetDelegate.swift */; };
-		813049B91E58394D00DD14F3 /* ActionSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049A91E58394D00DD14F3 /* ActionSheetDelegate.swift */; };
-		813049BA1E58394D00DD14F3 /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AA1E58394D00DD14F3 /* AlertDelegate.swift */; };
-		813049BB1E58394D00DD14F3 /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AA1E58394D00DD14F3 /* AlertDelegate.swift */; };
-		813049BC1E58394D00DD14F3 /* DelegateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AB1E58394D00DD14F3 /* DelegateBase.swift */; };
-		813049BD1E58394D00DD14F3 /* DelegateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AB1E58394D00DD14F3 /* DelegateBase.swift */; };
-		813049BE1E58394D00DD14F3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AD1E58394D00DD14F3 /* Alert.swift */; };
-		813049BF1E58394D00DD14F3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AD1E58394D00DD14F3 /* Alert.swift */; };
-		813049C01E58394D00DD14F3 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AE1E58394D00DD14F3 /* AlertFactory.swift */; };
-		813049C11E58394D00DD14F3 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049AE1E58394D00DD14F3 /* AlertFactory.swift */; };
-		813049C21E58394D00DD14F3 /* TestAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B01E58394D00DD14F3 /* TestAlert.swift */; };
-		813049C31E58394D00DD14F3 /* TestAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B01E58394D00DD14F3 /* TestAlert.swift */; };
-		813049C41E58394D00DD14F3 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B11E58394D00DD14F3 /* TestAlertFactory.swift */; };
-		813049C51E58394D00DD14F3 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B11E58394D00DD14F3 /* TestAlertFactory.swift */; };
-		813049C61E58394D00DD14F3 /* UIAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B31E58394D00DD14F3 /* UIAlertFactory.swift */; };
-		813049C71E58394D00DD14F3 /* UIAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049B31E58394D00DD14F3 /* UIAlertFactory.swift */; };
-		813049DA1E583BE800DD14F3 /* ActionSheetDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D21E583BE800DD14F3 /* ActionSheetDelegateTests.swift */; };
-		813049DB1E583BE800DD14F3 /* AlertDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D31E583BE800DD14F3 /* AlertDelegateTests.swift */; };
-		813049DC1E583BE800DD14F3 /* DelegateBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D41E583BE800DD14F3 /* DelegateBaseTests.swift */; };
-		813049DD1E583BE800DD14F3 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D61E583BE800DD14F3 /* AlertTests.swift */; };
-		813049DE1E583BE800DD14F3 /* TestAlertFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D81E583BE800DD14F3 /* TestAlertFactoryTests.swift */; };
-		813049DF1E583BE800DD14F3 /* TestAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813049D91E583BE800DD14F3 /* TestAlertTests.swift */; };
 		8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BAC71AB029A80045A93E /* ActionParserTests.swift */; };
 		8138BACA1AB02D2A0045A93E /* ActionFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BAC91AB02D2A0045A93E /* ActionFactoryTests.swift */; };
 		8138BACC1AB030000045A93E /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8138BACB1AB030000045A93E /* DulfyActionTests.swift */; };
@@ -243,6 +217,9 @@
 		81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */; };
 		81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */; };
 		81F6E6801E587EE800DDF907 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810077811E57776700F6ACDA /* Constants.swift */; };
+		81F6E6861E588BC500DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
+		81F6E6871E588C8E00DDF907 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6851E588BC500DDF907 /* AlertFactory.swift */; };
+		81F6E68A1E58923F00DDF907 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */; };
 		81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FB846F1AF90A2F00D51684 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FB846D1AF90A2F00D51684 /* HTMLElement.swift */; };
 		81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81FDCC891A6EC37900E2C44A /* Disclaimer.txt */; };
@@ -318,22 +295,6 @@
 		8130492D1E5838EE00DD14F3 /* HTMLTreeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLTreeEnumerator.m; path = "Third Party/HTMLReader/Code/HTMLTreeEnumerator.m"; sourceTree = "<group>"; };
 		8130492E1E5838EE00DD14F3 /* NSString+HTMLEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTMLEntities.h"; path = "Third Party/HTMLReader/Code/NSString+HTMLEntities.h"; sourceTree = "<group>"; };
 		8130492F1E5838EE00DD14F3 /* NSString+HTMLEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTMLEntities.m"; path = "Third Party/HTMLReader/Code/NSString+HTMLEntities.m"; sourceTree = "<group>"; };
-		813049A61E58394D00DD14F3 /* AlertIOS7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS7.swift; sourceTree = "<group>"; };
-		813049A71E58394D00DD14F3 /* AlertIOS8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertIOS8.swift; sourceTree = "<group>"; };
-		813049A91E58394D00DD14F3 /* ActionSheetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDelegate.swift; sourceTree = "<group>"; };
-		813049AA1E58394D00DD14F3 /* AlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
-		813049AB1E58394D00DD14F3 /* DelegateBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateBase.swift; sourceTree = "<group>"; };
-		813049AD1E58394D00DD14F3 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		813049AE1E58394D00DD14F3 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
-		813049B01E58394D00DD14F3 /* TestAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlert.swift; sourceTree = "<group>"; };
-		813049B11E58394D00DD14F3 /* TestAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactory.swift; sourceTree = "<group>"; };
-		813049B31E58394D00DD14F3 /* UIAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertFactory.swift; sourceTree = "<group>"; };
-		813049D21E583BE800DD14F3 /* ActionSheetDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetDelegateTests.swift; sourceTree = "<group>"; };
-		813049D31E583BE800DD14F3 /* AlertDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDelegateTests.swift; sourceTree = "<group>"; };
-		813049D41E583BE800DD14F3 /* DelegateBaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateBaseTests.swift; sourceTree = "<group>"; };
-		813049D61E583BE800DD14F3 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
-		813049D81E583BE800DD14F3 /* TestAlertFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactoryTests.swift; sourceTree = "<group>"; };
-		813049D91E583BE800DD14F3 /* TestAlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertTests.swift; sourceTree = "<group>"; };
 		8138BAC71AB029A80045A93E /* ActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParserTests.swift; path = Module/App/Action/ActionParserTests.swift; sourceTree = "<group>"; };
 		8138BAC91AB02D2A0045A93E /* ActionFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionFactoryTests.swift; path = Module/App/Action/ActionFactoryTests.swift; sourceTree = "<group>"; };
 		8138BACB1AB030000045A93E /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DulfyActionTests.swift; path = Module/App/Action/DulfyActionTests.swift; sourceTree = "<group>"; };
@@ -440,6 +401,8 @@
 		81EC0C131A44896F00AFA035 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewController.swift; path = Module/App/UI/TextViewController.swift; sourceTree = "<group>"; };
 		81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumPostViewController.swift; path = Module/Forum/UI/ForumPostViewController.swift; sourceTree = "<group>"; };
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		81F6E6851E588BC500DDF907 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactory.swift; sourceTree = "<group>"; };
 		81FB846D1AF90A2F00D51684 /* HTMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLElement.swift; path = Extension/HTMLElement.swift; sourceTree = "<group>"; };
 		81FDCC891A6EC37900E2C44A /* Disclaimer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Disclaimer.txt; path = Resource/Disclaimer.txt; sourceTree = "<group>"; };
 		81FDCC8A1A6EC37900E2C44A /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = Resource/License.txt; sourceTree = "<group>"; };
@@ -483,6 +446,7 @@
 		810950861A0A1A7C00B974E1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				81F6E6881E58923600DDF907 /* Alert */,
 				810950871A0A1A8400B974E1 /* App */,
 				81E62D011AA44A8A006FA0F9 /* Dulfy */,
 				8109508B1A0A1BE300B974E1 /* Forum */,
@@ -585,94 +549,6 @@
 				8129B3361AADB18B004D8774 /* DulfyAction.swift */,
 			);
 			name = Action;
-			sourceTree = "<group>";
-		};
-		813049A51E58394D00DD14F3 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				813049A61E58394D00DD14F3 /* AlertIOS7.swift */,
-				813049A71E58394D00DD14F3 /* AlertIOS8.swift */,
-				813049A81E58394D00DD14F3 /* Delegate */,
-			);
-			name = Internal;
-			path = "Third Party/SwiftAlert/Internal";
-			sourceTree = SOURCE_ROOT;
-		};
-		813049A81E58394D00DD14F3 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				813049A91E58394D00DD14F3 /* ActionSheetDelegate.swift */,
-				813049AA1E58394D00DD14F3 /* AlertDelegate.swift */,
-				813049AB1E58394D00DD14F3 /* DelegateBase.swift */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		813049AC1E58394D00DD14F3 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				813049AD1E58394D00DD14F3 /* Alert.swift */,
-				813049AE1E58394D00DD14F3 /* AlertFactory.swift */,
-				813049AF1E58394D00DD14F3 /* Testing */,
-				813049B21E58394D00DD14F3 /* Usage */,
-			);
-			name = Public;
-			path = "Third Party/SwiftAlert/Public";
-			sourceTree = SOURCE_ROOT;
-		};
-		813049AF1E58394D00DD14F3 /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				813049B01E58394D00DD14F3 /* TestAlert.swift */,
-				813049B11E58394D00DD14F3 /* TestAlertFactory.swift */,
-			);
-			path = Testing;
-			sourceTree = "<group>";
-		};
-		813049B21E58394D00DD14F3 /* Usage */ = {
-			isa = PBXGroup;
-			children = (
-				813049B31E58394D00DD14F3 /* UIAlertFactory.swift */,
-			);
-			path = Usage;
-			sourceTree = "<group>";
-		};
-		813049D01E583BE800DD14F3 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				813049D11E583BE800DD14F3 /* Delegate */,
-			);
-			name = Internal;
-			path = "Third Party/SwiftAlert/Tests/Internal";
-			sourceTree = SOURCE_ROOT;
-		};
-		813049D11E583BE800DD14F3 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				813049D21E583BE800DD14F3 /* ActionSheetDelegateTests.swift */,
-				813049D31E583BE800DD14F3 /* AlertDelegateTests.swift */,
-				813049D41E583BE800DD14F3 /* DelegateBaseTests.swift */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		813049D51E583BE800DD14F3 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				813049D61E583BE800DD14F3 /* AlertTests.swift */,
-				813049D71E583BE800DD14F3 /* Testing */,
-			);
-			name = Public;
-			path = "Third Party/SwiftAlert/Tests/Public";
-			sourceTree = SOURCE_ROOT;
-		};
-		813049D71E583BE800DD14F3 /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				813049D81E583BE800DD14F3 /* TestAlertFactoryTests.swift */,
-				813049D91E583BE800DD14F3 /* TestAlertTests.swift */,
-			);
-			path = Testing;
 			sourceTree = "<group>";
 		};
 		8138BAC31AB029910045A93E /* Action */ = {
@@ -965,7 +841,6 @@
 			children = (
 				818029D61A08C7D300999871 /* Extension */,
 				810950861A0A1A7C00B974E1 /* Module */,
-				81DD07EF1AA32AE600278130 /* SwiftAlert */,
 				818029D21A08B78000999871 /* SettingsTests.swift */,
 				81AB249519EFBD7700293D26 /* Supporting Files */,
 			);
@@ -986,6 +861,7 @@
 		81AB24A319EFC18400293D26 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				81F6E6841E588B8E00DDF907 /* Alert */,
 				8100777C1E5773E100F6ACDA /* Analytics */,
 				81A1E1FE19F704D700C5C833 /* App */,
 				81A68FEA1A9F2EEB003B3C55 /* Dulfy */,
@@ -1033,7 +909,6 @@
 			isa = PBXGroup;
 			children = (
 				81A49A5619F0FC98007FEA4C /* HTMLReader */,
-				81DD07CA1AA3299500278130 /* SwiftAlert */,
 			);
 			name = "Third Party";
 			sourceTree = "<group>";
@@ -1060,26 +935,6 @@
 				812276FA1AA080790064156A /* WebKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		81DD07CA1AA3299500278130 /* SwiftAlert */ = {
-			isa = PBXGroup;
-			children = (
-				813049A51E58394D00DD14F3 /* Internal */,
-				813049AC1E58394D00DD14F3 /* Public */,
-			);
-			name = SwiftAlert;
-			path = "../Third Party/SwiftAlert";
-			sourceTree = "<group>";
-		};
-		81DD07EF1AA32AE600278130 /* SwiftAlert */ = {
-			isa = PBXGroup;
-			children = (
-				813049D01E583BE800DD14F3 /* Internal */,
-				813049D51E583BE800DD14F3 /* Public */,
-			);
-			name = SwiftAlert;
-			path = "../../Third Party/SwiftAlert/Tests";
 			sourceTree = "<group>";
 		};
 		81E62D011AA44A8A006FA0F9 /* Dulfy */ = {
@@ -1115,6 +970,24 @@
 				81E99F521B70A8970055A5A2 /* TableViewCell+Themeable.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		81F6E6841E588B8E00DDF907 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				81F6E6851E588BC500DDF907 /* AlertFactory.swift */,
+			);
+			name = Alert;
+			path = Module/Alert;
+			sourceTree = "<group>";
+		};
+		81F6E6881E58923600DDF907 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				81F6E6891E58923F00DDF907 /* TestAlertFactory.swift */,
+			);
+			name = Alert;
+			path = Module/Alert;
 			sourceTree = "<group>";
 		};
 		81FDCC881A6EC31500E2C44A /* Resource */ = {
@@ -1310,13 +1183,9 @@
 				8157932B1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				8129B3371AADB18B004D8774 /* DulfyAction.swift in Sources */,
 				8146BF0D1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
-				813049C01E58394D00DD14F3 /* AlertFactory.swift in Sources */,
-				813049BC1E58394D00DD14F3 /* DelegateBase.swift in Sources */,
 				8125C4921AA9DBB000046197 /* Action.swift in Sources */,
 				8130494E1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */,
 				8149871C1AA5B66300CF3B7B /* Global.swift in Sources */,
-				813049C41E58394D00DD14F3 /* TestAlertFactory.swift in Sources */,
-				813049B81E58394D00DD14F3 /* ActionSheetDelegate.swift in Sources */,
 				81E99F4D1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
@@ -1325,17 +1194,14 @@
 				81AD3D041B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
-				813049B61E58394D00DD14F3 /* AlertIOS8.swift in Sources */,
 				8100777E1E5773E800F6ACDA /* Analytics.swift in Sources */,
 				813049461E5838EE00DD14F3 /* HTMLSerialization.m in Sources */,
 				81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */,
 				81846C9C1ABC451500982C2C /* TableHeaderCollectionReusableView.swift in Sources */,
-				813049BE1E58394D00DD14F3 /* Alert.swift in Sources */,
 				8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */,
 				815B211619F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81FB846E1AF90A2F00D51684 /* HTMLElement.swift in Sources */,
 				8130493A1E5838EE00DD14F3 /* HTMLEntities.m in Sources */,
-				813049BA1E58394D00DD14F3 /* AlertDelegate.swift in Sources */,
 				813049361E5838EE00DD14F3 /* HTMLElement.m in Sources */,
 				81EE90911A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				816567201A40394F002AA53A /* Theme.swift in Sources */,
@@ -1343,7 +1209,6 @@
 				813049381E5838EE00DD14F3 /* HTMLEncoding.m in Sources */,
 				81E99F6B1B70FFAB0055A5A2 /* SettingPickerDelegate.swift in Sources */,
 				81E99F551B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */,
-				813049B41E58394D00DD14F3 /* AlertIOS7.swift in Sources */,
 				8146BF181ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
 				8146A6C51A46DE2B00C2F9BC /* TabViewController.swift in Sources */,
 				81C228A419F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
@@ -1357,10 +1222,10 @@
 				813049401E5838EE00DD14F3 /* HTMLParser.m in Sources */,
 				81E99F581B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
 				81E99F531B70A8970055A5A2 /* CollectionViewCell+Themeable.swift in Sources */,
-				813049C61E58394D00DD14F3 /* UIAlertFactory.swift in Sources */,
 				8130494A1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */,
 				819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
 				813E284E1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
+				81F6E6861E588BC500DDF907 /* AlertFactory.swift in Sources */,
 				8147C8F719F154F400D98C61 /* ForumThreadRepository.swift in Sources */,
 				813049421E5838EE00DD14F3 /* HTMLPreprocessedInputStream.m in Sources */,
 				81AB24DA19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
@@ -1368,7 +1233,6 @@
 				81AB24AE19EFC5C400293D26 /* ForumPost.swift in Sources */,
 				81103E8F1AA2374200822A3B /* PushManager.swift in Sources */,
 				813049301E5838EE00DD14F3 /* HTMLComment.m in Sources */,
-				813049C21E58394D00DD14F3 /* TestAlert.swift in Sources */,
 				813049501E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */,
 				81AB24AB19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				814F07401AADECF5009BD5F1 /* ActionFactory.swift in Sources */,
@@ -1409,7 +1273,6 @@
 				8130494B1E5838EE00DD14F3 /* HTMLTextNode.m in Sources */,
 				813049411E5838EE00DD14F3 /* HTMLParser.m in Sources */,
 				813049511E5838EE00DD14F3 /* NSString+HTMLEntities.m in Sources */,
-				813049C31E58394D00DD14F3 /* TestAlert.swift in Sources */,
 				815B211719F3A2B900B9E725 /* ForumPostRepository.swift in Sources */,
 				81846CA31ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				812B428D1A08CB7700302649 /* StringExTests.swift in Sources */,
@@ -1419,7 +1282,6 @@
 				81E99F561B70A8970055A5A2 /* TableViewCell+Themeable.swift in Sources */,
 				813049491E5838EE00DD14F3 /* HTMLString.m in Sources */,
 				8199010A1B57C04C0077A2BF /* UIColorEx.swift in Sources */,
-				813049DC1E583BE800DD14F3 /* DelegateBaseTests.swift in Sources */,
 				815793251AA0BD2E00C62E87 /* DulfyViewController.swift in Sources */,
 				813E284F1AB9AD28007B723D /* ForumCategoryCollectionViewCell.swift in Sources */,
 				8146BF0E1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
@@ -1432,9 +1294,8 @@
 				8157932C1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,
 				81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */,
 				815793291AA0BD6400C62E87 /* WebViewProtocol.swift in Sources */,
-				813049B51E58394D00DD14F3 /* AlertIOS7.swift in Sources */,
 				81C228AA19F146C500EEF2C6 /* StringEx.swift in Sources */,
-				813049DA1E583BE800DD14F3 /* ActionSheetDelegateTests.swift in Sources */,
+				81F6E68A1E58923F00DDF907 /* TestAlertFactory.swift in Sources */,
 				817A216C19F6C61E0093ECE3 /* Settings.swift in Sources */,
 				81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */,
@@ -1442,23 +1303,16 @@
 				8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */,
 				81E99F541B70A8970055A5A2 /* CollectionViewCell+Themeable.swift in Sources */,
 				819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */,
-				813049C71E58394D00DD14F3 /* UIAlertFactory.swift in Sources */,
 				81AB24AC19EFC3FD00293D26 /* ForumThread.swift in Sources */,
 				8109508A1A0A1AA700B974E1 /* EntityTests.swift in Sources */,
 				81846C881ABC34CD00982C2C /* ForumThreadCollectionViewCell.swift in Sources */,
 				81AB24DB19EFD21700293D26 /* ForumCategoryRepository.swift in Sources */,
 				81753E1F1B558858008775DE /* NSErrorEx.swift in Sources */,
-				813049BB1E58394D00DD14F3 /* AlertDelegate.swift in Sources */,
 				8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */,
 				81E99F6C1B70FFAB0055A5A2 /* SettingPickerDelegate.swift in Sources */,
 				81E99F591B70C1AD0055A5A2 /* NavigationViewController.swift in Sources */,
-				813049BF1E58394D00DD14F3 /* Alert.swift in Sources */,
 				816567211A40394F002AA53A /* Theme.swift in Sources */,
 				818029D31A08B78000999871 /* SettingsTests.swift in Sources */,
-				813049C51E58394D00DD14F3 /* TestAlertFactory.swift in Sources */,
-				813049DD1E583BE800DD14F3 /* AlertTests.swift in Sources */,
-				813049DE1E583BE800DD14F3 /* TestAlertFactoryTests.swift in Sources */,
-				813049DB1E583BE800DD14F3 /* AlertDelegateTests.swift in Sources */,
 				81EE90921A0779DC00A88F48 /* ForumPostViewController.swift in Sources */,
 				813049311E5838EE00DD14F3 /* HTMLComment.m in Sources */,
 				813049331E5838EE00DD14F3 /* HTMLDocument.m in Sources */,
@@ -1468,9 +1322,9 @@
 				8109508E1A0A1C0700B974E1 /* ForumParserTests.swift in Sources */,
 				81EC0BFE1A44589600AFA035 /* Themeable.swift in Sources */,
 				81C070B41ABB016800B70A06 /* ForumBaseCollectionViewController.swift in Sources */,
-				813049DF1E583BE800DD14F3 /* TestAlertTests.swift in Sources */,
 				81B8B95E1B6F64FB009ADF45 /* ThemeSettingsTableViewController.swift in Sources */,
 				81EC0C151A44896F00AFA035 /* TextViewController.swift in Sources */,
+				81F6E6871E588C8E00DDF907 /* AlertFactory.swift in Sources */,
 				81E99F4E1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
 				8130493B1E5838EE00DD14F3 /* HTMLEntities.m in Sources */,
 				81964D8C1AAED73D008CA544 /* ActionParser.swift in Sources */,
@@ -1480,16 +1334,12 @@
 				818029D81A08C7F000999871 /* NSURLComponentsExTests.swift in Sources */,
 				8125C4931AA9DBB000046197 /* Action.swift in Sources */,
 				81C070B11ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
-				813049C11E58394D00DD14F3 /* AlertFactory.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
 				8130493F1E5838EE00DD14F3 /* HTMLOrderedDictionary.m in Sources */,
 				819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
-				813049B91E58394D00DD14F3 /* ActionSheetDelegate.swift in Sources */,
 				813049471E5838EE00DD14F3 /* HTMLSerialization.m in Sources */,
 				81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */,
 				81AD3D051B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
-				813049BD1E58394D00DD14F3 /* DelegateBase.swift in Sources */,
-				813049B71E58394D00DD14F3 /* AlertIOS8.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1635,7 +1485,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
@@ -1654,7 +1503,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);

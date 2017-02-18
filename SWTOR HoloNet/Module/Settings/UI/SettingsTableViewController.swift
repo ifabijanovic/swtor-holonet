@@ -94,8 +94,11 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     }
     
     private func emailNotAvailable() {
-        let alert = UIAlertView(title: "Error", message: "It seems email is not configured on this device.", delegate: nil, cancelButtonTitle: "OK")
-        alert.show()
+        let alertController = DefaultUIAlertFactory().alert(title: "Error", message: "It seems email is not configured on this device.", actions: [
+            (title: "OK", style: .default, handler: nil)
+            ]
+        )
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

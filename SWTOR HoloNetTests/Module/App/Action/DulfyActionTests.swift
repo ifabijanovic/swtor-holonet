@@ -112,7 +112,7 @@ class DulfyActionTests: XCTestCase {
         XCTAssertTrue(result, "")
         
         XCTAssertNotNil(self.alertFactory.lastAlert, "")
-        self.alertFactory.lastAlert!.tapCancel()
+        self.alertFactory.tapCancel()
     }
     
     func testPerform_Foreground_View() {
@@ -132,7 +132,7 @@ class DulfyActionTests: XCTestCase {
         XCTAssertTrue(result, "")
         
         XCTAssertNotNil(self.alertFactory.lastAlert, "")
-        self.alertFactory.lastAlert!.tapDefault()
+        self.alertFactory.tapDefault()
         
         waitForExpectations(timeout: 3) { error in
             if error != nil {

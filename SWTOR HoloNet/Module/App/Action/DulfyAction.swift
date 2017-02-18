@@ -12,27 +12,16 @@ import UIKit
 let keyDulfyUrl = "url"
 
 class DulfyAction: Action {
+    fileprivate let alertFactory: UIAlertFactory
     
-    // MARK: - Constants
+    var type: String { return ActionTypeDulfy }
     
-    private let alertFactory: AlertFactory
-    
-    // MARK: - Properties
-    
-    var type: String {
-        get {
-            return ActionTypeDulfy
-        }
-    }
-    
-    // MARK: - Init
-    
-    init(alertFactory: AlertFactory) {
+    init(alertFactory: UIAlertFactory) {
         self.alertFactory = alertFactory
     }
-    
-    // MARK: - Public methods
-    
+}
+
+extension DulfyAction {
     func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
         if let userInfo = userInfo {
             let parser = ActionParser(userInfo: userInfo)
@@ -49,26 +38,23 @@ class DulfyAction: Action {
         return false
     }
     
-    // MARK: - Private methods
-    
     private func perform(message: String, url: NSURL, isForeground: Bool) {
         let payload: [AnyHashable: Any] = [
-            "index": 1,
-            "url": url
+            Constants.Notifications.UserInfo.index: 1,
+            Constants.Notifications.UserInfo.url: url
         ]
         
         if isForeground {
             // If in foreground ask the user if he wants to navigate
-            let alert = self.alertFactory.createAlert(presenter: UIViewController(), title: "Dulfy", message: message, buttons:
-                (style: .cancel, title: "Hide", handler: {}),
-                (style: .default, title: "View", handler: {
+            let alertController = self.alertFactory.alert(title: "Dulfy", message: message, actions: [
+                (title: "Hide", style: .cancel, handler: nil),
+                (title: "View", style: .default, handler: { _ in
                     NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
                 })
-            )
-            NotificationCenter.default.post(name: NSNotification.Name(ShowAlertNotification), object: self, userInfo: ["alert": alert])
+            ])
+            NotificationCenter.default.post(name: NSNotification.Name(ShowAlertNotification), object: self, userInfo: [Constants.Notifications.UserInfo.alert: alertController])
         } else {
             NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
         }
     }
-    
 }

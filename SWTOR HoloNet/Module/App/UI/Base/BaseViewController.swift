@@ -14,7 +14,7 @@ class BaseViewController: UIViewController, Themeable {
     
     var settings: Settings!
     var theme: Theme!
-    var alertFactory: AlertFactory!
+    var alertFactory: UIAlertFactory!
     var analytics: Analytics!
     
     // MARK: - Init

@@ -56,11 +56,11 @@ class PushManagerTests: XCTestCase {
             super.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
         }
         
-        convenience init(alertFactory: AlertFactory) {
+        convenience init(alertFactory: UIAlertFactory) {
             self.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
         }
         
-        override init(alertFactory: AlertFactory, actionFactory: ActionFactory) {
+        override init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
             super.init(alertFactory: alertFactory, actionFactory: actionFactory)
         }
         
@@ -154,7 +154,7 @@ class PushManagerTests: XCTestCase {
         manager.requestPushAccess(viewController: presenter)
         
         XCTAssertNotNil(alertFactory.lastAlert, "")
-        alertFactory.lastAlert!.tapCancel()
+        alertFactory.tapCancel()
         
         XCTAssertFalse(manager.didRegisterForPush, "")
         XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidCancelPushAccess), "")
@@ -172,7 +172,7 @@ class PushManagerTests: XCTestCase {
         manager.requestPushAccess(viewController: presenter)
         
         XCTAssertNotNil(alertFactory.lastAlert, "")
-        alertFactory.lastAlert!.tapDefault()
+        alertFactory.tapDefault()
         
         XCTAssertTrue(manager.didRegisterForPush, "")
         XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidApprovePushAccess), "")

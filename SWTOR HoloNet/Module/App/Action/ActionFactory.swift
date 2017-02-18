@@ -12,19 +12,12 @@ let keyActionType = "action"
 let ActionTypeDulfy = "dulfy"
 
 class ActionFactory {
+    fileprivate let alertFactory: UIAlertFactory
     
-    // MARK: - Variables
-    
-    private let alertFactory: AlertFactory
-    
-    // MARK: - Init
-    
-    init(alertFactory: AlertFactory) {
+    init(alertFactory: UIAlertFactory) {
         self.alertFactory = alertFactory
     }
-    
-    // MARK: - Public methods
-    
+
     func create(type: String) -> Action? {
         switch type {
         case ActionTypeDulfy: return DulfyAction(alertFactory: self.alertFactory)
@@ -38,5 +31,4 @@ class ActionFactory {
         }
         return nil
     }
-
 }

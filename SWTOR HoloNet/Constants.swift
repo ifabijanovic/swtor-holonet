@@ -31,4 +31,12 @@ struct Constants {
             static let stickyIcon = "StickyIcon"
         }
     }
+    
+    struct Notifications {
+        struct UserInfo {
+            static let alert = "alert"
+            static let index = "index"
+            static let url = "url"
+        }
+    }
 }

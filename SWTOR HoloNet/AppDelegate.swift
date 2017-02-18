@@ -89,15 +89,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showAlert(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            if let alert = userInfo["alert"] as? Alert {
-                if let presenter = self.window?.rootViewController {
-                    alert.presenter = presenter
-                    alert.show()
-                }
-            }
-        }
+        guard let alertController = notification.userInfo?[Constants.Notifications.UserInfo.alert] as? UIAlertController,
+            let presenter = self.window?.rootViewController
+            else { return }
+        
+        presenter.present(alertController, animated: true, completion: nil)
     }
-
 }
 

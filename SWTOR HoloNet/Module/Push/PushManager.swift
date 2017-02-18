@@ -24,7 +24,7 @@ class PushManager {
     
     // MARK: - Properties
     
-    let alertFactory: AlertFactory
+    let alertFactory: UIAlertFactory
     let actionFactory: ActionFactory
     
     private var didCancelPushAccess: Bool
@@ -37,7 +37,7 @@ class PushManager {
     
     // MARK: - Init
     
-    init(alertFactory: AlertFactory, actionFactory: ActionFactory) {
+    init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
         self.alertFactory = alertFactory
         self.actionFactory = actionFactory
         
@@ -76,8 +76,8 @@ class PushManager {
     }
     
     func requestPushAccess(viewController: UIViewController) {
-        let alert = self.alertFactory.createAlert(presenter: viewController, title: self.requestPushTitle, message: self.requestPushMessage, buttons:
-            (style: .cancel, title: "No", handler: {
+        let alertController = self.alertFactory.alert(title: self.requestPushTitle, message: self.requestPushMessage, actions: [
+            (title: "No", style: .cancel, handler: { [unowned self] _ in
                 // User decided not to grant push access. Set a flag so the app can ask again at a later time
                 self.didCancelPushAccess = true
                 self.lastPushAccessRequestTimestamp = Date()
@@ -86,7 +86,7 @@ class PushManager {
                 UserDefaults.standard.synchronize()
 
             }),
-            (style: .default, title: "Yes", handler: {
+            (title: "Yes", style: .default, handler: { [unowned self] _ in
                 // User agreed to grant push access. Set a flag and register for push
                 self.didApprovePushAccess = true
                 UserDefaults.standard.set(true, forKey: keyDidApprovePushAccess)
@@ -94,8 +94,8 @@ class PushManager {
                 
                 self.registerForPush()
             })
-        )
-        alert.show()
+        ])
+        viewController.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Registering
