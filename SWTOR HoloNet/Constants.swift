@@ -23,6 +23,10 @@ struct Constants {
         }
     }
     
+    struct Animation {
+        static let defaultDuration = 0.3
+    }
+    
     struct Images {
         struct Placeholders {
             static let avatar = "Avatar"
@@ -33,6 +37,10 @@ struct Constants {
     }
     
     struct Notifications {
+        static let showAlert = "ShowAlertNotification"
+        static let switchToTab = "SwitchToTabNotification"
+        static let themeChanged = "ThemeChangedNotification"
+        
         struct UserInfo {
             static let alert = "alert"
             static let index = "index"

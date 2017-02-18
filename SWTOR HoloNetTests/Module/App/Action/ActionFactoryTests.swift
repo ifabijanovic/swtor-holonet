@@ -49,7 +49,7 @@ class ActionFactoryTests: XCTestCase {
     
     func testCreate_DulfyAction_UserInfo() {
         let userInfo = [keyActionType:ActionTypeDulfy]
-        let action = self.factory.create(userInfo: userInfo)
+        _ = self.factory.create(userInfo: userInfo)
     }
 
 }

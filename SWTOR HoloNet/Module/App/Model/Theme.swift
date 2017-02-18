@@ -180,7 +180,7 @@ class Theme: NSObject {
     }
     
     func fireThemeChanged() {
-        NotificationCenter.default.post(name: Notification.Name(ThemeChangedNotification), object: self, userInfo: ["theme": self])
+        NotificationCenter.default.post(name: Notification.Name(Constants.Notifications.themeChanged), object: self, userInfo: ["theme": self])
     }
     
     // MARK: - Private methods

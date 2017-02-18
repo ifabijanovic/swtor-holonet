@@ -49,12 +49,12 @@ extension DulfyAction {
             let alertController = self.alertFactory.alert(title: "Dulfy", message: message, actions: [
                 (title: "Hide", style: .cancel, handler: nil),
                 (title: "View", style: .default, handler: { _ in
-                    NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
+                    NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.switchToTab), object: self, userInfo: payload)
                 })
             ])
-            NotificationCenter.default.post(name: NSNotification.Name(ShowAlertNotification), object: self, userInfo: [Constants.Notifications.UserInfo.alert: alertController])
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.showAlert), object: self, userInfo: [Constants.Notifications.UserInfo.alert: alertController])
         } else {
-            NotificationCenter.default.post(name: NSNotification.Name(SwitchToTabNotification), object: self, userInfo: payload)
+            NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.switchToTab), object: self, userInfo: payload)
         }
     }
 }

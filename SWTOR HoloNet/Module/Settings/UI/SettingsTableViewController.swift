@@ -59,7 +59,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         if cell == self.reportBugCell {
             self.reportBug()
         }
-        if cell == self.notificationSettingsCell && isIOS8OrLater() {
+        if cell == self.notificationSettingsCell {
             UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
         }
     }
@@ -123,7 +123,7 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == NotificationSettingsSegue && isIOS8OrLater() {
+        if identifier == NotificationSettingsSegue {
             return false
         }
         return true

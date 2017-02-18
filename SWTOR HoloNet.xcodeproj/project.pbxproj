@@ -88,8 +88,6 @@
 		8147C8F819F154F400D98C61 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */; };
 		8147C8FA19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
 		8147C8FB19F161EC00D98C61 /* ForumParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8147C8F919F161EC00D98C61 /* ForumParser.swift */; };
-		8149871C1AA5B66300CF3B7B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149871B1AA5B66300CF3B7B /* Global.swift */; };
-		8149871D1AA5B66300CF3B7B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149871B1AA5B66300CF3B7B /* Global.swift */; };
 		814C9CA71A1B893900FE1C94 /* forum-thread-single-invalid-author.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */; };
 		814C9CA81A1B893900FE1C94 /* forum-thread-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9C9F1A1B893900FE1C94 /* forum-thread-single-invalid-id.html */; };
 		814C9CA91A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 814C9CA01A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html */; };
@@ -311,7 +309,6 @@
 		8146BF171ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumThreadHeaderCollectionReusableView.xib; path = Module/Forum/UI/CollectionReusableView/ForumThreadHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		8147C8F619F154F400D98C61 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumThreadRepository.swift; path = Module/Forum/Data/ForumThreadRepository.swift; sourceTree = "<group>"; };
 		8147C8F919F161EC00D98C61 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumParser.swift; path = Module/Forum/Data/ForumParser.swift; sourceTree = "<group>"; };
-		8149871B1AA5B66300CF3B7B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Global.swift; path = Module/App/Global.swift; sourceTree = "<group>"; };
 		814C9C9E1A1B893900FE1C94 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-author.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
 		814C9C9F1A1B893900FE1C94 /* forum-thread-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-id.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-id.html"; sourceTree = "<group>"; };
 		814C9CA01A1B893900FE1C94 /* forum-thread-single-invalid-last-post-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "forum-thread-single-invalid-last-post-date.html"; path = "Module/Forum/Test Data/Thread/forum-thread-single-invalid-last-post-date.html"; sourceTree = "<group>"; };
@@ -714,7 +711,6 @@
 				8125C4871AA9DB3500046197 /* Action */,
 				8120F26219FFB00600C02DF8 /* Model */,
 				81A1E1FF19F704DD00C5C833 /* UI */,
-				8149871B1AA5B66300CF3B7B /* Global.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -1185,7 +1181,6 @@
 				8146BF0D1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift in Sources */,
 				8125C4921AA9DBB000046197 /* Action.swift in Sources */,
 				8130494E1E5838EE00DD14F3 /* HTMLTreeEnumerator.m in Sources */,
-				8149871C1AA5B66300CF3B7B /* Global.swift in Sources */,
 				81E99F4D1B70A88F0055A5A2 /* BaseTableViewController.swift in Sources */,
 				81846CA21ABC45E500982C2C /* LoadMoreCollectionReusableView.swift in Sources */,
 				81C070B01ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
@@ -1288,7 +1283,6 @@
 				81F6E6801E587EE800DDF907 /* Constants.swift in Sources */,
 				8138BAC81AB029A80045A93E /* ActionParserTests.swift in Sources */,
 				81AB24AF19EFC5C400293D26 /* ForumPost.swift in Sources */,
-				8149871D1AA5B66300CF3B7B /* Global.swift in Sources */,
 				8138BACC1AB030000045A93E /* DulfyActionTests.swift in Sources */,
 				81C228A519F1340C00EEF2C6 /* NSURLComponentsEx.swift in Sources */,
 				8157932C1AA0BD9700C62E87 /* WebViewEx.swift in Sources */,

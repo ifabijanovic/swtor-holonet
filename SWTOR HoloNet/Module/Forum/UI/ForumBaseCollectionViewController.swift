@@ -55,7 +55,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isIOS7() || self.needsLayout {
+        if self.needsLayout {
             self.needsLayout = false
             self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
         }
