@@ -9,9 +9,6 @@
 import UIKit
 
 extension String {
-
-    // MARK: - Cleanup
-    
     func stripNewLinesAndTabs() -> String {
         let withoutNewLines = self.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
         let withoutTabs = withoutNewLines.replacingOccurrences(of: "\t", with: "", options: .literal, range: nil)
@@ -38,5 +35,4 @@ extension String {
         value = value.replacingOccurrences(of: " ,", with: ",", options: .literal, range: nil)
         return value.trimSpaces()
     }
-   
 }

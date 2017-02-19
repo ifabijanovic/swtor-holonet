@@ -194,7 +194,7 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     
     // MARK: - ActionPerformer
     
-    func perform(_ userInfo: [AnyHashable : Any]) {
+    func perform(userInfo: [AnyHashable : Any]) {
         if let url = userInfo["url"] as? URL {
             if self.isVisible {
                 self.navigateTo(url)

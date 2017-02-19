@@ -58,7 +58,7 @@ class TabViewController: UITabBarController {
         
         // Perform the action
         if let actionPerformer = controller as? ActionPerformer {
-            actionPerformer.perform(userInfo)
+            actionPerformer.perform(userInfo: userInfo)
         }
         
         // Finally, select the tab

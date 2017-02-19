@@ -10,8 +10,7 @@ import UIKit
 import XCTest
 
 class ActionFactoryTests: XCTestCase {
-
-    var factory: ActionFactory!
+    fileprivate var factory: ActionFactory!
     
     override func setUp() {
         super.setUp()
@@ -19,7 +18,9 @@ class ActionFactoryTests: XCTestCase {
         let alertFactory = TestAlertFactory()
         self.factory = ActionFactory(alertFactory: alertFactory)
     }
-    
+}
+
+extension ActionFactoryTests {
     func testCreate_InvalidType() {
         let action = self.factory.create(type: "invalid_type")
         
@@ -27,7 +28,7 @@ class ActionFactoryTests: XCTestCase {
     }
     
     func testCreate_InvalidType_UserInfo() {
-        let userInfo = [keyActionType:"invalid_type"]
+        let userInfo = [Constants.Actions.UserInfo.type: "invalid_type"]
         let action = self.factory.create(userInfo: userInfo)
         
         XCTAssertNil(action, "")
@@ -41,15 +42,14 @@ class ActionFactoryTests: XCTestCase {
     }
     
     func testCreate_DulfyAction() {
-        let action = self.factory.create(type: ActionTypeDulfy)
+        let action = self.factory.create(type: Constants.Actions.dulfy)
         
         XCTAssertNotNil(action, "")
         XCTAssertTrue(action is DulfyAction, "")
     }
     
     func testCreate_DulfyAction_UserInfo() {
-        let userInfo = [keyActionType:ActionTypeDulfy]
+        let userInfo = [Constants.Actions.UserInfo.type: Constants.Actions.dulfy]
         _ = self.factory.create(userInfo: userInfo)
     }
-
 }

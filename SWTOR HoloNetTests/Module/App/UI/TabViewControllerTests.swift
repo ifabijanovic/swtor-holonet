@@ -32,7 +32,7 @@ class TabViewControllerTests: XCTestCase {
         
         var didPerform = false
         
-        func perform(_ userInfo: [AnyHashable : Any]) {
+        func perform(userInfo: [AnyHashable : Any]) {
             self.didPerform = true
         }
         

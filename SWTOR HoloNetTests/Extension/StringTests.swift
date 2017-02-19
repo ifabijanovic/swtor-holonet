@@ -1,5 +1,5 @@
 //
-//  StringExTests.swift
+//  StringTests.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 04/11/14.
@@ -9,10 +9,7 @@
 import UIKit
 import XCTest
 
-class StringExTests: XCTestCase {
-
-    // MARK: - stripNewLinesAndTabs()
-    
+class StringTests: XCTestCase {
     func testStripNewLinesAndTabs_Success() {
         let string = "some text\nwith new lines\tand tabs\n\t\n"
         let output = string.stripNewLinesAndTabs()
@@ -33,9 +30,7 @@ class StringExTests: XCTestCase {
         
         XCTAssertEqual(output, string, "")
     }
-    
-    // MARK: - trimSpaces()
-    
+
     func testTrimSpaces_Success() {
         let string = "     some   text with spaces   "
         let output = string.trimSpaces()
@@ -56,9 +51,7 @@ class StringExTests: XCTestCase {
         
         XCTAssertEqual(output, string, "")
     }
-    
-    // MARK: - stripSpaces()
-    
+
     func testStripSpaces_Success() {
         let string = "     some   text with spaces"
         let output = string.stripSpaces()
@@ -79,9 +72,7 @@ class StringExTests: XCTestCase {
         
         XCTAssertEqual(output, string, "")
     }
-    
-    // MARK: - collapseMultipleSpaces()
-    
+
     func testCollapseMultipleSpaces_Success() {
         let string = "     some    text with    a    lot of spaces     "
         let output = string.collapseMultipleSpaces()
@@ -102,9 +93,7 @@ class StringExTests: XCTestCase {
         
         XCTAssertEqual(output, string, "")
     }
-    
-    // MARK: - formatPostDate()
-    
+
     func testFormatPostDate_Success() {
         let string = "10.10.2014 , 10:10 AM | #1"
         let output = string.formatPostDate()
@@ -118,5 +107,4 @@ class StringExTests: XCTestCase {
         
         XCTAssertEqual(output, string, "")
     }
-
 }

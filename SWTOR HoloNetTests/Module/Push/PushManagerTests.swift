@@ -10,71 +10,17 @@ import UIKit
 import XCTest
 
 class PushManagerTests: XCTestCase {
-    
-    class TestAction: Action {
+    override func setUp() {
+        super.setUp()
         
-        var type: String { get { return "test" } }
-        
-        var didPerform = false
-        var userInfo: [AnyHashable : Any]?
-        var isForeground = false
-        var returnValue = true
-        
-        func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
-            self.didPerform = true
-            self.userInfo = userInfo
-            self.isForeground = isForeground
-            return self.returnValue
-        }
-        
+        self.set(didCancel: nil)
+        self.set(didApprove: nil)
+        self.set(timestamp: nil)
     }
-    
-    class TestActionFactory: ActionFactory {
-        
-        var action: TestAction? = TestAction()
-        
-        override func create(userInfo: [AnyHashable : Any]) -> Action? {
-            return self.action
-        }
-        
-    }
-    
-    class PushManagerMock: PushManager {
-        
-        var didRegisterForPush = false
-        var didResetBadge = false
-        
-        var isPushEnabledValue = false
-        override var isPushEnabled: Bool {
-            get {
-                return self.isPushEnabledValue
-            }
-        }
-        
-        init() {
-            let alertFactory = TestAlertFactory()
-            super.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
-        }
-        
-        convenience init(alertFactory: UIAlertFactory) {
-            self.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
-        }
-        
-        override init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
-            super.init(alertFactory: alertFactory, actionFactory: actionFactory)
-        }
-        
-        override func registerForPush() {
-            self.didRegisterForPush = true
-        }
-        
-        override func resetBadge() {
-            self.didResetBadge = true
-        }
-        
-    }
-    
-    func setDidCancel(_ value: Bool?) {
+}
+
+extension PushManagerTests {
+    fileprivate func set(didCancel value: Bool?) {
         if let value = value {
             UserDefaults.standard.set(value, forKey: keyDidCancelPushAccess)
         } else {
@@ -82,7 +28,7 @@ class PushManagerTests: XCTestCase {
         }
     }
     
-    func setDidApprove(_ value: Bool?) {
+    fileprivate func set(didApprove value: Bool?) {
         if let value = value {
             UserDefaults.standard.set(value, forKey: keyDidApprovePushAccess)
         } else {
@@ -90,24 +36,16 @@ class PushManagerTests: XCTestCase {
         }
     }
     
-    func setTimestamp(_ date: NSDate?) {
+    fileprivate func set(timestamp date: Date?) {
         if let date = date {
             UserDefaults.standard.set(date, forKey: keyLastPushAccessRequestTimestamp)
         } else {
             UserDefaults.standard.removeObject(forKey: keyLastPushAccessRequestTimestamp)
         }
     }
-    
-    override func setUp() {
-        super.setUp()
-        
-        self.setDidCancel(nil)
-        self.setDidApprove(nil)
-        self.setTimestamp(nil)
-    }
-    
-    // MARK: - shouldRequestPushAccess
-    
+}
+
+extension PushManagerTests {
     func testShouldRequestPushAccess_FirstStart() {
         let manager = PushManagerMock()
         
@@ -122,23 +60,23 @@ class PushManagerTests: XCTestCase {
     }
     
     func testShouldRequestPushAccess_ApprovedButPushDisabled() {
-        self.setDidApprove(true)
+        self.set(didApprove: true)
         let manager = PushManagerMock()
         
         XCTAssertFalse(manager.shouldRequestPushAccess(), "")
     }
     
     func testShouldRequestPushAccess_CanceledRecently() {
-        self.setDidCancel(true)
-        self.setTimestamp(NSDate())
+        self.set(didCancel: true)
+        self.set(timestamp: Date())
         let manager = PushManagerMock()
         
         XCTAssertFalse(manager.shouldRequestPushAccess(), "")
     }
     
     func testShouldRequestPushAccess_CanceledSomeTimeAgo() {
-        self.setDidCancel(true)
-        self.setTimestamp(NSDate(timeIntervalSinceNow: -pushAccessRequestRetryInterval as TimeInterval))
+        self.set(didCancel: true)
+        self.set(timestamp: Date(timeIntervalSinceNow: -pushAccessRequestRetryInterval))
         let manager = PushManagerMock()
         
         XCTAssertTrue(manager.shouldRequestPushAccess(), "")
@@ -240,4 +178,61 @@ class PushManagerTests: XCTestCase {
         XCTAssertTrue(manager.didResetBadge, "")
     }
 
+}
+
+fileprivate class TestAction: Action {
+    var type: String { get { return "test" } }
+    
+    var didPerform = false
+    var userInfo: [AnyHashable : Any]?
+    var isForeground = false
+    var returnValue = true
+    
+    func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
+        self.didPerform = true
+        self.userInfo = userInfo
+        self.isForeground = isForeground
+        return self.returnValue
+    }
+}
+
+fileprivate class TestActionFactory: ActionFactory {
+    var action: TestAction? = TestAction()
+    
+    override func create(userInfo: [AnyHashable : Any]) -> Action? {
+        return self.action
+    }
+}
+
+fileprivate class PushManagerMock: PushManager {
+    var didRegisterForPush = false
+    var didResetBadge = false
+    
+    var isPushEnabledValue = false
+    override var isPushEnabled: Bool {
+        get {
+            return self.isPushEnabledValue
+        }
+    }
+    
+    init() {
+        let alertFactory = TestAlertFactory()
+        super.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
+    }
+    
+    convenience init(alertFactory: UIAlertFactory) {
+        self.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
+    }
+    
+    override init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
+        super.init(alertFactory: alertFactory, actionFactory: actionFactory)
+    }
+    
+    override func registerForPush() {
+        self.didRegisterForPush = true
+    }
+    
+    override func resetBadge() {
+        self.didResetBadge = true
+    }
 }

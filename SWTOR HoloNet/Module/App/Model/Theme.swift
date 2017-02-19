@@ -186,7 +186,13 @@ class Theme: NSObject {
     // MARK: - Private methods
     
     private func colorForKey(_ key: String, data: NSDictionary) -> UIColor {
-        return UIColor.fromString(data.value(forKey: key) as! String)!
+        guard let string = data.object(forKey: key) as? String,
+            let color = UIColor(string: string)
+        else {
+            assert(false, "colorForKey(_:data:) failed")
+            return .white
+        }
+        return color
     }
     
     private func numberForKey(_ key: String, data: NSDictionary) -> NSNumber {

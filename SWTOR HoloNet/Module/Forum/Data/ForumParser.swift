@@ -25,7 +25,7 @@ class ForumParser {
     
     init() {
         self.numberFormatter = NumberFormatter()
-        self.numberFormatter.formatterBehavior = NumberFormatter.Behavior.behavior10_4
+        self.numberFormatter.formatterBehavior = .behavior10_4
         self.numberFormatter.numberStyle = .decimal
     }
     
@@ -33,7 +33,7 @@ class ForumParser {
     
     func linkParameter(linkElement: HTMLElement?, name: String) -> String? {
         guard let href = linkElement?["href"],
-            let value = URLComponents(string: href)?.queryValueForName(name)
+            let value = URLComponents(string: href)?.queryValue(name: name)
             else { return nil }
         
         return value
@@ -61,15 +61,15 @@ class ForumParser {
     }
     
     func formatPostBlock(header: String?, body: String?) -> String {
-        if body == nil { return "" }
+        guard let body = body else { return "" }
         return header != nil
-            ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body!.trimSpaces())
-            : String(format: self.postBlockNoHeaderFormat, body!.trimSpaces())
+            ? String(format: self.postBlockFormat, header!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(), body.trimSpaces())
+            : String(format: self.postBlockNoHeaderFormat, body.trimSpaces())
     }
     
     func postText(node: HTMLNode?) -> String? {
-        if node != nil {
-            return self.getPostText(node!)
+        if let node = node {
+            return self.getPostText(node)
         }
         return nil
     }

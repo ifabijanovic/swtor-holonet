@@ -9,6 +9,17 @@
 import Foundation
 
 struct Constants {
+    struct Actions {
+        static let dulfy = "dulfy"
+        
+        struct UserInfo {
+            static let aps = "aps"
+            static let alert = "alert"
+            static let type = "type"
+            static let url = "url"
+        }
+    }
+    
     struct Analytics {
         struct Event {
             static let dulfy = "dulfy"

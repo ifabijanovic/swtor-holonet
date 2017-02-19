@@ -14,7 +14,7 @@ let keyDulfyUrl = "url"
 class DulfyAction: Action {
     fileprivate let alertFactory: UIAlertFactory
     
-    var type: String { return ActionTypeDulfy }
+    var type: String { return Constants.Actions.dulfy }
     
     init(alertFactory: UIAlertFactory) {
         self.alertFactory = alertFactory
@@ -23,22 +23,19 @@ class DulfyAction: Action {
 
 extension DulfyAction {
     func perform(userInfo: [AnyHashable : Any]?, isForeground: Bool) -> Bool {
-        if let userInfo = userInfo {
-            let parser = ActionParser(userInfo: userInfo)
-            if let message = parser.getAlert() {
-                if let urlString = parser.getString(key: keyDulfyUrl) {
-                    if let url = NSURL(string: urlString) {
-                        self.perform(message: message, url: url, isForeground: isForeground)
-                        return true
-                    }
-                }
-            }
-        }
+        guard let userInfo = userInfo else { return false }
         
-        return false
+        let parser = ActionParser(userInfo: userInfo)
+        guard let message = parser.alert,
+            let urlString = parser.string(key: Constants.Actions.UserInfo.url),
+            let url = URL(string: urlString)
+            else { return false }
+        
+        self.perform(message: message, url: url, isForeground: isForeground)
+        return true
     }
     
-    private func perform(message: String, url: NSURL, isForeground: Bool) {
+    private func perform(message: String, url: URL, isForeground: Bool) {
         let payload: [AnyHashable: Any] = [
             Constants.Notifications.UserInfo.index: 1,
             Constants.Notifications.UserInfo.url: url

@@ -10,11 +10,10 @@ import UIKit
 import XCTest
 
 class ActionParserTests: XCTestCase {
-
     func testGetAlert_Works() {
         let userInfo = ["aps":["alert":"test"]]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getAlert()
+        let result = parser.alert
         
         XCTAssertNotNil(result, "")
         XCTAssertEqual(result!, "test", "")
@@ -23,7 +22,7 @@ class ActionParserTests: XCTestCase {
     func testGetAlert_MisingAlert() {
         let userInfo = ["aps":["sound":"default"]]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getAlert()
+        let result = parser.alert
         
         XCTAssertNil(result, "")
     }
@@ -31,7 +30,7 @@ class ActionParserTests: XCTestCase {
     func testGetAlert_MisingAps() {
         let userInfo = ["alert":"test"]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getAlert()
+        let result = parser.alert
         
         XCTAssertNil(result, "")
     }
@@ -39,7 +38,7 @@ class ActionParserTests: XCTestCase {
     func testGetString_Works() {
         let userInfo = ["key":"value"]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString(key: "key")
+        let result = parser.string(key: "key")
         
         XCTAssertNotNil(result, "")
         XCTAssertEqual(result!, "value", "")
@@ -48,7 +47,7 @@ class ActionParserTests: XCTestCase {
     func testGetString_MissingKey() {
         let userInfo = ["key":"value"]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString(key: "other_key")
+        let result = parser.string(key: "other_key")
         
         XCTAssertNil(result, "")
     }
@@ -56,9 +55,8 @@ class ActionParserTests: XCTestCase {
     func testGetString_WrongType() {
         let userInfo = ["key":NSDate()]
         let parser = ActionParser(userInfo: userInfo)
-        let result = parser.getString(key: "key")
+        let result = parser.string(key: "key")
         
         XCTAssertNil(result, "")
     }
-
 }

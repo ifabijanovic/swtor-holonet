@@ -8,8 +8,6 @@
 
 import Foundation
 
-@objc protocol ActionPerformer {
-    
-    func perform(_ userInfo: [AnyHashable: Any])
-    
+protocol ActionPerformer {
+    func perform(userInfo: [AnyHashable: Any])
 }

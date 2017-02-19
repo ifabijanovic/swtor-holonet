@@ -8,9 +8,6 @@
 
 import Foundation
 
-let keyActionType = "action"
-let ActionTypeDulfy = "dulfy"
-
 class ActionFactory {
     fileprivate let alertFactory: UIAlertFactory
     
@@ -20,13 +17,13 @@ class ActionFactory {
 
     func create(type: String) -> Action? {
         switch type {
-        case ActionTypeDulfy: return DulfyAction(alertFactory: self.alertFactory)
+        case Constants.Actions.dulfy: return DulfyAction(alertFactory: self.alertFactory)
         default: return nil
         }
     }
     
     func create(userInfo: [AnyHashable : Any]) -> Action? {
-        if let actionType = userInfo[keyActionType] as? String {
+        if let actionType = userInfo[Constants.Actions.UserInfo.type] as? String {
             return self.create(type: actionType)
         }
         return nil

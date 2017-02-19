@@ -11,7 +11,6 @@ import Alamofire
 import HTMLReader
 
 enum ForumError: Error {
-    case noResponse
     case maintenance
 }
 

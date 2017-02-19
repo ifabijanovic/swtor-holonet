@@ -255,7 +255,7 @@ extension ForumListCollectionViewController {
                     self.refreshControl?.endRefreshing()
                     
                     let alertController: UIAlertController
-                    if (error.isMaintenanceError()) {
+                    if error.isMaintenance {
                         alertController = self.alertFactory.infoMaintenance { [weak self] _ in
                             self?.hideLoader()
                         }
