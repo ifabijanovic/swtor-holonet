@@ -132,6 +132,8 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.view.backgroundColor = theme.contentBackground
         
         for section in 0..<self.tableView.numberOfSections {

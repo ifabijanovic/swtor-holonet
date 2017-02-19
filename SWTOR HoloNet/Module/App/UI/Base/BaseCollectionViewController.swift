@@ -9,15 +9,10 @@
 import UIKit
 
 class BaseCollectionViewController: UICollectionViewController, Themeable {
-
-    // MARK: - Properties
-    
     var settings: Settings!
     var theme: Theme!
     var alertFactory: UIAlertFactory!
     var analytics: Analytics!
-    
-    // MARK: - Init
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +46,10 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.theme.statusBarStyle
+    }
+    
     private func inject() {
         // Poor man's dependency injection, remove ASAP
         InstanceHolder.sharedInstance.inject { settings, theme, alertFactory, analytics in
@@ -61,9 +60,9 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
         }
     }
     
-    // MARK: - Themeable
-    
-    func applyTheme(_ theme: Theme) {}
+    func applyTheme(_ theme: Theme) {
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
     
     func themeChanged(_ theme: Theme) {
         self.applyTheme(theme)
@@ -77,5 +76,4 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
     private func registerThemeChangedCallback() {
         NotificationCenter.default.addObserver(self, selector: #selector(BaseCollectionViewController.themeChanged(notification:)), name: Notification.Name(Constants.Notifications.themeChanged), object: nil)
     }
-
 }

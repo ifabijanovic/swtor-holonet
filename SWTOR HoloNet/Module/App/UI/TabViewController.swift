@@ -66,7 +66,7 @@ class TabViewController: UITabBarController {
     }
     
     func themeChanged(notification: NSNotification) {
-        if let theme = notification.userInfo?["theme"] as? Theme {
+        if let theme = notification.userInfo?[Constants.Notifications.UserInfo.theme] as? Theme {
             theme.apply(tabBar: self.tabBar, animate: true)
         }
     }

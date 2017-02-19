@@ -31,6 +31,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     fileprivate var disposeBag = DisposeBag()
     
+    // MARK: - Overrides
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -40,9 +42,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.threads = nil
         self.collectionView?.reloadData()
     }
-}
 
-extension ForumListCollectionViewController {
     override func viewDidLoad() {        
         super.viewDidLoad()
 
@@ -67,9 +67,7 @@ extension ForumListCollectionViewController {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
-}
 
-extension ForumListCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if self.threadRepo != nil {
             return 2
@@ -89,7 +87,7 @@ extension ForumListCollectionViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // This value represents the difference from currently selected text size and
         // the smallest (default) value. It is added to the cell height for each label
-        let textSizeDiff = self.theme.textSize.rawValue - TextSize.Small.rawValue
+        let textSizeDiff = self.theme.textSize.rawValue - TextSize.small.rawValue
         let width: CGFloat
         let height: CGFloat
             
@@ -187,22 +185,6 @@ extension ForumListCollectionViewController {
         
         self.view.backgroundColor = theme.contentBackground
         self.collectionView!.backgroundColor = theme.contentBackground
-    }
-}
-
-extension ForumListCollectionViewController {
-    fileprivate func hasCategories() -> Bool {
-        if let categories = self.categories {
-            return categories.count > 0
-        }
-        return false
-    }
-    
-    fileprivate func hasThreads() -> Bool {
-        if let threads = self.threads {
-            return threads.count > 0
-        }
-        return false
     }
     
     override func onRefresh() {
@@ -325,6 +307,22 @@ extension ForumListCollectionViewController {
                 }
             )
             .addDisposableTo(self.disposeBag)
+    }
+}
+
+extension ForumListCollectionViewController {
+    fileprivate func hasCategories() -> Bool {
+        if let categories = self.categories {
+            return categories.count > 0
+        }
+        return false
+    }
+    
+    fileprivate func hasThreads() -> Bool {
+        if let threads = self.threads {
+            return threads.count > 0
+        }
+        return false
     }
     
     fileprivate func setup(cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {

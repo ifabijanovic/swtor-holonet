@@ -20,8 +20,8 @@ class ThemeSettingsTableViewController: BaseTableViewController {
         super.viewDidLoad()
         
         self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, tableView: self.tableView, map: [
-            (index: 0, value: .Dark),
-            (index: 1, value: .Light)
+            (index: 0, value: ThemeType.dark),
+            (index: 1, value: ThemeType.light)
         ])
         
         self.applyTheme(self.theme)
@@ -56,6 +56,8 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.pickerDelegate.applyTheme(theme)
     }
 

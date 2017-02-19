@@ -20,9 +20,9 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         super.viewDidLoad()
         
         self.pickerDelegate = SettingPickerDelegate<TextSize>(initialValue: self.theme.textSize, tableView: self.tableView, map: [
-            (index: 0, value: .Small),
-            (index: 1, value: .Medium),
-            (index: 2, value: .Large)
+            (index: 0, value: TextSize.small),
+            (index: 1, value: TextSize.medium),
+            (index: 2, value: TextSize.large)
         ])
         
         self.applyTheme(self.theme)
@@ -57,6 +57,8 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.pickerDelegate.applyTheme(theme)
     }
 

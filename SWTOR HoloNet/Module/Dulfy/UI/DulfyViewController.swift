@@ -181,6 +181,8 @@ class DulfyViewController: BaseViewController, ActionPerformer, UIWebViewDelegat
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.view.backgroundColor = theme.contentBackground
     }
     

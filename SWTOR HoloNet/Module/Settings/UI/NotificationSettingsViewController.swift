@@ -78,6 +78,8 @@ class NotificationSettingsViewController: BaseViewController {
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.view.backgroundColor = theme.contentBackground
         
         self.settingsImageView.tintColor = theme.instructionsIcon

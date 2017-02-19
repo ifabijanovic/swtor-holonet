@@ -17,9 +17,7 @@ class ForumPostViewController: BaseViewController {
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var devImageView: UIImageView!
     @IBOutlet var textTextView: UITextView!
-}
 
-extension ForumPostViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,10 +54,10 @@ extension ForumPostViewController {
         self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
         self.textTextView.setContentOffset(CGPoint.zero, animated: false)
     }
-}
-
-extension ForumPostViewController {
+    
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText

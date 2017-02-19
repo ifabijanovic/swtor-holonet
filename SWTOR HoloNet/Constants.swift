@@ -56,6 +56,7 @@ struct Constants {
             static let alert = "alert"
             static let index = "index"
             static let url = "url"
+            static let theme = "theme"
         }
     }
 }

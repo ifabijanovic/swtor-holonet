@@ -31,6 +31,14 @@ class NavigationViewController: UINavigationController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override var childViewControllerForStatusBarHidden: UIViewController? {
+        return self.topViewController
+    }
+    
+    override var childViewControllerForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+    
     // MARK: - Action dispatching
     
     func registerForNotifications() {
@@ -38,7 +46,7 @@ class NavigationViewController: UINavigationController {
     }
     
     func themeChanged(notification: NSNotification) {
-        if let theme = notification.userInfo?["theme"] as? Theme {
+        if let theme = notification.userInfo?[Constants.Notifications.UserInfo.theme] as? Theme {
             // Only animate the transition if current view is visible
             let animate = self.isViewLoaded && self.view.window != nil
             theme.apply(navigationBar: self.navigationBar, animate: animate)

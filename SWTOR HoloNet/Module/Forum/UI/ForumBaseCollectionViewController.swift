@@ -26,13 +26,13 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: - Overrides
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         self.needsContentLoad = true
     }
-}
 
-extension ForumBaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,9 +64,7 @@ extension ForumBaseCollectionViewController {
     func willEnterForeground(notification: NSNotification) {
         self.loadContent()
     }
-}
 
-extension ForumBaseCollectionViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return self.showLoadMore ? CGSize(width: 0, height: 64.0) : CGSize.zero
     }
@@ -92,6 +90,8 @@ extension ForumBaseCollectionViewController {
     }
     
     override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle
         

@@ -29,6 +29,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         UIApplication.shared.openURL(url)
     }
     
+    // MARK: - Overrides
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -36,9 +38,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.posts = nil
         self.collectionView?.reloadData()
     }
-}
-    
-extension ForumThreadCollectionViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,9 +65,7 @@ extension ForumThreadCollectionViewController {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
-}
 
-extension ForumThreadCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -132,9 +130,7 @@ extension ForumThreadCollectionViewController {
         self.view.backgroundColor = theme.contentBackground
         self.collectionView!.backgroundColor = theme.contentBackground
     }
-}
 
-extension ForumThreadCollectionViewController {
     override func onRefresh() {
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
@@ -233,7 +229,9 @@ extension ForumThreadCollectionViewController {
             )
             .addDisposableTo(self.disposeBag)
     }
-    
+}
+
+extension ForumThreadCollectionViewController {
     fileprivate func fill(cell: ForumPostCollectionViewCell, at indexPath: IndexPath) {
         let post = self.posts![indexPath.row]
         
