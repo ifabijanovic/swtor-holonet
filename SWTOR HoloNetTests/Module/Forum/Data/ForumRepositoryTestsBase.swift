@@ -47,4 +47,35 @@ class ForumRepositoryTestsBase: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Helper methods
+    
+    func stubUrlTest(expectedUrl: String) {
+        let ex = expectation(description: "urlTest")
+        let testBlock: OHHTTPStubsTestBlock = { (request) in
+            return request.url!.absoluteString == expectedUrl
+        }
+        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
+            ex.fulfill()
+            let response = OHHTTPStubsResponse()
+            response.statusCode = 200
+            return response
+        }
+        
+        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
+    }
+    
+    func stubHtmlResource(name: String) {
+        OHHTTPStubs.stubRequests(
+            passingTest: { _ in true },
+            withStubResponse: { request in
+                guard let path = self.bundle?.path(forResource: name, ofType: "html") else {
+                    XCTFail("Failed to load resource '\(name)'")
+                    let response = OHHTTPStubsResponse()
+                    response.statusCode = 500
+                    return response
+                }
+                return OHHTTPStubsResponse(fileAtPath: path, statusCode: 200, headers: ["Content-Type": "text/html"])
+            }
+        )
+    }
 }

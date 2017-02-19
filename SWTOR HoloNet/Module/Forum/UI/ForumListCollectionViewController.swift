@@ -12,18 +12,15 @@ import RxSwift
 
 private let CategorySection = 0
 private let ThreadSection = 1
+private let CategoriesSectionTitle = "Categories"
+private let ThreadsSectionTitle = "Threads"
+private let CategoryCellIdentifier = "categoryCell"
+private let ThreadCellIdentifier = "threadCell"
+private let HeaderIdentifier = "header"
+private let SubCategorySegue = "categorySegue"
+private let ThreadSegue = "threadSegue"
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
-
-    // MARK: - Constants
-    
-    private let CategoriesSectionTitle = "Categories"
-    private let ThreadsSectionTitle = "Threads"
-    private let CategoryCellIdentifier = "categoryCell"
-    private let ThreadCellIdentifier = "threadCell"
-    private let HeaderIdentifier = "header"
-    private let SubCategorySegue = "categorySegue"
-    private let ThreadSegue = "threadSegue"
     
     // MARK: - Properties
     
@@ -35,7 +32,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     private var categories: [ForumCategory]?
     private var threads: [ForumThread]?
     
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
     
@@ -301,7 +298,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                     
                     // Append the new threads and prepare indexes for table update
                     var indexes = [IndexPath]()
-                    for thread in newThreads {
+                    for thread in newThreads.sorted(by: { $0.loadIndex < $1.loadIndex }) {
                         indexes.append(IndexPath(row: self.threads!.count, section: ThreadSection))
                         self.threads!.append(thread)
                     }

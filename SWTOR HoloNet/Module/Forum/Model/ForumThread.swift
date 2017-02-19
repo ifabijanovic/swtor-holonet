@@ -19,6 +19,7 @@ struct ForumThread: Entity {
     var isSticky: Bool
     
     var isDevTracker: Bool
+    var loadIndex: Int
     
     var hashValue: Int { return self.id.hashValue }
     
@@ -32,6 +33,7 @@ struct ForumThread: Entity {
         self.hasBiowareReply = hasBiowareReply
         self.isSticky = isSticky
         self.isDevTracker = false
+        self.loadIndex = 0
     }
     
     init(id: Int, title: String, lastPostDate: String, author: String, replies: Int, views: Int) {

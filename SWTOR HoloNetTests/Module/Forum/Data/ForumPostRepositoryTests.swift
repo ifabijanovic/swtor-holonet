@@ -9,24 +9,45 @@
 import UIKit
 import XCTest
 import OHHTTPStubs
+import RxSwift
 
 class ForumPostRepositoryTests: ForumRepositoryTestsBase {
-
-    // MARK: - Properties
-    
     let testThread = ForumThread(id: 5, title: "Test", lastPostDate: "Today", author: "Test user", replies: 5, views: 7)
     var repo: ForumPostRepository?
-    
-    // MARK: - Setup
+    var disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         self.repo = DefaultForumPostRepository(settings: self.settings!)
+        self.disposeBag = DisposeBag()
     }
     
     override func tearDown() {
         self.repo = nil
         super.tearDown()
+    }
+    
+    // MARK: - Helper methods
+    
+    private func posts(assert: @escaping (([ForumPost]) -> Void)) {
+        self.posts(thread: self.testThread, page: 1, assert: assert)
+    }
+    
+    private func posts(thread: ForumThread, page: Int, assert: @escaping (([ForumPost]) -> Void)) {
+        let ex = self.expectation(description: "posts(thread:page:assert:)")
+        self.repo!
+            .posts(thread: thread, page: page)
+            .subscribe(
+                onNext: { posts in
+                    ex.fulfill()
+                    assert(posts)
+                },
+                onError: { error in
+                    ex.fulfill()
+                    XCTFail(error.localizedDescription)
+                }
+            )
+            .addDisposableTo(self.disposeBag)
     }
     
     // MARK: - Tests
@@ -51,18 +72,8 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     func testGet_RequestsCorrectUrl() {
         let page = 7
         let expectedUrl = "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)"
-        let expectation = self.expectation(description: "")
-        
-        let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.url!.absoluteString == expectedUrl
-        }
-        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
-            expectation.fulfill()
-            return OHHTTPStubsResponse()
-        }
-        
-        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!.get(thread: self.testThread, page: page, success: { (items) in }, failure: {(error) in })
+        self.stubUrlTest(expectedUrl: expectedUrl)
+        self.posts(thread: self.testThread, page: page, assert: { _ in })
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -70,56 +81,29 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     func testGet_DevTrackerRequestsCorrectUrl() {
         let page = 7
         let expectedUrl = "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)"
-        let expectation = self.expectation(description: "")
-        
-        let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.url!.absoluteString == expectedUrl
-        }
-        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
-            expectation.fulfill()
-            return OHHTTPStubsResponse()
-        }
+        self.stubUrlTest(expectedUrl: expectedUrl)
         
         let thread = ForumThread.devTracker()
-        
-        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!.get(thread: thread, page: page, success: { (items) in }, failure: {(error) in })
+        self.posts(thread: thread, page: page, assert: { _ in })
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_EmptyHtml() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-empty")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-empty", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Valid() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-valid")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-valid", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 1, "")
             
@@ -134,24 +118,15 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertTrue(items[0].isBiowarePost, "")
             XCTAssertGreaterThan(items[0].text.characters.count, 0, "")
             XCTAssertGreaterThan(items[0].signature!.characters.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Valid_NotDev() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-valid-not-dev")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-valid-not-dev", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 1, "")
             
@@ -160,84 +135,48 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             
             XCTAssertEqual(items[0].id, 5, "")
             XCTAssertFalse(items[0].isBiowarePost, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Invalid_Id() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-invalid-id")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-invalid-id", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Invalid_Username() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-invalid-username")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-invalid-username", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Invalid_Date() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-invalid-date")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-invalid-date", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_MissingOptionals() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-single-missing-optionals")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-single-missing-optionals", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 1, "")
             
@@ -248,24 +187,15 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertNil(items[0].avatarUrl, "")
             XCTAssertNil(items[0].postNumber, "")
             XCTAssertNil(items[0].signature, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Valid() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-multiple-valid")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-multiple-valid", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 3, "")
             
@@ -298,24 +228,15 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             XCTAssertTrue(items[2].isBiowarePost, "")
             XCTAssertGreaterThan(items[2].text.characters.count, 0, "")
             XCTAssertGreaterThan(items[2].signature!.characters.count, 0, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Invalid_Id() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-post-multiple-invalid-id")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-post-multiple-invalid-id", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
-        }
-        
-        self.repo!.get(thread: self.testThread, page: 1, success: { (items) in
-            expectation.fulfill()
-            
+        self.posts() { items in
             XCTAssertNotNil(items, "")
             XCTAssertEqual(items.count, 2, "")
             
@@ -324,10 +245,8 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             
             XCTAssertEqual(items[0].id, 5, "")
             XCTAssertEqual(items[1].id, 7, "")
-            
-        }, failure: self.defaultFailure)
+        }
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
-
 }

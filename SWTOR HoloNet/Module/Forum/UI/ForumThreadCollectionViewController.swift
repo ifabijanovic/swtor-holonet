@@ -8,23 +8,23 @@
 
 import UIKit
 import AlamofireImage
+import RxSwift
+
+private let PostCellIdentifier = "postCell"
+private let PostSegue = "postSegue"
+private let HeaderIdentifier = "header"
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
-
-    // MARK: - Constants
-    
-    private let PostCellIdentifier = "postCell"
-    private let PostSegue = "postSegue"
-    private let HeaderIdentifier = "header"
-    private var PostsPerPage = 10
     
     // MARK: - Properties
     
     var thread: ForumThread!
+    private var postsPerPage = 10
     
     private var postRepo: ForumPostRepository!
-    private var posts: Array<ForumPost>?
+    private var posts: [ForumPost]?
     
+    private var disposeBag = DisposeBag()
     private var sizingCell: ForumPostCollectionViewCell!
     
     // MARK: - Outlets
@@ -49,7 +49,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView!.register(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
         if thread.isDevTracker {
-            self.PostsPerPage = 20
+            self.postsPerPage = 20
         }
         
 #if !DEBUG && !TEST
@@ -60,6 +60,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,87 +143,95 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         // Show loading indicator
         self.showLoader()
         
-        func success(posts: Array<ForumPost>) {
-            // Set retrieved posts and reload table
-            self.posts = posts
-            self.collectionView!.reloadData()
-            self.refreshControl?.endRefreshing()
-            // Enable infinite scroll if initial page is full
-            if posts.count == PostsPerPage {
-                self.canLoadMore = true
-            } else {
-                self.canLoadMore = false
-                self.hideLoader()
-            }
-        }
-        func failure(error: Error) {
-            self.refreshControl?.endRefreshing()
-            
-            let alertController: UIAlertController
-            if (error.isMaintenanceError()) {
-                alertController = self.alertFactory.infoMaintenance { [weak self] _ in
-                    self?.hideLoader()
-                }
-            } else {
-                alertController = self.alertFactory.errorNetwork(
-                    cancelHandler: { [weak self] _ in
-                        self?.hideLoader()
-                    },
-                    retryHandler: { [weak self] _ in
-                        self?.onRefresh()
+        self.postRepo
+            .posts(thread: self.thread, page: 1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { posts in
+                    // Set retrieved posts and reload table
+                    self.posts = posts
+                    self.collectionView!.reloadData()
+                    self.refreshControl?.endRefreshing()
+                    // Enable infinite scroll if initial page is full
+                    if posts.count == self.postsPerPage {
+                        self.canLoadMore = true
+                    } else {
+                        self.canLoadMore = false
+                        self.hideLoader()
                     }
-                )
-            }
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        self.postRepo.get(thread: self.thread, page: 1, success: success, failure: failure)
+                },
+                onError: { error in
+                    self.refreshControl?.endRefreshing()
+                    
+                    let alertController: UIAlertController
+                    if (error.isMaintenanceError()) {
+                        alertController = self.alertFactory.infoMaintenance { [weak self] _ in
+                            self?.hideLoader()
+                        }
+                    } else {
+                        alertController = self.alertFactory.errorNetwork(
+                            cancelHandler: { [weak self] _ in
+                                self?.hideLoader()
+                            },
+                            retryHandler: { [weak self] _ in
+                                self?.onRefresh()
+                            }
+                        )
+                    }
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            )
+            .addDisposableTo(self.disposeBag)
     }
     
     override func onLoadMore() {
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
-        func success(posts: Array<ForumPost>) {
-            // Get a difference of freshly loaded posts with the ones already loaded before
-            let postsSet = Set(posts)
-            let cachedPostsSet = Set(self.posts!)
-            let newPosts = postsSet.subtracting(cachedPostsSet)
-            
-            if newPosts.isEmpty {
-                // No new posts, disable infinite scrolling
-                self.canLoadMore = false
-                self.hideLoader()
-                return
-            }
-            
-            // Append the new posts and prepare indexes for table update
-            var indexes = Array<IndexPath>()
-            for post in newPosts {
-                indexes.append(IndexPath(row: self.posts!.count, section: 0))
-                self.posts!.append(post)
-            }
-            
-            // Smoothly update the table by just inserting the new indexes
-            self.collectionView!.insertItems(at: indexes)
-            
-            // Mark this page as loaded and enable infinite scroll again
-            self.loadedPage += 1
-            self.canLoadMore = true
-        }
-        func failure(error: Error) {
-            let alertController = self.alertFactory.errorNetwork(
-                cancelHandler: { [weak self] _ in
-                    self?.hideLoader()
+        self.postRepo
+            .posts(thread: self.thread, page: self.loadedPage + 1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { posts in
+                    // Get a difference of freshly loaded posts with the ones already loaded before
+                    let postsSet = Set(posts)
+                    let loadedPosts = Set(self.posts!)
+                    let newPosts = postsSet.subtracting(loadedPosts)
+                    
+                    if newPosts.isEmpty {
+                        // No new posts, disable infinite scrolling
+                        self.canLoadMore = false
+                        self.hideLoader()
+                        return
+                    }
+                    
+                    // Append the new posts and prepare indexes for table update
+                    var indexes = [IndexPath]()
+                    for post in newPosts.sorted(by: { $0.id < $1.id }) {
+                        indexes.append(IndexPath(row: self.posts!.count, section: 0))
+                        self.posts!.append(post)
+                    }
+                    
+                    // Smoothly update the table by just inserting the new indexes
+                    self.collectionView!.insertItems(at: indexes)
+                    
+                    // Mark this page as loaded and enable infinite scroll again
+                    self.loadedPage += 1
+                    self.canLoadMore = true
                 },
-                retryHandler: { [weak self] _ in
-                    self?.onRefresh()
+                onError: { error in
+                    let alertController = self.alertFactory.errorNetwork(
+                        cancelHandler: { [weak self] _ in
+                            self?.hideLoader()
+                        },
+                        retryHandler: { [weak self] _ in
+                            self?.onRefresh()
+                        }
+                    )
+                    self.present(alertController, animated: true, completion: nil)
                 }
             )
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        self.postRepo.get(thread: self.thread, page: self.loadedPage + 1, success: success, failure: failure)
+            .addDisposableTo(self.disposeBag)
     }
     
     func fillCell(_ cell: ForumPostCollectionViewCell, atIndexPath indexPath: IndexPath) {

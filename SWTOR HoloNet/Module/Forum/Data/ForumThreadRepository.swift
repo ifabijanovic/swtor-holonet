@@ -48,8 +48,8 @@ extension DefaultForumThreadRepository {
         let document = HTMLDocument(string: html)
         let threadNodes = document.nodes(matchingSelector: "table#threadslist tr")
         
-        for node in threadNodes {
-            if let thread = self.parseThread(element: node) {
+        for (index, node) in threadNodes.enumerated() {
+            if let thread = self.parseThread(element: node, index: index) {
                 items.append(thread)
             }
         }
@@ -57,7 +57,7 @@ extension DefaultForumThreadRepository {
         return items
     }
     
-    private func parseThread(element: HTMLElement) -> ForumThread? {
+    private func parseThread(element: HTMLElement, index: Int) -> ForumThread? {
         // Id & Title
         let titleElement = element.firstNode(matchingSelector: ".threadTitle")
         let idString = self.parser.linkParameter(linkElement: titleElement, name: self.settings.threadQueryParam)
@@ -104,7 +104,8 @@ extension DefaultForumThreadRepository {
         let finalLastPostDate = lastPostDate!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         let finalAuthor = author!.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces()
         
-        let thread = ForumThread(id: id!, title: finalTitle, lastPostDate: finalLastPostDate, author: finalAuthor, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
+        var thread = ForumThread(id: id!, title: finalTitle, lastPostDate: finalLastPostDate, author: finalAuthor, replies: replies!, views: views!, hasBiowareReply: hasBiowareReply, isSticky: isSticky)
+        thread.loadIndex = index
         
         return thread
     }

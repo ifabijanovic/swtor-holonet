@@ -8,11 +8,13 @@
 
 import UIKit
 import Alamofire
+import RxSwift
+import RxAlamofire
 import HTMLReader
 
 protocol ForumPostRepository {
     func url(thread: ForumThread, page: Int) -> URL
-    func get(thread: ForumThread, page: Int, success: @escaping (([ForumPost]) -> Void), failure: @escaping ((Error) -> Void))
+    func posts(thread: ForumThread, page: Int) -> Observable<[ForumPost]>
 }
 
 class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
@@ -25,26 +27,15 @@ class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
         return url!
     }
     
-    func get(thread: ForumThread, page: Int, success: @escaping (([ForumPost]) -> Void), failure: @escaping ((Error) -> Void)) {
-        let url = self.url(thread: thread, page: page)
-        
-        self.manager
-            .request(url)
-            .responseString { response in
-                if let error = response.error {
-                    return failure(error)
+    func posts(thread: ForumThread, page: Int) -> Observable<[ForumPost]> {
+        return self.manager.rx
+            .string(.get, self.url(thread: thread, page: page))
+            .map {
+                let posts = self.parse(html: $0)
+                if posts.isEmpty && self.isMaintenanceResponse($0) {
+                    throw ForumError.maintenance
                 }
-                
-                guard let html = response.result.value else {
-                    return failure(ForumError.noResponse)
-                }
-                
-                let posts = self.parse(html: html)
-                if posts.isEmpty && self.isMaintenanceResponse(html) {
-                    return failure(maintenanceError())
-                }
-                
-                success(posts)
+                return posts
             }
     }
 }
