@@ -11,27 +11,16 @@ import XCTest
 import HTMLReader
 
 class ForumParserTests: XCTestCase {
-
-    // MARK: - Properties
-    
-    var parser: ForumParser?
-    
-    // MARK: - Setup
+    fileprivate var parser: ForumParser!
     
     override func setUp() {
         super.setUp()
         
         self.parser = ForumParser()
     }
-    
-    override func tearDown() {
-        self.parser = nil
-        
-        super.tearDown()
-    }
-    
-    // MARK: - linkParameter()
+}
 
+extension ForumParserTests {
     func testLinkParameter_Success() {
         let link = HTMLElement(tagName: "a", attributes: ["href": "http://www.holonet.test?param=value"])
         let param = self.parser!.linkParameter(linkElement: link, name: "param")!
@@ -65,9 +54,9 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertEqual(param, "value1", "")
     }
-    
-    // MARK: - integerContent()
-    
+}
+
+extension ForumParserTests {
     func testIntegerContent_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "123"
@@ -107,9 +96,9 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertNil(value, "")
     }
-    
-    // MARK: - postDate()
-    
+}
+
+extension ForumParserTests {
     func testPostDate_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "10.10.2014 , 10:10 AM | #1"
@@ -133,9 +122,9 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertNil(value, "")
     }
-    
-    // MARK: - postNumber()
-    
+}
+
+extension ForumParserTests {
     func testPostNumber_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "10.10.2014 , 10:10 AM | #1"
@@ -159,9 +148,9 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertNil(value, "")
     }
-    
-    // MARK: - formatPostBlock()
-    
+}
+
+extension ForumParserTests {
     func testPostText_Success() {
         let header = "Header text"
         let body = "Body text"
@@ -186,8 +175,6 @@ class ForumParserTests: XCTestCase {
         
         XCTAssertEqual(value, "", "")
     }
-    
-    // MARK: - postText()
     
     func testPostText_Simple() {
         let html = "<div>Test post text<br>More text in new line</div>"
@@ -287,5 +274,4 @@ class ForumParserTests: XCTestCase {
         XCTAssertNotNil(value, "")
         XCTAssertEqual(value!, "\(block)\(post)", "")
     }
-
 }

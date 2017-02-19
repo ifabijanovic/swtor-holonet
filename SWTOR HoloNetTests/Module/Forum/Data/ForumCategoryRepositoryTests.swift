@@ -12,40 +12,60 @@ import RxSwift
 import OHHTTPStubs
 
 class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
-    var repo: ForumCategoryRepository?
-    var disposeBag: DisposeBag!
+    fileprivate var repo: ForumCategoryRepository!
     
     override func setUp() {
         super.setUp()
-        self.repo = DefaultForumCategoryRepository(settings: self.settings!)
-        self.disposeBag = DisposeBag()
+        self.repo = DefaultForumCategoryRepository(settings: self.settings)
+    }
+}
+
+extension ForumCategoryRepositoryTests {
+    fileprivate func categories(assert: @escaping (([ForumCategory]) -> Void)) {
+        self.categories(language: .english, assert: assert)
     }
     
-    override func tearDown() {
-        self.repo = nil
-        super.tearDown()
+    fileprivate func categories(language: ForumLanguage, assert: @escaping (([ForumCategory]) -> Void)) {
+        let ex = self.expectation(description: "categories(language:assert:)")
+        self.repo
+            .categories(language: .english)
+            .subscribe(
+                onNext: { categories in
+                    ex.fulfill()
+                    assert(categories)
+                },
+                onError: { error in
+                    ex.fulfill()
+                    XCTFail(error.localizedDescription)
+                }
+            )
+            .addDisposableTo(self.disposeBag)
     }
     
-    // MARK: - Tests
-    
+    fileprivate func categories(parent: ForumCategory, assert: @escaping (([ForumCategory]) -> Void)) {
+        let ex = expectation(description: "categories(language:assert:)")
+        self.repo
+            .categories(parent: parent)
+            .subscribe(
+                onNext: { categories in
+                    ex.fulfill()
+                    assert(categories)
+                },
+                onError: { error in
+                    ex.fulfill()
+                    XCTFail(error.localizedDescription)
+                }
+            )
+            .addDisposableTo(self.disposeBag)
+    }
+}
+
+extension ForumCategoryRepositoryTests {
     func testGetForLanguage_RequestsCorrectUrl() {
         let requestedLanguage = ForumLanguage.english
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(requestedLanguage.rawValue)"
-        let expectation = self.expectation(description: "")
-        
-        let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.url!.absoluteString == expectedUrl
-        }
-        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
-            expectation.fulfill()
-            return OHHTTPStubsResponse()
-        }
-        
-        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!
-            .categories(language: requestedLanguage)
-            .subscribe()
-            .addDisposableTo(self.disposeBag)
+        self.stubUrlTest(expectedUrl: expectedUrl)
+        self.categories(language: requestedLanguage, assert: { _ in })
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
@@ -53,270 +73,159 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     func testGetForCategory_RequestsCorrectUrl() {
         let category = ForumCategory(id: 17, title: "Test")
         let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(category.id)"
-        let expectation = self.expectation(description: "")
-        
-        let testBlock: OHHTTPStubsTestBlock = { (request) in
-            return request.url!.absoluteString == expectedUrl
-        }
-        let responseBlock: OHHTTPStubsResponseBlock = { (request) in
-            expectation.fulfill()
-            return OHHTTPStubsResponse()
-        }
-        
-        OHHTTPStubs.stubRequests(passingTest: testBlock, withStubResponse: responseBlock)
-        self.repo!
-            .categories(parent: category)
-            .subscribe()
-            .addDisposableTo(self.disposeBag)
+        self.stubUrlTest(expectedUrl: expectedUrl)
+        self.categories(parent: category, assert: { _ in })
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_EmptyHtml() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-empty")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-empty", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 0, "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 0, "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Valid() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-single-valid")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-single-valid", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 1, "")
+            
+            // Exception safeguard
+            if items.count != 1 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertEqual(items[0].desc!, "Description 5", "")
+            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 1, "")
-                    
-                    // Exception safeguard
-                    if items.count != 1 { return }
-                    
-                    XCTAssertEqual(items[0].id, 5, "")
-                    XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
-                    XCTAssertEqual(items[0].title, "Forum category 5", "")
-                    XCTAssertEqual(items[0].desc!, "Description 5", "")
-                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_Invalid_Id() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-single-invalid-id")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-single-invalid-id", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 0, "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 0, "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_SingleItem_MissingOptionals() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-single-missing-optionals")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-single-missing-optionals", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 1, "")
+            
+            // Exception safeguard
+            if items.count != 1 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertNil(items[0].iconUrl, "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertNil(items[0].desc, "")
+            XCTAssertNil(items[0].stats, "")
+            XCTAssertNil(items[0].lastPost, "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 1, "")
-                    
-                    // Exception safeguard
-                    if items.count != 1 { return }
-                    
-                    XCTAssertEqual(items[0].id, 5, "")
-                    XCTAssertNil(items[0].iconUrl, "")
-                    XCTAssertEqual(items[0].title, "Forum category 5", "")
-                    XCTAssertNil(items[0].desc, "")
-                    XCTAssertNil(items[0].stats, "")
-                    XCTAssertNil(items[0].lastPost, "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Valid() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-multiple-valid")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-multiple-valid", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 3, "")
+            
+            // Exception safeguard
+            if items.count != 3 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertEqual(items[0].desc!, "Description 5", "")
+            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+            
+            XCTAssertEqual(items[1].id, 6, "")
+            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+            XCTAssertEqual(items[1].title, "Forum category 6", "")
+            XCTAssertEqual(items[1].desc!, "Description 6", "")
+            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+            
+            XCTAssertEqual(items[2].id, 7, "")
+            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+            XCTAssertEqual(items[2].title, "Forum category 7", "")
+            XCTAssertEqual(items[2].desc!, "Description 7", "")
+            XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
+            XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 3, "")
-                    
-                    // Exception safeguard
-                    if items.count != 3 { return }
-                    
-                    XCTAssertEqual(items[0].id, 5, "")
-                    XCTAssertEqual(items[0].iconUrl!, "http://www.holonet.test/category_icon5.png", "")
-                    XCTAssertEqual(items[0].title, "Forum category 5", "")
-                    XCTAssertEqual(items[0].desc!, "Description 5", "")
-                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-                    
-                    XCTAssertEqual(items[1].id, 6, "")
-                    XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
-                    XCTAssertEqual(items[1].title, "Forum category 6", "")
-                    XCTAssertEqual(items[1].desc!, "Description 6", "")
-                    XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
-                    XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
-                    
-                    XCTAssertEqual(items[2].id, 7, "")
-                    XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
-                    XCTAssertEqual(items[2].title, "Forum category 7", "")
-                    XCTAssertEqual(items[2].desc!, "Description 7", "")
-                    XCTAssertEqual(items[2].stats!, "7 Total Threads, 14 Total Posts", "")
-                    XCTAssertEqual(items[2].lastPost!, "Last Post: Thread 19", "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_Invalid_Id() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-multiple-missing-id")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-multiple-missing-id", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 2, "")
+            
+            // Exception safeguard
+            if items.count != 2 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertEqual(items[1].id, 7, "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 2, "")
-                    
-                    // Exception safeguard
-                    if items.count != 2 { return }
-                    
-                    XCTAssertEqual(items[0].id, 5, "")
-                    XCTAssertEqual(items[1].id, 7, "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }
     
     func testGet_MultipleItems_MissingOptionals() {
-        let expectation = self.expectation(description: "")
+        self.stubHtmlResource(name: "forum-category-multiple-missing-optionals")
         
-        OHHTTPStubs.stubRequests(passingTest: self.passAll) { (request) in
-            let path = self.bundle!.path(forResource: "forum-category-multiple-missing-optionals", ofType: "html")
-            XCTAssertNotNil(path, "")
-            return OHHTTPStubsResponse(fileAtPath: path!, statusCode: 200, headers: self.headers)
+        self.categories() { items in
+            XCTAssertNotNil(items, "")
+            XCTAssertEqual(items.count, 3, "")
+            
+            // Exception safeguard
+            if items.count != 3 { return }
+            
+            XCTAssertEqual(items[0].id, 5, "")
+            XCTAssertNil(items[0].iconUrl, "")
+            XCTAssertEqual(items[0].title, "Forum category 5", "")
+            XCTAssertEqual(items[0].desc!, "Description 5", "")
+            XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
+            XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
+            
+            XCTAssertEqual(items[1].id, 6, "")
+            XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
+            XCTAssertEqual(items[1].title, "Forum category 6", "")
+            XCTAssertNil(items[1].desc, "")
+            XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
+            XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
+            
+            XCTAssertEqual(items[2].id, 7, "")
+            XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
+            XCTAssertEqual(items[2].title, "Forum category 7", "")
+            XCTAssertEqual(items[2].desc!, "Description 7", "")
+            XCTAssertNil(items[2].stats, "")
+            XCTAssertNil(items[2].lastPost, "")
         }
-        
-        self.repo!
-            .categories(language: .english)
-            .subscribe(
-                onNext: { items in
-                    expectation.fulfill()
-                    
-                    XCTAssertNotNil(items, "")
-                    XCTAssertEqual(items.count, 3, "")
-                    
-                    // Exception safeguard
-                    if items.count != 3 { return }
-                    
-                    XCTAssertEqual(items[0].id, 5, "")
-                    XCTAssertNil(items[0].iconUrl, "")
-                    XCTAssertEqual(items[0].title, "Forum category 5", "")
-                    XCTAssertEqual(items[0].desc!, "Description 5", "")
-                    XCTAssertEqual(items[0].stats!, "5 Total Threads, 12 Total Posts", "")
-                    XCTAssertEqual(items[0].lastPost!, "Last Post: Thread 17", "")
-                    
-                    XCTAssertEqual(items[1].id, 6, "")
-                    XCTAssertEqual(items[1].iconUrl!, "http://www.holonet.test/category_icon6.png", "")
-                    XCTAssertEqual(items[1].title, "Forum category 6", "")
-                    XCTAssertNil(items[1].desc, "")
-                    XCTAssertEqual(items[1].stats!, "6 Total Threads, 13 Total Posts", "")
-                    XCTAssertEqual(items[1].lastPost!, "Last Post: Thread 18", "")
-                    
-                    XCTAssertEqual(items[2].id, 7, "")
-                    XCTAssertEqual(items[2].iconUrl!, "http://www.holonet.test/category_icon7.png", "")
-                    XCTAssertEqual(items[2].title, "Forum category 7", "")
-                    XCTAssertEqual(items[2].desc!, "Description 7", "")
-                    XCTAssertNil(items[2].stats, "")
-                    XCTAssertNil(items[2].lastPost, "")
-                },
-                onError: self.defaultFailure
-            )
-            .addDisposableTo(self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }

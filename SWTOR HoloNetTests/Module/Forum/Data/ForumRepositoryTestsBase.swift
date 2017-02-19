@@ -9,35 +9,26 @@
 import UIKit
 import XCTest
 import OHHTTPStubs
+import RxSwift
 
 class ForumRepositoryTestsBase: XCTestCase {
-
-    // MARK: - Properties
-    
-    var bundle: Bundle?
-    var settings: Settings?
+    var bundle: Bundle!
+    var settings: Settings!
+    var disposeBag: DisposeBag!
     
     let timeout: TimeInterval = 3
-    let headers = ["Content-Type": "text/html"]
-    let passAll: OHHTTPStubsTestBlock = { (request) in
-        return true
-    }
-    let defaultFailure: (Error) -> Void = { (error) in
-        XCTFail("Failed with error \(error)")
-    }
     let defaultExpectationHandler: XCWaitCompletionHandler = { (error) in
-        if error != nil {
+        if let error = error {
             XCTFail("Failed with error \(error)")
         }
     }
-    
-    // MARK: - Setup
     
     override func setUp() {
         super.setUp()
         
         self.bundle = Bundle(for: SettingsTests.self)
-        self.settings = Settings(bundle: self.bundle!)
+        self.settings = Settings(bundle: self.bundle)
+        self.disposeBag = DisposeBag()
     }
     
     override func tearDown() {
@@ -46,11 +37,11 @@ class ForumRepositoryTestsBase: XCTestCase {
         
         super.tearDown()
     }
-    
-    // MARK: - Helper methods
-    
+}
+
+extension ForumRepositoryTestsBase {
     func stubUrlTest(expectedUrl: String) {
-        let ex = expectation(description: "urlTest")
+        let ex = self.expectation(description: "urlTest")
         let testBlock: OHHTTPStubsTestBlock = { (request) in
             return request.url!.absoluteString == expectedUrl
         }
@@ -68,7 +59,7 @@ class ForumRepositoryTestsBase: XCTestCase {
         OHHTTPStubs.stubRequests(
             passingTest: { _ in true },
             withStubResponse: { request in
-                guard let path = self.bundle?.path(forResource: name, ofType: "html") else {
+                guard let path = self.bundle.path(forResource: name, ofType: "html") else {
                     XCTFail("Failed to load resource '\(name)'")
                     let response = OHHTTPStubsResponse()
                     response.statusCode = 500

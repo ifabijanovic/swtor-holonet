@@ -12,30 +12,23 @@ import OHHTTPStubs
 import RxSwift
 
 class ForumPostRepositoryTests: ForumRepositoryTestsBase {
-    let testThread = ForumThread(id: 5, title: "Test", lastPostDate: "Today", author: "Test user", replies: 5, views: 7)
-    var repo: ForumPostRepository?
-    var disposeBag = DisposeBag()
+    fileprivate let testThread = ForumThread(id: 5, title: "Test", lastPostDate: "Today", author: "Test user", replies: 5, views: 7)
+    fileprivate var repo: ForumPostRepository!
     
     override func setUp() {
         super.setUp()
         self.repo = DefaultForumPostRepository(settings: self.settings!)
-        self.disposeBag = DisposeBag()
     }
-    
-    override func tearDown() {
-        self.repo = nil
-        super.tearDown()
-    }
-    
-    // MARK: - Helper methods
-    
-    private func posts(assert: @escaping (([ForumPost]) -> Void)) {
+}
+
+extension ForumPostRepositoryTests {
+    fileprivate func posts(assert: @escaping (([ForumPost]) -> Void)) {
         self.posts(thread: self.testThread, page: 1, assert: assert)
     }
     
-    private func posts(thread: ForumThread, page: Int, assert: @escaping (([ForumPost]) -> Void)) {
+    fileprivate func posts(thread: ForumThread, page: Int, assert: @escaping (([ForumPost]) -> Void)) {
         let ex = self.expectation(description: "posts(thread:page:assert:)")
-        self.repo!
+        self.repo
             .posts(thread: thread, page: page)
             .subscribe(
                 onNext: { posts in
@@ -49,9 +42,9 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
             )
             .addDisposableTo(self.disposeBag)
     }
-    
-    // MARK: - Tests
-    
+}
+
+extension ForumPostRepositoryTests {
     func testUrl_ReturnsCorrectUrl() {
         let page = 7
         let expectedUrl = URL(string: "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)")!
