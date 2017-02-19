@@ -9,9 +9,6 @@
 import UIKit
 
 class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
-
-    // MARK: - Outlets
-    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -20,8 +17,6 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var accessoryView: UIImageView!
     @IBOutlet weak var separatorLine: UIView!
 
-    // MARK: - Themeable
-    
     func applyTheme(_ theme: Theme) {
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
@@ -47,5 +42,4 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
             self.textView.numberOfLines = 40
         }
     }
-
 }

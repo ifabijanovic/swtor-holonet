@@ -21,21 +21,28 @@ private let SubCategorySegue = "categorySegue"
 private let ThreadSegue = "threadSegue"
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
-    
-    // MARK: - Properties
-    
     var category: ForumCategory?
     
-    private var categoryRepo: ForumCategoryRepository!
-    private var threadRepo: ForumThreadRepository?
+    fileprivate var categoryRepo: ForumCategoryRepository!
+    fileprivate var threadRepo: ForumThreadRepository?
     
-    private var categories: [ForumCategory]?
-    private var threads: [ForumThread]?
+    fileprivate var categories: [ForumCategory]?
+    fileprivate var threads: [ForumThread]?
     
-    private var disposeBag = DisposeBag()
+    fileprivate var disposeBag = DisposeBag()
     
-    // MARK: - Lifecycle
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        self.categories?.removeAll(keepingCapacity: false)
+        self.categories = nil
+        self.threads?.removeAll(keepingCapacity: false)
+        self.threads = nil
+        self.collectionView?.reloadData()
+    }
+}
+
+extension ForumListCollectionViewController {
     override func viewDidLoad() {        
         super.viewDidLoad()
 
@@ -60,19 +67,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    
-        self.categories?.removeAll(keepingCapacity: false)
-        self.categories = nil
-        self.threads?.removeAll(keepingCapacity: false)
-        self.threads = nil
-        self.collectionView?.reloadData()
-    }
-
-    // MARK: - UICollectionViewDataSource
-    
+extension ForumListCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         if self.threadRepo != nil {
             return 2
@@ -125,11 +122,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         
         if indexPath.section == CategorySection {
             let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCellIdentifier, for: indexPath) as! ForumCategoryCollectionViewCell
-            self.setupCategoryCell(categoryCell, indexPath: indexPath)
+            self.setup(cell: categoryCell, indexPath: indexPath)
             cell = categoryCell
         } else if indexPath.section == ThreadSection {
             let threadCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThreadCellIdentifier, for: indexPath) as! ForumThreadCollectionViewCell
-            self.setupThreadCell(threadCell, indexPath: indexPath)
+            self.setup(cell: threadCell, indexPath: indexPath)
             cell = threadCell
         } else {
             // Safeguard, should not happen
@@ -173,8 +170,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         }
     }
     
-    // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SubCategorySegue {
             let controller = segue.destination as! ForumListCollectionViewController
@@ -187,16 +182,23 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         }
     }
     
-    // MARK: - Helper methods
-    
-    private func hasCategories() -> Bool {
+    override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.collectionView!.backgroundColor = theme.contentBackground
+    }
+}
+
+extension ForumListCollectionViewController {
+    fileprivate func hasCategories() -> Bool {
         if let categories = self.categories {
             return categories.count > 0
         }
         return false
     }
     
-    private func hasThreads() -> Bool {
+    fileprivate func hasThreads() -> Bool {
         if let threads = self.threads {
             return threads.count > 0
         }
@@ -325,7 +327,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             .addDisposableTo(self.disposeBag)
     }
     
-    private func setupCategoryCell(_ cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {
+    fileprivate func setup(cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {
         let category = self.categories![indexPath.row]
         
         // Set category icon if URL is defined in the model
@@ -341,7 +343,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         cell.tag = indexPath.row
     }
     
-    private func setupThreadCell(_ cell: ForumThreadCollectionViewCell, indexPath: IndexPath) {
+    fileprivate func setup(cell: ForumThreadCollectionViewCell, indexPath: IndexPath) {
         let thread = self.threads![indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
@@ -367,16 +369,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         
         cell.tag = indexPath.row
     }
-    
-    // MARK: - Themeable
-    
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
-        
-        self.view.backgroundColor = theme.contentBackground
-        self.collectionView!.backgroundColor = theme.contentBackground
-    }
-
 }
 
 fileprivate struct DataResult {

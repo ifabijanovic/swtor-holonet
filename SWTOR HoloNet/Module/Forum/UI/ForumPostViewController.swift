@@ -10,21 +10,16 @@ import UIKit
 import AlamofireImage
 
 class ForumPostViewController: BaseViewController {
-
-    // MARK: - Properties
-    
     var post: ForumPost!
-    
-    // MARK: - Outlets
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var devImageView: UIImageView!
     @IBOutlet var textTextView: UITextView!
-    
-    // MARK: - Lifecycle
-    
+}
+
+extension ForumPostViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,9 +56,9 @@ class ForumPostViewController: BaseViewController {
         self.textTextView.textContainerInset = UIEdgeInsetsMake(8, 8, self.bottomLayoutGuide.length + 8, 8)
         self.textTextView.setContentOffset(CGPoint.zero, animated: false)
     }
-    
-    // MARK: - Themeable
-    
+}
+
+extension ForumPostViewController {
     override func applyTheme(_ theme: Theme) {
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText
@@ -71,5 +66,4 @@ class ForumPostViewController: BaseViewController {
         self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
         self.textTextView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
     }
-
 }

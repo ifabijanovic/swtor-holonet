@@ -8,33 +8,31 @@
 
 import UIKit
 
-class ForumBaseCollectionViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+private let InfiniteScrollOffset: CGFloat = 50.0
+private let ScreenHeight = UIScreen.main.bounds.height
+private let FooterIdentifier = "footer"
 
-    // MARK: - Constants
+class ForumBaseCollectionViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+    var refreshControl: UIRefreshControl?
     
-    let InfiniteScrollOffset: CGFloat = 50.0
-    let ScreenHeight = UIScreen.main.bounds.height
+    var canLoadMore = false
+    var showLoadMore = false
+    var loadedPage = 1
+    var isPad = false
     
-    private let FooterIdentifier = "footer"
-    
-    // MARK: - Properties
-    
-    internal var refreshControl: UIRefreshControl?
-    
-    internal var canLoadMore = false
-    internal var showLoadMore = false
-    internal var loadedPage = 1
-    internal var isPad = false
-    
-    private var needsContentLoad = true
-    private var needsLayout = false
-    
-    // MARK: - Lifecycle
+    fileprivate var needsContentLoad = true
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        self.needsContentLoad = true
+    }
+}
+
+extension ForumBaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,55 +53,20 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self.needsLayout {
-            self.needsLayout = false
-            self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
-        }
         self.loadContent()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        self.needsContentLoad = true
-    }
-    
-    // MARK: - Content loading
-    
-    internal func loadContent() {
-        if self.needsContentLoad {
-            self.onRefresh()
-            self.needsLayout = true
-            self.needsContentLoad = false
-        }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.collectionView!.collectionViewLayout.invalidateLayout()
     }
     
     func willEnterForeground(notification: NSNotification) {
         self.loadContent()
     }
-    
-    // MARK: - Orientation change
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        // If transitioning to Landscape invalidate CollectionView layout after a short delay
-        // to avoid a FlowLayout warning. It seems CollectionView size isn't yet correctly set
-        // when orientation occurs.
-        self.signalOrientationChange(self.collectionView!.collectionViewLayout, shouldDelay: size.width > size.height)
-    }
-    
-    private func signalOrientationChange(_ layout: UICollectionViewLayout, shouldDelay: Bool) {
-        if shouldDelay {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-                layout.invalidateLayout()
-            }
-        } else {
-            layout.invalidateLayout()
-        }
-    }
-    
-    // MARK: - UICollectionViewDataSource
-    
+}
+
+extension ForumBaseCollectionViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return self.showLoadMore ? CGSize(width: 0, height: 64.0) : CGSize.zero
     }
@@ -118,8 +81,6 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         return UICollectionReusableView()
     }
     
-    // MARK: - Scroll
-    
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if !canLoadMore { return }
         
@@ -130,30 +91,6 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         }
     }
     
-    // MARK: - Activity indicator
-    
-    internal func showLoader() {
-        self.showLoadMore = true
-        self.collectionView!.collectionViewLayout.invalidateLayout()
-    }
-    
-    internal func hideLoader() {
-        self.showLoadMore = false
-        self.collectionView!.collectionViewLayout.invalidateLayout()
-    }
-    
-    // MARK: - Abstract methods
-    
-    internal func onRefresh() {
-        // Implement in derived classes
-    }
-    
-    internal func onLoadMore() {
-        // Implement in derived classes
-    }
-    
-    // MARK: - Themeable
-    
     override func applyTheme(_ theme: Theme) {
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle
@@ -161,5 +98,31 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         // Refresh control tint
         self.refreshControl?.tintColor = theme.contentText
     }
+}
 
+extension ForumBaseCollectionViewController {
+    func loadContent() {
+        if self.needsContentLoad {
+            self.onRefresh()
+            self.needsContentLoad = false
+        }
+    }
+    
+    func showLoader() {
+        self.showLoadMore = true
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+    }
+    
+    func hideLoader() {
+        self.showLoadMore = false
+        self.collectionView!.collectionViewLayout.invalidateLayout()
+    }
+    
+    func onRefresh() {
+        assert(false, "base onRefresh called")
+    }
+    
+    func onLoadMore() {
+        assert(false, "base onLoadMore")
+    }
 }

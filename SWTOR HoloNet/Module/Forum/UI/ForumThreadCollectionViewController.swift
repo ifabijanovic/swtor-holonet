@@ -15,27 +15,30 @@ private let PostSegue = "postSegue"
 private let HeaderIdentifier = "header"
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
-    
-    // MARK: - Properties
-    
     var thread: ForumThread!
-    private var postsPerPage = 10
+    fileprivate var postsPerPage = 10
     
-    private var postRepo: ForumPostRepository!
-    private var posts: [ForumPost]?
+    fileprivate var postRepo: ForumPostRepository!
+    fileprivate var posts: [ForumPost]?
     
-    private var disposeBag = DisposeBag()
-    private var sizingCell: ForumPostCollectionViewCell!
-    
-    // MARK: - Outlets
+    fileprivate var disposeBag = DisposeBag()
+    fileprivate var sizingCell: ForumPostCollectionViewCell!
     
     @IBAction func safariTapped(_ sender: AnyObject) {
         let url = self.postRepo.url(thread: self.thread, page: 0)
         UIApplication.shared.openURL(url)
     }
     
-    // MARK: - Lifecycle
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        self.posts?.removeAll(keepingCapacity: false)
+        self.posts = nil
+        self.collectionView?.reloadData()
+    }
+}
     
+extension ForumThreadCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,23 +65,15 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        self.posts?.removeAll(keepingCapacity: false)
-        self.posts = nil
-        self.collectionView?.reloadData()
-    }
-
-    // MARK: - UICollectionViewDataSource
-
+extension ForumThreadCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.calculateSizeForItemAtIndexPath(indexPath)
+        return self.sizeForItem(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -99,7 +94,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCellIdentifier, for: indexPath) as! ForumPostCollectionViewCell
         
-        self.fillCell(cell, atIndexPath: indexPath)
+        self.fill(cell: cell, at: indexPath)
         
         return cell
     }
@@ -122,8 +117,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.performSegue(withIdentifier: PostSegue, sender: cell)
     }
     
-    // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PostSegue {
             let controller = segue.destination as! ForumPostViewController
@@ -133,8 +126,15 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         }
     }
     
-    // MARK: - Helper methods
-    
+    override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        
+        self.view.backgroundColor = theme.contentBackground
+        self.collectionView!.backgroundColor = theme.contentBackground
+    }
+}
+
+extension ForumThreadCollectionViewController {
     override func onRefresh() {
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
@@ -234,7 +234,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
             .addDisposableTo(self.disposeBag)
     }
     
-    func fillCell(_ cell: ForumPostCollectionViewCell, atIndexPath indexPath: IndexPath) {
+    fileprivate func fill(cell: ForumPostCollectionViewCell, at indexPath: IndexPath) {
         let post = self.posts![indexPath.row]
         
         // Set user avatar image if URL is defined in the model
@@ -261,10 +261,10 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         cell.tag = indexPath.row
     }
     
-    func calculateSizeForItemAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+    fileprivate func sizeForItem(at indexPath: IndexPath) -> CGSize {
         if let cell = self.sizingCell {
             // Fill it with data
-            self.fillCell(cell, atIndexPath: indexPath)
+            self.fill(cell: cell, at: indexPath)
             cell.textView.preferredMaxLayoutWidth = self.collectionView!.frame.width - 30.0
             // Now that it has data tell it to size itself
             cell.setNeedsLayout()
@@ -275,14 +275,4 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         }
         return CGSize.zero
     }
-    
-    // MARK: - Themeable
-    
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
-        
-        self.view.backgroundColor = theme.contentBackground
-        self.collectionView!.backgroundColor = theme.contentBackground
-    }
-
 }

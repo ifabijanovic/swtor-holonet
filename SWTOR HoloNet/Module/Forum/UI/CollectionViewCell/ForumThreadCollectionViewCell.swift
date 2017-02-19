@@ -9,18 +9,13 @@
 import UIKit
 
 class ForumThreadCollectionViewCell: UICollectionViewCell, Themeable {
-
-    // MARK: - Outlets
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var devImageView: UIImageView!
     @IBOutlet weak var stickyImageView: UIImageView!
     @IBOutlet weak var repliesViewsLabel: UILabel!
-    @IBOutlet var accessoryView: UIImageView!
-    
-    // MARK: - Themeable
-    
+    @IBOutlet weak var accessoryView: UIImageView!
+
     func applyTheme(_ theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle
         self.titleLabel.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
@@ -40,6 +35,4 @@ class ForumThreadCollectionViewCell: UICollectionViewCell, Themeable {
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView
     }
-
-
 }

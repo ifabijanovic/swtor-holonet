@@ -9,16 +9,10 @@
 import UIKit
 
 class ForumThreadHeaderCollectionReusableView: UICollectionReusableView, Themeable {
-
-    // MARK: - Outlets
-    
     @IBOutlet weak var textLabel: UILabel!
-    
-    // MARK: - Themeable
     
     func applyTheme(_ theme: Theme) {
         self.backgroundColor = theme.contentBackground
         self.textLabel.textColor = theme.contentTitle
     }
-    
 }
