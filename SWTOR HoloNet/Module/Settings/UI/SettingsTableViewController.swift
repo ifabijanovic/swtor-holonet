@@ -9,14 +9,13 @@
 import UIKit
 import MessageUI
 
-class SettingsTableViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
+class SettingsTableViewController: BaseTableViewController {
    
     // MARK: - Constants
     
     private let DisclaimerSegue = "DisclaimerSegue"
     private let PrivacyPolicySegue = "PrivacyPolicySegue"
     private let LicenseSegue = "LicenseSegue"
-    private let NotificationSettingsSegue = "NotificationSettingsSegue"
     
     // MARK: - Outlets
     
@@ -122,13 +121,6 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
         }
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == NotificationSettingsSegue {
-            return false
-        }
-        return true
-    }
-    
     // MARK: - Themeable
     
     override func applyTheme(_ theme: Theme) {
@@ -149,11 +141,10 @@ class SettingsTableViewController: BaseTableViewController, MFMailComposeViewCon
             }
         }
     }
-    
-    // MARK: - MFMailComposeViewControllerDelegate
-    
+}
+
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-
 }

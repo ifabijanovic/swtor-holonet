@@ -127,8 +127,6 @@
 		8199010A1B57C04C0077A2BF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819901081B57C04C0077A2BF /* UIColor.swift */; };
 		8199010C1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
 		8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8199010B1B57C3DA0077A2BF /* DarkTheme.plist */; };
-		819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
-		819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */; };
 		819A2A141B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		819A2A151B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */; };
 		81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364D1E58F980000AC89C /* RxAlamofire.framework */; };
@@ -294,7 +292,6 @@
 		81964D8A1AAED73D008CA544 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionParser.swift; path = Module/App/Action/ActionParser.swift; sourceTree = "<group>"; };
 		819901081B57C04C0077A2BF /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extension/UIColor.swift; sourceTree = "<group>"; };
 		8199010B1B57C3DA0077A2BF /* DarkTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DarkTheme.plist; path = Resource/Theme/DarkTheme.plist; sourceTree = "<group>"; };
-		819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationSettingsViewController.swift; path = Module/Settings/UI/NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextSizeSettingsTableViewController.swift; path = Module/Settings/UI/TextSizeSettingsTableViewController.swift; sourceTree = "<group>"; };
 		81A6364D1E58F980000AC89C /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		81A6364E1E58F980000AC89C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -439,7 +436,6 @@
 		810D2E021A44455E00FF0FEF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				819A2A101B5BB702006E7EC4 /* NotificationSettingsViewController.swift */,
 				81E99F6A1B70FFAB0055A5A2 /* SettingPickerDelegate.swift */,
 				810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */,
 				819A2A111B5BB702006E7EC4 /* TextSizeSettingsTableViewController.swift */,
@@ -1070,7 +1066,6 @@
 				810D2E041A44457800FF0FEF /* SettingsTableViewController.swift in Sources */,
 				81AD3D041B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
-				819A2A121B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				8100777E1E5773E800F6ACDA /* Analytics.swift in Sources */,
 				81EC0BFD1A44589600AFA035 /* Themeable.swift in Sources */,
 				81846C9C1ABC451500982C2C /* TableHeaderCollectionReusableView.swift in Sources */,
@@ -1185,7 +1180,6 @@
 				8125C4931AA9DBB000046197 /* Action.swift in Sources */,
 				81C070B11ABB010E00B70A06 /* ForumListCollectionViewController.swift in Sources */,
 				81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */,
-				819A2A131B5BB702006E7EC4 /* NotificationSettingsViewController.swift in Sources */,
 				81E62D071AA44AB0006FA0F9 /* DulfyViewControllerTests.swift in Sources */,
 				81AD3D051B5527B20030C6FF /* ForumRepositoryBase.swift in Sources */,
 			);
