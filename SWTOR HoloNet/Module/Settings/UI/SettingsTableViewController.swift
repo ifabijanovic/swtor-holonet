@@ -42,8 +42,8 @@ class SettingsTableViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
-        self.themeStatusLabel.text = self.theme.type.toString()
-        self.textSizeStatusLabel.text = self.theme.textSize.toString()
+        self.themeStatusLabel.text = String(describing: self.theme.type)
+        self.textSizeStatusLabel.text = String(describing: self.theme.textSize)
     }
     
     // MARK: - Table view delegate
@@ -51,15 +51,18 @@ class SettingsTableViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell == self.contactCell {
-            self.contact()
-        }
-        if cell == self.reportBugCell {
-            self.reportBug()
-        }
-        if cell == self.notificationSettingsCell {
+        switch (indexPath.section, indexPath.row) {
+        case (Section.messages, Row.notifications):
             UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+        case (Section.display, Row.theme):
+            self.navigationController?.pushViewController(ThemeSettingsTableViewController(), animated: true)
+        case (Section.display, Row.textSize):
+            self.navigationController?.pushViewController(TextSizeSettingsTableViewController(), animated: true)
+        case (Section.feedback, Row.contact):
+            self.contact()
+        case (Section.feedback, Row.reportBug):
+            self.reportBug()
+        default: break
         }
     }
     
@@ -147,4 +150,22 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
+}
+
+fileprivate struct Section {
+    static let messages = 0
+    static let display = 1
+    static let feedback = 2
+    static let legal = 3
+}
+
+fileprivate struct Row {
+    static let notifications = 0
+    static let theme = 0
+    static let textSize = 1
+    static let contact = 0
+    static let reportBug = 1
+    static let disclaimer = 0
+    static let privacyPolicy = 1
+    static let license = 2
 }

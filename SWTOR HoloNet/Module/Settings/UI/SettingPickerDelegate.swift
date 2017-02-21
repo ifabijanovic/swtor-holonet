@@ -9,37 +9,34 @@
 import UIKit
 
 class SettingPickerDelegate<SettingType: Equatable> {
-
-    // MARK: - Properties
-    
     let initialValue: SettingType
+    fileprivate let map: [(index: Int, value: SettingType)]
     
-    private let tableView: UITableView
-    private let map: Array<(index: Int, value: SettingType)>
-    private var checkedRow: IndexPath!
+    fileprivate var checkedRow: IndexPath!
     
-    // MARK: - Init
-    
-    init(initialValue: SettingType, tableView: UITableView, map: Array<(index: Int, value: SettingType)>) {
+    init(initialValue: SettingType, map: [(index: Int, value: SettingType)]) {
         self.initialValue = initialValue
-        self.tableView = tableView
         self.map = map
+    }
+}
+
+extension SettingPickerDelegate {
+    var currentValue: SettingType {
+        return self.settingType(index: self.checkedRow.row)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let settingType = self.settingType(index: indexPath.row)
+        assert(settingType != nil)
         
-        self.checkedRow = IndexPath(row: self.indexForSettingType(self.initialValue), section: 0)
-    }
-    
-    // MARK: - Public methods
-    
-    func markInitialValue() {
-        let initialValueRow = IndexPath(row: self.indexForSettingType(self.initialValue), section: 0)
-        if let cell = self.tableView.cellForRow(at: initialValueRow) {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = String(describing: settingType!)
+        if self.initialValue == settingType! && self.checkedRow == nil {
             cell.accessoryType = .checkmark
+            self.checkedRow = indexPath
         }
-        self.checkedRow = initialValueRow
-    }
-    
-    func getCurrentValue() -> SettingType {
-        return self.settingTypeForIndex(self.checkedRow.row)!
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
@@ -56,32 +53,19 @@ class SettingPickerDelegate<SettingType: Equatable> {
         
         self.checkedRow = indexPath
     }
-    
-    func applyTheme(_ theme: Theme) {
-        self.tableView.backgroundColor = theme.contentBackground
-        
-        for row in 0..<self.tableView.numberOfRows(inSection: 0) {
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) {
-                cell.applyThemeEx(theme)
-                cell.textLabel?.textColor = theme.contentText
-                cell.tintColor = theme.contentTitle
-            }
-        }
-    }
-    
-    // MARK: - Private methods
-    
-    private func indexForSettingType(_ settingType: SettingType) -> Int {
+}
+
+fileprivate extension SettingPickerDelegate {
+    func index(settingType: SettingType) -> Int {
         for item in self.map {
             if item.value == settingType {
                 return item.index
             }
         }
-        
         return 0
     }
     
-    private func settingTypeForIndex(_ index: Int) -> SettingType? {
+    func settingType(index: Int) -> SettingType? {
         for item in self.map {
             if item.index == index {
                 return item.value
@@ -89,5 +73,4 @@ class SettingPickerDelegate<SettingType: Equatable> {
         }
         return nil
     }
-    
 }

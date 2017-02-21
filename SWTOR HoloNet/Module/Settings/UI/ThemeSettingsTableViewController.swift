@@ -9,37 +9,42 @@
 import UIKit
 
 class ThemeSettingsTableViewController: BaseTableViewController {
-    
-    // MARK: - Properties
-    
     private var pickerDelegate: SettingPickerDelegate<ThemeType>!
     
-    // MARK: - Lifecycle
+    override init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, tableView: self.tableView, map: [
+        self.title = "Theme"
+        
+        self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, map: [
             (index: 0, value: ThemeType.dark),
             (index: 1, value: ThemeType.light)
         ])
         
         self.applyTheme(self.theme)
-        
-        self.pickerDelegate.markInitialValue()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let newValue = self.pickerDelegate.getCurrentValue()
+        let newValue = self.pickerDelegate.currentValue
         if (newValue != self.pickerDelegate.initialValue) {
             self.theme.changeTheme(type: newValue)
             self.theme.fireThemeChanged()
         }
     }
-
-    // MARK: - Table view data source
+    
+    // MARK: -
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -49,16 +54,26 @@ class ThemeSettingsTableViewController: BaseTableViewController {
         return 2
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return self.pickerDelegate.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.applyThemeEx(self.theme)
+        cell.textLabel?.textColor = theme.contentText
+        cell.tintColor = theme.contentTitle
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
-    // MARK: - Themeable
+    // MARK: -
     
     override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)
         
-        self.pickerDelegate.applyTheme(theme)
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = theme.contentBackground
     }
-
 }

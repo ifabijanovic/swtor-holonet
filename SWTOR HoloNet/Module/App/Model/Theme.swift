@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-enum ThemeType: String {
+enum ThemeType: String, CustomStringConvertible {
     case dark = "DarkTheme"
     case light = "LightTheme"
     
-    func toString() -> String {
+    var description: String {
         switch self {
         case .dark: return "Dark"
         case .light: return "Light"
@@ -21,12 +21,12 @@ enum ThemeType: String {
     }
 }
 
-enum TextSize: CGFloat {
+enum TextSize: CGFloat, CustomStringConvertible {
     case small = 14.0
     case medium = 16.0
     case large = 18.0
     
-    func toString() -> String {
+    var description: String {
         switch self {
         case .small: return "Small"
         case .medium: return "Medium"
