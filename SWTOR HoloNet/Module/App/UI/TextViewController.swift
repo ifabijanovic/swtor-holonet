@@ -9,22 +9,28 @@
 import UIKit
 
 class TextViewController: BaseViewController {
-
-    // MARK: - Properties
-    
     var file: String?
     var text: String?
     var analyticsEvent: String?
     var analyticsPropeties: [AnyHashable: Any]?
     
-    // MARK: - Outlets
+    fileprivate var textView: UITextView!
     
-    @IBOutlet var textView: UITextView!
+    override init() {
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    // MARK: - Lifecycle
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupTextView()
+        self.automaticallyAdjustsScrollViewInsets = false
         
         if self.file != nil {
             let bundle = Bundle.main
@@ -36,8 +42,6 @@ class TextViewController: BaseViewController {
         } else if self.text != nil {
             self.textView.text = self.text!
         }
-        
-        self.textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         
         self.applyTheme(self.theme)
         
@@ -53,21 +57,35 @@ class TextViewController: BaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         self.textView.textContainerInset = UIEdgeInsetsMake(self.topLayoutGuide.length + 8, 8, self.bottomLayoutGuide.length + 8, 8)
         self.textView.setContentOffset(CGPoint.zero, animated: false)
-        
-        super.viewDidLayoutSubviews()
     }
     
-    // MARK: - Themeable
+    private func setupTextView() {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
+        self.view.addSubview(textView)
+        self.textView = textView
+        
+        let views: [String: Any] = ["textView": textView]
+        var constraints = [NSLayoutConstraint]()
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[textView]|", options: [], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[textView]|", options: [], metrics: nil, views: views)
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: -
     
     override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)
         
         self.view.backgroundColor = theme.contentBackground
+        self.textView.backgroundColor = UIColor.clear
         self.textView.textColor = theme.contentText
         self.textView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
         self.textView.indicatorStyle = theme.scrollViewIndicatorStyle
     }
-
 }

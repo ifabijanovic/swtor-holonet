@@ -10,12 +10,6 @@ import UIKit
 import MessageUI
 
 class SettingsTableViewController: BaseTableViewController {
-   
-    // MARK: - Constants
-    
-    private let DisclaimerSegue = "DisclaimerSegue"
-    private let PrivacyPolicySegue = "PrivacyPolicySegue"
-    private let LicenseSegue = "LicenseSegue"
     
     // MARK: - Outlets
     
@@ -62,11 +56,17 @@ class SettingsTableViewController: BaseTableViewController {
             self.contact()
         case (Section.feedback, Row.reportBug):
             self.reportBug()
+        case (Section.legal, Row.disclaimer):
+            self.legal(title: "Disclaimer", file: "Disclaimer")
+        case (Section.legal, Row.privacyPolicy):
+            self.legal(title: "Privacy Policy", file: "PrivacyPolicy")
+        case (Section.legal, Row.license):
+            self.legal(title: "License", file: "License")
         default: break
         }
     }
     
-    // MARK: - Actions
+    // MARK: -
     
     private func contact() {
         if !MFMailComposeViewController.canSendMail() {
@@ -103,28 +103,14 @@ class SettingsTableViewController: BaseTableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case DisclaimerSegue:
-            let controller = segue.destination as! TextViewController
-            controller.title = "Disclaimer"
-            controller.file = "Disclaimer"
-        case PrivacyPolicySegue:
-            let controller = segue.destination as! TextViewController
-            controller.title = "Privacy Policy"
-            controller.file = "PrivacyPolicy"
-        case LicenseSegue:
-            let controller = segue.destination as! TextViewController
-            controller.title = "License"
-            controller.file = "License"
-        default:
-            break
-        }
+    private func legal(title: String, file: String) {
+        let viewController = TextViewController()
+        viewController.title = title
+        viewController.file = file
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    // MARK: - Themeable
+    // MARK: -
     
     override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)

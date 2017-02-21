@@ -341,9 +341,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Xcz-14-LKY" kind="show" identifier="DisclaimerSegue" id="JTD-Hb-rpp"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="9jA-BE-hAg" style="IBUITableViewCellStyleDefault" id="CVa-gU-jWz">
                                         <rect key="frame" x="0.0" y="463" width="375" height="44"/>
@@ -362,9 +359,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Xcz-14-LKY" kind="show" identifier="PrivacyPolicySegue" id="wHH-pa-UjP"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="e4M-mv-wdE" style="IBUITableViewCellStyleDefault" id="GcX-fY-0Ud">
                                         <rect key="frame" x="0.0" y="507" width="375" height="44"/>
@@ -383,9 +377,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Xcz-14-LKY" kind="show" identifier="LicenseSegue" id="veD-PW-DVt"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -408,42 +399,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vn-DG-TzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2792" y="3605"/>
-        </scene>
-        <!--Text View Controller-->
-        <scene sceneID="ypC-Sw-xxp">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xcz-14-LKY" customClass="TextViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6pZ-jc-Lu0"/>
-                        <viewControllerLayoutGuide type="bottom" id="i7a-zk-Rro"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2Te-ww-u8f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMW-24-U5L">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="bMW-24-U5L" firstAttribute="top" secondItem="2Te-ww-u8f" secondAttribute="top" id="BTp-c2-znZ"/>
-                            <constraint firstAttribute="bottom" secondItem="bMW-24-U5L" secondAttribute="bottom" id="EOR-8D-6bh"/>
-                            <constraint firstAttribute="trailing" secondItem="bMW-24-U5L" secondAttribute="trailing" id="Icr-Xm-VDx"/>
-                            <constraint firstItem="bMW-24-U5L" firstAttribute="leading" secondItem="2Te-ww-u8f" secondAttribute="leading" id="VKy-x9-LgL"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Rrf-ij-xN5"/>
-                    <connections>
-                        <outlet property="textView" destination="bMW-24-U5L" id="UGT-yK-icO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VtK-cn-BzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3619" y="3605"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="e48-eZ-3wz">
@@ -509,7 +464,6 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wHH-pa-UjP"/>
         <segue reference="8hl-IS-SuL"/>
     </inferredMetricsTieBreakers>
 </document>
