@@ -39,11 +39,24 @@ struct Constants {
     }
     
     struct Images {
+        struct Icons {
+            static let back = "Back"
+            static let forward = "Forward"
+            static let home = "Home"
+            static let reload = "Reload"
+            static let safari = "Safari"
+            static let stop = "Stop"
+        }
+        
         struct Placeholders {
             static let avatar = "Avatar"
             static let categoryIcon = "CategoryIcon"
             static let devTrackerIcon = "DevTrackerIcon"
             static let stickyIcon = "StickyIcon"
+        }
+        
+        struct Tabs {
+            static let dulfy = "Dulfy"
         }
     }
     

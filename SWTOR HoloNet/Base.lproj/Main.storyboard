@@ -202,7 +202,7 @@
                             <tableViewSection headerTitle="Messages" id="zYS-us-mLt">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="pte-TF-YPm" detailTextLabel="LuN-7u-84N" style="IBUITableViewCellStyleValue1" id="4OI-Cd-TXf">
-                                        <rect key="frame" x="0.0" y="55" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4OI-Cd-TXf" id="70x-Rp-nUm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -231,7 +231,7 @@
                             <tableViewSection headerTitle="Display" id="2YF-Iw-rFF">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="aER-XI-Gq2" detailTextLabel="hqM-G8-voo" style="IBUITableViewCellStyleValue1" id="gX8-h8-b2X">
-                                        <rect key="frame" x="0.0" y="147" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="148" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gX8-h8-b2X" id="KZZ-1A-Qh5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -259,7 +259,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4Kn-3G-ksz" detailTextLabel="YXz-nd-QKb" style="IBUITableViewCellStyleValue1" id="T54-Qt-coy">
-                                        <rect key="frame" x="0.0" y="191" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="192" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T54-Qt-coy" id="8Wm-gz-3Cl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -291,7 +291,7 @@
                             <tableViewSection headerTitle="Feedback" id="G50-Dc-b3N">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="sWW-wK-hll" style="IBUITableViewCellStyleDefault" id="i3R-X2-awr">
-                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3R-X2-awr" id="Lcf-KE-bAp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -309,7 +309,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="bcG-is-aWc" style="IBUITableViewCellStyleDefault" id="WBB-kD-Iip">
-                                        <rect key="frame" x="0.0" y="327" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WBB-kD-Iip" id="yfB-l6-1Og">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -331,7 +331,7 @@
                             <tableViewSection headerTitle="Legal" id="dLC-Vc-Kc5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="cYt-jv-Ls2" style="IBUITableViewCellStyleDefault" id="GEY-A1-IkU">
-                                        <rect key="frame" x="0.0" y="419" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="420" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GEY-A1-IkU" id="Qir-4i-LIk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -352,7 +352,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="9jA-BE-hAg" style="IBUITableViewCellStyleDefault" id="CVa-gU-jWz">
-                                        <rect key="frame" x="0.0" y="463" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="464" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CVa-gU-jWz" id="7gF-fP-0JZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -373,7 +373,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="e4M-mv-wdE" style="IBUITableViewCellStyleDefault" id="GcX-fY-0Ud">
-                                        <rect key="frame" x="0.0" y="507" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="508" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcX-fY-0Ud" id="HYF-Sc-8UF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -598,83 +598,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="6qy-5e-eIZ" kind="relationship" relationship="viewControllers" id="so1-SE-COH"/>
-                        <segue destination="Rrx-bM-Eeh" kind="relationship" relationship="viewControllers" id="a7a-zH-09b"/>
                         <segue destination="jmO-K3-Ftx" kind="relationship" relationship="viewControllers" id="ejo-GF-lff"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rR2-EB-wd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1099" y="945"/>
-        </scene>
-        <!--Dulfy View Controller-->
-        <scene sceneID="9cJ-bj-5f3">
-            <objects>
-                <viewController id="qXx-Eo-5Gp" customClass="DulfyViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2np-Xf-r7L"/>
-                        <viewControllerLayoutGuide type="bottom" id="4Ra-tr-nxK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iGU-Ns-9YW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BVK-Uz-AIc">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="BVK-Uz-AIc" secondAttribute="centerY" id="AWk-ut-xdo"/>
-                            <constraint firstAttribute="centerX" secondItem="BVK-Uz-AIc" secondAttribute="centerX" id="iq0-hC-L3h"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems>
-                        <barButtonItem image="Back" style="plain" id="c29-05-nAe">
-                            <connections>
-                                <action selector="backTapped:" destination="qXx-Eo-5Gp" id="Kg4-hX-7tC"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="K1v-Dg-Hbk"/>
-                        <barButtonItem image="Forward" id="ZsE-d7-beF">
-                            <connections>
-                                <action selector="forwardTapped:" destination="qXx-Eo-5Gp" id="uHp-ta-Bf8"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ste-0P-UYD"/>
-                        <barButtonItem image="Reload" id="kPA-yl-R2m">
-                            <connections>
-                                <action selector="reloadTapped:" destination="qXx-Eo-5Gp" id="qfV-aL-XVS"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HMg-Fr-TLA"/>
-                        <barButtonItem image="Stop" id="Gyg-qa-feS">
-                            <connections>
-                                <action selector="stopTapped:" destination="qXx-Eo-5Gp" id="d9k-ke-ay7"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Nua-vm-pOn"/>
-                        <barButtonItem image="Home" id="VQn-hJ-BkG">
-                            <connections>
-                                <action selector="homeTapped:" destination="qXx-Eo-5Gp" id="QV7-qK-0Mx"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="gM4-1V-Sx9">
-                        <barButtonItem key="rightBarButtonItem" image="Safari" id="VSr-Xa-Z5S">
-                            <connections>
-                                <action selector="safariTapped:" destination="qXx-Eo-5Gp" id="57t-6q-inl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicator" destination="BVK-Uz-AIc" id="l4i-me-GXx"/>
-                        <outlet property="backButton" destination="c29-05-nAe" id="Z3B-2i-CRc"/>
-                        <outlet property="forwardButton" destination="ZsE-d7-beF" id="guG-lG-Z3E"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yMr-Yr-SrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2792" y="1411"/>
         </scene>
         <!--Settings-->
         <scene sceneID="r2M-HW-Gzh">
@@ -694,29 +623,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zql-JL-Uxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2032" y="3605"/>
-        </scene>
-        <!--Dulfy-->
-        <scene sceneID="ehR-2w-gF3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Rrx-bM-Eeh" customClass="NavigationViewController" customModule="HoloNet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dulfy" image="Dulfy" id="fpd-Qz-5ig"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQ1-Ov-bIZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="f8e-FQ-qgP">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="qXx-Eo-5Gp" kind="relationship" relationship="rootViewController" id="yyk-ja-6Jo"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XeF-cb-PPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2032" y="1411"/>
         </scene>
         <!--Forum-->
         <scene sceneID="BzD-6k-neb">
@@ -739,15 +645,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back" width="8" height="13"/>
-        <image name="Dulfy" width="35" height="35"/>
         <image name="Forum" width="25" height="25"/>
-        <image name="Forward" width="8" height="13"/>
-        <image name="Home" width="25" height="25"/>
-        <image name="Reload" width="25" height="25"/>
         <image name="Safari" width="32" height="32"/>
         <image name="Settings" width="25" height="25"/>
-        <image name="Stop" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wHH-pa-UjP"/>

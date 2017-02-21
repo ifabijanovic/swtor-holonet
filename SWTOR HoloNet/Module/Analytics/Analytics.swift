@@ -15,10 +15,14 @@ protocol Analytics {
 
 struct DefaultAnalytics: Analytics {
     func track(event: String) {
+        #if !DEBUG && !TEST
         
+        #endif
     }
     
     func track(event: String, properties: [AnyHashable : Any]) {
-        
+        #if !DEBUG && !TEST
+            
+        #endif
     }
 }

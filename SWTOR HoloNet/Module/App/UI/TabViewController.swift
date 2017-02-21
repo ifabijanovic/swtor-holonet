@@ -16,21 +16,33 @@ class TabViewController: UITabBarController {
     
     required init() {
         super.init(nibName: nil, bundle: nil)
+        self.setupTabs()
         self.registerForNotifications()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.setupTabs()
         self.registerForNotifications()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.setupTabs()
         self.registerForNotifications()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: Tabs
+    
+    private func setupTabs() {
+        // Dulfy
+        let dulfyViewController = NavigationViewController(rootViewController: DulfyViewController())
+        dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
+        self.viewControllers?.insert(dulfyViewController, at: 1)
     }
     
     // MARK: - Action dispatching

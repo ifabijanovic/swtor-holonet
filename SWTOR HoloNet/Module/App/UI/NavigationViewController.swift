@@ -27,6 +27,11 @@ class NavigationViewController: UINavigationController {
         self.registerForNotifications()
     }
     
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+        self.registerForNotifications()
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
