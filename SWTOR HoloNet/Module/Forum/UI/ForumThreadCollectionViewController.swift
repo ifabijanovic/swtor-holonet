@@ -14,34 +14,43 @@ private let PostCellIdentifier = "postCell"
 private let HeaderIdentifier = "header"
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
-    var thread: ForumThread!
+    fileprivate var thread: ForumThread
+    
+    fileprivate var postRepository: ForumPostRepository
+    fileprivate var posts: [ForumPost]
+    
     fileprivate var postsPerPage = 10
-    
-    fileprivate var postRepo: ForumPostRepository!
-    fileprivate var posts: [ForumPost]?
-    
-    fileprivate var disposeBag = DisposeBag()
     fileprivate var sizingCell: ForumPostCollectionViewCell!
+
+    fileprivate var disposeBag = DisposeBag()
     
-    @IBAction func safariTapped(_ sender: AnyObject) {
-        let url = self.postRepo.url(thread: self.thread, page: 0)
-        UIApplication.shared.openURL(url)
+    // MARK: -
+    
+    init(thread: ForumThread, postRepository: ForumPostRepository) {
+        self.thread = thread
+        self.postRepository = postRepository
+        self.posts = []
+        
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
-    // MARK: - Overrides
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        self.posts?.removeAll(keepingCapacity: false)
-        self.posts = nil
+        self.posts = []
         self.collectionView?.reloadData()
     }
+    
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.postRepo = DefaultForumPostRepository(settings: self.settings)
+        self.title = "Thread"
         
         let bundle = Bundle.main
         let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
@@ -50,20 +59,25 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.collectionView!.register(cellNib, forCellWithReuseIdentifier: PostCellIdentifier)
         self.collectionView!.register(UINib(nibName: "ForumThreadHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
         
-        if thread.isDevTracker {
+        let safariButton = UIBarButtonItem(image: UIImage(named: Constants.Images.Icons.safari), style: .plain, target: self, action: #selector(ForumThreadCollectionViewController.safariTapped))
+        self.navigationItem.rightBarButtonItem = safariButton
+        
+        if self.thread.isDevTracker {
             self.postsPerPage = 20
         }
-        
-#if !DEBUG && !TEST
-    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
-#endif
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
+    
+    // MARK: -
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -85,7 +99,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.posts?.count ?? 0
+        return self.posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,13 +124,13 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        guard let cell = collectionView.cellForItem(at: indexPath),
-            let post = self.posts?[cell.tag]
-            else { return }
-        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        let post = self.posts[cell.tag]
         let viewController = ForumPostViewController(post: post)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    // MARK: -
     
     override func applyTheme(_ theme: Theme) {
         super.applyTheme(theme)
@@ -133,7 +147,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         // Show loading indicator
         self.showLoader()
         
-        self.postRepo
+        self.postRepository
             .posts(thread: self.thread, page: 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -178,14 +192,14 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
-        self.postRepo
+        self.postRepository
             .posts(thread: self.thread, page: self.loadedPage + 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { posts in
                     // Get a difference of freshly loaded posts with the ones already loaded before
                     let postsSet = Set(posts)
-                    let loadedPosts = Set(self.posts!)
+                    let loadedPosts = Set(self.posts)
                     let newPosts = postsSet.subtracting(loadedPosts)
                     
                     if newPosts.isEmpty {
@@ -198,8 +212,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     // Append the new posts and prepare indexes for table update
                     var indexes = [IndexPath]()
                     for post in newPosts.sorted(by: { $0.id < $1.id }) {
-                        indexes.append(IndexPath(row: self.posts!.count, section: 0))
-                        self.posts!.append(post)
+                        indexes.append(IndexPath(row: self.posts.count, section: 0))
+                        self.posts.append(post)
                     }
                     
                     // Smoothly update the table by just inserting the new indexes
@@ -226,8 +240,13 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 }
 
 extension ForumThreadCollectionViewController {
+    func safariTapped() {
+        let url = self.postRepository.url(thread: self.thread, page: 0)
+        UIApplication.shared.openURL(url)
+    }
+    
     fileprivate func fill(cell: ForumPostCollectionViewCell, at indexPath: IndexPath) {
-        let post = self.posts![indexPath.row]
+        let post = self.posts[indexPath.row]
         
         // Set user avatar image if URL is defined in the model
         if let avatarUrl = post.avatarUrl, let url = URL(string: avatarUrl) {

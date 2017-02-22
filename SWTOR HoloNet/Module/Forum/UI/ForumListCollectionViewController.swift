@@ -18,7 +18,6 @@ private let CategoryCellIdentifier = "categoryCell"
 private let ThreadCellIdentifier = "threadCell"
 private let HeaderIdentifier = "header"
 private let SubCategorySegue = "categorySegue"
-private let ThreadSegue = "threadSegue"
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
     var category: ForumCategory?
@@ -145,7 +144,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let cell = collectionView.cellForItem(at: indexPath)
@@ -156,7 +155,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             // Special case for Developer Tracker, treat this sub category as a thread
             if category.id == self.settings.devTrackerId {
                 let thread = ForumThread.devTracker()
-                self.performSegue(withIdentifier: ThreadSegue, sender: thread)
+                self.navigate(thread: thread)
                 return
             }
             
@@ -164,7 +163,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         } else {
             // Thread
             let thread = self.threads![cell!.tag]
-            self.performSegue(withIdentifier: ThreadSegue, sender: thread)
+            self.navigate(thread: thread)
         }
     }
     
@@ -173,10 +172,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             let controller = segue.destination as! ForumListCollectionViewController
             let category = sender as! ForumCategory
             controller.category = category
-        } else if segue.identifier == ThreadSegue {
-            let controller = segue.destination as! ForumThreadCollectionViewController
-            let thread = sender as! ForumThread
-            controller.thread = thread
         }
     }
     
@@ -311,6 +306,12 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
 }
 
 extension ForumListCollectionViewController {
+    fileprivate func navigate(thread: ForumThread) {
+        let postRepository = DefaultForumPostRepository(settings: self.settings)
+        let viewController = ForumThreadCollectionViewController(thread: thread, postRepository: postRepository)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     fileprivate func hasCategories() -> Bool {
         if let categories = self.categories {
             return categories.count > 0

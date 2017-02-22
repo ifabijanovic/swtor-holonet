@@ -18,6 +18,8 @@ class ForumPostViewController: BaseViewController {
     @IBOutlet var devImageView: UIImageView!
     @IBOutlet var textTextView: UITextView!
     
+    // MARK: -
+    
     init(post: ForumPost) {
         self.post = post
         super.init(nibName: "ForumPostViewController", bundle: Bundle.main)
