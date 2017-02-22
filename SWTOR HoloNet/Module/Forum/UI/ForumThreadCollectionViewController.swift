@@ -11,7 +11,6 @@ import AlamofireImage
 import RxSwift
 
 private let PostCellIdentifier = "postCell"
-private let PostSegue = "postSegue"
 private let HeaderIdentifier = "header"
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
@@ -111,17 +110,12 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let cell = collectionView.cellForItem(at: indexPath)
-        self.performSegue(withIdentifier: PostSegue, sender: cell)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == PostSegue {
-            let controller = segue.destination as! ForumPostViewController
-            let cell = sender as! UICollectionViewCell
-            let post = self.posts![cell.tag]
-            controller.post = post
-        }
+        guard let cell = collectionView.cellForItem(at: indexPath),
+            let post = self.posts?[cell.tag]
+            else { return }
+        
+        let viewController = ForumPostViewController(post: post)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func applyTheme(_ theme: Theme) {

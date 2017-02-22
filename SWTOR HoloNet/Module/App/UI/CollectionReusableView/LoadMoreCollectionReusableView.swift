@@ -9,16 +9,10 @@
 import UIKit
 
 class LoadMoreCollectionReusableView: UICollectionReusableView, Themeable {
-    
-    // MARK: - Outlets
-    
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
-    // MARK: - Themeable
     
     func applyTheme(_ theme: Theme) {
         self.activityIndicator.activityIndicatorViewStyle = theme.activityIndicatorStyle
         self.activityIndicator.tintColor = theme.contentText
     }
-    
 }

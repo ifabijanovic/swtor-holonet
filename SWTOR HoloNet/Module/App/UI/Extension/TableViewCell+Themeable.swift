@@ -12,7 +12,6 @@ import UIKit
 // with the Themeable protocol, but extended methods still cannot be
 // overriden in Swift, so this is a temporary solution until later version of Swift
 extension UITableViewCell {
-
     func applyThemeEx(_ theme: Theme) {
         self.textLabel?.textColor = theme.contentTitle
         self.detailTextLabel?.textColor = theme.contentText
@@ -32,5 +31,4 @@ extension UITableViewCell {
         
         self.accessoryView!.tintColor = theme.contentTitle
     }
-
 }

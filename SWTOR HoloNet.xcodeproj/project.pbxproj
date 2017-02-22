@@ -17,6 +17,7 @@
 		81103E8F1AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E901AA2374200822A3B /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E8E1AA2374200822A3B /* PushManager.swift */; };
 		81103E9C1AA2614300822A3B /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81103E9B1AA2614300822A3B /* PushManagerTests.swift */; };
+		811E65C81E5D74E8009A9908 /* ForumPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 811E65C71E5D74E8009A9908 /* ForumPostViewController.xib */; };
 		8120F26419FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		8120F26519FFB01A00C02DF8 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120F26319FFB01A00C02DF8 /* Entity.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -211,6 +212,7 @@
 		810D2E031A44457800FF0FEF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = Module/Settings/UI/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		81103E8E1AA2374200822A3B /* PushManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManager.swift; path = Module/Push/PushManager.swift; sourceTree = "<group>"; };
 		81103E9B1AA2614300822A3B /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushManagerTests.swift; path = Module/Push/PushManagerTests.swift; sourceTree = "<group>"; };
+		811E65C71E5D74E8009A9908 /* ForumPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumPostViewController.xib; path = Module/Forum/UI/ForumPostViewController.xib; sourceTree = "<group>"; };
 		8120F26319FFB01A00C02DF8 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = Module/App/Model/Entity.swift; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8125C48E1AA9DB6C00046197 /* ActionPerformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionPerformer.swift; path = Module/App/Action/ActionPerformer.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				81C070B21ABB016800B70A06 /* ForumBaseCollectionViewController.swift */,
 				81C070AF1ABB010E00B70A06 /* ForumListCollectionViewController.swift */,
 				81EE90901A0779DC00A88F48 /* ForumPostViewController.swift */,
+				811E65C71E5D74E8009A9908 /* ForumPostViewController.xib */,
 				8146BF0C1ABC9EE3002DB6D3 /* ForumThreadCollectionViewController.swift */,
 			);
 			name = UI;
@@ -929,6 +932,7 @@
 				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
 				81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */,
 				81846CA41ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */,
+				811E65C81E5D74E8009A9908 /* ForumPostViewController.xib in Resources */,
 				817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */,
 				8146BF071ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.xib in Resources */,
 				81FDCC901A6EC37900E2C44A /* PrivacyPolicy.txt in Resources */,

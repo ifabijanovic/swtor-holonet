@@ -10,16 +10,30 @@ import UIKit
 import AlamofireImage
 
 class ForumPostViewController: BaseViewController {
-    var post: ForumPost!
+    fileprivate let post: ForumPost
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var devImageView: UIImageView!
     @IBOutlet var textTextView: UITextView!
+    
+    init(post: ForumPost) {
+        self.post = post
+        super.init(nibName: "ForumPostViewController", bundle: Bundle.main)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Post"
+        self.edgesForExtendedLayout = []
         
         // Set user avatar image if URL is defined in the model
         if let avatarUrl = self.post.avatarUrl, let url = URL(string: avatarUrl) {
@@ -42,10 +56,11 @@ class ForumPostViewController: BaseViewController {
         self.textTextView.text = post.text
         
         self.applyTheme(self.theme)
-        
-#if !DEBUG && !TEST
-    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
-#endif
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
     }
     
     override func viewDidLayoutSubviews() {
@@ -63,5 +78,6 @@ class ForumPostViewController: BaseViewController {
         self.usernameLabel.textColor = theme.contentText
         self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
         self.textTextView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
+        self.textTextView.indicatorStyle = theme.scrollViewIndicatorStyle
     }
 }
