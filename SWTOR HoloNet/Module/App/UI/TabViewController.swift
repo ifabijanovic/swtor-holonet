@@ -42,7 +42,12 @@ class TabViewController: UITabBarController {
         // Dulfy
         let dulfyViewController = NavigationViewController(rootViewController: DulfyViewController())
         dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
-        self.viewControllers?.insert(dulfyViewController, at: 1)
+        self.viewControllers?.append(dulfyViewController)
+        
+        // Settings
+        let settingsViewController = NavigationViewController(rootViewController: SettingsTableViewController())
+        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
+        self.viewControllers?.append(settingsViewController)
     }
     
     // MARK: - Action dispatching

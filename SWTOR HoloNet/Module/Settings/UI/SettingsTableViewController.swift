@@ -10,37 +10,99 @@ import UIKit
 import MessageUI
 
 class SettingsTableViewController: BaseTableViewController {
+    override init() {
+        super.init(style: .grouped)
+    }
     
-    // MARK: - Outlets
-    
-    @IBOutlet var contactCell: UITableViewCell!
-    @IBOutlet var reportBugCell: UITableViewCell!
-    @IBOutlet var notificationSettingsCell: UITableViewCell!
-    
-    @IBOutlet var notificationSettingsStatusLabel: UILabel!
-    @IBOutlet var themeStatusLabel: UILabel!
-    @IBOutlet var textSizeStatusLabel: UILabel!
-    
-    // MARK: - Lifecycle
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.applyTheme(self.theme)
+        self.tableView.separatorStyle = .none
         
-#if !DEBUG && !TEST
-        self.analytics.track(event: Constants.Analytics.Event.settings)
-#endif
+        self.applyTheme(self.theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.notificationSettingsStatusLabel.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
-        self.themeStatusLabel.text = String(describing: self.theme.type)
-        self.textSizeStatusLabel.text = String(describing: self.theme.textSize)
+        self.analytics.track(event: Constants.Analytics.Event.settings)
+        
+        if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
+            cell.detailTextLabel?.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
+        }
     }
     
-    // MARK: - Table view delegate
+    // MARK: -
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Row.count[section] ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case Section.messages: return "MESSAGES"
+        case Section.display: return "DISPLAY"
+        case Section.feedback: return "FEEDBACK"
+        case Section.legal: return "LEGAL"
+        default: return nil
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var style = UITableViewCellStyle.default
+        let text: String
+        var detailText: String? = nil
+        
+        switch (indexPath.section, indexPath.row) {
+        case (Section.messages, Row.notifications):
+            style = .value1
+            text = "Notifications"
+            detailText = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
+        case (Section.display, Row.theme):
+            style = .value1
+            text = "Theme"
+            detailText = String(describing: self.theme.type)
+        case (Section.display, Row.textSize):
+            style = .value1
+            text = "Text size"
+            detailText = String(describing: self.theme.textSize)
+        case (Section.feedback, Row.contact):
+            text = "Contact"
+        case (Section.feedback, Row.reportBug):
+            text = "Report bug"
+        case (Section.legal, Row.disclaimer):
+            text = "Disclaimer"
+        case (Section.legal, Row.privacyPolicy):
+            text = "Privacy policy"
+        case (Section.legal, Row.license):
+            text = "License"
+        default:
+            text = ""
+        }
+        
+        let cell = UITableViewCell(style: style, reuseIdentifier: nil)
+        cell.textLabel?.text = text
+        cell.detailTextLabel?.text = detailText
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        headerView.contentView.backgroundColor = theme.contentBackground
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.applyThemeEx(self.theme)
+        cell.setDisclosureIndicator(theme)
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -68,7 +130,14 @@ class SettingsTableViewController: BaseTableViewController {
     
     // MARK: -
     
-    private func contact() {
+    override func applyTheme(_ theme: Theme) {
+        super.applyTheme(theme)
+        self.view.backgroundColor = theme.contentBackground
+    }
+}
+
+extension SettingsTableViewController {
+    fileprivate func contact() {
         if !MFMailComposeViewController.canSendMail() {
             self.emailNotAvailable()
             return
@@ -81,7 +150,7 @@ class SettingsTableViewController: BaseTableViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    private func reportBug() {
+    fileprivate func reportBug() {
         if !MFMailComposeViewController.canSendMail() {
             self.emailNotAvailable()
             return
@@ -95,7 +164,7 @@ class SettingsTableViewController: BaseTableViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    private func emailNotAvailable() {
+    fileprivate func emailNotAvailable() {
         let alertController = DefaultUIAlertFactory().alert(title: "Error", message: "It seems email is not configured on this device.", actions: [
             (title: "OK", style: .default, handler: nil)
             ]
@@ -103,32 +172,11 @@ class SettingsTableViewController: BaseTableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    private func legal(title: String, file: String) {
+    fileprivate func legal(title: String, file: String) {
         let viewController = TextViewController()
         viewController.title = title
         viewController.file = file
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    // MARK: -
-    
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
-        
-        self.view.backgroundColor = theme.contentBackground
-        
-        for section in 0..<self.tableView.numberOfSections {
-            if let section = self.tableView.headerView(forSection: section) {
-                section.contentView.backgroundColor = theme.contentBackground
-            }
-            
-            for row in 0..<self.tableView.numberOfRows(inSection: section) {
-                if let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: section)) {
-                    cell.applyThemeEx(theme)
-                    cell.setDisclosureIndicator(theme)
-                }
-            }
-        }
     }
 }
 
@@ -139,6 +187,8 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
 }
 
 fileprivate struct Section {
+    static let count = 4
+    
     static let messages = 0
     static let display = 1
     static let feedback = 2
@@ -146,6 +196,13 @@ fileprivate struct Section {
 }
 
 fileprivate struct Row {
+    static let count: [Int: Int] = [
+        Section.messages: 1,
+        Section.display: 2,
+        Section.feedback: 2,
+        Section.legal: 3
+    ]
+    
     static let notifications = 0
     static let theme = 0
     static let textSize = 1
