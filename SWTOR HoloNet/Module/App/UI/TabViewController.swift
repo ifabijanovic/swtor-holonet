@@ -39,15 +39,20 @@ class TabViewController: UITabBarController {
     // MARK: Tabs
     
     private func setupTabs() {
+        // Forum
+        let forumCategoryRepository = DefaultForumCategoryRepository(settings: InstanceHolder.sharedInstance.settings)
+        let forumViewController = NavigationViewController(rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository))
+        forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
+        
         // Dulfy
         let dulfyViewController = NavigationViewController(rootViewController: DulfyViewController())
         dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
-        self.viewControllers?.append(dulfyViewController)
         
         // Settings
         let settingsViewController = NavigationViewController(rootViewController: SettingsTableViewController())
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
-        self.viewControllers?.append(settingsViewController)
+        
+        self.viewControllers = [forumViewController, dulfyViewController, settingsViewController]
     }
     
     // MARK: - Action dispatching

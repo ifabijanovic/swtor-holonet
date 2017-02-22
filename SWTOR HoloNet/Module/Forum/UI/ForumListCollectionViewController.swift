@@ -17,68 +17,87 @@ private let ThreadsSectionTitle = "Threads"
 private let CategoryCellIdentifier = "categoryCell"
 private let ThreadCellIdentifier = "threadCell"
 private let HeaderIdentifier = "header"
-private let SubCategorySegue = "categorySegue"
 
 class ForumListCollectionViewController: ForumBaseCollectionViewController {
-    var category: ForumCategory?
+    fileprivate let category: ForumCategory?
+    fileprivate let categoryRepository: ForumCategoryRepository
+    fileprivate let threadRepository: ForumThreadRepository?
     
-    fileprivate var categoryRepo: ForumCategoryRepository!
-    fileprivate var threadRepo: ForumThreadRepository?
-    
-    fileprivate var categories: [ForumCategory]?
-    fileprivate var threads: [ForumThread]?
+    fileprivate var categories: [ForumCategory] = []
+    fileprivate var threads: [ForumThread] = []
     
     fileprivate var disposeBag = DisposeBag()
     
-    // MARK: - Overrides
+    // MARK: -
+    
+    init(categoryRepository: ForumCategoryRepository) {
+        self.category = nil
+        self.categoryRepository = categoryRepository
+        self.threadRepository = nil
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        super.init(collectionViewLayout: layout)
+    }
+    
+    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository) {
+        self.category = category
+        self.categoryRepository = categoryRepository
+        self.threadRepository = threadRepository
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        self.categories?.removeAll(keepingCapacity: false)
-        self.categories = nil
-        self.threads?.removeAll(keepingCapacity: false)
-        self.threads = nil
+        self.categories = []
+        self.threads = []
         self.collectionView?.reloadData()
     }
+    
+    // MARK: -
 
     override func viewDidLoad() {        
         super.viewDidLoad()
-
-        self.categoryRepo = DefaultForumCategoryRepository(settings: self.settings)
-        if self.category != nil {
-            // Threads exist only inside categories, not in forum root
-            self.threadRepo = DefaultForumThreadRepository(settings: self.settings)
-            self.navigationItem.title = self.category!.title
-        }
+        
+        self.title = self.category?.title ?? "Forum"
         
         let bundle = Bundle.main
         self.collectionView!.register(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
         self.collectionView!.register(UINib(nibName: "ForumThreadCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: ThreadCellIdentifier)
         self.collectionView!.register(UINib(nibName: "TableHeaderCollectionReusableView", bundle: bundle), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderIdentifier)
-        
-#if !DEBUG && !TEST
-    self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
-#endif
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
+    
+    // MARK: -
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if self.threadRepo != nil {
-            return 2
-        }
-        return 1
+        return self.category != nil ? 2 : 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == CategorySection {
-            return self.categories?.count ?? 0
+            return self.categories.count
         } else if section == ThreadSection {
-            return self.threads?.count ?? 0
+            return self.threads.count
         }
         return 0
     }
@@ -102,15 +121,14 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == CategorySection && (self.categories == nil || self.categories!.isEmpty) {
+        if section == CategorySection && self.categories.isEmpty {
             return CGSize.zero
         }
-        
         return CGSize(width: 0, height: 22.0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == CategorySection && self.threadRepo != nil { return CGSize.zero }
+        if section == CategorySection && self.category != nil { return CGSize.zero }
         return super.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForFooterInSection: section)
     }
 
@@ -150,28 +168,19 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let cell = collectionView.cellForItem(at: indexPath)
         if indexPath.section == CategorySection {
             // Category
-            let category = self.categories![cell!.tag]
+            let category = self.categories[cell!.tag]
             
             // Special case for Developer Tracker, treat this sub category as a thread
             if category.id == self.settings.devTrackerId {
                 let thread = ForumThread.devTracker()
                 self.navigate(thread: thread)
-                return
+            } else {
+                self.navigate(category: category)
             }
-            
-            self.performSegue(withIdentifier: SubCategorySegue, sender: category)
         } else {
             // Thread
-            let thread = self.threads![cell!.tag]
+            let thread = self.threads[cell!.tag]
             self.navigate(thread: thread)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SubCategorySegue {
-            let controller = segue.destination as! ForumListCollectionViewController
-            let category = sender as! ForumCategory
-            controller.category = category
         }
     }
     
@@ -195,11 +204,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         
         if let category = self.category {
             // Load subcategories and threads for the current category
-            categories = self.categoryRepo.categories(parent: category)
-            threads = self.threadRepo!.threads(category: category, page: 1)
+            categories = self.categoryRepository.categories(parent: category)
+            threads = self.threadRepository!.threads(category: category, page: 1)
         } else {
             // Forum root, only load categories
-            categories = self.categoryRepo.categories(language: self.settings.forumLanguage)
+            categories = self.categoryRepository.categories(language: self.settings.forumLanguage)
             threads = Observable.just([])
         }
         
@@ -259,13 +268,13 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
-        self.threadRepo!
+        self.threadRepository!
             .threads(category: category, page: self.loadedPage + 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { threads in
                     let threadsSet = Set(threads)
-                    let loadedThreads = Set(self.threads!)
+                    let loadedThreads = Set(self.threads)
                     let newThreads = threadsSet.subtracting(loadedThreads)
                     
                     if newThreads.isEmpty {
@@ -278,8 +287,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                     // Append the new threads and prepare indexes for table update
                     var indexes = [IndexPath]()
                     for thread in newThreads.sorted(by: { $0.loadIndex < $1.loadIndex }) {
-                        indexes.append(IndexPath(row: self.threads!.count, section: ThreadSection))
-                        self.threads!.append(thread)
+                        indexes.append(IndexPath(row: self.threads.count, section: ThreadSection))
+                        self.threads.append(thread)
                     }
                     
                     // Smoothly update the table by just inserting the new indexes
@@ -306,6 +315,13 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
 }
 
 extension ForumListCollectionViewController {
+    fileprivate func navigate(category: ForumCategory) {
+        let categoryRepository = DefaultForumCategoryRepository(settings: self.settings)
+        let threadRepository = DefaultForumThreadRepository(settings: self.settings)
+        let viewController = ForumListCollectionViewController(category: category, categoryRepository: categoryRepository, threadRepository: threadRepository)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     fileprivate func navigate(thread: ForumThread) {
         let postRepository = DefaultForumPostRepository(settings: self.settings)
         let viewController = ForumThreadCollectionViewController(thread: thread, postRepository: postRepository)
@@ -313,21 +329,15 @@ extension ForumListCollectionViewController {
     }
     
     fileprivate func hasCategories() -> Bool {
-        if let categories = self.categories {
-            return categories.count > 0
-        }
-        return false
+        return categories.count > 0
     }
     
     fileprivate func hasThreads() -> Bool {
-        if let threads = self.threads {
-            return threads.count > 0
-        }
-        return false
+        return threads.count > 0
     }
     
     fileprivate func setup(cell: ForumCategoryCollectionViewCell, indexPath: IndexPath) {
-        let category = self.categories![indexPath.row]
+        let category = self.categories[indexPath.row]
         
         // Set category icon if URL is defined in the model
         if let iconUrl = category.iconUrl, let url = URL(string: iconUrl) {
@@ -343,7 +353,7 @@ extension ForumListCollectionViewController {
     }
     
     fileprivate func setup(cell: ForumThreadCollectionViewCell, indexPath: IndexPath) {
-        let thread = self.threads![indexPath.row]
+        let thread = self.threads[indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
         if thread.hasBiowareReply, let url = URL(string: self.settings.devTrackerIconUrl) {

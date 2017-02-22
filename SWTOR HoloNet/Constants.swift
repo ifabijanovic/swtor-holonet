@@ -57,6 +57,7 @@ struct Constants {
         
         struct Tabs {
             static let dulfy = "Dulfy"
+            static let forum = "Forum"
             static let settings = "Settings"
         }
     }

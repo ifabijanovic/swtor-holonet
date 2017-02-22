@@ -14,10 +14,9 @@ private let PostCellIdentifier = "postCell"
 private let HeaderIdentifier = "header"
 
 class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
-    fileprivate var thread: ForumThread
-    
-    fileprivate var postRepository: ForumPostRepository
-    fileprivate var posts: [ForumPost]
+    fileprivate let thread: ForumThread
+    fileprivate let postRepository: ForumPostRepository
+    fileprivate var posts: [ForumPost] = []
     
     fileprivate var postsPerPage = 10
     fileprivate var sizingCell: ForumPostCollectionViewCell!
@@ -29,7 +28,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     init(thread: ForumThread, postRepository: ForumPostRepository) {
         self.thread = thread
         self.postRepository = postRepository
-        self.posts = []
         
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
