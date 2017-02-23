@@ -84,6 +84,7 @@
 		8150076D1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076C1A1C95FF00C897F1 /* forum-post-single-missing-optionals.html */; };
 		8150076F1A1C967B00C897F1 /* forum-post-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8150076E1A1C967B00C897F1 /* forum-post-multiple-valid.html */; };
 		815007711A1C989100C897F1 /* forum-post-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 815007701A1C989100C897F1 /* forum-post-multiple-invalid-id.html */; };
+		815436781E5EC696007D56A1 /* ForumPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 811E65C71E5D74E8009A9908 /* ForumPostViewController.xib */; };
 		8155492E1AAEEE9F00D8176D /* TabViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155492D1AAEEE9F00D8176D /* TabViewControllerTests.swift */; };
 		8155EC801A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC7F1A1B71C600FA30D1 /* ForumThreadRepositoryTests.swift */; };
 		8155EC851A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155EC841A1B723A00FA30D1 /* ForumRepositoryTestsBase.swift */; };
@@ -132,7 +133,6 @@
 		81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */; };
 		81AB248219EFBD7700293D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB248119EFBD7700293D26 /* AppDelegate.swift */; };
-		81AB248719EFBD7700293D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248519EFBD7700293D26 /* Main.storyboard */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81AB24A819EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
 		81AB24A919EFC21100293D26 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB24A719EFC21100293D26 /* ForumCategory.swift */; };
@@ -295,7 +295,6 @@
 		81AB247C19EFBD7700293D26 /* HoloNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoloNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB248019EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81AB248119EFBD7700293D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81AB248619EFBD7700293D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81AB248819EFBD7700293D26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -682,7 +681,6 @@
 				81FDCC881A6EC31500E2C44A /* Resource */,
 				81AB248119EFBD7700293D26 /* AppDelegate.swift */,
 				810077811E57776700F6ACDA /* Constants.swift */,
-				81AB248519EFBD7700293D26 /* Main.storyboard */,
 				817A216A19F6C4480093ECE3 /* Settings.swift */,
 				81AA50081A42C7EF009ECE33 /* InstanceHolder.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
@@ -929,7 +927,6 @@
 			files = (
 				81916A7C1B7171B00001B3F2 /* LightTheme.plist in Resources */,
 				8146BF1A1ABCACAD002DB6D3 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
-				81AB248719EFBD7700293D26 /* Main.storyboard in Resources */,
 				81FDCC8C1A6EC37900E2C44A /* Disclaimer.txt in Resources */,
 				81846CA41ABC45E500982C2C /* LoadMoreCollectionReusableView.xib in Resources */,
 				811E65C81E5D74E8009A9908 /* ForumPostViewController.xib in Resources */,
@@ -959,6 +956,7 @@
 				8146BF081ABC9B9E002DB6D3 /* ForumPostCollectionViewCell.xib in Resources */,
 				81FDCC8F1A6EC37900E2C44A /* License.txt in Resources */,
 				814C9CC41A1B92DB00FE1C94 /* forum-post-single-valid.html in Resources */,
+				815436781E5EC696007D56A1 /* ForumPostViewController.xib in Resources */,
 				8150075F1A1C93D900C897F1 /* forum-post-single-invalid-username.html in Resources */,
 				8199010D1B57C3DA0077A2BF /* DarkTheme.plist in Resources */,
 				814C9CB31A1B8BC900FE1C94 /* forum-thread-multiple-invalid-id.html in Resources */,
@@ -1158,17 +1156,6 @@
 			targetProxy = 81AB249219EFBD7700293D26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		81AB248519EFBD7700293D26 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				81AB248619EFBD7700293D26 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		81AB249919EFBD7700293D26 /* Debug */ = {

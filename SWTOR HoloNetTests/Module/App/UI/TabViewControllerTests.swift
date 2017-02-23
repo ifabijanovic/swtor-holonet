@@ -42,8 +42,11 @@ class TabViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
+        let bundle = Bundle(for: TabViewControllerTests.self)
+        let settings = Settings(bundle: bundle)
 
-        self.controller = TestTabViewController()
+        self.controller = TestTabViewController(analytics: DefaultAnalytics(), settings: settings)
         let viewControllers = [UIViewController(), UIViewController(), UIViewController()]
         self.controller.setViewControllers(viewControllers, animated: false)
     }

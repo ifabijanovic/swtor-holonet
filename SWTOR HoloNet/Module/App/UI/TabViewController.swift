@@ -9,38 +9,35 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-
-    private let analytics: Analytics = DefaultAnalytics()
+    private let analytics: Analytics
     
-    // MARK: - Init
-    
-    required init() {
+    required init(analytics: Analytics, settings: Settings) {
+        self.analytics = analytics
+        
         super.init(nibName: nil, bundle: nil)
-        self.setupTabs()
+        
+        self.setupTabs(settings: settings)
         self.registerForNotifications()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setupTabs()
-        self.registerForNotifications()
-    }
+    @available(*, unavailable)
+    init() { fatalError() }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.setupTabs()
-        self.registerForNotifications()
-    }
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    @available(*, unavailable)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) { fatalError() }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: Tabs
+    // MARK: -
     
-    private func setupTabs() {
+    private func setupTabs(settings: Settings) {
         // Forum
-        let forumCategoryRepository = DefaultForumCategoryRepository(settings: InstanceHolder.sharedInstance.settings)
+        let forumCategoryRepository = DefaultForumCategoryRepository(settings: settings)
         let forumViewController = NavigationViewController(rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository))
         forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
         
@@ -55,7 +52,7 @@ class TabViewController: UITabBarController {
         self.viewControllers = [forumViewController, dulfyViewController, settingsViewController]
     }
     
-    // MARK: - Action dispatching
+    // MARK: -
     
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.switchToTab(notification:)), name: NSNotification.Name(Constants.Notifications.switchToTab), object: nil)
@@ -93,12 +90,9 @@ class TabViewController: UITabBarController {
         }
     }
     
-    // MARK: - UITabBarDelegate
+    // MARK: -
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-#if !DEBUG && !TEST
-    self.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
-#endif
+        self.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
     }
-
 }

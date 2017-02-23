@@ -9,9 +9,6 @@
 import UIKit
 
 class NavigationViewController: UINavigationController {
-
-    // MARK: - Init
-    
     required init() {
         super.init(nibName: nil, bundle: nil)
         self.registerForNotifications()
@@ -36,6 +33,8 @@ class NavigationViewController: UINavigationController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: -
+    
     override var childViewControllerForStatusBarHidden: UIViewController? {
         return self.topViewController
     }
@@ -44,7 +43,7 @@ class NavigationViewController: UINavigationController {
         return self.topViewController
     }
     
-    // MARK: - Action dispatching
+    // MARK: -
     
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(NavigationViewController.themeChanged(notification:)), name: NSNotification.Name(Constants.Notifications.themeChanged), object: nil)
@@ -57,5 +56,4 @@ class NavigationViewController: UINavigationController {
             theme.apply(navigationBar: self.navigationBar, animate: animate)
         }
     }
-
 }
