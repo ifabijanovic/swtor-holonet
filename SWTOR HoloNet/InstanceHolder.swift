@@ -23,8 +23,10 @@ class InstanceHolder {
     static let sharedInstance = InstanceHolder()
     
     init() {
-        self.settings = Settings()
-        self.theme = Theme()
+        let bundle = Bundle(for: InstanceHolder.self)
+        
+        self.settings = Settings(bundle: bundle)
+        self.theme = Theme(bundle: bundle)
         self.alertFactory = DefaultUIAlertFactory()
         let actionFactory = ActionFactory(alertFactory: self.alertFactory)
         self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
