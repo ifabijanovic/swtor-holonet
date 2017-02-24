@@ -9,9 +9,6 @@
 import UIKit
 
 class Settings {
-    
-    // MARK: - Properties
-    
     let appEmail: String
     
     let forumDisplayUrl: String
@@ -30,33 +27,48 @@ class Settings {
     
     var forumLanguage: ForumLanguage
     
-    // MARK: - Init
-    
     convenience init() {
         self.init(bundle: Bundle.main)
     }
     
     init(bundle: Bundle) {
-        let path = bundle.path(forResource: "Settings", ofType: "plist")!
-        let settings = NSDictionary(contentsOfFile: path)
+        let url = bundle.url(forResource: "Settings", withExtension: "plist")!
+        let data = try! Data(contentsOf: url)
+        let plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! [AnyHashable: Any]
         
-        self.appEmail = settings?.object(forKey: "App Email") as? String ?? ""
+        self.appEmail = plist[Keys.appEmail] as? String ?? ""
         
-        self.forumDisplayUrl = settings?.object(forKey: "Forum Display URL") as? String ?? ""
-        self.threadDisplayUrl = settings?.object(forKey: "Thread Display URL") as? String ?? ""
-        self.devTrackerUrl = settings?.object(forKey: "Developer Tracker URL") as? String ?? ""
-        self.devTrackerId = settings?.object(forKey: "Developer Tracker ID") as? Int ?? 0
-        self.categoryQueryParam = settings?.object(forKey: "Category Query Param") as? String ?? ""
-        self.threadQueryParam = settings?.object(forKey: "Thread Query Param") as? String ?? ""
-        self.postQueryParam = settings?.object(forKey: "Post Query Param") as? String ?? ""
-        self.pageQueryParam = settings?.object(forKey: "Paging Query Param") as? String ?? ""
-        self.devTrackerIconUrl = settings?.object(forKey: "Dev Tracker Icon URL") as? String ?? ""
-        self.devAvatarUrl = settings?.object(forKey: "Dev Avatar URL") as? String ?? ""
-        self.stickyIconUrl = settings?.object(forKey: "Sticky Icon URL") as? String ?? ""
-        self.dulfyNetUrl = settings?.object(forKey: "Dulfy.net URL") as? String ?? ""
-        self.requestTimeout = settings?.object(forKey: "Request Timeout") as? TimeInterval ?? 60.0
+        self.forumDisplayUrl = plist[Keys.forumDisplayUrl] as? String ?? ""
+        self.threadDisplayUrl = plist[Keys.threadDisplayUrl] as? String ?? ""
+        self.devTrackerUrl = plist[Keys.developerTrackerUrl] as? String ?? ""
+        self.devTrackerId = plist[Keys.developerTrackerId] as? Int ?? 0
+        self.categoryQueryParam = plist[Keys.categoryQueryParam] as? String ?? ""
+        self.threadQueryParam = plist[Keys.threadQueryParam] as? String ?? ""
+        self.postQueryParam = plist[Keys.postQueryParam] as? String ?? ""
+        self.pageQueryParam = plist[Keys.pagingQueryParam] as? String ?? ""
+        self.devTrackerIconUrl = plist[Keys.devTrackerIconUrl] as? String ?? ""
+        self.devAvatarUrl = plist[Keys.devAvatarUrl] as? String ?? ""
+        self.stickyIconUrl = plist[Keys.stickyIconUrl] as? String ?? ""
+        self.dulfyNetUrl = plist[Keys.dulfyNetUrl] as? String ?? ""
+        self.requestTimeout = plist[Keys.requestTimeout] as? TimeInterval ?? 60.0
         
-        self.forumLanguage = ForumLanguage.english
+        self.forumLanguage = .english
     }
-    
+}
+
+fileprivate struct Keys {
+    static let appEmail = "App Email"
+    static let forumDisplayUrl = "Forum Display URL"
+    static let threadDisplayUrl = "Thread Display URL"
+    static let developerTrackerUrl = "Developer Tracker URL"
+    static let developerTrackerId = "Developer Tracker ID"
+    static let categoryQueryParam = "Category Query Param"
+    static let threadQueryParam = "Thread Query Param"
+    static let postQueryParam = "Post Query Param"
+    static let pagingQueryParam = "Paging Query Param"
+    static let devTrackerIconUrl = "Dev Tracker Icon URL"
+    static let devAvatarUrl = "Dev Avatar URL"
+    static let stickyIconUrl = "Sticky Icon URL"
+    static let dulfyNetUrl = "Dulfy.net URL"
+    static let requestTimeout = "Request Timeout"
 }
