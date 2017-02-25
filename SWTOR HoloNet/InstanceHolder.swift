@@ -29,7 +29,7 @@ class InstanceHolder {
         self.theme = Theme(bundle: bundle)
         self.alertFactory = DefaultUIAlertFactory()
         let actionFactory = ActionFactory(alertFactory: self.alertFactory)
-        self.pushManager = PushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
+        self.pushManager = DefaultPushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
         self.analytics = DefaultAnalytics()
     }
     

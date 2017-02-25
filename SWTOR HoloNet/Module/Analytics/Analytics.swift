@@ -9,11 +9,18 @@
 import Foundation
 
 protocol Analytics {
+    func appOpened()
     func track(event: String)
     func track(event: String, properties: [AnyHashable: Any])
 }
 
 struct DefaultAnalytics: Analytics {
+    func appOpened() {
+        #if !DEBUG && !TEST
+            
+        #endif
+    }
+    
     func track(event: String) {
         #if !DEBUG && !TEST
         

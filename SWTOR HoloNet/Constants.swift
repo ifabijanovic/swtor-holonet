@@ -74,4 +74,19 @@ struct Constants {
             static let theme = "theme"
         }
     }
+    
+    struct Push {
+        struct UserDefaults {
+            static let didCancelPushAccess = "pushDidCancelPushAccess"
+            static let didApprovePushAccess = "pushDidApprovePushAccess"
+            static let lastPushAccessRequestTimestamp = "pushLastPushAccessRequestTimestamp"
+        }
+        
+        struct UI {
+            static let requestAccessTitle = "Notifications"
+            static let requestAccessMessage = "Hey, would you like to receive notifications from HoloNet and Dulfy?"
+        }
+        
+        static let accessRequestRetryInterval: TimeInterval = 5*24*60*60 // 5 days
+    }
 }

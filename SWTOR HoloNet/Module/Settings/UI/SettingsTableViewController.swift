@@ -31,7 +31,7 @@ class SettingsTableViewController: BaseTableViewController {
         self.analytics.track(event: Constants.Analytics.Event.settings)
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
-            cell.detailTextLabel?.text = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
+            cell.detailTextLabel?.text = InstanceHolder.sharedInstance.pushManager.isEnabled ? "Enabled" : "Disabled"
         }
     }
     
@@ -64,7 +64,7 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.messages, Row.notifications):
             style = .value1
             text = "Notifications"
-            detailText = InstanceHolder.sharedInstance.pushManager.isPushEnabled ? "Enabled" : "Disabled"
+            detailText = InstanceHolder.sharedInstance.pushManager.isEnabled ? "Enabled" : "Disabled"
         case (Section.display, Row.theme):
             style = .value1
             text = "Theme"

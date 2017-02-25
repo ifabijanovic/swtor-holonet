@@ -22,25 +22,25 @@ class PushManagerTests: XCTestCase {
 extension PushManagerTests {
     fileprivate func set(didCancel value: Bool?) {
         if let value = value {
-            UserDefaults.standard.set(value, forKey: keyDidCancelPushAccess)
+            UserDefaults.standard.set(value, forKey: Constants.Push.UserDefaults.didCancelPushAccess)
         } else {
-            UserDefaults.standard.removeObject(forKey: keyDidCancelPushAccess)
+            UserDefaults.standard.removeObject(forKey: Constants.Push.UserDefaults.didCancelPushAccess)
         }
     }
     
     fileprivate func set(didApprove value: Bool?) {
         if let value = value {
-            UserDefaults.standard.set(value, forKey: keyDidApprovePushAccess)
+            UserDefaults.standard.set(value, forKey: Constants.Push.UserDefaults.didApprovePushAccess)
         } else {
-            UserDefaults.standard.removeObject(forKey: keyDidApprovePushAccess)
+            UserDefaults.standard.removeObject(forKey: Constants.Push.UserDefaults.didApprovePushAccess)
         }
     }
     
     fileprivate func set(timestamp date: Date?) {
         if let date = date {
-            UserDefaults.standard.set(date, forKey: keyLastPushAccessRequestTimestamp)
+            UserDefaults.standard.set(date, forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp)
         } else {
-            UserDefaults.standard.removeObject(forKey: keyLastPushAccessRequestTimestamp)
+            UserDefaults.standard.removeObject(forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp)
         }
     }
 }
@@ -49,21 +49,21 @@ extension PushManagerTests {
     func testShouldRequestPushAccess_FirstStart() {
         let manager = PushManagerMock()
         
-        XCTAssertTrue(manager.shouldRequestPushAccess(), "")
+        XCTAssertTrue(manager.shouldRequestAccess, "")
     }
 
     func testShouldRequestPushAccess_PushEnabled() {
         let manager = PushManagerMock()
-        manager.isPushEnabledValue = true
+        manager.isEnabledValue = true
         
-        XCTAssertFalse(manager.shouldRequestPushAccess(), "")
+        XCTAssertFalse(manager.shouldRequestAccess, "")
     }
     
     func testShouldRequestPushAccess_ApprovedButPushDisabled() {
         self.set(didApprove: true)
         let manager = PushManagerMock()
         
-        XCTAssertFalse(manager.shouldRequestPushAccess(), "")
+        XCTAssertFalse(manager.shouldRequestAccess, "")
     }
     
     func testShouldRequestPushAccess_CanceledRecently() {
@@ -71,15 +71,15 @@ extension PushManagerTests {
         self.set(timestamp: Date())
         let manager = PushManagerMock()
         
-        XCTAssertFalse(manager.shouldRequestPushAccess(), "")
+        XCTAssertFalse(manager.shouldRequestAccess, "")
     }
     
     func testShouldRequestPushAccess_CanceledSomeTimeAgo() {
         self.set(didCancel: true)
-        self.set(timestamp: Date(timeIntervalSinceNow: -pushAccessRequestRetryInterval))
+        self.set(timestamp: Date(timeIntervalSinceNow: -Constants.Push.accessRequestRetryInterval))
         let manager = PushManagerMock()
         
-        XCTAssertTrue(manager.shouldRequestPushAccess(), "")
+        XCTAssertTrue(manager.shouldRequestAccess, "")
     }
     
     // MARK: - requestPushAccess
@@ -89,14 +89,14 @@ extension PushManagerTests {
         let manager = PushManagerMock(alertFactory: alertFactory)
         let presenter = UIViewController()
         
-        manager.requestPushAccess(viewController: presenter)
+        manager.requestAccess(presenter: presenter)
         
         XCTAssertNotNil(alertFactory.lastAlert, "")
         alertFactory.tapCancel()
         
         XCTAssertFalse(manager.didRegisterForPush, "")
-        XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidCancelPushAccess), "")
-        let date = UserDefaults.standard.object(forKey: keyLastPushAccessRequestTimestamp) as? Date
+        XCTAssertTrue(UserDefaults.standard.bool(forKey: Constants.Push.UserDefaults.didCancelPushAccess), "")
+        let date = UserDefaults.standard.object(forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp) as? Date
         XCTAssertNotNil(date, "")
         let diff = NSDate().timeIntervalSince(date!)
         XCTAssertLessThanOrEqual(diff, 3, "")
@@ -107,13 +107,13 @@ extension PushManagerTests {
         let manager = PushManagerMock(alertFactory: alertFactory)
         let presenter = UIViewController()
         
-        manager.requestPushAccess(viewController: presenter)
+        manager.requestAccess(presenter: presenter)
         
         XCTAssertNotNil(alertFactory.lastAlert, "")
         alertFactory.tapDefault()
         
         XCTAssertTrue(manager.didRegisterForPush, "")
-        XCTAssertTrue(UserDefaults.standard.bool(forKey: keyDidApprovePushAccess), "")
+        XCTAssertTrue(UserDefaults.standard.bool(forKey: Constants.Push.UserDefaults.didApprovePushAccess), "")
     }
     
     // MARK: - handleRemoteNotification
@@ -204,16 +204,12 @@ fileprivate class TestActionFactory: ActionFactory {
     }
 }
 
-fileprivate class PushManagerMock: PushManager {
+fileprivate class PushManagerMock: DefaultPushManager {
     var didRegisterForPush = false
     var didResetBadge = false
     
-    var isPushEnabledValue = false
-    override var isPushEnabled: Bool {
-        get {
-            return self.isPushEnabledValue
-        }
-    }
+    var isEnabledValue = false
+    override var isEnabled: Bool { return self.isEnabledValue }
     
     init() {
         let alertFactory = TestAlertFactory()
@@ -228,7 +224,7 @@ fileprivate class PushManagerMock: PushManager {
         super.init(alertFactory: alertFactory, actionFactory: actionFactory)
     }
     
-    override func registerForPush() {
+    override func register() {
         self.didRegisterForPush = true
     }
     

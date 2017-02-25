@@ -11,6 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var analytics: Analytics?
+    var pushManager: PushManager?
     var window: UIWindow?
     
     private var launchNotification: [AnyHashable: Any]? = nil
@@ -25,14 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Register for push notifications
         let pushManager = InstanceHolder.sharedInstance.pushManager
-        if pushManager.isPushEnabled {
-            pushManager.registerForPush()
+        if pushManager.isEnabled {
+            pushManager.register()
         }
         
         // Check if app was launched via push notification
         if let launchNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             self.launchNotification = launchNotification
         }
+        
+        // Dependencies
+        self.analytics = DefaultAnalytics()
+        let alertFactory = DefaultUIAlertFactory()
+        self.pushManager = DefaultPushManager(alertFactory: alertFactory, actionFactory: ActionFactory(alertFactory: alertFactory))
         
         // Setup window
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -44,30 +51,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        InstanceHolder.sharedInstance.pushManager.registerDeviceToken(deviceToken)
+        self.pushManager?.register(deviceToken: deviceToken)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         if application.applicationState == .inactive {
-            // TODO: App opened analytics
+            self.analytics?.appOpened()
         }
-        InstanceHolder.sharedInstance.pushManager.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
+        self.pushManager?.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Push notification startup
-        let pushManager = InstanceHolder.sharedInstance.pushManager
-        pushManager.resetBadge()
-        if pushManager.shouldRequestPushAccess() {
+        self.pushManager?.resetBadge()
+        
+        if self.pushManager?.shouldRequestAccess ?? false {
             if let presenter = self.window?.rootViewController {
-                pushManager.requestPushAccess(viewController: presenter)
+                self.pushManager?.requestAccess(presenter: presenter)
             }
         }
         
         // Check if there is a pending launch push notification
         if let launchNotification = self.launchNotification {
             // Handle the notification as if the app was in background
-            pushManager.handleRemoteNotification(applicationState: .background, userInfo: launchNotification)
+            self.pushManager?.handleRemoteNotification(applicationState: .background, userInfo: launchNotification)
             self.launchNotification = nil
         }
         
@@ -82,4 +89,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         presenter.present(alertController, animated: true, completion: nil)
     }
 }
-
