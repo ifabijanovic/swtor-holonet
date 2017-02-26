@@ -32,6 +32,7 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
         
         self.services
             .theme
+            .debug()
             .drive(onNext: self.apply(theme:))
             .addDisposableTo(self.disposeBag)
     }

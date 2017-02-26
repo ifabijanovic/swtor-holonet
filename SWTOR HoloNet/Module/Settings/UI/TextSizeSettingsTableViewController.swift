@@ -9,15 +9,16 @@
 import UIKit
 
 class TextSizeSettingsTableViewController: BaseTableViewController {
+    private let themeManager: ThemeManager
     private var pickerDelegate: SettingPickerDelegate<TextSize>!
     
-    override init() {
-        super.init(nibName: nil, bundle: nil)
+    init(themeManager: ThemeManager) {
+        self.themeManager = themeManager
+        super.init(style: .plain)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) { fatalError() }
     
     // MARK: -
     
@@ -40,8 +41,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         
         let newValue = self.pickerDelegate.currentValue
         if (newValue != self.pickerDelegate.initialValue) {
-            self.theme.textSize = newValue
-            self.theme.fireThemeChanged()
+            self.themeManager.set(textSize: newValue, bundle: Bundle.main)
         }
     }
 

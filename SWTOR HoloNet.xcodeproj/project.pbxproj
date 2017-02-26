@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810039401E63575500512F3B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8100393E1E63575500512F3B /* Theme.swift */; };
+		810039411E63575500512F3B /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8100393F1E63575500512F3B /* Themeable.swift */; };
+		810039421E63576800512F3B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8100393E1E63575500512F3B /* Theme.swift */; };
+		810039431E63576800512F3B /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8100393F1E63575500512F3B /* Themeable.swift */; };
+		810039451E63578100512F3B /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039441E63578100512F3B /* ThemeManager.swift */; };
+		810039461E63601D00512F3B /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039441E63578100512F3B /* ThemeManager.swift */; };
+		810039481E6363F300512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
+		810039491E6364AA00512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		814464DC1E62BE5900181E54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464851E62BE5900181E54 /* AppDelegate.swift */; };
@@ -41,8 +49,6 @@
 		814464F91E62BE5900181E54 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649A1E62BE5900181E54 /* Entity.swift */; };
 		814464FA1E62BE5900181E54 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649B1E62BE5900181E54 /* Settings.swift */; };
 		814464FB1E62BE5900181E54 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649B1E62BE5900181E54 /* Settings.swift */; };
-		814464FC1E62BE5900181E54 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649C1E62BE5900181E54 /* Theme.swift */; };
-		814464FD1E62BE5900181E54 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649C1E62BE5900181E54 /* Theme.swift */; };
 		814464FE1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649F1E62BE5900181E54 /* BaseCollectionViewController.swift */; };
 		814464FF1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649F1E62BE5900181E54 /* BaseCollectionViewController.swift */; };
 		814465001E62BE5900181E54 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464A01E62BE5900181E54 /* BaseTableViewController.swift */; };
@@ -67,8 +73,6 @@
 		814465131E62BE5900181E54 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AB1E62BE5900181E54 /* TabViewController.swift */; };
 		814465141E62BE5900181E54 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AC1E62BE5900181E54 /* TextViewController.swift */; };
 		814465151E62BE5900181E54 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AC1E62BE5900181E54 /* TextViewController.swift */; };
-		814465161E62BE5900181E54 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AD1E62BE5900181E54 /* Themeable.swift */; };
-		814465171E62BE5900181E54 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AD1E62BE5900181E54 /* Themeable.swift */; };
 		814465181E62BE5900181E54 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B01E62BE5900181E54 /* DulfyViewController.swift */; };
 		814465191E62BE5900181E54 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B01E62BE5900181E54 /* DulfyViewController.swift */; };
 		8144651A1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B31E62BE5900181E54 /* ForumCategoryRepository.swift */; };
@@ -208,6 +212,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8100393E1E63575500512F3B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8100393F1E63575500512F3B /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
+		810039441E63578100512F3B /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		810039471E6363F300512F3B /* ThemeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEnums.swift; sourceTree = "<group>"; };
 		81036D151E5848CF00E739FA /* HoloNet.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNet.xcconfig; sourceTree = "<group>"; };
 		81036D161E584A6300E739FA /* HoloNetTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNetTests.xcconfig; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -227,7 +235,6 @@
 		814464981E62BE5900181E54 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		8144649A1E62BE5900181E54 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8144649B1E62BE5900181E54 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		8144649C1E62BE5900181E54 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8144649F1E62BE5900181E54 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		814464A01E62BE5900181E54 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		814464A11E62BE5900181E54 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +247,6 @@
 		814464AA1E62BE5900181E54 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		814464AB1E62BE5900181E54 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		814464AC1E62BE5900181E54 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
-		814464AD1E62BE5900181E54 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		814464B01E62BE5900181E54 /* DulfyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyViewController.swift; sourceTree = "<group>"; };
 		814464B31E62BE5900181E54 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategoryRepository.swift; sourceTree = "<group>"; };
 		814464B41E62BE5900181E54 /* ForumParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumParser.swift; sourceTree = "<group>"; };
@@ -365,6 +371,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8100393D1E63575500512F3B /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8100393E1E63575500512F3B /* Theme.swift */,
+				8100393F1E63575500512F3B /* Themeable.swift */,
+				810039471E6363F300512F3B /* ThemeEnums.swift */,
+				810039441E63578100512F3B /* ThemeManager.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		814464871E62BE5900181E54 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +413,7 @@
 				814464951E62BE5900181E54 /* Alert */,
 				814464971E62BE5900181E54 /* Analytics */,
 				814464991E62BE5900181E54 /* Model */,
+				8100393D1E63575500512F3B /* Theme */,
 				8144649D1E62BE5900181E54 /* UI */,
 			);
 			path = App;
@@ -434,7 +452,6 @@
 			children = (
 				8144649A1E62BE5900181E54 /* Entity.swift */,
 				8144649B1E62BE5900181E54 /* Settings.swift */,
-				8144649C1E62BE5900181E54 /* Theme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,7 +466,6 @@
 				814466481E62C10800181E54 /* Navigator.swift */,
 				814464AB1E62BE5900181E54 /* TabViewController.swift */,
 				814464AC1E62BE5900181E54 /* TextViewController.swift */,
-				814464AD1E62BE5900181E54 /* Themeable.swift */,
 				8144664A1E62D0FF00181E54 /* StandardServices.swift */,
 			);
 			path = UI;
@@ -1030,6 +1046,7 @@
 				814465301E62BE5900181E54 /* ForumCategoryCollectionViewCell.swift in Sources */,
 				814464E41E62BE5900181E54 /* String.swift in Sources */,
 				814465201E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
+				810039411E63575500512F3B /* Themeable.swift in Sources */,
 				8144651C1E62BE5900181E54 /* ForumParser.swift in Sources */,
 				814465261E62BE5900181E54 /* ForumLanguage.swift in Sources */,
 				814465341E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
@@ -1055,15 +1072,14 @@
 				814465401E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654C1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
 				8144664C1E62D16600181E54 /* Navigator.swift in Sources */,
-				814464FC1E62BE5900181E54 /* Theme.swift in Sources */,
 				814464EE1E62BE5900181E54 /* ActionParser.swift in Sources */,
+				810039451E63578100512F3B /* ThemeManager.swift in Sources */,
 				814465441E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465101E62BE5900181E54 /* NavigationViewController.swift in Sources */,
 				814465381E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
 				8144651A1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */,
 				814464FE1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
 				814465221E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
-				814465161E62BE5900181E54 /* Themeable.swift in Sources */,
 				814464F61E62BE5900181E54 /* Analytics.swift in Sources */,
 				8144654A1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
 				814464EC1E62BE5900181E54 /* ActionFactory.swift in Sources */,
@@ -1071,6 +1087,8 @@
 				814465141E62BE5900181E54 /* TextViewController.swift in Sources */,
 				814465041E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,
 				814465461E62BE5900181E54 /* PushManager.swift in Sources */,
+				810039481E6363F300512F3B /* ThemeEnums.swift in Sources */,
+				810039401E63575500512F3B /* Theme.swift in Sources */,
 				814464E21E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DE1E62BE5900181E54 /* Constants.swift in Sources */,
 				814464F41E62BE5900181E54 /* AlertFactory.swift in Sources */,
@@ -1099,6 +1117,7 @@
 				8144661F1E62BE9900181E54 /* URLComponentsTests.swift in Sources */,
 				814465351E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
 				8144654F1E62BE5900181E54 /* ThemeSettingsTableViewController.swift in Sources */,
+				810039491E6364AA00512F3B /* ThemeEnums.swift in Sources */,
 				8144653F1E62BE5900181E54 /* ForumListCollectionViewController.swift in Sources */,
 				814465011E62BE5900181E54 /* BaseTableViewController.swift in Sources */,
 				814465251E62BE5900181E54 /* ForumCategory.swift in Sources */,
@@ -1113,17 +1132,19 @@
 				814464E71E62BE5900181E54 /* UIColor.swift in Sources */,
 				814464F91E62BE5900181E54 /* Entity.swift in Sources */,
 				814464E11E62BE5900181E54 /* Error.swift in Sources */,
+				810039461E63601D00512F3B /* ThemeManager.swift in Sources */,
 				814466241E62BE9900181E54 /* EntityTests.swift in Sources */,
 				814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */,
 				814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */,
 				814464DD1E62BE5900181E54 /* AppDelegate.swift in Sources */,
 				814465091E62BE5900181E54 /* TableHeaderCollectionReusableView.swift in Sources */,
 				8144653D1E62BE5900181E54 /* ForumBaseCollectionViewController.swift in Sources */,
+				810039421E63576800512F3B /* Theme.swift in Sources */,
 				81AA500A1A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				814465411E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654D1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
-				814464FD1E62BE5900181E54 /* Theme.swift in Sources */,
 				814464EF1E62BE5900181E54 /* ActionParser.swift in Sources */,
+				810039431E63576800512F3B /* Themeable.swift in Sources */,
 				814465451E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */,
 				814465391E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
@@ -1132,7 +1153,6 @@
 				814464FF1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
 				814465231E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				8144662A1E62BE9900181E54 /* ForumRepositoryTestsBase.swift in Sources */,
-				814465171E62BE5900181E54 /* Themeable.swift in Sources */,
 				814466271E62BE9900181E54 /* ForumCategoryRepositoryTests.swift in Sources */,
 				814464F71E62BE5900181E54 /* Analytics.swift in Sources */,
 				8144654B1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,

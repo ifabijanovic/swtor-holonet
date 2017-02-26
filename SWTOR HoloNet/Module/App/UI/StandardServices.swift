@@ -16,18 +16,11 @@ struct StandardServices {
     let theme: Driver<Theme>
     let settings: Settings
     
-    init() {
+    init(themeManager: ThemeManager) {
         let analytics = DefaultAnalytics()
         let navigator = DefaultNavigator()
+        let theme = themeManager.theme.asDriver(onErrorJustReturn: themeManager.currentTheme)
         let settings = Settings()
-        
-        let startingTheme = Theme()
-        let theme = NotificationCenter.default
-            .rx
-            .notification(Notification.Name(Constants.Notifications.themeChanged))
-            .map { $0.userInfo![Constants.Notifications.UserInfo.theme] as! Theme }
-            .startWith(startingTheme)
-            .asDriver(onErrorJustReturn: startingTheme)
         
         self.init(analytics: analytics, navigator: navigator, theme: theme, settings: settings)
     }
@@ -42,5 +35,5 @@ struct StandardServices {
 
 // Temporary until DI introduction
 extension StandardServices {
-    static let instance = StandardServices()
+    static let instance = StandardServices(themeManager: DefaultThemeManager.instance)
 }

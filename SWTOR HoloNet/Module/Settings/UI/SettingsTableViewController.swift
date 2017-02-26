@@ -112,9 +112,9 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.messages, Row.notifications):
             UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
         case (Section.display, Row.theme):
-            self.navigationController?.pushViewController(ThemeSettingsTableViewController(), animated: true)
+            self.navigationController?.pushViewController(ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance), animated: true)
         case (Section.display, Row.textSize):
-            self.navigationController?.pushViewController(TextSizeSettingsTableViewController(), animated: true)
+            self.navigationController?.pushViewController(TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance), animated: true)
         case (Section.feedback, Row.contact):
             self.contact()
         case (Section.feedback, Row.reportBug):
