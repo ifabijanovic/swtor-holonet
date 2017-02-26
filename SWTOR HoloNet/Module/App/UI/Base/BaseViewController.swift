@@ -53,12 +53,12 @@ class BaseViewController: UIViewController, Themeable {
         }
     }
     
-    func applyTheme(_ theme: Theme) {
+    func apply(theme: Theme) {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
     func themeChanged(_ theme: Theme) {
-        self.applyTheme(theme)
+        self.apply(theme: theme)
     }
     
     func themeChanged(notification: NSNotification) {

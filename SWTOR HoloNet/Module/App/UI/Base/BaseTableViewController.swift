@@ -60,12 +60,12 @@ class BaseTableViewController: UITableViewController, Themeable {
         }
     }
     
-    func applyTheme(_ theme: Theme) {
+    func apply(theme: Theme) {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
     func themeChanged(_ theme: Theme) {
-        self.applyTheme(theme)
+        self.apply(theme: theme)
         self.tableView.reloadData()
     }
     

@@ -35,7 +35,7 @@ class DulfyViewController: BaseViewController {
         self.setupWebView()
         self.setupActivityIndicator()
         self.setupButtons()
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
         
         // Initial navigation, custom url if set, fallback to home page
         let url = self.url != nil ? self.url! : self.homeUrl
@@ -82,8 +82,8 @@ class DulfyViewController: BaseViewController {
         self.isVisible = false
     }
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         self.view.backgroundColor = theme.contentBackground
     }
     

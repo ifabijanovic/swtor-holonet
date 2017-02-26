@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ForumCategoryCollectionViewCell: UICollectionViewCell, Themeable {
+class ForumCategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statsLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
     @IBOutlet weak var accessoryView: UIImageView!
 
-    func applyTheme(_ theme: Theme) {
+    override func apply(theme: Theme) {
         self.titleLabel.textColor = theme.contentTitle
         self.titleLabel.font = UIFont.systemFont(ofSize: theme.textSize.rawValue + 4.0)
         

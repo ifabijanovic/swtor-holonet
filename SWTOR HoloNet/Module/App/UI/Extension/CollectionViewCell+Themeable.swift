@@ -8,11 +8,8 @@
 
 import UIKit
 
-// This extension should be implemented so it extends the UITableViewCell
-// with the Themeable protocol, but extended methods still cannot be
-// overriden in Swift, so this is a temporary solution until later version of Swift
-extension UICollectionViewCell {
-    func applyThemeEx(_ theme: Theme) {
+extension UICollectionViewCell: Themeable {
+    func apply(theme: Theme) {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView

@@ -11,7 +11,7 @@ import UIKit
 class ForumThreadHeaderCollectionReusableView: UICollectionReusableView, Themeable {
     @IBOutlet weak var textLabel: UILabel!
     
-    func applyTheme(_ theme: Theme) {
+    func apply(theme: Theme) {
         self.backgroundColor = theme.contentBackground
         self.textLabel.textColor = theme.contentTitle
     }

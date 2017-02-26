@@ -11,7 +11,7 @@ import UIKit
 class LoadMoreCollectionReusableView: UICollectionReusableView, Themeable {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    func applyTheme(_ theme: Theme) {
+    func apply(theme: Theme) {
         self.activityIndicator.activityIndicatorViewStyle = theme.activityIndicatorStyle
         self.activityIndicator.tintColor = theme.contentText
     }

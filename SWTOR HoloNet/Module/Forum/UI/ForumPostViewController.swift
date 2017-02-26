@@ -57,7 +57,7 @@ class ForumPostViewController: BaseViewController {
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
         
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,8 +72,8 @@ class ForumPostViewController: BaseViewController {
         self.textTextView.setContentOffset(CGPoint.zero, animated: false)
     }
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText

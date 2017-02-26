@@ -21,9 +21,10 @@ class SettingsTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Settings"
         self.tableView.separatorStyle = .none
         
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,8 +101,8 @@ class SettingsTableViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.applyThemeEx(self.theme)
-        cell.setDisclosureIndicator(theme)
+        cell.apply(theme: self.theme)
+        cell.setDisclosureIndicator(theme: theme)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -130,8 +131,8 @@ class SettingsTableViewController: BaseTableViewController {
     
     // MARK: -
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         self.view.backgroundColor = theme.contentBackground
     }
 }

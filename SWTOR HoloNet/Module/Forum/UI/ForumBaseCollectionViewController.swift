@@ -48,7 +48,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         
         NotificationCenter.default.addObserver(self, selector: #selector(ForumBaseCollectionViewController.willEnterForeground(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +72,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionFooter {
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterIdentifier, for: indexPath) as! LoadMoreCollectionReusableView
-            footer.applyTheme(self.theme)
+            footer.apply(theme: self.theme)
             return footer
         }
         
@@ -89,8 +89,8 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         }
     }
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         // Scroll view indicator style
         self.collectionView!.indicatorStyle = theme.scrollViewIndicatorStyle

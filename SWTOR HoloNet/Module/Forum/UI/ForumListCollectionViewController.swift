@@ -155,7 +155,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
-            view.applyTheme(self.theme)
+            view.apply(theme: self.theme)
             return view
         }
         
@@ -184,8 +184,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         }
     }
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         self.view.backgroundColor = theme.contentBackground
         self.collectionView!.backgroundColor = theme.contentBackground
@@ -347,7 +347,7 @@ extension ForumListCollectionViewController {
         cell.titleLabel.text = category.title
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
-        cell.applyTheme(self.theme)
+        cell.apply(theme: self.theme)
         
         cell.tag = indexPath.row
     }
@@ -374,7 +374,7 @@ extension ForumListCollectionViewController {
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
-        cell.applyTheme(self.theme)
+        cell.apply(theme: self.theme)
         
         cell.tag = indexPath.row
     }

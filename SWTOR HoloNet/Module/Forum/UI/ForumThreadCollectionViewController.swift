@@ -112,7 +112,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! ForumThreadHeaderCollectionReusableView
             header.textLabel.text = self.thread.title
-            header.applyTheme(self.theme)
+            header.apply(theme: self.theme)
             return header
         }
         
@@ -130,8 +130,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: -
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         self.view.backgroundColor = theme.contentBackground
         self.collectionView!.backgroundColor = theme.contentBackground
@@ -265,7 +265,7 @@ extension ForumThreadCollectionViewController {
         cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
-        cell.applyTheme(self.theme)
+        cell.apply(theme: self.theme)
         
         cell.tag = indexPath.row
     }

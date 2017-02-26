@@ -43,7 +43,7 @@ class TextViewController: BaseViewController {
             self.textView.text = self.text!
         }
         
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
         
 #if !DEBUG && !TEST
         if let event = self.analyticsEvent {
@@ -79,8 +79,8 @@ class TextViewController: BaseViewController {
     
     // MARK: -
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         self.view.backgroundColor = theme.contentBackground
         self.textView.backgroundColor = UIColor.clear

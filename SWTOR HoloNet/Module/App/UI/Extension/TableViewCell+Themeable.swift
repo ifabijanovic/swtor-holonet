@@ -8,11 +8,8 @@
 
 import UIKit
 
-// This extension should be implemented so it extends the UITableViewCell
-// with the Themeable protocol, but extended methods still cannot be
-// overriden in Swift, so this is a temporary solution until later version of Swift
-extension UITableViewCell {
-    func applyThemeEx(_ theme: Theme) {
+extension UITableViewCell: Themeable {
+    func apply(theme: Theme) {
         self.textLabel?.textColor = theme.contentTitle
         self.detailTextLabel?.textColor = theme.contentText
         self.backgroundColor = UIColor.clear
@@ -22,7 +19,7 @@ extension UITableViewCell {
         self.selectedBackgroundView = selectedBackgroundView
     }
     
-    func setDisclosureIndicator(_ theme: Theme) {
+    func setDisclosureIndicator(theme: Theme) {
         if self.accessoryView == nil {
             let image = UIImage(named: "Forward")?.withRenderingMode(.alwaysTemplate)
             let imageView = UIImageView(image: image)

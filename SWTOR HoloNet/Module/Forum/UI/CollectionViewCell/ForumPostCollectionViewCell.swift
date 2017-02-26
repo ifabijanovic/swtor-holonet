@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
+class ForumPostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -17,7 +17,7 @@ class ForumPostCollectionViewCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var accessoryView: UIImageView!
     @IBOutlet weak var separatorLine: UIView!
 
-    func applyTheme(_ theme: Theme) {
+    override func apply(theme: Theme) {
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
         self.textView.textColor = theme.contentText

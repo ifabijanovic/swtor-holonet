@@ -31,7 +31,7 @@ class ThemeSettingsTableViewController: BaseTableViewController {
             (index: 1, value: ThemeType.light)
         ])
         
-        self.applyTheme(self.theme)
+        self.apply(theme: self.theme)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,7 +59,7 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.applyThemeEx(self.theme)
+        cell.apply(theme: self.theme)
         cell.textLabel?.textColor = theme.contentText
         cell.tintColor = theme.contentTitle
     }
@@ -70,8 +70,8 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     
     // MARK: -
     
-    override func applyTheme(_ theme: Theme) {
-        super.applyTheme(theme)
+    override func apply(theme: Theme) {
+        super.apply(theme: theme)
         
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = theme.contentBackground
