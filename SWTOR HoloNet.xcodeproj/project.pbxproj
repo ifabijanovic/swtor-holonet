@@ -177,6 +177,7 @@
 		814466451E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144661A1E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html */; };
 		814466461E62BE9900181E54 /* forum-thread-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */; };
 		814466471E62BE9900181E54 /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144661D1E62BE9900181E54 /* PushManagerTests.swift */; };
+		814466491E62C10800181E54 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814466481E62C10800181E54 /* Navigator.swift */; };
 		8146AA6D1E58535C002F65FD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6C1E58535C002F65FD /* Alamofire.framework */; };
 		8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
@@ -312,6 +313,7 @@
 		8144661A1E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid-not-sticky.html"; sourceTree = "<group>"; };
 		8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid.html"; sourceTree = "<group>"; };
 		8144661D1E62BE9900181E54 /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushManagerTests.swift; sourceTree = "<group>"; };
+		814466481E62C10800181E54 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		8146AA6C1E58535C002F65FD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -443,6 +445,7 @@
 				814464AB1E62BE5900181E54 /* TabViewController.swift */,
 				814464AC1E62BE5900181E54 /* TextViewController.swift */,
 				814464AD1E62BE5900181E54 /* Themeable.swift */,
+				814466481E62C10800181E54 /* Navigator.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1077,6 +1080,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				814465491E62BE5900181E54 /* SettingPickerDelegate.swift in Sources */,
+				814466491E62C10800181E54 /* Navigator.swift in Sources */,
 				814466201E62BE9900181E54 /* ActionFactoryTests.swift in Sources */,
 				814464F11E62BE5900181E54 /* ActionPerformer.swift in Sources */,
 				814465311E62BE5900181E54 /* ForumCategoryCollectionViewCell.swift in Sources */,
