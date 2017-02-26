@@ -26,7 +26,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: - Overrides
+    // MARK: -
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,8 +47,6 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         self.collectionView!.register(UINib(nibName: "LoadMoreCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ForumBaseCollectionViewController.willEnterForeground(notification:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        
-        self.apply(theme: self.theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +62,8 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     func willEnterForeground(notification: NSNotification) {
         self.loadContent()
     }
+    
+    // MARK: -
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return self.showLoadMore ? CGSize(width: 0, height: 64.0) : CGSize.zero
@@ -72,7 +72,9 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionFooter {
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterIdentifier, for: indexPath) as! LoadMoreCollectionReusableView
-            footer.apply(theme: self.theme)
+            if let theme = self.theme {
+                footer.apply(theme: theme)
+            }
             return footer
         }
         

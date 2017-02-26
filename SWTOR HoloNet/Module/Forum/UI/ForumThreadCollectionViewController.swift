@@ -20,20 +20,14 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     fileprivate var postsPerPage = 10
     fileprivate var sizingCell: ForumPostCollectionViewCell!
-
-    fileprivate var disposeBag = DisposeBag()
     
     // MARK: -
     
-    init(thread: ForumThread, postRepository: ForumPostRepository) {
+    init(thread: ForumThread, postRepository: ForumPostRepository, services: StandardServices) {
         self.thread = thread
         self.postRepository = postRepository
         
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(services: services, collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,12 +61,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.disposeBag = DisposeBag()
+        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
     }
     
     // MARK: -
@@ -102,9 +91,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCellIdentifier, for: indexPath) as! ForumPostCollectionViewCell
-        
         self.fill(cell: cell, at: indexPath)
-        
         return cell
     }
     
@@ -112,7 +99,9 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! ForumThreadHeaderCollectionReusableView
             header.textLabel.text = self.thread.title
-            header.apply(theme: self.theme)
+            if let theme = self.theme {
+                header.apply(theme: theme)
+            }
             return header
         }
         
@@ -165,13 +154,12 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                 onError: { error in
                     self.refreshControl?.endRefreshing()
                     
-                    let alertController: UIAlertController
                     if error.isMaintenance {
-                        alertController = self.alertFactory.infoMaintenance { [weak self] _ in
+                        self.services.navigator.showMaintenanceAlert { [weak self] _ in
                             self?.hideLoader()
                         }
                     } else {
-                        alertController = self.alertFactory.errorNetwork(
+                        self.services.navigator.showNetworkErrorAlert(
                             cancelHandler: { [weak self] _ in
                                 self?.hideLoader()
                             },
@@ -180,7 +168,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                             }
                         )
                     }
-                    self.present(alertController, animated: true, completion: nil)
                 }
             )
             .addDisposableTo(self.disposeBag)
@@ -222,7 +209,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     self.canLoadMore = true
                 },
                 onError: { error in
-                    let alertController = self.alertFactory.errorNetwork(
+                    self.services.navigator.showNetworkErrorAlert(
                         cancelHandler: { [weak self] _ in
                             self?.hideLoader()
                         },
@@ -230,7 +217,6 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                             self?.onRefresh()
                         }
                     )
-                    self.present(alertController, animated: true, completion: nil)
                 }
             )
             .addDisposableTo(self.disposeBag)
@@ -255,7 +241,7 @@ extension ForumThreadCollectionViewController {
         }
         
         // Set dev icon if post is marked as Bioware post
-        if post.isBiowarePost, let url = URL(string: self.settings.devTrackerIconUrl) {
+        if post.isBiowarePost, let url = URL(string: self.services.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
             cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
@@ -265,7 +251,10 @@ extension ForumThreadCollectionViewController {
         cell.dateLabel.text = post.postNumber != nil ? "\(post.date) | #\(post.postNumber!)" : post.date
         cell.usernameLabel.text = post.username
         cell.textView.text = post.text
-        cell.apply(theme: self.theme)
+        
+        if let theme = self.theme {
+            cell.apply(theme: theme)
+        }
         
         cell.tag = indexPath.row
     }

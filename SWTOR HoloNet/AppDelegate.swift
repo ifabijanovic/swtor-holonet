@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup window
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabViewController(analytics: InstanceHolder.sharedInstance.analytics, settings: InstanceHolder.sharedInstance.settings)
+        window.rootViewController = TabViewController(services: StandardServices.instance)
         self.window = window
         window.makeKeyAndVisible()
 

@@ -97,7 +97,7 @@ extension DefaultNavigator {
         
         let categoryRepository = DefaultForumCategoryRepository(settings: InstanceHolder.sharedInstance.settings)
         let threadRepository = DefaultForumThreadRepository(settings: InstanceHolder.sharedInstance.settings)
-        let successor = ForumListCollectionViewController(category: forumCategory, categoryRepository: categoryRepository, threadRepository: threadRepository)
+        let successor = ForumListCollectionViewController(category: forumCategory, categoryRepository: categoryRepository, threadRepository: threadRepository, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
     
@@ -108,7 +108,7 @@ extension DefaultNavigator {
         }
         
         let postRepository = DefaultForumPostRepository(settings: InstanceHolder.sharedInstance.settings)
-        let successor = ForumThreadCollectionViewController(thread: forumThread, postRepository: postRepository)
+        let successor = ForumThreadCollectionViewController(thread: forumThread, postRepository: postRepository, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
     

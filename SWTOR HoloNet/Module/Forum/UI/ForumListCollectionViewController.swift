@@ -26,11 +26,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     fileprivate var categories: [ForumCategory] = []
     fileprivate var threads: [ForumThread] = []
     
-    fileprivate var disposeBag = DisposeBag()
-    
     // MARK: -
     
-    init(categoryRepository: ForumCategoryRepository) {
+    init(categoryRepository: ForumCategoryRepository, services: StandardServices) {
         self.category = nil
         self.categoryRepository = categoryRepository
         self.threadRepository = nil
@@ -38,10 +36,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(collectionViewLayout: layout)
+        super.init(services: services, collectionViewLayout: layout)
     }
     
-    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository) {
+    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, services: StandardServices) {
         self.category = category
         self.categoryRepository = categoryRepository
         self.threadRepository = threadRepository
@@ -49,11 +47,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(collectionViewLayout: layout)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(services: services, collectionViewLayout: layout)
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,12 +73,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.disposeBag = DisposeBag()
+        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
     }
     
     // MARK: -
@@ -103,9 +92,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let theme = self.theme else { return CGSize.zero }
+        
         // This value represents the difference from currently selected text size and
         // the smallest (default) value. It is added to the cell height for each label
-        let textSizeDiff = self.theme.textSize.rawValue - TextSize.small.rawValue
+        let textSizeDiff = theme.textSize.rawValue - TextSize.small.rawValue
         let width: CGFloat
         let height: CGFloat
             
@@ -155,7 +146,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         if kind == UICollectionElementKindSectionHeader {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! TableHeaderCollectionReusableView
             view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
-            view.apply(theme: self.theme)
+            if let theme = self.theme {
+                view.apply(theme: theme)
+            }
             return view
         }
         
@@ -171,7 +164,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             let category = self.categories[cell!.tag]
             
             // Special case for Developer Tracker, treat this sub category as a thread
-            if category.id == self.settings.devTrackerId {
+            if category.id == self.services.settings.devTrackerId {
                 let thread = ForumThread.devTracker()
                 self.navigate(thread: thread)
             } else {
@@ -208,7 +201,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             threads = self.threadRepository!.threads(category: category, page: 1)
         } else {
             // Forum root, only load categories
-            categories = self.categoryRepository.categories(language: self.settings.forumLanguage)
+            categories = self.categoryRepository.categories(language: self.services.settings.forumLanguage)
             threads = Observable.just([])
         }
         
@@ -240,13 +233,12 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                 onError: { error in
                     self.refreshControl?.endRefreshing()
                     
-                    let alertController: UIAlertController
                     if error.isMaintenance {
-                        alertController = self.alertFactory.infoMaintenance { [weak self] _ in
+                        self.services.navigator.showMaintenanceAlert { [weak self] _ in
                             self?.hideLoader()
                         }
                     } else {
-                        alertController = self.alertFactory.errorNetwork(
+                        self.services.navigator.showNetworkErrorAlert(
                             cancelHandler: { [weak self] _ in
                                 self?.hideLoader()
                             },
@@ -255,7 +247,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                             }
                         )
                     }
-                    self.present(alertController, animated: true, completion: nil)
                 }
             )
             .addDisposableTo(self.disposeBag)
@@ -299,7 +290,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                     self.canLoadMore = true
                 },
                 onError: { error in
-                    let alertController = self.alertFactory.errorNetwork(
+                    self.services.navigator.showNetworkErrorAlert(
                         cancelHandler: { [weak self] _ in
                             self?.hideLoader()
                         },
@@ -307,7 +298,6 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                             self?.onRefresh()
                         }
                     )
-                    self.present(alertController, animated: true, completion: nil)
                 }
             )
             .addDisposableTo(self.disposeBag)
@@ -316,16 +306,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
 extension ForumListCollectionViewController {
     fileprivate func navigate(category: ForumCategory) {
-        let categoryRepository = DefaultForumCategoryRepository(settings: self.settings)
-        let threadRepository = DefaultForumThreadRepository(settings: self.settings)
-        let viewController = ForumListCollectionViewController(category: category, categoryRepository: categoryRepository, threadRepository: threadRepository)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.services.navigator.navigate(from: self, to: .forumCategory(item: category), animated: true)
     }
     
     fileprivate func navigate(thread: ForumThread) {
-        let postRepository = DefaultForumPostRepository(settings: self.settings)
-        let viewController = ForumThreadCollectionViewController(thread: thread, postRepository: postRepository)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.services.navigator.navigate(from: self, to: .forumThread(item: thread), animated: true)
     }
     
     fileprivate func hasCategories() -> Bool {
@@ -347,7 +332,10 @@ extension ForumListCollectionViewController {
         cell.titleLabel.text = category.title
         cell.statsLabel.text = category.stats
         cell.lastPostLabel.text = category.lastPost
-        cell.apply(theme: self.theme)
+        
+        if let theme = self.theme {
+            cell.apply(theme: theme)
+        }
         
         cell.tag = indexPath.row
     }
@@ -356,7 +344,7 @@ extension ForumListCollectionViewController {
         let thread = self.threads[indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
-        if thread.hasBiowareReply, let url = URL(string: self.settings.devTrackerIconUrl) {
+        if thread.hasBiowareReply, let url = URL(string: self.services.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
             cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
@@ -364,7 +352,7 @@ extension ForumListCollectionViewController {
         }
         
         // Set sticky icon if thread is marked with sticky
-        if thread.isSticky, let url = URL(string: self.settings.stickyIconUrl) {
+        if thread.isSticky, let url = URL(string: self.services.settings.stickyIconUrl) {
             cell.stickyImageView.isHidden = false
             cell.stickyImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.stickyIcon))
         } else {
@@ -374,7 +362,10 @@ extension ForumListCollectionViewController {
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
         cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
-        cell.apply(theme: self.theme)
+        
+        if let theme = self.theme {
+            cell.apply(theme: theme)
+        }
         
         cell.tag = indexPath.row
     }

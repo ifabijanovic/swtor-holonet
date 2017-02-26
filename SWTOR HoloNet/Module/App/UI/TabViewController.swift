@@ -9,14 +9,14 @@
 import UIKit
 
 class TabViewController: UITabBarController {
-    private let analytics: Analytics
+    private let services: StandardServices
     
-    required init(analytics: Analytics, settings: Settings) {
-        self.analytics = analytics
+    required init(services: StandardServices) {
+        self.services = services
         
         super.init(nibName: nil, bundle: nil)
         
-        self.setupTabs(settings: settings)
+        self.setupTabs()
         self.registerForNotifications()
     }
     
@@ -35,10 +35,10 @@ class TabViewController: UITabBarController {
     
     // MARK: -
     
-    private func setupTabs(settings: Settings) {
+    private func setupTabs() {
         // Forum
-        let forumCategoryRepository = DefaultForumCategoryRepository(settings: settings)
-        let forumViewController = NavigationViewController(rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository))
+        let forumCategoryRepository = DefaultForumCategoryRepository(settings: self.services.settings)
+        let forumViewController = NavigationViewController(rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository, services: self.services))
         forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
         
         // Dulfy
@@ -93,6 +93,6 @@ class TabViewController: UITabBarController {
     // MARK: -
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
+        self.services.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
     }
 }

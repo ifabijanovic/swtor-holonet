@@ -7,73 +7,50 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseCollectionViewController: UICollectionViewController, Themeable {
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: UIAlertFactory!
-    var analytics: Analytics!
+    let services: StandardServices
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.inject()
-        self.registerThemeChangedCallback()
+    private(set) var theme: Theme?
+    private(set) var disposeBag: DisposeBag
+    
+    init(services: StandardServices, collectionViewLayout: UICollectionViewLayout) {
+        self.services = services
+        self.disposeBag = DisposeBag()
+        super.init(collectionViewLayout: collectionViewLayout)
     }
     
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    // MARK: -
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.inject()
-        self.registerThemeChangedCallback()
+        self.services
+            .theme
+            .drive(onNext: self.apply(theme:))
+            .addDisposableTo(self.disposeBag)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.inject()
-        self.registerThemeChangedCallback()
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        self.inject()
-        self.registerThemeChangedCallback()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return self.theme.statusBarStyle
-    }
-    
-    private func inject() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory, analytics in
-            self.settings = settings
-            self.theme = theme
-            self.alertFactory = alertFactory
-            self.analytics = analytics
-        }
+        return self.theme?.statusBarStyle ?? .default
     }
     
     func apply(theme: Theme) {
+        // disabled until theme is an immutable structure
+        //guard self.theme != theme else { return }
+        
+        self.theme = theme
         self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    func themeChanged(_ theme: Theme) {
-        self.apply(theme: theme)
-        self.collectionView!.reloadData()
-    }
-    
-    func themeChanged(notification: NSNotification) {
-        self.themeChanged(self.theme)
-    }
-    
-    private func registerThemeChangedCallback() {
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseCollectionViewController.themeChanged(notification:)), name: Notification.Name(Constants.Notifications.themeChanged), object: nil)
+        self.collectionView?.reloadData()
     }
 }

@@ -178,6 +178,9 @@
 		814466461E62BE9900181E54 /* forum-thread-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */; };
 		814466471E62BE9900181E54 /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144661D1E62BE9900181E54 /* PushManagerTests.swift */; };
 		814466491E62C10800181E54 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814466481E62C10800181E54 /* Navigator.swift */; };
+		8144664B1E62D0FF00181E54 /* StandardServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144664A1E62D0FF00181E54 /* StandardServices.swift */; };
+		8144664C1E62D16600181E54 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814466481E62C10800181E54 /* Navigator.swift */; };
+		8144664D1E62D1FB00181E54 /* StandardServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144664A1E62D0FF00181E54 /* StandardServices.swift */; };
 		8146AA6D1E58535C002F65FD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6C1E58535C002F65FD /* Alamofire.framework */; };
 		8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
@@ -314,6 +317,7 @@
 		8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid.html"; sourceTree = "<group>"; };
 		8144661D1E62BE9900181E54 /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushManagerTests.swift; sourceTree = "<group>"; };
 		814466481E62C10800181E54 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		8144664A1E62D0FF00181E54 /* StandardServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardServices.swift; sourceTree = "<group>"; };
 		8146AA6C1E58535C002F65FD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -442,10 +446,11 @@
 				814464A21E62BE5900181E54 /* CollectionReusableView */,
 				814464A71E62BE5900181E54 /* Extension */,
 				814464AA1E62BE5900181E54 /* NavigationViewController.swift */,
+				814466481E62C10800181E54 /* Navigator.swift */,
 				814464AB1E62BE5900181E54 /* TabViewController.swift */,
 				814464AC1E62BE5900181E54 /* TextViewController.swift */,
 				814464AD1E62BE5900181E54 /* Themeable.swift */,
-				814466481E62C10800181E54 /* Navigator.swift */,
+				8144664A1E62D0FF00181E54 /* StandardServices.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1035,6 +1040,7 @@
 				814464EA1E62BE5900181E54 /* Action.swift in Sources */,
 				814464FA1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465181E62BE5900181E54 /* DulfyViewController.swift in Sources */,
+				8144664B1E62D0FF00181E54 /* StandardServices.swift in Sources */,
 				8144651E1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
 				814465281E62BE5900181E54 /* ForumPost.swift in Sources */,
 				8144652C1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
@@ -1048,6 +1054,7 @@
 				81AA50091A42C7EF009ECE33 /* InstanceHolder.swift in Sources */,
 				814465401E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654C1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
+				8144664C1E62D16600181E54 /* Navigator.swift in Sources */,
 				814464FC1E62BE5900181E54 /* Theme.swift in Sources */,
 				814464EE1E62BE5900181E54 /* ActionParser.swift in Sources */,
 				814465441E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
@@ -1087,6 +1094,7 @@
 				814464E51E62BE5900181E54 /* String.swift in Sources */,
 				814465211E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
 				8144651D1E62BE5900181E54 /* ForumParser.swift in Sources */,
+				8144664D1E62D1FB00181E54 /* StandardServices.swift in Sources */,
 				814465271E62BE5900181E54 /* ForumLanguage.swift in Sources */,
 				8144661F1E62BE9900181E54 /* URLComponentsTests.swift in Sources */,
 				814465351E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
