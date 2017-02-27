@@ -13,7 +13,7 @@ protocol PushManager {
     var isEnabled: Bool { get }
     var shouldRequestAccess: Bool { get }
     
-    func requestAccess(presenter: UIViewController)
+    func requestAccess(navigator: Navigator)
     func register()
     func register(deviceToken: Data)
     func handleRemoteNotification(applicationState: UIApplicationState, userInfo: [AnyHashable : Any])
@@ -21,15 +21,13 @@ protocol PushManager {
 }
 
 class DefaultPushManager: PushManager {
-    fileprivate let alertFactory: UIAlertFactory
     fileprivate let actionFactory: ActionFactory
     
     fileprivate var didCancelPushAccess: Bool
     fileprivate var didApprovePushAccess: Bool
     fileprivate var lastPushAccessRequestTimestamp: Date
     
-    init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
-        self.alertFactory = alertFactory
+    init(actionFactory: ActionFactory) {
         self.actionFactory = actionFactory
         
         let defaults = UserDefaults.standard
@@ -69,8 +67,8 @@ class DefaultPushManager: PushManager {
         return true
     }
     
-    func requestAccess(presenter: UIViewController) {
-        let alertController = self.alertFactory.alert(title: Constants.Push.UI.requestAccessTitle, message: Constants.Push.UI.requestAccessMessage, actions: [
+    func requestAccess(navigator: Navigator) {
+        navigator.showAlert(title: Constants.Push.UI.requestAccessTitle, message: Constants.Push.UI.requestAccessMessage, actions: [
             (title: "No", style: .cancel, handler: { [unowned self] _ in
                 // User decided not to grant push access. Set a flag so the app can ask again at a later time
                 self.didCancelPushAccess = true
@@ -89,7 +87,6 @@ class DefaultPushManager: PushManager {
                 self.register()
             })
         ])
-        presenter.present(alertController, animated: true, completion: nil)
     }
     
     func register() {

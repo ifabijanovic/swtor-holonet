@@ -11,7 +11,7 @@ import XCTest
 
 class DulfyActionTests: XCTestCase {
 
-    var alertFactory: TestAlertFactory!
+    var navigator: TestNavigator!
     var action: DulfyAction!
     
     var callback: NSObjectProtocol?
@@ -19,8 +19,8 @@ class DulfyActionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.alertFactory = TestAlertFactory()
-        self.action = DulfyAction(alertFactory: self.alertFactory)
+        self.navigator = TestNavigator()
+        self.action = DulfyAction(navigator: self.navigator)
     }
     
     override func tearDown() {
@@ -79,24 +79,11 @@ class DulfyActionTests: XCTestCase {
         let message = "test"
         let url = "http://www.test.com"
         let userInfo: [AnyHashable : Any] = ["aps":["alert":message],"url":url]
-        let expectation = self.expectation(description: "")
         
-        self.callback = NotificationCenter.default.addObserver(forName: NSNotification.Name(Constants.Notifications.showAlert), object: nil, queue: OperationQueue.main) { notification in
-            XCTAssertNotNil(notification.userInfo, "")
-            XCTAssertNotNil(notification.userInfo!["alert"], "")
-            XCTAssertNotNil(self.alertFactory.lastAlert)
-            XCTAssertEqual(notification.userInfo!["alert"] as! UIAlertController, self.alertFactory.lastAlert!, "")
-            expectation.fulfill()
-        }
-        
+        XCTAssertFalse(self.navigator.didShowAlert)
         let result = self.action.perform(userInfo: userInfo, isForeground: true)
         XCTAssertTrue(result, "")
-        
-        waitForExpectations(timeout: 3) { error in
-            if error != nil {
-                XCTFail(error.debugDescription)
-            }
-        }
+        XCTAssertTrue(self.navigator.didShowAlert)
     }
     
     func testPerform_Foreground_Cancel() {
@@ -110,9 +97,7 @@ class DulfyActionTests: XCTestCase {
         
         let result = self.action.perform(userInfo: userInfo, isForeground: true)
         XCTAssertTrue(result, "")
-        
-        XCTAssertNotNil(self.alertFactory.lastAlert, "")
-        self.alertFactory.tapCancel()
+        self.navigator.tap(style: .cancel)
     }
     
     func testPerform_Foreground_View() {
@@ -130,9 +115,7 @@ class DulfyActionTests: XCTestCase {
         
         let result = self.action.perform(userInfo: userInfo, isForeground: true)
         XCTAssertTrue(result, "")
-        
-        XCTAssertNotNil(self.alertFactory.lastAlert, "")
-        self.alertFactory.tapDefault()
+        self.navigator.tap(style: .default)
         
         waitForExpectations(timeout: 3) { error in
             if error != nil {
@@ -140,5 +123,4 @@ class DulfyActionTests: XCTestCase {
             }
         }
     }
-
 }

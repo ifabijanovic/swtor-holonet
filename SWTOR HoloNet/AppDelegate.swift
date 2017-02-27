@@ -13,33 +13,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var analytics: Analytics?
     var pushManager: PushManager?
+    var navigator: Navigator?
     var window: UIWindow?
     
     private var launchNotification: [AnyHashable: Any]? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        // Dependencies
+        self.analytics = DefaultAnalytics()
+        self.navigator = DefaultNavigator()
+        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: self.navigator!))
+        
         // Disable caching
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         URLCache.shared = cache
         
-        // Register notification listeners
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.showAlert(notification:)), name: NSNotification.Name(Constants.Notifications.showAlert), object: nil)
-        
         // Register for push notifications
-        let pushManager = InstanceHolder.sharedInstance.pushManager
-        if pushManager.isEnabled {
-            pushManager.register()
+        if self.pushManager?.isEnabled ?? false {
+            self.pushManager?.register()
         }
         
         // Check if app was launched via push notification
         if let launchNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             self.launchNotification = launchNotification
         }
-        
-        // Dependencies
-        self.analytics = DefaultAnalytics()
-        let alertFactory = DefaultUIAlertFactory()
-        self.pushManager = DefaultPushManager(alertFactory: alertFactory, actionFactory: ActionFactory(alertFactory: alertFactory))
         
         // Setup window
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -66,8 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.pushManager?.resetBadge()
         
         if self.pushManager?.shouldRequestAccess ?? false {
-            if let presenter = self.window?.rootViewController {
-                self.pushManager?.requestAccess(presenter: presenter)
+            if let navigator = self.navigator {
+                self.pushManager?.requestAccess(navigator: navigator)
             }
         }
         
@@ -79,13 +76,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Save some settings for the user
-    }
-    
-    func showAlert(notification: NSNotification) {
-        guard let alertController = notification.userInfo?[Constants.Notifications.UserInfo.alert] as? UIAlertController,
-            let presenter = self.window?.rootViewController
-            else { return }
-        
-        presenter.present(alertController, animated: true, completion: nil)
     }
 }

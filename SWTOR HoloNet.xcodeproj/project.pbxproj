@@ -41,8 +41,6 @@
 		814464F11E62BE5900181E54 /* ActionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464931E62BE5900181E54 /* ActionPerformer.swift */; };
 		814464F21E62BE5900181E54 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464941E62BE5900181E54 /* DulfyAction.swift */; };
 		814464F31E62BE5900181E54 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464941E62BE5900181E54 /* DulfyAction.swift */; };
-		814464F41E62BE5900181E54 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464961E62BE5900181E54 /* AlertFactory.swift */; };
-		814464F51E62BE5900181E54 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464961E62BE5900181E54 /* AlertFactory.swift */; };
 		814464F61E62BE5900181E54 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464981E62BE5900181E54 /* Analytics.swift */; };
 		814464F71E62BE5900181E54 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464981E62BE5900181E54 /* Analytics.swift */; };
 		814464F81E62BE5900181E54 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649A1E62BE5900181E54 /* Entity.swift */; };
@@ -144,7 +142,6 @@
 		814466201E62BE9900181E54 /* ActionFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465EC1E62BE9900181E54 /* ActionFactoryTests.swift */; };
 		814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465ED1E62BE9900181E54 /* ActionParserTests.swift */; };
 		814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465EE1E62BE9900181E54 /* DulfyActionTests.swift */; };
-		814466231E62BE9900181E54 /* TestAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F01E62BE9900181E54 /* TestAlertFactory.swift */; };
 		814466241E62BE9900181E54 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F21E62BE9900181E54 /* EntityTests.swift */; };
 		814466251E62BE9900181E54 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F31E62BE9900181E54 /* SettingsTests.swift */; };
 		814466261E62BE9900181E54 /* TabViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F51E62BE9900181E54 /* TabViewControllerTests.swift */; };
@@ -187,6 +184,7 @@
 		8144664D1E62D1FB00181E54 /* StandardServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144664A1E62D0FF00181E54 /* StandardServices.swift */; };
 		8146AA6D1E58535C002F65FD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6C1E58535C002F65FD /* Alamofire.framework */; };
 		8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */; };
+		815CE28F1E64C81800F28E67 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CE28E1E64C81800F28E67 /* TestNavigator.swift */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
@@ -231,7 +229,6 @@
 		814464921E62BE5900181E54 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionParser.swift; sourceTree = "<group>"; };
 		814464931E62BE5900181E54 /* ActionPerformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPerformer.swift; sourceTree = "<group>"; };
 		814464941E62BE5900181E54 /* DulfyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyAction.swift; sourceTree = "<group>"; };
-		814464961E62BE5900181E54 /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		814464981E62BE5900181E54 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		8144649A1E62BE5900181E54 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8144649B1E62BE5900181E54 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -285,7 +282,6 @@
 		814465EC1E62BE9900181E54 /* ActionFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionFactoryTests.swift; sourceTree = "<group>"; };
 		814465ED1E62BE9900181E54 /* ActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionParserTests.swift; sourceTree = "<group>"; };
 		814465EE1E62BE9900181E54 /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyActionTests.swift; sourceTree = "<group>"; };
-		814465F01E62BE9900181E54 /* TestAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAlertFactory.swift; sourceTree = "<group>"; };
 		814465F21E62BE9900181E54 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityTests.swift; sourceTree = "<group>"; };
 		814465F31E62BE9900181E54 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		814465F51E62BE9900181E54 /* TabViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewControllerTests.swift; sourceTree = "<group>"; };
@@ -326,6 +322,7 @@
 		8144664A1E62D0FF00181E54 /* StandardServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardServices.swift; sourceTree = "<group>"; };
 		8146AA6C1E58535C002F65FD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		815CE28E1E64C81800F28E67 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		818029D41A08B7CC00999871 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
@@ -410,7 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				8144648F1E62BE5900181E54 /* Action */,
-				814464951E62BE5900181E54 /* Alert */,
 				814464971E62BE5900181E54 /* Analytics */,
 				814464991E62BE5900181E54 /* Model */,
 				8100393D1E63575500512F3B /* Theme */,
@@ -429,14 +425,6 @@
 				814464941E62BE5900181E54 /* DulfyAction.swift */,
 			);
 			path = Action;
-			sourceTree = "<group>";
-		};
-		814464951E62BE5900181E54 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				814464961E62BE5900181E54 /* AlertFactory.swift */,
-			);
-			path = Alert;
 			sourceTree = "<group>";
 		};
 		814464971E62BE5900181E54 /* Analytics */ = {
@@ -656,9 +644,9 @@
 			isa = PBXGroup;
 			children = (
 				814465EB1E62BE9900181E54 /* Action */,
-				814465EF1E62BE9900181E54 /* Alert */,
 				814465F11E62BE9900181E54 /* Model */,
 				814465F41E62BE9900181E54 /* UI */,
+				815CE28E1E64C81800F28E67 /* TestNavigator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -671,14 +659,6 @@
 				814465EE1E62BE9900181E54 /* DulfyActionTests.swift */,
 			);
 			path = Action;
-			sourceTree = "<group>";
-		};
-		814465EF1E62BE9900181E54 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				814465F01E62BE9900181E54 /* TestAlertFactory.swift */,
-			);
-			path = Alert;
 			sourceTree = "<group>";
 		};
 		814465F11E62BE9900181E54 /* Model */ = {
@@ -1091,7 +1071,6 @@
 				810039401E63575500512F3B /* Theme.swift in Sources */,
 				814464E21E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DE1E62BE5900181E54 /* Constants.swift in Sources */,
-				814464F41E62BE5900181E54 /* AlertFactory.swift in Sources */,
 				8144652A1E62BE5900181E54 /* ForumThread.swift in Sources */,
 				814464F21E62BE5900181E54 /* DulfyAction.swift in Sources */,
 				814465121E62BE5900181E54 /* TabViewController.swift in Sources */,
@@ -1125,6 +1104,7 @@
 				814464FB1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465191E62BE5900181E54 /* DulfyViewController.swift in Sources */,
 				8144651F1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
+				815CE28F1E64C81800F28E67 /* TestNavigator.swift in Sources */,
 				814466251E62BE9900181E54 /* SettingsTests.swift in Sources */,
 				814465291E62BE5900181E54 /* ForumPost.swift in Sources */,
 				8144652D1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
@@ -1149,7 +1129,6 @@
 				814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */,
 				814465391E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
 				8144651B1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */,
-				814466231E62BE9900181E54 /* TestAlertFactory.swift in Sources */,
 				814464FF1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
 				814465231E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				8144662A1E62BE9900181E54 /* ForumRepositoryTestsBase.swift in Sources */,
@@ -1165,7 +1144,6 @@
 				814464E31E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DF1E62BE5900181E54 /* Constants.swift in Sources */,
 				814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */,
-				814464F51E62BE5900181E54 /* AlertFactory.swift in Sources */,
 				8144652B1E62BE5900181E54 /* ForumThread.swift in Sources */,
 				814464F31E62BE5900181E54 /* DulfyAction.swift in Sources */,
 				814466261E62BE9900181E54 /* TabViewControllerTests.swift in Sources */,

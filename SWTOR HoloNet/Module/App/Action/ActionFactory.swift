@@ -9,15 +9,15 @@
 import Foundation
 
 class ActionFactory {
-    fileprivate let alertFactory: UIAlertFactory
+    fileprivate let navigator: Navigator
     
-    init(alertFactory: UIAlertFactory) {
-        self.alertFactory = alertFactory
+    init(navigator: Navigator) {
+        self.navigator = navigator
     }
 
     func create(type: String) -> Action? {
         switch type {
-        case Constants.Actions.dulfy: return DulfyAction(alertFactory: self.alertFactory)
+        case Constants.Actions.dulfy: return DulfyAction(navigator: self.navigator)
         default: return nil
         }
     }

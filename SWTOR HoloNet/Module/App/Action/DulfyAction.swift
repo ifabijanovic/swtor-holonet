@@ -12,12 +12,12 @@ import UIKit
 let keyDulfyUrl = "url"
 
 class DulfyAction: Action {
-    fileprivate let alertFactory: UIAlertFactory
+    fileprivate let navigator: Navigator
     
     var type: String { return Constants.Actions.dulfy }
     
-    init(alertFactory: UIAlertFactory) {
-        self.alertFactory = alertFactory
+    init(navigator: Navigator) {
+        self.navigator = navigator
     }
 }
 
@@ -43,13 +43,12 @@ extension DulfyAction {
         
         if isForeground {
             // If in foreground ask the user if he wants to navigate
-            let alertController = self.alertFactory.alert(title: "Dulfy", message: message, actions: [
+            self.navigator.showAlert(title: "Dulfy", message: message, actions: [
                 (title: "Hide", style: .cancel, handler: nil),
                 (title: "View", style: .default, handler: { _ in
                     NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.switchToTab), object: self, userInfo: payload)
                 })
             ])
-            NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.showAlert), object: self, userInfo: [Constants.Notifications.UserInfo.alert: alertController])
         } else {
             NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.switchToTab), object: self, userInfo: payload)
         }

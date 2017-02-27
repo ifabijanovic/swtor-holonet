@@ -63,12 +63,10 @@ struct Constants {
     }
     
     struct Notifications {
-        static let showAlert = "ShowAlertNotification"
         static let switchToTab = "SwitchToTabNotification"
         static let themeChanged = "ThemeChangedNotification"
         
         struct UserInfo {
-            static let alert = "alert"
             static let index = "index"
             static let url = "url"
             static let theme = "theme"

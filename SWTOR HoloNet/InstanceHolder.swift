@@ -13,8 +13,6 @@
 import UIKit
 
 class InstanceHolder {
-    var alertFactory: UIAlertFactory
-    
     let settings: Settings
     let theme: Theme
     let pushManager: PushManager
@@ -27,13 +25,8 @@ class InstanceHolder {
         
         self.settings = Settings(bundle: bundle)
         self.theme = Theme(bundle: bundle)
-        self.alertFactory = DefaultUIAlertFactory()
-        let actionFactory = ActionFactory(alertFactory: self.alertFactory)
-        self.pushManager = DefaultPushManager(alertFactory: self.alertFactory, actionFactory: actionFactory)
+        let actionFactory = ActionFactory(navigator: DefaultNavigator())
+        self.pushManager = DefaultPushManager(actionFactory: actionFactory)
         self.analytics = DefaultAnalytics()
-    }
-    
-    func inject(handler: (Settings, Theme, UIAlertFactory, Analytics) -> Void) {
-        handler(self.settings, self.theme, self.alertFactory, self.analytics)
     }
 }

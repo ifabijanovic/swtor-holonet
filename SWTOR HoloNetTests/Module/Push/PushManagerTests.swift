@@ -10,8 +10,16 @@ import UIKit
 import XCTest
 
 class PushManagerTests: XCTestCase {
+    var navigator: TestNavigator!
+    fileprivate var actionFactory: TestActionFactory!
+    fileprivate var pushManager: PushManagerMock!
+    
     override func setUp() {
         super.setUp()
+        
+        self.navigator = TestNavigator()
+        self.actionFactory = TestActionFactory(navigator: self.navigator)
+        self.pushManager = PushManagerMock(actionFactory: self.actionFactory)
         
         self.set(didCancel: nil)
         self.set(didApprove: nil)
@@ -47,72 +55,63 @@ extension PushManagerTests {
 
 extension PushManagerTests {
     func testShouldRequestPushAccess_FirstStart() {
-        let manager = PushManagerMock()
-        
-        XCTAssertTrue(manager.shouldRequestAccess, "")
+        XCTAssertTrue(self.pushManager.shouldRequestAccess)
     }
 
     func testShouldRequestPushAccess_PushEnabled() {
-        let manager = PushManagerMock()
-        manager.isEnabledValue = true
+        self.pushManager.isEnabledValue = true
         
-        XCTAssertFalse(manager.shouldRequestAccess, "")
+        XCTAssertFalse(self.pushManager.shouldRequestAccess)
     }
     
     func testShouldRequestPushAccess_ApprovedButPushDisabled() {
         self.set(didApprove: true)
-        let manager = PushManagerMock()
+        let manager = PushManagerMock(actionFactory: self.actionFactory)
         
-        XCTAssertFalse(manager.shouldRequestAccess, "")
+        XCTAssertFalse(manager.shouldRequestAccess)
     }
     
     func testShouldRequestPushAccess_CanceledRecently() {
         self.set(didCancel: true)
         self.set(timestamp: Date())
-        let manager = PushManagerMock()
+        let manager = PushManagerMock(actionFactory: self.actionFactory)
         
-        XCTAssertFalse(manager.shouldRequestAccess, "")
+        XCTAssertFalse(manager.shouldRequestAccess)
     }
     
     func testShouldRequestPushAccess_CanceledSomeTimeAgo() {
         self.set(didCancel: true)
         self.set(timestamp: Date(timeIntervalSinceNow: -Constants.Push.accessRequestRetryInterval))
-        let manager = PushManagerMock()
+        let manager = PushManagerMock(actionFactory: self.actionFactory)
         
-        XCTAssertTrue(manager.shouldRequestAccess, "")
+        XCTAssertTrue(manager.shouldRequestAccess)
     }
     
     // MARK: - requestPushAccess
     
     func testRequestPushAccess_Canceled() {
-        let alertFactory = TestAlertFactory()
-        let manager = PushManagerMock(alertFactory: alertFactory)
-        let presenter = UIViewController()
+        XCTAssertFalse(self.navigator.didShowAlert)
+        self.pushManager.requestAccess(navigator: self.navigator)
+        XCTAssertTrue(self.navigator.didShowAlert)
         
-        manager.requestAccess(presenter: presenter)
+        self.navigator.tap(style: .cancel)
         
-        XCTAssertNotNil(alertFactory.lastAlert, "")
-        alertFactory.tapCancel()
-        
-        XCTAssertFalse(manager.didRegisterForPush, "")
-        XCTAssertTrue(UserDefaults.standard.bool(forKey: Constants.Push.UserDefaults.didCancelPushAccess), "")
+        XCTAssertFalse(self.pushManager.didRegisterForPush)
+        XCTAssertTrue(UserDefaults.standard.bool(forKey: Constants.Push.UserDefaults.didCancelPushAccess))
         let date = UserDefaults.standard.object(forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp) as? Date
-        XCTAssertNotNil(date, "")
+        XCTAssertNotNil(date)
         let diff = NSDate().timeIntervalSince(date!)
-        XCTAssertLessThanOrEqual(diff, 3, "")
+        XCTAssertLessThanOrEqual(diff, 3)
     }
     
     func testRequestPushAccess_Accepted() {
-        let alertFactory = TestAlertFactory()
-        let manager = PushManagerMock(alertFactory: alertFactory)
-        let presenter = UIViewController()
+        XCTAssertFalse(self.navigator.didShowAlert)
+        self.pushManager.requestAccess(navigator: self.navigator)
+        XCTAssertTrue(self.navigator.didShowAlert)
         
-        manager.requestAccess(presenter: presenter)
+        self.navigator.tap(style: .default)
         
-        XCTAssertNotNil(alertFactory.lastAlert, "")
-        alertFactory.tapDefault()
-        
-        XCTAssertTrue(manager.didRegisterForPush, "")
+        XCTAssertTrue(self.pushManager.didRegisterForPush)
         XCTAssertTrue(UserDefaults.standard.bool(forKey: Constants.Push.UserDefaults.didApprovePushAccess), "")
     }
     
@@ -121,63 +120,50 @@ extension PushManagerTests {
     func testHandleRemoteNotification_PerformsForegroundAction() {
         let userInfo = ["action":"test"]
         let appState = UIApplicationState.active
-        let alertFactory = TestAlertFactory()
-        let actionFactory = TestActionFactory(alertFactory: alertFactory)
-        let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
         
-        manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
+        self.pushManager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        XCTAssertTrue(actionFactory.action!.didPerform, "")
-        XCTAssertNotNil(actionFactory.action!.userInfo, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!, "")
-        XCTAssertTrue(actionFactory.action!.isForeground, "")
-        XCTAssertTrue(manager.didResetBadge, "")
+        XCTAssertTrue(actionFactory.action!.didPerform)
+        XCTAssertNotNil(actionFactory.action!.userInfo)
+        XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count)
+        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!)
+        XCTAssertTrue(actionFactory.action!.isForeground)
+        XCTAssertTrue(self.pushManager.didResetBadge)
     }
     
     func testHandleRemoteNotification_PerformsBackgroundAction() {
         let userInfo = ["action":"test"]
         let appState = UIApplicationState.inactive
-        let alertFactory = TestAlertFactory()
-        let actionFactory = TestActionFactory(alertFactory: alertFactory)
-        let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
         
-        manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
+        self.pushManager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        XCTAssertTrue(actionFactory.action!.didPerform, "")
-        XCTAssertNotNil(actionFactory.action!.userInfo, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count, "")
-        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!, "")
-        XCTAssertFalse(actionFactory.action!.isForeground, "")
-        XCTAssertTrue(manager.didResetBadge, "")
+        XCTAssertTrue(actionFactory.action!.didPerform)
+        XCTAssertNotNil(actionFactory.action!.userInfo)
+        XCTAssertEqual(actionFactory.action!.userInfo!.count, userInfo.count)
+        XCTAssertEqual(actionFactory.action!.userInfo!["action"] as! String, userInfo["action"]!)
+        XCTAssertFalse(actionFactory.action!.isForeground)
+        XCTAssertTrue(self.pushManager.didResetBadge)
     }
     
     func testHandleRemoteNotification_InvalidAction() {
         let userInfo = ["action":"test"]
         let appState = UIApplicationState.active
-        let alertFactory = TestAlertFactory()
-        let actionFactory = TestActionFactory(alertFactory: alertFactory)
-        actionFactory.action = nil
-        let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
+        self.actionFactory.action = nil
+
+        self.pushManager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
-        
-        XCTAssertTrue(manager.didResetBadge, "")
+        XCTAssertTrue(self.pushManager.didResetBadge)
     }
     
     func testHandleRemoteNotification_ActionFailed() {
         let userInfo = ["action":"test"]
         let appState = UIApplicationState.active
-        let alertFactory = TestAlertFactory()
-        let actionFactory = TestActionFactory(alertFactory: alertFactory)
-        actionFactory.action!.returnValue = false
-        let manager = PushManagerMock(alertFactory: alertFactory, actionFactory: actionFactory)
+        self.actionFactory.action!.returnValue = false
         
-        manager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
+        self.pushManager.handleRemoteNotification(applicationState: appState, userInfo: userInfo)
         
-        XCTAssertTrue(manager.didResetBadge, "")
+        XCTAssertTrue(self.pushManager.didResetBadge)
     }
-
 }
 
 fileprivate class TestAction: Action {
@@ -210,19 +196,6 @@ fileprivate class PushManagerMock: DefaultPushManager {
     
     var isEnabledValue = false
     override var isEnabled: Bool { return self.isEnabledValue }
-    
-    init() {
-        let alertFactory = TestAlertFactory()
-        super.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
-    }
-    
-    convenience init(alertFactory: UIAlertFactory) {
-        self.init(alertFactory: alertFactory, actionFactory: TestActionFactory(alertFactory: alertFactory))
-    }
-    
-    override init(alertFactory: UIAlertFactory, actionFactory: ActionFactory) {
-        super.init(alertFactory: alertFactory, actionFactory: actionFactory)
-    }
     
     override func register() {
         self.didRegisterForPush = true

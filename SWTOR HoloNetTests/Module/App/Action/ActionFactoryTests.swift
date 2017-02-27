@@ -15,8 +15,8 @@ class ActionFactoryTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let alertFactory = TestAlertFactory()
-        self.factory = ActionFactory(alertFactory: alertFactory)
+        let navigator = TestNavigator()
+        self.factory = ActionFactory(navigator: navigator)
     }
 }
 
