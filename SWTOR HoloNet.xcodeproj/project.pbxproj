@@ -193,6 +193,7 @@
 		81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364E1E58F980000AC89C /* RxSwift.framework */; };
 		81A636521E58FE92000AC89C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A636511E58FE92000AC89C /* RxCocoa.framework */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
+		81C360EC1E64D8B200994F5D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */; };
 		81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */; };
 		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
 /* End PBXBuildFile section */
@@ -332,6 +333,7 @@
 		81AB248819EFBD7700293D26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -790,6 +792,7 @@
 				814464851E62BE5900181E54 /* AppDelegate.swift */,
 				814464861E62BE5900181E54 /* Constants.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
+				81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */,
 				81AB247F19EFBD7700293D26 /* Supporting Files */,
 			);
 			path = "SWTOR HoloNet";
@@ -891,6 +894,7 @@
 				TargetAttributes = {
 					81AB247B19EFBD7700293D26 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 59GT7K26PJ;
 						LastSwiftMigration = 0820;
 					};
 					81AB249019EFBD7700293D26 = {
@@ -926,6 +930,7 @@
 				814465061E62BE5900181E54 /* LoadMoreCollectionReusableView.xib in Resources */,
 				8144650A1E62BE5900181E54 /* TableHeaderCollectionReusableView.xib in Resources */,
 				814465421E62BE5900181E54 /* ForumPostViewController.xib in Resources */,
+				81C360EC1E64D8B200994F5D /* Launch Screen.storyboard in Resources */,
 				814465501E62BE5900181E54 /* Disclaimer.txt in Resources */,
 				814465321E62BE5900181E54 /* ForumCategoryCollectionViewCell.xib in Resources */,
 				8144652E1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
@@ -1247,12 +1252,14 @@
 			baseConfigurationReference = 81036D151E5848CF00E739FA /* HoloNet.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Fabijanovic (LE5QT2E4DN)";
+				DEVELOPMENT_TEAM = 59GT7K26PJ;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "HoloNet Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1263,12 +1270,14 @@
 			baseConfigurationReference = 81036D151E5848CF00E739FA /* HoloNet.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ivan Fabijanovic (LE5QT2E4DN)";
+				DEVELOPMENT_TEAM = 59GT7K26PJ;
 				INFOPLIST_FILE = "SWTOR HoloNet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.if.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "HoloNet Development";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
