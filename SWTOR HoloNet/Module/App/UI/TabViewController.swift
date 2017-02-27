@@ -42,7 +42,7 @@ class TabViewController: UITabBarController {
         forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
         
         // Dulfy
-        let dulfyViewController = NavigationViewController(rootViewController: DulfyViewController())
+        let dulfyViewController = NavigationViewController(rootViewController: DulfyViewController(services: self.services))
         dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
         
         // Settings

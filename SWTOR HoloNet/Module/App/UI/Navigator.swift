@@ -118,7 +118,7 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = ForumPostViewController(post: forumPost)
+        let successor = ForumPostViewController(post: forumPost, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
     
@@ -143,7 +143,7 @@ extension DefaultNavigator {
     }
     
     private func navigate(from: UIViewController, textTitle: String, textPath: String, animated: Bool) {
-        let successor = TextViewController()
+        let successor = TextViewController(services: StandardServices.instance)
         successor.title = textTitle
         successor.file = textPath
         from.navigationController?.pushViewController(successor, animated: animated)

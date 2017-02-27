@@ -7,65 +7,48 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseViewController: UIViewController, Themeable {
-    var settings: Settings!
-    var theme: Theme!
-    var alertFactory: UIAlertFactory!
-    var analytics: Analytics!
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.inject()
-        self.registerThemeChangedCallback()
+    let services: StandardServices
+    
+    private(set) var theme: Theme?
+    private(set) var disposeBag: DisposeBag
+    
+    init(services: StandardServices, nibName: String?, bundle: Bundle?) {
+        self.services = services
+        self.disposeBag = DisposeBag()
+        super.init(nibName: nibName, bundle: bundle)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    // MARK: -
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.inject()
-        self.registerThemeChangedCallback()
+        self.services
+            .theme
+            .drive(onNext: self.apply(theme:))
+            .addDisposableTo(self.disposeBag)
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        self.inject()
-        self.registerThemeChangedCallback()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return self.theme.statusBarStyle
-    }
-    
-    private func inject() {
-        // Poor man's dependency injection, remove ASAP
-        InstanceHolder.sharedInstance.inject { settings, theme, alertFactory, analytics in
-            self.settings = settings
-            self.theme = theme
-            self.alertFactory = alertFactory
-            self.analytics = analytics
-        }
+        return self.theme?.statusBarStyle ?? .default
     }
     
     func apply(theme: Theme) {
+        guard self.theme != theme else { return }
+        
+        self.theme = theme
         self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    func themeChanged(_ theme: Theme) {
-        self.apply(theme: theme)
-    }
-    
-    func themeChanged(notification: NSNotification) {
-        self.themeChanged(self.theme)
-    }
-    
-    private func registerThemeChangedCallback() {
-        NotificationCenter.default.addObserver(self, selector: #selector(BaseViewController.themeChanged(notification:)), name: NSNotification.Name(Constants.Notifications.themeChanged), object: nil)
     }
 }

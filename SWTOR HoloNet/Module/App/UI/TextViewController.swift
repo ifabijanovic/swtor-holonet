@@ -16,12 +16,8 @@ class TextViewController: BaseViewController {
     
     fileprivate var textView: UITextView!
     
-    override init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    init(services: StandardServices) {
+        super.init(services: services, nibName: nil, bundle: nil)
     }
     
     // MARK: -
@@ -43,17 +39,13 @@ class TextViewController: BaseViewController {
             self.textView.text = self.text!
         }
         
-        self.apply(theme: self.theme)
-        
-#if !DEBUG && !TEST
         if let event = self.analyticsEvent {
             if let properties = self.analyticsPropeties {
-                self.analytics.track(event: event, properties: properties)
+                self.services.analytics.track(event: event, properties: properties)
             } else {
-                self.analytics.track(event: event)
+                self.services.analytics.track(event: event)
             }
         }
-#endif
     }
     
     override func viewDidLayoutSubviews() {

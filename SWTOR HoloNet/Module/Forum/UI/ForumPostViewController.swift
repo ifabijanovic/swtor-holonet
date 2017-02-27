@@ -20,13 +20,9 @@ class ForumPostViewController: BaseViewController {
     
     // MARK: -
     
-    init(post: ForumPost) {
+    init(post: ForumPost, services: StandardServices) {
         self.post = post
-        super.init(nibName: "ForumPostViewController", bundle: Bundle.main)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(services: services, nibName: "ForumPostViewController", bundle: Bundle.main)
     }
     
     // MARK: -
@@ -46,7 +42,7 @@ class ForumPostViewController: BaseViewController {
         }
         
         // Set dev icon if post is marked as Bioware post
-        if self.post.isBiowarePost, let url = URL(string: self.settings.devTrackerIconUrl) {
+        if self.post.isBiowarePost, let url = URL(string: self.services.settings.devTrackerIconUrl) {
             self.devImageView.isHidden = false
             self.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
@@ -56,13 +52,11 @@ class ForumPostViewController: BaseViewController {
         self.dateLabel.text = self.post.postNumber != nil ? "\(self.post.date) | #\(self.post.postNumber!)" : self.post.date
         self.usernameLabel.text = post.username
         self.textTextView.text = post.text
-        
-        self.apply(theme: self.theme)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
+        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,7 +72,7 @@ class ForumPostViewController: BaseViewController {
         self.view.backgroundColor = theme.contentBackground
         self.dateLabel.textColor = theme.contentText
         self.usernameLabel.textColor = theme.contentText
-        self.textTextView.textColor = post.isBiowarePost ? self.theme.contentHighlightText : self.theme.contentText
+        self.textTextView.textColor = post.isBiowarePost ? theme.contentHighlightText : theme.contentText
         self.textTextView.font = UIFont.systemFont(ofSize: theme.textSize.rawValue)
         self.textTextView.indicatorStyle = theme.scrollViewIndicatorStyle
     }

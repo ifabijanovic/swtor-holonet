@@ -113,8 +113,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         let post = self.posts[cell.tag]
-        let viewController = ForumPostViewController(post: post)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.services.navigator.navigate(from: self, to: .forumPost(item: post), animated: true)
     }
     
     // MARK: -

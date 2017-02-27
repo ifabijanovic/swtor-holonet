@@ -167,13 +167,6 @@ extension SettingsTableViewController {
         )
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    fileprivate func legal(title: String, file: String) {
-        let viewController = TextViewController()
-        viewController.title = title
-        viewController.file = file
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
 }
 
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {

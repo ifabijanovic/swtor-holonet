@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class DulfyViewController: BaseViewController {
-    fileprivate var homeUrl: URL { return URL(string: self.settings.dulfyNetUrl)! }
+    fileprivate var homeUrl: URL { return URL(string: self.services.settings.dulfyNetUrl)! }
     fileprivate var url: URL?
     fileprivate var isVisible = false
     
@@ -19,12 +19,8 @@ class DulfyViewController: BaseViewController {
     fileprivate var backButton: UIBarButtonItem!
     fileprivate var forwardButton: UIBarButtonItem!
     
-    override init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    init(services: StandardServices) {
+        super.init(services: services, nibName: nil, bundle: nil)
     }
 
     // MARK: - Overrides
@@ -35,7 +31,6 @@ class DulfyViewController: BaseViewController {
         self.setupWebView()
         self.setupActivityIndicator()
         self.setupButtons()
-        self.apply(theme: self.theme)
         
         // Initial navigation, custom url if set, fallback to home page
         let url = self.url != nil ? self.url! : self.homeUrl
@@ -67,7 +62,7 @@ class DulfyViewController: BaseViewController {
             self.url = nil
         }
         
-        self.analytics.track(event: Constants.Analytics.Event.dulfy)
+        self.services.analytics.track(event: Constants.Analytics.Event.dulfy)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -85,10 +80,6 @@ class DulfyViewController: BaseViewController {
     override func apply(theme: Theme) {
         super.apply(theme: theme)
         self.view.backgroundColor = theme.contentBackground
-    }
-    
-    override func themeChanged(_ theme: Theme) {
-        super.themeChanged(theme)
         
         // Only animate the toolbar transition if current view is visible
         let animate = self.isViewLoaded && self.view.window != nil
