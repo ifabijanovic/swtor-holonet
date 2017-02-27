@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Dependencies
         self.analytics = DefaultAnalytics()
-        self.navigator = DefaultNavigator()
+        self.navigator = DefaultNavigator(settings: Settings())
         self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: self.navigator!))
         
         // Disable caching
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup window
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabViewController(services: StandardServices.instance)
+        window.rootViewController = TabViewController(services: StandardServices.instance, pushManager: self.pushManager!)
         self.window = window
         window.makeKeyAndVisible()
 

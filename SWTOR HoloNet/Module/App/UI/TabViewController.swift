@@ -10,9 +10,11 @@ import UIKit
 
 class TabViewController: UITabBarController {
     private let services: StandardServices
+    private let pushManager: PushManager
     
-    required init(services: StandardServices) {
+    required init(services: StandardServices, pushManager: PushManager) {
         self.services = services
+        self.pushManager = pushManager
         
         super.init(nibName: nil, bundle: nil)
         
@@ -46,7 +48,7 @@ class TabViewController: UITabBarController {
         dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
         
         // Settings
-        let settingsViewController = NavigationViewController(rootViewController: SettingsTableViewController(services: self.services, style: .grouped))
+        let settingsViewController = NavigationViewController(rootViewController: SettingsTableViewController(pushManager: self.pushManager, services: self.services, style: .grouped))
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
         
         self.viewControllers = [forumViewController, dulfyViewController, settingsViewController]

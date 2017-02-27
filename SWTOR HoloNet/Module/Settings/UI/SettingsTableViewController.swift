@@ -9,7 +9,14 @@
 import UIKit
 import MessageUI
 
-class SettingsTableViewController: BaseTableViewController {    
+class SettingsTableViewController: BaseTableViewController {
+    fileprivate let pushManager: PushManager
+    
+    init(pushManager: PushManager, services: StandardServices, style: UITableViewStyle) {
+        self.pushManager = pushManager
+        super.init(services: services, style: style)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +29,7 @@ class SettingsTableViewController: BaseTableViewController {
         self.services.analytics.track(event: Constants.Analytics.Event.settings)
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
-            cell.detailTextLabel?.text = InstanceHolder.sharedInstance.pushManager.isEnabled ? "Enabled" : "Disabled"
+            cell.detailTextLabel?.text = self.pushManager.isEnabled ? "Enabled" : "Disabled"
         }
     }
     
@@ -55,7 +62,7 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.messages, Row.notifications):
             style = .value1
             text = "Notifications"
-            detailText = InstanceHolder.sharedInstance.pushManager.isEnabled ? "Enabled" : "Disabled"
+            detailText = self.pushManager.isEnabled ? "Enabled" : "Disabled"
         case (Section.display, Row.theme):
             style = .value1
             text = "Theme"

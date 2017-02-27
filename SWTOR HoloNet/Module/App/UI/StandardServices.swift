@@ -18,9 +18,9 @@ struct StandardServices {
     
     init(themeManager: ThemeManager) {
         let analytics = DefaultAnalytics()
-        let navigator = DefaultNavigator()
-        let theme = themeManager.theme.asDriver(onErrorJustReturn: themeManager.currentTheme)
         let settings = Settings()
+        let navigator = DefaultNavigator(settings: settings)
+        let theme = themeManager.theme.asDriver(onErrorJustReturn: themeManager.currentTheme)
         
         self.init(analytics: analytics, navigator: navigator, theme: theme, settings: settings)
     }

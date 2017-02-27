@@ -28,7 +28,13 @@ protocol Navigator {
     func open(url: URL)
 }
 
-struct DefaultNavigator: Navigator {}
+struct DefaultNavigator: Navigator {
+    fileprivate let settings: Settings
+    
+    init(settings: Settings) {
+        self.settings = settings
+    }
+}
 
 extension DefaultNavigator {
     func showAlert(title: String?, message: String?, actions: [(title: String?, style: UIAlertActionStyle, handler: AlertActionHandler?)]) {
@@ -95,8 +101,8 @@ extension DefaultNavigator {
             return
         }
         
-        let categoryRepository = DefaultForumCategoryRepository(settings: InstanceHolder.sharedInstance.settings)
-        let threadRepository = DefaultForumThreadRepository(settings: InstanceHolder.sharedInstance.settings)
+        let categoryRepository = DefaultForumCategoryRepository(settings: self.settings)
+        let threadRepository = DefaultForumThreadRepository(settings: self.settings)
         let successor = ForumListCollectionViewController(category: forumCategory, categoryRepository: categoryRepository, threadRepository: threadRepository, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
@@ -107,7 +113,7 @@ extension DefaultNavigator {
             return
         }
         
-        let postRepository = DefaultForumPostRepository(settings: InstanceHolder.sharedInstance.settings)
+        let postRepository = DefaultForumPostRepository(settings: self.settings)
         let successor = ForumThreadCollectionViewController(thread: forumThread, postRepository: postRepository, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }

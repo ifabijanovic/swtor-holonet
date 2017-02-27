@@ -46,13 +46,14 @@ class TabViewControllerTests: XCTestCase {
         super.setUp()
         
         let bundle = Bundle(for: TabViewControllerTests.self)
-        let analytics = DefaultAnalytics()
-        let navigator = DefaultNavigator()
-        let theme = Driver.just(Theme(bundle: bundle))
         let settings = Settings(bundle: bundle)
+        let analytics = DefaultAnalytics()
+        let navigator = DefaultNavigator(settings: settings)
+        let theme = Driver.just(Theme(bundle: bundle))
         let services = StandardServices(analytics: analytics, navigator: navigator, theme: theme, settings: settings)
+        let pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: navigator))
 
-        self.controller = TestTabViewController(services: services)
+        self.controller = TestTabViewController(services: services, pushManager: pushManager)
         let viewControllers = [UIViewController(), UIViewController(), UIViewController()]
         self.controller.setViewControllers(viewControllers, animated: false)
     }
