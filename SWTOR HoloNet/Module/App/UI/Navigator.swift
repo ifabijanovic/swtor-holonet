@@ -128,7 +128,7 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance)
+        let successor = ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
     
@@ -138,7 +138,7 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance)
+        let successor = TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance, services: StandardServices.instance)
         from.navigationController?.pushViewController(successor, animated: animated)
     }
     

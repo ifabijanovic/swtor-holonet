@@ -9,27 +9,17 @@
 import UIKit
 import MessageUI
 
-class SettingsTableViewController: BaseTableViewController {
-    override init() {
-        super.init(style: .grouped)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+class SettingsTableViewController: BaseTableViewController {    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Settings"
         self.tableView.separatorStyle = .none
-        
-        self.apply(theme: self.theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.analytics.track(event: Constants.Analytics.Event.settings)
+        self.services.analytics.track(event: Constants.Analytics.Event.settings)
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
             cell.detailTextLabel?.text = InstanceHolder.sharedInstance.pushManager.isEnabled ? "Enabled" : "Disabled"
@@ -69,11 +59,11 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.display, Row.theme):
             style = .value1
             text = "Theme"
-            detailText = String(describing: self.theme.type)
+            detailText = self.theme != nil ? String(describing: self.theme!.type) : ""
         case (Section.display, Row.textSize):
             style = .value1
             text = "Text size"
-            detailText = String(describing: self.theme.textSize)
+            detailText = self.theme != nil ? String(describing: self.theme!.textSize) : ""
         case (Section.feedback, Row.contact):
             text = "Contact"
         case (Section.feedback, Row.reportBug):
@@ -97,11 +87,15 @@ class SettingsTableViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let headerView = view as? UITableViewHeaderFooterView else { return }
-        headerView.contentView.backgroundColor = theme.contentBackground
+        if let theme = self.theme {
+            headerView.contentView.backgroundColor = theme.contentBackground
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.apply(theme: self.theme)
+        guard let theme = self.theme else { return }
+        
+        cell.apply(theme: theme)
         cell.setDisclosureIndicator(theme: theme)
     }
     
@@ -110,21 +104,22 @@ class SettingsTableViewController: BaseTableViewController {
         
         switch (indexPath.section, indexPath.row) {
         case (Section.messages, Row.notifications):
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            self.services.navigator.open(url: url)
         case (Section.display, Row.theme):
-            self.navigationController?.pushViewController(ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance), animated: true)
+            self.services.navigator.navigate(from: self, to: .themeSettings, animated: true)
         case (Section.display, Row.textSize):
-            self.navigationController?.pushViewController(TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance), animated: true)
+            self.services.navigator.navigate(from: self, to: .textSizeSettings, animated: true)
         case (Section.feedback, Row.contact):
             self.contact()
         case (Section.feedback, Row.reportBug):
             self.reportBug()
         case (Section.legal, Row.disclaimer):
-            self.legal(title: "Disclaimer", file: "Disclaimer")
+            self.services.navigator.navigate(from: self, to: .text(title: "Disclaimer", path: "Disclaimer"), animated: true)
         case (Section.legal, Row.privacyPolicy):
-            self.legal(title: "Privacy Policy", file: "PrivacyPolicy")
+            self.services.navigator.navigate(from: self, to: .text(title: "Privacy Policy", path: "PrivacyPolicy"), animated: true)
         case (Section.legal, Row.license):
-            self.legal(title: "License", file: "License")
+            self.services.navigator.navigate(from: self, to: .text(title: "License", path: "License"), animated: true)
         default: break
         }
     }
@@ -146,7 +141,7 @@ extension SettingsTableViewController {
         
         let controller = MFMailComposeViewController()
         controller.mailComposeDelegate = self
-        controller.setToRecipients([self.settings.appEmail])
+        controller.setToRecipients([self.services.settings.appEmail])
         
         self.present(controller, animated: true, completion: nil)
     }
@@ -159,7 +154,7 @@ extension SettingsTableViewController {
         
         let controller = MFMailComposeViewController()
         controller.mailComposeDelegate = self
-        controller.setToRecipients([self.settings.appEmail])
+        controller.setToRecipients([self.services.settings.appEmail])
         controller.setSubject("[Bug]")
         
         self.present(controller, animated: true, completion: nil)

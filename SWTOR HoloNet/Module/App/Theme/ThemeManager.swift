@@ -19,7 +19,9 @@ protocol ThemeManager {
 struct DefaultThemeManager: ThemeManager {
     private let themePublishSubject: BehaviorSubject<Theme>
     
-    var theme: Observable<Theme> { return self.themePublishSubject }
+    var theme: Observable<Theme> {
+        return self.themePublishSubject.distinctUntilChanged()
+    }
     private(set) var currentTheme: Theme
     
     init(bundle: Bundle) {

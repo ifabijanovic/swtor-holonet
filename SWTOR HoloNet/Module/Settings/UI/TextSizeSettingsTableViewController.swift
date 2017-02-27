@@ -12,13 +12,10 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     private let themeManager: ThemeManager
     private var pickerDelegate: SettingPickerDelegate<TextSize>!
     
-    init(themeManager: ThemeManager) {
+    init(themeManager: ThemeManager, services: StandardServices) {
         self.themeManager = themeManager
-        super.init(style: .plain)
+        super.init(services: services, style: .plain)
     }
-    
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) { fatalError() }
     
     // MARK: -
     
@@ -27,22 +24,17 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         
         self.title = "Text Size"
         
-        self.pickerDelegate = SettingPickerDelegate<TextSize>(initialValue: self.theme.textSize, map: [
+        self.pickerDelegate = SettingPickerDelegate<TextSize>(map: [
             (index: 0, value: TextSize.small),
             (index: 1, value: TextSize.medium),
             (index: 2, value: TextSize.large)
         ])
-
-        self.apply(theme: self.theme)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let newValue = self.pickerDelegate.currentValue
-        if (newValue != self.pickerDelegate.initialValue) {
-            self.themeManager.set(textSize: newValue, bundle: Bundle.main)
-        }
+        self.themeManager.set(textSize: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
 
     // MARK: -
@@ -60,7 +52,9 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.apply(theme: self.theme)
+        guard let theme = self.theme else { return }
+        
+        cell.apply(theme: theme)
         cell.textLabel?.textColor = theme.contentText
         cell.tintColor = theme.contentTitle
     }
@@ -76,5 +70,6 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = theme.contentBackground
+        self.pickerDelegate.select(item: theme.textSize, in: self.tableView)
     }
 }

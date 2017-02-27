@@ -32,7 +32,6 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
         
         self.services
             .theme
-            .debug()
             .drive(onNext: self.apply(theme:))
             .addDisposableTo(self.disposeBag)
     }
@@ -47,8 +46,7 @@ class BaseCollectionViewController: UICollectionViewController, Themeable {
     }
     
     func apply(theme: Theme) {
-        // disabled until theme is an immutable structure
-        //guard self.theme != theme else { return }
+        guard self.theme != theme else { return }
         
         self.theme = theme
         self.setNeedsStatusBarAppearanceUpdate()

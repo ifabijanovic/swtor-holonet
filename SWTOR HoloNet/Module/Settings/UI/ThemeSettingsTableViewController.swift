@@ -12,13 +12,10 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     private let themeManager: ThemeManager
     private var pickerDelegate: SettingPickerDelegate<ThemeType>!
     
-    init(themeManager: ThemeManager) {
+    init(themeManager: ThemeManager, services: StandardServices) {
         self.themeManager = themeManager
-        super.init(style: .plain)
+        super.init(services: services, style: .plain)
     }
-    
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) { fatalError() }
     
     // MARK: -
 
@@ -27,21 +24,16 @@ class ThemeSettingsTableViewController: BaseTableViewController {
         
         self.title = "Theme"
         
-        self.pickerDelegate = SettingPickerDelegate<ThemeType>(initialValue: self.theme.type, map: [
+        self.pickerDelegate = SettingPickerDelegate<ThemeType>(map: [
             (index: 0, value: ThemeType.dark),
             (index: 1, value: ThemeType.light)
         ])
-        
-        self.apply(theme: self.theme)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let newValue = self.pickerDelegate.currentValue
-        if (newValue != self.pickerDelegate.initialValue) {
-            self.themeManager.set(themeType: newValue, bundle: Bundle.main)
-        }
+        self.themeManager.set(themeType: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
     
     // MARK: -
@@ -59,7 +51,9 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.apply(theme: self.theme)
+        guard let theme = self.theme else { return }
+        
+        cell.apply(theme: theme)
         cell.textLabel?.textColor = theme.contentText
         cell.tintColor = theme.contentTitle
     }
@@ -75,5 +69,6 @@ class ThemeSettingsTableViewController: BaseTableViewController {
         
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = theme.contentBackground
+        self.pickerDelegate.select(item: theme.type, in: self.tableView)
     }
 }

@@ -9,14 +9,12 @@
 import UIKit
 
 class SettingPickerDelegate<SettingType: Equatable> {
-    let initialValue: SettingType
     fileprivate let map: [(index: Int, value: SettingType)]
+    fileprivate var checkedRow: IndexPath
     
-    fileprivate var checkedRow: IndexPath!
-    
-    init(initialValue: SettingType, map: [(index: Int, value: SettingType)]) {
-        self.initialValue = initialValue
+    init(map: [(index: Int, value: SettingType)]) {
         self.map = map
+        self.checkedRow = IndexPath(row: 99, section: 99)
     }
 }
 
@@ -25,17 +23,17 @@ extension SettingPickerDelegate {
         return self.settingType(index: self.checkedRow.row)!
     }
     
+    func select(item: SettingType, in tableView: UITableView) {
+        let index = self.index(settingType: item)
+        self.tableView(tableView, didSelectRowAtIndexPath: IndexPath(row: index, section: 0))
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let settingType = self.settingType(index: indexPath.row)
         assert(settingType != nil)
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = String(describing: settingType!)
-        if self.initialValue == settingType! && self.checkedRow == nil {
-            cell.accessoryType = .checkmark
-            self.checkedRow = indexPath
-        }
-        
         return cell
     }
     
