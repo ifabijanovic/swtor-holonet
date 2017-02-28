@@ -7,33 +7,38 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class NavigationViewController: UINavigationController {
-    required init() {
+class NavigationViewController: UINavigationController, Themeable {
+    private let services: StandardServices
+    private var disposeBag: DisposeBag
+    
+    init(services: StandardServices, rootViewController: UIViewController) {
+        self.services = services
+        self.disposeBag = DisposeBag()
         super.init(nibName: nil, bundle: nil)
-        self.registerForNotifications()
+        self.pushViewController(rootViewController, animated: false)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.registerForNotifications()
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.registerForNotifications()
-    }
-    
-    override init(rootViewController: UIViewController) {
-        super.init(rootViewController: rootViewController)
-        self.registerForNotifications()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) { fatalError() }
     
     // MARK: -
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.services
+            .theme
+            .drive(onNext: self.apply(theme:))
+            .addDisposableTo(self.disposeBag)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
+    }
     
     override var childViewControllerForStatusBarHidden: UIViewController? {
         return self.topViewController
@@ -43,17 +48,7 @@ class NavigationViewController: UINavigationController {
         return self.topViewController
     }
     
-    // MARK: -
-    
-    func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(NavigationViewController.themeChanged(notification:)), name: NSNotification.Name(Constants.Notifications.themeChanged), object: nil)
-    }
-    
-    func themeChanged(notification: NSNotification) {
-        if let theme = notification.userInfo?[Constants.Notifications.UserInfo.theme] as? Theme {
-            // Only animate the transition if current view is visible
-            let animate = self.isViewLoaded && self.view.window != nil
-            theme.apply(navigationBar: self.navigationBar, animate: animate)
-        }
+    func apply(theme: Theme) {
+        theme.apply(navigationBar: self.navigationBar, animate: true)
     }
 }

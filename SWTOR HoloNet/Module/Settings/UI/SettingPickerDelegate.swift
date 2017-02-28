@@ -8,22 +8,27 @@
 
 import UIKit
 
-class SettingPickerDelegate<SettingType: Equatable> {
-    fileprivate let map: [(index: Int, value: SettingType)]
-    fileprivate var checkedRow: IndexPath
+struct SettingPickerOption<T: Equatable> {
+    let index: Int
+    let value: T
+}
+
+class SettingPickerDelegate<T: Equatable> {
+    fileprivate let options: [SettingPickerOption<T>]
+    fileprivate var selectedIndexPath: IndexPath
     
-    init(map: [(index: Int, value: SettingType)]) {
-        self.map = map
-        self.checkedRow = IndexPath(row: 99, section: 99)
+    init(options: [SettingPickerOption<T>]) {
+        self.options = options
+        self.selectedIndexPath = IndexPath(row: 99, section: 99)
     }
 }
 
 extension SettingPickerDelegate {
-    var currentValue: SettingType {
-        return self.settingType(index: self.checkedRow.row)!
+    var currentValue: T {
+        return self.settingType(index: self.selectedIndexPath.row)!
     }
     
-    func select(item: SettingType, in tableView: UITableView) {
+    func select(item: T, in tableView: UITableView) {
         let index = self.index(settingType: item)
         self.tableView(tableView, didSelectRowAtIndexPath: IndexPath(row: index, section: 0))
     }
@@ -34,14 +39,15 @@ extension SettingPickerDelegate {
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = String(describing: settingType!)
+        cell.accessoryType = indexPath == self.selectedIndexPath ? .checkmark : .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath != self.checkedRow {
-            if let cell = tableView.cellForRow(at: self.checkedRow) {
+        if indexPath != self.selectedIndexPath {
+            if let cell = tableView.cellForRow(at: self.selectedIndexPath) {
                 cell.accessoryType = .none
             }
             if let cell = tableView.cellForRow(at: indexPath) {
@@ -49,13 +55,13 @@ extension SettingPickerDelegate {
             }
         }
         
-        self.checkedRow = indexPath
+        self.selectedIndexPath = indexPath
     }
 }
 
 fileprivate extension SettingPickerDelegate {
-    func index(settingType: SettingType) -> Int {
-        for item in self.map {
+    func index(settingType: T) -> Int {
+        for item in self.options {
             if item.value == settingType {
                 return item.index
             }
@@ -63,8 +69,8 @@ fileprivate extension SettingPickerDelegate {
         return 0
     }
     
-    func settingType(index: Int) -> SettingType? {
-        for item in self.map {
+    func settingType(index: Int) -> T? {
+        for item in self.options {
             if item.index == index {
                 return item.value
             }

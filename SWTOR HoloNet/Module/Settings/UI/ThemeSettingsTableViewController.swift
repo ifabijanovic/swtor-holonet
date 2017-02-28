@@ -10,10 +10,17 @@ import UIKit
 
 class ThemeSettingsTableViewController: BaseTableViewController {
     private let themeManager: ThemeManager
-    private var pickerDelegate: SettingPickerDelegate<ThemeType>!
+    private let pickerDelegate: SettingPickerDelegate<ThemeType>
     
     init(themeManager: ThemeManager, services: StandardServices) {
         self.themeManager = themeManager
+        
+        let options: [SettingPickerOption<ThemeType>] = [
+            SettingPickerOption(index: 0, value: .dark),
+            SettingPickerOption(index: 1, value: .light),
+        ]
+        self.pickerDelegate = SettingPickerDelegate(options: options)
+        
         super.init(services: services, style: .plain)
     }
     
@@ -21,19 +28,7 @@ class ThemeSettingsTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Theme"
-        
-        self.pickerDelegate = SettingPickerDelegate<ThemeType>(map: [
-            (index: 0, value: ThemeType.dark),
-            (index: 1, value: ThemeType.light)
-        ])
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.themeManager.set(themeType: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
     
     // MARK: -
@@ -60,6 +55,7 @@ class ThemeSettingsTableViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        self.themeManager.set(themeType: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
     
     // MARK: -

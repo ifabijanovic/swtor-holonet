@@ -35,7 +35,6 @@ struct DefaultThemeManager: ThemeManager {
     func set(themeType: ThemeType, bundle: Bundle) {
         let theme = Theme(type: themeType, textSize: currentTextSize, bundle: bundle)
         self.themePublishSubject.onNext(theme)
-        NotificationCenter.default.post(name: Notification.Name(Constants.Notifications.themeChanged), object: self, userInfo: [Constants.Notifications.UserInfo.theme: theme])
         apply(theme: theme)
         
         UserDefaults.standard.set(themeType.rawValue, forKey: Keys.themeType)
@@ -45,7 +44,6 @@ struct DefaultThemeManager: ThemeManager {
     func set(textSize: TextSize, bundle: Bundle) {
         let theme = Theme(type: currentThemeType, textSize: textSize, bundle: bundle)
         self.themePublishSubject.onNext(theme)
-        NotificationCenter.default.post(name: Notification.Name(Constants.Notifications.themeChanged), object: self, userInfo: [Constants.Notifications.UserInfo.theme: theme])
         
         UserDefaults.standard.set(textSize.rawValue, forKey: Keys.textSize)
         UserDefaults.standard.synchronize()

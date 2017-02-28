@@ -10,10 +10,18 @@ import UIKit
 
 class TextSizeSettingsTableViewController: BaseTableViewController {
     private let themeManager: ThemeManager
-    private var pickerDelegate: SettingPickerDelegate<TextSize>!
+    private let pickerDelegate: SettingPickerDelegate<TextSize>
     
     init(themeManager: ThemeManager, services: StandardServices) {
         self.themeManager = themeManager
+        
+        let options: [SettingPickerOption<TextSize>] = [
+            SettingPickerOption(index: 0, value: .small),
+            SettingPickerOption(index: 1, value: .medium),
+            SettingPickerOption(index: 2, value: .large)
+        ]
+        self.pickerDelegate = SettingPickerDelegate(options: options)
+        
         super.init(services: services, style: .plain)
     }
     
@@ -21,20 +29,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Text Size"
-        
-        self.pickerDelegate = SettingPickerDelegate<TextSize>(map: [
-            (index: 0, value: TextSize.small),
-            (index: 1, value: TextSize.medium),
-            (index: 2, value: TextSize.large)
-        ])
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.themeManager.set(textSize: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
 
     // MARK: -
@@ -61,6 +56,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.pickerDelegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        self.themeManager.set(textSize: self.pickerDelegate.currentValue, bundle: Bundle.main)
     }
     
     // MARK: -
