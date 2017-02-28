@@ -101,7 +101,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let height: CGFloat
             
         if indexPath.section == CategorySection {
-            width = self.isPad ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
+            width = self.isWideScreen ? floor(collectionView.frame.width / 2.0) : collectionView.frame.width
             height = 104.0 + (3 * textSizeDiff)
         } else {
             width = collectionView.frame.width

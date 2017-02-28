@@ -38,7 +38,7 @@ class ForumPostCollectionViewCell: UICollectionViewCell {
         selectedBackgroundView.backgroundColor = theme.contentHighlightBackground
         self.selectedBackgroundView = selectedBackgroundView
         
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
+        if UIScreen.main.bounds.width > Constants.wideScreenThreshold {
             self.textView.numberOfLines = 40
         }
     }

@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
+    static let wideScreenThreshold: CGFloat = 640.0
+    
     struct Actions {
         static let dulfy = "dulfy"
         

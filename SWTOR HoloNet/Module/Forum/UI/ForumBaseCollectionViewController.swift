@@ -18,7 +18,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     var canLoadMore = false
     var showLoadMore = false
     var loadedPage = 1
-    var isPad = false
+    private(set) var isWideScreen = false
     
     fileprivate var needsContentLoad = true
     
@@ -42,7 +42,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         self.refreshControl = refreshControl
         self.collectionView!.addSubview(refreshControl)
         
-        self.isPad = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
+        self.isWideScreen = UIScreen.main.bounds.width > Constants.wideScreenThreshold
         
         self.collectionView!.register(UINib(nibName: "LoadMoreCollectionReusableView", bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FooterIdentifier)
         
@@ -56,6 +56,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        self.isWideScreen = size.width > Constants.wideScreenThreshold
         self.collectionView!.collectionViewLayout.invalidateLayout()
     }
     
