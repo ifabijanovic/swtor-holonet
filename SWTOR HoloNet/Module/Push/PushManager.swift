@@ -8,6 +8,10 @@
 
 import Foundation
 import UIKit
+import UserNotifications
+#if !TEST
+import Firebase
+#endif
 
 protocol PushManager {
     var isEnabled: Bool { get }
@@ -20,7 +24,7 @@ protocol PushManager {
     func resetBadge()
 }
 
-class DefaultPushManager: PushManager {
+class DefaultPushManager: NSObject, PushManager {
     fileprivate let actionFactory: ActionFactory
     
     fileprivate var didCancelPushAccess: Bool
@@ -37,6 +41,14 @@ class DefaultPushManager: PushManager {
         
         let timestamp = defaults.object(forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp) as? Date
         self.lastPushAccessRequestTimestamp = timestamp != nil ? timestamp! : Date.distantPast
+        
+        super.init()
+        
+        #if !TEST
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        }
+        #endif
     }
     
     // MARK: -
@@ -92,33 +104,64 @@ class DefaultPushManager: PushManager {
     func register() {
         let application = UIApplication.shared
         
-        let types: UIUserNotificationType = [.alert, .badge, .sound]
-        let settings = UIUserNotificationSettings(types: types, categories: nil)
-        application.registerUserNotificationSettings(settings)
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { _,_ in })
+            
+            #if !TEST
+            FIRMessaging.messaging().remoteMessageDelegate = self
+            #endif
+        } else {
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+
         application.registerForRemoteNotifications()
     }
     
     func register(deviceToken: Data) {
-        
+        #if !TEST
+            #if DEBUG
+                let type = FIRInstanceIDAPNSTokenType.sandbox
+            #else
+                let type = FIRInstanceIDAPNSTokenType.prod
+            #endif
+            FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: type)
+        #endif
     }
     
     func handleRemoteNotification(applicationState: UIApplicationState, userInfo: [AnyHashable : Any]) {
-        var result = false
-        // Try to perform an action
-        if let action = self.actionFactory.create(userInfo: userInfo) {
-            result = action.perform(userInfo: userInfo, isForeground: applicationState == .active)
-        }
+        let result = self.actionFactory
+            .create(userInfo: userInfo)?
+            .perform(userInfo: userInfo, isForeground: applicationState == .active)
+            ?? false
         
         self.resetBadge()
         
         if !result {
-#if !TEST
-            // If performing an action failed, fallback to default Parse handling
-#endif
+            // Implement default notification handling here
         }
+        
+        #if !TEST
+        FIRMessaging.messaging().appDidReceiveMessage(userInfo)
+        #endif
     }
     
     func resetBadge() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+}
+
+@available(iOS 10.0, *)
+extension DefaultPushManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
     }
 }
+
+#if !TEST
+extension DefaultPushManager: FIRMessagingDelegate {
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        
+    }
+}
+#endif

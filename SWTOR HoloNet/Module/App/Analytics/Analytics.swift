@@ -7,29 +7,26 @@
 //
 
 import Foundation
+#if !TEST
+import Firebase
+#endif
 
 protocol Analytics {
-    func appOpened()
     func track(event: String)
     func track(event: String, properties: [AnyHashable: Any])
 }
 
 struct DefaultAnalytics: Analytics {
-    func appOpened() {
-        #if !DEBUG && !TEST
-            
-        #endif
-    }
-    
     func track(event: String) {
-        #if !DEBUG && !TEST
-        
+        #if !TEST
+        FIRAnalytics.logEvent(withName: event, parameters: nil)
         #endif
     }
     
     func track(event: String, properties: [AnyHashable : Any]) {
-        #if !DEBUG && !TEST
-            
+        #if !TEST
+        let parameters = properties as? [String: NSObject]
+        FIRAnalytics.logEvent(withName: event, parameters: parameters)
         #endif
     }
 }

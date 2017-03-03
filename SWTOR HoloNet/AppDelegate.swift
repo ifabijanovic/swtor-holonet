@@ -55,10 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        if application.applicationState == .inactive {
-            self.analytics?.appOpened()
-        }
         self.pushManager?.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        self.pushManager?.handleRemoteNotification(applicationState: application.applicationState, userInfo: userInfo)
+        completionHandler(UIBackgroundFetchResult.noData)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -77,7 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.pushManager?.handleRemoteNotification(applicationState: .background, userInfo: launchNotification)
             self.launchNotification = nil
         }
-        
-        // Save some settings for the user
     }
 }
