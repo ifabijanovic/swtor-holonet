@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         // Dependencies
+        let standardServices = StandardServices.instance
         self.analytics = DefaultAnalytics()
-        self.navigator = DefaultNavigator(settings: Settings())
-        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: self.navigator!), navigator: self.navigator!)
+        self.navigator = standardServices.navigator
+        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: standardServices.navigator), navigator: standardServices.navigator)
         
         // Disable caching
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)

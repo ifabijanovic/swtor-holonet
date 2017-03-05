@@ -9,11 +9,6 @@ HoloNet is an iPhone/iPad application intended for use by players of the MMORPG 
 * Browse and read the fansite www.dulfy.net
 * Get the latest news about the game via push notifications
 
-Plans for further development include:
-
-* Game reference information - info on classes, abilities, disciplines etc.
-* Social module
-
 ## Disclaimer
 
 HoloNet is an application developed by SW:TOR fans and is not affiliated with Disney, Lucasfilm, EA or Bioware.
@@ -29,6 +24,8 @@ HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/). Th
 * [HTMLReader](https://github.com/nolanw/HTMLReader)
 * [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs)
 
+HoloNet also makes use of [Firebase](https://firebase.google.com) provided by Google.
+
 ## Contact
 
 Feel free to contact me on Twitter ([@ivanfeb](https://twitter.com/ivanfeb))
@@ -40,4 +37,3 @@ Feel free to contact me on Twitter ([@ivanfeb](https://twitter.com/ivanfeb))
 ## License
 
 HoloNet is available under GNU GPL v3.0 license. See the LICENSE file for more info.
-
