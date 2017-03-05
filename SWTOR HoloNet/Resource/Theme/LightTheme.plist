@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>navBackground</key>
+	<string>247.0,247.0,247.0,1.0</string>
+	<key>navText</key>
+	<string>0.0,122.0,255.0,1.0</string>
+	<key>contentBackground</key>
+	<string>239.0,239.0,244.0,1.0</string>
+	<key>contentHighlightBackground</key>
+	<string>217.0,217.0,217.0,1.0</string>
+	<key>contentTitle</key>
+	<string>0.0,122.0,255.0,1.0</string>
+	<key>contentText</key>
+	<string>0.0,0.0,0.0,1.0</string>
+	<key>contentHighlightText</key>
+	<string>0.0,122.0,255.0,1.0</string>
+	<key>headerHeight</key>
+	<integer>22</integer>
+	<key>headerText</key>
+	<string>0.0,0.0,0.0,1.0</string>
+	<key>headerBackground</key>
+	<string>247.0,247.0,247.0,1.0</string>
+	<key>instructionsIcon</key>
+	<string>255.0,255.0,255.0,1.0</string>
+	<key>instructionsIconBackground</key>
+	<string>0.0,0.0,0.0,1.0</string>
+	<key>instructionsFrame</key>
+	<string>160.0,160.0,160.0,1.0</string>
+	<key>activityIndicatorStyle</key>
+	<integer>2</integer>
+	<key>scrollViewIndicatorStyle</key>
+	<integer>1</integer>
+	<key>statusBarStyle</key>
+	<integer>0</integer>
+</dict>
+</plist>

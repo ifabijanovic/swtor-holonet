@@ -1,0 +1,27 @@
+language: objective-c
+osx_image: xcode8.2
+notifications:
+  email: false
+  slack:
+    secure: OG2heblMGg8o00TLzkMaoTxuXrBQNMbuPtQeP1tIJ4psn1HdKrcbE7nwz1pP/N0cHN80HPmtqpJDP9lLh0kmnkAlrh2GGK1d9lbhmNNoCtClcrh6UVJTVUafrTlXkagNTbo4ZSve8T6itMMZWI/Cci/XbUclpv7CRoD4+M9lTwRO7keweCwoLvIRVagvZVs4ZdQkxe37Ed8le86///s3Y48/fPvmFsVJzBzHk9HotjOeF1UJvuKghHUzLQvIGcMSAcHqyTnAxvcYfByTiyhDzv84RfHzH682G+SVIsw+Oc7QPaqap0xGGdcTvlAFHQ9lyXl0zDVOsLd/Rq9jesrp1SNtEl7Wyx0UoZC0piw9kGlysqCDfwdBbHyRrsW1cj0xbzBTng+O5ECzwCjWulIi/cn+ebuWRgmaH3evDo8zeNIAz3w1V4LNaeDpj0ecljJj16NqoXzFy82Vc2nG6I9Atupu+QIOUYTRGPHiOlaVIA1Ts4rBx97P4GExeS84PRNUEBviGRzmKIJOngTx8Dt4/JkGlAEVSkByOWL+X6QSrsHTy/X9mkQONdE3tfCClF2wLapacesgNFb9OUHNhJTZOxxb5mV6A7s9obVOeX66gf6vy8q/VKJktpzv7+BjMyyJDvxXO8o/xTLIcwemv71FrH0ZUV9nefpETT5+Scg7hpk=
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - IOS_SDK=iphonesimulator10.2
+  - IOS_PROJECT="SWTOR HoloNet.xcodeproj"
+  - IOS_SCHEME="HoloNet"
+  matrix:
+  - DESTINATION="OS=10.1,name=iPhone 7 Plus" SCHEME="$IOS_SCHEME" SDK="$IOS_SDK"
+  - DESTINATION="OS=9.3,name=iPhone 5" SCHEME="$IOS_SCHEME" SDK="$IOS_SDK"
+cache:
+  directories:
+  - Carthage
+before_install:
+- "./scripts/bootstrap-if-needed.sh"
+script:
+- xcodebuild -version
+- xcodebuild -showsdks
+- set -o pipefail && xcodebuild clean build test -project "$IOS_PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug | xcpretty;
+- set -o pipefail && xcodebuild clean build test -project "$IOS_PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release | xcpretty;
+

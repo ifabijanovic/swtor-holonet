@@ -1,0 +1,6 @@
+github "Alamofire/Alamofire" "4.4.0"
+github "Alamofire/AlamofireImage" "3.2.0"
+github "AliSoftware/OHHTTPStubs" "5.2.3-swift3"
+github "ReactiveX/RxSwift" "3.2.0"
+github "RxSwiftCommunity/RxAlamofire" "3.0.2"
+github "nolanw/HTMLReader" "v2.0.3"

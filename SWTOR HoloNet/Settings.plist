@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App Email</key>
+	<string>holonet.swtor@gmail.com</string>
+	<key>Forum Display URL</key>
+	<string>http://www.swtor.com/community/forumdisplay.php</string>
+	<key>Thread Display URL</key>
+	<string>http://www.swtor.com/community/showthread.php</string>
+	<key>Developer Tracker URL</key>
+	<string>http://www.swtor.com/community/devtracker.php</string>
+	<key>Developer Tracker ID</key>
+	<integer>304</integer>
+	<key>Category Query Param</key>
+	<string>f</string>
+	<key>Thread Query Param</key>
+	<string>t</string>
+	<key>Post Query Param</key>
+	<string>p</string>
+	<key>Paging Query Param</key>
+	<string>page</string>
+	<key>Dev Tracker Icon URL</key>
+	<string>http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png</string>
+	<key>Dev Avatar URL</key>
+	<string>http://www.swtor.com/sites/all/files/avatars/BioWare.gif</string>
+	<key>Sticky Icon URL</key>
+	<string>http://cdn-www.swtor.com/community/images/swtor/misc/sticky.gif</string>
+	<key>Dulfy.net URL</key>
+	<string>http://dulfy.net</string>
+	<key>Request Timeout</key>
+	<integer>10</integer>
+</dict>
+</plist>
