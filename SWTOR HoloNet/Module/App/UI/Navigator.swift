@@ -21,6 +21,7 @@ enum NavigationState {
 
 protocol Navigator {
     func showAlert(title: String?, message: String?, actions: [(title: String?, style: UIAlertActionStyle, handler: AlertActionHandler?)])
+    func showNotification(userInfo: [AnyHashable: Any])
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?)
     func showMaintenanceAlert(handler: AlertActionHandler?)
     
@@ -49,6 +50,14 @@ extension DefaultNavigator {
             rootViewController = navigationViewController.visibleViewController
         }
         rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func showNotification(userInfo: [AnyHashable : Any]) {
+        guard let message = ActionParser(userInfo: userInfo).alert else { return }
+        self.showAlert(title: "HoloNet", message: message, actions: [
+            (title: "OK", style: .default, handler: nil)
+            ]
+        )
     }
     
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?) {

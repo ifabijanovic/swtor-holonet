@@ -19,7 +19,7 @@ class PushManagerTests: XCTestCase {
         
         self.navigator = TestNavigator()
         self.actionFactory = TestActionFactory(navigator: self.navigator)
-        self.pushManager = PushManagerMock(actionFactory: self.actionFactory)
+        self.pushManager = PushManagerMock(actionFactory: self.actionFactory, navigator: self.navigator)
         
         self.set(didCancel: nil)
         self.set(didApprove: nil)
@@ -66,7 +66,7 @@ extension PushManagerTests {
     
     func testShouldRequestPushAccess_ApprovedButPushDisabled() {
         self.set(didApprove: true)
-        let manager = PushManagerMock(actionFactory: self.actionFactory)
+        let manager = PushManagerMock(actionFactory: self.actionFactory, navigator: self.navigator)
         
         XCTAssertFalse(manager.shouldRequestAccess)
     }
@@ -74,7 +74,7 @@ extension PushManagerTests {
     func testShouldRequestPushAccess_CanceledRecently() {
         self.set(didCancel: true)
         self.set(timestamp: Date())
-        let manager = PushManagerMock(actionFactory: self.actionFactory)
+        let manager = PushManagerMock(actionFactory: self.actionFactory, navigator: self.navigator)
         
         XCTAssertFalse(manager.shouldRequestAccess)
     }
@@ -82,7 +82,7 @@ extension PushManagerTests {
     func testShouldRequestPushAccess_CanceledSomeTimeAgo() {
         self.set(didCancel: true)
         self.set(timestamp: Date(timeIntervalSinceNow: -Constants.Push.accessRequestRetryInterval))
-        let manager = PushManagerMock(actionFactory: self.actionFactory)
+        let manager = PushManagerMock(actionFactory: self.actionFactory, navigator: self.navigator)
         
         XCTAssertTrue(manager.shouldRequestAccess)
     }

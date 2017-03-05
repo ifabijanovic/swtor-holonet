@@ -26,13 +26,15 @@ protocol PushManager {
 
 class DefaultPushManager: NSObject, PushManager {
     fileprivate let actionFactory: ActionFactory
+    fileprivate let navigator: Navigator
     
     fileprivate var didCancelPushAccess: Bool
     fileprivate var didApprovePushAccess: Bool
     fileprivate var lastPushAccessRequestTimestamp: Date
     
-    init(actionFactory: ActionFactory) {
+    init(actionFactory: ActionFactory, navigator: Navigator) {
         self.actionFactory = actionFactory
+        self.navigator = navigator
         
         let defaults = UserDefaults.standard
         
@@ -137,8 +139,12 @@ class DefaultPushManager: NSObject, PushManager {
         
         self.resetBadge()
         
-        if !result {
-            // Implement default notification handling here
+        if #available(iOS 10.0, *) {
+            // Do nothing, handled by the UNUserNotificationCenterDelegate
+        } else {
+            if !result {
+                self.navigator.showNotification(userInfo: userInfo)
+            }
         }
         
         #if !TEST
@@ -153,8 +159,13 @@ class DefaultPushManager: NSObject, PushManager {
 
 @available(iOS 10.0, *)
 extension DefaultPushManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+        self.handleRemoteNotification(applicationState: .background, userInfo: response.notification.request.content.userInfo)
+        completionHandler()
     }
 }
 

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Dependencies
         self.analytics = DefaultAnalytics()
         self.navigator = DefaultNavigator(settings: Settings())
-        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: self.navigator!))
+        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: self.navigator!), navigator: self.navigator!)
         
         // Disable caching
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)

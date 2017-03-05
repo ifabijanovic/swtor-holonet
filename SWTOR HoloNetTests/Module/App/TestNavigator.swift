@@ -23,6 +23,11 @@ class TestNavigator: Navigator {
         actions.forEach { self.alertActions[$0.style] = $0.handler }
     }
     
+    func showNotification(userInfo: [AnyHashable : Any]) {
+        guard ActionParser(userInfo: userInfo).alert != nil else { return }
+        self.didShowAlert = true
+    }
+    
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?) {
         self.showAlert(title: nil, message: nil, actions: [
             (title: "", style: .cancel, handler: cancelHandler),
