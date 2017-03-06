@@ -128,6 +128,13 @@ class DefaultPushManager: NSObject, PushManager {
                 let type = FIRInstanceIDAPNSTokenType.prod
             #endif
             FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: type)
+            
+            // Topics
+            FIRMessaging.messaging().subscribe(toTopic: "/topics/general")
+            FIRMessaging.messaging().subscribe(toTopic: "/topics/dulfy")
+            #if DEBUG
+            FIRMessaging.messaging().subscribe(toTopic: "/topics/debug")
+            #endif
         #endif
     }
     
