@@ -130,10 +130,12 @@ class DefaultPushManager: NSObject, PushManager {
             FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: type)
             
             // Topics
-            FIRMessaging.messaging().subscribe(toTopic: "/topics/general")
-            FIRMessaging.messaging().subscribe(toTopic: "/topics/dulfy")
+            // Performed with delay because of Firebase bug
+            // https://github.com/firebase/quickstart-ios/issues/146
+            DispatchQueue.main.async { FIRMessaging.messaging().subscribe(toTopic: "/topics/general") }
+            DispatchQueue.main.async { FIRMessaging.messaging().subscribe(toTopic: "/topics/dulfy") }
             #if DEBUG
-            FIRMessaging.messaging().subscribe(toTopic: "/topics/debug")
+            DispatchQueue.main.async { FIRMessaging.messaging().subscribe(toTopic: "/topics/debug") }
             #endif
         #endif
     }
