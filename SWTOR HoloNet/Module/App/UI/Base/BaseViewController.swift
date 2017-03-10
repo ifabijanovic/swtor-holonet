@@ -11,13 +11,13 @@ import RxSwift
 import RxCocoa
 
 class BaseViewController: UIViewController, Themeable {
-    let services: StandardServices
+    let toolbox: Toolbox
     
     private(set) var theme: Theme?
     private(set) var disposeBag: DisposeBag
     
-    init(services: StandardServices, nibName: String?, bundle: Bundle?) {
-        self.services = services
+    init(toolbox: Toolbox, nibName: String?, bundle: Bundle?) {
+        self.toolbox = toolbox
         self.disposeBag = DisposeBag()
         super.init(nibName: nibName, bundle: bundle)
     }
@@ -30,7 +30,7 @@ class BaseViewController: UIViewController, Themeable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.services
+        self.toolbox
             .theme
             .drive(onNext: self.apply(theme:))
             .addDisposableTo(self.disposeBag)

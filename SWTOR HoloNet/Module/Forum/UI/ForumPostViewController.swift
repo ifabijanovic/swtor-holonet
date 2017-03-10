@@ -20,9 +20,9 @@ class ForumPostViewController: BaseViewController {
     
     // MARK: -
     
-    init(post: ForumPost, services: StandardServices) {
+    init(post: ForumPost, toolbox: Toolbox) {
         self.post = post
-        super.init(services: services, nibName: "ForumPostViewController", bundle: Bundle.main)
+        super.init(toolbox: toolbox, nibName: "ForumPostViewController", bundle: Bundle.main)
     }
     
     // MARK: -
@@ -42,7 +42,7 @@ class ForumPostViewController: BaseViewController {
         }
         
         // Set dev icon if post is marked as Bioware post
-        if self.post.isBiowarePost, let url = URL(string: self.services.settings.devTrackerIconUrl) {
+        if self.post.isBiowarePost, let url = URL(string: self.toolbox.settings.devTrackerIconUrl) {
             self.devImageView.isHidden = false
             self.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
@@ -56,7 +56,7 @@ class ForumPostViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "post"])
     }
     
     override func viewDidLayoutSubviews() {

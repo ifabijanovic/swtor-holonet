@@ -12,9 +12,9 @@ import MessageUI
 class SettingsTableViewController: BaseTableViewController {
     fileprivate let pushManager: PushManager
     
-    init(pushManager: PushManager, services: StandardServices, style: UITableViewStyle) {
+    init(pushManager: PushManager, toolbox: Toolbox, style: UITableViewStyle) {
         self.pushManager = pushManager
-        super.init(services: services, style: style)
+        super.init(toolbox: toolbox, style: style)
     }
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class SettingsTableViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.services.analytics.track(event: Constants.Analytics.Event.settings)
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.settings)
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
             cell.detailTextLabel?.text = self.pushManager.isEnabled ? "Enabled" : "Disabled"
@@ -112,21 +112,21 @@ class SettingsTableViewController: BaseTableViewController {
         switch (indexPath.section, indexPath.row) {
         case (Section.messages, Row.notifications):
             guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-            self.services.navigator.open(url: url)
+            self.toolbox.navigator.open(url: url)
         case (Section.display, Row.theme):
-            self.services.navigator.navigate(from: self, to: .themeSettings, animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .themeSettings, animated: true)
         case (Section.display, Row.textSize):
-            self.services.navigator.navigate(from: self, to: .textSizeSettings, animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .textSizeSettings, animated: true)
         case (Section.feedback, Row.contact):
             self.contact()
         case (Section.feedback, Row.reportBug):
             self.reportBug()
         case (Section.legal, Row.disclaimer):
-            self.services.navigator.navigate(from: self, to: .text(title: "Disclaimer", path: "Disclaimer"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: "Disclaimer", path: "Disclaimer"), animated: true)
         case (Section.legal, Row.privacyPolicy):
-            self.services.navigator.navigate(from: self, to: .text(title: "Privacy Policy", path: "PrivacyPolicy"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: "Privacy Policy", path: "PrivacyPolicy"), animated: true)
         case (Section.legal, Row.license):
-            self.services.navigator.navigate(from: self, to: .text(title: "License", path: "License"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: "License", path: "License"), animated: true)
         default: break
         }
     }
@@ -148,7 +148,7 @@ extension SettingsTableViewController {
         
         let controller = MFMailComposeViewController()
         controller.mailComposeDelegate = self
-        controller.setToRecipients([self.services.settings.appEmail])
+        controller.setToRecipients([self.toolbox.settings.appEmail])
         
         self.present(controller, animated: true, completion: nil)
     }
@@ -161,14 +161,14 @@ extension SettingsTableViewController {
         
         let controller = MFMailComposeViewController()
         controller.mailComposeDelegate = self
-        controller.setToRecipients([self.services.settings.appEmail])
+        controller.setToRecipients([self.toolbox.settings.appEmail])
         controller.setSubject("[Bug]")
         
         self.present(controller, animated: true, completion: nil)
     }
     
     fileprivate func emailNotAvailable() {
-        self.services.navigator.showAlert(title: "Error", message: "It seems email is not configured on this device.", actions: [(title: "OK", style: .default, handler: nil)])
+        self.toolbox.navigator.showAlert(title: "Error", message: "It seems email is not configured on this device.", actions: [(title: "OK", style: .default, handler: nil)])
     }
 }
 

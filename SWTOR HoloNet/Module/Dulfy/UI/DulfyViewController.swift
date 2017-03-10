@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class DulfyViewController: BaseViewController {
-    fileprivate var homeUrl: URL { return URL(string: self.services.settings.dulfyNetUrl)! }
+    fileprivate var homeUrl: URL { return URL(string: self.toolbox.settings.dulfyNetUrl)! }
     fileprivate var url: URL?
     fileprivate var isVisible = false
     
@@ -19,8 +19,8 @@ class DulfyViewController: BaseViewController {
     fileprivate var backButton: UIBarButtonItem!
     fileprivate var forwardButton: UIBarButtonItem!
     
-    init(services: StandardServices) {
-        super.init(services: services, nibName: nil, bundle: nil)
+    init(toolbox: Toolbox) {
+        super.init(toolbox: toolbox, nibName: nil, bundle: nil)
     }
 
     // MARK: - Overrides
@@ -62,7 +62,7 @@ class DulfyViewController: BaseViewController {
             self.url = nil
         }
         
-        self.services.analytics.track(event: Constants.Analytics.Event.dulfy)
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.dulfy)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

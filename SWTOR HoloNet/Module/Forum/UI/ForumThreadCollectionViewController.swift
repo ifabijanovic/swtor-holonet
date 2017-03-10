@@ -23,11 +23,11 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: -
     
-    init(thread: ForumThread, postRepository: ForumPostRepository, services: StandardServices) {
+    init(thread: ForumThread, postRepository: ForumPostRepository, toolbox: Toolbox) {
         self.thread = thread
         self.postRepository = postRepository
         
-        super.init(services: services, collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(toolbox: toolbox, collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "thread"])
     }
     
     // MARK: -
@@ -113,7 +113,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         let post = self.posts[cell.tag]
-        self.services.navigator.navigate(from: self, to: .forumPost(item: post), animated: true)
+        self.toolbox.navigator.navigate(from: self, to: .forumPost(item: post), animated: true)
     }
     
     // MARK: -
@@ -154,11 +154,11 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     self.refreshControl?.endRefreshing()
                     
                     if error.isMaintenance {
-                        self.services.navigator.showMaintenanceAlert { [weak self] _ in
+                        self.toolbox.navigator.showMaintenanceAlert { [weak self] _ in
                             self?.hideLoader()
                         }
                     } else {
-                        self.services.navigator.showNetworkErrorAlert(
+                        self.toolbox.navigator.showNetworkErrorAlert(
                             cancelHandler: { [weak self] _ in
                                 self?.hideLoader()
                             },
@@ -208,7 +208,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     self.canLoadMore = true
                 },
                 onError: { error in
-                    self.services.navigator.showNetworkErrorAlert(
+                    self.toolbox.navigator.showNetworkErrorAlert(
                         cancelHandler: { [weak self] _ in
                             self?.hideLoader()
                         },
@@ -240,7 +240,7 @@ extension ForumThreadCollectionViewController {
         }
         
         // Set dev icon if post is marked as Bioware post
-        if post.isBiowarePost, let url = URL(string: self.services.settings.devTrackerIconUrl) {
+        if post.isBiowarePost, let url = URL(string: self.toolbox.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
             cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {

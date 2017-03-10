@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let propertyInjector = try! ComponentFactory.of(AppComponent.self).build()
         propertyInjector.injectProperties(into: self)
         
-        let standardServices = StandardServices.instance
+        let toolbox = Toolbox.instance
         self.analytics = DefaultAnalytics()
-        self.navigator = standardServices.navigator
-        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: standardServices.navigator), navigator: standardServices.navigator)
+        self.navigator = toolbox.navigator
+        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: toolbox.navigator), navigator: toolbox.navigator)
         
         // Disable caching
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Setup window
-        self.window!.rootViewController = TabViewController(services: standardServices, pushManager: self.pushManager!)
+        self.window!.rootViewController = TabViewController(toolbox: toolbox, pushManager: self.pushManager!)
         self.window!.makeKeyAndVisible()
 
         return true

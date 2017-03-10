@@ -12,7 +12,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     private let themeManager: ThemeManager
     private let pickerDelegate: SettingPickerDelegate<TextSize>
     
-    init(themeManager: ThemeManager, services: StandardServices) {
+    init(themeManager: ThemeManager, toolbox: Toolbox) {
         self.themeManager = themeManager
         
         let options: [SettingPickerOption<TextSize>] = [
@@ -22,7 +22,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
         ]
         self.pickerDelegate = SettingPickerDelegate(options: options)
         
-        super.init(services: services, style: .plain)
+        super.init(toolbox: toolbox, style: .plain)
     }
     
     // MARK: -

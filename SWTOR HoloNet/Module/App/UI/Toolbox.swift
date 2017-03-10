@@ -1,5 +1,5 @@
 //
-//  StandardServices.swift
+//  Toolbox.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 26/02/2017.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct StandardServices {
+struct Toolbox {
     let analytics: Analytics
     let navigator: Navigator
     let theme: Driver<Theme>
@@ -34,6 +34,6 @@ struct StandardServices {
 }
 
 // Temporary until DI introduction
-extension StandardServices {
-    static let instance = StandardServices(themeManager: DefaultThemeManager.instance)
+extension Toolbox {
+    static let instance = Toolbox(themeManager: DefaultThemeManager.instance)
 }

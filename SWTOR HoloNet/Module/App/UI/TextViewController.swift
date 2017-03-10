@@ -16,8 +16,8 @@ class TextViewController: BaseViewController {
     
     fileprivate var textView: UITextView!
     
-    init(services: StandardServices) {
-        super.init(services: services, nibName: nil, bundle: nil)
+    init(toolbox: Toolbox) {
+        super.init(toolbox: toolbox, nibName: nil, bundle: nil)
     }
     
     // MARK: -
@@ -41,9 +41,9 @@ class TextViewController: BaseViewController {
         
         if let event = self.analyticsEvent {
             if let properties = self.analyticsPropeties {
-                self.services.analytics.track(event: event, properties: properties)
+                self.toolbox.analytics.track(event: event, properties: properties)
             } else {
-                self.services.analytics.track(event: event)
+                self.toolbox.analytics.track(event: event)
             }
         }
     }

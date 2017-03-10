@@ -28,7 +28,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: -
     
-    init(categoryRepository: ForumCategoryRepository, services: StandardServices) {
+    init(categoryRepository: ForumCategoryRepository, toolbox: Toolbox) {
         self.category = nil
         self.categoryRepository = categoryRepository
         self.threadRepository = nil
@@ -36,10 +36,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(services: services, collectionViewLayout: layout)
+        super.init(toolbox: toolbox, collectionViewLayout: layout)
     }
     
-    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, services: StandardServices) {
+    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, toolbox: Toolbox) {
         self.category = category
         self.categoryRepository = categoryRepository
         self.threadRepository = threadRepository
@@ -47,7 +47,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(services: services, collectionViewLayout: layout)
+        super.init(toolbox: toolbox, collectionViewLayout: layout)
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,7 +73,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.services.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.forum, properties: [Constants.Analytics.Property.type: "list"])
     }
     
     // MARK: -
@@ -164,7 +164,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             let category = self.categories[cell!.tag]
             
             // Special case for Developer Tracker, treat this sub category as a thread
-            if category.id == self.services.settings.devTrackerId {
+            if category.id == self.toolbox.settings.devTrackerId {
                 let thread = ForumThread.devTracker()
                 self.navigate(thread: thread)
             } else {
@@ -201,7 +201,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             threads = self.threadRepository!.threads(category: category, page: 1)
         } else {
             // Forum root, only load categories
-            categories = self.categoryRepository.categories(language: self.services.settings.forumLanguage)
+            categories = self.categoryRepository.categories(language: self.toolbox.settings.forumLanguage)
             threads = Observable.just([])
         }
         
@@ -234,11 +234,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                     self.refreshControl?.endRefreshing()
                     
                     if error.isMaintenance {
-                        self.services.navigator.showMaintenanceAlert { [weak self] _ in
+                        self.toolbox.navigator.showMaintenanceAlert { [weak self] _ in
                             self?.hideLoader()
                         }
                     } else {
-                        self.services.navigator.showNetworkErrorAlert(
+                        self.toolbox.navigator.showNetworkErrorAlert(
                             cancelHandler: { [weak self] _ in
                                 self?.hideLoader()
                             },
@@ -290,7 +290,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
                     self.canLoadMore = true
                 },
                 onError: { error in
-                    self.services.navigator.showNetworkErrorAlert(
+                    self.toolbox.navigator.showNetworkErrorAlert(
                         cancelHandler: { [weak self] _ in
                             self?.hideLoader()
                         },
@@ -306,11 +306,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
 
 extension ForumListCollectionViewController {
     fileprivate func navigate(category: ForumCategory) {
-        self.services.navigator.navigate(from: self, to: .forumCategory(item: category), animated: true)
+        self.toolbox.navigator.navigate(from: self, to: .forumCategory(item: category), animated: true)
     }
     
     fileprivate func navigate(thread: ForumThread) {
-        self.services.navigator.navigate(from: self, to: .forumThread(item: thread), animated: true)
+        self.toolbox.navigator.navigate(from: self, to: .forumThread(item: thread), animated: true)
     }
     
     fileprivate func hasCategories() -> Bool {
@@ -344,7 +344,7 @@ extension ForumListCollectionViewController {
         let thread = self.threads[indexPath.row]
         
         // Set dev icon if thread is marked as having Bioware reply
-        if thread.hasBiowareReply, let url = URL(string: self.services.settings.devTrackerIconUrl) {
+        if thread.hasBiowareReply, let url = URL(string: self.toolbox.settings.devTrackerIconUrl) {
             cell.devImageView.isHidden = false
             cell.devImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.devTrackerIcon))
         } else {
@@ -352,7 +352,7 @@ extension ForumListCollectionViewController {
         }
         
         // Set sticky icon if thread is marked with sticky
-        if thread.isSticky, let url = URL(string: self.services.settings.stickyIconUrl) {
+        if thread.isSticky, let url = URL(string: self.toolbox.settings.stickyIconUrl) {
             cell.stickyImageView.isHidden = false
             cell.stickyImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: Constants.Images.Placeholders.stickyIcon))
         } else {

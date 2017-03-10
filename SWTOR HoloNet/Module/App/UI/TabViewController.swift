@@ -11,12 +11,12 @@ import RxSwift
 import RxCocoa
 
 class TabViewController: UITabBarController, Themeable {
-    private let services: StandardServices
+    private let toolbox: Toolbox
     private var disposeBag: DisposeBag
     private let pushManager: PushManager
     
-    required init(services: StandardServices, pushManager: PushManager) {
-        self.services = services
+    required init(toolbox: Toolbox, pushManager: PushManager) {
+        self.toolbox = toolbox
         self.disposeBag = DisposeBag()
         self.pushManager = pushManager
         
@@ -38,7 +38,7 @@ class TabViewController: UITabBarController, Themeable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.services
+        self.toolbox
             .theme
             .drive(onNext: self.apply(theme:))
             .addDisposableTo(self.disposeBag)
@@ -53,16 +53,16 @@ class TabViewController: UITabBarController, Themeable {
     
     private func setupTabs() {
         // Forum
-        let forumCategoryRepository = DefaultForumCategoryRepository(settings: self.services.settings)
-        let forumViewController = NavigationViewController(services: self.services, rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository, services: self.services))
+        let forumCategoryRepository = DefaultForumCategoryRepository(settings: self.toolbox.settings)
+        let forumViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository, toolbox: self.toolbox))
         forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
         
         // Dulfy
-        let dulfyViewController = NavigationViewController(services: self.services, rootViewController: DulfyViewController(services: self.services))
+        let dulfyViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: DulfyViewController(toolbox: self.toolbox))
         dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
         
         // Settings
-        let settingsViewController = NavigationViewController(services: self.services, rootViewController: SettingsTableViewController(pushManager: self.pushManager, services: self.services, style: .grouped))
+        let settingsViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: SettingsTableViewController(pushManager: self.pushManager, toolbox: self.toolbox, style: .grouped))
         settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
         
         self.viewControllers = [forumViewController, dulfyViewController, settingsViewController]
@@ -106,6 +106,6 @@ class TabViewController: UITabBarController, Themeable {
     // MARK: -
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.services.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
+        self.toolbox.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
     }
 }
