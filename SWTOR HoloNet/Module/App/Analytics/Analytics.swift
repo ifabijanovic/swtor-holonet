@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Cleanse
-
 #if !TEST
 import Firebase
 #endif
@@ -30,16 +28,5 @@ struct DefaultAnalytics: Analytics {
         let parameters = properties as? [String: NSObject]
         FIRAnalytics.logEvent(withName: event, parameters: parameters)
         #endif
-    }
-}
-
-extension DefaultAnalytics {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(Analytics.self)
-                .asSingleton()
-                .to(value: DefaultAnalytics())
-        }
     }
 }

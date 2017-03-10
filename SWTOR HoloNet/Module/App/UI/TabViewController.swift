@@ -9,21 +9,28 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Cleanse
+
+struct RootTabBarItem {
+    let viewController: UIViewController
+    let index: Int
+}
 
 class TabViewController: UITabBarController, Themeable {
     private let toolbox: Toolbox
     private var disposeBag: DisposeBag
     private let pushManager: PushManager
     
-    required init(toolbox: Toolbox, pushManager: PushManager) {
+    required init(toolbox: Toolbox, pushManager: PushManager, items: [RootTabBarItem]) {
         self.toolbox = toolbox
         self.disposeBag = DisposeBag()
         self.pushManager = pushManager
         
         super.init(nibName: nil, bundle: nil)
         
-        self.setupTabs()
+        self.viewControllers = items
+            .sorted { $0.index < $1.index }
+            .map { $0.viewController }
+
         self.registerForNotifications()
     }
     
@@ -49,26 +56,7 @@ class TabViewController: UITabBarController, Themeable {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
     }
-    
-    // MARK: -
-    
-    private func setupTabs() {
-        // Forum
-        let forumCategoryRepository = DefaultForumCategoryRepository(settings: self.toolbox.settings)
-        let forumViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: ForumListCollectionViewController(categoryRepository: forumCategoryRepository, toolbox: self.toolbox))
-        forumViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
-        
-        // Dulfy
-        let dulfyViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: DulfyViewController(toolbox: self.toolbox))
-        dulfyViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
-        
-        // Settings
-        let settingsViewController = NavigationViewController(toolbox: self.toolbox, rootViewController: SettingsTableViewController(pushManager: self.pushManager, toolbox: self.toolbox, style: .grouped))
-        settingsViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
-        
-        self.viewControllers = [forumViewController, dulfyViewController, settingsViewController]
-    }
-    
+
     // MARK: -
     
     func registerForNotifications() {
@@ -108,15 +96,5 @@ class TabViewController: UITabBarController, Themeable {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.toolbox.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
-    }
-}
-
-extension TabViewController {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(TabViewController.self)
-                .to(factory: TabViewController.init)
-        }
     }
 }

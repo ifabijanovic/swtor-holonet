@@ -12,9 +12,9 @@ import MessageUI
 class SettingsTableViewController: BaseTableViewController {
     fileprivate let pushManager: PushManager
     
-    init(pushManager: PushManager, toolbox: Toolbox, style: UITableViewStyle) {
+    init(pushManager: PushManager, toolbox: Toolbox) {
         self.pushManager = pushManager
-        super.init(toolbox: toolbox, style: style)
+        super.init(toolbox: toolbox, style: .grouped)
     }
     
     override func viewDidLoad() {

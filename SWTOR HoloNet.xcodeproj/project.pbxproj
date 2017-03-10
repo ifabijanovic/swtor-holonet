@@ -183,6 +183,9 @@
 		8144664D1E62D1FB00181E54 /* Toolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144664A1E62D0FF00181E54 /* Toolbox.swift */; };
 		8146AA6D1E58535C002F65FD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6C1E58535C002F65FD /* Alamofire.framework */; };
 		8146AA701E585585002F65FD /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */; };
+		814B26B41E72955200060E00 /* ForumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B31E72955200060E00 /* ForumModule.swift */; };
+		814B26B81E729C9900060E00 /* DulfyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B71E729C9900060E00 /* DulfyModule.swift */; };
+		814B26BA1E729D0700060E00 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B91E729D0700060E00 /* SettingsModule.swift */; };
 		815CE28F1E64C81800F28E67 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CE28E1E64C81800F28E67 /* TestNavigator.swift */; };
 		8164743E1E6812CF0026E29D /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8164742E1E6812CF0026E29D /* FirebaseAnalytics.framework */; };
 		816474401E6812CF0026E29D /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8164742F1E6812CF0026E29D /* FirebaseCore.framework */; };
@@ -196,12 +199,12 @@
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
 		818029D51A08B7CC00999871 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 818029D41A08B7CC00999871 /* Settings.plist */; };
 		818152E31E71344E007B5D91 /* Cleanse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818152E21E71344E007B5D91 /* Cleanse.framework */; };
+		8197D0BB1E73EDCC0020D078 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
 		81A6364F1E58F980000AC89C /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364D1E58F980000AC89C /* RxAlamofire.framework */; };
 		81A636501E58F980000AC89C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A6364E1E58F980000AC89C /* RxSwift.framework */; };
 		81A636521E58FE92000AC89C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A636511E58FE92000AC89C /* RxCocoa.framework */; };
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81C360EC1E64D8B200994F5D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */; };
-		81D799131E7138E500CD7234 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D799121E7138E500CD7234 /* AppComponent.swift */; };
 		81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */; };
 		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
 /* End PBXBuildFile section */
@@ -331,6 +334,9 @@
 		8144664A1E62D0FF00181E54 /* Toolbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbox.swift; sourceTree = "<group>"; };
 		8146AA6C1E58535C002F65FD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8146AA6F1E585585002F65FD /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		814B26B31E72955200060E00 /* ForumModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumModule.swift; sourceTree = "<group>"; };
+		814B26B71E729C9900060E00 /* DulfyModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyModule.swift; sourceTree = "<group>"; };
+		814B26B91E729D0700060E00 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
 		815CE28E1E64C81800F28E67 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		8164742E1E6812CF0026E29D /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		8164742F1E6812CF0026E29D /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		818029D41A08B7CC00999871 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		818152E21E71344E007B5D91 /* Cleanse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cleanse.framework; path = Carthage/Build/iOS/Cleanse.framework; sourceTree = "<group>"; };
+		8197D0BA1E73EDCC0020D078 /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		81A6364D1E58F980000AC89C /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		81A6364E1E58F980000AC89C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		81A636511E58FE92000AC89C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -353,7 +360,6 @@
 		81AB249119EFBD7700293D26 /* SWTOR HoloNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWTOR HoloNetTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		81D799121E7138E500CD7234 /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -438,6 +444,7 @@
 				814464991E62BE5900181E54 /* Model */,
 				8100393D1E63575500512F3B /* Theme */,
 				8144649D1E62BE5900181E54 /* UI */,
+				8197D0BA1E73EDCC0020D078 /* AppComponent.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -520,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				814464AF1E62BE5900181E54 /* UI */,
+				814B26B71E729C9900060E00 /* DulfyModule.swift */,
 			);
 			path = Dulfy;
 			sourceTree = "<group>";
@@ -538,6 +546,7 @@
 				814464B21E62BE5900181E54 /* Data */,
 				814464B81E62BE5900181E54 /* Model */,
 				814464BD1E62BE5900181E54 /* UI */,
+				814B26B31E72955200060E00 /* ForumModule.swift */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 			isa = PBXGroup;
 			children = (
 				814464D01E62BE5900181E54 /* UI */,
+				814B26B91E729D0700060E00 /* SettingsModule.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -859,7 +869,6 @@
 				814464871E62BE5900181E54 /* Extension */,
 				8144648D1E62BE5900181E54 /* Module */,
 				814464D51E62BE5900181E54 /* Resource */,
-				81D799121E7138E500CD7234 /* AppComponent.swift */,
 				814464851E62BE5900181E54 /* AppDelegate.swift */,
 				814464861E62BE5900181E54 /* Constants.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
@@ -1128,6 +1137,7 @@
 				814465201E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
 				810039411E63575500512F3B /* Themeable.swift in Sources */,
 				8144651C1E62BE5900181E54 /* ForumParser.swift in Sources */,
+				8197D0BB1E73EDCC0020D078 /* AppComponent.swift in Sources */,
 				814465261E62BE5900181E54 /* ForumLanguage.swift in Sources */,
 				814465341E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
 				8144654E1E62BE5900181E54 /* ThemeSettingsTableViewController.swift in Sources */,
@@ -1141,13 +1151,13 @@
 				8144651E1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
 				814465281E62BE5900181E54 /* ForumPost.swift in Sources */,
 				8144652C1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
-				81D799131E7138E500CD7234 /* AppComponent.swift in Sources */,
 				814465021E62BE5900181E54 /* BaseViewController.swift in Sources */,
 				814464E61E62BE5900181E54 /* UIColor.swift in Sources */,
 				814464F81E62BE5900181E54 /* Entity.swift in Sources */,
 				814464E01E62BE5900181E54 /* Error.swift in Sources */,
 				814464DC1E62BE5900181E54 /* AppDelegate.swift in Sources */,
 				814465081E62BE5900181E54 /* TableHeaderCollectionReusableView.swift in Sources */,
+				814B26B81E729C9900060E00 /* DulfyModule.swift in Sources */,
 				8144653C1E62BE5900181E54 /* ForumBaseCollectionViewController.swift in Sources */,
 				814465401E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654C1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
@@ -1156,11 +1166,13 @@
 				810039451E63578100512F3B /* ThemeManager.swift in Sources */,
 				814465441E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465101E62BE5900181E54 /* NavigationViewController.swift in Sources */,
+				814B26B41E72955200060E00 /* ForumModule.swift in Sources */,
 				814465381E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
 				8144651A1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */,
 				814464FE1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
 				814465221E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				814464F61E62BE5900181E54 /* Analytics.swift in Sources */,
+				814B26BA1E729D0700060E00 /* SettingsModule.swift in Sources */,
 				8144654A1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
 				814464EC1E62BE5900181E54 /* ActionFactory.swift in Sources */,
 				8144650E1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,

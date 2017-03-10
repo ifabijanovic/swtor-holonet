@@ -53,9 +53,7 @@ class TabViewControllerTests: XCTestCase {
         let toolbox = Toolbox(analytics: analytics, navigator: navigator, themeManager: themeManager, settings: settings)
         let pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: navigator), navigator: navigator)
 
-        self.controller = TestTabViewController(toolbox: toolbox, pushManager: pushManager)
-        let viewControllers = [UIViewController(), UIViewController(), UIViewController()]
-        self.controller.setViewControllers(viewControllers, animated: false)
+        self.controller = TestTabViewController(toolbox: toolbox, pushManager: pushManager, items: (0..<3).map { RootTabBarItem(viewController: UIViewController(), index: $0) })
     }
     
     func testRegistersForNotifications() {

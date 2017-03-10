@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import Cleanse
 
 protocol ThemeManager {
     var theme: Observable<Theme> { get }
@@ -48,17 +47,6 @@ struct DefaultThemeManager: ThemeManager {
         
         UserDefaults.standard.set(textSize.rawValue, forKey: Keys.textSize)
         UserDefaults.standard.synchronize()
-    }
-}
-
-extension DefaultThemeManager {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(ThemeManager.self)
-                .asSingleton()
-                .to(value: DefaultThemeManager(bundle: Bundle.main))
-        }
     }
 }
 

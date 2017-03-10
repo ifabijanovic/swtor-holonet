@@ -27,17 +27,21 @@ struct AppModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
         binder.include(module: UIWindow.Module.self)
         
-        binder.include(module: DefaultAnalytics.Module.self)
-        binder.include(module: Settings.Module.self)
-        binder.include(module: DefaultThemeManager.Module.self)
+        binder.bind(Analytics.self).asSingleton().to(value: DefaultAnalytics())
+        binder.bind(Settings.self).asSingleton().to(value: Settings(bundle: Bundle.main))
+        binder.bind(ThemeManager.self).asSingleton().to(value: DefaultThemeManager(bundle: Bundle.main))
         
-        binder.include(module: DefaultNavigator.Module.self)
-        binder.include(module: ActionFactory.Module.self)
+        binder.bind(Navigator.self).asSingleton().to(factory: DefaultNavigator.init)
+        binder.bind(ActionFactory.self).asSingleton().to(factory: ActionFactory.init)
         
-        binder.include(module: DefaultPushManager.Module.self)
-        binder.include(module: Toolbox.Module.self)
+        binder.bind(PushManager.self).asSingleton().to(factory: DefaultPushManager.init)
+        binder.bind(Toolbox.self).asSingleton().to(factory: Toolbox.init)
         
-        binder.include(module: TabViewController.Module.self)
+        binder.bind(TabViewController.self).to(factory: TabViewController.init)
+        
+        binder.include(module: ForumModule.self)
+        binder.include(module: DulfyModule.self)
+        binder.include(module: SettingsModule.self)
     }
     
     static func configureAppDelegateInjector(binder bind: PropertyInjectionReceiptBinder<AppDelegate>) -> BindingReceipt<PropertyInjector<AppDelegate>> {
@@ -51,9 +55,9 @@ extension UIWindow {
             binder
                 .bind(UIWindow.self)
                 .asSingleton()
-                .to { (rootViewController: Provider<TabViewController>) -> UIWindow in
+                .to { (rootViewController: TabViewController) -> UIWindow in
                     let window = UIWindow(frame: UIScreen.main.bounds)
-                    window.rootViewController = rootViewController.get()
+                    window.rootViewController = rootViewController
                     return window
                 }
         }

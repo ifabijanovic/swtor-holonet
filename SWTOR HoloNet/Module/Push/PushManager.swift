@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import UserNotifications
-import Cleanse
-
 #if !TEST
 import Firebase
 #endif
@@ -165,17 +163,6 @@ class DefaultPushManager: NSObject, PushManager {
     
     func resetBadge() {
         UIApplication.shared.applicationIconBadgeNumber = 0
-    }
-}
-
-extension DefaultPushManager {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(PushManager.self)
-                .asSingleton()
-                .to(factory: DefaultPushManager.init)
-        }
     }
 }
 

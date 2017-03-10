@@ -16,7 +16,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = DefaultForumCategoryRepository(settings: self.settings)
+        self.repo = DefaultForumCategoryRepository(settings: self.settings, parser: ForumParser())
     }
 }
 

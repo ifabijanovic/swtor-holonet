@@ -20,10 +20,6 @@ class ForumRepositoryBase {
     
     let manager: Alamofire.SessionManager
     
-    convenience init(settings: Settings) {
-        self.init(settings: settings, parser: ForumParser())
-    }
-    
     init(settings: Settings, parser: ForumParser) {
         self.settings = settings
         self.parser = parser

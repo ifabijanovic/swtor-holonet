@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Cleanse
 
 typealias AlertActionHandler = (UIAlertAction) -> Void
 
@@ -163,16 +162,5 @@ extension DefaultNavigator {
 //        successor.title = textTitle
 //        successor.file = textPath
 //        from.navigationController?.pushViewController(successor, animated: animated)
-    }
-}
-
-extension DefaultNavigator {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(Navigator.self)
-                .asSingleton()
-                .to(factory: DefaultNavigator.init)
-        }
     }
 }
