@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Cleanse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         // Dependencies
+        let propertyInjector = try! ComponentFactory.of(AppComponent.self).build()
+        propertyInjector.injectProperties(into: self)
+        
         let standardServices = StandardServices.instance
         self.analytics = DefaultAnalytics()
         self.navigator = standardServices.navigator
@@ -43,10 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Setup window
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabViewController(services: StandardServices.instance, pushManager: self.pushManager!)
-        self.window = window
-        window.makeKeyAndVisible()
+        self.window!.rootViewController = TabViewController(services: standardServices, pushManager: self.pushManager!)
+        self.window!.makeKeyAndVisible()
 
         return true
     }
@@ -80,5 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.pushManager?.handleRemoteNotification(applicationState: .background, userInfo: launchNotification)
             self.launchNotification = nil
         }
+    }
+}
+
+extension AppDelegate {
+    func injectProperties(window: UIWindow) {
+        self.window = window
     }
 }
