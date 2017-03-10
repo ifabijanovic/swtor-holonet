@@ -26,6 +26,18 @@ struct AppComponent: Cleanse.RootComponent {
 struct AppModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
         binder.include(module: UIWindow.Module.self)
+        
+        binder.include(module: DefaultAnalytics.Module.self)
+        binder.include(module: Settings.Module.self)
+        binder.include(module: DefaultThemeManager.Module.self)
+        
+        binder.include(module: DefaultNavigator.Module.self)
+        binder.include(module: ActionFactory.Module.self)
+        
+        binder.include(module: DefaultPushManager.Module.self)
+        binder.include(module: Toolbox.Module.self)
+        
+        binder.include(module: TabViewController.Module.self)
     }
     
     static func configureAppDelegateInjector(binder bind: PropertyInjectionReceiptBinder<AppDelegate>) -> BindingReceipt<PropertyInjector<AppDelegate>> {
@@ -39,8 +51,9 @@ extension UIWindow {
             binder
                 .bind(UIWindow.self)
                 .asSingleton()
-                .to {
+                .to { (rootViewController: Provider<TabViewController>) -> UIWindow in
                     let window = UIWindow(frame: UIScreen.main.bounds)
+                    window.rootViewController = rootViewController.get()
                     return window
                 }
         }

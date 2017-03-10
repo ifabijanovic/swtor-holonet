@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cleanse
 
 typealias AlertActionHandler = (UIAlertAction) -> Void
 
@@ -110,10 +111,10 @@ extension DefaultNavigator {
             return
         }
         
-        let categoryRepository = DefaultForumCategoryRepository(settings: self.settings)
-        let threadRepository = DefaultForumThreadRepository(settings: self.settings)
-        let successor = ForumListCollectionViewController(category: forumCategory, categoryRepository: categoryRepository, threadRepository: threadRepository, toolbox: Toolbox.instance)
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let categoryRepository = DefaultForumCategoryRepository(settings: self.settings)
+//        let threadRepository = DefaultForumThreadRepository(settings: self.settings)
+//        let successor = ForumListCollectionViewController(category: forumCategory, categoryRepository: categoryRepository, threadRepository: threadRepository, toolbox: Toolbox.instance)
+//        from.navigationController?.pushViewController(successor, animated: animated)
     }
     
     private func navigate(from: UIViewController, to forumThread: ForumThread, animated: Bool) {
@@ -122,9 +123,9 @@ extension DefaultNavigator {
             return
         }
         
-        let postRepository = DefaultForumPostRepository(settings: self.settings)
-        let successor = ForumThreadCollectionViewController(thread: forumThread, postRepository: postRepository, toolbox: Toolbox.instance)
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let postRepository = DefaultForumPostRepository(settings: self.settings)
+//        let successor = ForumThreadCollectionViewController(thread: forumThread, postRepository: postRepository, toolbox: Toolbox.instance)
+//        from.navigationController?.pushViewController(successor, animated: animated)
     }
     
     private func navigate(from: UIViewController, to forumPost: ForumPost, animated: Bool) {
@@ -133,8 +134,8 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = ForumPostViewController(post: forumPost, toolbox: Toolbox.instance)
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let successor = ForumPostViewController(post: forumPost, toolbox: Toolbox.instance)
+//        from.navigationController?.pushViewController(successor, animated: animated)
     }
     
     private func navigateToThemeSettings(from: UIViewController, animated: Bool) {
@@ -143,8 +144,8 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance, toolbox: Toolbox.instance)
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let successor = ThemeSettingsTableViewController(themeManager: DefaultThemeManager.instance, toolbox: Toolbox.instance)
+//        from.navigationController?.pushViewController(successor, animated: animated)
     }
     
     private func navigateToTextSizeSettings(from: UIViewController, animated: Bool) {
@@ -153,14 +154,25 @@ extension DefaultNavigator {
             return
         }
         
-        let successor = TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance, toolbox: Toolbox.instance)
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let successor = TextSizeSettingsTableViewController(themeManager: DefaultThemeManager.instance, toolbox: Toolbox.instance)
+//        from.navigationController?.pushViewController(successor, animated: animated)
     }
     
     private func navigate(from: UIViewController, textTitle: String, textPath: String, animated: Bool) {
-        let successor = TextViewController(toolbox: Toolbox.instance)
-        successor.title = textTitle
-        successor.file = textPath
-        from.navigationController?.pushViewController(successor, animated: animated)
+//        let successor = TextViewController(toolbox: Toolbox.instance)
+//        successor.title = textTitle
+//        successor.file = textPath
+//        from.navigationController?.pushViewController(successor, animated: animated)
+    }
+}
+
+extension DefaultNavigator {
+    struct Module: Cleanse.Module {
+        static func configure<B: Binder>(binder: B) {
+            binder
+                .bind(Navigator.self)
+                .asSingleton()
+                .to(factory: DefaultNavigator.init)
+        }
     }
 }

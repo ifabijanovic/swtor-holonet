@@ -27,11 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let propertyInjector = try! ComponentFactory.of(AppComponent.self).build()
         propertyInjector.injectProperties(into: self)
         
-        let toolbox = Toolbox.instance
-        self.analytics = DefaultAnalytics()
-        self.navigator = toolbox.navigator
-        self.pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: toolbox.navigator), navigator: toolbox.navigator)
-        
         // Disable caching
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         URLCache.shared = cache
@@ -47,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Setup window
-        self.window!.rootViewController = TabViewController(toolbox: toolbox, pushManager: self.pushManager!)
         self.window!.makeKeyAndVisible()
 
         return true
@@ -86,7 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    func injectProperties(window: UIWindow) {
+    func injectProperties(analytics: Analytics, pushManager: PushManager, navigator: Navigator, window: UIWindow) {
+        self.analytics = analytics
+        self.pushManager = pushManager
+        self.navigator = navigator
         self.window = window
     }
 }

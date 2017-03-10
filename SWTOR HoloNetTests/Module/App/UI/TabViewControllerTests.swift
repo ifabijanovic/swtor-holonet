@@ -49,8 +49,8 @@ class TabViewControllerTests: XCTestCase {
         let settings = Settings(bundle: bundle)
         let analytics = DefaultAnalytics()
         let navigator = DefaultNavigator(settings: settings)
-        let theme = Driver.just(Theme(bundle: bundle))
-        let toolbox = Toolbox(analytics: analytics, navigator: navigator, theme: theme, settings: settings)
+        let themeManager = DefaultThemeManager(bundle: bundle)
+        let toolbox = Toolbox(analytics: analytics, navigator: navigator, themeManager: themeManager, settings: settings)
         let pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: navigator), navigator: navigator)
 
         self.controller = TestTabViewController(toolbox: toolbox, pushManager: pushManager)

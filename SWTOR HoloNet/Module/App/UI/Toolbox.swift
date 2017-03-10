@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Cleanse
 
 struct Toolbox {
     let analytics: Analytics
@@ -16,24 +17,21 @@ struct Toolbox {
     let theme: Driver<Theme>
     let settings: Settings
     
-    init(themeManager: ThemeManager) {
-        let analytics = DefaultAnalytics()
-        let settings = Settings()
-        let navigator = DefaultNavigator(settings: settings)
-        let theme = themeManager.theme.asDriver(onErrorJustReturn: themeManager.currentTheme)
-        
-        self.init(analytics: analytics, navigator: navigator, theme: theme, settings: settings)
-    }
-    
-    init(analytics: Analytics, navigator: Navigator, theme: Driver<Theme>, settings: Settings) {
+    init(analytics: Analytics, navigator: Navigator, themeManager: ThemeManager, settings: Settings) {
         self.analytics = analytics
         self.navigator = navigator
-        self.theme = theme
+        self.theme = themeManager.theme.asDriver(onErrorJustReturn: themeManager.currentTheme)
         self.settings = settings
     }
 }
 
-// Temporary until DI introduction
 extension Toolbox {
-    static let instance = Toolbox(themeManager: DefaultThemeManager.instance)
+    struct Module: Cleanse.Module {
+        static func configure<B: Binder>(binder: B) {
+            binder
+                .bind(Toolbox.self)
+                .asSingleton()
+                .to(factory: Toolbox.init)
+        }
+    }
 }

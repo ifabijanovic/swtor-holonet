@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cleanse
 
 class Settings {
     let appEmail: String
@@ -26,10 +27,6 @@ class Settings {
     let requestTimeout: TimeInterval
     
     var forumLanguage: ForumLanguage
-    
-    convenience init() {
-        self.init(bundle: Bundle.main)
-    }
     
     init(bundle: Bundle) {
         let url = bundle.url(forResource: "Settings", withExtension: "plist")!
@@ -53,6 +50,17 @@ class Settings {
         self.requestTimeout = plist[Keys.requestTimeout] as? TimeInterval ?? 60.0
         
         self.forumLanguage = .english
+    }
+}
+
+extension Settings {
+    struct Module: Cleanse.Module {
+        static func configure<B: Binder>(binder: B) {
+            binder
+                .bind(Settings.self)
+                .asSingleton()
+                .to(value: Settings(bundle: Bundle.main))
+        }
     }
 }
 

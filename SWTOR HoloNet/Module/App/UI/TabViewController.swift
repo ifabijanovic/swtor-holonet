@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Cleanse
 
 class TabViewController: UITabBarController, Themeable {
     private let toolbox: Toolbox
@@ -107,5 +108,15 @@ class TabViewController: UITabBarController, Themeable {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.toolbox.analytics.track(event: Constants.Analytics.Event.tab, properties: [Constants.Analytics.Property.type: item.title!])
+    }
+}
+
+extension TabViewController {
+    struct Module: Cleanse.Module {
+        static func configure<B: Binder>(binder: B) {
+            binder
+                .bind(TabViewController.self)
+                .to(factory: TabViewController.init)
+        }
     }
 }

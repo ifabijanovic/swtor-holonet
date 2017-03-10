@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cleanse
 
 class ActionFactory {
     fileprivate let navigator: Navigator
@@ -27,5 +28,16 @@ class ActionFactory {
             return self.create(type: actionType)
         }
         return nil
+    }
+}
+
+extension ActionFactory {
+    struct Module: Cleanse.Module {
+        static func configure<B: Binder>(binder: B) {
+            binder
+                .bind(ActionFactory.self)
+                .asSingleton()
+                .to(factory: ActionFactory.init)
+        }
     }
 }
