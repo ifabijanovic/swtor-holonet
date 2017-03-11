@@ -52,7 +52,7 @@ struct DefaultThemeManager: ThemeManager {
 
 // Temporary until DI introduction
 extension DefaultThemeManager {
-    static let instance = DefaultThemeManager(bundle: Bundle(for: TabViewController.self))
+    static let instance = DefaultThemeManager(bundle: Bundle(for: RootViewController.self))
 }
 
 fileprivate var currentThemeType: ThemeType {

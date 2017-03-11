@@ -1,5 +1,5 @@
 //
-//  TabViewControllerTests.swift
+//  RootViewControllerTests.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 10/03/15.
@@ -11,9 +11,9 @@ import XCTest
 import RxSwift
 import RxCocoa
 
-class TabViewControllerTests: XCTestCase {
+class RootViewControllerTests: XCTestCase {
 
-    class TestTabViewController: TabViewController {
+    class TestRootViewController: RootViewController {
     
         var didRegisterForNotifications = false
         var didSwitchToTab = false
@@ -40,12 +40,12 @@ class TabViewControllerTests: XCTestCase {
         
     }
     
-    var controller: TestTabViewController!
+    var controller: TestRootViewController!
     
     override func setUp() {
         super.setUp()
         
-        let bundle = Bundle(for: TabViewControllerTests.self)
+        let bundle = Bundle(for: RootViewControllerTests.self)
         let settings = Settings(bundle: bundle)
         let analytics = DefaultAnalytics()
         let navigator = DefaultNavigator(settings: settings)
@@ -53,7 +53,7 @@ class TabViewControllerTests: XCTestCase {
         let toolbox = Toolbox(analytics: analytics, navigator: navigator, themeManager: themeManager, settings: settings)
         let pushManager = DefaultPushManager(actionFactory: ActionFactory(navigator: navigator), navigator: navigator)
 
-        self.controller = TestTabViewController(toolbox: toolbox, pushManager: pushManager, items: (0..<3).map { RootTabBarItem(viewController: UIViewController(), index: $0) })
+        self.controller = TestRootViewController(toolbox: toolbox, pushManager: pushManager, items: (0..<3).map { RootTabBarItem(viewController: UIViewController(), index: $0) })
     }
     
     func testRegistersForNotifications() {

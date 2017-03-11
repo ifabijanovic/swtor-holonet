@@ -1,5 +1,5 @@
 //
-//  TabViewController.swift
+//  RootViewController.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 21/12/14.
@@ -15,7 +15,7 @@ struct RootTabBarItem {
     let index: Int
 }
 
-class TabViewController: UITabBarController, Themeable {
+class RootViewController: UITabBarController, Themeable {
     private let toolbox: Toolbox
     private var disposeBag: DisposeBag
     private let pushManager: PushManager
@@ -60,7 +60,7 @@ class TabViewController: UITabBarController, Themeable {
     // MARK: -
     
     func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(TabViewController.switchToTab(notification:)), name: NSNotification.Name(Constants.Notifications.switchToTab), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RootViewController.switchToTab(notification:)), name: NSNotification.Name(Constants.Notifications.switchToTab), object: nil)
     }
     
     func switchToTab(notification: NSNotification) {

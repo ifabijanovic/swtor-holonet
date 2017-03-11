@@ -66,8 +66,8 @@
 		8144650F1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464A91E62BE5900181E54 /* TableViewCell+Themeable.swift */; };
 		814465101E62BE5900181E54 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AA1E62BE5900181E54 /* NavigationViewController.swift */; };
 		814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AA1E62BE5900181E54 /* NavigationViewController.swift */; };
-		814465121E62BE5900181E54 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AB1E62BE5900181E54 /* TabViewController.swift */; };
-		814465131E62BE5900181E54 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AB1E62BE5900181E54 /* TabViewController.swift */; };
+		814465121E62BE5900181E54 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AB1E62BE5900181E54 /* RootViewController.swift */; };
+		814465131E62BE5900181E54 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AB1E62BE5900181E54 /* RootViewController.swift */; };
 		814465141E62BE5900181E54 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AC1E62BE5900181E54 /* TextViewController.swift */; };
 		814465151E62BE5900181E54 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464AC1E62BE5900181E54 /* TextViewController.swift */; };
 		814465181E62BE5900181E54 /* DulfyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B01E62BE5900181E54 /* DulfyViewController.swift */; };
@@ -143,7 +143,7 @@
 		814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465EE1E62BE9900181E54 /* DulfyActionTests.swift */; };
 		814466241E62BE9900181E54 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F21E62BE9900181E54 /* EntityTests.swift */; };
 		814466251E62BE9900181E54 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F31E62BE9900181E54 /* SettingsTests.swift */; };
-		814466261E62BE9900181E54 /* TabViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F51E62BE9900181E54 /* TabViewControllerTests.swift */; };
+		814466261E62BE9900181E54 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F51E62BE9900181E54 /* RootViewControllerTests.swift */; };
 		814466271E62BE9900181E54 /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F81E62BE9900181E54 /* ForumCategoryRepositoryTests.swift */; };
 		814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F91E62BE9900181E54 /* ForumParserTests.swift */; };
 		814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */; };
@@ -254,7 +254,7 @@
 		814464A81E62BE5900181E54 /* CollectionViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		814464A91E62BE5900181E54 /* TableViewCell+Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Themeable.swift"; sourceTree = "<group>"; };
 		814464AA1E62BE5900181E54 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		814464AB1E62BE5900181E54 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		814464AB1E62BE5900181E54 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		814464AC1E62BE5900181E54 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		814464B01E62BE5900181E54 /* DulfyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyViewController.swift; sourceTree = "<group>"; };
 		814464B31E62BE5900181E54 /* ForumCategoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategoryRepository.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 		814465EE1E62BE9900181E54 /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyActionTests.swift; sourceTree = "<group>"; };
 		814465F21E62BE9900181E54 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityTests.swift; sourceTree = "<group>"; };
 		814465F31E62BE9900181E54 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
-		814465F51E62BE9900181E54 /* TabViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewControllerTests.swift; sourceTree = "<group>"; };
+		814465F51E62BE9900181E54 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
 		814465F81E62BE9900181E54 /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		814465F91E62BE9900181E54 /* ForumParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumParserTests.swift; sourceTree = "<group>"; };
 		814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumPostRepositoryTests.swift; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 				814464A71E62BE5900181E54 /* Extension */,
 				814464AA1E62BE5900181E54 /* NavigationViewController.swift */,
 				814466481E62C10800181E54 /* Navigator.swift */,
-				814464AB1E62BE5900181E54 /* TabViewController.swift */,
+				814464AB1E62BE5900181E54 /* RootViewController.swift */,
 				814464AC1E62BE5900181E54 /* TextViewController.swift */,
 				8144664A1E62D0FF00181E54 /* Toolbox.swift */,
 			);
@@ -710,7 +710,7 @@
 		814465F41E62BE9900181E54 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				814465F51E62BE9900181E54 /* TabViewControllerTests.swift */,
+				814465F51E62BE9900181E54 /* RootViewControllerTests.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1185,7 +1185,7 @@
 				814464DE1E62BE5900181E54 /* Constants.swift in Sources */,
 				8144652A1E62BE5900181E54 /* ForumThread.swift in Sources */,
 				814464F21E62BE5900181E54 /* DulfyAction.swift in Sources */,
-				814465121E62BE5900181E54 /* TabViewController.swift in Sources */,
+				814465121E62BE5900181E54 /* RootViewController.swift in Sources */,
 				8144650C1E62BE5900181E54 /* CollectionViewCell+Themeable.swift in Sources */,
 				814464E81E62BE5900181E54 /* URLComponents.swift in Sources */,
 			);
@@ -1256,10 +1256,10 @@
 				814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */,
 				8144652B1E62BE5900181E54 /* ForumThread.swift in Sources */,
 				814464F31E62BE5900181E54 /* DulfyAction.swift in Sources */,
-				814466261E62BE9900181E54 /* TabViewControllerTests.swift in Sources */,
+				814466261E62BE9900181E54 /* RootViewControllerTests.swift in Sources */,
 				8144662B1E62BE9900181E54 /* ForumThreadRepositoryTests.swift in Sources */,
 				814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */,
-				814465131E62BE5900181E54 /* TabViewController.swift in Sources */,
+				814465131E62BE5900181E54 /* RootViewController.swift in Sources */,
 				8144661E1E62BE9900181E54 /* StringTests.swift in Sources */,
 				8144650D1E62BE5900181E54 /* CollectionViewCell+Themeable.swift in Sources */,
 				814464E91E62BE5900181E54 /* URLComponents.swift in Sources */,

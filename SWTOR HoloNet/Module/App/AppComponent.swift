@@ -37,7 +37,7 @@ struct AppModule: Cleanse.Module {
         binder.bind(PushManager.self).asSingleton().to(factory: DefaultPushManager.init)
         binder.bind(Toolbox.self).asSingleton().to(factory: Toolbox.init)
         
-        binder.bind(TabViewController.self).to(factory: TabViewController.init)
+        binder.bind(RootViewController.self).to(factory: RootViewController.init)
         
         binder.include(module: ForumModule.self)
         binder.include(module: DulfyModule.self)
@@ -55,7 +55,7 @@ extension UIWindow {
             binder
                 .bind(UIWindow.self)
                 .asSingleton()
-                .to { (rootViewController: TabViewController) -> UIWindow in
+                .to { (rootViewController: RootViewController) -> UIWindow in
                     let window = UIWindow(frame: UIScreen.main.bounds)
                     window.rootViewController = rootViewController
                     return window
