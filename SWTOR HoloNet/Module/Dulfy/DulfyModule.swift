@@ -11,17 +11,12 @@ import Cleanse
 
 struct DulfyModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder
-            .bind(DulfyViewController.self)
-            .to(factory: DulfyViewController.init)
-        
-        binder
-            .bind(RootTabBarItem.self)
-            .intoCollection()
-            .to { (viewController: DulfyViewController) -> RootTabBarItem in
-                viewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
-                let navigationController = UINavigationController(rootViewController: viewController)
-                return RootTabBarItem(viewController: navigationController, index: 1)
-            }
+        binder.bind(DulfyUIFactory.self).to(factory: DulfyUIFactory.init)
+    }
+}
+
+struct DulfyUIFactory {
+    func dulfyViewController(toolbox: Toolbox) -> UIViewController {
+        return DulfyViewController(toolbox: toolbox)
     }
 }

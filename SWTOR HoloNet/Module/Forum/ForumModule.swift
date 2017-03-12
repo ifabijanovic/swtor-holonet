@@ -11,35 +11,39 @@ import Cleanse
 
 struct ForumModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder
-            .bind(ForumParser.self)
-            .to(factory: ForumParser.init)
+        binder.bind(ForumParser.self).to(factory: ForumParser.init)        
+        binder.bind(ForumCategoryRepository.self).to(factory: DefaultForumCategoryRepository.init)
+        binder.bind(ForumThreadRepository.self).to(factory: DefaultForumThreadRepository.init)
+        binder.bind(ForumPostRepository.self).to(factory: DefaultForumPostRepository.init)
         
-        binder
-            .bind(ForumCategoryRepository.self)
-            .to(factory: DefaultForumCategoryRepository.init)
-        
-        binder
-            .bind(ForumThreadRepository.self)
-            .to(factory: DefaultForumThreadRepository.init)
-        
-        binder
-            .bind(ForumPostRepository.self)
-            .to(factory: DefaultForumPostRepository.init)
-        
-        binder
-            .bind(ForumListCollectionViewController.self)
-            .to { (repository: ForumCategoryRepository, toolbox: Toolbox) -> ForumListCollectionViewController in
-                return ForumListCollectionViewController(categoryRepository: repository, toolbox: toolbox)
-            }
-        
-        binder
-            .bind(RootTabBarItem.self)
-            .intoCollection()
-            .to { (viewController: ForumListCollectionViewController) -> RootTabBarItem in
-                viewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
-                let navigationController = UINavigationController(rootViewController: viewController)
-                return RootTabBarItem(viewController: navigationController, index: 0)
-            }
+        binder.bind(ForumUIFactory.self).to(factory: ForumUIFactory.init)
+    }
+}
+
+struct ForumUIFactory {
+    private let categoryRepository: ForumCategoryRepository
+    private let threadRepository: ForumThreadRepository
+    private let postRepository: ForumPostRepository
+    
+    init(categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, postRepository: ForumPostRepository) {
+        self.categoryRepository = categoryRepository
+        self.threadRepository = threadRepository
+        self.postRepository = postRepository
+    }
+    
+    func categoriesViewController(toolbox: Toolbox) -> UIViewController {
+        return ForumListCollectionViewController(categoryRepository: self.categoryRepository, toolbox: toolbox)
+    }
+    
+    func subcategoryViewController(category: ForumCategory, toolbox: Toolbox) -> UIViewController {
+        return ForumListCollectionViewController(category: category, categoryRepository: self.categoryRepository, threadRepository: self.threadRepository, toolbox: toolbox)
+    }
+    
+    func threadViewController(thread: ForumThread, toolbox: Toolbox) -> UIViewController {
+        return ForumThreadCollectionViewController(thread: thread, postRepository: self.postRepository, toolbox: toolbox)
+    }
+    
+    func postViewController(post: ForumPost, toolbox: Toolbox) -> UIViewController {
+        return ForumPostViewController(post: post, toolbox: toolbox)
     }
 }

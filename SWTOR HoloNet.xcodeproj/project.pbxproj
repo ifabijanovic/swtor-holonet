@@ -17,6 +17,11 @@
 		810039491E6364AA00512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
+		813D897E1E754BA700B5A018 /* DulfyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B71E729C9900060E00 /* DulfyModule.swift */; };
+		813D897F1E754BA900B5A018 /* ForumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B31E72955200060E00 /* ForumModule.swift */; };
+		813D89801E754BAC00B5A018 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B91E729D0700060E00 /* SettingsModule.swift */; };
+		813D89811E754FBE00B5A018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464851E62BE5900181E54 /* AppDelegate.swift */; };
 		814464DC1E62BE5900181E54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464851E62BE5900181E54 /* AppDelegate.swift */; };
 		814464DE1E62BE5900181E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464861E62BE5900181E54 /* Constants.swift */; };
 		814464DF1E62BE5900181E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464861E62BE5900181E54 /* Constants.swift */; };
@@ -1229,14 +1234,17 @@
 				814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */,
 				814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */,
 				814465091E62BE5900181E54 /* TableHeaderCollectionReusableView.swift in Sources */,
+				813D89811E754FBE00B5A018 /* AppDelegate.swift in Sources */,
 				8144653D1E62BE5900181E54 /* ForumBaseCollectionViewController.swift in Sources */,
 				810039421E63576800512F3B /* Theme.swift in Sources */,
 				814465411E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654D1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
+				813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */,
 				814464EF1E62BE5900181E54 /* ActionParser.swift in Sources */,
 				810039431E63576800512F3B /* Themeable.swift in Sources */,
 				814465451E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */,
+				813D897F1E754BA900B5A018 /* ForumModule.swift in Sources */,
 				814465391E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
 				8144651B1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */,
 				814464FF1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
@@ -1246,6 +1254,8 @@
 				814464F71E62BE5900181E54 /* Analytics.swift in Sources */,
 				8144654B1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
 				814464ED1E62BE5900181E54 /* ActionFactory.swift in Sources */,
+				813D897E1E754BA700B5A018 /* DulfyModule.swift in Sources */,
+				813D89801E754BAC00B5A018 /* SettingsModule.swift in Sources */,
 				8144650F1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,
 				814465151E62BE5900181E54 /* TextViewController.swift in Sources */,
 				814465051E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,

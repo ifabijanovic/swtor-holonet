@@ -25,17 +25,11 @@ protocol PushManager {
 }
 
 class DefaultPushManager: NSObject, PushManager {
-    fileprivate let actionFactory: ActionFactory
-    fileprivate let navigator: Navigator
-    
     fileprivate var didCancelPushAccess: Bool
     fileprivate var didApprovePushAccess: Bool
     fileprivate var lastPushAccessRequestTimestamp: Date
     
-    init(actionFactory: ActionFactory, navigator: Navigator) {
-        self.actionFactory = actionFactory
-        self.navigator = navigator
-        
+    override init() {
         let defaults = UserDefaults.standard
         
         self.didCancelPushAccess = defaults.bool(forKey: Constants.Push.UserDefaults.didCancelPushAccess)
@@ -141,19 +135,15 @@ class DefaultPushManager: NSObject, PushManager {
     }
     
     func handleRemoteNotification(applicationState: UIApplicationState, userInfo: [AnyHashable : Any]) {
-        let result = self.actionFactory
-            .create(userInfo: userInfo)?
-            .perform(userInfo: userInfo, isForeground: applicationState == .active)
-            ?? false
+//        let result = self.actionFactory
+//            .create(userInfo: userInfo)?
+//            .perform(userInfo: userInfo, isForeground: applicationState == .active)
+//            ?? false
         
         self.resetBadge()
         
         if #available(iOS 10.0, *) {
             // Do nothing, handled by the UNUserNotificationCenterDelegate
-        } else {
-            if !result {
-                self.navigator.showNotification(userInfo: userInfo)
-            }
         }
         
         #if !TEST

@@ -7,8 +7,11 @@
 //
 
 import UIKit
-import Firebase
 import Cleanse
+
+#if !TEST
+import Firebase
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var launchNotification: [AnyHashable: Any]? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        #if !TEST
         FIRApp.configure()
+        #endif
         
         // Dependencies
         let propertyInjector = try! ComponentFactory.of(AppComponent.self).build()

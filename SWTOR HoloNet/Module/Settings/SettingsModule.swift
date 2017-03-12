@@ -11,17 +11,28 @@ import Cleanse
 
 struct SettingsModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder
-            .bind(SettingsTableViewController.self)
-            .to(factory: SettingsTableViewController.init)
-        
-        binder
-            .bind(RootTabBarItem.self)
-            .intoCollection()
-            .to { (viewController: SettingsTableViewController) -> RootTabBarItem in
-                viewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
-                let navigationController = UINavigationController(rootViewController: viewController)
-                return RootTabBarItem(viewController: navigationController, index: 2)
-            }
+        binder.bind(SettingsUIFactory.self).to(factory: SettingsUIFactory.init)
+    }
+}
+
+struct SettingsUIFactory {
+    private let pushManager: PushManager
+    private let themeManager: ThemeManager
+    
+    init(pushManager: PushManager, themeManager: ThemeManager) {
+        self.pushManager = pushManager
+        self.themeManager = themeManager
+    }
+    
+    func settingsViewController(toolbox: Toolbox) -> UIViewController {
+        return SettingsTableViewController(pushManager: self.pushManager, toolbox: toolbox)
+    }
+    
+    func themeSettingsViewController(toolbox: Toolbox) -> UIViewController {
+        return ThemeSettingsTableViewController(themeManager: self.themeManager, toolbox: toolbox)
+    }
+    
+    func textSizeSettingsViewController(toolbox: Toolbox) -> UIViewController {
+        return TextSizeSettingsTableViewController(themeManager: self.themeManager, toolbox: toolbox)
     }
 }

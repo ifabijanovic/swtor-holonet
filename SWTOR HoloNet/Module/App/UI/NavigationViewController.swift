@@ -14,7 +14,7 @@ class NavigationViewController: UINavigationController, Themeable {
     private let toolbox: Toolbox
     private var disposeBag: DisposeBag
     
-    init(toolbox: Toolbox, rootViewController: UIViewController) {
+    init(rootViewController: UIViewController, toolbox: Toolbox) {
         self.toolbox = toolbox
         self.disposeBag = DisposeBag()
         super.init(nibName: nil, bundle: nil)
