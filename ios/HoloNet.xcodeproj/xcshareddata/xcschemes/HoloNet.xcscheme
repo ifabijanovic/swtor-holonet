@@ -17,7 +17,7 @@
                BlueprintIdentifier = "81AB247B19EFBD7700293D26"
                BuildableName = "HoloNet.app"
                BlueprintName = "HoloNet"
-               ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+               ReferencedContainer = "container:HoloNet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81AB249019EFBD7700293D26"
-               BuildableName = "SWTOR HoloNetTests.xctest"
-               BlueprintName = "SWTOR HoloNetTests"
-               ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+               BuildableName = "HoloNetTests.xctest"
+               BlueprintName = "HoloNetTests"
+               ReferencedContainer = "container:HoloNet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "81AB249019EFBD7700293D26"
-               BuildableName = "SWTOR HoloNetTests.xctest"
-               BlueprintName = "SWTOR HoloNetTests"
-               ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+               BuildableName = "HoloNetTests.xctest"
+               BlueprintName = "HoloNetTests"
+               ReferencedContainer = "container:HoloNet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,7 +59,7 @@
             BlueprintIdentifier = "81AB247B19EFBD7700293D26"
             BuildableName = "HoloNet.app"
             BlueprintName = "HoloNet"
-            ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+            ReferencedContainer = "container:HoloNet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "81AB247B19EFBD7700293D26"
             BuildableName = "HoloNet.app"
             BlueprintName = "HoloNet"
-            ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+            ReferencedContainer = "container:HoloNet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -101,7 +101,7 @@
             BlueprintIdentifier = "81AB247B19EFBD7700293D26"
             BuildableName = "HoloNet.app"
             BlueprintName = "HoloNet"
-            ReferencedContainer = "container:SWTOR HoloNet.xcodeproj">
+            ReferencedContainer = "container:HoloNet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
