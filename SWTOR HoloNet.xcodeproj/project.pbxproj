@@ -22,6 +22,14 @@
 		813D897F1E754BA900B5A018 /* ForumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B31E72955200060E00 /* ForumModule.swift */; };
 		813D89801E754BAC00B5A018 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B91E729D0700060E00 /* SettingsModule.swift */; };
 		813D89811E754FBE00B5A018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464851E62BE5900181E54 /* AppDelegate.swift */; };
+		813D898D1E75625E00B5A018 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D898C1E75625E00B5A018 /* ObservableType.swift */; };
+		813D898E1E7562E000B5A018 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D898C1E75625E00B5A018 /* ObservableType.swift */; };
+		813D89931E75698100B5A018 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89901E75698100B5A018 /* AppAction.swift */; };
+		813D89941E75698100B5A018 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89901E75698100B5A018 /* AppAction.swift */; };
+		813D89951E75698100B5A018 /* AppActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89911E75698100B5A018 /* AppActionParser.swift */; };
+		813D89961E75698100B5A018 /* AppActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89911E75698100B5A018 /* AppActionParser.swift */; };
+		813D89971E75698100B5A018 /* AppActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89921E75698100B5A018 /* AppActionQueue.swift */; };
+		813D89981E75698100B5A018 /* AppActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D89921E75698100B5A018 /* AppActionQueue.swift */; };
 		814464DC1E62BE5900181E54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464851E62BE5900181E54 /* AppDelegate.swift */; };
 		814464DE1E62BE5900181E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464861E62BE5900181E54 /* Constants.swift */; };
 		814464DF1E62BE5900181E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464861E62BE5900181E54 /* Constants.swift */; };
@@ -35,16 +43,6 @@
 		814464E71E62BE5900181E54 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144648B1E62BE5900181E54 /* UIColor.swift */; };
 		814464E81E62BE5900181E54 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144648C1E62BE5900181E54 /* URLComponents.swift */; };
 		814464E91E62BE5900181E54 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144648C1E62BE5900181E54 /* URLComponents.swift */; };
-		814464EA1E62BE5900181E54 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464901E62BE5900181E54 /* Action.swift */; };
-		814464EB1E62BE5900181E54 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464901E62BE5900181E54 /* Action.swift */; };
-		814464EC1E62BE5900181E54 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464911E62BE5900181E54 /* ActionFactory.swift */; };
-		814464ED1E62BE5900181E54 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464911E62BE5900181E54 /* ActionFactory.swift */; };
-		814464EE1E62BE5900181E54 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464921E62BE5900181E54 /* ActionParser.swift */; };
-		814464EF1E62BE5900181E54 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464921E62BE5900181E54 /* ActionParser.swift */; };
-		814464F01E62BE5900181E54 /* ActionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464931E62BE5900181E54 /* ActionPerformer.swift */; };
-		814464F11E62BE5900181E54 /* ActionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464931E62BE5900181E54 /* ActionPerformer.swift */; };
-		814464F21E62BE5900181E54 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464941E62BE5900181E54 /* DulfyAction.swift */; };
-		814464F31E62BE5900181E54 /* DulfyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464941E62BE5900181E54 /* DulfyAction.swift */; };
 		814464F61E62BE5900181E54 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464981E62BE5900181E54 /* Analytics.swift */; };
 		814464F71E62BE5900181E54 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464981E62BE5900181E54 /* Analytics.swift */; };
 		814464F81E62BE5900181E54 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144649A1E62BE5900181E54 /* Entity.swift */; };
@@ -233,6 +231,10 @@
 		811F10301E6947C700FCFF85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		811F10351E695FEE00FCFF85 /* HoloNet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HoloNet.entitlements; path = ../HoloNet.entitlements; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		813D898C1E75625E00B5A018 /* ObservableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
+		813D89901E75698100B5A018 /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		813D89911E75698100B5A018 /* AppActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActionParser.swift; sourceTree = "<group>"; };
+		813D89921E75698100B5A018 /* AppActionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActionQueue.swift; sourceTree = "<group>"; };
 		814464851E62BE5900181E54 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		814464861E62BE5900181E54 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		814464881E62BE5900181E54 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -240,11 +242,6 @@
 		8144648A1E62BE5900181E54 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8144648B1E62BE5900181E54 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8144648C1E62BE5900181E54 /* URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
-		814464901E62BE5900181E54 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		814464911E62BE5900181E54 /* ActionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionFactory.swift; sourceTree = "<group>"; };
-		814464921E62BE5900181E54 /* ActionParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionParser.swift; sourceTree = "<group>"; };
-		814464931E62BE5900181E54 /* ActionPerformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPerformer.swift; sourceTree = "<group>"; };
-		814464941E62BE5900181E54 /* DulfyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyAction.swift; sourceTree = "<group>"; };
 		814464981E62BE5900181E54 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		8144649A1E62BE5900181E54 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8144649B1E62BE5900181E54 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -415,11 +412,22 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		813D898F1E75698000B5A018 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				813D89901E75698100B5A018 /* AppAction.swift */,
+				813D89911E75698100B5A018 /* AppActionParser.swift */,
+				813D89921E75698100B5A018 /* AppActionQueue.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		814464871E62BE5900181E54 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				814464881E62BE5900181E54 /* Error.swift */,
 				814464891E62BE5900181E54 /* HTMLElement.swift */,
+				813D898C1E75625E00B5A018 /* ObservableType.swift */,
 				8144648A1E62BE5900181E54 /* String.swift */,
 				8144648B1E62BE5900181E54 /* UIColor.swift */,
 				8144648C1E62BE5900181E54 /* URLComponents.swift */,
@@ -442,7 +450,7 @@
 		8144648E1E62BE5900181E54 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				8144648F1E62BE5900181E54 /* Action */,
+				813D898F1E75698000B5A018 /* Action */,
 				814464971E62BE5900181E54 /* Analytics */,
 				814464991E62BE5900181E54 /* Model */,
 				8100393D1E63575500512F3B /* Theme */,
@@ -450,18 +458,6 @@
 				8197D0BA1E73EDCC0020D078 /* AppComponent.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		8144648F1E62BE5900181E54 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				814464901E62BE5900181E54 /* Action.swift */,
-				814464911E62BE5900181E54 /* ActionFactory.swift */,
-				814464921E62BE5900181E54 /* ActionParser.swift */,
-				814464931E62BE5900181E54 /* ActionPerformer.swift */,
-				814464941E62BE5900181E54 /* DulfyAction.swift */,
-			);
-			path = Action;
 			sourceTree = "<group>";
 		};
 		814464971E62BE5900181E54 /* Analytics */ = {
@@ -1133,7 +1129,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				814465481E62BE5900181E54 /* SettingPickerDelegate.swift in Sources */,
-				814464F01E62BE5900181E54 /* ActionPerformer.swift in Sources */,
 				814465301E62BE5900181E54 /* ForumCategoryCollectionViewCell.swift in Sources */,
 				814464E41E62BE5900181E54 /* String.swift in Sources */,
 				814465201E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
@@ -1146,7 +1141,6 @@
 				8144653E1E62BE5900181E54 /* ForumListCollectionViewController.swift in Sources */,
 				814465001E62BE5900181E54 /* BaseTableViewController.swift in Sources */,
 				814465241E62BE5900181E54 /* ForumCategory.swift in Sources */,
-				814464EA1E62BE5900181E54 /* Action.swift in Sources */,
 				814464FA1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465181E62BE5900181E54 /* DulfyViewController.swift in Sources */,
 				8144664B1E62D0FF00181E54 /* Toolbox.swift in Sources */,
@@ -1154,6 +1148,7 @@
 				814465281E62BE5900181E54 /* ForumPost.swift in Sources */,
 				8144652C1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,
 				814465021E62BE5900181E54 /* BaseViewController.swift in Sources */,
+				813D89951E75698100B5A018 /* AppActionParser.swift in Sources */,
 				814464E61E62BE5900181E54 /* UIColor.swift in Sources */,
 				814464F81E62BE5900181E54 /* Entity.swift in Sources */,
 				814464E01E62BE5900181E54 /* Error.swift in Sources */,
@@ -1164,7 +1159,6 @@
 				814465401E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654C1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
 				8144664C1E62D16600181E54 /* Navigator.swift in Sources */,
-				814464EE1E62BE5900181E54 /* ActionParser.swift in Sources */,
 				810039451E63578100512F3B /* ThemeManager.swift in Sources */,
 				814465441E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465101E62BE5900181E54 /* NavigationViewController.swift in Sources */,
@@ -1172,13 +1166,14 @@
 				814465381E62BE5900181E54 /* ForumThreadCollectionViewCell.swift in Sources */,
 				8144651A1E62BE5900181E54 /* ForumCategoryRepository.swift in Sources */,
 				814464FE1E62BE5900181E54 /* BaseCollectionViewController.swift in Sources */,
+				813D89931E75698100B5A018 /* AppAction.swift in Sources */,
 				814465221E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				814464F61E62BE5900181E54 /* Analytics.swift in Sources */,
 				814B26BA1E729D0700060E00 /* SettingsModule.swift in Sources */,
 				8144654A1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
-				814464EC1E62BE5900181E54 /* ActionFactory.swift in Sources */,
 				8144650E1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,
 				814465141E62BE5900181E54 /* TextViewController.swift in Sources */,
+				813D89971E75698100B5A018 /* AppActionQueue.swift in Sources */,
 				814465041E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,
 				814465461E62BE5900181E54 /* PushManager.swift in Sources */,
 				810039481E6363F300512F3B /* ThemeEnums.swift in Sources */,
@@ -1186,9 +1181,9 @@
 				814464E21E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DE1E62BE5900181E54 /* Constants.swift in Sources */,
 				8144652A1E62BE5900181E54 /* ForumThread.swift in Sources */,
-				814464F21E62BE5900181E54 /* DulfyAction.swift in Sources */,
 				814465121E62BE5900181E54 /* RootViewController.swift in Sources */,
 				8144650C1E62BE5900181E54 /* CollectionViewCell+Themeable.swift in Sources */,
+				813D898D1E75625E00B5A018 /* ObservableType.swift in Sources */,
 				814464E81E62BE5900181E54 /* URLComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1200,7 +1195,6 @@
 				814465491E62BE5900181E54 /* SettingPickerDelegate.swift in Sources */,
 				814466491E62C10800181E54 /* Navigator.swift in Sources */,
 				814466201E62BE9900181E54 /* ActionFactoryTests.swift in Sources */,
-				814464F11E62BE5900181E54 /* ActionPerformer.swift in Sources */,
 				814465311E62BE5900181E54 /* ForumCategoryCollectionViewCell.swift in Sources */,
 				814464E51E62BE5900181E54 /* String.swift in Sources */,
 				814465211E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
@@ -1214,7 +1208,7 @@
 				8144653F1E62BE5900181E54 /* ForumListCollectionViewController.swift in Sources */,
 				814465011E62BE5900181E54 /* BaseTableViewController.swift in Sources */,
 				814465251E62BE5900181E54 /* ForumCategory.swift in Sources */,
-				814464EB1E62BE5900181E54 /* Action.swift in Sources */,
+				813D89981E75698100B5A018 /* AppActionQueue.swift in Sources */,
 				814464FB1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465191E62BE5900181E54 /* DulfyViewController.swift in Sources */,
 				8144651F1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
@@ -1227,6 +1221,7 @@
 				814464E11E62BE5900181E54 /* Error.swift in Sources */,
 				810039461E63601D00512F3B /* ThemeManager.swift in Sources */,
 				814466241E62BE9900181E54 /* EntityTests.swift in Sources */,
+				813D898E1E7562E000B5A018 /* ObservableType.swift in Sources */,
 				814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */,
 				814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */,
 				814465091E62BE5900181E54 /* TableHeaderCollectionReusableView.swift in Sources */,
@@ -1236,7 +1231,6 @@
 				814465411E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654D1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
 				813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */,
-				814464EF1E62BE5900181E54 /* ActionParser.swift in Sources */,
 				810039431E63576800512F3B /* Themeable.swift in Sources */,
 				814465451E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */,
@@ -1247,11 +1241,12 @@
 				814465231E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				8144662A1E62BE9900181E54 /* ForumRepositoryTestsBase.swift in Sources */,
 				814466271E62BE9900181E54 /* ForumCategoryRepositoryTests.swift in Sources */,
+				813D89961E75698100B5A018 /* AppActionParser.swift in Sources */,
 				814464F71E62BE5900181E54 /* Analytics.swift in Sources */,
 				8144654B1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
-				814464ED1E62BE5900181E54 /* ActionFactory.swift in Sources */,
 				813D897E1E754BA700B5A018 /* DulfyModule.swift in Sources */,
 				813D89801E754BAC00B5A018 /* SettingsModule.swift in Sources */,
+				813D89941E75698100B5A018 /* AppAction.swift in Sources */,
 				8144650F1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,
 				814465151E62BE5900181E54 /* TextViewController.swift in Sources */,
 				814465051E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,
@@ -1261,7 +1256,6 @@
 				814464DF1E62BE5900181E54 /* Constants.swift in Sources */,
 				814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */,
 				8144652B1E62BE5900181E54 /* ForumThread.swift in Sources */,
-				814464F31E62BE5900181E54 /* DulfyAction.swift in Sources */,
 				814466261E62BE9900181E54 /* RootViewControllerTests.swift in Sources */,
 				8144662B1E62BE9900181E54 /* ForumThreadRepositoryTests.swift in Sources */,
 				814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */,

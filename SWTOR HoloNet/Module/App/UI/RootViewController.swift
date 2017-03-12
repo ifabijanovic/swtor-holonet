@@ -12,25 +12,27 @@ import RxCocoa
 
 class RootViewController: UITabBarController {
     fileprivate let analytics: Analytics
+    fileprivate let appActionQueue: AppActionQueue
+    fileprivate let appUIFactory: AppUIFactory
     fileprivate let themeManager: ThemeManager
     fileprivate let settings: Settings
-    fileprivate let appUIFactory: AppUIFactory
+    
     fileprivate var disposeBag: DisposeBag
     
     fileprivate lazy var toolbox: Toolbox = {
         return Toolbox(analytics: self.analytics, navigator: self, themeManager: self.themeManager, settings: self.settings)
     }()
     
-    required init(analytics: Analytics, themeManager: ThemeManager, settings: Settings, appUIFactory: AppUIFactory) {
+    required init(analytics: Analytics, appActionQueue: AppActionQueue, appUIFactory: AppUIFactory, themeManager: ThemeManager, settings: Settings) {
         self.analytics = analytics
+        self.appActionQueue = appActionQueue
+        self.appUIFactory = appUIFactory
         self.themeManager = themeManager
         self.settings = settings
-        self.appUIFactory = appUIFactory
+        
         self.disposeBag = DisposeBag()
         
         super.init(nibName: nil, bundle: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(RootViewController.switchToTab(notification:)), name: NSNotification.Name(Constants.Notifications.switchToTab), object: nil)
         
         let forumRootViewController = NavigationViewController(rootViewController: appUIFactory.forumFactory.categoriesViewController(toolbox: self.toolbox), toolbox: self.toolbox)
         forumRootViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
@@ -47,11 +49,7 @@ class RootViewController: UITabBarController {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    // MARK: -
+    // MARK: Overrides
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,7 +57,12 @@ class RootViewController: UITabBarController {
         self.toolbox
             .theme
             .drive(onNext: self.apply(theme:))
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
+        
+        self.appActionQueue
+            .queue
+            .drive(onNext: self.perform(appAction:))
+            .disposed(by: self.disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,32 +75,38 @@ class RootViewController: UITabBarController {
     }
 }
 
+// MARK: App action handling
+
 extension RootViewController {
-    func switchToTab(notification: NSNotification) {
-        // If there is no userInfo, return
-        if notification.userInfo == nil { return }
-        let userInfo = notification.userInfo!
-        
-        // If there is no index to switch to, or the index is invalid, return
-        guard let index = userInfo["index"] as? Int else { return }
-        if index < 0 { return }
-        if index >= self.viewControllers?.count ?? -1 { return }
-        
-        // Get the view controller, it might be embedded inside a navigation controller
-        var controller = self.viewControllers?[index]
-        if let navController = controller as? UINavigationController {
-            controller = navController.topViewController
+    func perform(appAction: AppAction) {
+        switch appAction {
+        case let .dulfy(message, url, applicationState):
+            self.performDulfyAction(message: message, url: url, applicationState: applicationState)
+        case let .switchTab(index):
+            if index < 0 || index >= (self.viewControllers?.count ?? 0) { return }
+            self.selectedIndex = index
+        case .setUrl(_):
+            break
         }
-        
-        // Perform the action
-        if let actionPerformer = controller as? ActionPerformer {
-            actionPerformer.perform(userInfo: userInfo)
+    }
+    
+    private func performDulfyAction(message: String, url: URL, applicationState: UIApplicationState) {
+        if applicationState == .active {
+            self.showAlert(title: "Dulfy", message: message, actions: [
+                UIAlertAction(title: "Hide", style: .cancel, handler: nil),
+                UIAlertAction(title: "View", style: .default, handler: { [unowned self] _ in
+                    self.appActionQueue.enqueue(action: .switchTab(index: 1))
+                    self.appActionQueue.enqueue(action: .setUrl(url: url))
+                })
+            ])
+        } else {
+            self.appActionQueue.enqueue(action: .switchTab(index: 1))
+            self.appActionQueue.enqueue(action: .setUrl(url: url))
         }
-        
-        // Finally, select the tab
-        self.selectedIndex = index
     }
 }
+
+// MARK: Themeable
 
 extension RootViewController: Themeable {
     func apply(theme: Theme) {
@@ -105,19 +114,13 @@ extension RootViewController: Themeable {
     }
 }
 
+// MARK: Navigator
+
 extension RootViewController: Navigator {
     func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         actions.forEach { alert.addAction($0) }
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showNotification(userInfo: [AnyHashable : Any]) {
-        guard let message = ActionParser(userInfo: userInfo).alert else { return }
-        self.showAlert(title: "HoloNet", message: message, actions: [
-            UIAlertAction(title: "OK", style: .default, handler: nil)
-            ]
-        )
     }
     
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?) {

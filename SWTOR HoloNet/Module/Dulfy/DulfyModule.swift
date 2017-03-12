@@ -16,7 +16,13 @@ struct DulfyModule: Cleanse.Module {
 }
 
 struct DulfyUIFactory {
+    private let appActionQueue: AppActionQueue
+    
+    init(appActionQueue: AppActionQueue) {
+        self.appActionQueue = appActionQueue
+    }
+    
     func dulfyViewController(toolbox: Toolbox) -> UIViewController {
-        return DulfyViewController(toolbox: toolbox)
+        return DulfyViewController(appActionQueue: self.appActionQueue, toolbox: toolbox)
     }
 }

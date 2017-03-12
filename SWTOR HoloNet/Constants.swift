@@ -12,7 +12,7 @@ import UIKit
 struct Constants {
     static let wideScreenThreshold: CGFloat = 640.0
     
-    struct Actions {
+    struct AppActions {
         static let dulfy = "dulfy"
         
         struct UserInfo {

@@ -12,7 +12,7 @@ import XCTest
 class ActionParserTests: XCTestCase {
     func testGetAlert_Works() {
         let userInfo = ["aps":["alert":"test"]]
-        let parser = ActionParser(userInfo: userInfo)
+        let parser = AppActionParser(userInfo: userInfo)
         let result = parser.alert
         
         XCTAssertNotNil(result, "")
@@ -21,7 +21,7 @@ class ActionParserTests: XCTestCase {
     
     func testGetAlert_MisingAlert() {
         let userInfo = ["aps":["sound":"default"]]
-        let parser = ActionParser(userInfo: userInfo)
+        let parser = AppActionParser(userInfo: userInfo)
         let result = parser.alert
         
         XCTAssertNil(result, "")
@@ -29,34 +29,27 @@ class ActionParserTests: XCTestCase {
     
     func testGetAlert_MisingAps() {
         let userInfo = ["alert":"test"]
-        let parser = ActionParser(userInfo: userInfo)
+        let parser = AppActionParser(userInfo: userInfo)
         let result = parser.alert
         
         XCTAssertNil(result, "")
     }
     
-    func testGetString_Works() {
-        let userInfo = ["key":"value"]
-        let parser = ActionParser(userInfo: userInfo)
-        let result = parser.string(key: "key")
+    func testGetType_Works() {
+        let userInfo = ["type":"value"]
+        let parser = AppActionParser(userInfo: userInfo)
+        let result = parser.type
         
         XCTAssertNotNil(result, "")
         XCTAssertEqual(result!, "value", "")
     }
     
-    func testGetString_MissingKey() {
-        let userInfo = ["key":"value"]
-        let parser = ActionParser(userInfo: userInfo)
-        let result = parser.string(key: "other_key")
+    func testGetUrl_Works() {
+        let userInfo = ["url":"http://www.google.com"]
+        let parser = AppActionParser(userInfo: userInfo)
+        let result = parser.url
         
-        XCTAssertNil(result, "")
-    }
-    
-    func testGetString_WrongType() {
-        let userInfo = ["key":NSDate()]
-        let parser = ActionParser(userInfo: userInfo)
-        let result = parser.string(key: "key")
-        
-        XCTAssertNil(result, "")
+        XCTAssertNotNil(result, "")
+        XCTAssertEqual(result!, URL(string: "http://www.google.com"), "")
     }
 }

@@ -8,8 +8,12 @@
 
 import UIKit
 import WebKit
+import RxSwift
+import RxCocoa
 
 class DulfyViewController: BaseViewController {
+    fileprivate let appActionQueue: AppActionQueue
+    
     fileprivate var homeUrl: URL { return URL(string: self.toolbox.settings.dulfyNetUrl)! }
     fileprivate var url: URL?
     fileprivate var isVisible = false
@@ -19,8 +23,19 @@ class DulfyViewController: BaseViewController {
     fileprivate var backButton: UIBarButtonItem!
     fileprivate var forwardButton: UIBarButtonItem!
     
-    init(toolbox: Toolbox) {
+    private var appActionQueueSubscription: Disposable?
+    
+    init(appActionQueue: AppActionQueue, toolbox: Toolbox) {
+        self.appActionQueue = appActionQueue
         super.init(toolbox: toolbox, nibName: nil, bundle: nil)
+        
+        self.appActionQueueSubscription = self.appActionQueue
+            .queue
+            .drive(onNext: self.perform(appAction:))
+    }
+    
+    deinit {
+        self.appActionQueueSubscription?.dispose()
     }
 
     // MARK: - Overrides
@@ -204,14 +219,16 @@ extension DulfyViewController: WKNavigationDelegate {
     }
 }
 
-extension DulfyViewController: ActionPerformer {
-    func perform(userInfo: [AnyHashable : Any]) {
-        if let url = userInfo["url"] as? URL {
+extension DulfyViewController {
+    func perform(appAction: AppAction) {
+        switch appAction {
+        case let .setUrl(url):
             if self.isVisible {
                 self.navigateTo(url)
             } else {
                 self.url = url
             }
+        default: break
         }
     }
 }

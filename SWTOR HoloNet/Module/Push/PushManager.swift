@@ -25,16 +25,18 @@ protocol PushManager {
 }
 
 class DefaultPushManager: NSObject, PushManager {
+    fileprivate let appActionQueue: AppActionQueue
+    
     fileprivate var didCancelPushAccess: Bool
     fileprivate var didApprovePushAccess: Bool
     fileprivate var lastPushAccessRequestTimestamp: Date
     
-    override init() {
-        let defaults = UserDefaults.standard
+    init(appActionQueue: AppActionQueue) {
+        self.appActionQueue = appActionQueue
         
+        let defaults = UserDefaults.standard
         self.didCancelPushAccess = defaults.bool(forKey: Constants.Push.UserDefaults.didCancelPushAccess)
         self.didApprovePushAccess = defaults.bool(forKey: Constants.Push.UserDefaults.didApprovePushAccess)
-        
         let timestamp = defaults.object(forKey: Constants.Push.UserDefaults.lastPushAccessRequestTimestamp) as? Date
         self.lastPushAccessRequestTimestamp = timestamp != nil ? timestamp! : Date.distantPast
         
@@ -135,16 +137,8 @@ class DefaultPushManager: NSObject, PushManager {
     }
     
     func handleRemoteNotification(applicationState: UIApplicationState, userInfo: [AnyHashable : Any]) {
-//        let result = self.actionFactory
-//            .create(userInfo: userInfo)?
-//            .perform(userInfo: userInfo, isForeground: applicationState == .active)
-//            ?? false
-        
+        self.appActionQueue.enqueueRemoteNotification(applicationState: applicationState, userInfo: userInfo)
         self.resetBadge()
-        
-        if #available(iOS 10.0, *) {
-            // Do nothing, handled by the UNUserNotificationCenterDelegate
-        }
         
         #if !TEST
         FIRMessaging.messaging().appDidReceiveMessage(userInfo)

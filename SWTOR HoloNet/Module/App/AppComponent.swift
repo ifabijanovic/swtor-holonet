@@ -30,6 +30,7 @@ struct AppModule: Cleanse.Module {
         binder.bind(Analytics.self).asSingleton().to(value: DefaultAnalytics())
         binder.bind(Settings.self).asSingleton().to(value: Settings(bundle: Bundle.main))
         binder.bind(ThemeManager.self).asSingleton().to(value: DefaultThemeManager(bundle: Bundle.main))
+        binder.bind(AppActionQueue.self).asSingleton().to(factory: AppActionQueue.init)
         binder.bind(PushManager.self).asSingleton().to(factory: DefaultPushManager.init)
         
         binder.bind(Navigator.self).asSingleton().to(factory: RootViewController.init)
