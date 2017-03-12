@@ -11,11 +11,17 @@ import Cleanse
 
 struct SettingsModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder.bind(SettingsUIFactory.self).to(factory: SettingsUIFactory.init)
+        binder.bind(SettingsUIFactory.self).to(factory: DefaultSettingsUIFactory.init)
     }
 }
 
-struct SettingsUIFactory {
+protocol SettingsUIFactory {
+    func settingsViewController(toolbox: Toolbox) -> UIViewController
+    func themeSettingsViewController(toolbox: Toolbox) -> UIViewController
+    func textSizeSettingsViewController(toolbox: Toolbox) -> UIViewController
+}
+
+fileprivate struct DefaultSettingsUIFactory: SettingsUIFactory {
     private let pushManager: PushManager
     private let themeManager: ThemeManager
     

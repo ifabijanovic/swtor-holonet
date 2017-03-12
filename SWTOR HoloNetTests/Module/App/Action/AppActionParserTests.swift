@@ -1,5 +1,5 @@
 //
-//  ActionParserTests.swift
+//  AppActionParserTests.swift
 //  SWTOR HoloNet
 //
 //  Created by Ivan Fabijanovic on 11/03/15.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class ActionParserTests: XCTestCase {
+class AppActionParserTests: XCTestCase {
     func testGetAlert_Works() {
         let userInfo = ["aps":["alert":"test"]]
         let parser = AppActionParser(userInfo: userInfo)

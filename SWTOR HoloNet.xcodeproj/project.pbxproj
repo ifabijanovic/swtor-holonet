@@ -15,6 +15,8 @@
 		810039461E63601D00512F3B /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039441E63578100512F3B /* ThemeManager.swift */; };
 		810039481E6363F300512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
 		810039491E6364AA00512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
+		81017EDA1E75A554002901B1 /* AppActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81017ED91E75A554002901B1 /* AppActionTests.swift */; };
+		81017EE71E75ADE2002901B1 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81017EE61E75ADE2002901B1 /* TestNavigator.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
@@ -141,12 +143,9 @@
 		814465591E62BE5900181E54 /* LightTheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 814464DB1E62BE5900181E54 /* LightTheme.plist */; };
 		8144661E1E62BE9900181E54 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465E71E62BE9900181E54 /* StringTests.swift */; };
 		8144661F1E62BE9900181E54 /* URLComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465E81E62BE9900181E54 /* URLComponentsTests.swift */; };
-		814466201E62BE9900181E54 /* ActionFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465EC1E62BE9900181E54 /* ActionFactoryTests.swift */; };
-		814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465ED1E62BE9900181E54 /* ActionParserTests.swift */; };
-		814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465EE1E62BE9900181E54 /* DulfyActionTests.swift */; };
+		814466211E62BE9900181E54 /* AppActionParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465ED1E62BE9900181E54 /* AppActionParserTests.swift */; };
 		814466241E62BE9900181E54 /* EntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F21E62BE9900181E54 /* EntityTests.swift */; };
 		814466251E62BE9900181E54 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F31E62BE9900181E54 /* SettingsTests.swift */; };
-		814466261E62BE9900181E54 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F51E62BE9900181E54 /* RootViewControllerTests.swift */; };
 		814466271E62BE9900181E54 /* ForumCategoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F81E62BE9900181E54 /* ForumCategoryRepositoryTests.swift */; };
 		814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465F91E62BE9900181E54 /* ForumParserTests.swift */; };
 		814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */; };
@@ -226,6 +225,8 @@
 		8100393F1E63575500512F3B /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		810039441E63578100512F3B /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		810039471E6363F300512F3B /* ThemeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeEnums.swift; sourceTree = "<group>"; };
+		81017ED91E75A554002901B1 /* AppActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActionTests.swift; sourceTree = "<group>"; };
+		81017EE61E75ADE2002901B1 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		81036D151E5848CF00E739FA /* HoloNet.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNet.xcconfig; sourceTree = "<group>"; };
 		81036D161E584A6300E739FA /* HoloNetTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNetTests.xcconfig; sourceTree = "<group>"; };
 		811F10301E6947C700FCFF85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -292,12 +293,9 @@
 		814464DB1E62BE5900181E54 /* LightTheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LightTheme.plist; sourceTree = "<group>"; };
 		814465E71E62BE9900181E54 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		814465E81E62BE9900181E54 /* URLComponentsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponentsTests.swift; sourceTree = "<group>"; };
-		814465EC1E62BE9900181E54 /* ActionFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionFactoryTests.swift; sourceTree = "<group>"; };
-		814465ED1E62BE9900181E54 /* ActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionParserTests.swift; sourceTree = "<group>"; };
-		814465EE1E62BE9900181E54 /* DulfyActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyActionTests.swift; sourceTree = "<group>"; };
+		814465ED1E62BE9900181E54 /* AppActionParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActionParserTests.swift; sourceTree = "<group>"; };
 		814465F21E62BE9900181E54 /* EntityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityTests.swift; sourceTree = "<group>"; };
 		814465F31E62BE9900181E54 /* SettingsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
-		814465F51E62BE9900181E54 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
 		814465F81E62BE9900181E54 /* ForumCategoryRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategoryRepositoryTests.swift; sourceTree = "<group>"; };
 		814465F91E62BE9900181E54 /* ForumParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumParserTests.swift; sourceTree = "<group>"; };
 		814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumPostRepositoryTests.swift; sourceTree = "<group>"; };
@@ -410,6 +408,14 @@
 				810039441E63578100512F3B /* ThemeManager.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		81017EE51E75ADDA002901B1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81017EE61E75ADE2002901B1 /* TestNavigator.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		813D898F1E75698000B5A018 /* Action */ = {
@@ -681,7 +687,7 @@
 			children = (
 				814465EB1E62BE9900181E54 /* Action */,
 				814465F11E62BE9900181E54 /* Model */,
-				814465F41E62BE9900181E54 /* UI */,
+				81017EE51E75ADDA002901B1 /* UI */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -689,9 +695,8 @@
 		814465EB1E62BE9900181E54 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				814465EC1E62BE9900181E54 /* ActionFactoryTests.swift */,
-				814465ED1E62BE9900181E54 /* ActionParserTests.swift */,
-				814465EE1E62BE9900181E54 /* DulfyActionTests.swift */,
+				814465ED1E62BE9900181E54 /* AppActionParserTests.swift */,
+				81017ED91E75A554002901B1 /* AppActionTests.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -703,14 +708,6 @@
 				814465F31E62BE9900181E54 /* SettingsTests.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		814465F41E62BE9900181E54 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				814465F51E62BE9900181E54 /* RootViewControllerTests.swift */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		814465F61E62BE9900181E54 /* Forum */ = {
@@ -1194,7 +1191,6 @@
 			files = (
 				814465491E62BE5900181E54 /* SettingPickerDelegate.swift in Sources */,
 				814466491E62C10800181E54 /* Navigator.swift in Sources */,
-				814466201E62BE9900181E54 /* ActionFactoryTests.swift in Sources */,
 				814465311E62BE5900181E54 /* ForumCategoryCollectionViewCell.swift in Sources */,
 				814464E51E62BE5900181E54 /* String.swift in Sources */,
 				814465211E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
@@ -1223,11 +1219,12 @@
 				814466241E62BE9900181E54 /* EntityTests.swift in Sources */,
 				813D898E1E7562E000B5A018 /* ObservableType.swift in Sources */,
 				814466281E62BE9900181E54 /* ForumParserTests.swift in Sources */,
-				814466211E62BE9900181E54 /* ActionParserTests.swift in Sources */,
+				814466211E62BE9900181E54 /* AppActionParserTests.swift in Sources */,
 				814465091E62BE5900181E54 /* TableHeaderCollectionReusableView.swift in Sources */,
 				813D89811E754FBE00B5A018 /* AppDelegate.swift in Sources */,
 				8144653D1E62BE5900181E54 /* ForumBaseCollectionViewController.swift in Sources */,
 				810039421E63576800512F3B /* Theme.swift in Sources */,
+				81017EE71E75ADE2002901B1 /* TestNavigator.swift in Sources */,
 				814465411E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654D1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
 				813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */,
@@ -1241,6 +1238,7 @@
 				814465231E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				8144662A1E62BE9900181E54 /* ForumRepositoryTestsBase.swift in Sources */,
 				814466271E62BE9900181E54 /* ForumCategoryRepositoryTests.swift in Sources */,
+				81017EDA1E75A554002901B1 /* AppActionTests.swift in Sources */,
 				813D89961E75698100B5A018 /* AppActionParser.swift in Sources */,
 				814464F71E62BE5900181E54 /* Analytics.swift in Sources */,
 				8144654B1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
@@ -1254,9 +1252,7 @@
 				814465471E62BE5900181E54 /* PushManager.swift in Sources */,
 				814464E31E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DF1E62BE5900181E54 /* Constants.swift in Sources */,
-				814466221E62BE9900181E54 /* DulfyActionTests.swift in Sources */,
 				8144652B1E62BE5900181E54 /* ForumThread.swift in Sources */,
-				814466261E62BE9900181E54 /* RootViewControllerTests.swift in Sources */,
 				8144662B1E62BE9900181E54 /* ForumThreadRepositoryTests.swift in Sources */,
 				814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */,
 				814465131E62BE5900181E54 /* RootViewController.swift in Sources */,
