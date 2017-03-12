@@ -191,7 +191,6 @@
 		814B26B41E72955200060E00 /* ForumModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B31E72955200060E00 /* ForumModule.swift */; };
 		814B26B81E729C9900060E00 /* DulfyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B71E729C9900060E00 /* DulfyModule.swift */; };
 		814B26BA1E729D0700060E00 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B26B91E729D0700060E00 /* SettingsModule.swift */; };
-		815CE28F1E64C81800F28E67 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CE28E1E64C81800F28E67 /* TestNavigator.swift */; };
 		8164743E1E6812CF0026E29D /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8164742E1E6812CF0026E29D /* FirebaseAnalytics.framework */; };
 		816474401E6812CF0026E29D /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8164742F1E6812CF0026E29D /* FirebaseCore.framework */; };
 		816474421E6812CF0026E29D /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 816474301E6812CF0026E29D /* FirebaseInstanceID.framework */; };
@@ -342,7 +341,6 @@
 		814B26B31E72955200060E00 /* ForumModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumModule.swift; sourceTree = "<group>"; };
 		814B26B71E729C9900060E00 /* DulfyModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DulfyModule.swift; sourceTree = "<group>"; };
 		814B26B91E729D0700060E00 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
-		815CE28E1E64C81800F28E67 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		8164742E1E6812CF0026E29D /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		8164742F1E6812CF0026E29D /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
 		816474301E6812CF0026E29D /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
@@ -688,7 +686,6 @@
 				814465EB1E62BE9900181E54 /* Action */,
 				814465F11E62BE9900181E54 /* Model */,
 				814465F41E62BE9900181E54 /* UI */,
-				815CE28E1E64C81800F28E67 /* TestNavigator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1221,7 +1218,6 @@
 				814464FB1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465191E62BE5900181E54 /* DulfyViewController.swift in Sources */,
 				8144651F1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
-				815CE28F1E64C81800F28E67 /* TestNavigator.swift in Sources */,
 				814466251E62BE9900181E54 /* SettingsTests.swift in Sources */,
 				814465291E62BE5900181E54 /* ForumPost.swift in Sources */,
 				8144652D1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift in Sources */,

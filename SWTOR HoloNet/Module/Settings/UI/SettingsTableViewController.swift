@@ -168,7 +168,7 @@ extension SettingsTableViewController {
     }
     
     fileprivate func emailNotAvailable() {
-        self.toolbox.navigator.showAlert(title: "Error", message: "It seems email is not configured on this device.", actions: [(title: "OK", style: .default, handler: nil)])
+        self.toolbox.navigator.showAlert(title: "Error", message: "It seems email is not configured on this device.", actions: [UIAlertAction(title: "OK", style: .default, handler: nil)])
     }
 }
 

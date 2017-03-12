@@ -44,8 +44,8 @@ extension DulfyAction {
         if isForeground {
             // If in foreground ask the user if he wants to navigate
             self.navigator.showAlert(title: "Dulfy", message: message, actions: [
-                (title: "Hide", style: .cancel, handler: nil),
-                (title: "View", style: .default, handler: { _ in
+                UIAlertAction(title: "Hide", style: .cancel, handler: nil),
+                UIAlertAction(title: "View", style: .default, handler: { _ in
                     NotificationCenter.default.post(name: NSNotification.Name(Constants.Notifications.switchToTab), object: self, userInfo: payload)
                 })
             ])

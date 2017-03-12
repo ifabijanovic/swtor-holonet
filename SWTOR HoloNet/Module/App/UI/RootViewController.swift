@@ -10,11 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct RootTabBarItem {
-    let viewController: UIViewController
-    let index: Int
-}
-
 class RootViewController: UITabBarController {
     fileprivate let analytics: Analytics
     fileprivate let themeManager: ThemeManager
@@ -111,39 +106,31 @@ extension RootViewController: Themeable {
 }
 
 extension RootViewController: Navigator {
-    func showAlert(title: String?, message: String?, actions: [(title: String?, style: UIAlertActionStyle, handler: AlertActionHandler?)]) {
+    func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        actions.forEach { alert.addAction(UIAlertAction(title: $0.title, style: $0.style, handler: $0.handler)) }
-        
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        if let tabViewController = rootViewController as? UITabBarController {
-            rootViewController = tabViewController.selectedViewController
-        }
-        if let navigationViewController = rootViewController as? UINavigationController {
-            rootViewController = navigationViewController.visibleViewController
-        }
-        rootViewController?.present(alert, animated: true, completion: nil)
+        actions.forEach { alert.addAction($0) }
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showNotification(userInfo: [AnyHashable : Any]) {
         guard let message = ActionParser(userInfo: userInfo).alert else { return }
         self.showAlert(title: "HoloNet", message: message, actions: [
-            (title: "OK", style: .default, handler: nil)
+            UIAlertAction(title: "OK", style: .default, handler: nil)
             ]
         )
     }
     
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?) {
         self.showAlert(title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", actions: [
-            (title: "No", style: .cancel, handler: cancelHandler),
-            (title: "Yes", style: .default, handler: retryHandler)
+            UIAlertAction(title: "No", style: .cancel, handler: cancelHandler),
+            UIAlertAction(title: "Yes", style: .default, handler: retryHandler)
             ]
         )
     }
     
     func showMaintenanceAlert(handler: AlertActionHandler?) {
         self.showAlert(title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", actions: [
-            (title: "OK", style: .default, handler: handler)
+            UIAlertAction(title: "OK", style: .default, handler: handler)
             ]
         )
     }

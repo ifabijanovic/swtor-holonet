@@ -20,7 +20,7 @@ enum NavigationState {
 }
 
 protocol Navigator {
-    func showAlert(title: String?, message: String?, actions: [(title: String?, style: UIAlertActionStyle, handler: AlertActionHandler?)])
+    func showAlert(title: String?, message: String?, actions: [UIAlertAction])
     func showNotification(userInfo: [AnyHashable: Any])
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?)
     func showMaintenanceAlert(handler: AlertActionHandler?)
