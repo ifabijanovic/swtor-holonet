@@ -10,7 +10,7 @@ import UIKit
 
 typealias AlertActionHandler = (UIAlertAction) -> Void
 
-enum NavigationState {
+enum AppScreen {
     case forumCategory(item: ForumCategory)
     case forumThread(item: ForumThread)
     case forumPost(item: ForumPost)
@@ -24,6 +24,6 @@ protocol Navigator {
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?)
     func showMaintenanceAlert(handler: AlertActionHandler?)
     
-    func navigate(from: UIViewController, to: NavigationState, animated: Bool)
+    func navigate(from: UIViewController, to: AppScreen, animated: Bool)
     func open(url: URL)
 }

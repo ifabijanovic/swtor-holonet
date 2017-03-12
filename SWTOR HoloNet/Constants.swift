@@ -65,15 +65,6 @@ struct Constants {
         }
     }
     
-    struct Notifications {
-        static let switchToTab = "SwitchToTabNotification"
-        
-        struct UserInfo {
-            static let index = "index"
-            static let url = "url"
-        }
-    }
-    
     struct Push {
         struct UserDefaults {
             static let didCancelPushAccess = "pushDidCancelPushAccess"

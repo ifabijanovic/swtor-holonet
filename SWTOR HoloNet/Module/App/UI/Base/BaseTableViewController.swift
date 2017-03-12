@@ -33,7 +33,7 @@ class BaseTableViewController: UITableViewController, Themeable {
         self.toolbox
             .theme
             .drive(onNext: self.apply(theme:))
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -40,7 +40,7 @@ extension ForumThreadRepositoryTests {
                     XCTFail(error.localizedDescription)
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -52,7 +52,7 @@ extension ForumThreadRepositoryTests {
         self.repo!
             .threads(category: self.testCategory, page: page)
             .subscribe()
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
         
         waitForExpectations(timeout: self.timeout, handler: self.defaultExpectationHandler)
     }

@@ -138,7 +138,7 @@ extension RootViewController: Navigator {
         )
     }
     
-    func navigate(from: UIViewController, to: NavigationState, animated: Bool) {
+    func navigate(from: UIViewController, to: AppScreen, animated: Bool) {
         switch to {
         case .forumCategory(let item):
             let successor = self.appUIFactory.forumFactory.subcategoryViewController(category: item, toolbox: self.toolbox)

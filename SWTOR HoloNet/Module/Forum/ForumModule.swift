@@ -16,11 +16,18 @@ struct ForumModule: Cleanse.Module {
         binder.bind(ForumThreadRepository.self).to(factory: DefaultForumThreadRepository.init)
         binder.bind(ForumPostRepository.self).to(factory: DefaultForumPostRepository.init)
         
-        binder.bind(ForumUIFactory.self).to(factory: ForumUIFactory.init)
+        binder.bind(ForumUIFactory.self).to(factory: DefaultForumUIFactory.init)
     }
 }
 
-struct ForumUIFactory {
+protocol ForumUIFactory {
+    func categoriesViewController(toolbox: Toolbox) -> UIViewController
+    func subcategoryViewController(category: ForumCategory, toolbox: Toolbox) -> UIViewController
+    func threadViewController(thread: ForumThread, toolbox: Toolbox) -> UIViewController
+    func postViewController(post: ForumPost, toolbox: Toolbox) -> UIViewController
+}
+
+fileprivate struct DefaultForumUIFactory: ForumUIFactory {
     private let categoryRepository: ForumCategoryRepository
     private let threadRepository: ForumThreadRepository
     private let postRepository: ForumPostRepository

@@ -40,7 +40,7 @@ extension ForumPostRepositoryTests {
                     XCTFail(error.localizedDescription)
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }
 

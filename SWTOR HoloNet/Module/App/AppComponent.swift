@@ -25,7 +25,11 @@ struct AppComponent: Cleanse.RootComponent {
 
 struct AppModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder.include(module: UIWindow.Module.self)
+        binder.bind(UIWindow.self).asSingleton().to { (navigator: Navigator) -> UIWindow in
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = navigator as? UIViewController
+            return window
+        }
         
         binder.bind(Analytics.self).asSingleton().to(value: DefaultAnalytics())
         binder.bind(Settings.self).asSingleton().to(value: Settings(bundle: Bundle.main))
@@ -39,7 +43,7 @@ struct AppModule: Cleanse.Module {
         binder.include(module: DulfyModule.self)
         binder.include(module: SettingsModule.self)
         
-        binder.bind(AppUIFactory.self).to(factory: AppUIFactory.init)
+        binder.bind(AppUIFactory.self).to(factory: DefaultAppUIFactory.init)
     }
     
     static func configureAppDelegateInjector(binder bind: PropertyInjectionReceiptBinder<AppDelegate>) -> BindingReceipt<PropertyInjector<AppDelegate>> {
@@ -47,7 +51,15 @@ struct AppModule: Cleanse.Module {
     }
 }
 
-struct AppUIFactory {
+protocol AppUIFactory {
+    var forumFactory: ForumUIFactory { get }
+    var dulfyFactory: DulfyUIFactory { get }
+    var settingsFactory: SettingsUIFactory { get }
+    
+    func textViewController(title: String, path: String, toolbox: Toolbox) -> UIViewController
+}
+
+fileprivate struct DefaultAppUIFactory: AppUIFactory {
     let forumFactory: ForumUIFactory
     let dulfyFactory: DulfyUIFactory
     let settingsFactory: SettingsUIFactory
@@ -57,20 +69,5 @@ struct AppUIFactory {
         viewController.title = title
         viewController.file = path
         return viewController
-    }
-}
-
-extension UIWindow {
-    struct Module: Cleanse.Module {
-        static func configure<B: Binder>(binder: B) {
-            binder
-                .bind(UIWindow.self)
-                .asSingleton()
-                .to { (navigator: Navigator) -> UIWindow in
-                    let window = UIWindow(frame: UIScreen.main.bounds)
-                    window.rootViewController = navigator as? UIViewController
-                    return window
-                }
-        }
     }
 }

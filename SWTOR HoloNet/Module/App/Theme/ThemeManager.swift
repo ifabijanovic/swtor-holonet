@@ -17,24 +17,24 @@ protocol ThemeManager {
 }
 
 struct DefaultThemeManager: ThemeManager {
-    private let themePublishSubject: BehaviorSubject<Theme>
+    private let themeSubject: BehaviorSubject<Theme>
     
-    var theme: Observable<Theme> {
-        return self.themePublishSubject.distinctUntilChanged()
-    }
+    let theme: Observable<Theme>
     private(set) var currentTheme: Theme
     
     init(bundle: Bundle) {
         let currentTheme = Theme(type: currentThemeType, textSize: currentTextSize, bundle: bundle)
         
-        self.themePublishSubject = BehaviorSubject<Theme>(value: currentTheme)
+        self.themeSubject = BehaviorSubject<Theme>(value: currentTheme)
+        self.theme = self.themeSubject.distinctUntilChanged()
         self.currentTheme = currentTheme
+        
         apply(theme: currentTheme)
     }
     
     func set(themeType: ThemeType, bundle: Bundle) {
         let theme = Theme(type: themeType, textSize: currentTextSize, bundle: bundle)
-        self.themePublishSubject.onNext(theme)
+        self.themeSubject.onNext(theme)
         apply(theme: theme)
         
         UserDefaults.standard.set(themeType.rawValue, forKey: Keys.themeType)
@@ -43,16 +43,11 @@ struct DefaultThemeManager: ThemeManager {
     
     func set(textSize: TextSize, bundle: Bundle) {
         let theme = Theme(type: currentThemeType, textSize: textSize, bundle: bundle)
-        self.themePublishSubject.onNext(theme)
+        self.themeSubject.onNext(theme)
         
         UserDefaults.standard.set(textSize.rawValue, forKey: Keys.textSize)
         UserDefaults.standard.synchronize()
     }
-}
-
-// Temporary until DI introduction
-extension DefaultThemeManager {
-    static let instance = DefaultThemeManager(bundle: Bundle(for: RootViewController.self))
 }
 
 fileprivate var currentThemeType: ThemeType {

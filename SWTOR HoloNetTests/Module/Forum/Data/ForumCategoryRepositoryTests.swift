@@ -39,7 +39,7 @@ extension ForumCategoryRepositoryTests {
                     XCTFail(error.localizedDescription)
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     fileprivate func categories(parent: ForumCategory, assert: @escaping (([ForumCategory]) -> Void)) {
@@ -56,7 +56,7 @@ extension ForumCategoryRepositoryTests {
                     XCTFail(error.localizedDescription)
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }
 

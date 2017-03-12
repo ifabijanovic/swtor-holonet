@@ -11,11 +11,15 @@ import Cleanse
 
 struct DulfyModule: Cleanse.Module {
     static func configure<B: Binder>(binder: B) {
-        binder.bind(DulfyUIFactory.self).to(factory: DulfyUIFactory.init)
+        binder.bind(DulfyUIFactory.self).to(factory: DefaultDulfyUIFactory.init)
     }
 }
 
-struct DulfyUIFactory {
+protocol DulfyUIFactory {
+    func dulfyViewController(toolbox: Toolbox) -> UIViewController
+}
+
+fileprivate struct DefaultDulfyUIFactory: DulfyUIFactory {
     private let appActionQueue: AppActionQueue
     
     init(appActionQueue: AppActionQueue) {

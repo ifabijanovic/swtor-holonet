@@ -169,7 +169,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     }
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     override func onLoadMore() {
@@ -218,7 +218,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
                     )
                 }
             )
-            .addDisposableTo(self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }
 

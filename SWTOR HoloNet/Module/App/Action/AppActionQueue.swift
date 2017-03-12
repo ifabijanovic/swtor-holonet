@@ -11,9 +11,13 @@ import RxSwift
 import RxCocoa
 
 struct AppActionQueue {
-    private let publishSubject = PublishSubject<AppAction>()
+    private let publishSubject: PublishSubject<AppAction>
+    let queue: Driver<AppAction>
     
-    var queue: Driver<AppAction> { return self.publishSubject.asDriverIgnoringErrors() }
+    init() {
+        self.publishSubject = PublishSubject<AppAction>()
+        self.queue = self.publishSubject.asDriverIgnoringErrors()
+    }
     
     func enqueue(action: AppAction) {
         self.publishSubject.onNext(action)
