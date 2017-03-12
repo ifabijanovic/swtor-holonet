@@ -53,6 +53,15 @@ class SettingsTableViewController: BaseTableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == Section.legal {
+            let versionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? ""
+            let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] ?? ""
+            return "\(versionNumber).\(buildNumber)"
+        }
+        return nil
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var style = UITableViewCellStyle.default
         let text: String
@@ -97,6 +106,11 @@ class SettingsTableViewController: BaseTableViewController {
         if let theme = self.theme {
             headerView.contentView.backgroundColor = theme.contentBackground
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let footerView = view as? UITableViewHeaderFooterView else { return }
+        footerView.textLabel?.textAlignment = .center
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
