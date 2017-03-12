@@ -9,16 +9,16 @@ env:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
   - IOS_SDK=iphonesimulator10.2
-  - IOS_PROJECT="SWTOR HoloNet.xcodeproj"
+  - IOS_PROJECT="ios/SWTOR HoloNet.xcodeproj"
   - IOS_SCHEME="HoloNet"
   matrix:
   - DESTINATION="OS=10.1,name=iPhone 7 Plus" SCHEME="$IOS_SCHEME" SDK="$IOS_SDK"
   - DESTINATION="OS=9.3,name=iPhone 5" SCHEME="$IOS_SCHEME" SDK="$IOS_SDK"
 cache:
   directories:
-  - Carthage
+  - ios/Carthage
 before_install:
-- "./scripts/bootstrap-if-needed.sh"
+- "./ios/scripts/bootstrap-if-needed.sh"
 script:
 - xcodebuild -version
 - xcodebuild -showsdks
