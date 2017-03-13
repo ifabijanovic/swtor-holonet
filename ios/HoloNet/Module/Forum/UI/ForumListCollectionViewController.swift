@@ -163,8 +163,12 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             // Category
             let category = self.categories[cell!.tag]
             
+            guard let language = self.language,
+                let localizedSettings = self.toolbox.settings.localized[language.rawValue]
+                else { return }
+            
             // Special case for Developer Tracker, treat this sub category as a thread
-            if category.id == self.toolbox.settings.devTrackerId {
+            if category.id == localizedSettings.devTrackerId {
                 let thread = ForumThread.devTracker()
                 self.navigate(thread: thread)
             } else {
@@ -185,6 +189,8 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onRefresh() {
+        guard let language = self.language else { return }
+        
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
         // Disable infinite scroll while loading
@@ -197,11 +203,11 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         
         if let category = self.category {
             // Load subcategories and threads for the current category
-            categories = self.categoryRepository.categories(parent: category)
-            threads = self.threadRepository!.threads(category: category, page: 1)
+            categories = self.categoryRepository.categories(language: language, parent: category)
+            threads = self.threadRepository!.threads(language: language, category: category, page: 1)
         } else {
             // Forum root, only load categories
-            categories = self.categoryRepository.categories(language: self.toolbox.settings.forumLanguage)
+            categories = self.categoryRepository.categories(language: language)
             threads = Observable.just([])
         }
         
@@ -253,6 +259,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onLoadMore() {
+        guard let language = self.language else { return }
         // Only applicable in categories, forum root does not contain threads
         guard let category = self.category else { return }
         
@@ -260,7 +267,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         self.canLoadMore = false
         
         self.threadRepository!
-            .threads(category: category, page: self.loadedPage + 1)
+            .threads(language: language, category: category, page: self.loadedPage + 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { threads in

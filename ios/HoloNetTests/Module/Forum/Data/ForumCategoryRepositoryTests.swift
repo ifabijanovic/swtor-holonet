@@ -16,7 +16,7 @@ class ForumCategoryRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = DefaultForumCategoryRepository(settings: self.settings, parser: ForumParser())
+        self.repo = DefaultForumCategoryRepository(parser: ForumParser(), settings: self.settings)
     }
 }
 
@@ -45,7 +45,7 @@ extension ForumCategoryRepositoryTests {
     fileprivate func categories(parent: ForumCategory, assert: @escaping (([ForumCategory]) -> Void)) {
         let ex = expectation(description: "categories(language:assert:)")
         self.repo
-            .categories(parent: parent)
+            .categories(language: self.language, parent: parent)
             .subscribe(
                 onNext: { categories in
                     ex.fulfill()
@@ -63,7 +63,8 @@ extension ForumCategoryRepositoryTests {
 extension ForumCategoryRepositoryTests {
     func testGetForLanguage_RequestsCorrectUrl() {
         let requestedLanguage = ForumLanguage.english
-        let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(requestedLanguage.rawValue)"
+        let localizedSettings = self.settings.localized[requestedLanguage.rawValue]!
+        let expectedUrl = "\(localizedSettings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(localizedSettings.rootCategoryId)"
         self.stubUrlTest(expectedUrl: expectedUrl)
         self.categories(language: requestedLanguage, assert: { _ in })
         
@@ -72,7 +73,7 @@ extension ForumCategoryRepositoryTests {
     
     func testGetForCategory_RequestsCorrectUrl() {
         let category = ForumCategory(id: 17, title: "Test")
-        let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(category.id)"
+        let expectedUrl = "\(self.settings.localized[self.language.rawValue]!.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(category.id)"
         self.stubUrlTest(expectedUrl: expectedUrl)
         self.categories(parent: category, assert: { _ in })
         

@@ -14,6 +14,7 @@ import RxSwift
 class ForumRepositoryTestsBase: XCTestCase {
     var bundle: Bundle!
     var settings: Settings!
+    var language: ForumLanguage!
     var disposeBag: DisposeBag!
     
     let timeout: TimeInterval = 3
@@ -28,6 +29,7 @@ class ForumRepositoryTestsBase: XCTestCase {
         
         self.bundle = Bundle(for: SettingsTests.self)
         self.settings = Settings(bundle: self.bundle)
+        self.language = .english
         self.disposeBag = DisposeBag()
     }
     

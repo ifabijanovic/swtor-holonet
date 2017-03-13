@@ -15,16 +15,22 @@ enum ForumError: Error {
 }
 
 class ForumRepositoryBase {
-    let settings: Settings
     let parser: ForumParser
+    let settings: Settings
     
     let manager: Alamofire.SessionManager
     
-    init(settings: Settings, parser: ForumParser) {
-        self.settings = settings
+    init(parser: ForumParser, settings: Settings) {
         self.parser = parser
+        self.settings = settings
         
         self.manager = Alamofire.SessionManager.default
+    }
+    
+    func localizedSettings(language: ForumLanguage) -> LocalizedSettings {
+        let localizedSettings = self.settings.localized[language.rawValue]
+        assert(localizedSettings != nil)
+        return localizedSettings!
     }
 }
 

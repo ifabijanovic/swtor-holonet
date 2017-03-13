@@ -48,7 +48,7 @@ class ForumParser {
         return element?.textContent.stripNewLinesAndTabs().formatPostDate()
     }
     
-    func postNumber(element: HTMLElement?) -> Int? {
+    func postNumber(element: HTMLElement?, language: ForumLanguage) -> Int? {
         guard let text = element?.textContent.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(),
             let range = text.range(of: "| #", options: .literal, range: nil, locale: nil)
             else { return nil }

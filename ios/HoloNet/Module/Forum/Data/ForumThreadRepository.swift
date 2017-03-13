@@ -13,19 +13,19 @@ import RxAlamofire
 import HTMLReader
 
 protocol ForumThreadRepository {
-    func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]>
+    func threads(language: ForumLanguage, category: ForumCategory, page: Int) -> Observable<[ForumThread]>
 }
 
 class DefaultForumThreadRepository: ForumRepositoryBase, ForumThreadRepository {
-    func threads(category: ForumCategory, page: Int) -> Observable<[ForumThread]> {
-        return self.threads(id: category.id, page: page)
+    func threads(language: ForumLanguage, category: ForumCategory, page: Int) -> Observable<[ForumThread]> {
+        return self.threads(language: language, id: category.id, page: page)
     }
 }
 
 extension DefaultForumThreadRepository {
-    fileprivate func threads(id: Int, page: Int) -> Observable<[ForumThread]> {
+    fileprivate func threads(language: ForumLanguage, id: Int, page: Int) -> Observable<[ForumThread]> {
         return self.manager.rx
-            .string(.get, self.url(id: id, page: page))
+            .string(.get, self.url(language: language, id: id, page: page))
             .map {
                 let items = self.parse(html: $0)
                 if items.isEmpty && self.isMaintenanceResponse($0) {
@@ -35,8 +35,9 @@ extension DefaultForumThreadRepository {
             }
     }
     
-    private func url(id: Int, page: Int) -> URL {
-        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
+    private func url(language: ForumLanguage, id: Int, page: Int) -> URL {
+        let localizedSettings = self.localizedSettings(language: language)
+        let string = "\(localizedSettings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)&\(self.settings.pageQueryParam)=\(page)"
         let url = URL(string: string)
         assert(url != nil)
         return url!

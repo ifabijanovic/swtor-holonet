@@ -8,13 +8,9 @@
 
 import UIKit
 
-class Settings {
+struct Settings {
     let appEmail: String
     
-    let forumDisplayUrl: String
-    let threadDisplayUrl: String
-    let devTrackerUrl: String
-    let devTrackerId: Int
     let categoryQueryParam: String
     let threadQueryParam: String
     let postQueryParam: String
@@ -24,8 +20,7 @@ class Settings {
     let stickyIconUrl: String
     let dulfyNetUrl: String
     let requestTimeout: TimeInterval
-    
-    var forumLanguage: ForumLanguage
+    let localized: [String: LocalizedSettings]
     
     init(bundle: Bundle) {
         let url = bundle.url(forResource: "Settings", withExtension: "plist")!
@@ -34,10 +29,6 @@ class Settings {
         
         self.appEmail = plist[Keys.appEmail] as? String ?? ""
         
-        self.forumDisplayUrl = plist[Keys.forumDisplayUrl] as? String ?? ""
-        self.threadDisplayUrl = plist[Keys.threadDisplayUrl] as? String ?? ""
-        self.devTrackerUrl = plist[Keys.developerTrackerUrl] as? String ?? ""
-        self.devTrackerId = plist[Keys.developerTrackerId] as? Int ?? 0
         self.categoryQueryParam = plist[Keys.categoryQueryParam] as? String ?? ""
         self.threadQueryParam = plist[Keys.threadQueryParam] as? String ?? ""
         self.postQueryParam = plist[Keys.postQueryParam] as? String ?? ""
@@ -48,7 +39,30 @@ class Settings {
         self.dulfyNetUrl = plist[Keys.dulfyNetUrl] as? String ?? ""
         self.requestTimeout = plist[Keys.requestTimeout] as? TimeInterval ?? 60.0
         
-        self.forumLanguage = .english
+        var localized: [String: LocalizedSettings] = [:]
+        (plist[Keys.localized] as? [AnyHashable: Any])?.forEach { (key, value) in
+            guard let languageCode = key as? String,
+                let item = value as? [AnyHashable: Any]
+                else { return }
+            localized[languageCode] = LocalizedSettings(plist: item)
+        }
+        self.localized = localized
+    }
+}
+
+struct LocalizedSettings {
+    let rootCategoryId: Int
+    let forumDisplayUrl: String
+    let threadDisplayUrl: String
+    let devTrackerUrl: String
+    let devTrackerId: Int
+    
+    init(plist: [AnyHashable: Any]) {
+        self.rootCategoryId = plist[Keys.rootCategoryId] as? Int ?? 0
+        self.forumDisplayUrl = plist[Keys.forumDisplayUrl] as? String ?? ""
+        self.threadDisplayUrl = plist[Keys.threadDisplayUrl] as? String ?? ""
+        self.devTrackerUrl = plist[Keys.developerTrackerUrl] as? String ?? ""
+        self.devTrackerId = plist[Keys.developerTrackerId] as? Int ?? 0
     }
 }
 
@@ -67,4 +81,6 @@ fileprivate struct Keys {
     static let stickyIconUrl = "Sticky Icon URL"
     static let dulfyNetUrl = "Dulfy.net URL"
     static let requestTimeout = "Request Timeout"
+    static let localized = "Localized"
+    static let rootCategoryId = "Root Category ID"
 }

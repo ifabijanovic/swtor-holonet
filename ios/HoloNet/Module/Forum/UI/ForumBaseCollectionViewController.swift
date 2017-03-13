@@ -14,6 +14,7 @@ private let FooterIdentifier = "footer"
 
 class ForumBaseCollectionViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     var refreshControl: UIRefreshControl?
+    private(set) var language: ForumLanguage? = .english
     
     var canLoadMore = false
     var showLoadMore = false

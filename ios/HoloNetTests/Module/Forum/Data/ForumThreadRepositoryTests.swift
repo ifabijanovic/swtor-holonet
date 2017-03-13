@@ -17,7 +17,7 @@ class ForumThreadRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = DefaultForumThreadRepository(settings: self.settings!, parser: ForumParser())
+        self.repo = DefaultForumThreadRepository(parser: ForumParser(), settings: self.settings)
     }
 }
 
@@ -29,7 +29,7 @@ extension ForumThreadRepositoryTests {
     fileprivate func threads(category: ForumCategory, page: Int, assert: @escaping (([ForumThread]) -> Void)) {
         let ex = self.expectation(description: "threads(category:page:assert:)")
         self.repo
-            .threads(category: category, page: page)
+            .threads(language: self.language, category: category, page: page)
             .subscribe(
                 onNext: { threads in
                     ex.fulfill()
@@ -47,10 +47,10 @@ extension ForumThreadRepositoryTests {
 extension ForumThreadRepositoryTests {
     func testGet_RequestsCorrectUrl() {
         let page = 7
-        let expectedUrl = "\(self.settings!.forumDisplayUrl)?\(self.settings!.categoryQueryParam)=\(self.testCategory.id)&\(self.settings!.pageQueryParam)=\(page)"
+        let expectedUrl = "\(self.settings.localized[self.language.rawValue]!.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(self.testCategory.id)&\(self.settings.pageQueryParam)=\(page)"
         self.stubUrlTest(expectedUrl: expectedUrl)
         self.repo!
-            .threads(category: self.testCategory, page: page)
+            .threads(language: self.language, category: self.testCategory, page: page)
             .subscribe()
             .disposed(by: self.disposeBag)
         

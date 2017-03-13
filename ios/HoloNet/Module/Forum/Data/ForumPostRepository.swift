@@ -13,25 +13,26 @@ import RxAlamofire
 import HTMLReader
 
 protocol ForumPostRepository {
-    func url(thread: ForumThread, page: Int) -> URL
-    func posts(thread: ForumThread, page: Int) -> Observable<[ForumPost]>
+    func url(language: ForumLanguage, thread: ForumThread, page: Int) -> URL
+    func posts(language: ForumLanguage, thread: ForumThread, page: Int) -> Observable<[ForumPost]>
 }
 
 class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
-    func url(thread: ForumThread, page: Int) -> URL {
+    func url(language: ForumLanguage, thread: ForumThread, page: Int) -> URL {
+        let localizedSettings = self.localizedSettings(language: language)
         let string = thread.isDevTracker
-            ? "\(self.settings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
-            : "\(self.settings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
+            ? "\(localizedSettings.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
+            : "\(localizedSettings.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(thread.id)&\(self.settings.pageQueryParam)=\(page)"
         let url = URL(string: string)
         assert(url != nil)
         return url!
     }
     
-    func posts(thread: ForumThread, page: Int) -> Observable<[ForumPost]> {
+    func posts(language: ForumLanguage, thread: ForumThread, page: Int) -> Observable<[ForumPost]> {
         return self.manager.rx
-            .string(.get, self.url(thread: thread, page: page))
+            .string(.get, self.url(language: language, thread: thread, page: page))
             .map {
-                let posts = self.parse(html: $0)
+                let posts = self.parse(html: $0, language: language)
                 if posts.isEmpty && self.isMaintenanceResponse($0) {
                     throw ForumError.maintenance
                 }
@@ -41,14 +42,14 @@ class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
 }
 
 extension DefaultForumPostRepository {
-    fileprivate func parse(html: String) -> [ForumPost] {
+    fileprivate func parse(html: String, language: ForumLanguage) -> [ForumPost] {
         var items = [ForumPost]()
         
         let document = HTMLDocument(string: html)
         let postNodes = document.nodes(matchingSelector: "#posts table.threadPost")
         
         for node in postNodes {
-            if let post = self.parsePost(element: node) {
+            if let post = self.parsePost(element: node, language: language) {
                 items.append(post)
             }
         }
@@ -56,7 +57,7 @@ extension DefaultForumPostRepository {
         return items
     }
     
-    private func parsePost(element: HTMLElement) -> ForumPost? {
+    private func parsePost(element: HTMLElement, language: ForumLanguage) -> ForumPost? {
         // Id
         let idString = self.parser.linkParameter(linkElement: element.firstNode(matchingSelector: ".post .threadDate a"), name: self.settings.postQueryParam)
         let id = idString != nil ? Int(idString!) : nil
@@ -73,7 +74,7 @@ extension DefaultForumPostRepository {
         // Date & Post number
         let dateElement = (element.nodes(matchingSelector: ".post .threadDate")).last
         let date = self.parser.postDate(element: dateElement)
-        let postNumber = self.parser.postNumber(element: dateElement)
+        let postNumber = self.parser.postNumber(element: dateElement, language: language)
         
         // Is Bioware post
         var isBiowarePost = false

@@ -17,7 +17,7 @@ class ForumPostRepositoryTests: ForumRepositoryTestsBase {
     
     override func setUp() {
         super.setUp()
-        self.repo = DefaultForumPostRepository(settings: self.settings!, parser: ForumParser())
+        self.repo = DefaultForumPostRepository(parser: ForumParser(), settings: self.settings)
     }
 }
 
@@ -29,7 +29,7 @@ extension ForumPostRepositoryTests {
     fileprivate func posts(thread: ForumThread, page: Int, assert: @escaping (([ForumPost]) -> Void)) {
         let ex = self.expectation(description: "posts(thread:page:assert:)")
         self.repo
-            .posts(thread: thread, page: page)
+            .posts(language: self.language, thread: thread, page: page)
             .subscribe(
                 onNext: { posts in
                     ex.fulfill()
@@ -47,8 +47,8 @@ extension ForumPostRepositoryTests {
 extension ForumPostRepositoryTests {
     func testUrl_ReturnsCorrectUrl() {
         let page = 7
-        let expectedUrl = URL(string: "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)")!
-        let url = self.repo!.url(thread: self.testThread, page: page)
+        let expectedUrl = URL(string: "\(self.settings.localized[self.language.rawValue]!.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(self.testThread.id)&\(self.settings.pageQueryParam)=\(page)")!
+        let url = self.repo.url(language: self.language, thread: self.testThread, page: page)
         
         XCTAssertEqual(url, expectedUrl, "")
     }
@@ -56,15 +56,15 @@ extension ForumPostRepositoryTests {
     func testUrl_ReturnsCorrectDevTrackerUrl() {
         let page = 7
         let thread = ForumThread.devTracker()
-        let expectedUrl = URL(string: "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)")!
-        let url = self.repo!.url(thread: thread, page: page)
+        let expectedUrl = URL(string: "\(self.settings.localized[self.language.rawValue]!.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)")!
+        let url = self.repo.url(language: self.language, thread: thread, page: page)
         
         XCTAssertEqual(url, expectedUrl, "")
     }
     
     func testGet_RequestsCorrectUrl() {
         let page = 7
-        let expectedUrl = "\(self.settings!.threadDisplayUrl)?\(self.settings!.threadQueryParam)=\(self.testThread.id)&\(self.settings!.pageQueryParam)=\(page)"
+        let expectedUrl = "\(self.settings.localized[self.language.rawValue]!.threadDisplayUrl)?\(self.settings.threadQueryParam)=\(self.testThread.id)&\(self.settings.pageQueryParam)=\(page)"
         self.stubUrlTest(expectedUrl: expectedUrl)
         self.posts(thread: self.testThread, page: page, assert: { _ in })
         
@@ -73,7 +73,7 @@ extension ForumPostRepositoryTests {
     
     func testGet_DevTrackerRequestsCorrectUrl() {
         let page = 7
-        let expectedUrl = "\(self.settings!.devTrackerUrl)?\(self.settings!.pageQueryParam)=\(page)"
+        let expectedUrl = "\(self.settings.localized[self.language.rawValue]!.devTrackerUrl)?\(self.settings.pageQueryParam)=\(page)"
         self.stubUrlTest(expectedUrl: expectedUrl)
         
         let thread = ForumThread.devTracker()

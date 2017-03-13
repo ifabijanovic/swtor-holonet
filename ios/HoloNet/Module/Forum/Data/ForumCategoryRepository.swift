@@ -14,23 +14,23 @@ import HTMLReader
 
 protocol ForumCategoryRepository {
     func categories(language: ForumLanguage) -> Observable<[ForumCategory]>
-    func categories(parent: ForumCategory) -> Observable<[ForumCategory]>
+    func categories(language: ForumLanguage, parent: ForumCategory) -> Observable<[ForumCategory]>
 }
 
 class DefaultForumCategoryRepository: ForumRepositoryBase, ForumCategoryRepository {
     func categories(language: ForumLanguage) -> Observable<[ForumCategory]> {
-        return self.categories(id: language.rawValue)
+        return self.categories(language: language, id: nil)
     }
     
-    func categories(parent: ForumCategory) -> Observable<[ForumCategory]> {
-        return self.categories(id: parent.id)
+    func categories(language: ForumLanguage, parent: ForumCategory) -> Observable<[ForumCategory]> {
+        return self.categories(language: language, id: parent.id)
     }
 }
 
 extension DefaultForumCategoryRepository {
-    fileprivate func categories(id: Int) -> Observable<[ForumCategory]> {
+    fileprivate func categories(language: ForumLanguage, id: Int?) -> Observable<[ForumCategory]> {
         return self.manager.rx
-            .string(.get, self.url(id: id))
+            .string(.get, self.url(language: language, id: id))
             .map {
                 let items = self.parse(html: $0)
                 if items.isEmpty && self.isMaintenanceResponse($0) {
@@ -40,8 +40,9 @@ extension DefaultForumCategoryRepository {
             }
     }
     
-    private func url(id: Int) -> URL {
-        let string = "\(self.settings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id)"
+    private func url(language: ForumLanguage, id: Int?) -> URL {
+        let localizedSettings = self.localizedSettings(language: language)
+        let string = "\(localizedSettings.forumDisplayUrl)?\(self.settings.categoryQueryParam)=\(id ?? localizedSettings.rootCategoryId)"
         let url = URL(string: string)
         assert(url != nil)
         return url!

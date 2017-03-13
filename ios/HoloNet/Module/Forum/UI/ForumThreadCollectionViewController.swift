@@ -126,6 +126,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
 
     override func onRefresh() {
+        guard let language = self.language else { return }
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
         // Disable infinite scroll while loading
@@ -134,7 +135,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
         self.showLoader()
         
         self.postRepository
-            .posts(thread: self.thread, page: 1)
+            .posts(language: language, thread: self.thread, page: 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { posts in
@@ -173,11 +174,12 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onLoadMore() {
+        guard let language = self.language else { return }
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
         self.postRepository
-            .posts(thread: self.thread, page: self.loadedPage + 1)
+            .posts(language: language, thread: self.thread, page: self.loadedPage + 1)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { posts in
@@ -224,7 +226,8 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
 extension ForumThreadCollectionViewController {
     func safariTapped() {
-        let url = self.postRepository.url(thread: self.thread, page: 0)
+        guard let language = self.language else { return }
+        let url = self.postRepository.url(language: language, thread: self.thread, page: 0)
         UIApplication.shared.openURL(url)
     }
     

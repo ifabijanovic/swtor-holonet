@@ -4,14 +4,6 @@
 <dict>
 	<key>App Email</key>
 	<string>holonet.swtor@gmail.com</string>
-	<key>Forum Display URL</key>
-	<string>http://www.swtor.com/community/forumdisplay.php</string>
-	<key>Thread Display URL</key>
-	<string>http://www.swtor.com/community/showthread.php</string>
-	<key>Developer Tracker URL</key>
-	<string>http://www.swtor.com/community/devtracker.php</string>
-	<key>Developer Tracker ID</key>
-	<integer>304</integer>
 	<key>Category Query Param</key>
 	<string>f</string>
 	<key>Thread Query Param</key>
@@ -30,5 +22,47 @@
 	<string>http://dulfy.net</string>
 	<key>Request Timeout</key>
 	<integer>10</integer>
+	<key>Localized</key>
+	<dict>
+		<key>de</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.swtor.com/de/community/showthread.php</string>
+			<key>Forum Display URL</key>
+			<string>http://www.swtor.com/de/community/forumdisplay.php</string>
+			<key>Root Category ID</key>
+			<integer>5</integer>
+			<key>Developer Tracker ID</key>
+			<integer>306</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.swtor.com/de/community/devtracker.php?language=de</string>
+		</dict>
+		<key>fr</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.swtor.com/fr/community/showthread.php</string>
+			<key>Forum Display URL</key>
+			<string>http://www.swtor.com/fr/community/forumdisplay.php</string>
+			<key>Root Category ID</key>
+			<integer>4</integer>
+			<key>Developer Tracker ID</key>
+			<integer>305</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.swtor.com/fr/community/devtracker.php?language=fr</string>
+		</dict>
+		<key>en</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.swtor.com/community/showthread.php</string>
+			<key>Forum Display URL</key>
+			<string>http://www.swtor.com/community/forumdisplay.php</string>
+			<key>Root Category ID</key>
+			<integer>3</integer>
+			<key>Developer Tracker ID</key>
+			<integer>304</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.swtor.com/community/devtracker.php</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

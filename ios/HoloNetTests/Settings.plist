@@ -4,14 +4,6 @@
 <dict>
 	<key>App Email</key>
 	<string>holonet.swtor@gmail.com</string>
-	<key>Forum Display URL</key>
-	<string>http://www.holonet.test/forum</string>
-	<key>Thread Display URL</key>
-	<string>http://www.holonet.test/thread</string>
-	<key>Developer Tracker URL</key>
-	<string>http://www.holonet.test/dev</string>
-	<key>Developer Tracker ID</key>
-	<integer>5</integer>
 	<key>Category Query Param</key>
 	<string>category</string>
 	<key>Thread Query Param</key>
@@ -30,5 +22,47 @@
 	<string>http://dulfy.test</string>
 	<key>Request Timeout</key>
 	<integer>10</integer>
+	<key>Localized</key>
+	<dict>
+		<key>de</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.holonet.test/de/thread</string>
+			<key>Forum Display URL</key>
+			<string>http://www.holonet.test/de/forum</string>
+			<key>Root Category ID</key>
+			<integer>300</integer>
+			<key>Developer Tracker ID</key>
+			<integer>3000</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.holonet.test/de/dev</string>
+		</dict>
+		<key>fr</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.holonet.test/fr/thread</string>
+			<key>Forum Display URL</key>
+			<string>http://www.holonet.test/fr/forum</string>
+			<key>Root Category ID</key>
+			<integer>200</integer>
+			<key>Developer Tracker ID</key>
+			<integer>2000</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.holonet.test/fr/dev</string>
+		</dict>
+		<key>en</key>
+		<dict>
+			<key>Thread Display URL</key>
+			<string>http://www.holonet.test/thread</string>
+			<key>Forum Display URL</key>
+			<string>http://www.holonet.test/forum</string>
+			<key>Root Category ID</key>
+			<integer>100</integer>
+			<key>Developer Tracker ID</key>
+			<integer>1000</integer>
+			<key>Developer Tracker URL</key>
+			<string>http://www.holonet.test/dev</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

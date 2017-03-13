@@ -8,8 +8,8 @@
 
 import UIKit
 
-enum ForumLanguage: Int {
-    case english = 3
-    case french = 4
-    case german = 5
+enum ForumLanguage: String {
+    case english = "en"
+    case french = "fr"
+    case german = "de"
 }

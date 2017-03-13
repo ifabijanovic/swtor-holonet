@@ -12,11 +12,13 @@ import HTMLReader
 
 class ForumParserTests: XCTestCase {
     fileprivate var parser: ForumParser!
+    fileprivate var language: ForumLanguage!
     
     override func setUp() {
         super.setUp()
         
         self.parser = ForumParser()
+        self.language = .english
     }
 }
 
@@ -128,7 +130,7 @@ extension ForumParserTests {
     func testPostNumber_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postNumber(element: html)!
+        let value = self.parser!.postNumber(element: html, language: self.language)!
         
         XCTAssertEqual(value, 1, "")
     }
@@ -138,13 +140,13 @@ extension ForumParserTests {
         let child = HTMLElement(tagName: "div", attributes: nil)
         child.parentElement = parent
         child.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postNumber(element: parent)!
+        let value = self.parser!.postNumber(element: parent, language: self.language)!
         
         XCTAssertEqual(value, 1, "")
     }
     
     func testPostNumber_ElementNil() {
-        let value = self.parser!.postNumber(element: nil)
+        let value = self.parser!.postNumber(element: nil, language: self.language)
         
         XCTAssertNil(value, "")
     }
