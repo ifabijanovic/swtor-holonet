@@ -12,4 +12,12 @@ enum ForumLanguage: String {
     case english = "en"
     case french = "fr"
     case german = "de"
+    
+    var next: String {
+        switch self {
+        case .english: return "Next"
+        case .french: return "Suivante"
+        case .german: return "Nächste"
+        }
+    }
 }

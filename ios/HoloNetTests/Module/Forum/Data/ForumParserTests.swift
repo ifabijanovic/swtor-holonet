@@ -12,49 +12,46 @@ import HTMLReader
 
 class ForumParserTests: XCTestCase {
     fileprivate var parser: ForumParser!
-    fileprivate var language: ForumLanguage!
     
     override func setUp() {
         super.setUp()
-        
         self.parser = ForumParser()
-        self.language = .english
     }
 }
 
 extension ForumParserTests {
     func testLinkParameter_Success() {
         let link = HTMLElement(tagName: "a", attributes: ["href": "http://www.holonet.test?param=value"])
-        let param = self.parser!.linkParameter(linkElement: link, name: "param")!
+        let param = self.parser.linkParameter(linkElement: link, name: "param")!
         
-        XCTAssertEqual(param, "value", "")
+        XCTAssertEqual(param, "value")
     }
     
     func testLinkParameter_ElementNil() {
-        let param = self.parser!.linkParameter(linkElement: nil, name: "param")
+        let param = self.parser.linkParameter(linkElement: nil, name: "param")
         
-        XCTAssertNil(param, "")
+        XCTAssertNil(param)
     }
     
     func testLinkParameter_NoParameters() {
         let link = HTMLElement(tagName: "a", attributes: ["href": "http://www.holonet.test"])
-        let param = self.parser!.linkParameter(linkElement: link, name: "param")
+        let param = self.parser.linkParameter(linkElement: link, name: "param")
         
-        XCTAssertNil(param, "")
+        XCTAssertNil(param)
     }
     
     func testLinkParameter_MissingParameter() {
         let link = HTMLElement(tagName: "a", attributes: ["href": "http://www.holonet.test?param=value"])
-        let param = self.parser!.linkParameter(linkElement: link, name: "otherParam")
+        let param = self.parser.linkParameter(linkElement: link, name: "otherParam")
         
-        XCTAssertNil(param, "")
+        XCTAssertNil(param)
     }
     
     func testLinkParameter_MultipleParameters() {
         let link = HTMLElement(tagName: "a", attributes: ["href": "http://www.holonet.test?param1=value1&param2=value2"])
-        let param = self.parser!.linkParameter(linkElement: link, name: "param1")!
+        let param = self.parser.linkParameter(linkElement: link, name: "param1")!
         
-        XCTAssertEqual(param, "value1", "")
+        XCTAssertEqual(param, "value1")
     }
 }
 
@@ -62,9 +59,9 @@ extension ForumParserTests {
     func testIntegerContent_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "123"
-        let value = self.parser!.integerContent(element: html)!
+        let value = self.parser.integerContent(element: html)!
         
-        XCTAssertEqual(value, 123, "")
+        XCTAssertEqual(value, 123)
     }
     
     func testIntegerContent_Nested() {
@@ -72,31 +69,31 @@ extension ForumParserTests {
         let child = HTMLElement(tagName: "div", attributes: nil)
         child.parentElement = parent
         child.textContent = "123"
-        let value = self.parser!.integerContent(element: parent)!
+        let value = self.parser.integerContent(element: parent)!
         
-        XCTAssertEqual(value, 123, "")
+        XCTAssertEqual(value, 123)
     }
     
     func testIntegerContent_ElementNil() {
-        let value = self.parser!.integerContent(element: nil)
+        let value = self.parser.integerContent(element: nil)
         
-        XCTAssertNil(value, "")
+        XCTAssertNil(value)
     }
     
     func testIntegerContent_NoInteger() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "some text"
-        let value = self.parser!.integerContent(element: html)
+        let value = self.parser.integerContent(element: html)
         
-        XCTAssertNil(value, "")
+        XCTAssertNil(value)
     }
     
     func testIntegetContent_MixedContent() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "some text with 123 numbers 456"
-        let value = self.parser!.integerContent(element: html)
+        let value = self.parser.integerContent(element: html)
         
-        XCTAssertNil(value, "")
+        XCTAssertNil(value)
     }
 }
 
@@ -104,9 +101,9 @@ extension ForumParserTests {
     func testPostDate_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postDate(element: html)!
+        let value = self.parser.postDate(element: html)!
         
-        XCTAssertEqual(value, "10.10.2014, 10:10 AM", "")
+        XCTAssertEqual(value, "10.10.2014, 10:10 AM")
     }
     
     func testPostDate_Nested() {
@@ -114,15 +111,15 @@ extension ForumParserTests {
         let child = HTMLElement(tagName: "div", attributes: nil)
         child.parentElement = parent
         child.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postDate(element: parent)!
+        let value = self.parser.postDate(element: parent)!
         
-        XCTAssertEqual(value, "10.10.2014, 10:10 AM", "")
+        XCTAssertEqual(value, "10.10.2014, 10:10 AM")
     }
     
     func testPostDate_ElementNil() {
-        let value = self.parser!.postDate(element: nil)
+        let value = self.parser.postDate(element: nil)
         
-        XCTAssertNil(value, "")
+        XCTAssertNil(value)
     }
 }
 
@@ -130,9 +127,9 @@ extension ForumParserTests {
     func testPostNumber_Success() {
         let html = HTMLElement(tagName: "div", attributes: nil)
         html.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postNumber(element: html, language: self.language)!
+        let value = self.parser.postNumber(element: html)!
         
-        XCTAssertEqual(value, 1, "")
+        XCTAssertEqual(value, 1)
     }
     
     func testPostNumber_Nested() {
@@ -140,15 +137,32 @@ extension ForumParserTests {
         let child = HTMLElement(tagName: "div", attributes: nil)
         child.parentElement = parent
         child.textContent = "10.10.2014 , 10:10 AM | #1"
-        let value = self.parser!.postNumber(element: parent, language: self.language)!
+        let value = self.parser.postNumber(element: parent)!
         
-        XCTAssertEqual(value, 1, "")
+        XCTAssertEqual(value, 1)
     }
     
     func testPostNumber_ElementNil() {
-        let value = self.parser!.postNumber(element: nil, language: self.language)
+        let value = self.parser.postNumber(element: nil)
         
-        XCTAssertNil(value, "")
+        XCTAssertNil(value)
+    }
+    
+    func testPostNumber_DevWithNextMultipleLanguages() {
+        let en = HTMLElement(tagName: "div", attributes: nil)
+        en.textContent = "02.24.2017 , 02:57 PM | #5 Next"
+        let enValue = self.parser.postNumber(element: en)!
+        XCTAssertEqual(enValue, 5)
+        
+        let fr = HTMLElement(tagName: "div", attributes: nil)
+        fr.textContent = "02.24.2017 , 02:57 PM | #77 Suivante"
+        let frValue = self.parser.postNumber(element: fr)!
+        XCTAssertEqual(frValue, 77)
+        
+        let de = HTMLElement(tagName: "div", attributes: nil)
+        de.textContent = "02.24.2017 , 02:57 PM | #203 Nächste"
+        let deValue = self.parser.postNumber(element: de)!
+        XCTAssertEqual(deValue, 203)
     }
 }
 
@@ -157,78 +171,78 @@ extension ForumParserTests {
         let header = "Header text"
         let body = "Body text"
         
-        let value = self.parser!.formatPostBlock(header: header, body: body)
+        let value = self.parser.formatPostBlock(header: header, body: body)
         
-        XCTAssertEqual(value, String(format: self.parser!.postBlockFormat, header, body), "")
+        XCTAssertEqual(value, String(format: self.parser.postBlockFormat, header, body))
     }
     
     func testPostText_MissingHeader() {
         let body = "Body text"
         
-        let value = self.parser!.formatPostBlock(header: nil, body: body)
+        let value = self.parser.formatPostBlock(header: nil, body: body)
         
-        XCTAssertEqual(value, String(format: self.parser!.postBlockNoHeaderFormat, body), "")
+        XCTAssertEqual(value, String(format: self.parser.postBlockNoHeaderFormat, body))
     }
     
     func testPostText_MissingBody() {
         let header = "Header text"
         
-        let value = self.parser!.formatPostBlock(header: header, body: nil)
+        let value = self.parser.formatPostBlock(header: header, body: nil)
         
-        XCTAssertEqual(value, "", "")
+        XCTAssertEqual(value, "")
     }
     
     func testPostText_Simple() {
         let html = "<div>Test post text<br>More text in new line</div>"
         let doc = HTMLDocument(string: html)
         
-        let value = self.parser!.postText(node: doc.rootElement)
+        let value = self.parser.postText(node: doc.rootElement)
         
-        XCTAssertNotNil(value, "")
-        XCTAssertEqual(value!, doc.rootElement!.textContent, "")
+        XCTAssertNotNil(value)
+        XCTAssertEqual(value!, doc.rootElement!.textContent)
     }
     
     func testPostText_Nested() {
         let html = "<div><span>Test post text</span><br><span>More text in new line</span><div>Even more text</div></div>"
         let doc = HTMLDocument(string: html)
         
-        let value = self.parser!.postText(node: doc.rootElement)
+        let value = self.parser.postText(node: doc.rootElement)
         
-        XCTAssertNotNil(value, "")
-        XCTAssertEqual(value!, doc.rootElement!.textContent, "")
+        XCTAssertNotNil(value)
+        XCTAssertEqual(value!, doc.rootElement!.textContent)
     }
     
     func testPostText_Styled() {
         let html = "<div><font color='Yellow'>Yellow text</font><font color='Red'><font size='4'><b>Red bold text of size 4</b></font></font><br><font size='6'><i>Italic text of size 6</i></font></div>"
         let doc = HTMLDocument(string: html)
         
-        let value = self.parser!.postText(node: doc.rootElement)
+        let value = self.parser.postText(node: doc.rootElement)
         
-        XCTAssertNotNil(value, "")
-        XCTAssertEqual(value!, doc.rootElement!.textContent, "")
+        XCTAssertNotNil(value)
+        XCTAssertEqual(value!, doc.rootElement!.textContent)
     }
     
     func testPostText_WithBlock() {
-        for blockClass in self.parser!.postBlockClasses {
+        for blockClass in self.parser.postBlockClasses {
             let blockHtml = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by TestUser</div><div class='\(blockClass)-body'>Block body text here<br>More text in new line</div></div>"
             let postHtml = "<div class='regular-post'>Regular post text<br><br>More regular post text in a new paragraph</div>"
             let html = "<div>\(blockHtml)\(postHtml)</div>"
             let doc = HTMLDocument(string: html)
             
-            let value = self.parser!.postText(node: doc.rootElement)
+            let value = self.parser.postText(node: doc.rootElement)
             
             let header = doc.rootElement!.firstNode(matchingSelector: ".\(blockClass)-header")!.textContent
             let body = doc.rootElement!.firstNode(matchingSelector: ".\(blockClass)-body")!.textContent
-            let block = self.parser!.formatPostBlock(header: header, body: body)
+            let block = self.parser.formatPostBlock(header: header, body: body)
             let post = doc.rootElement!.firstNode(matchingSelector: ".regular-post")!.textContent
             
-            XCTAssertNotNil(value, "")
-            XCTAssertEqual(value!, "\(block)\(post)", "")
+            XCTAssertNotNil(value)
+            XCTAssertEqual(value!, "\(block)\(post)")
         }
     }
     
     func testPostText_WithMultipleBlocks() {
-        for blockClass in self.parser!.postBlockClasses {
+        for blockClass in self.parser.postBlockClasses {
             let block1Html = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by TestUser</div><div class='\(blockClass)-body'>Block body text here<br>More text in new line</div></div>"
             let block2Html = "<div class='\(blockClass)'><div class='\(blockClass)-header'>Block by DifferentUser</div><div class='\(blockClass)-body'>Simple block body</div></div>"
             
@@ -238,14 +252,14 @@ extension ForumParserTests {
             let html = "<div>\(block1Html)\(post1Html)\(block2Html)\(post2Html)</div>"
             let doc = HTMLDocument(string: html)
             
-            let value = self.parser!.postText(node: doc.rootElement)
+            let value = self.parser.postText(node: doc.rootElement)
             
             let blocks = doc.rootElement!.nodes(matchingSelector: ".\(blockClass)")
             var blocksText = Array<String>()
             for block in blocks {
                 let header = block.firstNode(matchingSelector: ".\(blockClass)-header")!.textContent
                 let body = block.firstNode(matchingSelector: ".\(blockClass)-body")!.textContent
-                let block = self.parser!.formatPostBlock(header: header, body: body)
+                let block = self.parser.formatPostBlock(header: header, body: body)
                 blocksText.append(block)
             }
             let posts = doc.rootElement!.nodes(matchingSelector: ".regular-post")
@@ -254,8 +268,8 @@ extension ForumParserTests {
                 postsText.append(post.textContent)
             }
             
-            XCTAssertNotNil(value, "")
-            XCTAssertEqual(value!, "\(blocksText[0])\(postsText[0])\(blocksText[1])\(postsText[1])", "")
+            XCTAssertNotNil(value)
+            XCTAssertEqual(value!, "\(blocksText[0])\(postsText[0])\(blocksText[1])\(postsText[1])")
         }
     }
     
@@ -266,14 +280,14 @@ extension ForumParserTests {
         let html = "<div>\(blockHtml)\(postHtml)</div>"
         let doc = HTMLDocument(string: html)
         
-        let value = self.parser!.postText(node: doc.rootElement)
+        let value = self.parser.postText(node: doc.rootElement)
         
         let header = doc.rootElement!.firstNode(matchingSelector: ".header")!.textContent
         let body = doc.rootElement!.firstNode(matchingSelector: ".body")!.textContent
-        let block = self.parser!.formatPostBlock(header: header, body: body)
+        let block = self.parser.formatPostBlock(header: header, body: body)
         let post = doc.rootElement!.firstNode(matchingSelector: ".regular-post")!.textContent
         
-        XCTAssertNotNil(value, "")
-        XCTAssertEqual(value!, "\(block)\(post)", "")
+        XCTAssertNotNil(value)
+        XCTAssertEqual(value!, "\(block)\(post)")
     }
 }

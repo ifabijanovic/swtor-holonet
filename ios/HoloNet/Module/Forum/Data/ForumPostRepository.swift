@@ -32,7 +32,7 @@ class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
         return self.manager.rx
             .string(.get, self.url(language: language, thread: thread, page: page))
             .map {
-                let posts = self.parse(html: $0, language: language)
+                let posts = self.parse(html: $0)
                 if posts.isEmpty && self.isMaintenanceResponse($0) {
                     throw ForumError.maintenance
                 }
@@ -42,14 +42,14 @@ class DefaultForumPostRepository: ForumRepositoryBase, ForumPostRepository {
 }
 
 extension DefaultForumPostRepository {
-    fileprivate func parse(html: String, language: ForumLanguage) -> [ForumPost] {
+    fileprivate func parse(html: String) -> [ForumPost] {
         var items = [ForumPost]()
         
         let document = HTMLDocument(string: html)
         let postNodes = document.nodes(matchingSelector: "#posts table.threadPost")
         
         for node in postNodes {
-            if let post = self.parsePost(element: node, language: language) {
+            if let post = self.parsePost(element: node) {
                 items.append(post)
             }
         }
@@ -57,7 +57,7 @@ extension DefaultForumPostRepository {
         return items
     }
     
-    private func parsePost(element: HTMLElement, language: ForumLanguage) -> ForumPost? {
+    private func parsePost(element: HTMLElement) -> ForumPost? {
         // Id
         let idString = self.parser.linkParameter(linkElement: element.firstNode(matchingSelector: ".post .threadDate a"), name: self.settings.postQueryParam)
         let id = idString != nil ? Int(idString!) : nil
@@ -74,7 +74,7 @@ extension DefaultForumPostRepository {
         // Date & Post number
         let dateElement = (element.nodes(matchingSelector: ".post .threadDate")).last
         let date = self.parser.postDate(element: dateElement)
-        let postNumber = self.parser.postNumber(element: dateElement, language: language)
+        let postNumber = self.parser.postNumber(element: dateElement)
         
         // Is Bioware post
         var isBiowarePost = false

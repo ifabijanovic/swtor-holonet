@@ -48,15 +48,22 @@ class ForumParser {
         return element?.textContent.stripNewLinesAndTabs().formatPostDate()
     }
     
-    func postNumber(element: HTMLElement?, language: ForumLanguage) -> Int? {
+    func postNumber(element: HTMLElement?) -> Int? {
         guard let text = element?.textContent.stripNewLinesAndTabs().trimSpaces().collapseMultipleSpaces(),
             let range = text.range(of: "| #", options: .literal, range: nil, locale: nil)
             else { return nil }
         
         var numberString = text.substring(from: range.upperBound).stripNewLinesAndTabs().stripSpaces()
-        if let spaceRange = numberString.range(of: "Next", options: .literal, range: nil, locale: nil) {
-            numberString = numberString.substring(to: spaceRange.lowerBound)
+        
+        // In case of multiple Dev posts in the same thread there will be a Next link after the post number
+        // It needs to be filtered out (in all languages)
+        let nextString = [ForumLanguage.english.next, ForumLanguage.french.next, ForumLanguage.german.next]
+        nextString.forEach {
+            if let spaceRange = numberString.range(of: $0, options: .literal, range: nil, locale: nil) {
+                numberString = numberString.substring(to: spaceRange.lowerBound)
+            }
         }
+        
         return self.numberFormatter.number(from: numberString)?.intValue
     }
     
