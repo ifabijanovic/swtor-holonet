@@ -8,10 +8,18 @@
 
 import UIKit
 
-enum ForumLanguage: String {
+enum ForumLanguage: String, CustomStringConvertible {
     case english = "en"
     case french = "fr"
     case german = "de"
+    
+    var description: String {
+        switch self {
+        case .english: return "English"
+        case .french: return "French"
+        case .german: return "German"
+        }
+    }
     
     var next: String {
         switch self {

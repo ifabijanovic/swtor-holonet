@@ -14,6 +14,7 @@ enum AppScreen {
     case forumCategory(item: ForumCategory)
     case forumThread(item: ForumThread)
     case forumPost(item: ForumPost)
+    case forumLanguageSettings
     case themeSettings
     case textSizeSettings
     case text(title: String, path: String)

@@ -10,9 +10,11 @@ import UIKit
 import MessageUI
 
 class SettingsTableViewController: BaseTableViewController {
+    fileprivate let forumLanguageManager: ForumLanguageManager
     fileprivate let pushManager: PushManager
     
-    init(pushManager: PushManager, toolbox: Toolbox) {
+    init(forumLanguageManager: ForumLanguageManager, pushManager: PushManager, toolbox: Toolbox) {
+        self.forumLanguageManager = forumLanguageManager
         self.pushManager = pushManager
         super.init(toolbox: toolbox, style: .grouped)
     }
@@ -30,6 +32,10 @@ class SettingsTableViewController: BaseTableViewController {
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
             cell.detailTextLabel?.text = self.pushManager.isEnabled ? "Enabled" : "Disabled"
+        }
+        
+        if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.forumLanguage, section: Section.display)) {
+            cell.detailTextLabel?.text = String(describing: self.forumLanguageManager.currentLanguage)
         }
     }
     
@@ -72,6 +78,10 @@ class SettingsTableViewController: BaseTableViewController {
             style = .value1
             text = "Notifications"
             detailText = self.pushManager.isEnabled ? "Enabled" : "Disabled"
+        case (Section.display, Row.forumLanguage):
+            style = .value1
+            text = "Forum language"
+            detailText = String(describing: self.forumLanguageManager.currentLanguage)
         case (Section.display, Row.theme):
             style = .value1
             text = "Theme"
@@ -127,6 +137,8 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.messages, Row.notifications):
             guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
             self.toolbox.navigator.open(url: url)
+        case (Section.display, Row.forumLanguage):
+            self.toolbox.navigator.navigate(from: self, to: .forumLanguageSettings, animated: true)
         case (Section.display, Row.theme):
             self.toolbox.navigator.navigate(from: self, to: .themeSettings, animated: true)
         case (Section.display, Row.textSize):
@@ -204,14 +216,15 @@ fileprivate struct Section {
 fileprivate struct Row {
     static let count: [Int: Int] = [
         Section.messages: 1,
-        Section.display: 2,
+        Section.display: 3,
         Section.feedback: 2,
         Section.legal: 3
     ]
     
     static let notifications = 0
-    static let theme = 0
-    static let textSize = 1
+    static let forumLanguage = 0
+    static let theme = 1
+    static let textSize = 2
     static let contact = 0
     static let reportBug = 1
     static let disclaimer = 0

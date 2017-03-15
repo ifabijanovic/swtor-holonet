@@ -64,6 +64,7 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
         
         self.language
             .drive(onNext: { [unowned self] language in
+                guard self.currentLanguage != language else { return }
                 self.currentLanguage = language
                 self.needsContentLoad = true
                 self.loadContent()

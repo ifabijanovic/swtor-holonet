@@ -12,11 +12,13 @@ import RxCocoa
 
 protocol ForumLanguageManager {
     var language: Driver<ForumLanguage> { get }
+    var currentLanguage: ForumLanguage { get }
     func set(language: ForumLanguage)
 }
 
-struct DefaultForumLanguageManager: ForumLanguageManager {
+class DefaultForumLanguageManager: ForumLanguageManager {
     let language: Driver<ForumLanguage>
+    private(set) var currentLanguage: ForumLanguage
     
     init() {
         self.language = UserDefaults.standard
@@ -25,10 +27,14 @@ struct DefaultForumLanguageManager: ForumLanguageManager {
             .map { ForumLanguage(rawValue: $0 ?? "") ?? .english }
             .distinctUntilChanged()
             .asDriverIgnoringErrors()
+        
+        let storedValue = UserDefaults.standard.object(forKey: Keys.forumLanguage) as? String
+        self.currentLanguage = ForumLanguage(rawValue: storedValue ?? "") ?? .english
     }
     
     func set(language: ForumLanguage) {
         UserDefaults.standard.set(language.rawValue, forKey: Keys.forumLanguage)
+        self.currentLanguage = language
     }
 }
 

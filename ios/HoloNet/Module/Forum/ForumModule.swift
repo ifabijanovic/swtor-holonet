@@ -27,6 +27,7 @@ protocol ForumUIFactory {
     func subcategoryViewController(category: ForumCategory, toolbox: Toolbox) -> UIViewController
     func threadViewController(thread: ForumThread, toolbox: Toolbox) -> UIViewController
     func postViewController(post: ForumPost, toolbox: Toolbox) -> UIViewController
+    func forumLanguageSettingsViewController(toolbox: Toolbox) -> UIViewController
 }
 
 fileprivate struct DefaultForumUIFactory: ForumUIFactory {
@@ -58,5 +59,9 @@ fileprivate struct DefaultForumUIFactory: ForumUIFactory {
     
     func postViewController(post: ForumPost, toolbox: Toolbox) -> UIViewController {
         return ForumPostViewController(post: post, toolbox: toolbox)
+    }
+    
+    fileprivate func forumLanguageSettingsViewController(toolbox: Toolbox) -> UIViewController {
+        return ForumLanguageSettingsTableViewController(forumLanguageManager: self.languageManager, toolbox: toolbox)
     }
 }

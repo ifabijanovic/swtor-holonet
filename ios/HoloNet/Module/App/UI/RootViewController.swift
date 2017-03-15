@@ -152,6 +152,10 @@ extension RootViewController: Navigator {
             let successor = self.appUIFactory.forumFactory.postViewController(post: item, toolbox: self.toolbox)
             from.navigationController?.pushViewController(successor, animated: animated)
             break
+        case .forumLanguageSettings:
+            let successor = self.appUIFactory.forumFactory.forumLanguageSettingsViewController(toolbox: self.toolbox)
+            from.navigationController?.pushViewController(successor, animated: animated)
+            break
         case .themeSettings:
             let successor = self.appUIFactory.settingsFactory.themeSettingsViewController(toolbox: self.toolbox)
             from.navigationController?.pushViewController(successor, animated: animated)

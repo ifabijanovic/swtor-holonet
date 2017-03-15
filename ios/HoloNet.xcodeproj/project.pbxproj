@@ -21,6 +21,8 @@
 		8108EEC51E79214C00703474 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC31E79214C00703474 /* ForumLanguage.swift */; };
 		8108EEC71E79215C00703474 /* ForumLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC61E79215C00703474 /* ForumLanguageManager.swift */; };
 		8108EEC81E79215C00703474 /* ForumLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC61E79215C00703474 /* ForumLanguageManager.swift */; };
+		8108EECA1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */; };
+		8108EECB1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
@@ -233,6 +235,7 @@
 		81036D161E584A6300E739FA /* HoloNetTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNetTests.xcconfig; sourceTree = "<group>"; };
 		8108EEC31E79214C00703474 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguage.swift; sourceTree = "<group>"; };
 		8108EEC61E79215C00703474 /* ForumLanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageManager.swift; sourceTree = "<group>"; };
+		8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageSettingsTableViewController.swift; sourceTree = "<group>"; };
 		811F10301E6947C700FCFF85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		811F10351E695FEE00FCFF85 /* HoloNet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HoloNet.entitlements; path = ../HoloNet.entitlements; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -647,6 +650,7 @@
 		814464D01E62BE5900181E54 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */,
 				814464D11E62BE5900181E54 /* SettingPickerDelegate.swift */,
 				814464D21E62BE5900181E54 /* SettingsTableViewController.swift */,
 				814464D31E62BE5900181E54 /* TextSizeSettingsTableViewController.swift */,
@@ -1178,6 +1182,7 @@
 				813D89931E75698100B5A018 /* AppAction.swift in Sources */,
 				814465221E62BE5900181E54 /* ForumThreadRepository.swift in Sources */,
 				814464F61E62BE5900181E54 /* Analytics.swift in Sources */,
+				8108EECA1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */,
 				814B26BA1E729D0700060E00 /* SettingsModule.swift in Sources */,
 				8144654A1E62BE5900181E54 /* SettingsTableViewController.swift in Sources */,
 				8144650E1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,
@@ -1240,6 +1245,7 @@
 				814465411E62BE5900181E54 /* ForumPostViewController.swift in Sources */,
 				8144654D1E62BE5900181E54 /* TextSizeSettingsTableViewController.swift in Sources */,
 				813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */,
+				8108EECB1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */,
 				810039431E63576800512F3B /* Themeable.swift in Sources */,
 				814465451E62BE5900181E54 /* ForumThreadCollectionViewController.swift in Sources */,
 				814465111E62BE5900181E54 /* NavigationViewController.swift in Sources */,

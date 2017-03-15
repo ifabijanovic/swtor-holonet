@@ -22,16 +22,18 @@ protocol SettingsUIFactory {
 }
 
 fileprivate struct DefaultSettingsUIFactory: SettingsUIFactory {
+    private let forumLanguageManager: ForumLanguageManager
     private let pushManager: PushManager
     private let themeManager: ThemeManager
     
-    init(pushManager: PushManager, themeManager: ThemeManager) {
+    init(forumLanguageManager: ForumLanguageManager, pushManager: PushManager, themeManager: ThemeManager) {
+        self.forumLanguageManager = forumLanguageManager
         self.pushManager = pushManager
         self.themeManager = themeManager
     }
     
     func settingsViewController(toolbox: Toolbox) -> UIViewController {
-        return SettingsTableViewController(pushManager: self.pushManager, toolbox: toolbox)
+        return SettingsTableViewController(forumLanguageManager: self.forumLanguageManager, pushManager: self.pushManager, toolbox: toolbox)
     }
     
     func themeSettingsViewController(toolbox: Toolbox) -> UIViewController {
