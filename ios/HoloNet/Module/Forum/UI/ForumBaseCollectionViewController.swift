@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 private let InfiniteScrollOffset: CGFloat = 50.0
 private let ScreenHeight = UIScreen.main.bounds.height
 private let FooterIdentifier = "footer"
 
 class ForumBaseCollectionViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+    private let language: Driver<ForumLanguage>
+    
     var refreshControl: UIRefreshControl?
-    private(set) var language: ForumLanguage? = .english
+    private(set) var currentLanguage: ForumLanguage?
     
     var canLoadMore = false
     var showLoadMore = false
@@ -22,6 +26,11 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     private(set) var isWideScreen = false
     
     fileprivate var needsContentLoad = true
+    
+    init(language: Driver<ForumLanguage>, toolbox: Toolbox, collectionViewLayout: UICollectionViewLayout) {
+        self.language = language
+        super.init(toolbox: toolbox, collectionViewLayout: collectionViewLayout)
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -52,6 +61,15 @@ class ForumBaseCollectionViewController: BaseCollectionViewController, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.language
+            .drive(onNext: { [unowned self] language in
+                self.currentLanguage = language
+                self.needsContentLoad = true
+                self.loadContent()
+            })
+            .disposed(by: self.disposeBag)
+        
         self.loadContent()
     }
     

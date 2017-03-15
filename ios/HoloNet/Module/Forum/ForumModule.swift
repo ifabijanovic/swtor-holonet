@@ -16,6 +16,8 @@ struct ForumModule: Cleanse.Module {
         binder.bind(ForumThreadRepository.self).to(factory: DefaultForumThreadRepository.init)
         binder.bind(ForumPostRepository.self).to(factory: DefaultForumPostRepository.init)
         
+        binder.bind(ForumLanguageManager.self).asSingleton().to(factory: DefaultForumLanguageManager.init)
+        
         binder.bind(ForumUIFactory.self).to(factory: DefaultForumUIFactory.init)
     }
 }
@@ -32,22 +34,26 @@ fileprivate struct DefaultForumUIFactory: ForumUIFactory {
     private let threadRepository: ForumThreadRepository
     private let postRepository: ForumPostRepository
     
-    init(categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, postRepository: ForumPostRepository) {
+    private let languageManager: ForumLanguageManager
+    
+    init(categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, postRepository: ForumPostRepository, languageManager: ForumLanguageManager) {
         self.categoryRepository = categoryRepository
         self.threadRepository = threadRepository
         self.postRepository = postRepository
+        
+        self.languageManager = languageManager
     }
     
     func categoriesViewController(toolbox: Toolbox) -> UIViewController {
-        return ForumListCollectionViewController(categoryRepository: self.categoryRepository, toolbox: toolbox)
+        return ForumListCollectionViewController(categoryRepository: self.categoryRepository, language: self.languageManager.language, toolbox: toolbox)
     }
     
     func subcategoryViewController(category: ForumCategory, toolbox: Toolbox) -> UIViewController {
-        return ForumListCollectionViewController(category: category, categoryRepository: self.categoryRepository, threadRepository: self.threadRepository, toolbox: toolbox)
+        return ForumListCollectionViewController(category: category, categoryRepository: self.categoryRepository, threadRepository: self.threadRepository, language: self.languageManager.language, toolbox: toolbox)
     }
     
     func threadViewController(thread: ForumThread, toolbox: Toolbox) -> UIViewController {
-        return ForumThreadCollectionViewController(thread: thread, postRepository: self.postRepository, toolbox: toolbox)
+        return ForumThreadCollectionViewController(thread: thread, postRepository: self.postRepository, language: self.languageManager.language, toolbox: toolbox)
     }
     
     func postViewController(post: ForumPost, toolbox: Toolbox) -> UIViewController {

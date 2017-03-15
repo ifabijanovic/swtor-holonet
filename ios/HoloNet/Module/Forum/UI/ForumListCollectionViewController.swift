@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import RxSwift
+import RxCocoa
 
 private let CategorySection = 0
 private let ThreadSection = 1
@@ -28,7 +29,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: -
     
-    init(categoryRepository: ForumCategoryRepository, toolbox: Toolbox) {
+    init(categoryRepository: ForumCategoryRepository, language: Driver<ForumLanguage>, toolbox: Toolbox) {
         self.category = nil
         self.categoryRepository = categoryRepository
         self.threadRepository = nil
@@ -36,10 +37,10 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(toolbox: toolbox, collectionViewLayout: layout)
+        super.init(language: language, toolbox: toolbox, collectionViewLayout: layout)
     }
     
-    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, toolbox: Toolbox) {
+    init(category: ForumCategory, categoryRepository: ForumCategoryRepository, threadRepository: ForumThreadRepository, language: Driver<ForumLanguage>, toolbox: Toolbox) {
         self.category = category
         self.categoryRepository = categoryRepository
         self.threadRepository = threadRepository
@@ -47,7 +48,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        super.init(toolbox: toolbox, collectionViewLayout: layout)
+        super.init(language: language, toolbox: toolbox, collectionViewLayout: layout)
     }
     
     override func didReceiveMemoryWarning() {
@@ -163,7 +164,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
             // Category
             let category = self.categories[cell!.tag]
             
-            guard let language = self.language,
+            guard let language = self.currentLanguage,
                 let localizedSettings = self.toolbox.settings.localized[language.rawValue]
                 else { return }
             
@@ -189,7 +190,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onRefresh() {
-        guard let language = self.language else { return }
+        guard let language = self.currentLanguage else { return }
         
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
@@ -259,7 +260,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onLoadMore() {
-        guard let language = self.language else { return }
+        guard let language = self.currentLanguage else { return }
         // Only applicable in categories, forum root does not contain threads
         guard let category = self.category else { return }
         

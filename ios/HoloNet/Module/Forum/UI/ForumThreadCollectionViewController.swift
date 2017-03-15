@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import RxSwift
+import RxCocoa
 
 private let PostCellIdentifier = "postCell"
 private let HeaderIdentifier = "header"
@@ -23,11 +24,11 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     
     // MARK: -
     
-    init(thread: ForumThread, postRepository: ForumPostRepository, toolbox: Toolbox) {
+    init(thread: ForumThread, postRepository: ForumPostRepository, language: Driver<ForumLanguage>, toolbox: Toolbox) {
         self.thread = thread
         self.postRepository = postRepository
         
-        super.init(toolbox: toolbox, collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(language: language, toolbox: toolbox, collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,7 +127,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
 
     override func onRefresh() {
-        guard let language = self.language else { return }
+        guard let language = self.currentLanguage else { return }
         // Reloading content, set loaded page back to the first page
         self.loadedPage = 1
         // Disable infinite scroll while loading
@@ -174,7 +175,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     }
     
     override func onLoadMore() {
-        guard let language = self.language else { return }
+        guard let language = self.currentLanguage else { return }
         // Disable infinite scroll while loading
         self.canLoadMore = false
         
@@ -226,7 +227,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
 
 extension ForumThreadCollectionViewController {
     func safariTapped() {
-        guard let language = self.language else { return }
+        guard let language = self.currentLanguage else { return }
         let url = self.postRepository.url(language: language, thread: self.thread, page: 0)
         UIApplication.shared.openURL(url)
     }

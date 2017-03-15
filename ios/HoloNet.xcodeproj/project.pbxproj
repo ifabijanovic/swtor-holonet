@@ -17,6 +17,10 @@
 		810039491E6364AA00512F3B /* ThemeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810039471E6363F300512F3B /* ThemeEnums.swift */; };
 		81017EDA1E75A554002901B1 /* AppActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81017ED91E75A554002901B1 /* AppActionTests.swift */; };
 		81017EE71E75ADE2002901B1 /* TestNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81017EE61E75ADE2002901B1 /* TestNavigator.swift */; };
+		8108EEC41E79214C00703474 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC31E79214C00703474 /* ForumLanguage.swift */; };
+		8108EEC51E79214C00703474 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC31E79214C00703474 /* ForumLanguage.swift */; };
+		8108EEC71E79215C00703474 /* ForumLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC61E79215C00703474 /* ForumLanguageManager.swift */; };
+		8108EEC81E79215C00703474 /* ForumLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC61E79215C00703474 /* ForumLanguageManager.swift */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
@@ -89,8 +93,6 @@
 		814465231E62BE5900181E54 /* ForumThreadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B71E62BE5900181E54 /* ForumThreadRepository.swift */; };
 		814465241E62BE5900181E54 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B91E62BE5900181E54 /* ForumCategory.swift */; };
 		814465251E62BE5900181E54 /* ForumCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464B91E62BE5900181E54 /* ForumCategory.swift */; };
-		814465261E62BE5900181E54 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464BA1E62BE5900181E54 /* ForumLanguage.swift */; };
-		814465271E62BE5900181E54 /* ForumLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464BA1E62BE5900181E54 /* ForumLanguage.swift */; };
 		814465281E62BE5900181E54 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464BB1E62BE5900181E54 /* ForumPost.swift */; };
 		814465291E62BE5900181E54 /* ForumPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464BB1E62BE5900181E54 /* ForumPost.swift */; };
 		8144652A1E62BE5900181E54 /* ForumThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814464BC1E62BE5900181E54 /* ForumThread.swift */; };
@@ -229,6 +231,8 @@
 		81017EE61E75ADE2002901B1 /* TestNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNavigator.swift; sourceTree = "<group>"; };
 		81036D151E5848CF00E739FA /* HoloNet.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNet.xcconfig; sourceTree = "<group>"; };
 		81036D161E584A6300E739FA /* HoloNetTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = HoloNetTests.xcconfig; sourceTree = "<group>"; };
+		8108EEC31E79214C00703474 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguage.swift; sourceTree = "<group>"; };
+		8108EEC61E79215C00703474 /* ForumLanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageManager.swift; sourceTree = "<group>"; };
 		811F10301E6947C700FCFF85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		811F10351E695FEE00FCFF85 /* HoloNet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HoloNet.entitlements; path = ../HoloNet.entitlements; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -265,7 +269,6 @@
 		814464B61E62BE5900181E54 /* ForumRepositoryBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumRepositoryBase.swift; sourceTree = "<group>"; };
 		814464B71E62BE5900181E54 /* ForumThreadRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumThreadRepository.swift; sourceTree = "<group>"; };
 		814464B91E62BE5900181E54 /* ForumCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumCategory.swift; sourceTree = "<group>"; };
-		814464BA1E62BE5900181E54 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguage.swift; sourceTree = "<group>"; };
 		814464BB1E62BE5900181E54 /* ForumPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumPost.swift; sourceTree = "<group>"; };
 		814464BC1E62BE5900181E54 /* ForumThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumThread.swift; sourceTree = "<group>"; };
 		814464BF1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumThreadHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -418,6 +421,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		8108EEC21E79213600703474 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				8108EEC31E79214C00703474 /* ForumLanguage.swift */,
+				8108EEC61E79215C00703474 /* ForumLanguageManager.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
 		813D898F1E75698000B5A018 /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				814464B21E62BE5900181E54 /* Data */,
+				8108EEC21E79213600703474 /* Language */,
 				814464B81E62BE5900181E54 /* Model */,
 				814464BD1E62BE5900181E54 /* UI */,
 				814B26B31E72955200060E00 /* ForumModule.swift */,
@@ -572,7 +585,6 @@
 			isa = PBXGroup;
 			children = (
 				814464B91E62BE5900181E54 /* ForumCategory.swift */,
-				814464BA1E62BE5900181E54 /* ForumLanguage.swift */,
 				814464BB1E62BE5900181E54 /* ForumPost.swift */,
 				814464BC1E62BE5900181E54 /* ForumThread.swift */,
 			);
@@ -1132,7 +1144,6 @@
 				810039411E63575500512F3B /* Themeable.swift in Sources */,
 				8144651C1E62BE5900181E54 /* ForumParser.swift in Sources */,
 				8197D0BB1E73EDCC0020D078 /* AppComponent.swift in Sources */,
-				814465261E62BE5900181E54 /* ForumLanguage.swift in Sources */,
 				814465341E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
 				8144654E1E62BE5900181E54 /* ThemeSettingsTableViewController.swift in Sources */,
 				8144653E1E62BE5900181E54 /* ForumListCollectionViewController.swift in Sources */,
@@ -1140,6 +1151,7 @@
 				814465241E62BE5900181E54 /* ForumCategory.swift in Sources */,
 				814464FA1E62BE5900181E54 /* Settings.swift in Sources */,
 				814465181E62BE5900181E54 /* DulfyViewController.swift in Sources */,
+				8108EEC41E79214C00703474 /* ForumLanguage.swift in Sources */,
 				8144664B1E62D0FF00181E54 /* Toolbox.swift in Sources */,
 				8144651E1E62BE5900181E54 /* ForumPostRepository.swift in Sources */,
 				814465281E62BE5900181E54 /* ForumPost.swift in Sources */,
@@ -1174,6 +1186,7 @@
 				814465041E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,
 				814465461E62BE5900181E54 /* PushManager.swift in Sources */,
 				810039481E6363F300512F3B /* ThemeEnums.swift in Sources */,
+				8108EEC71E79215C00703474 /* ForumLanguageManager.swift in Sources */,
 				810039401E63575500512F3B /* Theme.swift in Sources */,
 				814464E21E62BE5900181E54 /* HTMLElement.swift in Sources */,
 				814464DE1E62BE5900181E54 /* Constants.swift in Sources */,
@@ -1196,7 +1209,6 @@
 				814465211E62BE5900181E54 /* ForumRepositoryBase.swift in Sources */,
 				8144651D1E62BE5900181E54 /* ForumParser.swift in Sources */,
 				8144664D1E62D1FB00181E54 /* Toolbox.swift in Sources */,
-				814465271E62BE5900181E54 /* ForumLanguage.swift in Sources */,
 				8144661F1E62BE9900181E54 /* URLComponentsTests.swift in Sources */,
 				814465351E62BE5900181E54 /* ForumPostCollectionViewCell.swift in Sources */,
 				8144654F1E62BE5900181E54 /* ThemeSettingsTableViewController.swift in Sources */,
@@ -1247,6 +1259,8 @@
 				813D89941E75698100B5A018 /* AppAction.swift in Sources */,
 				8144650F1E62BE5900181E54 /* TableViewCell+Themeable.swift in Sources */,
 				814465151E62BE5900181E54 /* TextViewController.swift in Sources */,
+				8108EEC81E79215C00703474 /* ForumLanguageManager.swift in Sources */,
+				8108EEC51E79214C00703474 /* ForumLanguage.swift in Sources */,
 				814465051E62BE5900181E54 /* LoadMoreCollectionReusableView.swift in Sources */,
 				814466471E62BE9900181E54 /* PushManagerTests.swift in Sources */,
 				814465471E62BE5900181E54 /* PushManager.swift in Sources */,
