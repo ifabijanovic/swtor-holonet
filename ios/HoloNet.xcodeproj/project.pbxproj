@@ -212,6 +212,7 @@
 		81C360EC1E64D8B200994F5D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */; };
 		81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */; };
 		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
+		81FCA99E1E7A71A4001AF282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA99D1E7A71A4001AF282 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +367,7 @@
 		81C360EB1E64D8B200994F5D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
+		81FCA99D1E7A71A4001AF282 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +664,7 @@
 		814464D51E62BE5900181E54 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				81FCA99C1E7A719C001AF282 /* Localization */,
 				814464D91E62BE5900181E54 /* Theme */,
 				814464D61E62BE5900181E54 /* Disclaimer.txt */,
 				814464D71E62BE5900181E54 /* License.txt */,
@@ -939,6 +942,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		81FCA99C1E7A719C001AF282 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				81FCA99D1E7A71A4001AF282 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1044,6 +1055,7 @@
 				814465541E62BE5900181E54 /* PrivacyPolicy.txt in Resources */,
 				814465561E62BE5900181E54 /* DarkTheme.plist in Resources */,
 				8144653A1E62BE5900181E54 /* ForumThreadCollectionViewCell.xib in Resources */,
+				81FCA99E1E7A71A4001AF282 /* Localizable.strings in Resources */,
 				814465361E62BE5900181E54 /* ForumPostCollectionViewCell.xib in Resources */,
 				814465581E62BE5900181E54 /* LightTheme.plist in Resources */,
 			);

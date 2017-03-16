@@ -35,13 +35,13 @@ class RootViewController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
         
         let forumRootViewController = NavigationViewController(rootViewController: appUIFactory.forumFactory.categoriesViewController(toolbox: self.toolbox), toolbox: self.toolbox)
-        forumRootViewController.tabBarItem = UITabBarItem(title: "Forum", image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
+        forumRootViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("tab_forum", comment: ""), image: UIImage(named: Constants.Images.Tabs.forum), selectedImage: nil)
         
         let dulfyRootViewController = NavigationViewController(rootViewController: appUIFactory.dulfyFactory.dulfyViewController(toolbox: self.toolbox), toolbox: self.toolbox)
-        dulfyRootViewController.tabBarItem = UITabBarItem(title: "Dulfy", image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
+        dulfyRootViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("tab_dulfy", comment: ""), image: UIImage(named: Constants.Images.Tabs.dulfy), selectedImage: nil)
         
         let settingsRootViewController = NavigationViewController(rootViewController: appUIFactory.settingsFactory.settingsViewController(toolbox: self.toolbox), toolbox: self.toolbox)
-        settingsRootViewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
+        settingsRootViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("tab_settings", comment: ""), image: UIImage(named: Constants.Images.Tabs.settings), selectedImage: nil)
         
         self.viewControllers = [forumRootViewController, dulfyRootViewController, settingsRootViewController]
     }
@@ -92,9 +92,9 @@ extension RootViewController {
     
     private func performDulfyAction(message: String, url: URL, applicationState: UIApplicationState) {
         if applicationState == .active {
-            self.showAlert(title: "Dulfy", message: message, actions: [
-                UIAlertAction(title: "Hide", style: .cancel, handler: nil),
-                UIAlertAction(title: "View", style: .default, handler: { [unowned self] _ in
+            self.showAlert(title: NSLocalizedString("alert_dulfy_title", comment: ""), message: message, actions: [
+                UIAlertAction(title: NSLocalizedString("alert_dulfy_dismiss", comment: ""), style: .cancel, handler: nil),
+                UIAlertAction(title: NSLocalizedString("alert_dulfy_confirm", comment: ""), style: .default, handler: { [unowned self] _ in
                     self.appActionQueue.enqueue(action: .switchTab(index: 1))
                     self.appActionQueue.enqueue(action: .setUrl(url: url))
                 })
@@ -124,16 +124,16 @@ extension RootViewController: Navigator {
     }
     
     func showNetworkErrorAlert(cancelHandler: AlertActionHandler?, retryHandler: AlertActionHandler?) {
-        self.showAlert(title: "Network error", message: "Something went wrong while loading the data. Would you like to try again?", actions: [
-            UIAlertAction(title: "No", style: .cancel, handler: cancelHandler),
-            UIAlertAction(title: "Yes", style: .default, handler: retryHandler)
+        self.showAlert(title: NSLocalizedString("alert_network_error_title", comment: ""), message: NSLocalizedString("alert_network_error_body", comment: ""), actions: [
+            UIAlertAction(title: NSLocalizedString("alert_network_error_dismiss", comment: ""), style: .cancel, handler: cancelHandler),
+            UIAlertAction(title: NSLocalizedString("alert_network_error_confirm", comment: ""), style: .default, handler: retryHandler)
             ]
         )
     }
     
     func showMaintenanceAlert(handler: AlertActionHandler?) {
-        self.showAlert(title: "Maintenance", message: "SWTOR.com is currently unavailable while scheduled maintenance is being performed.", actions: [
-            UIAlertAction(title: "OK", style: .default, handler: handler)
+        self.showAlert(title: NSLocalizedString("alert_maintenance_title", comment: ""), message: NSLocalizedString("alert_maintenance_body", comment: ""), actions: [
+            UIAlertAction(title: NSLocalizedString("alert_maintenance_confirm", comment: ""), style: .default, handler: handler)
             ]
         )
     }

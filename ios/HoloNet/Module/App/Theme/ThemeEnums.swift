@@ -15,8 +15,8 @@ enum ThemeType: String, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .dark: return "Dark"
-        case .light: return "Light"
+        case .dark: return NSLocalizedString("theme_dark_name", comment: "")
+        case .light: return NSLocalizedString("theme_light_name", comment: "")
         }
     }
 }
@@ -28,9 +28,9 @@ enum TextSize: CGFloat, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .small: return "Small"
-        case .medium: return "Medium"
-        case .large: return "Large"
+        case .small: return NSLocalizedString("text_size_small_name", comment: "")
+        case .medium: return NSLocalizedString("text_size_medium_name", comment: "")
+        case .large: return NSLocalizedString("text_size_large_name", comment: "")
         }
     }
 }

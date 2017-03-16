@@ -1,0 +1,23 @@
+"tab_forum" = "Forum";
+"tab_dulfy" = "Dulfy";
+"tab_settings" = "Settings";
+
+"alert_dulfy_title" = "Dulfy";
+"alert_dulfy_dismiss" = "Hide";
+"alert_dulfy_confirm" = "View";
+
+"alert_network_error_title" = "Network error";
+"alert_network_error_body" = "Something went wrong while loading the data. Would you like to try again?";
+"alert_network_error_dismiss" = "No";
+"alert_network_error_confirm" = "Yes";
+
+"alert_maintenance_title" = "Maintenance";
+"alert_maintenance_body" = "SWTOR.com is currently unavailable while scheduled maintenance is being performed.";
+"alert_maintenance_confirm" = "OK";
+
+"theme_dark_name" = "Dark";
+"theme_light_name" = "Light";
+
+"text_size_small_name" = "Small";
+"text_size_medium_name" = "Medium";
+"text_size_large_name" = "Large";
