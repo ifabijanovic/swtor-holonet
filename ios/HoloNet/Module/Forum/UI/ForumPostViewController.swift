@@ -30,7 +30,7 @@ class ForumPostViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Post"
+        self.title = NSLocalizedString("forum_post_title", comment: "")
         self.edgesForExtendedLayout = []
         
         // Set user avatar image if URL is defined in the model

@@ -21,3 +21,15 @@
 "text_size_small_name" = "Small";
 "text_size_medium_name" = "Medium";
 "text_size_large_name" = "Large";
+
+"forum_language_english_name" = "English";
+"forum_language_french_name" = "French";
+"forum_language_german_name" = "German";
+
+"forum_developer_tracker_thread_title" = "Developer tracker";
+"forum_root_title" = "Forum";
+"forum_thread_title" = "Thread";
+"forum_post_title" = "Post";
+"forum_categories_section_title" = "Categories";
+"forum_threads_section_title" = "Threads";
+"forum_thread_replies_label" = "R: %d, V: %d";

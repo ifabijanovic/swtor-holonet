@@ -13,8 +13,6 @@ import RxCocoa
 
 private let CategorySection = 0
 private let ThreadSection = 1
-private let CategoriesSectionTitle = "Categories"
-private let ThreadsSectionTitle = "Threads"
 private let CategoryCellIdentifier = "categoryCell"
 private let ThreadCellIdentifier = "threadCell"
 private let HeaderIdentifier = "header"
@@ -64,7 +62,7 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     override func viewDidLoad() {        
         super.viewDidLoad()
         
-        self.title = self.category?.title ?? "Forum"
+        self.title = self.category?.title ?? NSLocalizedString("forum_root_title", comment: "")
         
         let bundle = Bundle.main
         self.collectionView!.register(UINib(nibName: "ForumCategoryCollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: CategoryCellIdentifier)
@@ -146,7 +144,9 @@ class ForumListCollectionViewController: ForumBaseCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderIdentifier, for: indexPath) as! TableHeaderCollectionReusableView
-            view.titleLabel.text = indexPath.section == CategorySection ? CategoriesSectionTitle : ThreadsSectionTitle
+            view.titleLabel.text = indexPath.section == CategorySection
+                ? NSLocalizedString("forum_categories_section_title", comment: "")
+                : NSLocalizedString("forum_threads_section_title", comment: "")
             if let theme = self.theme {
                 view.apply(theme: theme)
             }
@@ -369,7 +369,7 @@ extension ForumListCollectionViewController {
         
         cell.titleLabel.text = thread.title
         cell.authorLabel.text = thread.author
-        cell.repliesViewsLabel.text = "R: \(thread.replies), V: \(thread.views)"
+        cell.repliesViewsLabel.text = String(format: NSLocalizedString("forum_thread_replies_label", comment: ""), arguments: [thread.replies, thread.views])
         
         if let theme = self.theme {
             cell.apply(theme: theme)

@@ -41,7 +41,7 @@ struct ForumThread: Entity {
     }
     
     static func devTracker() -> ForumThread {
-        var thread = ForumThread(id: 0, title: "Developer Tracker", lastPostDate: "", author: "", replies: 0, views: 0)
+        var thread = ForumThread(id: 0, title: NSLocalizedString("forum_developer_tracker_thread_title", comment: ""), lastPostDate: "", author: "", replies: 0, views: 0)
         thread.isDevTracker = true
         return thread
     }

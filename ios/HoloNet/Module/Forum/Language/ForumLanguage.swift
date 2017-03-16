@@ -15,9 +15,9 @@ enum ForumLanguage: String, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .english: return "English"
-        case .french: return "French"
-        case .german: return "German"
+        case .english: return NSLocalizedString("forum_language_english_name", comment: "")
+        case .french: return NSLocalizedString("forum_language_french_name", comment: "")
+        case .german: return NSLocalizedString("forum_language_german_name", comment: "")
         }
     }
     

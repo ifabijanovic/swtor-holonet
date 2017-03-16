@@ -43,7 +43,7 @@ class ForumThreadCollectionViewController: ForumBaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Thread"
+        self.title = NSLocalizedString("forum_thread_title", comment: "")
         
         let bundle = Bundle.main
         let cellNib = UINib(nibName: "ForumPostCollectionViewCell", bundle: bundle)
