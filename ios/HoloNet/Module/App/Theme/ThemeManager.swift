@@ -8,25 +8,26 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 protocol ThemeManager {
-    var theme: Observable<Theme> { get }
+    var theme: Driver<Theme> { get }
     var currentTheme: Theme { get }
     func set(themeType: ThemeType, bundle: Bundle)
     func set(textSize: TextSize, bundle: Bundle)
 }
 
-struct DefaultThemeManager: ThemeManager {
+class DefaultThemeManager: ThemeManager {
     private let themeSubject: BehaviorSubject<Theme>
     
-    let theme: Observable<Theme>
+    let theme: Driver<Theme>
     private(set) var currentTheme: Theme
     
     init(bundle: Bundle) {
         let currentTheme = Theme(type: currentThemeType, textSize: currentTextSize, bundle: bundle)
         
         self.themeSubject = BehaviorSubject<Theme>(value: currentTheme)
-        self.theme = self.themeSubject.distinctUntilChanged()
+        self.theme = self.themeSubject.distinctUntilChanged().asDriverIgnoringErrors()
         self.currentTheme = currentTheme
         
         apply(theme: currentTheme)
@@ -34,6 +35,7 @@ struct DefaultThemeManager: ThemeManager {
     
     func set(themeType: ThemeType, bundle: Bundle) {
         let theme = Theme(type: themeType, textSize: currentTextSize, bundle: bundle)
+        self.currentTheme = theme
         self.themeSubject.onNext(theme)
         apply(theme: theme)
         
@@ -43,6 +45,7 @@ struct DefaultThemeManager: ThemeManager {
     
     func set(textSize: TextSize, bundle: Bundle) {
         let theme = Theme(type: currentThemeType, textSize: textSize, bundle: bundle)
+        self.currentTheme = theme
         self.themeSubject.onNext(theme)
         
         UserDefaults.standard.set(textSize.rawValue, forKey: Keys.textSize)

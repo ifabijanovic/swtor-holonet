@@ -19,7 +19,7 @@ struct Toolbox {
     init(analytics: Analytics, navigator: Navigator, themeManager: ThemeManager, settings: Settings) {
         self.analytics = analytics
         self.navigator = navigator
-        self.theme = themeManager.theme.asDriverIgnoringErrors()
+        self.theme = themeManager.theme
         self.settings = settings
     }
 }
