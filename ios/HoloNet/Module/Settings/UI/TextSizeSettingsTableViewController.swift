@@ -29,7 +29,7 @@ class TextSizeSettingsTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Text Size"
+        self.title = NSLocalizedString("settings_text_size_label", comment: "")
     }
 
     // MARK: -

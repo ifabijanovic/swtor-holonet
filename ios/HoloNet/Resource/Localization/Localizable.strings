@@ -33,3 +33,29 @@
 "forum_categories_section_title" = "Categories";
 "forum_threads_section_title" = "Threads";
 "forum_thread_replies_label" = "R: %d, V: %d";
+
+"alert_notification_request_access_title" = "Notifications";
+"alert_notification_request_access_body" = "Hey, would you like to receive notifications from HoloNet and Dulfy?";
+"alert_notification_request_access_dismiss" = "No";
+"alert_notification_request_access_confirm" = "Yes";
+
+"settings_title" = "Settings";
+"settings_section_messages_title" = "MESSAGES";
+"settings_section_display_title" = "DISPLAY";
+"settings_section_feedback_title" = "FEEDBACK";
+"settings_section_legal_title" = "LEGAL";
+"settings_notifications_label" = "Notifications";
+"settings_notifications_enabled_value" = "Enabled";
+"settings_notifications_disabled_value" = "Disabled";
+"settings_forum_language_label" = "Forum language";
+"settings_theme_label" = "Theme";
+"settings_text_size_label" = "Text size";
+"settings_contact_label" = "Contact";
+"settings_report_bug_label" = "Report bug";
+"settings_disclaimer_label" = "Disclaimer";
+"settings_privacy_policy_label" = "Privacy policy";
+"settings_license_label" = "License";
+
+"alert_email_not_available_title" = "Error";
+"alert_email_not_available_body" = "It seems email is not configured on this device.";
+"alert_email_not_available_confirm" = "OK";

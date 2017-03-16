@@ -29,7 +29,7 @@ class ForumLanguageSettingsTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Forum language"
+        self.title = NSLocalizedString("settings_forum_language_label", comment: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {

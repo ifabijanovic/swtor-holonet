@@ -22,7 +22,7 @@ class SettingsTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Settings"
+        self.title = NSLocalizedString("settings_title", comment: "")
         self.tableView.separatorStyle = .none
     }
     
@@ -31,7 +31,9 @@ class SettingsTableViewController: BaseTableViewController {
         self.toolbox.analytics.track(event: Constants.Analytics.Event.settings)
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.notifications, section: Section.messages)) {
-            cell.detailTextLabel?.text = self.pushManager.isEnabled ? "Enabled" : "Disabled"
+            cell.detailTextLabel?.text = self.pushManager.isEnabled
+                ? NSLocalizedString("settings_notifications_enabled_value", comment: "")
+                : NSLocalizedString("settings_notifications_disabled_value", comment: "")
         }
         
         if let cell = self.tableView.cellForRow(at: IndexPath(row: Row.forumLanguage, section: Section.display)) {
@@ -51,10 +53,10 @@ class SettingsTableViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case Section.messages: return "MESSAGES"
-        case Section.display: return "DISPLAY"
-        case Section.feedback: return "FEEDBACK"
-        case Section.legal: return "LEGAL"
+        case Section.messages: return NSLocalizedString("settings_section_messages_title", comment: "")
+        case Section.display: return NSLocalizedString("settings_section_display_title", comment: "")
+        case Section.feedback: return NSLocalizedString("settings_section_feedback_title", comment: "")
+        case Section.legal: return NSLocalizedString("settings_section_legal_title", comment: "")
         default: return nil
         }
     }
@@ -76,30 +78,32 @@ class SettingsTableViewController: BaseTableViewController {
         switch (indexPath.section, indexPath.row) {
         case (Section.messages, Row.notifications):
             style = .value1
-            text = "Notifications"
-            detailText = self.pushManager.isEnabled ? "Enabled" : "Disabled"
+            text = NSLocalizedString("settings_notifications_label", comment: "")
+            detailText = self.pushManager.isEnabled
+                ? NSLocalizedString("settings_notifications_enabled_value", comment: "")
+                : NSLocalizedString("settings_notifications_disabled_value", comment: "")
         case (Section.display, Row.forumLanguage):
             style = .value1
-            text = "Forum language"
+            text = NSLocalizedString("settings_forum_language_label", comment: "")
             detailText = String(describing: self.forumLanguageManager.currentLanguage)
         case (Section.display, Row.theme):
             style = .value1
-            text = "Theme"
+            text = NSLocalizedString("settings_theme_label", comment: "")
             detailText = self.theme != nil ? String(describing: self.theme!.type) : ""
         case (Section.display, Row.textSize):
             style = .value1
-            text = "Text size"
+            text = NSLocalizedString("settings_text_size_label", comment: "")
             detailText = self.theme != nil ? String(describing: self.theme!.textSize) : ""
         case (Section.feedback, Row.contact):
-            text = "Contact"
+            text = NSLocalizedString("settings_contact_label", comment: "")
         case (Section.feedback, Row.reportBug):
-            text = "Report bug"
+            text = NSLocalizedString("settings_report_bug_label", comment: "")
         case (Section.legal, Row.disclaimer):
-            text = "Disclaimer"
+            text = NSLocalizedString("settings_disclaimer_label", comment: "")
         case (Section.legal, Row.privacyPolicy):
-            text = "Privacy policy"
+            text = NSLocalizedString("settings_privacy_policy_label", comment: "")
         case (Section.legal, Row.license):
-            text = "License"
+            text = NSLocalizedString("settings_license_label", comment: "")
         default:
             text = ""
         }
@@ -148,11 +152,11 @@ class SettingsTableViewController: BaseTableViewController {
         case (Section.feedback, Row.reportBug):
             self.reportBug()
         case (Section.legal, Row.disclaimer):
-            self.toolbox.navigator.navigate(from: self, to: .text(title: "Disclaimer", path: "Disclaimer"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: NSLocalizedString("settings_disclaimer_label", comment: ""), path: "Disclaimer"), animated: true)
         case (Section.legal, Row.privacyPolicy):
-            self.toolbox.navigator.navigate(from: self, to: .text(title: "Privacy Policy", path: "PrivacyPolicy"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: NSLocalizedString("settings_privacy_policy_label", comment: ""), path: "PrivacyPolicy"), animated: true)
         case (Section.legal, Row.license):
-            self.toolbox.navigator.navigate(from: self, to: .text(title: "License", path: "License"), animated: true)
+            self.toolbox.navigator.navigate(from: self, to: .text(title: NSLocalizedString("settings_license_label", comment: ""), path: "License"), animated: true)
         default: break
         }
     }
@@ -194,7 +198,7 @@ extension SettingsTableViewController {
     }
     
     fileprivate func emailNotAvailable() {
-        self.toolbox.navigator.showAlert(title: "Error", message: "It seems email is not configured on this device.", actions: [UIAlertAction(title: "OK", style: .default, handler: nil)])
+        self.toolbox.navigator.showAlert(title: NSLocalizedString("alert_email_not_available_title", comment: ""), message: NSLocalizedString("alert_email_not_available_body", comment: ""), actions: [UIAlertAction(title: NSLocalizedString("alert_email_not_available_confirm", comment: ""), style: .default, handler: nil)])
     }
 }
 

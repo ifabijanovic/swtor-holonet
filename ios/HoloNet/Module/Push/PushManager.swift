@@ -79,8 +79,8 @@ class DefaultPushManager: NSObject, PushManager {
     }
     
     func requestAccess(navigator: Navigator) {
-        navigator.showAlert(title: Constants.Push.UI.requestAccessTitle, message: Constants.Push.UI.requestAccessMessage, actions: [
-            UIAlertAction(title: "No", style: .cancel, handler: { [unowned self] _ in
+        navigator.showAlert(title: NSLocalizedString("alert_notification_request_access_title", comment: ""), message: NSLocalizedString("alert_notification_request_access_body", comment: ""), actions: [
+            UIAlertAction(title: NSLocalizedString("alert_notification_request_access_dismiss", comment: ""), style: .cancel, handler: { [unowned self] _ in
                 // User decided not to grant push access. Set a flag so the app can ask again at a later time
                 self.didCancelPushAccess = true
                 self.lastPushAccessRequestTimestamp = Date()
@@ -89,7 +89,7 @@ class DefaultPushManager: NSObject, PushManager {
                 UserDefaults.standard.synchronize()
 
             }),
-            UIAlertAction(title: "Yes", style: .default, handler: { [unowned self] _ in
+            UIAlertAction(title: NSLocalizedString("alert_notification_request_access_confirm", comment: ""), style: .default, handler: { [unowned self] _ in
                 // User agreed to grant push access. Set a flag and register for push
                 self.didApprovePushAccess = true
                 UserDefaults.standard.set(true, forKey: Constants.Push.UserDefaults.didApprovePushAccess)

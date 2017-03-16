@@ -28,7 +28,7 @@ class ThemeSettingsTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Theme"
+        self.title = NSLocalizedString("settings_theme_label", comment: "")
     }
     
     // MARK: -
