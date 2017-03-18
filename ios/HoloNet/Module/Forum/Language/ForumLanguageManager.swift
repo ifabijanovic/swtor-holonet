@@ -24,18 +24,23 @@ class DefaultForumLanguageManager: ForumLanguageManager {
         self.language = UserDefaults.standard
             .rx
             .observe(String.self, Keys.forumLanguage)
-            .map { ForumLanguage(rawValue: $0 ?? "") ?? .english }
+            .map { ForumLanguage(rawValue: $0 ?? "") ?? defaultLanguage() }
             .distinctUntilChanged()
             .asDriverIgnoringErrors()
         
         let storedValue = UserDefaults.standard.object(forKey: Keys.forumLanguage) as? String
-        self.currentLanguage = ForumLanguage(rawValue: storedValue ?? "") ?? .english
+        self.currentLanguage = ForumLanguage(rawValue: storedValue ?? "") ?? defaultLanguage()
     }
     
     func set(language: ForumLanguage) {
         UserDefaults.standard.set(language.rawValue, forKey: Keys.forumLanguage)
         self.currentLanguage = language
     }
+}
+
+private func defaultLanguage() -> ForumLanguage {
+    let deviceLanguage = Locale.current.languageCode ?? "en"
+    return ForumLanguage(rawValue: deviceLanguage) ?? .english
 }
 
 fileprivate struct Keys {
