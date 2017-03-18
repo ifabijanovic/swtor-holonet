@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZ8-VI-RJi">
-                        <rect key="frame" x="110" y="17" width="475" height="20"/>
+                        <rect key="frame" x="110" y="17" width="452" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RF7-0H-La7">
-                        <rect key="frame" x="110" y="68" width="475" height="15"/>
+                        <rect key="frame" x="110" y="68" width="452" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -53,15 +53,14 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="kZ8-VI-RJi" firstAttribute="trailing" secondItem="Fwr-pz-9tp" secondAttribute="trailing" id="1A2-sj-6qz"/>
                 <constraint firstItem="kZ8-VI-RJi" firstAttribute="leading" secondItem="DLp-Fm-1ie" secondAttribute="trailing" constant="15" id="2yf-zd-gEf"/>
                 <constraint firstAttribute="trailing" secondItem="RF7-0H-La7" secondAttribute="trailing" constant="15" id="BHu-sd-1CE"/>
-                <constraint firstAttribute="trailing" secondItem="kZ8-VI-RJi" secondAttribute="trailing" constant="15" id="Ij0-XF-YK1"/>
                 <constraint firstAttribute="centerY" secondItem="DLp-Fm-1ie" secondAttribute="centerY" id="RAM-dt-CD8"/>
                 <constraint firstItem="DLp-Fm-1ie" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Rpa-kw-6cm"/>
                 <constraint firstItem="DLp-Fm-1ie" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Spu-BR-V3j"/>
                 <constraint firstItem="RF7-0H-La7" firstAttribute="top" secondItem="Fwr-pz-9tp" secondAttribute="bottom" constant="8" id="Vhk-F0-WkM"/>
                 <constraint firstItem="kZ8-VI-RJi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="17" id="Vza-9T-nDe"/>
-                <constraint firstAttribute="trailing" secondItem="RF7-0H-La7" secondAttribute="trailing" constant="15" id="Yef-1w-5n7"/>
                 <constraint firstItem="Fwr-pz-9tp" firstAttribute="leading" secondItem="DLp-Fm-1ie" secondAttribute="trailing" constant="15" id="ZaD-Ho-OYS"/>
                 <constraint firstAttribute="centerY" secondItem="mEj-Vs-rG6" secondAttribute="centerY" id="cFG-gr-kKr"/>
                 <constraint firstAttribute="trailing" secondItem="mEj-Vs-rG6" secondAttribute="trailing" constant="15" id="gsq-6s-l2c"/>
@@ -69,6 +68,7 @@
                 <constraint firstAttribute="centerY" secondItem="Fwr-pz-9tp" secondAttribute="centerY" id="nHL-tW-hd8"/>
                 <constraint firstItem="RF7-0H-La7" firstAttribute="leading" secondItem="DLp-Fm-1ie" secondAttribute="trailing" constant="15" id="qYy-I1-0wE"/>
                 <constraint firstItem="mEj-Vs-rG6" firstAttribute="leading" secondItem="Fwr-pz-9tp" secondAttribute="trailing" constant="15" id="t2g-GI-Cv0"/>
+                <constraint firstItem="RF7-0H-La7" firstAttribute="trailing" secondItem="Fwr-pz-9tp" secondAttribute="trailing" id="taB-KH-JiU"/>
                 <constraint firstItem="Fwr-pz-9tp" firstAttribute="top" secondItem="kZ8-VI-RJi" secondAttribute="bottom" constant="8" id="ugA-Rr-onb"/>
                 <constraint firstAttribute="trailing" secondItem="Fwr-pz-9tp" secondAttribute="trailing" constant="15" id="ygh-oH-3EE"/>
             </constraints>

@@ -23,6 +23,8 @@
 		8108EEC81E79215C00703474 /* ForumLanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC61E79215C00703474 /* ForumLanguageManager.swift */; };
 		8108EECA1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */; };
 		8108EECB1E79289500703474 /* ForumLanguageSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */; };
+		811412F21E7D234C0029246D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811412F11E7D234C0029246D /* Launch Screen.storyboard */; };
+		811412F31E7D24090029246D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 811412F51E7D24090029246D /* Localizable.strings */; };
 		812276FB1AA080790064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		812276FC1AA0926C0064156A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812276FA1AA080790064156A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		813D897D1E754B5F00B5A018 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8197D0BA1E73EDCC0020D078 /* AppComponent.swift */; };
@@ -211,8 +213,6 @@
 		81AB248919EFBD7700293D26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AB248819EFBD7700293D26 /* Images.xcassets */; };
 		81F6E67F1E587B3700DDF907 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */; };
 		81F6E6931E58ABC400DDF907 /* HTMLReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F6E6921E58ABC400DDF907 /* HTMLReader.framework */; };
-		81FCA99E1E7A71A4001AF282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA99D1E7A71A4001AF282 /* Localizable.strings */; };
-		81FCA99F1E7A7CD4001AF282 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81FCA9A11E7A7CD4001AF282 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +237,9 @@
 		8108EEC31E79214C00703474 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguage.swift; sourceTree = "<group>"; };
 		8108EEC61E79215C00703474 /* ForumLanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageManager.swift; sourceTree = "<group>"; };
 		8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageSettingsTableViewController.swift; sourceTree = "<group>"; };
+		811412F11E7D234C0029246D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		811412F41E7D24090029246D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		811412F61E7D24150029246D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		811F10301E6947C700FCFF85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		811F10351E695FEE00FCFF85 /* HoloNet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HoloNet.entitlements; path = ../HoloNet.entitlements; sourceTree = "<group>"; };
 		812276FA1AA080790064156A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -366,8 +369,6 @@
 		81AB249619EFBD7700293D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81F6E67E1E587B3700DDF907 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		81F6E6921E58ABC400DDF907 /* HTMLReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTMLReader.framework; path = Carthage/Build/iOS/HTMLReader.framework; sourceTree = "<group>"; };
-		81FCA99D1E7A71A4001AF282 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		81FCA9A01E7A7CD4001AF282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -886,7 +887,6 @@
 				814464851E62BE5900181E54 /* AppDelegate.swift */,
 				814464861E62BE5900181E54 /* Constants.swift */,
 				81AB248819EFBD7700293D26 /* Images.xcassets */,
-				81FCA9A11E7A7CD4001AF282 /* Launch Screen.storyboard */,
 				81AB247F19EFBD7700293D26 /* Supporting Files */,
 			);
 			path = HoloNet;
@@ -895,6 +895,7 @@
 		81AB247F19EFBD7700293D26 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				811412F11E7D234C0029246D /* Launch Screen.storyboard */,
 				811F10351E695FEE00FCFF85 /* HoloNet.entitlements */,
 				811F10301E6947C700FCFF85 /* GoogleService-Info.plist */,
 				81036D151E5848CF00E739FA /* HoloNet.xcconfig */,
@@ -945,7 +946,7 @@
 		81FCA99C1E7A719C001AF282 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				81FCA99D1E7A71A4001AF282 /* Localizable.strings */,
+				811412F51E7D24090029246D /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1025,6 +1026,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 81AB247319EFBD7700293D26;
 			productRefGroup = 81AB247D19EFBD7700293D26 /* Products */;
@@ -1045,7 +1047,6 @@
 				814465061E62BE5900181E54 /* LoadMoreCollectionReusableView.xib in Resources */,
 				8144650A1E62BE5900181E54 /* TableHeaderCollectionReusableView.xib in Resources */,
 				814465421E62BE5900181E54 /* ForumPostViewController.xib in Resources */,
-				81FCA99F1E7A7CD4001AF282 /* Launch Screen.storyboard in Resources */,
 				814465501E62BE5900181E54 /* Disclaimer.txt in Resources */,
 				814465321E62BE5900181E54 /* ForumCategoryCollectionViewCell.xib in Resources */,
 				8144652E1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
@@ -1053,9 +1054,10 @@
 				81AB248919EFBD7700293D26 /* Images.xcassets in Resources */,
 				814465521E62BE5900181E54 /* License.txt in Resources */,
 				814465541E62BE5900181E54 /* PrivacyPolicy.txt in Resources */,
+				811412F21E7D234C0029246D /* Launch Screen.storyboard in Resources */,
 				814465561E62BE5900181E54 /* DarkTheme.plist in Resources */,
 				8144653A1E62BE5900181E54 /* ForumThreadCollectionViewCell.xib in Resources */,
-				81FCA99E1E7A71A4001AF282 /* Localizable.strings in Resources */,
+				811412F31E7D24090029246D /* Localizable.strings in Resources */,
 				814465361E62BE5900181E54 /* ForumPostCollectionViewCell.xib in Resources */,
 				814465581E62BE5900181E54 /* LightTheme.plist in Resources */,
 			);
@@ -1305,12 +1307,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		81FCA9A11E7A7CD4001AF282 /* Launch Screen.storyboard */ = {
+		811412F51E7D24090029246D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				81FCA9A01E7A7CD4001AF282 /* Base */,
+				811412F41E7D24090029246D /* Base */,
+				811412F61E7D24150029246D /* de */,
 			);
-			name = "Launch Screen.storyboard";
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1320,6 +1323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1362,6 +1366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

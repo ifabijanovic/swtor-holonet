@@ -66,7 +66,7 @@
             <constraints>
                 <constraint firstItem="3F3-fP-ggI" firstAttribute="top" secondItem="GXI-5c-bWH" secondAttribute="bottom" constant="8" id="Cfy-di-hem"/>
                 <constraint firstItem="ojb-Va-Pva" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="ET5-MQ-OeE"/>
-                <constraint firstAttribute="trailing" secondItem="m9b-Hz-vMX" secondAttribute="trailing" constant="30" id="H4W-vu-uoA"/>
+                <constraint firstItem="m9b-Hz-vMX" firstAttribute="trailing" secondItem="GXI-5c-bWH" secondAttribute="trailing" id="KaF-wL-ZjX"/>
                 <constraint firstItem="G12-C3-lLQ" firstAttribute="top" secondItem="GXI-5c-bWH" secondAttribute="bottom" constant="8" id="Kd2-Ov-yr8"/>
                 <constraint firstItem="m9b-Hz-vMX" firstAttribute="top" secondItem="GXI-5c-bWH" secondAttribute="bottom" constant="8" id="Q9c-xf-zOQ"/>
                 <constraint firstAttribute="trailing" secondItem="4xY-9K-8y9" secondAttribute="trailing" constant="15" id="RT8-5C-esv"/>

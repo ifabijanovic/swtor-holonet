@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Forum-->
+        <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
@@ -22,17 +22,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Forum" id="jNI-Ac-eLZ"/>
+                    <navigationItem key="navigationItem" id="jNI-Ac-eLZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1930.4000000000001" y="374.66266866566718"/>
         </scene>
-        <!--Forum-->
+        <!--Navigation Controller-->
         <scene sceneID="g4Z-lU-1L5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3CD-vH-Feg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Forum" image="Forum" id="7Rp-Ss-av6"/>
+                    <tabBarItem key="tabBarItem" title="" image="Forum" id="7Rp-Ss-av6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dve-Y3-Bq5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="991.20000000000005" y="374.66266866566718"/>
         </scene>
-        <!--Settings-->
+        <!--View Controller-->
         <scene sceneID="6ck-c9-jN5">
             <objects>
                 <viewController id="caL-EP-Try" sceneMemberID="viewController">
@@ -65,13 +65,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="elO-kK-FhZ"/>
+                    <tabBarItem key="tabBarItem" title="" image="Settings" id="elO-kK-FhZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2XD-uz-H1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="1173"/>
         </scene>
-        <!--Dulfy-->
+        <!--View Controller-->
         <scene sceneID="WJ0-RI-iyn">
             <objects>
                 <viewController id="6zI-Du-yXO" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dulfy" image="Dulfy" id="yfL-Wn-ZjV"/>
+                    <tabBarItem key="tabBarItem" title="" image="Dulfy" id="yfL-Wn-ZjV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2k-di-Ngk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

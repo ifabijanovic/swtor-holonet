@@ -1,0 +1,61 @@
+"tab_forum" = "Forum";
+"tab_dulfy" = "Dulfy";
+"tab_settings" = "Einstellungen";
+
+"alert_dulfy_title" = "Dulfy";
+"alert_dulfy_dismiss" = "Verbergen";
+"alert_dulfy_confirm" = "Zeigen";
+
+"alert_network_error_title" = "Netzwerkfehler";
+"alert_network_error_body" = "Beim Laden der Daten ist ein Fehler aufgetreten. Möchtest du es erneut versuchen?";
+"alert_network_error_dismiss" = "Nein";
+"alert_network_error_confirm" = "Ja";
+
+"alert_maintenance_title" = "Wartungsarbeiten";
+"alert_maintenance_body" = "SWTOR.com ist aufgrund von planmäßigen Wartungsarbeiten zur Zeit nicht verfügbar.";
+"alert_maintenance_confirm" = "OK";
+
+"theme_dark_name" = "Dunkel";
+"theme_light_name" = "Hell";
+
+"text_size_small_name" = "Klein";
+"text_size_medium_name" = "Mittel";
+"text_size_large_name" = "Groß";
+
+"forum_language_english_name" = "Englisch";
+"forum_language_french_name" = "Französisch";
+"forum_language_german_name" = "Deutsch";
+
+"forum_developer_tracker_thread_title" = "Entwicklernews";
+"forum_root_title" = "Forum";
+"forum_thread_title" = "Thread";
+"forum_post_title" = "Post";
+"forum_categories_section_title" = "Kategorien";
+"forum_threads_section_title" = "Threads";
+"forum_thread_replies_label" = "A: %d, H: %d";
+
+"alert_notification_request_access_title" = "Mitteilungen";
+"alert_notification_request_access_body" = "Hey, möchtest du Mitteilungen von HoloNet und Dulfy erhalten?";
+"alert_notification_request_access_dismiss" = "Nein";
+"alert_notification_request_access_confirm" = "Ja";
+
+"settings_title" = "Einstellungen";
+"settings_section_messages_title" = "NACHRICHTEN";
+"settings_section_display_title" = "ANZEIGE";
+"settings_section_feedback_title" = "FEEDBACK";
+"settings_section_legal_title" = "IMPRESSUM";
+"settings_notifications_label" = "Mitteilungen";
+"settings_notifications_enabled_value" = "Aktiviert";
+"settings_notifications_disabled_value" = "Deaktiviert";
+"settings_forum_language_label" = "Forensprache";
+"settings_theme_label" = "Theme";
+"settings_text_size_label" = "Schriftgröße";
+"settings_contact_label" = "Kontakt";
+"settings_report_bug_label" = "Fehler melden";
+"settings_disclaimer_label" = "Haftungsausschluss";
+"settings_privacy_policy_label" = "Datenschutzerklärung";
+"settings_license_label" = "Lizenz";
+
+"alert_email_not_available_title" = "Fehler";
+"alert_email_not_available_body" = "Es scheint als wäre keine Email auf diesem Gerät konfiguriert.";
+"alert_email_not_available_confirm" = "OK";
