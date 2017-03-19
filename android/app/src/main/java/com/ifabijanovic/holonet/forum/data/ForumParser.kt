@@ -1,5 +1,6 @@
 package com.ifabijanovic.holonet.forum.data
 
+import com.ifabijanovic.holonet.forum.language.ForumLanguage
 import org.jsoup.nodes.Element
 import java.net.URL
 import com.ifabijanovic.holonet.helper.URLComponents
@@ -9,8 +10,6 @@ import com.ifabijanovic.holonet.helper.StringHelper
  * Created by feb on 19/03/2017.
  */
 class ForumParser {
-    val devPostNextText = listOf("Next", "Suivante", "Nächste")
-
     fun linkParameter(linkElement: Element?, name: String): String? {
         val href = linkElement?.attr("href")
         if (href == null) { return null }
@@ -48,7 +47,8 @@ class ForumParser {
 
         var numberString = StringHelper(string.substring(index + 3)).stripNewLinesAndTabs().stripSpaces().value
 
-        for (text in this.devPostNextText) {
+        val nextStrings = listOf(ForumLanguage.english.next, ForumLanguage.french.next, ForumLanguage.german.next)
+        for (text in nextStrings) {
             val textIndex = numberString.indexOf(text)
             if (textIndex <= 0) { continue }
             numberString = numberString.substring(0, textIndex)
