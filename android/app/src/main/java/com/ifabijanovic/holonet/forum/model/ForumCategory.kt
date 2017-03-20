@@ -9,8 +9,7 @@ data class ForumCategory(
         override val id: Int,
         val iconUrl: String?,
         val title: String,
-        val desc: String?,
+        val description: String?,
         val stats: String?,
-        val lastPost: String?): Entity {
-    constructor(id: Int, title: String): this(id, null, title, null, null, null)
-}
+        val lastPost: String?
+): Entity {}

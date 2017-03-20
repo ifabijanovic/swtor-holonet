@@ -14,7 +14,7 @@ class ForumParser {
         val href = linkElement?.attr("href")
         if (href == null) { return null }
 
-        val components = URLComponents(URL(href))
+        val components = URLComponents(href)
         return components.queryValue(name)
     }
 

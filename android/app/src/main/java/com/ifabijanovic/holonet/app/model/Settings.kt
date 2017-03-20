@@ -5,6 +5,7 @@ package com.ifabijanovic.holonet.app.model
  */
 class Settings {
     val appEmail: String
+    val categoryQueryParam: String
     val baseForumUrl: String
     val devTrackerIconUrl: String
     val devAvatarUrl: String
@@ -17,6 +18,7 @@ class Settings {
         // TODO load all settings from a config file
 
         this.appEmail = "holonet.swtor@gmail.com"
+        this.categoryQueryParam = "f"
         this.baseForumUrl = "http://www.swtor.com"
         this.devTrackerIconUrl = "http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png"
         this.devAvatarUrl = "http://www.swtor.com/sites/all/files/avatars/BioWare.gif"
