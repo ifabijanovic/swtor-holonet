@@ -157,33 +157,6 @@
 		814466291E62BE9900181E54 /* ForumPostRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */; };
 		8144662A1E62BE9900181E54 /* ForumRepositoryTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465FB1E62BE9900181E54 /* ForumRepositoryTestsBase.swift */; };
 		8144662B1E62BE9900181E54 /* ForumThreadRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814465FC1E62BE9900181E54 /* ForumThreadRepositoryTests.swift */; };
-		8144662C1E62BE9900181E54 /* forum-category-multiple-missing-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814465FF1E62BE9900181E54 /* forum-category-multiple-missing-id.html */; };
-		8144662D1E62BE9900181E54 /* forum-category-multiple-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466001E62BE9900181E54 /* forum-category-multiple-missing-optionals.html */; };
-		8144662E1E62BE9900181E54 /* forum-category-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466011E62BE9900181E54 /* forum-category-multiple-valid.html */; };
-		8144662F1E62BE9900181E54 /* forum-category-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466021E62BE9900181E54 /* forum-category-single-invalid-id.html */; };
-		814466301E62BE9900181E54 /* forum-category-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466031E62BE9900181E54 /* forum-category-single-missing-optionals.html */; };
-		814466311E62BE9900181E54 /* forum-category-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466041E62BE9900181E54 /* forum-category-single-valid.html */; };
-		814466321E62BE9900181E54 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466051E62BE9900181E54 /* forum-empty.html */; };
-		814466331E62BE9900181E54 /* forum-post-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466071E62BE9900181E54 /* forum-post-multiple-invalid-id.html */; };
-		814466341E62BE9900181E54 /* forum-post-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466081E62BE9900181E54 /* forum-post-multiple-valid.html */; };
-		814466351E62BE9900181E54 /* forum-post-single-invalid-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466091E62BE9900181E54 /* forum-post-single-invalid-date.html */; };
-		814466361E62BE9900181E54 /* forum-post-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660A1E62BE9900181E54 /* forum-post-single-invalid-id.html */; };
-		814466371E62BE9900181E54 /* forum-post-single-invalid-text.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660B1E62BE9900181E54 /* forum-post-single-invalid-text.html */; };
-		814466381E62BE9900181E54 /* forum-post-single-invalid-username.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660C1E62BE9900181E54 /* forum-post-single-invalid-username.html */; };
-		814466391E62BE9900181E54 /* forum-post-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660D1E62BE9900181E54 /* forum-post-single-missing-optionals.html */; };
-		8144663A1E62BE9900181E54 /* forum-post-single-valid-not-dev.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660E1E62BE9900181E54 /* forum-post-single-valid-not-dev.html */; };
-		8144663B1E62BE9900181E54 /* forum-post-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144660F1E62BE9900181E54 /* forum-post-single-valid.html */; };
-		8144663C1E62BE9900181E54 /* forum-thread-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466111E62BE9900181E54 /* forum-thread-multiple-invalid-id.html */; };
-		8144663D1E62BE9900181E54 /* forum-thread-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466121E62BE9900181E54 /* forum-thread-multiple-valid.html */; };
-		8144663E1E62BE9900181E54 /* forum-thread-single-invalid-author.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466131E62BE9900181E54 /* forum-thread-single-invalid-author.html */; };
-		8144663F1E62BE9900181E54 /* forum-thread-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466141E62BE9900181E54 /* forum-thread-single-invalid-id.html */; };
-		814466401E62BE9900181E54 /* forum-thread-single-invalid-last-post-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466151E62BE9900181E54 /* forum-thread-single-invalid-last-post-date.html */; };
-		814466411E62BE9900181E54 /* forum-thread-single-invalid-replies.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466161E62BE9900181E54 /* forum-thread-single-invalid-replies.html */; };
-		814466421E62BE9900181E54 /* forum-thread-single-invalid-title.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466171E62BE9900181E54 /* forum-thread-single-invalid-title.html */; };
-		814466431E62BE9900181E54 /* forum-thread-single-invalid-views.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466181E62BE9900181E54 /* forum-thread-single-invalid-views.html */; };
-		814466441E62BE9900181E54 /* forum-thread-single-valid-not-dev.html in Resources */ = {isa = PBXBuildFile; fileRef = 814466191E62BE9900181E54 /* forum-thread-single-valid-not-dev.html */; };
-		814466451E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144661A1E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html */; };
-		814466461E62BE9900181E54 /* forum-thread-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */; };
 		814466471E62BE9900181E54 /* PushManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144661D1E62BE9900181E54 /* PushManagerTests.swift */; };
 		814466491E62C10800181E54 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814466481E62C10800181E54 /* Navigator.swift */; };
 		8144664B1E62D0FF00181E54 /* Toolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144664A1E62D0FF00181E54 /* Toolbox.swift */; };
@@ -203,6 +176,33 @@
 		816474561E6812CF0026E29D /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8164743C1E6812CF0026E29D /* FirebaseMessaging.framework */; };
 		8175F1F41A497A6C00FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
 		8175F1F81A497A7600FC8011 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175F1F31A497A6C00FC8011 /* MessageUI.framework */; };
+		817861961E8089F600CC7351 /* forum-category-multiple-missing-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861791E8089F600CC7351 /* forum-category-multiple-missing-id.html */; };
+		817861971E8089F600CC7351 /* forum-category-multiple-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617A1E8089F600CC7351 /* forum-category-multiple-missing-optionals.html */; };
+		817861981E8089F600CC7351 /* forum-category-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617B1E8089F600CC7351 /* forum-category-multiple-valid.html */; };
+		817861991E8089F600CC7351 /* forum-category-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617C1E8089F600CC7351 /* forum-category-single-invalid-id.html */; };
+		8178619A1E8089F600CC7351 /* forum-category-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617D1E8089F600CC7351 /* forum-category-single-missing-optionals.html */; };
+		8178619B1E8089F600CC7351 /* forum-category-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617E1E8089F600CC7351 /* forum-category-single-valid.html */; };
+		8178619C1E8089F600CC7351 /* forum-empty.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178617F1E8089F600CC7351 /* forum-empty.html */; };
+		8178619D1E8089F600CC7351 /* forum-post-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861811E8089F600CC7351 /* forum-post-multiple-invalid-id.html */; };
+		8178619E1E8089F600CC7351 /* forum-post-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861821E8089F600CC7351 /* forum-post-multiple-valid.html */; };
+		8178619F1E8089F600CC7351 /* forum-post-single-invalid-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861831E8089F600CC7351 /* forum-post-single-invalid-date.html */; };
+		817861A01E8089F600CC7351 /* forum-post-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861841E8089F600CC7351 /* forum-post-single-invalid-id.html */; };
+		817861A11E8089F600CC7351 /* forum-post-single-invalid-text.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861851E8089F600CC7351 /* forum-post-single-invalid-text.html */; };
+		817861A21E8089F600CC7351 /* forum-post-single-invalid-username.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861861E8089F600CC7351 /* forum-post-single-invalid-username.html */; };
+		817861A31E8089F600CC7351 /* forum-post-single-missing-optionals.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861871E8089F600CC7351 /* forum-post-single-missing-optionals.html */; };
+		817861A41E8089F600CC7351 /* forum-post-single-valid-not-dev.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861881E8089F600CC7351 /* forum-post-single-valid-not-dev.html */; };
+		817861A51E8089F600CC7351 /* forum-post-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861891E8089F600CC7351 /* forum-post-single-valid.html */; };
+		817861A61E8089F600CC7351 /* forum-thread-multiple-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178618B1E8089F600CC7351 /* forum-thread-multiple-invalid-id.html */; };
+		817861A71E8089F600CC7351 /* forum-thread-multiple-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178618C1E8089F600CC7351 /* forum-thread-multiple-valid.html */; };
+		817861A81E8089F600CC7351 /* forum-thread-single-invalid-author.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178618D1E8089F600CC7351 /* forum-thread-single-invalid-author.html */; };
+		817861A91E8089F600CC7351 /* forum-thread-single-invalid-id.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178618E1E8089F600CC7351 /* forum-thread-single-invalid-id.html */; };
+		817861AA1E8089F600CC7351 /* forum-thread-single-invalid-last-post-date.html in Resources */ = {isa = PBXBuildFile; fileRef = 8178618F1E8089F600CC7351 /* forum-thread-single-invalid-last-post-date.html */; };
+		817861AB1E8089F600CC7351 /* forum-thread-single-invalid-replies.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861901E8089F600CC7351 /* forum-thread-single-invalid-replies.html */; };
+		817861AC1E8089F600CC7351 /* forum-thread-single-invalid-title.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861911E8089F600CC7351 /* forum-thread-single-invalid-title.html */; };
+		817861AD1E8089F600CC7351 /* forum-thread-single-invalid-views.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861921E8089F600CC7351 /* forum-thread-single-invalid-views.html */; };
+		817861AE1E8089F600CC7351 /* forum-thread-single-valid-not-dev.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861931E8089F600CC7351 /* forum-thread-single-valid-not-dev.html */; };
+		817861AF1E8089F600CC7351 /* forum-thread-single-valid-not-sticky.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861941E8089F600CC7351 /* forum-thread-single-valid-not-sticky.html */; };
+		817861B01E8089F600CC7351 /* forum-thread-single-valid.html in Resources */ = {isa = PBXBuildFile; fileRef = 817861951E8089F600CC7351 /* forum-thread-single-valid.html */; };
 		817A216819F6C1BD0093ECE3 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 817A216719F6C1BD0093ECE3 /* Settings.plist */; };
 		818029D51A08B7CC00999871 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 818029D41A08B7CC00999871 /* Settings.plist */; };
 		818152E31E71344E007B5D91 /* Cleanse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818152E21E71344E007B5D91 /* Cleanse.framework */; };
@@ -311,33 +311,6 @@
 		814465FA1E62BE9900181E54 /* ForumPostRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumPostRepositoryTests.swift; sourceTree = "<group>"; };
 		814465FB1E62BE9900181E54 /* ForumRepositoryTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumRepositoryTestsBase.swift; sourceTree = "<group>"; };
 		814465FC1E62BE9900181E54 /* ForumThreadRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumThreadRepositoryTests.swift; sourceTree = "<group>"; };
-		814465FF1E62BE9900181E54 /* forum-category-multiple-missing-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-missing-id.html"; sourceTree = "<group>"; };
-		814466001E62BE9900181E54 /* forum-category-multiple-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-missing-optionals.html"; sourceTree = "<group>"; };
-		814466011E62BE9900181E54 /* forum-category-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-valid.html"; sourceTree = "<group>"; };
-		814466021E62BE9900181E54 /* forum-category-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-invalid-id.html"; sourceTree = "<group>"; };
-		814466031E62BE9900181E54 /* forum-category-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-missing-optionals.html"; sourceTree = "<group>"; };
-		814466041E62BE9900181E54 /* forum-category-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-valid.html"; sourceTree = "<group>"; };
-		814466051E62BE9900181E54 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-empty.html"; sourceTree = "<group>"; };
-		814466071E62BE9900181E54 /* forum-post-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-multiple-invalid-id.html"; sourceTree = "<group>"; };
-		814466081E62BE9900181E54 /* forum-post-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-multiple-valid.html"; sourceTree = "<group>"; };
-		814466091E62BE9900181E54 /* forum-post-single-invalid-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-date.html"; sourceTree = "<group>"; };
-		8144660A1E62BE9900181E54 /* forum-post-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-id.html"; sourceTree = "<group>"; };
-		8144660B1E62BE9900181E54 /* forum-post-single-invalid-text.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-text.html"; sourceTree = "<group>"; };
-		8144660C1E62BE9900181E54 /* forum-post-single-invalid-username.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-username.html"; sourceTree = "<group>"; };
-		8144660D1E62BE9900181E54 /* forum-post-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-missing-optionals.html"; sourceTree = "<group>"; };
-		8144660E1E62BE9900181E54 /* forum-post-single-valid-not-dev.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-valid-not-dev.html"; sourceTree = "<group>"; };
-		8144660F1E62BE9900181E54 /* forum-post-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-valid.html"; sourceTree = "<group>"; };
-		814466111E62BE9900181E54 /* forum-thread-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-multiple-invalid-id.html"; sourceTree = "<group>"; };
-		814466121E62BE9900181E54 /* forum-thread-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-multiple-valid.html"; sourceTree = "<group>"; };
-		814466131E62BE9900181E54 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
-		814466141E62BE9900181E54 /* forum-thread-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-id.html"; sourceTree = "<group>"; };
-		814466151E62BE9900181E54 /* forum-thread-single-invalid-last-post-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-last-post-date.html"; sourceTree = "<group>"; };
-		814466161E62BE9900181E54 /* forum-thread-single-invalid-replies.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-replies.html"; sourceTree = "<group>"; };
-		814466171E62BE9900181E54 /* forum-thread-single-invalid-title.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-title.html"; sourceTree = "<group>"; };
-		814466181E62BE9900181E54 /* forum-thread-single-invalid-views.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-views.html"; sourceTree = "<group>"; };
-		814466191E62BE9900181E54 /* forum-thread-single-valid-not-dev.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid-not-dev.html"; sourceTree = "<group>"; };
-		8144661A1E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid-not-sticky.html"; sourceTree = "<group>"; };
-		8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid.html"; sourceTree = "<group>"; };
 		8144661D1E62BE9900181E54 /* PushManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushManagerTests.swift; sourceTree = "<group>"; };
 		814466481E62C10800181E54 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		8144664A1E62D0FF00181E54 /* Toolbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbox.swift; sourceTree = "<group>"; };
@@ -355,6 +328,33 @@
 		8164743C1E6812CF0026E29D /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
 		8164745A1E68135B0026E29D /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Firebase/module.modulemap; sourceTree = "<group>"; };
 		8175F1F31A497A6C00FC8011 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		817861791E8089F600CC7351 /* forum-category-multiple-missing-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-missing-id.html"; sourceTree = "<group>"; };
+		8178617A1E8089F600CC7351 /* forum-category-multiple-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-missing-optionals.html"; sourceTree = "<group>"; };
+		8178617B1E8089F600CC7351 /* forum-category-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-multiple-valid.html"; sourceTree = "<group>"; };
+		8178617C1E8089F600CC7351 /* forum-category-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-invalid-id.html"; sourceTree = "<group>"; };
+		8178617D1E8089F600CC7351 /* forum-category-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-missing-optionals.html"; sourceTree = "<group>"; };
+		8178617E1E8089F600CC7351 /* forum-category-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-category-single-valid.html"; sourceTree = "<group>"; };
+		8178617F1E8089F600CC7351 /* forum-empty.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-empty.html"; sourceTree = "<group>"; };
+		817861811E8089F600CC7351 /* forum-post-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-multiple-invalid-id.html"; sourceTree = "<group>"; };
+		817861821E8089F600CC7351 /* forum-post-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-multiple-valid.html"; sourceTree = "<group>"; };
+		817861831E8089F600CC7351 /* forum-post-single-invalid-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-date.html"; sourceTree = "<group>"; };
+		817861841E8089F600CC7351 /* forum-post-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-id.html"; sourceTree = "<group>"; };
+		817861851E8089F600CC7351 /* forum-post-single-invalid-text.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-text.html"; sourceTree = "<group>"; };
+		817861861E8089F600CC7351 /* forum-post-single-invalid-username.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-invalid-username.html"; sourceTree = "<group>"; };
+		817861871E8089F600CC7351 /* forum-post-single-missing-optionals.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-missing-optionals.html"; sourceTree = "<group>"; };
+		817861881E8089F600CC7351 /* forum-post-single-valid-not-dev.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-valid-not-dev.html"; sourceTree = "<group>"; };
+		817861891E8089F600CC7351 /* forum-post-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-post-single-valid.html"; sourceTree = "<group>"; };
+		8178618B1E8089F600CC7351 /* forum-thread-multiple-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-multiple-invalid-id.html"; sourceTree = "<group>"; };
+		8178618C1E8089F600CC7351 /* forum-thread-multiple-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-multiple-valid.html"; sourceTree = "<group>"; };
+		8178618D1E8089F600CC7351 /* forum-thread-single-invalid-author.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-author.html"; sourceTree = "<group>"; };
+		8178618E1E8089F600CC7351 /* forum-thread-single-invalid-id.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-id.html"; sourceTree = "<group>"; };
+		8178618F1E8089F600CC7351 /* forum-thread-single-invalid-last-post-date.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-last-post-date.html"; sourceTree = "<group>"; };
+		817861901E8089F600CC7351 /* forum-thread-single-invalid-replies.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-replies.html"; sourceTree = "<group>"; };
+		817861911E8089F600CC7351 /* forum-thread-single-invalid-title.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-title.html"; sourceTree = "<group>"; };
+		817861921E8089F600CC7351 /* forum-thread-single-invalid-views.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-invalid-views.html"; sourceTree = "<group>"; };
+		817861931E8089F600CC7351 /* forum-thread-single-valid-not-dev.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid-not-dev.html"; sourceTree = "<group>"; };
+		817861941E8089F600CC7351 /* forum-thread-single-valid-not-sticky.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid-not-sticky.html"; sourceTree = "<group>"; };
+		817861951E8089F600CC7351 /* forum-thread-single-valid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "forum-thread-single-valid.html"; sourceTree = "<group>"; };
 		817A216719F6C1BD0093ECE3 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		818029D41A08B7CC00999871 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		818152E21E71344E007B5D91 /* Cleanse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cleanse.framework; path = Carthage/Build/iOS/Cleanse.framework; sourceTree = "<group>"; };
@@ -734,7 +734,6 @@
 			isa = PBXGroup;
 			children = (
 				814465F71E62BE9900181E54 /* Data */,
-				814465FD1E62BE9900181E54 /* Test Data */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -749,64 +748,6 @@
 				814465FC1E62BE9900181E54 /* ForumThreadRepositoryTests.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		814465FD1E62BE9900181E54 /* Test Data */ = {
-			isa = PBXGroup;
-			children = (
-				814465FE1E62BE9900181E54 /* Category */,
-				814466051E62BE9900181E54 /* forum-empty.html */,
-				814466061E62BE9900181E54 /* Post */,
-				814466101E62BE9900181E54 /* Thread */,
-			);
-			path = "Test Data";
-			sourceTree = "<group>";
-		};
-		814465FE1E62BE9900181E54 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				814465FF1E62BE9900181E54 /* forum-category-multiple-missing-id.html */,
-				814466001E62BE9900181E54 /* forum-category-multiple-missing-optionals.html */,
-				814466011E62BE9900181E54 /* forum-category-multiple-valid.html */,
-				814466021E62BE9900181E54 /* forum-category-single-invalid-id.html */,
-				814466031E62BE9900181E54 /* forum-category-single-missing-optionals.html */,
-				814466041E62BE9900181E54 /* forum-category-single-valid.html */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		814466061E62BE9900181E54 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				814466071E62BE9900181E54 /* forum-post-multiple-invalid-id.html */,
-				814466081E62BE9900181E54 /* forum-post-multiple-valid.html */,
-				814466091E62BE9900181E54 /* forum-post-single-invalid-date.html */,
-				8144660A1E62BE9900181E54 /* forum-post-single-invalid-id.html */,
-				8144660B1E62BE9900181E54 /* forum-post-single-invalid-text.html */,
-				8144660C1E62BE9900181E54 /* forum-post-single-invalid-username.html */,
-				8144660D1E62BE9900181E54 /* forum-post-single-missing-optionals.html */,
-				8144660E1E62BE9900181E54 /* forum-post-single-valid-not-dev.html */,
-				8144660F1E62BE9900181E54 /* forum-post-single-valid.html */,
-			);
-			path = Post;
-			sourceTree = "<group>";
-		};
-		814466101E62BE9900181E54 /* Thread */ = {
-			isa = PBXGroup;
-			children = (
-				814466111E62BE9900181E54 /* forum-thread-multiple-invalid-id.html */,
-				814466121E62BE9900181E54 /* forum-thread-multiple-valid.html */,
-				814466131E62BE9900181E54 /* forum-thread-single-invalid-author.html */,
-				814466141E62BE9900181E54 /* forum-thread-single-invalid-id.html */,
-				814466151E62BE9900181E54 /* forum-thread-single-invalid-last-post-date.html */,
-				814466161E62BE9900181E54 /* forum-thread-single-invalid-replies.html */,
-				814466171E62BE9900181E54 /* forum-thread-single-invalid-title.html */,
-				814466181E62BE9900181E54 /* forum-thread-single-invalid-views.html */,
-				814466191E62BE9900181E54 /* forum-thread-single-valid-not-dev.html */,
-				8144661A1E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html */,
-				8144661B1E62BE9900181E54 /* forum-thread-single-valid.html */,
-			);
-			path = Thread;
 			sourceTree = "<group>";
 		};
 		8144661C1E62BE9900181E54 /* Push */ = {
@@ -857,6 +798,73 @@
 			);
 			name = Messaging;
 			path = Firebase/Messaging;
+			sourceTree = "<group>";
+		};
+		817861761E8089F600CC7351 /* test-data */ = {
+			isa = PBXGroup;
+			children = (
+				817861771E8089F600CC7351 /* forum */,
+			);
+			name = "test-data";
+			path = "../../test-data";
+			sourceTree = "<group>";
+		};
+		817861771E8089F600CC7351 /* forum */ = {
+			isa = PBXGroup;
+			children = (
+				817861781E8089F600CC7351 /* Category */,
+				8178617F1E8089F600CC7351 /* forum-empty.html */,
+				817861801E8089F600CC7351 /* Post */,
+				8178618A1E8089F600CC7351 /* Thread */,
+			);
+			path = forum;
+			sourceTree = "<group>";
+		};
+		817861781E8089F600CC7351 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				817861791E8089F600CC7351 /* forum-category-multiple-missing-id.html */,
+				8178617A1E8089F600CC7351 /* forum-category-multiple-missing-optionals.html */,
+				8178617B1E8089F600CC7351 /* forum-category-multiple-valid.html */,
+				8178617C1E8089F600CC7351 /* forum-category-single-invalid-id.html */,
+				8178617D1E8089F600CC7351 /* forum-category-single-missing-optionals.html */,
+				8178617E1E8089F600CC7351 /* forum-category-single-valid.html */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		817861801E8089F600CC7351 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				817861811E8089F600CC7351 /* forum-post-multiple-invalid-id.html */,
+				817861821E8089F600CC7351 /* forum-post-multiple-valid.html */,
+				817861831E8089F600CC7351 /* forum-post-single-invalid-date.html */,
+				817861841E8089F600CC7351 /* forum-post-single-invalid-id.html */,
+				817861851E8089F600CC7351 /* forum-post-single-invalid-text.html */,
+				817861861E8089F600CC7351 /* forum-post-single-invalid-username.html */,
+				817861871E8089F600CC7351 /* forum-post-single-missing-optionals.html */,
+				817861881E8089F600CC7351 /* forum-post-single-valid-not-dev.html */,
+				817861891E8089F600CC7351 /* forum-post-single-valid.html */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		8178618A1E8089F600CC7351 /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				8178618B1E8089F600CC7351 /* forum-thread-multiple-invalid-id.html */,
+				8178618C1E8089F600CC7351 /* forum-thread-multiple-valid.html */,
+				8178618D1E8089F600CC7351 /* forum-thread-single-invalid-author.html */,
+				8178618E1E8089F600CC7351 /* forum-thread-single-invalid-id.html */,
+				8178618F1E8089F600CC7351 /* forum-thread-single-invalid-last-post-date.html */,
+				817861901E8089F600CC7351 /* forum-thread-single-invalid-replies.html */,
+				817861911E8089F600CC7351 /* forum-thread-single-invalid-title.html */,
+				817861921E8089F600CC7351 /* forum-thread-single-invalid-views.html */,
+				817861931E8089F600CC7351 /* forum-thread-single-valid-not-dev.html */,
+				817861941E8089F600CC7351 /* forum-thread-single-valid-not-sticky.html */,
+				817861951E8089F600CC7351 /* forum-thread-single-valid.html */,
+			);
+			path = Thread;
 			sourceTree = "<group>";
 		};
 		81AB247319EFBD7700293D26 = {
@@ -910,6 +918,7 @@
 			children = (
 				814465E61E62BE9800181E54 /* Extension */,
 				814465E91E62BE9900181E54 /* Module */,
+				817861761E8089F600CC7351 /* test-data */,
 				81AB249519EFBD7700293D26 /* Supporting Files */,
 			);
 			path = HoloNetTests;
@@ -1067,45 +1076,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8144663D1E62BE9900181E54 /* forum-thread-multiple-valid.html in Resources */,
-				8144663F1E62BE9900181E54 /* forum-thread-single-invalid-id.html in Resources */,
-				814466431E62BE9900181E54 /* forum-thread-single-invalid-views.html in Resources */,
-				814466441E62BE9900181E54 /* forum-thread-single-valid-not-dev.html in Resources */,
-				814466401E62BE9900181E54 /* forum-thread-single-invalid-last-post-date.html in Resources */,
-				8144662C1E62BE9900181E54 /* forum-category-multiple-missing-id.html in Resources */,
+				817861A71E8089F600CC7351 /* forum-thread-multiple-valid.html in Resources */,
+				817861A91E8089F600CC7351 /* forum-thread-single-invalid-id.html in Resources */,
+				817861AD1E8089F600CC7351 /* forum-thread-single-invalid-views.html in Resources */,
+				817861AE1E8089F600CC7351 /* forum-thread-single-valid-not-dev.html in Resources */,
+				817861AA1E8089F600CC7351 /* forum-thread-single-invalid-last-post-date.html in Resources */,
+				817861961E8089F600CC7351 /* forum-category-multiple-missing-id.html in Resources */,
 				814465371E62BE5900181E54 /* ForumPostCollectionViewCell.xib in Resources */,
-				814466451E62BE9900181E54 /* forum-thread-single-valid-not-sticky.html in Resources */,
+				817861AF1E8089F600CC7351 /* forum-thread-single-valid-not-sticky.html in Resources */,
 				8144652F1E62BE5900181E54 /* ForumThreadHeaderCollectionReusableView.xib in Resources */,
-				814466341E62BE9900181E54 /* forum-post-multiple-valid.html in Resources */,
+				8178619E1E8089F600CC7351 /* forum-post-multiple-valid.html in Resources */,
 				814465431E62BE5900181E54 /* ForumPostViewController.xib in Resources */,
-				8144663A1E62BE9900181E54 /* forum-post-single-valid-not-dev.html in Resources */,
+				817861A41E8089F600CC7351 /* forum-post-single-valid-not-dev.html in Resources */,
 				814465591E62BE5900181E54 /* LightTheme.plist in Resources */,
-				8144663C1E62BE9900181E54 /* forum-thread-multiple-invalid-id.html in Resources */,
-				814466411E62BE9900181E54 /* forum-thread-single-invalid-replies.html in Resources */,
-				814466371E62BE9900181E54 /* forum-post-single-invalid-text.html in Resources */,
-				8144663B1E62BE9900181E54 /* forum-post-single-valid.html in Resources */,
+				817861A61E8089F600CC7351 /* forum-thread-multiple-invalid-id.html in Resources */,
+				817861AB1E8089F600CC7351 /* forum-thread-single-invalid-replies.html in Resources */,
+				817861A11E8089F600CC7351 /* forum-post-single-invalid-text.html in Resources */,
+				817861A51E8089F600CC7351 /* forum-post-single-valid.html in Resources */,
 				8144650B1E62BE5900181E54 /* TableHeaderCollectionReusableView.xib in Resources */,
-				814466331E62BE9900181E54 /* forum-post-multiple-invalid-id.html in Resources */,
-				8144662F1E62BE9900181E54 /* forum-category-single-invalid-id.html in Resources */,
-				814466421E62BE9900181E54 /* forum-thread-single-invalid-title.html in Resources */,
-				814466381E62BE9900181E54 /* forum-post-single-invalid-username.html in Resources */,
+				8178619D1E8089F600CC7351 /* forum-post-multiple-invalid-id.html in Resources */,
+				817861991E8089F600CC7351 /* forum-category-single-invalid-id.html in Resources */,
+				817861AC1E8089F600CC7351 /* forum-thread-single-invalid-title.html in Resources */,
+				817861A21E8089F600CC7351 /* forum-post-single-invalid-username.html in Resources */,
 				814465071E62BE5900181E54 /* LoadMoreCollectionReusableView.xib in Resources */,
 				814465511E62BE5900181E54 /* Disclaimer.txt in Resources */,
-				814466301E62BE9900181E54 /* forum-category-single-missing-optionals.html in Resources */,
-				814466351E62BE9900181E54 /* forum-post-single-invalid-date.html in Resources */,
+				8178619A1E8089F600CC7351 /* forum-category-single-missing-optionals.html in Resources */,
+				8178619F1E8089F600CC7351 /* forum-post-single-invalid-date.html in Resources */,
 				814465531E62BE5900181E54 /* License.txt in Resources */,
-				814466461E62BE9900181E54 /* forum-thread-single-valid.html in Resources */,
-				8144662D1E62BE9900181E54 /* forum-category-multiple-missing-optionals.html in Resources */,
-				814466361E62BE9900181E54 /* forum-post-single-invalid-id.html in Resources */,
-				814466321E62BE9900181E54 /* forum-empty.html in Resources */,
-				814466311E62BE9900181E54 /* forum-category-single-valid.html in Resources */,
+				817861B01E8089F600CC7351 /* forum-thread-single-valid.html in Resources */,
+				817861971E8089F600CC7351 /* forum-category-multiple-missing-optionals.html in Resources */,
+				817861A01E8089F600CC7351 /* forum-post-single-invalid-id.html in Resources */,
+				8178619C1E8089F600CC7351 /* forum-empty.html in Resources */,
+				8178619B1E8089F600CC7351 /* forum-category-single-valid.html in Resources */,
 				8144653B1E62BE5900181E54 /* ForumThreadCollectionViewCell.xib in Resources */,
-				8144662E1E62BE9900181E54 /* forum-category-multiple-valid.html in Resources */,
+				817861981E8089F600CC7351 /* forum-category-multiple-valid.html in Resources */,
 				814465551E62BE5900181E54 /* PrivacyPolicy.txt in Resources */,
-				8144663E1E62BE9900181E54 /* forum-thread-single-invalid-author.html in Resources */,
+				817861A81E8089F600CC7351 /* forum-thread-single-invalid-author.html in Resources */,
 				818029D51A08B7CC00999871 /* Settings.plist in Resources */,
 				814465571E62BE5900181E54 /* DarkTheme.plist in Resources */,
-				814466391E62BE9900181E54 /* forum-post-single-missing-optionals.html in Resources */,
+				817861A31E8089F600CC7351 /* forum-post-single-missing-optionals.html in Resources */,
 				814465331E62BE5900181E54 /* ForumCategoryCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
