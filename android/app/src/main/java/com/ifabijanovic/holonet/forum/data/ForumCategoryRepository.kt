@@ -18,7 +18,7 @@ interface ForumCategoryRepository {
     fun categories(language: ForumLanguage, parent: ForumCategory): Observable<List<ForumCategory>>
 }
 
-final class DefaultForumCategoryRepository(parser: ForumParser, service: ForumService, settings: Settings): ForumRepositoryBase(parser, service, settings), ForumCategoryRepository {
+class DefaultForumCategoryRepository(parser: ForumParser, service: ForumService, settings: Settings): ForumRepositoryBase(parser, service, settings), ForumCategoryRepository {
     override fun categories(language: ForumLanguage): Observable<List<ForumCategory>> {
         val localizedSettings = this.localizedSettings(language)
         return this.categories(localizedSettings.pathPrefix, localizedSettings.rootCategoryId)
@@ -46,15 +46,9 @@ final class DefaultForumCategoryRepository(parser: ForumParser, service: ForumSe
     private fun parse(html: String): List<ForumCategory> {
         val items = mutableListOf<ForumCategory>()
 
-        val document = Jsoup.parse(html)
-        val categoryNodes = document.select(".forumCategory > .subForum")
-
-        for (node in categoryNodes) {
-            val category = this.parseCategory(node)
-            if (category != null) {
-                items.add(category)
-            }
-        }
+        Jsoup.parse(html)
+                .select(".forumCategory > .subForum")
+                .mapNotNullTo(items) { this.parseCategory(it) }
 
         return items.toList()
     }

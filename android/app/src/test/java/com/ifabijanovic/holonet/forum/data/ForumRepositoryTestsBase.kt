@@ -1,6 +1,7 @@
 package com.ifabijanovic.holonet.forum.data
 
 import com.ifabijanovic.holonet.app.model.Settings
+import com.ifabijanovic.holonet.app.model.TestSettings
 import com.ifabijanovic.holonet.forum.language.ForumLanguage
 import io.reactivex.Observable
 import org.junit.Before
@@ -11,7 +12,7 @@ import org.junit.Assert.*
  * Created by Ivan Fabijanovic on 21/03/2017.
  */
 open class ForumRepositoryTestsBase {
-    protected val settings = Settings()
+    protected val settings: Settings = TestSettings()
     protected val language = ForumLanguage.english
     protected var service: ForumService? = null
 
