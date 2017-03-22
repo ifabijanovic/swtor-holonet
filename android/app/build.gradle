@@ -34,7 +34,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'org.jsoup:jsoup:1.10.2'
 
@@ -48,7 +47,19 @@ dependencies {
 
     // Retrofit + RxAndroid
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+
+    // Testing
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:2.+"
 }
+
 repositories {
     mavenCentral()
 }
+
+task copyTestData(type: Copy) {
+    from "${projectDir}/../../test-data"
+    into "${projectDir}/src/test/resources"
+}
+
+preBuild.dependsOn copyTestData

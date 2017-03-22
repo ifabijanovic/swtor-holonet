@@ -12,18 +12,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 /**
  * Created by feb on 19/03/2017.
  */
-abstract class ForumRepositoryBase(protected val parser: ForumParser, protected val settings: Settings) {
-    protected val service: ForumService
-
-    init {
-        this.service = Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .baseUrl(this.settings.baseForumUrl)
-                .build()
-                .create(ForumService::class.java)
-    }
-
+abstract class ForumRepositoryBase(
+        protected val parser: ForumParser,
+        protected val service: ForumService,
+        protected val settings: Settings
+) {
     protected fun localizedSettings(language: ForumLanguage): LocalizedSettings {
         val localizedSettings = settings.localized[language.languageCode]
         assert(localizedSettings != null)

@@ -18,7 +18,7 @@ interface ForumCategoryRepository {
     fun categories(language: ForumLanguage, parent: ForumCategory): Observable<List<ForumCategory>>
 }
 
-final class DefaultForumCategoryRepository(parser: ForumParser, settings: Settings): ForumRepositoryBase(parser, settings), ForumCategoryRepository {
+final class DefaultForumCategoryRepository(parser: ForumParser, service: ForumService, settings: Settings): ForumRepositoryBase(parser, service, settings), ForumCategoryRepository {
     override fun categories(language: ForumLanguage): Observable<List<ForumCategory>> {
         val localizedSettings = this.localizedSettings(language)
         return this.categories(localizedSettings.pathPrefix, localizedSettings.rootCategoryId)
@@ -65,7 +65,7 @@ final class DefaultForumCategoryRepository(parser: ForumParser, settings: Settin
         val idString = this.parser.linkParameter(titleElement, this.settings.categoryQueryParam)
         var id: Int?
         try {
-            id = idString?.toInt() ?: null
+            id = idString?.toInt()
         } catch (e: Exception) {
             id = null
         }
