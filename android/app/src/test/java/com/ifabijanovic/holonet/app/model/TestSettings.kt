@@ -6,6 +6,7 @@ package com.ifabijanovic.holonet.app.model
 class TestSettings: Settings {
     override val appEmail: String = "holonet.swtor@gmail.com"
     override val categoryQueryParam: String = "category"
+    override val threadQueryParam: String = "thread"
     override val baseForumUrl: String = "http://www.swtor.com"
     override val devTrackerIconUrl: String = "http://www.holonet.test/devIcon.png"
     override val devAvatarUrl: String = "http://www.holonet.test/devAvatar.png"
