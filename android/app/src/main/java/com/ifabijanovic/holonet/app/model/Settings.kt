@@ -7,6 +7,7 @@ interface Settings {
     val appEmail: String
     val categoryQueryParam: String
     val threadQueryParam: String
+    val postQueryParam: String
     val baseForumUrl: String
     val devTrackerIconUrl: String
     val devAvatarUrl: String
@@ -26,6 +27,7 @@ class AppSettings: Settings {
     override val appEmail: String = "holonet.swtor@gmail.com"
     override val categoryQueryParam: String = "f"
     override val threadQueryParam: String = "t"
+    override val postQueryParam: String = "p"
     override val baseForumUrl: String = "http://www.swtor.com"
     override val devTrackerIconUrl: String = "http://cdn-www.swtor.com/sites/all/files/en/coruscant/main/forums/icons/devtracker_icon.png"
     override val devAvatarUrl: String = "http://www.swtor.com/sites/all/files/avatars/BioWare.gif"
