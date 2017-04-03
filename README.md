@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ifabijanovic/swtor-holonet.svg?branch=develop)](https://travis-ci.org/ifabijanovic/swtor-holonet)
 
 
-HoloNet is an iPhone/iPad application intended for use by players of the MMORPG game Star Wars: The Old Republic (www.swtor.com). Main features of the app are:
+HoloNet is an iPhone/iPad (**Android under development**) application intended for use by players of the MMORPG game Star Wars: The Old Republic (www.swtor.com). Main features of the app are:
 
 * Browse and read the official game forums (located at www.swtor.com) in a mobile-friendly way.
 * Browse and read the fansite www.dulfy.net
@@ -17,12 +17,21 @@ LUCASARTS, THE LUCASARTS LOGO, STAR WARS AND RELATED PROPERTIES ARE TRADEMARKS I
 
 ## Credits
 
-HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/). The app uses the code from several other open source projects, credits go to their authors:
+HoloNet was created by [Ivan Fabijanović](https://github.com/ifabijanovic/) and is currently available in English, French and German languages.
+
+Localization:
+- German - [1nurion](https://github.com/1nurion)
+- French - [Soontiir](https://github.com/Soontiir)
+
+The app uses the code from several other open source projects, credits go to their authors:
 
 * [Alamofire](https://github.com/Alamofire/Alamofire)
 * [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
 * [HTMLReader](https://github.com/nolanw/HTMLReader)
 * [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs)
+* [RxSwift](https://github.com/ReactiveX/RxSwift)
+* [RxAlamofire](https://github.com/RxSwiftCommunity/RxAlamofire)
+* [Cleanse](https://github.com/square/Cleanse)
 
 HoloNet also makes use of [Firebase](https://firebase.google.com) provided by Google.
 
