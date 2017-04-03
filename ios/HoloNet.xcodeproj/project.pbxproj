@@ -237,6 +237,7 @@
 		8108EEC31E79214C00703474 /* ForumLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguage.swift; sourceTree = "<group>"; };
 		8108EEC61E79215C00703474 /* ForumLanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageManager.swift; sourceTree = "<group>"; };
 		8108EEC91E79289500703474 /* ForumLanguageSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumLanguageSettingsTableViewController.swift; sourceTree = "<group>"; };
+		8111B5D31E921D1A00E508E6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		811412F11E7D234C0029246D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		811412F41E7D24090029246D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		811412F61E7D24150029246D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1036,6 +1037,7 @@
 				en,
 				Base,
 				de,
+				fr,
 			);
 			mainGroup = 81AB247319EFBD7700293D26;
 			productRefGroup = 81AB247D19EFBD7700293D26 /* Products */;
@@ -1321,6 +1323,7 @@
 			children = (
 				811412F41E7D24090029246D /* Base */,
 				811412F61E7D24150029246D /* de */,
+				8111B5D31E921D1A00E508E6 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

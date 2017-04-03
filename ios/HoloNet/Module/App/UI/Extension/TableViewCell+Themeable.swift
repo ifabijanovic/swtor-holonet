@@ -23,6 +23,8 @@ extension UITableViewCell: Themeable {
         if self.accessoryView == nil {
             let image = UIImage(named: "Forward")?.withRenderingMode(.alwaysTemplate)
             let imageView = UIImageView(image: image)
+            imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+            imageView.contentMode = .center
             self.accessoryView = imageView
         }
         

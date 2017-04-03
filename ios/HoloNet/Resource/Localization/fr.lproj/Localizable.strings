@@ -1,0 +1,61 @@
+"tab_forum" = "Forum";
+"tab_dulfy" = "Dulfy";
+"tab_settings" = "Paramètres";
+
+"alert_dulfy_title" = "Dulfy";
+"alert_dulfy_dismiss" = "Cacher";
+"alert_dulfy_confirm" = "Afficher";
+
+"alert_network_error_title" = "Erreur réseau";
+"alert_network_error_body" = "Une erreur s'est produite lors du chargement des données. Voulez-vous réessayer?";
+"alert_network_error_dismiss" = "Non";
+"alert_network_error_confirm" = "Oui";
+
+"alert_maintenance_title" = "Maintenance";
+"alert_maintenance_body" = "SWTOR.com est actuellement indisponible pendant que la maintenance programmée est effectuée.";
+"alert_maintenance_confirm" = "OK";
+
+"theme_dark_name" = "Sombre";
+"theme_light_name" = "Clair";
+
+"text_size_small_name" = "Petit";
+"text_size_medium_name" = "Moyen";
+"text_size_large_name" = "Grand";
+
+"forum_language_english_name" = "Anglais";
+"forum_language_french_name" = "Français";
+"forum_language_german_name" = "Allemand";
+
+"forum_developer_tracker_thread_title" = "Fil du développeur";
+"forum_root_title" = "Forum";
+"forum_thread_title" = "Discussion";
+"forum_post_title" = "Message";
+"forum_categories_section_title" = "Catégories";
+"forum_threads_section_title" = "Discussions";
+"forum_thread_replies_label" = "R: %d, A: %d";
+
+"alert_notification_request_access_title" = "Notifications";
+"alert_notification_request_access_body" = "Hey, voulez-vous recevoir des notifications de l'HoloNet et de Dulfy?";
+"alert_notification_request_access_dismiss" = "Non";
+"alert_notification_request_access_confirm" = "Oui";
+
+"settings_title" = "Paramètres";
+"settings_section_messages_title" = "MESSAGES";
+"settings_section_display_title" = "AFFICHER";
+"settings_section_feedback_title" = "FEEDBACK";
+"settings_section_legal_title" = "MENTIONS LEGALES";
+"settings_notifications_label" = "Notifications";
+"settings_notifications_enabled_value" = "Autoriser";
+"settings_notifications_disabled_value" = "Désactiver";
+"settings_forum_language_label" = "Langue du Forum";
+"settings_theme_label" = "Thème";
+"settings_text_size_label" = "Taille du texte";
+"settings_contact_label" = "Contacter";
+"settings_report_bug_label" = "Rapport de bug";
+"settings_disclaimer_label" = "Avertissement";
+"settings_privacy_policy_label" = "Politique de confidentialité";
+"settings_license_label" = "Licence";
+
+"alert_email_not_available_title" = "Erreur";
+"alert_email_not_available_body" = "Il semble que les emails ne sont pas configurés sur cet appareil.";
+"alert_email_not_available_confirm" = "OK";
